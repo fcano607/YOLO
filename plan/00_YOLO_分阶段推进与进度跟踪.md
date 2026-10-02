@@ -36,8 +36,8 @@
 | 目录组织 | 已形成代码、配置、数据、结果的目录规划 | [项目目录规划](YOLO_项目目录规划.md) |
 | 背景整理 | 已完成第一轮项目资料梳理 | [技术学习梳理](../codex/YOLO_项目背景与技术学习梳理.md) |
 | 模型学习资料 | 已准备六阶段十八课终极版手册、YOLOv1 基础卷、现代检测与分割过渡讲义及补充论文；资料准备不等于实操验收 | [终极版学习手册](../codex/00_YOLO学习路线与学习手册_终极版.md) |
-| 实际实现 | 已建立环境 / 源码 / E0 与部署预检查入口，锁定 Ultralytics 8.4.171；E0 三种输入和 ORT CPU/CUDA、TensorRT FP32 实际执行通过，两个输入原始输出对照通过。尚无项目训练数据、微调、结构修改、完整独立后处理或训练评价结果 | [E0 报告](../reports/E0_预训练模型验证.md)、[部署预检查报告](../reports/deployment/M0-05_部署兼容性预检查.md) |
-| 本机环境 | yolo 为 Python 3.9.23、torch 2.8.0+cu129；按用户选择移除继承 TensorFlow，统一训练 / 部署。ONNX 1.17.0、ORT GPU 1.19.2、TRT cu12 11.3.0.99、protobuf 4.25.8；训练和 E0 回归通过；原 tf2 保留，短时摄像头已验收 | [环境报告](../reports/environment.md)、[安装记录](../docs/环境安装记录.md) |
+| 实际实现 | 环境 / 源码 / E0 / 部署预检查 / 归档与新进程复现入口已建立。E0 三种输入、ORT CPU/CUDA、TRT FP32 执行和原始对照通过；项目外新进程 E0 / ONNX 复现通过。项目训练、结构修改、完整后处理与正式评价未开展 | [E0 报告](../reports/M0_阶段验收报告.md)、[部署报告](../reports/M0_阶段验收报告.md)、[M0-06 报告](../reports/M0_阶段验收报告.md) |
+| 本机环境 | yolo 为 Python 3.9.23、torch 2.8.0+cu129；统一训练 / 部署。167 个 Python 包、19 个 Conda 管理包已归档，核心文件 / 权重哈希与恢复命令已保存，新进程回归通过；原 tf2 保留。干净重装 / 移机未实际验证 | [环境报告](../reports/M0_阶段验收报告.md)、[恢复说明](../docs/M0_环境与模型使用手册.md) |
 
 以上“背景整理”是资料层面的进展，不等同于你已经完成模型原理学习或实验。
 
@@ -45,7 +45,7 @@
 
 | 模块 | 内容 | 状态 | 已验收任务 | 当前缺少的关键证据 | 下一步 |
 | --- | --- | --- | --- | --- | --- |
-| M0 | 环境与预训练模型验证 | 进行中 | 5/6 | E0 与部署预检查均通过；完整环境保存与复现整理待完成 | M0-06：保存可复现环境；[部署报告](../reports/deployment/M0-05_部署兼容性预检查.md) |
+| M0 | 环境与预训练模型验证 | 已完成 | 6/6 | 本机任务验收已齐；干净重装 / 移机未实际验证，长期摄像头稳定性待 M7 | 转 M1-01；[M0-06 报告](../reports/M0_阶段验收报告.md) |
 | M1 | 模型原理与源码学习 | 未开始 | 0/6 | 结构、张量与掩膜实操笔记 | M1-01：明确任务和输出 |
 | M2 | 数据准备与冻结划分 | 未开始 | 0/6 | 数据、标签和固定清单 | M2-01：制定标注约定 |
 | M3 | 基线训练与错误分析 | 未开始 | 0/6 | E1/E2 权重与验证结果 | M2 验收后先做小样本训练 |
@@ -55,20 +55,21 @@
 | M7 | 摄像头实时应用与稳定性 | 未开始 | 0/6 | 应用、录像与稳定性记录 | 在可用后端上先跑通单循环 |
 | M8 | 最终验收与成果整理 | 未开始 | 0/6 | 固定测试结果与复现说明 | 过程材料随前面模块持续记录 |
 
-**主线已验收：5/54 项；完整模块：0/9。** 当前阶段：阶段 1，环境准备；M0-01 至 M0-05 已完成。E0、ORT CPU/CUDA 和 TensorRT FP32 实际执行及两个输入原始输出对照通过，统一 yolo 环境回归正常。B002 当前阻塞已解除，历史摄像头异常根因未确定，长期稳定性留在 M7。E0 的遮挡漏检与瓶子误分类仍保留。
+**主线已验收：6/54 项；完整模块：1/9。** M0 环境模块已完成，准备进入阶段 2 的模型学习 / 数据 / 基线。环境、源码、模型与恢复命令已归档；E0 和 ONNX 的新进程复现通过，TRT FP32 执行已有 M0-05 证据。B002 当前阻塞已解除，历史摄像头异常根因未确定，长期稳定性留在 M7。E0 的遮挡漏检与瓶子误分类仍保留。
 
 ### 2.3 当前行动与下一步
 
 | 项目 | 当前安排 |
 | --- | --- |
-| 最近完成的任务 | M0-05：固定 FP32 ONNX 导出，ORT CPU/CUDA 实际执行，TensorRT FP32 构建 / 执行，两个输入原始输出对照；环境与 E0 回归通过 |
-| 下一项优先任务 | 工程：M0-06 保存完整环境、源码、安装问题和可复现命令；学习：终极版第 1 课，任务、坐标与 IoU |
-| 接下来三项 | M0-06 → M1-01 → M1-02 |
+| 最近完成的任务 | M0-06：完整环境 / 源码 / 模型归档、恢复说明与项目外新进程 E0 / ONNX 复现；M0 共 6/6 验收 |
+| 当前整理工作 | 已按用户同意的推荐清单删除 301 个文件、132 个目录；历史备份保留，GPU E0、ORT CPU/CUDA 和 TensorRT 复查通过。见[清理结果](../reports/maintenance/20261002_文件整理与清理清单.md)，不增加任务完成数 |
+| 下一项优先任务 | M1-01 明确分类 / 检测 / 语义分割 / 实例分割与最终输出；配合终极版第 1 课的任务、坐标与 IoU |
+| 接下来三项 | M1-01 → M1-02 → M1-03 |
 | 可穿插学习 | 按终极版 S1—S3 学习检测闭环、现代结构与训练监督；概念阅读不依赖 GPU，M1 实操另行验收 |
-| 当前需要确认的条件 | 完整环境恢复流程；实际可投入时间及数据采集条件。部署 FP32 已通过，完整后处理 / 精度 / 性能待 M5/M6，长期摄像头稳定性待 M7 |
-| 下一个里程碑 | 完成 M0-06 的环境归档、恢复命令及新进程 E0 / ONNX 复现，验收 M0 环境模块 |
+| 当前需要确认的条件 | 学习理解与实际可投入时间、数据采集条件。已有恢复定义与本机新进程证据；干净重装 / 移机未验证，完整部署 / 性能和长期稳定性待后续模块 |
+| 下一个里程碑 | M1 任务与输出、结构 / 张量、框 / mask、训练监督及评价的学习与实操验收 |
 
-M0-01 至 M0-05 已验收；摄像头历史记录、E0 识别问题、TF/protobuf 冲突和 TensorRT 中文路径处理证据均保留。E0 与部署模型仍使用原 80 类 COCO 权重；没有项目微调或精度评价。M0 预检查不替代 M5/M6 完整部署，短时演示不替代 M7 长期稳定性验收。
+M0-01 至 M0-06 已验收；摄像头历史记录、E0 识别问题、TF/protobuf 冲突、TRT 中文路径处理及环境归档 / 复现证据均保留。模型仍使用原 80 类 COCO 权重，没有项目微调或精度评价。M0 预检查不替代 M5/M6 完整部署，短时演示不替代 M7 长期稳定性验收；本机新进程复现不等同于干净重装 / 移机验证。
 
 <a id="stages"></a>
 
@@ -100,14 +101,14 @@ M0-01 至 M0-05 已验收；摄像头历史记录、E0 识别问题、TF/protobu
 
 ### 任务清单
 
-- [x] **M0-01 确认硬件和已有环境。** 记录系统、GPU、显存、驱动、Python 和环境管理方式；查看 `nvidia-smi` 与 Python 版本。区分驱动支持的 CUDA、Toolkit 和 PyTorch 运行时。2026-10-02 已验收：[环境报告](../reports/environment.md)、[检查快照](../logs/environment/M0-01_20261002_snapshot.json)。
-- [x] **M0-02 建立项目环境并锁定源码。** 按实际兼容性安装依赖；Ultralytics 源码采用可编辑安装，记录 tag/commit，避免直接修改临时安装目录。新建必要一级目录和 README，建立统一路径规则。2026-10-02 已验收：yolo 环境、训练依赖、v8.4.171 / `86f5c8c401a630da651d321e691ab0af540812cf`、路径配置与随机权重 GPU 前向通过；见[环境安装记录](../docs/环境安装记录.md)、[验收快照](../logs/environment/M0-02_20261002_install_snapshot.json)。部署依赖在 M0-05 单独处理。
-- [x] **M0-03 实现环境检查入口。** 编写 `scripts/check_env.py`，检查实际 Python、包版本、CUDA、ORT provider 与摄像头读帧；将结果保存为环境报告。2026-10-02 12:34 已验收：18 项直接依赖固定版本、源码和 GPU 检查通过；部署包未安装并登记到 M0-05；DSHOW 连续三次各读三帧且正常释放，正式程序 exit code 0。另有 10 秒 / 286 帧、无读取失败的短时采集记录。见[使用说明](../docs/环境检查使用说明.md)、[验收快照](../logs/environment/M0-03_20261002_123401_124014_snapshot.json)。
-- [x] **M0-04 运行预训练模型 E0。** 保存 `yolo11n-seg.pt`，运行图片、视频与摄像头；查看框和掩膜，通过 `model.names` 查三类，保存输入与结果截图。2026-10-02 已验收：官方权重哈希固定，cup=41、bottle=39、cell phone=67；GPU FP32 运行三种输入，297 帧摄像头演示和文件视频处理均通过，资源正常释放。杯子 / 右侧手机预测、左侧遮挡手机漏检、右侧瓶子漏检 / 误分类已记录。见[使用说明](../docs/E0_预训练模型使用说明.md)、[E0 报告](../reports/E0_预训练模型验证.md)、[产出验收](../logs/environment/M0-04_20261002_artifact_validation.json)。
-- [x] **M0-05 完成部署兼容性预检查。** 2026-10-02 已验收：固定 640、FP32、opset17、无 NMS 的 80 类预训练 ONNX 导出 / full_check 通过；ORT CPU/CUDA 实际执行，CUDA profile 确认计算在 GPU；TensorRT cu12 11.3.0.99 原生 engine 构建 / 执行通过。公交车与桌面图读取相同张量，两输出均满足 atol=1e-3、rtol=1e-4。按用户选择移除 yolo 继承 TF、统一部署依赖，训练 / E0 回归通过，原 tf2 保留。见[报告](../reports/deployment/M0-05_部署兼容性预检查.md)、[说明](../docs/部署预检查使用说明.md)、[汇总](../logs/deployment/M0-05_summary.json)。完整后处理与质量 / 速度评价留到 M5/M6。
-- [ ] **M0-06 保存可复现环境。** 记录依赖、硬件、源码版本、安装问题和已验证命令；重启进程后确认 E0 与 ONNX 能重新运行。
+- [x] **M0-01 确认硬件和已有环境。** 记录系统、GPU、显存、驱动、Python 和环境管理方式；查看 `nvidia-smi` 与 Python 版本。区分驱动支持的 CUDA、Toolkit 和 PyTorch 运行时。2026-10-02 已验收：[环境报告](../reports/M0_阶段验收报告.md)、[检查快照](../logs/environment/M0-01_20261002_snapshot.json)。
+- [x] **M0-02 建立项目环境并锁定源码。** 按实际兼容性安装依赖；Ultralytics 源码采用可编辑安装，记录 tag/commit，避免直接修改临时安装目录。新建必要一级目录和 README，建立统一路径规则。2026-10-02 已验收：yolo 环境、训练依赖、v8.4.171 / `86f5c8c401a630da651d321e691ab0af540812cf`、路径配置与随机权重 GPU 前向通过；见[环境安装记录](../docs/M0_环境与模型使用手册.md)、[验收快照](../logs/environment/M0-02_20261002_install_snapshot.json)。部署依赖在 M0-05 单独处理。
+- [x] **M0-03 实现环境检查入口。** 编写 `scripts/check_env.py`，检查实际 Python、包版本、CUDA、ORT provider 与摄像头读帧；将结果保存为环境报告。2026-10-02 12:34 已验收：18 项直接依赖固定版本、源码和 GPU 检查通过；部署包未安装并登记到 M0-05；DSHOW 连续三次各读三帧且正常释放，正式程序 exit code 0。另有 10 秒 / 286 帧、无读取失败的短时采集记录。见[使用说明](../docs/M0_环境与模型使用手册.md)、[验收快照](../logs/environment/M0-03_20261002_123401_124014_snapshot.json)。
+- [x] **M0-04 运行预训练模型 E0。** 保存 `yolo11n-seg.pt`，运行图片、视频与摄像头；查看框和掩膜，通过 `model.names` 查三类，保存输入与结果截图。2026-10-02 已验收：官方权重哈希固定，cup=41、bottle=39、cell phone=67；GPU FP32 运行三种输入，297 帧摄像头演示和文件视频处理均通过，资源正常释放。杯子 / 右侧手机预测、左侧遮挡手机漏检、右侧瓶子漏检 / 误分类已记录。见[使用说明](../docs/M0_环境与模型使用手册.md)、[E0 报告](../reports/M0_阶段验收报告.md)、[产出验收](../logs/environment/M0-04_20261002_artifact_validation.json)。
+- [x] **M0-05 完成部署兼容性预检查。** 2026-10-02 已验收：固定 640、FP32、opset17、无 NMS 的 80 类预训练 ONNX 导出 / full_check 通过；ORT CPU/CUDA 实际执行，CUDA profile 确认计算在 GPU；TensorRT cu12 11.3.0.99 原生 engine 构建 / 执行通过。公交车与桌面图读取相同张量，两输出均满足 atol=1e-3、rtol=1e-4。按用户选择移除 yolo 继承 TF、统一部署依赖，训练 / E0 回归通过，原 tf2 保留。见[报告](../reports/M0_阶段验收报告.md)、[说明](../docs/M0_环境与模型使用手册.md)、[汇总](../logs/deployment/M0-05_summary.json)。完整后处理与质量 / 速度评价留到 M5/M6。
+- [x] **M0-06 保存可复现环境。** 2026-10-02 已验收：167 个 Python 包、19 个 Conda 管理包、硬件 / 运行时 / 源码 / 模型来源与哈希已归档，生成 environment.yml 和完整当前版本约束。项目外启动 7 个新进程，源码、训练环境、bus / 桌面图 E0、ONNX 导出、ORT CPU / CUDA 均 exit code 0，mask 非空、原始对照通过，依赖未变。恢复说明、Conda 解析 / 当前环境 pip dry-run 记录齐备；干净重装和移机尚未实际验证。见[恢复说明](../docs/M0_环境与模型使用手册.md)、[验收报告](../reports/M0_阶段验收报告.md)、[档案索引](../logs/environment/M0-06_latest.json)、[复现索引](../logs/reproducibility/M0-06_latest.json)。
 
-**主要产出：**`scripts/check_env.py`、`scripts/check_deployment.py`、`configs/paths.yaml`、`configs/deploy-precheck.yaml`、训练 / 部署 requirements、`reports/environment.md`、`docs/环境安装记录.md`、`artifacts/pretrained/`、`artifacts/precheck/`、环境与执行 / 构建日志。
+**主要产出：**环境 / E0 / 部署检查、归档与复现脚本；路径 / 源码 / 推理配置；训练 / 部署 requirements、`environment.yml`、`configs/constraints-runtime.txt`；环境 / 安装 / 恢复说明与验收报告；`artifacts/pretrained/`、`artifacts/precheck/`、`artifacts/reproducibility/`；环境与执行 / 构建 / 复现日志。
 
 **验收：**E0 实际运行，ONNX 实际执行，环境来源清晰；TensorRT 可行性有执行记录或明确阻塞记录。若 TensorRT 暂不可用，登记问题并继续其余模块，完整项目验收仍保留该项。
 
@@ -306,13 +307,14 @@ M0-01 至 M0-05 已验收；摄像头历史记录、E0 识别问题、TF/protobu
 | 日期 | 模块 / 任务 | 本次完成与证据位置 | 已验证结论 / 剩余问题 | 下一步 |
 | --- | --- | --- | --- | --- |
 | 2026-09-30 | 规划文档 | 新建本文件；核对已有规划与背景梳理 | 当前尚无实现与实验证据，主线 0/54 | M0-01 |
-| 2026-10-02 | M0-01 | [环境报告](../reports/environment.md)与[检查快照](../logs/environment/M0-01_20261002_snapshot.json)；硬件/环境清点及实际 CUDA 矩阵、卷积、NMS 检查 | tf2 为 D 盘 Python 3.9.23；torch 2.8.0+cu129 和 torchvision 0.23.0+cu129 的基础 GPU 运算通过；默认 python 是 base 3.11.7；项目依赖、摄像头与 E0 尚未验证，未改动已有环境 | M0-02 |
-| 2026-10-02 | M0-02，环境部分 | [安装记录](../docs/环境安装记录.md)、[创建日志](../logs/environment/M0-02_20261002_conda_clone.log)、[新环境快照](../logs/environment/M0-02_20261002_yolo_snapshot.json) | 从 tf2 克隆建立 D 盘 yolo；159 个发行包版本一致，新环境 CUDA 矩阵、卷积和 NMS 通过；源码及项目缺失依赖未处理，主线仍为 1/54 | 继续 M0-02 |
+| 2026-10-02 | M0-01 | [环境报告](../reports/M0_阶段验收报告.md)与[检查快照](../logs/environment/M0-01_20261002_snapshot.json)；硬件/环境清点及实际 CUDA 矩阵、卷积、NMS 检查 | tf2 为 D 盘 Python 3.9.23；torch 2.8.0+cu129 和 torchvision 0.23.0+cu129 的基础 GPU 运算通过；默认 python 是 base 3.11.7；项目依赖、摄像头与 E0 尚未验证，未改动已有环境 | M0-02 |
+| 2026-10-02 | M0-02，环境部分 | [安装记录](../docs/M0_环境与模型使用手册.md)、[创建日志](../logs/environment/M0-02_20261002_conda_clone.log)、[新环境快照](../logs/environment/M0-02_20261002_yolo_snapshot.json) | 从 tf2 克隆建立 D 盘 yolo；159 个发行包版本一致，新环境 CUDA 矩阵、卷积和 NMS 通过；源码及项目缺失依赖未处理，主线仍为 1/54 | 继续 M0-02 |
 | 2026-10-02 | M0-02，源码与训练依赖验收 | [源码锁定清单](../configs/source-lock.json)、[训练 requirements](../requirements-train.txt)、[安装日志](../logs/environment/M0-02_20261002_pip_install.log)、[验收快照](../logs/environment/M0-02_20261002_install_snapshot.json) | Ultralytics 8.4.171 从项目源码可编辑加载；新增 6 包、升级 filelock，pip check 与 OpenCV 通过；随机权重 YOLO11n-seg 640×640 GPU 前向通过；目录和路径规则已建立。M0-02 完成，主线 2/54；E0/训练/部署未开展 | M0-03 |
-| 2026-10-02 | M0-03，检查入口与问题定位 | [检查脚本](../scripts/check_env.py)、[使用说明](../docs/环境检查使用说明.md)、[最新检查报告](../reports/environment_check.md)、[最终运行快照](../logs/environment/M0-03_20261002_114408_074569_snapshot.json) | Python、18 项固定依赖、源码、OpenCV 和 GPU 通过；FHD USB camera 在 DSHOW 下读到三帧，但 release 超时；MSMF 读帧失败。OpenCV 4.10 临时对照未解决，项目环境保持原版本；部署包缺失已登记。M0-03 尚未验收，主线仍 2/54 | 确认占用 / 系统相机表现，重新拔插后复测 |
+| 2026-10-02 | M0-03，检查入口与问题定位 | [检查脚本](../scripts/check_env.py)、[使用说明](../docs/M0_环境与模型使用手册.md)、[最新检查报告](../reports/environment_check.md)、[最终运行快照](../logs/environment/M0-03_20261002_114408_074569_snapshot.json) | Python、18 项固定依赖、源码、OpenCV 和 GPU 通过；FHD USB camera 在 DSHOW 下读到三帧，但 release 超时；MSMF 读帧失败。OpenCV 4.10 临时对照未解决，项目环境保持原版本；部署包缺失已登记。M0-03 尚未验收，主线仍 2/54 | 确认占用 / 系统相机表现，重新拔插后复测 |
 | 2026-10-02 12:34 | M0-03，摄像头复测与验收 | [验收快照](../logs/environment/M0-03_20261002_123401_124014_snapshot.json)、[复测日志](../logs/environment/M0-03_20261002_recheck.log)、[10 秒采集](../logs/environment/M0-03_20261002_recheck_stream.json) | 本轮前期仍重现过关闭超时，之后原始方式连续六次通过；正式检查改为同一后端连续三次通过，并记录打开、读取、释放耗时。两轮正式检查均 exit code 0；10 秒读取 286 帧无失败，释放约 0.27 秒。用户确认其他摄像头程序已关闭；未改驱动、USB 设置或环境版本，恢复原因未确定。M0-03 完成，主线 3/54 | M0-04 |
-| 2026-10-02 | M0-04，E0 预训练模型验收 | [E0 配置](../configs/e0.yaml)、[预测脚本](../scripts/predict_e0.py)、[E0 报告](../reports/E0_预训练模型验证.md)、[产出核对](../logs/environment/M0-04_20261002_artifact_validation.json) | 官方 yolo11n-seg.pt、实际 model.names 三类映射、GPU FP32 图像 / 视频 / 摄像头推理及非空 mask 均通过；297 帧输入与结果视频可完整重新解码，摄像头 release 0.270 秒。用户确认右侧黑色矩形为手机、最右物体为瓶子；记录左侧遮挡手机漏检及瓶子漏检 / 误分类。未做训练或精度评价，未改环境版本。M0-04 完成，主线 4/54 | M0-05 |
-| 2026-10-02 | M0-05，部署兼容性预检查 | [部署入口](../scripts/check_deployment.py)、[部署配置](../configs/deploy-precheck.yaml)、[报告](../reports/deployment/M0-05_部署兼容性预检查.md)、[执行汇总](../logs/deployment/M0-05_summary.json)、[环境包变化](../logs/environment/M0-05_20261002_package_changes.json) | 经用户选择在 yolo 移除继承 TF，protobuf 升至 4.25.8；ONNX 1.17.0、ORT GPU 1.19.2、TRT cu12 11.3.0.99 安装并锁定。ONNX 实际执行、TRT FP32 构建 / 执行通过，两个保存输入的原始输出均满足预定容差；中文路径解析改为 bytes 后通过。训练 / E0 回归正常，原 tf2 保留。完整后处理、FP16、质量 / 速度未开展。M0-05 完成，主线 5/54 | M0-06 |
+| 2026-10-02 | M0-04，E0 预训练模型验收 | [E0 配置](../configs/e0.yaml)、[预测脚本](../scripts/predict_e0.py)、[E0 报告](../reports/M0_阶段验收报告.md)、[产出核对](../logs/environment/M0-04_20261002_artifact_validation.json) | 官方 yolo11n-seg.pt、实际 model.names 三类映射、GPU FP32 图像 / 视频 / 摄像头推理及非空 mask 均通过；297 帧输入与结果视频可完整重新解码，摄像头 release 0.270 秒。用户确认右侧黑色矩形为手机、最右物体为瓶子；记录左侧遮挡手机漏检及瓶子漏检 / 误分类。未做训练或精度评价，未改环境版本。M0-04 完成，主线 4/54 | M0-05 |
+| 2026-10-02 | M0-05，部署兼容性预检查 | [部署入口](../scripts/check_deployment.py)、[部署配置](../configs/deploy-precheck.yaml)、[报告](../reports/M0_阶段验收报告.md)、[执行汇总](../logs/deployment/M0-05_summary.json)、[环境包变化](../logs/environment/M0-05_20261002_package_changes.json) | 经用户选择在 yolo 移除继承 TF，protobuf 升至 4.25.8；ONNX 1.17.0、ORT GPU 1.19.2、TRT cu12 11.3.0.99 安装并锁定。ONNX 实际执行、TRT FP32 构建 / 执行通过，两个保存输入的原始输出均满足预定容差；中文路径解析改为 bytes 后通过。训练 / E0 回归正常，原 tf2 保留。完整后处理、FP16、质量 / 速度未开展。M0-05 完成，主线 5/54 | M0-06 |
+| 2026-10-02 | M0-06，环境归档与新进程复现 | [恢复定义](../environment.yml)、[版本约束](../configs/constraints-runtime.txt)、[恢复说明](../docs/M0_环境与模型使用手册.md)、[验收报告](../reports/M0_阶段验收报告.md)、[复现索引](../logs/reproducibility/M0-06_latest.json) | 保存 167 个 Python 包与 19 个 Conda 管理包及硬件 / 源码 / 模型来源。项目外启动 7 个新进程，源码 / 训练 / 两图 E0 / ONNX 导出 / ORT CPU / CUDA 均通过，依赖未变；Conda 文件解析及当前环境 pip dry-run 通过。干净重装和移机未实际验证。M0-06 完成，M0 6/6，主线 6/54、完整模块 1/9 | M1-01 |
 
 新增记录按时间追加，计划和实际操作分开写。
 

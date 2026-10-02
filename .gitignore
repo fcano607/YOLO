@@ -20,3 +20,6 @@ __pycache__/
 
 # Project-local Ultralytics settings may contain machine-specific paths.
 /logs/ultralytics_settings/
+
+# Local historical backups may contain captured camera samples.
+/logs/archive/

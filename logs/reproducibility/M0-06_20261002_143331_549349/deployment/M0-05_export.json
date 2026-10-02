@@ -1,0 +1,130 @@
+{
+  "passed": true,
+  "timestamp": "2026-10-02T14:33:43.822521+08:00",
+  "weights": {
+    "path": "E:\\秋招\\项目相关\\YOLO\\artifacts\\pretrained\\yolo11n-seg.pt",
+    "sha256": "55ed65c56c91713d23e8402371c6c49a6fd84f257f7dce452e8d70e41dcbe152",
+    "classes": 80
+  },
+  "source_commit": "86f5c8c401a630da651d321e691ab0af540812cf",
+  "ultralytics": "8.4.171",
+  "torch": "2.8.0+cu129",
+  "reference_device": "cuda:0",
+  "tf32": false,
+  "options": {
+    "imgsz": 640,
+    "batch": 1,
+    "dynamic": false,
+    "quantize": 32,
+    "opset": 17,
+    "simplify": false,
+    "nms": false,
+    "device": "0"
+  },
+  "onnx": {
+    "path": "E:\\秋招\\项目相关\\YOLO\\artifacts\\reproducibility\\M0-06_20261002_143331_549349\\yolo11n-seg.onnx",
+    "sha256": "56231bb419c07bee8550c01767faf2b3e877b80032626cd36d6ab88f27cfa594",
+    "size_bytes": 11720018,
+    "version": "1.17.0",
+    "ir_version": 8,
+    "opsets": {
+      "ai.onnx": 17
+    },
+    "inputs": [
+      {
+        "name": "images",
+        "shape": [
+          1,
+          3,
+          640,
+          640
+        ],
+        "onnx_dtype": 1
+      }
+    ],
+    "outputs": [
+      {
+        "name": "output0",
+        "shape": [
+          1,
+          116,
+          8400
+        ],
+        "onnx_dtype": 1
+      },
+      {
+        "name": "output1",
+        "shape": [
+          1,
+          32,
+          160,
+          160
+        ],
+        "onnx_dtype": 1
+      }
+    ],
+    "nms_embedded": false,
+    "metadata": {
+      "description": "Ultralytics YOLO11n-seg model trained on /ultralytics/ultralytics/cfg/datasets/coco.yaml",
+      "author": "Ultralytics",
+      "date": "2026-10-02T14:33:42.516256+08:00",
+      "version": "8.4.171",
+      "license": "AGPL-3.0 License (https://ultralytics.com/license)",
+      "docs": "https://docs.ultralytics.com",
+      "stride": "32",
+      "task": "segment",
+      "head": "Segment",
+      "batch": "1",
+      "imgsz": "[640, 640]",
+      "names": "{0: 'person', 1: 'bicycle', 2: 'car', 3: 'motorcycle', 4: 'airplane', 5: 'bus', 6: 'train', 7: 'truck', 8: 'boat', 9: 'traffic light', 10: 'fire hydrant', 11: 'stop sign', 12: 'parking meter', 13: 'bench', 14: 'bird', 15: 'cat', 16: 'dog', 17: 'horse', 18: 'sheep', 19: 'cow', 20: 'elephant', 21: 'bear', 22: 'zebra', 23: 'giraffe', 24: 'backpack', 25: 'umbrella', 26: 'handbag', 27: 'tie', 28: 'suitcase', 29: 'frisbee', 30: 'skis', 31: 'snowboard', 32: 'sports ball', 33: 'kite', 34: 'baseball bat', 35: 'baseball glove', 36: 'skateboard', 37: 'surfboard', 38: 'tennis racket', 39: 'bottle', 40: 'wine glass', 41: 'cup', 42: 'fork', 43: 'knife', 44: 'spoon', 45: 'bowl', 46: 'banana', 47: 'apple', 48: 'sandwich', 49: 'orange', 50: 'broccoli', 51: 'carrot', 52: 'hot dog', 53: 'pizza', 54: 'donut', 55: 'cake', 56: 'chair', 57: 'couch', 58: 'potted plant', 59: 'bed', 60: 'dining table', 61: 'toilet', 62: 'tv', 63: 'laptop', 64: 'mouse', 65: 'remote', 66: 'keyboard', 67: 'cell phone', 68: 'microwave', 69: 'oven', 70: 'toaster', 71: 'sink', 72: 'refrigerator', 73: 'book', 74: 'clock', 75: 'vase', 76: 'scissors', 77: 'teddy bear', 78: 'hair drier', 79: 'toothbrush'}",
+      "args": "{'data': None, 'batch': 1, 'fraction': 1.0, 'quantize': 32, 'nms': False, 'dynamic': False, 'simplify': False, 'opset': 17}",
+      "channels": "3",
+      "end2end": "False"
+    }
+  },
+  "cases": [
+    {
+      "name": "bus",
+      "image": "E:\\秋招\\项目相关\\YOLO\\demo\\input\\E0\\bus.jpg",
+      "image_sha256": "c02019c4979c191eb739ddd944445ef408dad5679acab6fd520ef9d434bfbc63",
+      "original_shape": [
+        1080,
+        810,
+        3
+      ],
+      "tensor_file": "bus_reference.npz",
+      "tensor_sha256": "ff21f340731e52c10b97156ffd3b614caba759126bdb4c16591c7a33ad0e7bd9",
+      "input_shape": [
+        1,
+        3,
+        640,
+        640
+      ],
+      "input_sha256": "64d11ef4c1e470282a385f7d293607b639da2f40405c92238897253dd1e23f14"
+    },
+    {
+      "name": "desktop",
+      "image": "E:\\秋招\\项目相关\\YOLO\\runs\\E0\\M0-04_20261002_desktop_image\\input_first.jpg",
+      "image_sha256": "3b92aca423e4d7a6aac39a68678e0504be5057200d20e4bf5148f983648b0e04",
+      "original_shape": [
+        480,
+        640,
+        3
+      ],
+      "tensor_file": "desktop_reference.npz",
+      "tensor_sha256": "35319dfa78237f3b8d866d5b663046d188f4588c99b5a15938315660715721c2",
+      "input_shape": [
+        1,
+        3,
+        640,
+        640
+      ],
+      "input_sha256": "5c1befa16c051c0812ba289f8b96e4c8c382c254060e27ee8f718d754c2391a4"
+    }
+  ],
+  "task": "M0-05",
+  "stage": "export",
+  "python": "D:\\software\\anaconda\\envs\\yolo\\python.exe",
+  "onnx_sha256": "56231bb419c07bee8550c01767faf2b3e877b80032626cd36d6ab88f27cfa594",
+  "reference_manifest_sha256": "925981568c6aca78cddcc7e4506b6e5060016f94d8e8c1eea9d19491cc606aa0"
+}

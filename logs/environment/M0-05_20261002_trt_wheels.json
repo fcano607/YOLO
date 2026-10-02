@@ -1,9 +1,0 @@
-[
-  {
-    "filename": "tensorrt_cu12_libs-11.3.0.99-py3-none-win_amd64.whl",
-    "url": "https://pypi.nvidia.com/tensorrt-cu12-libs/tensorrt_cu12_libs-11.3.0.99-py3-none-win_amd64.whl",
-    "size": 2250858326,
-    "sha256": "d627342815f5712a3c0d576c84fd7d9a9dadee142f85314511ad465760bfae95",
-    "hash_verified": true
-  }
-]

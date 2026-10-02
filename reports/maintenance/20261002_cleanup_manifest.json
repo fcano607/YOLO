@@ -1,0 +1,4526 @@
+{
+  "schema": 1,
+  "status": "complete",
+  "root": "E:\\秋招\\项目相关\\YOLO",
+  "prepared": "2026-10-02T15:12:03.504081+08:00",
+  "baseline": {
+    "totals": {
+      "files": 2138,
+      "directories": 584,
+      "bytes": 2780433638,
+      "git_metadata_files": 410,
+      "tracked_files": 157
+    },
+    "top_level": {
+      "(root files)": {
+        "files": 6,
+        "bytes": 7126,
+        "tracked": 5,
+        "git_metadata_files": 0
+      },
+      ".git": {
+        "files": 385,
+        "bytes": 49150075,
+        "tracked": 0,
+        "git_metadata_files": 385
+      },
+      "artifacts": {
+        "files": 50,
+        "bytes": 248665253,
+        "tracked": 0,
+        "git_metadata_files": 0
+      },
+      "codex": {
+        "files": 5,
+        "bytes": 166687,
+        "tracked": 5,
+        "git_metadata_files": 0
+      },
+      "configs": {
+        "files": 6,
+        "bytes": 5472,
+        "tracked": 5,
+        "git_metadata_files": 0
+      },
+      "demo": {
+        "files": 2,
+        "bytes": 8262704,
+        "tracked": 0,
+        "git_metadata_files": 0
+      },
+      "deploy": {
+        "files": 4,
+        "bytes": 2116,
+        "tracked": 2,
+        "git_metadata_files": 0
+      },
+      "docs": {
+        "files": 5,
+        "bytes": 43024,
+        "tracked": 4,
+        "git_metadata_files": 0
+      },
+      "logs": {
+        "files": 166,
+        "bytes": 1153945,
+        "tracked": 78,
+        "git_metadata_files": 0
+      },
+      "plan": {
+        "files": 3,
+        "bytes": 116532,
+        "tracked": 3,
+        "git_metadata_files": 0
+      },
+      "ref": {
+        "files": 20,
+        "bytes": 44569006,
+        "tracked": 20,
+        "git_metadata_files": 0
+      },
+      "reports": {
+        "files": 5,
+        "bytes": 45323,
+        "tracked": 4,
+        "git_metadata_files": 0
+      },
+      "runs": {
+        "files": 129,
+        "bytes": 42009771,
+        "tracked": 0,
+        "git_metadata_files": 0
+      },
+      "scripts": {
+        "files": 12,
+        "bytes": 111258,
+        "tracked": 7,
+        "git_metadata_files": 0
+      },
+      "third_party": {
+        "files": 1208,
+        "bytes": 16170216,
+        "tracked": 0,
+        "git_metadata_files": 25
+      },
+      "tmp": {
+        "files": 132,
+        "bytes": 2369955130,
+        "tracked": 24,
+        "git_metadata_files": 0
+      }
+    }
+  },
+  "approval_required": "User explicitly requested consent before deleting any originals.",
+  "groups": [
+    {
+      "id": "A1",
+      "title": "TensorRT 安装包缓存",
+      "tier": "cache",
+      "reason": "运行库已安装在 D: 环境；项目运行不从该缓存加载。",
+      "preservation": "requirements-deploy.txt、当前环境与下载来源 / 哈希档案保留；离线重装需重新取得安装包。",
+      "files": [
+        {
+          "path": "tmp/deploy_wheels/tensorrt_cu12_libs-11.3.0.99-py3-none-win_amd64.whl",
+          "bytes": 2250858326,
+          "sha256": "d627342815f5712a3c0d576c84fd7d9a9dadee142f85314511ad465760bfae95",
+          "tracked": false
+        }
+      ],
+      "file_count": 1,
+      "bytes": 2250858326,
+      "root_targets": [
+        "tmp/deploy_wheels"
+      ]
+    },
+    {
+      "id": "A2",
+      "title": "临时摄像头对照与文献提取缓存",
+      "tier": "cache",
+      "reason": "独立 OpenCV 4.10 诊断副本、论文提取 / 页面缓存、临时探测文件；实际环境使用 4.11。",
+      "preservation": "ref 原始论文及来源记录保留；临时诊断源码 / 输出和安装索引另存历史 ZIP。",
+      "files": [
+        {
+          "path": "tmp/camera_opencv410/cv2/__init__.py",
+          "bytes": 6793,
+          "sha256": "957a91bfd98ffb07a10cd789b7c5c46806568476b61e34c7ad56a00092b981a5",
+          "tracked": false
+        },
+        {
+          "path": "tmp/camera_opencv410/cv2/__init__.pyi",
+          "bytes": 304271,
+          "sha256": "6f9690add58f293e58d3cdd3b6a5709cd242a862af043fe1df95614afbbf1578",
+          "tracked": false
+        },
+        {
+          "path": "tmp/camera_opencv410/cv2/__pycache__/__init__.cpython-39.pyc",
+          "bytes": 5159,
+          "sha256": "7de1dc1df21fffe09d4a52036b7c97eb0ad1629fa3eb698c860c16b63ea7be84",
+          "tracked": false
+        },
+        {
+          "path": "tmp/camera_opencv410/cv2/__pycache__/config-3.cpython-39.pyc",
+          "bytes": 633,
+          "sha256": "aa04fc83931d13e4e62dbd4eed86e53bc58757ae37d193a9ae394a4aef9375f5",
+          "tracked": false
+        },
+        {
+          "path": "tmp/camera_opencv410/cv2/__pycache__/config.cpython-39.pyc",
+          "bytes": 291,
+          "sha256": "54c9c4e6dea62da63830db702eabcc905aaf0b68f662b460821009e3f29dd7c4",
+          "tracked": false
+        },
+        {
+          "path": "tmp/camera_opencv410/cv2/__pycache__/load_config_py2.cpython-39.pyc",
+          "bytes": 403,
+          "sha256": "a3430d5b9263e5b8d8009b07ad3a451ebf48c90c0a03681bf89d1d3f668bb183",
+          "tracked": false
+        },
+        {
+          "path": "tmp/camera_opencv410/cv2/__pycache__/load_config_py3.cpython-39.pyc",
+          "bytes": 537,
+          "sha256": "e1e3f0fa180ebdb37def07fec6dcbe952aab5f49845e4593475578bcea4bece6",
+          "tracked": false
+        },
+        {
+          "path": "tmp/camera_opencv410/cv2/__pycache__/version.cpython-39.pyc",
+          "bytes": 270,
+          "sha256": "183413cbf901bff20ba06f55169e77b3efec59e35a82a8825291a9ef3d2b3f61",
+          "tracked": false
+        },
+        {
+          "path": "tmp/camera_opencv410/cv2/aruco/__init__.pyi",
+          "bytes": 14298,
+          "sha256": "8081a021c136c14b11ee0c087c135c2f850903f4668e8fd8d97d4a4b9011021c",
+          "tracked": false
+        },
+        {
+          "path": "tmp/camera_opencv410/cv2/barcode/__init__.pyi",
+          "bytes": 1480,
+          "sha256": "fad58735a44d2839b2ef8d673430a521e4dea722e04e859b6e27d12fd176ebaf",
+          "tracked": false
+        },
+        {
+          "path": "tmp/camera_opencv410/cv2/config-3.py",
+          "bytes": 748,
+          "sha256": "de28c7b5213cca148f09469916584611b3d66c1c8c432880259d6a3a92380213",
+          "tracked": false
+        },
+        {
+          "path": "tmp/camera_opencv410/cv2/config.py",
+          "bytes": 123,
+          "sha256": "d9e401b9a67304d69c48a494a485d106b534e02bf5776211c09f09bd671b295d",
+          "tracked": false
+        },
+        {
+          "path": "tmp/camera_opencv410/cv2/cuda/__init__.pyi",
+          "bytes": 16544,
+          "sha256": "4fb0ee178ee652c6ea55988c0de933656dbe8267d7b2f6ea00f6c7a340a02b43",
+          "tracked": false
+        },
+        {
+          "path": "tmp/camera_opencv410/cv2/cv2.pyd",
+          "bytes": 74452480,
+          "sha256": "a73aeb87dc1b2f6cd6e978b653e89604f09be4b9531573020695cb48eb998e8a",
+          "tracked": false
+        },
+        {
+          "path": "tmp/camera_opencv410/cv2/data/__init__.py",
+          "bytes": 73,
+          "sha256": "f4ce16721ed7f623a4dcc443ba600d1856db610cb2c3d53c13a8ca028cc68f6d",
+          "tracked": false
+        },
+        {
+          "path": "tmp/camera_opencv410/cv2/data/__pycache__/__init__.cpython-39.pyc",
+          "bytes": 269,
+          "sha256": "73764201426f8279e1e52c55cb3e6b7e3757b696c78dac6466fb392748b22e8f",
+          "tracked": false
+        },
+        {
+          "path": "tmp/camera_opencv410/cv2/data/haarcascade_eye.xml",
+          "bytes": 341406,
+          "sha256": "71cc64fc305a355dc60067880f6fbbd43dd155bd63ee3844661a1bda34b2fd8c",
+          "tracked": false
+        },
+        {
+          "path": "tmp/camera_opencv410/cv2/data/haarcascade_eye_tree_eyeglasses.xml",
+          "bytes": 601661,
+          "sha256": "e32f9c67935c33e9d1331eb14fa58554ff17835c03742663bcb97a892e936a57",
+          "tracked": false
+        },
+        {
+          "path": "tmp/camera_opencv410/cv2/data/haarcascade_frontalcatface.xml",
+          "bytes": 411388,
+          "sha256": "ac2bac934ef24284ef8a2b2e9d8e57eef84ac1d6943b4d11e5c9e8584dc069c8",
+          "tracked": false
+        },
+        {
+          "path": "tmp/camera_opencv410/cv2/data/haarcascade_frontalcatface_extended.xml",
+          "bytes": 382918,
+          "sha256": "ffd0d1d28f07d0376c89db4c9845009c2855cc76c8cff763d5331dc9361da854",
+          "tracked": false
+        },
+        {
+          "path": "tmp/camera_opencv410/cv2/data/haarcascade_frontalface_alt.xml",
+          "bytes": 676709,
+          "sha256": "6281df13459cc218ff047d02b2ae3859b12ff14a93ffe8952f7b33fad7b9697b",
+          "tracked": false
+        },
+        {
+          "path": "tmp/camera_opencv410/cv2/data/haarcascade_frontalface_alt2.xml",
+          "bytes": 540616,
+          "sha256": "7b0c967d9abbdfbde025eb9c786947d151b6426040d07a8f9562ed8fd90724b4",
+          "tracked": false
+        },
+        {
+          "path": "tmp/camera_opencv410/cv2/data/haarcascade_frontalface_alt_tree.xml",
+          "bytes": 2689040,
+          "sha256": "0e5ee47ecc13269d54dd7a55f8b53752167c52587720877732388fb078a0480a",
+          "tracked": false
+        },
+        {
+          "path": "tmp/camera_opencv410/cv2/data/haarcascade_frontalface_default.xml",
+          "bytes": 930127,
+          "sha256": "0f7d4527844eb514d4a4948e822da90fbb16a34a0bbbbc6adc6498747a5aafb0",
+          "tracked": false
+        },
+        {
+          "path": "tmp/camera_opencv410/cv2/data/haarcascade_fullbody.xml",
+          "bytes": 476827,
+          "sha256": "041745c71eef1b5c86aef224f17ce75b042d33314cc8f6757424f8bd8cd30aa1",
+          "tracked": false
+        },
+        {
+          "path": "tmp/camera_opencv410/cv2/data/haarcascade_lefteye_2splits.xml",
+          "bytes": 195369,
+          "sha256": "74c323c78c81475fc9158facbfb866bb0cca06be41f571df47d4ac8d01f9ce4c",
+          "tracked": false
+        },
+        {
+          "path": "tmp/camera_opencv410/cv2/data/haarcascade_license_plate_rus_16stages.xml",
+          "bytes": 47775,
+          "sha256": "4d1c44bf7a1bc4e204fa25b046ed0acffd7f713cc13fe2958b6977125c60ddea",
+          "tracked": false
+        },
+        {
+          "path": "tmp/camera_opencv410/cv2/data/haarcascade_lowerbody.xml",
+          "bytes": 395322,
+          "sha256": "1e696e1c7c66c439ae229cfff8871f42037c357e9e1e090a2b59ebc1f8ff5cbb",
+          "tracked": false
+        },
+        {
+          "path": "tmp/camera_opencv410/cv2/data/haarcascade_profileface.xml",
+          "bytes": 828514,
+          "sha256": "b39a4a3be45539db146a7fc1d3e761a292c196eb88421185e6a615b3055e612d",
+          "tracked": false
+        },
+        {
+          "path": "tmp/camera_opencv410/cv2/data/haarcascade_righteye_2splits.xml",
+          "bytes": 196170,
+          "sha256": "4cf0d72bea7307e9af7eb99d4acbe15d7101a67c22fcdcfbeefd692ad37cf776",
+          "tracked": false
+        },
+        {
+          "path": "tmp/camera_opencv410/cv2/data/haarcascade_russian_plate_number.xml",
+          "bytes": 75482,
+          "sha256": "814cb5954682af570e58361f9e5f8b5b513a4112776bb9ecacef9f0e4ca6c2d7",
+          "tracked": false
+        },
+        {
+          "path": "tmp/camera_opencv410/cv2/data/haarcascade_smile.xml",
+          "bytes": 188506,
+          "sha256": "4ca1f304eabd0b5ae30180c81acb53e166a5867e5be17b316bd3f32cfdf87d8a",
+          "tracked": false
+        },
+        {
+          "path": "tmp/camera_opencv410/cv2/data/haarcascade_upperbody.xml",
+          "bytes": 785819,
+          "sha256": "7328ab4fdb1592f53d98d7ea5b1b9d90e01af5d95f212af378c7eb579048bb5f",
+          "tracked": false
+        },
+        {
+          "path": "tmp/camera_opencv410/cv2/detail/__init__.pyi",
+          "bytes": 22974,
+          "sha256": "e5800df1153cf1b162d0035abe89d09c4786a506a84785d6cab028f02dc016e0",
+          "tracked": false
+        },
+        {
+          "path": "tmp/camera_opencv410/cv2/dnn/__init__.pyi",
+          "bytes": 23341,
+          "sha256": "ec22f57f470cda5a52cc86fa1af862af7ee7604f6ac5e822a063fb279d775a36",
+          "tracked": false
+        },
+        {
+          "path": "tmp/camera_opencv410/cv2/Error/__init__.pyi",
+          "bytes": 4194,
+          "sha256": "bd035f0064888b41ecfe43bd285577cd9bfddb4284043719a5d3859e69199038",
+          "tracked": false
+        },
+        {
+          "path": "tmp/camera_opencv410/cv2/fisheye/__init__.pyi",
+          "bytes": 8599,
+          "sha256": "5b5343780d1b0e75e939f1270cf790521758f2b408417db9f81fa31811e906e0",
+          "tracked": false
+        },
+        {
+          "path": "tmp/camera_opencv410/cv2/flann/__init__.pyi",
+          "bytes": 2741,
+          "sha256": "efaadb7a532f2610fe0e548f2f85fa88c0ab0d4038809537bbcf70008c2fe9d9",
+          "tracked": false
+        },
+        {
+          "path": "tmp/camera_opencv410/cv2/gapi/__init__.py",
+          "bytes": 10621,
+          "sha256": "74f5fd2a142a31b0a4707b70c0be3637f0fbf8a940eec4372e7ba87e5a5cedb8",
+          "tracked": false
+        },
+        {
+          "path": "tmp/camera_opencv410/cv2/gapi/__init__.pyi",
+          "bytes": 14985,
+          "sha256": "c58985a00ad687daffcb11826e7ec737307b09debcd05084e5d8ed60aa1e9d43",
+          "tracked": false
+        },
+        {
+          "path": "tmp/camera_opencv410/cv2/gapi/__pycache__/__init__.cpython-39.pyc",
+          "bytes": 13818,
+          "sha256": "5585f8306c7243442b446990f73bef1d48c2a166fb46ccef9324674701b256d3",
+          "tracked": false
+        },
+        {
+          "path": "tmp/camera_opencv410/cv2/gapi/core/__init__.pyi",
+          "bytes": 149,
+          "sha256": "c29b714618bc41309556dbdb1b111f11f5b6f9bcf126705fac03240649285a24",
+          "tracked": false
+        },
+        {
+          "path": "tmp/camera_opencv410/cv2/gapi/core/cpu/__init__.pyi",
+          "bytes": 102,
+          "sha256": "4e3427bacd8785129b664b26456c7c0a3119a8ba17b8a5c82c1177be2c69fd72",
+          "tracked": false
+        },
+        {
+          "path": "tmp/camera_opencv410/cv2/gapi/core/fluid/__init__.pyi",
+          "bytes": 102,
+          "sha256": "4e3427bacd8785129b664b26456c7c0a3119a8ba17b8a5c82c1177be2c69fd72",
+          "tracked": false
+        },
+        {
+          "path": "tmp/camera_opencv410/cv2/gapi/core/ocl/__init__.pyi",
+          "bytes": 102,
+          "sha256": "4e3427bacd8785129b664b26456c7c0a3119a8ba17b8a5c82c1177be2c69fd72",
+          "tracked": false
+        },
+        {
+          "path": "tmp/camera_opencv410/cv2/gapi/ie/__init__.pyi",
+          "bytes": 1168,
+          "sha256": "7cd8f5af4c119c3fff217f64c4e9a89c83cad2bae3a12b155e5f63546f1868a0",
+          "tracked": false
+        },
+        {
+          "path": "tmp/camera_opencv410/cv2/gapi/ie/detail/__init__.pyi",
+          "bytes": 281,
+          "sha256": "7882ba823b9e30df19c106b1e4ac75e9be3a123719199def153909be5b70d84f",
+          "tracked": false
+        },
+        {
+          "path": "tmp/camera_opencv410/cv2/gapi/imgproc/__init__.pyi",
+          "bytes": 76,
+          "sha256": "cc4045c040ff3dbe22f80ef4580eda7cb8c35024f6e6195d70bab221feda2257",
+          "tracked": false
+        },
+        {
+          "path": "tmp/camera_opencv410/cv2/gapi/imgproc/fluid/__init__.pyi",
+          "bytes": 102,
+          "sha256": "4e3427bacd8785129b664b26456c7c0a3119a8ba17b8a5c82c1177be2c69fd72",
+          "tracked": false
+        },
+        {
+          "path": "tmp/camera_opencv410/cv2/gapi/oak/__init__.pyi",
+          "bytes": 1771,
+          "sha256": "29439333e01aa4ed0bd6d0b85c5de021847cb668e6ac57e1d51a348cfcce07b8",
+          "tracked": false
+        },
+        {
+          "path": "tmp/camera_opencv410/cv2/gapi/onnx/__init__.pyi",
+          "bytes": 1395,
+          "sha256": "38352e97f42af936659f8117b8f465f92338c530708468b87dfbe6e1a4741b38",
+          "tracked": false
+        },
+        {
+          "path": "tmp/camera_opencv410/cv2/gapi/onnx/ep/__init__.pyi",
+          "bytes": 1420,
+          "sha256": "907dcb7868e371d0d760e9810094f2b8317c5293cb9f94507e6b64e830eddd01",
+          "tracked": false
+        },
+        {
+          "path": "tmp/camera_opencv410/cv2/gapi/ot/__init__.pyi",
+          "bytes": 752,
+          "sha256": "76ceabd5111ef97a649615b60a9e03df075451e877d921bb9671410ff57bfde7",
+          "tracked": false
+        },
+        {
+          "path": "tmp/camera_opencv410/cv2/gapi/ot/cpu/__init__.pyi",
+          "bytes": 102,
+          "sha256": "4e3427bacd8785129b664b26456c7c0a3119a8ba17b8a5c82c1177be2c69fd72",
+          "tracked": false
+        },
+        {
+          "path": "tmp/camera_opencv410/cv2/gapi/ov/__init__.pyi",
+          "bytes": 2721,
+          "sha256": "6063652e290dcd736fa534a6c829a84fad61755f87300cf3d2187242da02f381",
+          "tracked": false
+        },
+        {
+          "path": "tmp/camera_opencv410/cv2/gapi/own/__init__.pyi",
+          "bytes": 74,
+          "sha256": "521862090cd3d08f544899cf62e9e26704be8e9673f51fd9a15736a385cb01cf",
+          "tracked": false
+        },
+        {
+          "path": "tmp/camera_opencv410/cv2/gapi/own/detail/__init__.pyi",
+          "bytes": 150,
+          "sha256": "0c57f853b227c52a5a637cecad0b01c5bc62ad4fca451056c6a6589e10547aa0",
+          "tracked": false
+        },
+        {
+          "path": "tmp/camera_opencv410/cv2/gapi/render/__init__.pyi",
+          "bytes": 71,
+          "sha256": "b46cf8ce048afc91cb7d15f27457ceeff43e85a943193633658136554f6d4ac7",
+          "tracked": false
+        },
+        {
+          "path": "tmp/camera_opencv410/cv2/gapi/render/ocv/__init__.pyi",
+          "bytes": 102,
+          "sha256": "4e3427bacd8785129b664b26456c7c0a3119a8ba17b8a5c82c1177be2c69fd72",
+          "tracked": false
+        },
+        {
+          "path": "tmp/camera_opencv410/cv2/gapi/streaming/__init__.pyi",
+          "bytes": 855,
+          "sha256": "b5363d50ef3f388a6878cc0a33ed8826eeac870639250d10b03fac32f584f1eb",
+          "tracked": false
+        },
+        {
+          "path": "tmp/camera_opencv410/cv2/gapi/video/__init__.pyi",
+          "bytes": 160,
+          "sha256": "6f20461a7969704a60f54be48aea20b36f739fb12db6eedae780d0e6c4db5f18",
+          "tracked": false
+        },
+        {
+          "path": "tmp/camera_opencv410/cv2/gapi/wip/__init__.pyi",
+          "bytes": 1127,
+          "sha256": "dad3c28a875078aaac5b7d26b094d021666e1b9f36c15368f60e3972af3f1b7a",
+          "tracked": false
+        },
+        {
+          "path": "tmp/camera_opencv410/cv2/gapi/wip/draw/__init__.pyi",
+          "bytes": 3281,
+          "sha256": "c2bf9a384e1c3e0dfe0e10125b555277d5bc273f6073273bc13535f254f369d0",
+          "tracked": false
+        },
+        {
+          "path": "tmp/camera_opencv410/cv2/gapi/wip/gst/__init__.pyi",
+          "bytes": 484,
+          "sha256": "c67106b8335c7885fa4d5de0c2da1affc32e7e137c2b723fc25f0d962eb41ef4",
+          "tracked": false
+        },
+        {
+          "path": "tmp/camera_opencv410/cv2/gapi/wip/onevpl/__init__.pyi",
+          "bytes": 413,
+          "sha256": "ea916b9ab1a38eacb5e9459f3f98ec0acfe97055cce0892b992fc81c9fcbc84d",
+          "tracked": false
+        },
+        {
+          "path": "tmp/camera_opencv410/cv2/ipp/__init__.pyi",
+          "bytes": 237,
+          "sha256": "9ee338e8b811340573c33fcdd7b7a42b333e516622325e9fd16bcc4fa63044ea",
+          "tracked": false
+        },
+        {
+          "path": "tmp/camera_opencv410/cv2/LICENSE-3RD-PARTY.txt",
+          "bytes": 155450,
+          "sha256": "0b33c5be17819d10ecad11360c6f2bd5a7df7c0f80a3314a81e28070d93818e2",
+          "tracked": false
+        },
+        {
+          "path": "tmp/camera_opencv410/cv2/LICENSE.txt",
+          "bytes": 1090,
+          "sha256": "edef0fac1eb08d29d34563f724742e078da2513e196133a12c6ad9ff01e26107",
+          "tracked": false
+        },
+        {
+          "path": "tmp/camera_opencv410/cv2/load_config_py2.py",
+          "bytes": 157,
+          "sha256": "7b4cdd4d8c2054c883d7a45a7c15abecf468bf9afc20391f1ece69e9d18b4897",
+          "tracked": false
+        },
+        {
+          "path": "tmp/camera_opencv410/cv2/load_config_py3.py",
+          "bytes": 271,
+          "sha256": "ff583a5874be8f848e73c2f61b3a71680995926479c9bc436e6565c5cce7ca07",
+          "tracked": false
+        },
+        {
+          "path": "tmp/camera_opencv410/cv2/mat_wrapper/__init__.py",
+          "bytes": 1164,
+          "sha256": "c44707ea1c76f35518ae572b6c1989d76c2ada7e850432e41805dfe112d4e306",
+          "tracked": false
+        },
+        {
+          "path": "tmp/camera_opencv410/cv2/mat_wrapper/__pycache__/__init__.cpython-39.pyc",
+          "bytes": 1390,
+          "sha256": "5a2e516ae8aa1bfbeb215005ba2bf3c1a2c0c868286972096944322c0584943d",
+          "tracked": false
+        },
+        {
+          "path": "tmp/camera_opencv410/cv2/misc/__init__.py",
+          "bytes": 38,
+          "sha256": "495bd79594cce174673e372c85c4dd8f4ffdf2b3a73fd4623955b0d55de0d462",
+          "tracked": false
+        },
+        {
+          "path": "tmp/camera_opencv410/cv2/misc/__pycache__/__init__.cpython-39.pyc",
+          "bytes": 231,
+          "sha256": "ed4e9f6c8582582425c5f115887178ecec15d0da70443455c83e8901fc4825b9",
+          "tracked": false
+        },
+        {
+          "path": "tmp/camera_opencv410/cv2/misc/__pycache__/version.cpython-39.pyc",
+          "bytes": 353,
+          "sha256": "83d96225d39de6bf13f27b21f995af47e80d66512a183db2669c9cd7baeeb540",
+          "tracked": false
+        },
+        {
+          "path": "tmp/camera_opencv410/cv2/misc/version.py",
+          "bytes": 95,
+          "sha256": "c93a418793fcb15b9b4316c0741b8336740e490e94f3b7d1ebe8cd5f6f23815c",
+          "tracked": false
+        },
+        {
+          "path": "tmp/camera_opencv410/cv2/ml/__init__.pyi",
+          "bytes": 23498,
+          "sha256": "f342c48c79cb1e13ca23cc0eca388b935e161e5ee80a043dc40c1708b3fa6311",
+          "tracked": false
+        },
+        {
+          "path": "tmp/camera_opencv410/cv2/ocl/__init__.pyi",
+          "bytes": 5779,
+          "sha256": "db5c5b6acbb9e81acb3eeaa47de20055ed60096072ce0e278012f929ce044e70",
+          "tracked": false
+        },
+        {
+          "path": "tmp/camera_opencv410/cv2/ogl/__init__.pyi",
+          "bytes": 1523,
+          "sha256": "04cd2096945fb3533a6c31624c774749a50501a453a33909371357bc192f729b",
+          "tracked": false
+        },
+        {
+          "path": "tmp/camera_opencv410/cv2/opencv_videoio_ffmpeg4100_64.dll",
+          "bytes": 26391552,
+          "sha256": "3de83b84588b3ee8bacdbea85a8f92d4855a32a1108183963315a7db06ad5744",
+          "tracked": false
+        },
+        {
+          "path": "tmp/camera_opencv410/cv2/parallel/__init__.pyi",
+          "bytes": 135,
+          "sha256": "3f20a1904cd896b1ebe54b2041e87d161f04e375e3511734b98f08b772072777",
+          "tracked": false
+        },
+        {
+          "path": "tmp/camera_opencv410/cv2/py.typed",
+          "bytes": 0,
+          "sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855",
+          "tracked": false
+        },
+        {
+          "path": "tmp/camera_opencv410/cv2/samples/__init__.pyi",
+          "bytes": 336,
+          "sha256": "1e7ad25bafdd80bf6c624c82676ab1d92a0b36b034e68688e2d0924b88b64ce4",
+          "tracked": false
+        },
+        {
+          "path": "tmp/camera_opencv410/cv2/segmentation/__init__.pyi",
+          "bytes": 1778,
+          "sha256": "96f6651e4a7be4a0a28ed90d66edc790e987f7fa4de9e9b3159d1ee36d5b2762",
+          "tracked": false
+        },
+        {
+          "path": "tmp/camera_opencv410/cv2/typing/__init__.py",
+          "bytes": 5434,
+          "sha256": "9de1e504724d2ff1cff305e7efdd8d09a8d636734149aa4af9ddf406975119b9",
+          "tracked": false
+        },
+        {
+          "path": "tmp/camera_opencv410/cv2/typing/__pycache__/__init__.cpython-39.pyc",
+          "bytes": 2674,
+          "sha256": "b639c1416a90a4703d9e920452f76ce480b290e2bcd840ec4273d604432f4173",
+          "tracked": false
+        },
+        {
+          "path": "tmp/camera_opencv410/cv2/utils/__init__.py",
+          "bytes": 344,
+          "sha256": "2b16990b35b569af1ca7239dc10f7b24ec62f27a46626b1e2f1271d2e1aa3554",
+          "tracked": false
+        },
+        {
+          "path": "tmp/camera_opencv410/cv2/utils/__init__.pyi",
+          "bytes": 3701,
+          "sha256": "0369f88805fccabd440357ceb8674acc8137f6e33580831b46f9735be0cf66e9",
+          "tracked": false
+        },
+        {
+          "path": "tmp/camera_opencv410/cv2/utils/__pycache__/__init__.cpython-39.pyc",
+          "bytes": 489,
+          "sha256": "fbda8c0f7c3491c6967aa23cde5b773a9e77efb44e7309724cdabca37e0cf940",
+          "tracked": false
+        },
+        {
+          "path": "tmp/camera_opencv410/cv2/utils/fs/__init__.pyi",
+          "bytes": 93,
+          "sha256": "04fc0beb9e3adfa90fe24f7953840fa7ba0c65c809d900c862b6fd17c87873b2",
+          "tracked": false
+        },
+        {
+          "path": "tmp/camera_opencv410/cv2/utils/nested/__init__.pyi",
+          "bytes": 604,
+          "sha256": "bb7a2ca9079e927758f7ffb1c4ad4f003e3875765a18b621c9f78561b5789e90",
+          "tracked": false
+        },
+        {
+          "path": "tmp/camera_opencv410/cv2/version.py",
+          "bytes": 97,
+          "sha256": "1de383f5662831e69bdddc21f9d1e4a2a8e806f57f7f69669103df64d5db4083",
+          "tracked": false
+        },
+        {
+          "path": "tmp/camera_opencv410/cv2/videoio_registry/__init__.pyi",
+          "bytes": 810,
+          "sha256": "238d7909b415e7edf58074cf4987b661fe95452bc3a417966e54f21269515a49",
+          "tracked": false
+        },
+        {
+          "path": "tmp/camera_opencv410/opencv_python-4.10.0.84.dist-info/INSTALLER",
+          "bytes": 4,
+          "sha256": "ceebae7b8927a3227e5303cf5e0f1f7b34bb542ad7250ac03fbcde36ec2f1508",
+          "tracked": false
+        },
+        {
+          "path": "tmp/camera_opencv410/opencv_python-4.10.0.84.dist-info/LICENSE-3RD-PARTY.txt",
+          "bytes": 155450,
+          "sha256": "0b33c5be17819d10ecad11360c6f2bd5a7df7c0f80a3314a81e28070d93818e2",
+          "tracked": false
+        },
+        {
+          "path": "tmp/camera_opencv410/opencv_python-4.10.0.84.dist-info/LICENSE.txt",
+          "bytes": 1090,
+          "sha256": "edef0fac1eb08d29d34563f724742e078da2513e196133a12c6ad9ff01e26107",
+          "tracked": false
+        },
+        {
+          "path": "tmp/camera_opencv410/opencv_python-4.10.0.84.dist-info/METADATA",
+          "bytes": 20564,
+          "sha256": "f4a9683a46779a01e4ffe71cc5c7eba5174348d943baa174fd66aa1fc4000729",
+          "tracked": false
+        },
+        {
+          "path": "tmp/camera_opencv410/opencv_python-4.10.0.84.dist-info/RECORD",
+          "bytes": 8206,
+          "sha256": "f0b9db7c4f27bc22c56a6d885baccd601893da360ba671d92b9cfb7dc4c948ac",
+          "tracked": false
+        },
+        {
+          "path": "tmp/camera_opencv410/opencv_python-4.10.0.84.dist-info/REQUESTED",
+          "bytes": 0,
+          "sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855",
+          "tracked": false
+        },
+        {
+          "path": "tmp/camera_opencv410/opencv_python-4.10.0.84.dist-info/top_level.txt",
+          "bytes": 4,
+          "sha256": "498f2fadffec60e83df4e3fd7ae873eeadfaa4fcbfd952b9bdb784597c304a87",
+          "tracked": false
+        },
+        {
+          "path": "tmp/camera_opencv410/opencv_python-4.10.0.84.dist-info/WHEEL",
+          "bytes": 94,
+          "sha256": "3dec1d9ec2f633d6eebaa9159e1a91e51d19a67dc62246ec2a43626a64f9a8c1",
+          "tracked": false
+        },
+        {
+          "path": "tmp/camera_recheck/cap_dshow_4_11.cpp",
+          "bytes": 126422,
+          "sha256": "42b206a14b267c964de24a558289143e3ec2c325f8a5e42edd60fcc57dd6c35d",
+          "tracked": false
+        },
+        {
+          "path": "tmp/e0_timeout_regression/summary.json",
+          "bytes": 131,
+          "sha256": "109f2599cba903d65fe83f3a7e0e287a1e638fb6c3940fb8ba547a729afa8b8b",
+          "tracked": false
+        },
+        {
+          "path": "tmp/e0_timeout_regression/worker_stderr.log",
+          "bytes": 0,
+          "sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855",
+          "tracked": false
+        },
+        {
+          "path": "tmp/e0_timeout_regression/worker_stdout.log",
+          "bytes": 25,
+          "sha256": "74bb11b81252f7b2e3f2a12eca42e9388e2e7c635cca6d1878968db5526a2a90",
+          "tracked": false
+        },
+        {
+          "path": "tmp/pdfs/learning_refs/GFL_2020_2006.04388.txt",
+          "bytes": 53935,
+          "sha256": "f1f5871ad288175c48c96926d4e15be6743f0e0031fdecd8867d6996da9bf737",
+          "tracked": true
+        },
+        {
+          "path": "tmp/pdfs/learning_refs/TOOD_2021_2108.07755.txt",
+          "bytes": 61071,
+          "sha256": "003476324846b7754a38e207f47376f2be0806e913eb3491f4587e2bc2d00c1f",
+          "tracked": true
+        },
+        {
+          "path": "tmp/pdfs/learning_refs/YOLACT_2019_1904.02689.txt",
+          "bytes": 46877,
+          "sha256": "d29f331292c3336f53321f2d35eedd7ed32341a6fbde8012c2aeae656cca8205",
+          "tracked": true
+        },
+        {
+          "path": "tmp/pdfs/learning_refs/YOLO26_2026_2606.03748.txt",
+          "bytes": 119281,
+          "sha256": "7d05bf13273ec0137a5a0ba1fb6e7abcc41731d4dd1f6ead921ed46cff379ba9",
+          "tracked": true
+        },
+        {
+          "path": "tmp/pdfs/learning_refs/YOLO9000_2016_1612.08242.txt",
+          "bytes": 39806,
+          "sha256": "f6f0700db11d69ef87b2a607e11c28f523c908681698db30f26bac2e073bc71d",
+          "tracked": true
+        },
+        {
+          "path": "tmp/pdfs/learning_refs/YOLOv10_2024_2405.14458.txt",
+          "bytes": 81274,
+          "sha256": "a74add344e52c3357875332c1aac14d3a0dcaa71a9f50c78a09ab2ab22994d8f",
+          "tracked": true
+        },
+        {
+          "path": "tmp/pdfs/learning_refs/YOLOv12_2025_2502.12524.txt",
+          "bytes": 57795,
+          "sha256": "a079953f1f2b9500220604be0801be8efcd38da574c028c1b1443e8bfdfd9fec",
+          "tracked": true
+        },
+        {
+          "path": "tmp/pdfs/learning_refs/YOLOv3_2018_1804.02767.txt",
+          "bytes": 24371,
+          "sha256": "37dbeaf68abb1ec8326a65c870c31b338d0f8e339c0c52d04afe8a5386b27325",
+          "tracked": true
+        },
+        {
+          "path": "tmp/pdfs/learning_refs/YOLOv7_2022_2207.02696.txt",
+          "bytes": 69395,
+          "sha256": "6d25ee1dcb43cc460f921b35c421a94054b2614b96d9f5c1a468197c57974a01",
+          "tracked": true
+        },
+        {
+          "path": "tmp/pdfs/learning_refs/YOLOX_2021_2107.08430.txt",
+          "bytes": 31834,
+          "sha256": "95ad30ff45fcd26447835c29edabe3c00d4ed54b071477885caa2d1ed64995d2",
+          "tracked": true
+        },
+        {
+          "path": "tmp/pdfs/source-01.png",
+          "bytes": 553661,
+          "sha256": "2fe986374b9785ee94a685fdc1291c8a3b273c159a2260587f9a955d474fbb96",
+          "tracked": true
+        },
+        {
+          "path": "tmp/pdfs/source-02.png",
+          "bytes": 639950,
+          "sha256": "e5fc9dc9a78ddb352a9eb163176554ecb1de0e1945347b511def6f695b95f03c",
+          "tracked": true
+        },
+        {
+          "path": "tmp/pdfs/source-03.png",
+          "bytes": 408428,
+          "sha256": "3812aec9821868ab1af314e63a28e2ef2ece805c13df5c0a4b1951f3c29ef125",
+          "tracked": true
+        },
+        {
+          "path": "tmp/pdfs/source-04.png",
+          "bytes": 516071,
+          "sha256": "2c775e41660d67cfef9431d2785407977b2245543ed7d31ac776d11032c39d7c",
+          "tracked": true
+        },
+        {
+          "path": "tmp/pdfs/source-05.png",
+          "bytes": 597202,
+          "sha256": "a1141aca463d586216069cf467f1aa89040f27e423b8b8c78b48802523fa94fd",
+          "tracked": true
+        },
+        {
+          "path": "tmp/pdfs/source-06.png",
+          "bytes": 482548,
+          "sha256": "6545e94f17667c6a2d05947d6a7bff596d770cff8da372f6b518d47ce35ad294",
+          "tracked": true
+        },
+        {
+          "path": "tmp/pdfs/source-07.png",
+          "bytes": 552897,
+          "sha256": "0b726ea6a907644a235f2c4bfb43c1f8708cf2c4006fe96005b64408d6941b03",
+          "tracked": true
+        },
+        {
+          "path": "tmp/pdfs/source-08.png",
+          "bytes": 842084,
+          "sha256": "61e91c2d9328729800f1685a57d422497aefee7093de2f8bcbacdc534310c84c",
+          "tracked": true
+        },
+        {
+          "path": "tmp/pdfs/source-09.png",
+          "bytes": 587816,
+          "sha256": "0e786784f82945ba11b14055f04accbba9a0dc727647c2fd0fb42ee6f516da46",
+          "tracked": true
+        },
+        {
+          "path": "tmp/pdfs/source-10.png",
+          "bytes": 133399,
+          "sha256": "213bc6a35770dc50f39e4ffd90a04f4f94d5c0167d10e03f7782b6e9cd8b5fac",
+          "tracked": true
+        },
+        {
+          "path": "tmp/pdfs/yolo26_review-03.png",
+          "bytes": 558574,
+          "sha256": "de4ad49e7a6fe9cd1cb624757e418809a5ec43d9e2ee74741c5f7cfbac5fc730",
+          "tracked": true
+        },
+        {
+          "path": "tmp/pdfs/yolo26_review-04.png",
+          "bytes": 556514,
+          "sha256": "c58b54f2b27133116e0dc6568812d9fe7344920e54fb3398e3bc0de02cfe2f6a",
+          "tracked": true
+        },
+        {
+          "path": "tmp/pdfs/YOLO_extracted.txt",
+          "bytes": 43711,
+          "sha256": "fad036cc66d7ca8d1022b2d0761d9ccefca62f91560c43f49a6582e3b1fba48b",
+          "tracked": true
+        },
+        {
+          "path": "tmp/pdfs/yolox_review-3.png",
+          "bytes": 332100,
+          "sha256": "e9284375f9f73eaf992e22d168e2c037e7a1fb22ac041817dc372caf33f36033",
+          "tracked": true
+        },
+        {
+          "path": "tmp/tensorrt-cu12-bindings.html",
+          "bytes": 92189,
+          "sha256": "7bfdab6073ea825c9b9e17dc248da820b3a2a0c15a17c5e794c1a414da6c07d3",
+          "tracked": false
+        },
+        {
+          "path": "tmp/tensorrt-cu12-libs.html",
+          "bytes": 16454,
+          "sha256": "b03504f5e9480fa24cd6fae8b474c90b7579cb957807b9b5a45ba2f3c043cf3f",
+          "tracked": false
+        }
+      ],
+      "file_count": 131,
+      "bytes": 119096804,
+      "root_targets": [
+        "tmp/camera_opencv410",
+        "tmp/pdfs",
+        "tmp/camera_recheck",
+        "tmp/e0_timeout_regression",
+        "tmp/tensorrt-cu12-bindings.html",
+        "tmp/tensorrt-cu12-libs.html"
+      ]
+    },
+    {
+      "id": "A3",
+      "title": "自己的 Python 字节码缓存",
+      "tier": "cache",
+      "reason": "可由当前 .py 自动生成；保留上游源代码和全部自己的源码。",
+      "preservation": "对应 .py 原文件保持原位。",
+      "files": [
+        {
+          "path": "deploy/__pycache__/__init__.cpython-39.pyc",
+          "bytes": 204,
+          "sha256": "79b371f3b43406f8f3652d73bcbb5bf06a5049e7eabaec53d73c75e2384dad1f",
+          "tracked": false
+        },
+        {
+          "path": "deploy/__pycache__/paths.cpython-39.pyc",
+          "bytes": 1126,
+          "sha256": "4d0b6eee85df280f680b240d58c492d4edcc7bfb830fee15ba5e35887ec81c1d",
+          "tracked": false
+        },
+        {
+          "path": "scripts/__pycache__/check_env.cpython-39.pyc",
+          "bytes": 11717,
+          "sha256": "114fb5f2038c362e34d5672bffc75f63a56686675b9d6a0f70e23c58abb7170c",
+          "tracked": false
+        },
+        {
+          "path": "scripts/__pycache__/predict_e0.cpython-39.pyc",
+          "bytes": 11122,
+          "sha256": "255519d029fac2ce8d06ad16557c0792b7839d265a6d52cd2c8a0c38a8c281d0",
+          "tracked": false
+        },
+        {
+          "path": "scripts/__pycache__/verify_training_setup.cpython-39.pyc",
+          "bytes": 5935,
+          "sha256": "cb924b25e9ade53e5394994ff81c1d2e5a09dc7df083ce33b12e416f5f838478",
+          "tracked": false
+        }
+      ],
+      "file_count": 5,
+      "bytes": 30104,
+      "root_targets": [
+        "scripts/__pycache__",
+        "deploy/__pycache__"
+      ]
+    },
+    {
+      "id": "B",
+      "title": "两轮早期自动复现产物及旧 profile",
+      "tier": "recommended",
+      "reason": "同一权重的较早复现生成物；当前正式 14:33 复现及 M0-05 最新 profile 保留。",
+      "preservation": "早期文本日志、完整 E0 图片输出、导出清单和 profile 保存在历史 ZIP；早期大型模型 / 数组可重建。",
+      "files": [
+        {
+          "path": "artifacts/precheck/M0-05/ort_cpu_profile_2026-10-02_13-45-24.json",
+          "bytes": 1000950,
+          "sha256": "d48c73f7384d2815a1f27ebcb70bc6be275111c35cf5586d4a2ea73e57fbf559",
+          "tracked": false,
+          "byte_identical_retained_files": []
+        },
+        {
+          "path": "artifacts/precheck/M0-05/ort_cuda_profile_2026-10-02_13-45-27.json",
+          "bytes": 584702,
+          "sha256": "d1770302a46e5a0404dd4982fd15e2eac338dba5eb8369432fa46da9051674fa",
+          "tracked": false,
+          "byte_identical_retained_files": []
+        },
+        {
+          "path": "artifacts/reproducibility/M0-06_20261002_141615_392736/bus_ort_cpu.npz",
+          "bytes": 4768246,
+          "sha256": "dcfbd8b44782e4ddf0713da712284435fd4475333d465326d284e2cb9433c229",
+          "tracked": false,
+          "byte_identical_retained_files": [
+            "artifacts/reproducibility/M0-06_20261002_143331_549349/bus_ort_cpu.npz"
+          ]
+        },
+        {
+          "path": "artifacts/reproducibility/M0-06_20261002_141615_392736/bus_ort_cuda.npz",
+          "bytes": 4478222,
+          "sha256": "272e7c1e635658b0c53bc3a98b0f6c1d000a263243317eac674019948a0be3a3",
+          "tracked": false,
+          "byte_identical_retained_files": []
+        },
+        {
+          "path": "artifacts/reproducibility/M0-06_20261002_141615_392736/bus_reference.npz",
+          "bytes": 7634224,
+          "sha256": "ff21f340731e52c10b97156ffd3b614caba759126bdb4c16591c7a33ad0e7bd9",
+          "tracked": false,
+          "byte_identical_retained_files": [
+            "artifacts/reproducibility/M0-06_20261002_143331_549349/bus_reference.npz"
+          ]
+        },
+        {
+          "path": "artifacts/reproducibility/M0-06_20261002_141615_392736/desktop_ort_cpu.npz",
+          "bytes": 4713610,
+          "sha256": "f213c13f26a4e9e34e85cc2a7c41a2365c9e713defb289ec5d0282ad5bd74cf6",
+          "tracked": false,
+          "byte_identical_retained_files": [
+            "artifacts/precheck/M0-05/desktop_ort_cpu.npz",
+            "artifacts/reproducibility/M0-06_20261002_143331_549349/desktop_ort_cpu.npz"
+          ]
+        },
+        {
+          "path": "artifacts/reproducibility/M0-06_20261002_141615_392736/desktop_ort_cuda.npz",
+          "bytes": 4423591,
+          "sha256": "4a1f8f4e6f93026924673f1e2d9b5df2fa14c86d7b29e48bf7733d4e8b2525c8",
+          "tracked": false,
+          "byte_identical_retained_files": []
+        },
+        {
+          "path": "artifacts/reproducibility/M0-06_20261002_141615_392736/desktop_reference.npz",
+          "bytes": 7397121,
+          "sha256": "35319dfa78237f3b8d866d5b663046d188f4588c99b5a15938315660715721c2",
+          "tracked": false,
+          "byte_identical_retained_files": [
+            "artifacts/precheck/M0-05/desktop_reference.npz",
+            "artifacts/reproducibility/M0-06_20261002_143331_549349/desktop_reference.npz"
+          ]
+        },
+        {
+          "path": "artifacts/reproducibility/M0-06_20261002_141615_392736/export.json",
+          "bytes": 4659,
+          "sha256": "90875f9b2dbba144f23575dd727d6da87ad2220b1c50b581fc023ed464018ee6",
+          "tracked": false,
+          "byte_identical_retained_files": []
+        },
+        {
+          "path": "artifacts/reproducibility/M0-06_20261002_141615_392736/ort_cpu_profile_2026-10-02_14-16-28.json",
+          "bytes": 1002588,
+          "sha256": "a685146cc68adc1762dc36778b525f60213aac99114170716ac5f3e7094fbb8f",
+          "tracked": false,
+          "byte_identical_retained_files": []
+        },
+        {
+          "path": "artifacts/reproducibility/M0-06_20261002_141615_392736/ort_cuda_profile_2026-10-02_14-16-30.json",
+          "bytes": 582795,
+          "sha256": "7136ccaf05b238be971ab307cf82caf370e7ff2fdd761904a7664ef8a656e0c2",
+          "tracked": false,
+          "byte_identical_retained_files": []
+        },
+        {
+          "path": "artifacts/reproducibility/M0-06_20261002_141615_392736/yolo11n-seg.onnx",
+          "bytes": 11720018,
+          "sha256": "8312592fa2bd0823754a8c074c437aca3bd10bd001c264ba6fab23fa02efbacd",
+          "tracked": false,
+          "byte_identical_retained_files": []
+        },
+        {
+          "path": "artifacts/reproducibility/M0-06_20261002_141615_392736/yolo11n-seg.pt",
+          "bytes": 6182636,
+          "sha256": "55ed65c56c91713d23e8402371c6c49a6fd84f257f7dce452e8d70e41dcbe152",
+          "tracked": false,
+          "byte_identical_retained_files": [
+            "artifacts/precheck/M0-05/yolo11n-seg.pt",
+            "artifacts/pretrained/yolo11n-seg.pt",
+            "artifacts/reproducibility/M0-06_20261002_143331_549349/yolo11n-seg.pt"
+          ]
+        },
+        {
+          "path": "artifacts/reproducibility/M0-06_20261002_142123_863995/bus_ort_cpu.npz",
+          "bytes": 4768246,
+          "sha256": "dcfbd8b44782e4ddf0713da712284435fd4475333d465326d284e2cb9433c229",
+          "tracked": false,
+          "byte_identical_retained_files": [
+            "artifacts/reproducibility/M0-06_20261002_143331_549349/bus_ort_cpu.npz"
+          ]
+        },
+        {
+          "path": "artifacts/reproducibility/M0-06_20261002_142123_863995/bus_ort_cuda.npz",
+          "bytes": 4478060,
+          "sha256": "be45fd4adfdd56b3de6d1364475852e05e7508907659f9e2575205cddfce4b49",
+          "tracked": false,
+          "byte_identical_retained_files": []
+        },
+        {
+          "path": "artifacts/reproducibility/M0-06_20261002_142123_863995/bus_reference.npz",
+          "bytes": 7634224,
+          "sha256": "ff21f340731e52c10b97156ffd3b614caba759126bdb4c16591c7a33ad0e7bd9",
+          "tracked": false,
+          "byte_identical_retained_files": [
+            "artifacts/reproducibility/M0-06_20261002_143331_549349/bus_reference.npz"
+          ]
+        },
+        {
+          "path": "artifacts/reproducibility/M0-06_20261002_142123_863995/desktop_ort_cpu.npz",
+          "bytes": 4713610,
+          "sha256": "f213c13f26a4e9e34e85cc2a7c41a2365c9e713defb289ec5d0282ad5bd74cf6",
+          "tracked": false,
+          "byte_identical_retained_files": [
+            "artifacts/precheck/M0-05/desktop_ort_cpu.npz",
+            "artifacts/reproducibility/M0-06_20261002_143331_549349/desktop_ort_cpu.npz"
+          ]
+        },
+        {
+          "path": "artifacts/reproducibility/M0-06_20261002_142123_863995/desktop_ort_cuda.npz",
+          "bytes": 4423743,
+          "sha256": "1845208216a351b84f95dbb422466b27665984bdbde6081f7416df092a246e93",
+          "tracked": false,
+          "byte_identical_retained_files": [
+            "artifacts/precheck/M0-05/desktop_ort_cuda.npz"
+          ]
+        },
+        {
+          "path": "artifacts/reproducibility/M0-06_20261002_142123_863995/desktop_reference.npz",
+          "bytes": 7397121,
+          "sha256": "35319dfa78237f3b8d866d5b663046d188f4588c99b5a15938315660715721c2",
+          "tracked": false,
+          "byte_identical_retained_files": [
+            "artifacts/precheck/M0-05/desktop_reference.npz",
+            "artifacts/reproducibility/M0-06_20261002_143331_549349/desktop_reference.npz"
+          ]
+        },
+        {
+          "path": "artifacts/reproducibility/M0-06_20261002_142123_863995/export.json",
+          "bytes": 4659,
+          "sha256": "c23e61a994c487030bb0b9510c4da81ec2af08bab6678e3c59a977fb3f4b7795",
+          "tracked": false,
+          "byte_identical_retained_files": []
+        },
+        {
+          "path": "artifacts/reproducibility/M0-06_20261002_142123_863995/ort_cpu_profile_2026-10-02_14-21-36.json",
+          "bytes": 998146,
+          "sha256": "65f9b336bd0aeb0bfa8fb2447c2118794ae53aa52a2605118355f4aaa82483de",
+          "tracked": false,
+          "byte_identical_retained_files": []
+        },
+        {
+          "path": "artifacts/reproducibility/M0-06_20261002_142123_863995/ort_cuda_profile_2026-10-02_14-21-38.json",
+          "bytes": 583660,
+          "sha256": "2c92d6d5a57490388bb49eede16ca813f394f139611192e588b31e3118d5fa7c",
+          "tracked": false,
+          "byte_identical_retained_files": []
+        },
+        {
+          "path": "artifacts/reproducibility/M0-06_20261002_142123_863995/yolo11n-seg.onnx",
+          "bytes": 11720018,
+          "sha256": "d91e573d418e37f4ec52076002c7ea3f2eae1a9f5de16207ba2b2bd529a74197",
+          "tracked": false,
+          "byte_identical_retained_files": []
+        },
+        {
+          "path": "artifacts/reproducibility/M0-06_20261002_142123_863995/yolo11n-seg.pt",
+          "bytes": 6182636,
+          "sha256": "55ed65c56c91713d23e8402371c6c49a6fd84f257f7dce452e8d70e41dcbe152",
+          "tracked": false,
+          "byte_identical_retained_files": [
+            "artifacts/precheck/M0-05/yolo11n-seg.pt",
+            "artifacts/pretrained/yolo11n-seg.pt",
+            "artifacts/reproducibility/M0-06_20261002_143331_549349/yolo11n-seg.pt"
+          ]
+        },
+        {
+          "path": "runs/E0/M0-06_20261002_141615_392736_bus/best_frame.json",
+          "bytes": 1773,
+          "sha256": "9153f23eeec49c87aa7a469a59382499c66a8f3dea81cdb90b25ad2a66c9c475",
+          "tracked": false,
+          "byte_identical_retained_files": []
+        },
+        {
+          "path": "runs/E0/M0-06_20261002_141615_392736_bus/frames.jsonl",
+          "bytes": 1206,
+          "sha256": "44567e16881518a1d4b0391da0e9520ddfedffa7b3be9e1e1865efd74980fb72",
+          "tracked": false,
+          "byte_identical_retained_files": []
+        },
+        {
+          "path": "runs/E0/M0-06_20261002_141615_392736_bus/input_best.jpg",
+          "bytes": 329855,
+          "sha256": "26b0ec2433832330b828da66f3b7e382692e319fb4a46191ba572561cfb9dc56",
+          "tracked": false,
+          "byte_identical_retained_files": [
+            "runs/E0/M0-06_20261002_143331_549349_bus/input_best.jpg",
+            "runs/E0/M0-06_20261002_143331_549349_bus/input_first.jpg"
+          ]
+        },
+        {
+          "path": "runs/E0/M0-06_20261002_141615_392736_bus/input_first.jpg",
+          "bytes": 329855,
+          "sha256": "26b0ec2433832330b828da66f3b7e382692e319fb4a46191ba572561cfb9dc56",
+          "tracked": false,
+          "byte_identical_retained_files": [
+            "runs/E0/M0-06_20261002_143331_549349_bus/input_best.jpg",
+            "runs/E0/M0-06_20261002_143331_549349_bus/input_first.jpg"
+          ]
+        },
+        {
+          "path": "runs/E0/M0-06_20261002_141615_392736_bus/result_best.jpg",
+          "bytes": 340753,
+          "sha256": "78f6fa782dc71db932b103da2dba124f692eae7edd8fec4336c38064598fd583",
+          "tracked": false,
+          "byte_identical_retained_files": [
+            "runs/E0/M0-06_20261002_143331_549349_bus/result_best.jpg",
+            "runs/E0/M0-06_20261002_143331_549349_bus/result_first.jpg"
+          ]
+        },
+        {
+          "path": "runs/E0/M0-06_20261002_141615_392736_bus/result_first.jpg",
+          "bytes": 340753,
+          "sha256": "78f6fa782dc71db932b103da2dba124f692eae7edd8fec4336c38064598fd583",
+          "tracked": false,
+          "byte_identical_retained_files": [
+            "runs/E0/M0-06_20261002_143331_549349_bus/result_best.jpg",
+            "runs/E0/M0-06_20261002_143331_549349_bus/result_first.jpg"
+          ]
+        },
+        {
+          "path": "runs/E0/M0-06_20261002_141615_392736_bus/summary.json",
+          "bytes": 1872,
+          "sha256": "8860be83a8f5bbb775701424b4548310ad052801e47145f90b563d80b5a5f6f6",
+          "tracked": false,
+          "byte_identical_retained_files": []
+        },
+        {
+          "path": "runs/E0/M0-06_20261002_141615_392736_desktop/best_frame.json",
+          "bytes": 1154,
+          "sha256": "dcf2d95eca740994ec1619d7fd86d9d27d7e7b2bd5dc4c0052691a8bc46f0abb",
+          "tracked": false,
+          "byte_identical_retained_files": []
+        },
+        {
+          "path": "runs/E0/M0-06_20261002_141615_392736_desktop/frames.jsonl",
+          "bytes": 785,
+          "sha256": "30aa043221db4d83b949384c3eae3041855d4c87e43b1e9d03d436070913153e",
+          "tracked": false,
+          "byte_identical_retained_files": []
+        },
+        {
+          "path": "runs/E0/M0-06_20261002_141615_392736_desktop/input_best.jpg",
+          "bytes": 109298,
+          "sha256": "de77130771d6f07de0f45500dc54a81f00e33f72e46f204b9775724325251c3c",
+          "tracked": false,
+          "byte_identical_retained_files": [
+            "runs/E0/M0-06_20261002_143331_549349_desktop/input_best.jpg",
+            "runs/E0/M0-06_20261002_143331_549349_desktop/input_first.jpg"
+          ]
+        },
+        {
+          "path": "runs/E0/M0-06_20261002_141615_392736_desktop/input_first.jpg",
+          "bytes": 109298,
+          "sha256": "de77130771d6f07de0f45500dc54a81f00e33f72e46f204b9775724325251c3c",
+          "tracked": false,
+          "byte_identical_retained_files": [
+            "runs/E0/M0-06_20261002_143331_549349_desktop/input_best.jpg",
+            "runs/E0/M0-06_20261002_143331_549349_desktop/input_first.jpg"
+          ]
+        },
+        {
+          "path": "runs/E0/M0-06_20261002_141615_392736_desktop/result_best.jpg",
+          "bytes": 114882,
+          "sha256": "e26c8488d2f30d603c37b1a640098f07334c202a4213be32f3fa3d88e06449cd",
+          "tracked": false,
+          "byte_identical_retained_files": [
+            "runs/E0/M0-06_20261002_143331_549349_desktop/result_best.jpg",
+            "runs/E0/M0-06_20261002_143331_549349_desktop/result_first.jpg"
+          ]
+        },
+        {
+          "path": "runs/E0/M0-06_20261002_141615_392736_desktop/result_first.jpg",
+          "bytes": 114882,
+          "sha256": "e26c8488d2f30d603c37b1a640098f07334c202a4213be32f3fa3d88e06449cd",
+          "tracked": false,
+          "byte_identical_retained_files": [
+            "runs/E0/M0-06_20261002_143331_549349_desktop/result_best.jpg",
+            "runs/E0/M0-06_20261002_143331_549349_desktop/result_first.jpg"
+          ]
+        },
+        {
+          "path": "runs/E0/M0-06_20261002_141615_392736_desktop/summary.json",
+          "bytes": 1970,
+          "sha256": "85304f5fea9b02c6aaff11c38d6e00ad9ab176d80b2e5cefd2d9829dc9613428",
+          "tracked": false,
+          "byte_identical_retained_files": []
+        },
+        {
+          "path": "runs/E0/M0-06_20261002_142123_863995_bus/best_frame.json",
+          "bytes": 1773,
+          "sha256": "7ca388ffd69561a92cc3707f22401984410f0955880b41cb3f390eb4ed01129a",
+          "tracked": false,
+          "byte_identical_retained_files": []
+        },
+        {
+          "path": "runs/E0/M0-06_20261002_142123_863995_bus/frames.jsonl",
+          "bytes": 1206,
+          "sha256": "ad8c6306b9a650136d00259aae242ca295e1a3fdf8525d04c4b2a3c51226e073",
+          "tracked": false,
+          "byte_identical_retained_files": []
+        },
+        {
+          "path": "runs/E0/M0-06_20261002_142123_863995_bus/input_best.jpg",
+          "bytes": 329855,
+          "sha256": "26b0ec2433832330b828da66f3b7e382692e319fb4a46191ba572561cfb9dc56",
+          "tracked": false,
+          "byte_identical_retained_files": [
+            "runs/E0/M0-06_20261002_143331_549349_bus/input_best.jpg",
+            "runs/E0/M0-06_20261002_143331_549349_bus/input_first.jpg"
+          ]
+        },
+        {
+          "path": "runs/E0/M0-06_20261002_142123_863995_bus/input_first.jpg",
+          "bytes": 329855,
+          "sha256": "26b0ec2433832330b828da66f3b7e382692e319fb4a46191ba572561cfb9dc56",
+          "tracked": false,
+          "byte_identical_retained_files": [
+            "runs/E0/M0-06_20261002_143331_549349_bus/input_best.jpg",
+            "runs/E0/M0-06_20261002_143331_549349_bus/input_first.jpg"
+          ]
+        },
+        {
+          "path": "runs/E0/M0-06_20261002_142123_863995_bus/result_best.jpg",
+          "bytes": 340753,
+          "sha256": "78f6fa782dc71db932b103da2dba124f692eae7edd8fec4336c38064598fd583",
+          "tracked": false,
+          "byte_identical_retained_files": [
+            "runs/E0/M0-06_20261002_143331_549349_bus/result_best.jpg",
+            "runs/E0/M0-06_20261002_143331_549349_bus/result_first.jpg"
+          ]
+        },
+        {
+          "path": "runs/E0/M0-06_20261002_142123_863995_bus/result_first.jpg",
+          "bytes": 340753,
+          "sha256": "78f6fa782dc71db932b103da2dba124f692eae7edd8fec4336c38064598fd583",
+          "tracked": false,
+          "byte_identical_retained_files": [
+            "runs/E0/M0-06_20261002_143331_549349_bus/result_best.jpg",
+            "runs/E0/M0-06_20261002_143331_549349_bus/result_first.jpg"
+          ]
+        },
+        {
+          "path": "runs/E0/M0-06_20261002_142123_863995_bus/summary.json",
+          "bytes": 1872,
+          "sha256": "fb401bfef83ae1241e121b2438d81354ef98d0a0721cccbbccf2fd7b1fa4e1db",
+          "tracked": false,
+          "byte_identical_retained_files": []
+        },
+        {
+          "path": "runs/E0/M0-06_20261002_142123_863995_desktop/best_frame.json",
+          "bytes": 1153,
+          "sha256": "e157e3ec59b4323769fa100a753f5d26a3ea74364a6047ee152ea2468567c499",
+          "tracked": false,
+          "byte_identical_retained_files": []
+        },
+        {
+          "path": "runs/E0/M0-06_20261002_142123_863995_desktop/frames.jsonl",
+          "bytes": 784,
+          "sha256": "0f17882066b259397ee03e3e08d6d0f6c73f9a84b9cc4e43bb25817e2b346591",
+          "tracked": false,
+          "byte_identical_retained_files": []
+        },
+        {
+          "path": "runs/E0/M0-06_20261002_142123_863995_desktop/input_best.jpg",
+          "bytes": 109298,
+          "sha256": "de77130771d6f07de0f45500dc54a81f00e33f72e46f204b9775724325251c3c",
+          "tracked": false,
+          "byte_identical_retained_files": [
+            "runs/E0/M0-06_20261002_143331_549349_desktop/input_best.jpg",
+            "runs/E0/M0-06_20261002_143331_549349_desktop/input_first.jpg"
+          ]
+        },
+        {
+          "path": "runs/E0/M0-06_20261002_142123_863995_desktop/input_first.jpg",
+          "bytes": 109298,
+          "sha256": "de77130771d6f07de0f45500dc54a81f00e33f72e46f204b9775724325251c3c",
+          "tracked": false,
+          "byte_identical_retained_files": [
+            "runs/E0/M0-06_20261002_143331_549349_desktop/input_best.jpg",
+            "runs/E0/M0-06_20261002_143331_549349_desktop/input_first.jpg"
+          ]
+        },
+        {
+          "path": "runs/E0/M0-06_20261002_142123_863995_desktop/result_best.jpg",
+          "bytes": 114882,
+          "sha256": "e26c8488d2f30d603c37b1a640098f07334c202a4213be32f3fa3d88e06449cd",
+          "tracked": false,
+          "byte_identical_retained_files": [
+            "runs/E0/M0-06_20261002_143331_549349_desktop/result_best.jpg",
+            "runs/E0/M0-06_20261002_143331_549349_desktop/result_first.jpg"
+          ]
+        },
+        {
+          "path": "runs/E0/M0-06_20261002_142123_863995_desktop/result_first.jpg",
+          "bytes": 114882,
+          "sha256": "e26c8488d2f30d603c37b1a640098f07334c202a4213be32f3fa3d88e06449cd",
+          "tracked": false,
+          "byte_identical_retained_files": [
+            "runs/E0/M0-06_20261002_143331_549349_desktop/result_best.jpg",
+            "runs/E0/M0-06_20261002_143331_549349_desktop/result_first.jpg"
+          ]
+        },
+        {
+          "path": "runs/E0/M0-06_20261002_142123_863995_desktop/summary.json",
+          "bytes": 1970,
+          "sha256": "ac62f0353405534c2bf8e0d0b30cca7f0b4dc57da6b48050f1dfc5f58bafd392",
+          "tracked": false,
+          "byte_identical_retained_files": []
+        }
+      ],
+      "file_count": 52,
+      "bytes": 110994155,
+      "root_targets": [
+        "artifacts/reproducibility/M0-06_20261002_141615_392736",
+        "artifacts/reproducibility/M0-06_20261002_142123_863995",
+        "runs/E0/M0-06_20261002_141615_392736_bus",
+        "runs/E0/M0-06_20261002_141615_392736_desktop",
+        "runs/E0/M0-06_20261002_142123_863995_bus",
+        "runs/E0/M0-06_20261002_142123_863995_desktop",
+        "artifacts/precheck/M0-05/ort_cpu_profile_2026-10-02_13-45-24.json",
+        "artifacts/precheck/M0-05/ort_cuda_profile_2026-10-02_13-45-27.json"
+      ]
+    },
+    {
+      "id": "C",
+      "title": "历史安装、诊断与旧环境 / 复现日志",
+      "tier": "recommended",
+      "reason": "收起散落的历史过程记录；不丢失原文，不影响现有运行入口。",
+      "preservation": "每个文件完整收入历史 ZIP 并校验 SHA256；最新完整档案、latest 索引及关键验收 JSON 留在原位。",
+      "files": [
+        {
+          "path": "logs/environment/M0-02_20261002_download_hashes.json",
+          "bytes": 1637,
+          "sha256": "83964da4d54f68e8ade39b3d422a41868847c41757ec070d0f653ea9f65e7332",
+          "tracked": true
+        },
+        {
+          "path": "logs/environment/M0-02_20261002_package_changes.json",
+          "bytes": 486,
+          "sha256": "4ec1bf35382c734126d722e7e128a69e52cb9f302a4bb0a93be6346eaeaa1a97",
+          "tracked": true
+        },
+        {
+          "path": "logs/environment/M0-02_20261002_pip_dry_run.json",
+          "bytes": 115986,
+          "sha256": "a44e0e7ea73d47695c2a1c38b579b09628ea73d827b134c94e88842525a07c9d",
+          "tracked": true
+        },
+        {
+          "path": "logs/environment/M0-02_20261002_pip_dry_run_mirror.log",
+          "bytes": 6830,
+          "sha256": "22e9f0b3aa7f3c00b6a83a0a2f6dd65dd799821d024756994720bf898ad61b74",
+          "tracked": true
+        },
+        {
+          "path": "logs/environment/M0-02_20261002_pip_freeze.txt",
+          "bytes": 4235,
+          "sha256": "7b6b7d2d8b87e9234ff55f2bf39f3e22135b915b5c0286e88ce69f9558492ad4",
+          "tracked": true
+        },
+        {
+          "path": "logs/environment/M0-02_20261002_pip_install.json",
+          "bytes": 115980,
+          "sha256": "d05b9c368c2ea4982d88e0f9c89476dc6403cf9e0d85d93ed4e30df760ab14f0",
+          "tracked": true
+        },
+        {
+          "path": "logs/environment/M0-02_20261002_verify.log",
+          "bytes": 2155,
+          "sha256": "ee55e47223c25ebd3fb9953b3c24effb7d8f210add90ec2ef232cb2e8f92ceb7",
+          "tracked": true
+        },
+        {
+          "path": "logs/environment/M0-03_20261002_112743_062523_snapshot.json",
+          "bytes": 15632,
+          "sha256": "ed1e62efada2584f083e91f4ade825fb9ecfaa132cd592a0ee802d634242247b",
+          "tracked": true
+        },
+        {
+          "path": "logs/environment/M0-03_20261002_113023_201976_snapshot.json",
+          "bytes": 16214,
+          "sha256": "3d67cd5749922fabfa3048312a0adfb9b5231ee7b31f29b24af7421841c5cd49",
+          "tracked": true
+        },
+        {
+          "path": "logs/environment/M0-03_20261002_113358_932574_snapshot.json",
+          "bytes": 15608,
+          "sha256": "c8bbb1549dc6f95fb235e24111cb723a666fa6f425fcf90575b3a25759a6ba39",
+          "tracked": true
+        },
+        {
+          "path": "logs/environment/M0-03_20261002_114028_379769_snapshot.json",
+          "bytes": 16687,
+          "sha256": "d7e89c10c5f57ce40db986eb6e32dc604e49e16a0f1dba1ee8017c5759bbb8a2",
+          "tracked": true
+        },
+        {
+          "path": "logs/environment/M0-03_20261002_123216_374580_snapshot.json",
+          "bytes": 21693,
+          "sha256": "cd1f758b70be7cebc75b4bb48965166139ee567db3e4af7cf76320713931eb5f",
+          "tracked": true
+        },
+        {
+          "path": "logs/environment/M0-03_20261002_camera_devices.json",
+          "bytes": 255,
+          "sha256": "525ec321d0ef49846408f5687e53db8fd977a0abc1887c0c3ba582e29dc5ac3d",
+          "tracked": true
+        },
+        {
+          "path": "logs/environment/M0-03_20261002_camera_diagnostics.json",
+          "bytes": 643,
+          "sha256": "010f7be6bbe1e8df158abae5e96ddcfd9c07ee2789995f24b032e999928b48ad",
+          "tracked": true
+        },
+        {
+          "path": "logs/environment/M0-03_20261002_camera_msmf_no_hw.json",
+          "bytes": 517,
+          "sha256": "88bc03ba1476bf68b42c2ec4d19cb9b16042db3cb9545ae14a0b3c089292f24d",
+          "tracked": true
+        },
+        {
+          "path": "logs/environment/M0-03_20261002_camera_native_release.json",
+          "bytes": 1039,
+          "sha256": "a80dcf6c2c68612f28be389d8e64dd0e45e098f5afcfbd0941e084c861a63cfe",
+          "tracked": true
+        },
+        {
+          "path": "logs/environment/M0-03_20261002_camera_opencv410.json",
+          "bytes": 1817,
+          "sha256": "43c80c6391d64f934cb59101aee86523055c664febd594df076de424668a9e36",
+          "tracked": true
+        },
+        {
+          "path": "logs/environment/M0-03_20261002_check.log",
+          "bytes": 950,
+          "sha256": "e1bc3bb0ef2783ae8f27c393217d038a26e6620cf0df46eaae6aa0454f6ee9cc",
+          "tracked": true
+        },
+        {
+          "path": "logs/environment/M0-03_20261002_check_diagnostic.log",
+          "bytes": 1532,
+          "sha256": "e1ee1aac3038cc8e171e3d2da98dba3865d47bc03709d4b669e1e92d01159141",
+          "tracked": true
+        },
+        {
+          "path": "logs/environment/M0-03_20261002_check_final.log",
+          "bytes": 2005,
+          "sha256": "2596818d2d1a04047f604af8ee910b8026db8001791303e82b037828634a481c",
+          "tracked": true
+        },
+        {
+          "path": "logs/environment/M0-03_20261002_check_mjpeg.log",
+          "bytes": 926,
+          "sha256": "ae08b5ecc2be4578b032ea6080d962824b3bec54a814a63b4473626925eacb28",
+          "tracked": true
+        },
+        {
+          "path": "logs/environment/M0-03_20261002_opencv410_probe_install.log",
+          "bytes": 455,
+          "sha256": "cfe5e58bc981272f182311c6a984aa1f5c906eea6790c03ff724169215185d44",
+          "tracked": true
+        },
+        {
+          "path": "logs/environment/M0-03_20261002_recheck_com_warmup.json",
+          "bytes": 2649,
+          "sha256": "80d931b70374bb603b76397ed6b1fd1924f9059846d82bf708c5908ffa3b9580",
+          "tracked": true
+        },
+        {
+          "path": "logs/environment/M0-03_20261002_recheck_minimal.json",
+          "bytes": 574,
+          "sha256": "36c65e6e799a8e1493119184b2b583d111e8572e3054452e327c9f3a464c78c8",
+          "tracked": true
+        },
+        {
+          "path": "logs/environment/M0-03_20261002_recheck_paired_com.json",
+          "bytes": 4169,
+          "sha256": "5903633c0fdf755b7451e285ef9cb406e29de768df8d867265605fdb7cddcb26",
+          "tracked": true
+        },
+        {
+          "path": "logs/environment/M0-03_20261002_recheck_variants.json",
+          "bytes": 1602,
+          "sha256": "c5beb3e8d21be957055c21768e37671acdfdcb8e36f3896613ff5449db71df6a",
+          "tracked": true
+        },
+        {
+          "path": "logs/environment/M0-03_20261002_recheck_worker.json",
+          "bytes": 3051,
+          "sha256": "58d33bd1c33180973fd9551ea935823867c7f993a4f682a9f62abd1fb70149b0",
+          "tracked": true
+        },
+        {
+          "path": "logs/environment/M0-04_20261002_desktop_all_classes.log",
+          "bytes": 1965,
+          "sha256": "e83febcd2119cc114b415bf2e99690c6fc9ddab4e7df9e5bc280e15247d68ba1",
+          "tracked": true
+        },
+        {
+          "path": "logs/environment/M0-04_20261002_desktop_image.log",
+          "bytes": 1964,
+          "sha256": "26b81a5327835ef3576784e5fbdf6042ba87686576de5c64fcfde56309a69bee",
+          "tracked": true
+        },
+        {
+          "path": "logs/environment/M0-04_20261002_desktop_video.log",
+          "bytes": 2172,
+          "sha256": "ade8b3fa2ca9733f6a505dbf7709b69739473490b298bacd32d47431b0ad9c17",
+          "tracked": true
+        },
+        {
+          "path": "logs/environment/M0-04_20261002_M0-04_20261002_bus_all.log",
+          "bytes": 1864,
+          "sha256": "f0945838e27d597f5b93aa117fa3523f1280ff4851441f21a6af9dbfee372ddb",
+          "tracked": true
+        },
+        {
+          "path": "logs/environment/M0-04_20261002_M0-04_20261002_camera_targets.log",
+          "bytes": 2070,
+          "sha256": "7fa9d12e0c8ee1d2499d93bc8f3fdc0482ec3d84768605c30ec603f37e9acfae",
+          "tracked": true
+        },
+        {
+          "path": "logs/environment/M0-04_20261002_prediction_statistics.json",
+          "bytes": 491,
+          "sha256": "bc4739a87e238d4a97701028eda50acaf29425b4baa29cefe4f6feddcee1156d",
+          "tracked": true
+        },
+        {
+          "path": "logs/environment/M0-04_20261002_prepare.log",
+          "bytes": 718,
+          "sha256": "d966e640d10ea4fb5ebc80a29acf2c477aa05829e4014720ea934d6ce03a4e61",
+          "tracked": true
+        },
+        {
+          "path": "logs/environment/M0-05_20261002_before_install.json",
+          "bytes": 6911,
+          "sha256": "e42a0408ede8e8f4669b1d0ff6d8fd9201af974918b2256bac424567ee68ac8f",
+          "tracked": true
+        },
+        {
+          "path": "logs/environment/M0-05_20261002_cp39_candidates.json",
+          "bytes": 5524,
+          "sha256": "9325cf0555dc956629efbcb728aa45db377c28486a83b58758f9972a0565671f",
+          "tracked": true
+        },
+        {
+          "path": "logs/environment/M0-05_20261002_install_step1.txt",
+          "bytes": 861,
+          "sha256": "7ac7ab657a055e71b932852454ce7f5720e17e7c9e131743ccc037f3743ff99a",
+          "tracked": true
+        },
+        {
+          "path": "logs/environment/M0-05_20261002_install_step2.txt",
+          "bytes": 3365,
+          "sha256": "1ec6391d67c947c75eb0b9bf0fc20bc6e466a3566ed264346385f318ee11a07e",
+          "tracked": true
+        },
+        {
+          "path": "logs/environment/M0-05_20261002_install_step3.txt",
+          "bytes": 31,
+          "sha256": "672aec65a45bed50e70229c70934a7eebf0462595c459b83023027645d57cccf",
+          "tracked": true
+        },
+        {
+          "path": "logs/environment/M0-05_20261002_onnx_install_validation.json",
+          "bytes": 3018,
+          "sha256": "77b467ebe52897858f3b937e694fe417f8194f4ee412cc5f47bb893e7992c54b",
+          "tracked": true
+        },
+        {
+          "path": "logs/environment/M0-05_20261002_pip_freeze.txt",
+          "bytes": 4401,
+          "sha256": "4606b887489b3dc06548bb36753b8a90c8c430d1b2575a3cfc83a8c5efbe83fc",
+          "tracked": true
+        },
+        {
+          "path": "logs/environment/M0-05_20261002_pip_install_onnx.json",
+          "bytes": 55460,
+          "sha256": "29340db2d272ac75b7f7c19d99a32eb2c0f8c6e0875061e65328c6584d6e42e5",
+          "tracked": true
+        },
+        {
+          "path": "logs/environment/M0-05_20261002_pip_plan.json",
+          "bytes": 55461,
+          "sha256": "e7006ed7114a1e20099624b5bb138b01cc0e1665939193fb0327bf7878b7fc02",
+          "tracked": true
+        },
+        {
+          "path": "logs/environment/M0-05_20261002_pypi_compatibility.json",
+          "bytes": 6404,
+          "sha256": "8c9ff23ab05f44b838724ccb37d6397f94613ce68282c2aa381c66a940f7a747",
+          "tracked": true
+        },
+        {
+          "path": "logs/environment/M0-05_20261002_trt_install.txt",
+          "bytes": 1690,
+          "sha256": "5c026515f3fccc10c1aa396cb4fcdf320af4a8d3c19ba40b510179c3fa07638f",
+          "tracked": true
+        },
+        {
+          "path": "logs/environment/M0-05_20261002_trt_pip_install.json",
+          "bytes": 5653,
+          "sha256": "7312ee08fe0a3ad596d595e2245b12ff6db74f28baa361be0bd850c56febb3c1",
+          "tracked": true
+        },
+        {
+          "path": "logs/environment/M0-05_20261002_trt_pip_plan.json",
+          "bytes": 5653,
+          "sha256": "7312ee08fe0a3ad596d595e2245b12ff6db74f28baa361be0bd850c56febb3c1",
+          "tracked": true
+        },
+        {
+          "path": "logs/environment/M0-05_20261002_trt_wheels.json",
+          "bytes": 331,
+          "sha256": "f7d69fb9a97acee97f401fbc79ce55be669bf2c305a17d0f598b778a148f8867",
+          "tracked": true
+        },
+        {
+          "path": "logs/environment/M0-05_20261002_trt_windows_packages.json",
+          "bytes": 2568,
+          "sha256": "15769098d226267d8ffdc0d3d330da5decfabb065a889ecd7dc8a454deabd989",
+          "tracked": true
+        },
+        {
+          "path": "logs/environment/M0-06_20261002_141228_402908/archive.json",
+          "bytes": 5290,
+          "sha256": "847e4d3cda3b6bd1fb59bf9e7a7501cd10fd58bdbf9092b2a0dc0b7ab8172125",
+          "tracked": false
+        },
+        {
+          "path": "logs/environment/M0-06_20261002_141228_402908/conda_explicit_win64.txt",
+          "bytes": 1590,
+          "sha256": "1d3ac8ea93576d7fb9a8b8a1292efb5ffb00e885c8507c411a1dfcd55298bae0",
+          "tracked": false
+        },
+        {
+          "path": "logs/environment/M0-06_20261002_141228_402908/conda_full.yml",
+          "bytes": 5090,
+          "sha256": "639b4449b1a1f08a41dd386da12aa56d94c6739344b2712391d9cc49ad3ab4f1",
+          "tracked": false
+        },
+        {
+          "path": "logs/environment/M0-06_20261002_141228_402908/conda_list.json",
+          "bytes": 48148,
+          "sha256": "39396d356e477140b15c8471c6f51940dab476d8caa47d10e3f01c459804bbc5",
+          "tracked": false
+        },
+        {
+          "path": "logs/environment/M0-06_20261002_141228_402908/conda_version.txt",
+          "bytes": 14,
+          "sha256": "10d2ceb1fc30fef64dacd3f03f479f61a62c59202c7cae932617a2452df54d86",
+          "tracked": false
+        },
+        {
+          "path": "logs/environment/M0-06_20261002_141228_402908/model_origins.json",
+          "bytes": 4384,
+          "sha256": "2c15ab26a985f03313d1c269ac047e75cd1091bfb8adbed075dc4f20218f2a0f",
+          "tracked": false
+        },
+        {
+          "path": "logs/environment/M0-06_20261002_141228_402908/nvidia_smi.txt",
+          "bytes": 53,
+          "sha256": "d06bedc034602d5c9b8ef50cf81bb4e759e005c12044867f01bcecf88d805d41",
+          "tracked": false
+        },
+        {
+          "path": "logs/environment/M0-06_20261002_141228_402908/packages.json",
+          "bytes": 4321,
+          "sha256": "f088a9c61526cad18d95a5bc328048aa588a903d7d0096719c552dc9551b9d87",
+          "tracked": false
+        },
+        {
+          "path": "logs/environment/M0-06_20261002_141228_402908/pip_check.txt",
+          "bytes": 31,
+          "sha256": "672aec65a45bed50e70229c70934a7eebf0462595c459b83023027645d57cccf",
+          "tracked": false
+        },
+        {
+          "path": "logs/environment/M0-06_20261002_141228_402908/pip_freeze_all.txt",
+          "bytes": 4480,
+          "sha256": "09825298d1ce3b18ea2f17cc82b3628f9266267ad8e70ea1cc81eddf504e6e89",
+          "tracked": false
+        },
+        {
+          "path": "logs/environment/M0-06_20261002_141228_402908/source-lock.json",
+          "bytes": 289,
+          "sha256": "f93722ff4b006e9d3a799fa25013f11e993d9e844c01f1d0e42057ea2a813bcf",
+          "tracked": false
+        },
+        {
+          "path": "logs/environment/M0-06_20261002_141228_402908/source_commit.txt",
+          "bytes": 42,
+          "sha256": "86e14f88a150f5dfc5425a3e38f9829dbcb185cb5af373cf1867b7d281554dae",
+          "tracked": false
+        },
+        {
+          "path": "logs/environment/M0-06_20261002_141228_402908/source_status.txt",
+          "bytes": 0,
+          "sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855",
+          "tracked": false
+        },
+        {
+          "path": "logs/environment/M0-06_20261002_142116_389565/archive.json",
+          "bytes": 5996,
+          "sha256": "ee1a9963a61860100bfb3d41b22d80ea1b3b3ea997a2918cf00aa0cb4d7a9444",
+          "tracked": false
+        },
+        {
+          "path": "logs/environment/M0-06_20261002_142116_389565/conda_explicit_win64.txt",
+          "bytes": 1590,
+          "sha256": "1d3ac8ea93576d7fb9a8b8a1292efb5ffb00e885c8507c411a1dfcd55298bae0",
+          "tracked": false
+        },
+        {
+          "path": "logs/environment/M0-06_20261002_142116_389565/conda_full.yml",
+          "bytes": 5090,
+          "sha256": "639b4449b1a1f08a41dd386da12aa56d94c6739344b2712391d9cc49ad3ab4f1",
+          "tracked": false
+        },
+        {
+          "path": "logs/environment/M0-06_20261002_142116_389565/conda_list.json",
+          "bytes": 48148,
+          "sha256": "39396d356e477140b15c8471c6f51940dab476d8caa47d10e3f01c459804bbc5",
+          "tracked": false
+        },
+        {
+          "path": "logs/environment/M0-06_20261002_142116_389565/conda_version.txt",
+          "bytes": 14,
+          "sha256": "10d2ceb1fc30fef64dacd3f03f479f61a62c59202c7cae932617a2452df54d86",
+          "tracked": false
+        },
+        {
+          "path": "logs/environment/M0-06_20261002_142116_389565/model_origins.json",
+          "bytes": 4384,
+          "sha256": "2c15ab26a985f03313d1c269ac047e75cd1091bfb8adbed075dc4f20218f2a0f",
+          "tracked": false
+        },
+        {
+          "path": "logs/environment/M0-06_20261002_142116_389565/nvidia_smi.txt",
+          "bytes": 53,
+          "sha256": "d06bedc034602d5c9b8ef50cf81bb4e759e005c12044867f01bcecf88d805d41",
+          "tracked": false
+        },
+        {
+          "path": "logs/environment/M0-06_20261002_142116_389565/packages.json",
+          "bytes": 4321,
+          "sha256": "f088a9c61526cad18d95a5bc328048aa588a903d7d0096719c552dc9551b9d87",
+          "tracked": false
+        },
+        {
+          "path": "logs/environment/M0-06_20261002_142116_389565/pip_check.txt",
+          "bytes": 31,
+          "sha256": "672aec65a45bed50e70229c70934a7eebf0462595c459b83023027645d57cccf",
+          "tracked": false
+        },
+        {
+          "path": "logs/environment/M0-06_20261002_142116_389565/pip_freeze_all.txt",
+          "bytes": 4480,
+          "sha256": "09825298d1ce3b18ea2f17cc82b3628f9266267ad8e70ea1cc81eddf504e6e89",
+          "tracked": false
+        },
+        {
+          "path": "logs/environment/M0-06_20261002_142116_389565/source-lock.json",
+          "bytes": 289,
+          "sha256": "f93722ff4b006e9d3a799fa25013f11e993d9e844c01f1d0e42057ea2a813bcf",
+          "tracked": false
+        },
+        {
+          "path": "logs/environment/M0-06_20261002_142116_389565/source_commit.txt",
+          "bytes": 42,
+          "sha256": "86e14f88a150f5dfc5425a3e38f9829dbcb185cb5af373cf1867b7d281554dae",
+          "tracked": false
+        },
+        {
+          "path": "logs/environment/M0-06_20261002_142116_389565/source_status.txt",
+          "bytes": 0,
+          "sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855",
+          "tracked": false
+        },
+        {
+          "path": "logs/environment/M0-06_20261002_conda_restore_dry_run.stderr.txt",
+          "bytes": 247,
+          "sha256": "7b40a379a1900911c4482b1e6cd3800fc9cf3ae71cf3a825c1aed9ce62645cee",
+          "tracked": false
+        },
+        {
+          "path": "logs/environment/M0-06_20261002_initial_conda_list.json",
+          "bytes": 48148,
+          "sha256": "39396d356e477140b15c8471c6f51940dab476d8caa47d10e3f01c459804bbc5",
+          "tracked": false
+        },
+        {
+          "path": "logs/reproducibility/M0-06_20261002_141615_392736/deployment/M0-05_export.json",
+          "bytes": 4950,
+          "sha256": "45b1fc0e33fa706cce3f70cdc9998443274310a0bca17f2dcde8f4c3bc92041f",
+          "tracked": false
+        },
+        {
+          "path": "logs/reproducibility/M0-06_20261002_141615_392736/deployment/M0-05_ort_cpu.json",
+          "bytes": 2844,
+          "sha256": "2c81d0272f39e69645a02ee0674742deb39ba66d324b06309ae9c6c1e3cd5863",
+          "tracked": false
+        },
+        {
+          "path": "logs/reproducibility/M0-06_20261002_141615_392736/deployment/M0-05_ort_cuda.json",
+          "bytes": 3713,
+          "sha256": "8819d17bcb3dcc6ff57f095c79f1f5e2b07a0758f197b1e1fff113564d300895",
+          "tracked": false
+        },
+        {
+          "path": "logs/reproducibility/M0-06_20261002_141615_392736/deployment_config.yaml",
+          "bytes": 635,
+          "sha256": "c47375c69e53dcc12376cf2b2443e03c23c0172457db3245a70d5704716f4e8c",
+          "tracked": false
+        },
+        {
+          "path": "logs/reproducibility/M0-06_20261002_141615_392736/e0_bus.log",
+          "bytes": 1872,
+          "sha256": "8860be83a8f5bbb775701424b4548310ad052801e47145f90b563d80b5a5f6f6",
+          "tracked": false
+        },
+        {
+          "path": "logs/reproducibility/M0-06_20261002_141615_392736/e0_desktop.log",
+          "bytes": 1970,
+          "sha256": "85304f5fea9b02c6aaff11c38d6e00ad9ab176d80b2e5cefd2d9829dc9613428",
+          "tracked": false
+        },
+        {
+          "path": "logs/reproducibility/M0-06_20261002_141615_392736/export.log",
+          "bytes": 2472,
+          "sha256": "bc83209ff1a97480eae2da52683743b804e2939cc5806833e0f1b43a7b74ad66",
+          "tracked": false
+        },
+        {
+          "path": "logs/reproducibility/M0-06_20261002_141615_392736/ort_cpu.log",
+          "bytes": 1864,
+          "sha256": "1c0e668f88aee2c34004d1c642cc5514768382fd1d06c182b7807632b754710d",
+          "tracked": false
+        },
+        {
+          "path": "logs/reproducibility/M0-06_20261002_141615_392736/ort_cuda.log",
+          "bytes": 1858,
+          "sha256": "badeb5a9177c31c87af70fde52158b0bf26101404036c617fed79baeaaf01cdc",
+          "tracked": false
+        },
+        {
+          "path": "logs/reproducibility/M0-06_20261002_141615_392736/source.log",
+          "bytes": 118,
+          "sha256": "67779b6526066e792f1b13b52b92bca40371a22ac1cefac7660463433cf10d50",
+          "tracked": false
+        },
+        {
+          "path": "logs/reproducibility/M0-06_20261002_141615_392736/summary.json",
+          "bytes": 12914,
+          "sha256": "169c0c28c95fddf9d06d929016892d62bb9e11b347cf0903985fea927e5eb9ba",
+          "tracked": false
+        },
+        {
+          "path": "logs/reproducibility/M0-06_20261002_141615_392736/training.json",
+          "bytes": 10704,
+          "sha256": "b33784346a4570bda38634080b00b814c20eb1c924a407bb6b4199fb2acd33d9",
+          "tracked": false
+        },
+        {
+          "path": "logs/reproducibility/M0-06_20261002_141615_392736/training.log",
+          "bytes": 0,
+          "sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855",
+          "tracked": false
+        },
+        {
+          "path": "logs/reproducibility/M0-06_20261002_142123_863995/deployment/M0-05_export.json",
+          "bytes": 4950,
+          "sha256": "8b3c9388a1dbd5485a173810f96954e9e8b08c4d9a35270f9fa70f4dee78d612",
+          "tracked": false
+        },
+        {
+          "path": "logs/reproducibility/M0-06_20261002_142123_863995/deployment/M0-05_ort_cpu.json",
+          "bytes": 2844,
+          "sha256": "35a5eb56a3c39e7d819bbac4709db2919070cde5fcb4438a106f9fe5de3ee3ca",
+          "tracked": false
+        },
+        {
+          "path": "logs/reproducibility/M0-06_20261002_142123_863995/deployment/M0-05_ort_cuda.json",
+          "bytes": 3716,
+          "sha256": "151aa463336e58b1df039421fd712cfc0b14c1c58e8d13c0b315d34b917493ad",
+          "tracked": false
+        },
+        {
+          "path": "logs/reproducibility/M0-06_20261002_142123_863995/deployment_config.yaml",
+          "bytes": 635,
+          "sha256": "ca1ea32c928759972feb1d7c561ebe1a1320b0b92a12f94653ea1af8233b3925",
+          "tracked": false
+        },
+        {
+          "path": "logs/reproducibility/M0-06_20261002_142123_863995/e0_bus.log",
+          "bytes": 1872,
+          "sha256": "fb401bfef83ae1241e121b2438d81354ef98d0a0721cccbbccf2fd7b1fa4e1db",
+          "tracked": false
+        },
+        {
+          "path": "logs/reproducibility/M0-06_20261002_142123_863995/e0_desktop.log",
+          "bytes": 1970,
+          "sha256": "ac62f0353405534c2bf8e0d0b30cca7f0b4dc57da6b48050f1dfc5f58bafd392",
+          "tracked": false
+        },
+        {
+          "path": "logs/reproducibility/M0-06_20261002_142123_863995/export.log",
+          "bytes": 2472,
+          "sha256": "597e468cefa5942df92d2ae93bb54962531300204b4a9bc8deb911a02429421b",
+          "tracked": false
+        },
+        {
+          "path": "logs/reproducibility/M0-06_20261002_142123_863995/ort_cpu.log",
+          "bytes": 1864,
+          "sha256": "1c0e668f88aee2c34004d1c642cc5514768382fd1d06c182b7807632b754710d",
+          "tracked": false
+        },
+        {
+          "path": "logs/reproducibility/M0-06_20261002_142123_863995/ort_cuda.log",
+          "bytes": 1861,
+          "sha256": "6dcaaafe3581dffdd25d5ffcd6e3b9b469e7e74594a402527d883a0fbec8de5e",
+          "tracked": false
+        },
+        {
+          "path": "logs/reproducibility/M0-06_20261002_142123_863995/source.log",
+          "bytes": 118,
+          "sha256": "67779b6526066e792f1b13b52b92bca40371a22ac1cefac7660463433cf10d50",
+          "tracked": false
+        },
+        {
+          "path": "logs/reproducibility/M0-06_20261002_142123_863995/summary.json",
+          "bytes": 12919,
+          "sha256": "eed068f7f5c0b1f6a810bb1d3843e74612aae8b9ec129acfb68dbb80c12f0f8d",
+          "tracked": false
+        },
+        {
+          "path": "logs/reproducibility/M0-06_20261002_142123_863995/training.json",
+          "bytes": 10704,
+          "sha256": "366cd3ab03261263de8770b42229b9ca89b8c8bd1c8a2af6af0c39621fd22859",
+          "tracked": false
+        },
+        {
+          "path": "logs/reproducibility/M0-06_20261002_142123_863995/training.log",
+          "bytes": 0,
+          "sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855",
+          "tracked": false
+        }
+      ],
+      "file_count": 103,
+      "bytes": 812306,
+      "root_targets": [
+        "logs/environment/M0-02_20261002_download_hashes.json",
+        "logs/environment/M0-02_20261002_package_changes.json",
+        "logs/environment/M0-02_20261002_pip_dry_run.json",
+        "logs/environment/M0-02_20261002_pip_dry_run_mirror.log",
+        "logs/environment/M0-02_20261002_pip_freeze.txt",
+        "logs/environment/M0-02_20261002_pip_install.json",
+        "logs/environment/M0-02_20261002_verify.log",
+        "logs/environment/M0-03_20261002_112743_062523_snapshot.json",
+        "logs/environment/M0-03_20261002_113023_201976_snapshot.json",
+        "logs/environment/M0-03_20261002_113358_932574_snapshot.json",
+        "logs/environment/M0-03_20261002_114028_379769_snapshot.json",
+        "logs/environment/M0-03_20261002_123216_374580_snapshot.json",
+        "logs/environment/M0-03_20261002_camera_devices.json",
+        "logs/environment/M0-03_20261002_camera_diagnostics.json",
+        "logs/environment/M0-03_20261002_camera_msmf_no_hw.json",
+        "logs/environment/M0-03_20261002_camera_native_release.json",
+        "logs/environment/M0-03_20261002_camera_opencv410.json",
+        "logs/environment/M0-03_20261002_check.log",
+        "logs/environment/M0-03_20261002_check_diagnostic.log",
+        "logs/environment/M0-03_20261002_check_final.log",
+        "logs/environment/M0-03_20261002_check_mjpeg.log",
+        "logs/environment/M0-03_20261002_opencv410_probe_install.log",
+        "logs/environment/M0-03_20261002_recheck_com_warmup.json",
+        "logs/environment/M0-03_20261002_recheck_minimal.json",
+        "logs/environment/M0-03_20261002_recheck_paired_com.json",
+        "logs/environment/M0-03_20261002_recheck_variants.json",
+        "logs/environment/M0-03_20261002_recheck_worker.json",
+        "logs/environment/M0-04_20261002_desktop_all_classes.log",
+        "logs/environment/M0-04_20261002_desktop_image.log",
+        "logs/environment/M0-04_20261002_desktop_video.log",
+        "logs/environment/M0-04_20261002_M0-04_20261002_bus_all.log",
+        "logs/environment/M0-04_20261002_M0-04_20261002_camera_targets.log",
+        "logs/environment/M0-04_20261002_prediction_statistics.json",
+        "logs/environment/M0-04_20261002_prepare.log",
+        "logs/environment/M0-05_20261002_before_install.json",
+        "logs/environment/M0-05_20261002_cp39_candidates.json",
+        "logs/environment/M0-05_20261002_install_step1.txt",
+        "logs/environment/M0-05_20261002_install_step2.txt",
+        "logs/environment/M0-05_20261002_install_step3.txt",
+        "logs/environment/M0-05_20261002_onnx_install_validation.json",
+        "logs/environment/M0-05_20261002_pip_freeze.txt",
+        "logs/environment/M0-05_20261002_pip_install_onnx.json",
+        "logs/environment/M0-05_20261002_pip_plan.json",
+        "logs/environment/M0-05_20261002_pypi_compatibility.json",
+        "logs/environment/M0-05_20261002_trt_install.txt",
+        "logs/environment/M0-05_20261002_trt_pip_install.json",
+        "logs/environment/M0-05_20261002_trt_pip_plan.json",
+        "logs/environment/M0-05_20261002_trt_wheels.json",
+        "logs/environment/M0-05_20261002_trt_windows_packages.json",
+        "logs/environment/M0-06_20261002_141228_402908/archive.json",
+        "logs/environment/M0-06_20261002_141228_402908/conda_explicit_win64.txt",
+        "logs/environment/M0-06_20261002_141228_402908/conda_full.yml",
+        "logs/environment/M0-06_20261002_141228_402908/conda_list.json",
+        "logs/environment/M0-06_20261002_141228_402908/conda_version.txt",
+        "logs/environment/M0-06_20261002_141228_402908/model_origins.json",
+        "logs/environment/M0-06_20261002_141228_402908/nvidia_smi.txt",
+        "logs/environment/M0-06_20261002_141228_402908/packages.json",
+        "logs/environment/M0-06_20261002_141228_402908/pip_check.txt",
+        "logs/environment/M0-06_20261002_141228_402908/pip_freeze_all.txt",
+        "logs/environment/M0-06_20261002_141228_402908/source-lock.json",
+        "logs/environment/M0-06_20261002_141228_402908/source_commit.txt",
+        "logs/environment/M0-06_20261002_141228_402908/source_status.txt",
+        "logs/environment/M0-06_20261002_142116_389565/archive.json",
+        "logs/environment/M0-06_20261002_142116_389565/conda_explicit_win64.txt",
+        "logs/environment/M0-06_20261002_142116_389565/conda_full.yml",
+        "logs/environment/M0-06_20261002_142116_389565/conda_list.json",
+        "logs/environment/M0-06_20261002_142116_389565/conda_version.txt",
+        "logs/environment/M0-06_20261002_142116_389565/model_origins.json",
+        "logs/environment/M0-06_20261002_142116_389565/nvidia_smi.txt",
+        "logs/environment/M0-06_20261002_142116_389565/packages.json",
+        "logs/environment/M0-06_20261002_142116_389565/pip_check.txt",
+        "logs/environment/M0-06_20261002_142116_389565/pip_freeze_all.txt",
+        "logs/environment/M0-06_20261002_142116_389565/source-lock.json",
+        "logs/environment/M0-06_20261002_142116_389565/source_commit.txt",
+        "logs/environment/M0-06_20261002_142116_389565/source_status.txt",
+        "logs/environment/M0-06_20261002_conda_restore_dry_run.stderr.txt",
+        "logs/environment/M0-06_20261002_initial_conda_list.json",
+        "logs/reproducibility/M0-06_20261002_141615_392736/deployment/M0-05_export.json",
+        "logs/reproducibility/M0-06_20261002_141615_392736/deployment/M0-05_ort_cpu.json",
+        "logs/reproducibility/M0-06_20261002_141615_392736/deployment/M0-05_ort_cuda.json",
+        "logs/reproducibility/M0-06_20261002_141615_392736/deployment_config.yaml",
+        "logs/reproducibility/M0-06_20261002_141615_392736/e0_bus.log",
+        "logs/reproducibility/M0-06_20261002_141615_392736/e0_desktop.log",
+        "logs/reproducibility/M0-06_20261002_141615_392736/export.log",
+        "logs/reproducibility/M0-06_20261002_141615_392736/ort_cpu.log",
+        "logs/reproducibility/M0-06_20261002_141615_392736/ort_cuda.log",
+        "logs/reproducibility/M0-06_20261002_141615_392736/source.log",
+        "logs/reproducibility/M0-06_20261002_141615_392736/summary.json",
+        "logs/reproducibility/M0-06_20261002_141615_392736/training.json",
+        "logs/reproducibility/M0-06_20261002_141615_392736/training.log",
+        "logs/reproducibility/M0-06_20261002_142123_863995/deployment/M0-05_export.json",
+        "logs/reproducibility/M0-06_20261002_142123_863995/deployment/M0-05_ort_cpu.json",
+        "logs/reproducibility/M0-06_20261002_142123_863995/deployment/M0-05_ort_cuda.json",
+        "logs/reproducibility/M0-06_20261002_142123_863995/deployment_config.yaml",
+        "logs/reproducibility/M0-06_20261002_142123_863995/e0_bus.log",
+        "logs/reproducibility/M0-06_20261002_142123_863995/e0_desktop.log",
+        "logs/reproducibility/M0-06_20261002_142123_863995/export.log",
+        "logs/reproducibility/M0-06_20261002_142123_863995/ort_cpu.log",
+        "logs/reproducibility/M0-06_20261002_142123_863995/ort_cuda.log",
+        "logs/reproducibility/M0-06_20261002_142123_863995/source.log",
+        "logs/reproducibility/M0-06_20261002_142123_863995/summary.json",
+        "logs/reproducibility/M0-06_20261002_142123_863995/training.json",
+        "logs/reproducibility/M0-06_20261002_142123_863995/training.log"
+      ]
+    },
+    {
+      "id": "D",
+      "title": "已合并的五份说明和四份人工报告",
+      "tier": "recommended",
+      "reason": "日常阅读改用 M0_环境与模型使用手册.md 与 M0_阶段验收报告.md。",
+      "preservation": "九份原文件完整收入历史 ZIP；保留自动生成 environment_check.md，导航迁移到合并文档。",
+      "files": [
+        {
+          "path": "docs/E0_预训练模型使用说明.md",
+          "bytes": 5822,
+          "sha256": "887e2095604a553d397a3c364fb653f2505191a01f72e215c47e6ed68375dfd7",
+          "tracked": true
+        },
+        {
+          "path": "docs/环境安装记录.md",
+          "bytes": 17695,
+          "sha256": "66ba2bae2b7c18c31bc5c7a6b3f9a65cd6b6a3bb5290cde3d849fd81bb18e1e4",
+          "tracked": true
+        },
+        {
+          "path": "docs/环境恢复与复现说明.md",
+          "bytes": 7986,
+          "sha256": "fb963f8409621224797f9f5819e2acdbc7effd71a36bd94e244e846931b27c55",
+          "tracked": false
+        },
+        {
+          "path": "docs/环境检查使用说明.md",
+          "bytes": 7677,
+          "sha256": "cbb1ee44a109262eac7cd4692da009c329d0f1553cab8cb962197cc914eeffd1",
+          "tracked": true
+        },
+        {
+          "path": "docs/部署预检查使用说明.md",
+          "bytes": 3844,
+          "sha256": "db614e8b642a1887d65de4ed89435d6f0d9b2fdcec5d3173c376f9dd8cee4239",
+          "tracked": true
+        },
+        {
+          "path": "reports/deployment/M0-05_部署兼容性预检查.md",
+          "bytes": 7481,
+          "sha256": "fdee480266b343180ac32078562f79811b1381bb11cd2963255361fef3743b56",
+          "tracked": true
+        },
+        {
+          "path": "reports/E0_预训练模型验证.md",
+          "bytes": 7105,
+          "sha256": "e9951aff746cc7c2773655fb1ede0e1f89dc346ea850270e2d843bc7cbf34ac8",
+          "tracked": true
+        },
+        {
+          "path": "reports/environment/M0-06_环境归档与复现验收.md",
+          "bytes": 5598,
+          "sha256": "ce73adca4f035e2fe60214a3ec176dbbe933ac9a0744a0a5606149d8d5b41bd5",
+          "tracked": false
+        },
+        {
+          "path": "reports/environment.md",
+          "bytes": 22561,
+          "sha256": "e2ebdb179353807d14d8bfd50d2219fef3769df6d70b3b5d52e1aaea4eaaf4b1",
+          "tracked": true
+        }
+      ],
+      "file_count": 9,
+      "bytes": 85769,
+      "root_targets": [
+        "docs/E0_预训练模型使用说明.md",
+        "docs/环境安装记录.md",
+        "docs/环境恢复与复现说明.md",
+        "docs/环境检查使用说明.md",
+        "docs/部署预检查使用说明.md",
+        "reports/environment.md",
+        "reports/E0_预训练模型验证.md",
+        "reports/deployment/M0-05_部署兼容性预检查.md",
+        "reports/environment/M0-06_环境归档与复现验收.md"
+      ]
+    }
+  ],
+  "directories_after_candidate_file_deletion": [
+    {
+      "path": "codex/旧目录结构",
+      "directories_including_root": 53,
+      "files_to_delete_first": 0,
+      "cache_only": true
+    },
+    {
+      "path": "scripts/__pycache__",
+      "directories_including_root": 1,
+      "files_to_delete_first": 3,
+      "cache_only": true
+    },
+    {
+      "path": "deploy/__pycache__",
+      "directories_including_root": 1,
+      "files_to_delete_first": 2,
+      "cache_only": true
+    },
+    {
+      "path": "tmp/camera_opencv410",
+      "directories_including_root": 58,
+      "files_to_delete_first": 101,
+      "cache_only": true
+    },
+    {
+      "path": "tmp/pdfs",
+      "directories_including_root": 2,
+      "files_to_delete_first": 24,
+      "cache_only": true
+    },
+    {
+      "path": "tmp/camera_recheck",
+      "directories_including_root": 1,
+      "files_to_delete_first": 1,
+      "cache_only": true
+    },
+    {
+      "path": "tmp/e0_timeout_regression",
+      "directories_including_root": 1,
+      "files_to_delete_first": 3,
+      "cache_only": true
+    },
+    {
+      "path": "tmp/deploy_wheels",
+      "directories_including_root": 1,
+      "files_to_delete_first": 1,
+      "cache_only": true
+    },
+    {
+      "path": "artifacts/reproducibility/M0-06_20261002_141615_392736",
+      "directories_including_root": 1,
+      "files_to_delete_first": 11,
+      "cache_only": false
+    },
+    {
+      "path": "artifacts/reproducibility/M0-06_20261002_142123_863995",
+      "directories_including_root": 1,
+      "files_to_delete_first": 11,
+      "cache_only": false
+    },
+    {
+      "path": "runs/E0/M0-06_20261002_141615_392736_bus",
+      "directories_including_root": 1,
+      "files_to_delete_first": 7,
+      "cache_only": false
+    },
+    {
+      "path": "runs/E0/M0-06_20261002_141615_392736_desktop",
+      "directories_including_root": 1,
+      "files_to_delete_first": 7,
+      "cache_only": false
+    },
+    {
+      "path": "runs/E0/M0-06_20261002_142123_863995_bus",
+      "directories_including_root": 1,
+      "files_to_delete_first": 7,
+      "cache_only": false
+    },
+    {
+      "path": "runs/E0/M0-06_20261002_142123_863995_desktop",
+      "directories_including_root": 1,
+      "files_to_delete_first": 7,
+      "cache_only": false
+    },
+    {
+      "path": "logs/environment/M0-06_20261002_141228_402908",
+      "directories_including_root": 1,
+      "files_to_delete_first": 13,
+      "cache_only": false
+    },
+    {
+      "path": "logs/environment/M0-06_20261002_142116_389565",
+      "directories_including_root": 1,
+      "files_to_delete_first": 13,
+      "cache_only": false
+    },
+    {
+      "path": "logs/reproducibility/M0-06_20261002_141615_392736",
+      "directories_including_root": 2,
+      "files_to_delete_first": 13,
+      "cache_only": false
+    },
+    {
+      "path": "logs/reproducibility/M0-06_20261002_142123_863995",
+      "directories_including_root": 2,
+      "files_to_delete_first": 13,
+      "cache_only": false
+    },
+    {
+      "path": "reports/deployment",
+      "directories_including_root": 1,
+      "files_to_delete_first": 1,
+      "cache_only": false
+    },
+    {
+      "path": "reports/environment",
+      "directories_including_root": 1,
+      "files_to_delete_first": 1,
+      "cache_only": false
+    }
+  ],
+  "recommended": {
+    "groups": [
+      "A1",
+      "A2",
+      "A3",
+      "B",
+      "C",
+      "D"
+    ],
+    "files": 301,
+    "bytes": 2481877464,
+    "directories": 132
+  },
+  "cache_only": {
+    "groups": [
+      "A1",
+      "A2",
+      "A3"
+    ],
+    "files": 137,
+    "bytes": 2369985234,
+    "directories": 118
+  },
+  "archive": {
+    "path": "logs/archive/M0_历史记录_20261002.zip",
+    "bytes": 4046283,
+    "sha256": "0f220250beb3bc54c73be3999830b2283312903db3f2692f1d6b8a2cc3d38424",
+    "source_file_count": 217,
+    "all_entries_read_back_hash_verified": true,
+    "entries": [
+      {
+        "path": "artifacts/precheck/M0-05/ort_cpu_profile_2026-10-02_13-45-24.json",
+        "bytes": 1000950,
+        "sha256": "d48c73f7384d2815a1f27ebcb70bc6be275111c35cf5586d4a2ea73e57fbf559"
+      },
+      {
+        "path": "artifacts/precheck/M0-05/ort_cuda_profile_2026-10-02_13-45-27.json",
+        "bytes": 584702,
+        "sha256": "d1770302a46e5a0404dd4982fd15e2eac338dba5eb8369432fa46da9051674fa"
+      },
+      {
+        "path": "artifacts/reproducibility/M0-06_20261002_141615_392736/export.json",
+        "bytes": 4659,
+        "sha256": "90875f9b2dbba144f23575dd727d6da87ad2220b1c50b581fc023ed464018ee6"
+      },
+      {
+        "path": "artifacts/reproducibility/M0-06_20261002_141615_392736/ort_cpu_profile_2026-10-02_14-16-28.json",
+        "bytes": 1002588,
+        "sha256": "a685146cc68adc1762dc36778b525f60213aac99114170716ac5f3e7094fbb8f"
+      },
+      {
+        "path": "artifacts/reproducibility/M0-06_20261002_141615_392736/ort_cuda_profile_2026-10-02_14-16-30.json",
+        "bytes": 582795,
+        "sha256": "7136ccaf05b238be971ab307cf82caf370e7ff2fdd761904a7664ef8a656e0c2"
+      },
+      {
+        "path": "artifacts/reproducibility/M0-06_20261002_142123_863995/export.json",
+        "bytes": 4659,
+        "sha256": "c23e61a994c487030bb0b9510c4da81ec2af08bab6678e3c59a977fb3f4b7795"
+      },
+      {
+        "path": "artifacts/reproducibility/M0-06_20261002_142123_863995/ort_cpu_profile_2026-10-02_14-21-36.json",
+        "bytes": 998146,
+        "sha256": "65f9b336bd0aeb0bfa8fb2447c2118794ae53aa52a2605118355f4aaa82483de"
+      },
+      {
+        "path": "artifacts/reproducibility/M0-06_20261002_142123_863995/ort_cuda_profile_2026-10-02_14-21-38.json",
+        "bytes": 583660,
+        "sha256": "2c92d6d5a57490388bb49eede16ca813f394f139611192e588b31e3118d5fa7c"
+      },
+      {
+        "path": "docs/E0_预训练模型使用说明.md",
+        "bytes": 5822,
+        "sha256": "887e2095604a553d397a3c364fb653f2505191a01f72e215c47e6ed68375dfd7"
+      },
+      {
+        "path": "docs/环境安装记录.md",
+        "bytes": 17695,
+        "sha256": "66ba2bae2b7c18c31bc5c7a6b3f9a65cd6b6a3bb5290cde3d849fd81bb18e1e4"
+      },
+      {
+        "path": "docs/环境恢复与复现说明.md",
+        "bytes": 7986,
+        "sha256": "fb963f8409621224797f9f5819e2acdbc7effd71a36bd94e244e846931b27c55"
+      },
+      {
+        "path": "docs/环境检查使用说明.md",
+        "bytes": 7677,
+        "sha256": "cbb1ee44a109262eac7cd4692da009c329d0f1553cab8cb962197cc914eeffd1"
+      },
+      {
+        "path": "docs/部署预检查使用说明.md",
+        "bytes": 3844,
+        "sha256": "db614e8b642a1887d65de4ed89435d6f0d9b2fdcec5d3173c376f9dd8cee4239"
+      },
+      {
+        "path": "logs/deployment/M0-05_export.json",
+        "bytes": 4945,
+        "sha256": "109c4acc2fdca2b393adf2280a92defae8d2a4c1d936f10c3e51c5b1b8ecf227"
+      },
+      {
+        "path": "logs/deployment/M0-05_export.log",
+        "bytes": 2347,
+        "sha256": "4e1fc391c8a60f5756ade49f694fee5cd2dfe50b98b0487943110d3ff5442d8e"
+      },
+      {
+        "path": "logs/deployment/M0-05_ort_cpu.json",
+        "bytes": 2810,
+        "sha256": "866fc19c2aabc9fe0b6fe9ab9708a33e81f610de0192c74985f4085ed303c8f1"
+      },
+      {
+        "path": "logs/deployment/M0-05_ort_cpu.log",
+        "bytes": 1860,
+        "sha256": "f4d6abfddc3927b4dfc6f768345166336398df7ab954b35eb2feef18cde5c720"
+      },
+      {
+        "path": "logs/deployment/M0-05_ort_cuda.json",
+        "bytes": 3689,
+        "sha256": "f6c20ade3fe3173da3525677340d4b748e2f768aecbeed3123a878439d90efb2"
+      },
+      {
+        "path": "logs/deployment/M0-05_ort_cuda.log",
+        "bytes": 1864,
+        "sha256": "2e702a78becf95b83b8acf8be880eaaf78301088e80b2350f5ef6c51c7edc56b"
+      },
+      {
+        "path": "logs/deployment/M0-05_summary.json",
+        "bytes": 17402,
+        "sha256": "ed3c6e756a89f303b4e3db8563e9e5cb3715bb27ab7b3f1ef44865f7e4ef2550"
+      },
+      {
+        "path": "logs/deployment/M0-05_trt.json",
+        "bytes": 3473,
+        "sha256": "1ec0318ae7074205cd8edb95d8499f9ea50b84d0daf7a1af6a6b436f5b893982"
+      },
+      {
+        "path": "logs/deployment/M0-05_trt.log",
+        "bytes": 4403,
+        "sha256": "7bed00bb91f53fbbf26901ab66348e61e2a6575614d0a00cc7d8a4aefd751752"
+      },
+      {
+        "path": "logs/deployment/M0-05_trt_attempt1_unicode.json",
+        "bytes": 1134,
+        "sha256": "18220c834571a7007b22f3665918b6b18fd0f21df27a2e5bdfc738bca13b1e55"
+      },
+      {
+        "path": "logs/deployment/M0-05_trt_attempt1_unicode.log",
+        "bytes": 757,
+        "sha256": "a72c2e567b0269b8cccbd15e8e8924ec67e990091295c266aaaa00fbb7a5960f"
+      },
+      {
+        "path": "logs/environment/M0-01_20261002_snapshot.json",
+        "bytes": 3483,
+        "sha256": "dbd80664d31fa58db45231f7628f9913900bad79db22c0ae8e521cabde5030a0"
+      },
+      {
+        "path": "logs/environment/M0-02_20261002_conda_clone.log",
+        "bytes": 540,
+        "sha256": "220e5d62fd2d0358fb2feb6bac4c81afb295181d81066acd00acfcc50d67736b"
+      },
+      {
+        "path": "logs/environment/M0-02_20261002_download_hashes.json",
+        "bytes": 1637,
+        "sha256": "83964da4d54f68e8ade39b3d422a41868847c41757ec070d0f653ea9f65e7332"
+      },
+      {
+        "path": "logs/environment/M0-02_20261002_install_snapshot.json",
+        "bytes": 8855,
+        "sha256": "442c966e248cc872af40450f2495d1dac51c3d092efb243cfbb9a81e2d8374c0"
+      },
+      {
+        "path": "logs/environment/M0-02_20261002_package_changes.json",
+        "bytes": 486,
+        "sha256": "4ec1bf35382c734126d722e7e128a69e52cb9f302a4bb0a93be6346eaeaa1a97"
+      },
+      {
+        "path": "logs/environment/M0-02_20261002_pip_dry_run.json",
+        "bytes": 115986,
+        "sha256": "a44e0e7ea73d47695c2a1c38b579b09628ea73d827b134c94e88842525a07c9d"
+      },
+      {
+        "path": "logs/environment/M0-02_20261002_pip_dry_run.log",
+        "bytes": 5948,
+        "sha256": "2f0683ee8bad637a805f54500d0e6d9f41a2b2f5190a8df48aa8a8c44e4ce1da"
+      },
+      {
+        "path": "logs/environment/M0-02_20261002_pip_dry_run_mirror.log",
+        "bytes": 6830,
+        "sha256": "22e9f0b3aa7f3c00b6a83a0a2f6dd65dd799821d024756994720bf898ad61b74"
+      },
+      {
+        "path": "logs/environment/M0-02_20261002_pip_freeze.txt",
+        "bytes": 4235,
+        "sha256": "7b6b7d2d8b87e9234ff55f2bf39f3e22135b915b5c0286e88ce69f9558492ad4"
+      },
+      {
+        "path": "logs/environment/M0-02_20261002_pip_install.json",
+        "bytes": 115980,
+        "sha256": "d05b9c368c2ea4982d88e0f9c89476dc6403cf9e0d85d93ed4e30df760ab14f0"
+      },
+      {
+        "path": "logs/environment/M0-02_20261002_pip_install.log",
+        "bytes": 9255,
+        "sha256": "d648aa309048fe6e3d4317195081774cf0e1347524244300763a89851a952265"
+      },
+      {
+        "path": "logs/environment/M0-02_20261002_verify.log",
+        "bytes": 2155,
+        "sha256": "ee55e47223c25ebd3fb9953b3c24effb7d8f210add90ec2ef232cb2e8f92ceb7"
+      },
+      {
+        "path": "logs/environment/M0-02_20261002_yolo_snapshot.json",
+        "bytes": 5909,
+        "sha256": "2b4eef3d7a2f01c256271fefe294d091b5c6d34f26f292e83cbae0fe3a0a5e71"
+      },
+      {
+        "path": "logs/environment/M0-03_20261002_112743_062523_snapshot.json",
+        "bytes": 15632,
+        "sha256": "ed1e62efada2584f083e91f4ade825fb9ecfaa132cd592a0ee802d634242247b"
+      },
+      {
+        "path": "logs/environment/M0-03_20261002_113023_201976_snapshot.json",
+        "bytes": 16214,
+        "sha256": "3d67cd5749922fabfa3048312a0adfb9b5231ee7b31f29b24af7421841c5cd49"
+      },
+      {
+        "path": "logs/environment/M0-03_20261002_113358_932574_snapshot.json",
+        "bytes": 15608,
+        "sha256": "c8bbb1549dc6f95fb235e24111cb723a666fa6f425fcf90575b3a25759a6ba39"
+      },
+      {
+        "path": "logs/environment/M0-03_20261002_114028_379769_snapshot.json",
+        "bytes": 16687,
+        "sha256": "d7e89c10c5f57ce40db986eb6e32dc604e49e16a0f1dba1ee8017c5759bbb8a2"
+      },
+      {
+        "path": "logs/environment/M0-03_20261002_114408_074569_snapshot.json",
+        "bytes": 18611,
+        "sha256": "f77992910ab63355ee3403e272ed42bd714f4dcace327fa1f0324e077d38a6c7"
+      },
+      {
+        "path": "logs/environment/M0-03_20261002_123216_374580_snapshot.json",
+        "bytes": 21693,
+        "sha256": "cd1f758b70be7cebc75b4bb48965166139ee567db3e4af7cf76320713931eb5f"
+      },
+      {
+        "path": "logs/environment/M0-03_20261002_123401_124014_snapshot.json",
+        "bytes": 21687,
+        "sha256": "1f2d2b72332306607c636ee9dded569faabd819a865e5468bb512733f9fa28d2"
+      },
+      {
+        "path": "logs/environment/M0-03_20261002_camera_devices.json",
+        "bytes": 255,
+        "sha256": "525ec321d0ef49846408f5687e53db8fd977a0abc1887c0c3ba582e29dc5ac3d"
+      },
+      {
+        "path": "logs/environment/M0-03_20261002_camera_diagnostics.json",
+        "bytes": 643,
+        "sha256": "010f7be6bbe1e8df158abae5e96ddcfd9c07ee2789995f24b032e999928b48ad"
+      },
+      {
+        "path": "logs/environment/M0-03_20261002_camera_msmf_no_hw.json",
+        "bytes": 517,
+        "sha256": "88bc03ba1476bf68b42c2ec4d19cb9b16042db3cb9545ae14a0b3c089292f24d"
+      },
+      {
+        "path": "logs/environment/M0-03_20261002_camera_native_release.json",
+        "bytes": 1039,
+        "sha256": "a80dcf6c2c68612f28be389d8e64dd0e45e098f5afcfbd0941e084c861a63cfe"
+      },
+      {
+        "path": "logs/environment/M0-03_20261002_camera_opencv410.json",
+        "bytes": 1817,
+        "sha256": "43c80c6391d64f934cb59101aee86523055c664febd594df076de424668a9e36"
+      },
+      {
+        "path": "logs/environment/M0-03_20261002_check.log",
+        "bytes": 950,
+        "sha256": "e1bc3bb0ef2783ae8f27c393217d038a26e6620cf0df46eaae6aa0454f6ee9cc"
+      },
+      {
+        "path": "logs/environment/M0-03_20261002_check_diagnostic.log",
+        "bytes": 1532,
+        "sha256": "e1ee1aac3038cc8e171e3d2da98dba3865d47bc03709d4b669e1e92d01159141"
+      },
+      {
+        "path": "logs/environment/M0-03_20261002_check_final.log",
+        "bytes": 2005,
+        "sha256": "2596818d2d1a04047f604af8ee910b8026db8001791303e82b037828634a481c"
+      },
+      {
+        "path": "logs/environment/M0-03_20261002_check_mjpeg.log",
+        "bytes": 926,
+        "sha256": "ae08b5ecc2be4578b032ea6080d962824b3bec54a814a63b4473626925eacb28"
+      },
+      {
+        "path": "logs/environment/M0-03_20261002_opencv410_probe_install.log",
+        "bytes": 455,
+        "sha256": "cfe5e58bc981272f182311c6a984aa1f5c906eea6790c03ff724169215185d44"
+      },
+      {
+        "path": "logs/environment/M0-03_20261002_recheck.log",
+        "bytes": 5089,
+        "sha256": "3fed307d9748619bbdfec02f9739c0d6336663261307d7e6ceee2b6f379fde18"
+      },
+      {
+        "path": "logs/environment/M0-03_20261002_recheck_com_warmup.json",
+        "bytes": 2649,
+        "sha256": "80d931b70374bb603b76397ed6b1fd1924f9059846d82bf708c5908ffa3b9580"
+      },
+      {
+        "path": "logs/environment/M0-03_20261002_recheck_minimal.json",
+        "bytes": 574,
+        "sha256": "36c65e6e799a8e1493119184b2b583d111e8572e3054452e327c9f3a464c78c8"
+      },
+      {
+        "path": "logs/environment/M0-03_20261002_recheck_paired_com.json",
+        "bytes": 4169,
+        "sha256": "5903633c0fdf755b7451e285ef9cb406e29de768df8d867265605fdb7cddcb26"
+      },
+      {
+        "path": "logs/environment/M0-03_20261002_recheck_stream.json",
+        "bytes": 552,
+        "sha256": "e74ad38404314271c4ca728e86293de6f10b0e90c7119640ef9191be7bddea38"
+      },
+      {
+        "path": "logs/environment/M0-03_20261002_recheck_variants.json",
+        "bytes": 1602,
+        "sha256": "c5beb3e8d21be957055c21768e37671acdfdcb8e36f3896613ff5449db71df6a"
+      },
+      {
+        "path": "logs/environment/M0-03_20261002_recheck_worker.json",
+        "bytes": 3051,
+        "sha256": "58d33bd1c33180973fd9551ea935823867c7f993a4f682a9f62abd1fb70149b0"
+      },
+      {
+        "path": "logs/environment/M0-04_20261002_artifact_validation.json",
+        "bytes": 2174,
+        "sha256": "1fbf8ebc3b4093849e703895d3859bb9253c25c425879941bc0eb55d52eef682"
+      },
+      {
+        "path": "logs/environment/M0-04_20261002_desktop_all_classes.log",
+        "bytes": 1965,
+        "sha256": "e83febcd2119cc114b415bf2e99690c6fc9ddab4e7df9e5bc280e15247d68ba1"
+      },
+      {
+        "path": "logs/environment/M0-04_20261002_desktop_image.log",
+        "bytes": 1964,
+        "sha256": "26b81a5327835ef3576784e5fbdf6042ba87686576de5c64fcfde56309a69bee"
+      },
+      {
+        "path": "logs/environment/M0-04_20261002_desktop_video.log",
+        "bytes": 2172,
+        "sha256": "ade8b3fa2ca9733f6a505dbf7709b69739473490b298bacd32d47431b0ad9c17"
+      },
+      {
+        "path": "logs/environment/M0-04_20261002_M0-04_20261002_bus_all.log",
+        "bytes": 1864,
+        "sha256": "f0945838e27d597f5b93aa117fa3523f1280ff4851441f21a6af9dbfee372ddb"
+      },
+      {
+        "path": "logs/environment/M0-04_20261002_M0-04_20261002_camera_targets.log",
+        "bytes": 2070,
+        "sha256": "7fa9d12e0c8ee1d2499d93bc8f3fdc0482ec3d84768605c30ec603f37e9acfae"
+      },
+      {
+        "path": "logs/environment/M0-04_20261002_prediction_statistics.json",
+        "bytes": 491,
+        "sha256": "bc4739a87e238d4a97701028eda50acaf29425b4baa29cefe4f6feddcee1156d"
+      },
+      {
+        "path": "logs/environment/M0-04_20261002_prepare.log",
+        "bytes": 718,
+        "sha256": "d966e640d10ea4fb5ebc80a29acf2c477aa05829e4014720ea934d6ce03a4e61"
+      },
+      {
+        "path": "logs/environment/M0-04_20261002_weights_download.json",
+        "bytes": 598,
+        "sha256": "052f5fd1bace641c6e15915d7080318eafaf565238304813344b613ca8b064b1"
+      },
+      {
+        "path": "logs/environment/M0-04_e0_assets.json",
+        "bytes": 716,
+        "sha256": "897e79fdf07e96147fdb6c5b382b66a8650b4d2e56a1ef9842de42d73d9e5fcd"
+      },
+      {
+        "path": "logs/environment/M0-05_20261002_artifact_validation.json",
+        "bytes": 1969,
+        "sha256": "cce4b92fd41a6ee7fb5121a248852d43389dc3871aed0beceefa3b6fc50aa341"
+      },
+      {
+        "path": "logs/environment/M0-05_20261002_before_install.json",
+        "bytes": 6911,
+        "sha256": "e42a0408ede8e8f4669b1d0ff6d8fd9201af974918b2256bac424567ee68ac8f"
+      },
+      {
+        "path": "logs/environment/M0-05_20261002_cp39_candidates.json",
+        "bytes": 5524,
+        "sha256": "9325cf0555dc956629efbcb728aa45db377c28486a83b58758f9972a0565671f"
+      },
+      {
+        "path": "logs/environment/M0-05_20261002_install_step1.txt",
+        "bytes": 861,
+        "sha256": "7ac7ab657a055e71b932852454ce7f5720e17e7c9e131743ccc037f3743ff99a"
+      },
+      {
+        "path": "logs/environment/M0-05_20261002_install_step2.txt",
+        "bytes": 3365,
+        "sha256": "1ec6391d67c947c75eb0b9bf0fc20bc6e466a3566ed264346385f318ee11a07e"
+      },
+      {
+        "path": "logs/environment/M0-05_20261002_install_step3.txt",
+        "bytes": 31,
+        "sha256": "672aec65a45bed50e70229c70934a7eebf0462595c459b83023027645d57cccf"
+      },
+      {
+        "path": "logs/environment/M0-05_20261002_onnx_install_validation.json",
+        "bytes": 3018,
+        "sha256": "77b467ebe52897858f3b937e694fe417f8194f4ee412cc5f47bb893e7992c54b"
+      },
+      {
+        "path": "logs/environment/M0-05_20261002_original_tf2_check.json",
+        "bytes": 275,
+        "sha256": "d6fa5ced14b0f4cb749a8d743634c0bfb3f350dd4cb1a36aeb7568dd2a1cb6bd"
+      },
+      {
+        "path": "logs/environment/M0-05_20261002_package_changes.json",
+        "bytes": 617,
+        "sha256": "08d48e823db49cbc1606a4792a8b87d8b3420cccd9c5bc260bd650d834ace45f"
+      },
+      {
+        "path": "logs/environment/M0-05_20261002_pip_freeze.txt",
+        "bytes": 4401,
+        "sha256": "4606b887489b3dc06548bb36753b8a90c8c430d1b2575a3cfc83a8c5efbe83fc"
+      },
+      {
+        "path": "logs/environment/M0-05_20261002_pip_install_onnx.json",
+        "bytes": 55460,
+        "sha256": "29340db2d272ac75b7f7c19d99a32eb2c0f8c6e0875061e65328c6584d6e42e5"
+      },
+      {
+        "path": "logs/environment/M0-05_20261002_pip_plan.json",
+        "bytes": 55461,
+        "sha256": "e7006ed7114a1e20099624b5bb138b01cc0e1665939193fb0327bf7878b7fc02"
+      },
+      {
+        "path": "logs/environment/M0-05_20261002_pypi_compatibility.json",
+        "bytes": 6404,
+        "sha256": "8c9ff23ab05f44b838724ccb37d6397f94613ce68282c2aa381c66a940f7a747"
+      },
+      {
+        "path": "logs/environment/M0-05_20261002_training_regression.json",
+        "bytes": 10548,
+        "sha256": "46401e4efe0923587b9808230a054d574ed601548ac6cfa891129b07fc2a7a44"
+      },
+      {
+        "path": "logs/environment/M0-05_20261002_trt_hash_validation.json",
+        "bytes": 518,
+        "sha256": "7ef6ae02d2e232b1a2daead2160545c8d86c84627aa015e3bdc07acab2109b4b"
+      },
+      {
+        "path": "logs/environment/M0-05_20261002_trt_install.txt",
+        "bytes": 1690,
+        "sha256": "5c026515f3fccc10c1aa396cb4fcdf320af4a8d3c19ba40b510179c3fa07638f"
+      },
+      {
+        "path": "logs/environment/M0-05_20261002_trt_pip_install.json",
+        "bytes": 5653,
+        "sha256": "7312ee08fe0a3ad596d595e2245b12ff6db74f28baa361be0bd850c56febb3c1"
+      },
+      {
+        "path": "logs/environment/M0-05_20261002_trt_pip_plan.json",
+        "bytes": 5653,
+        "sha256": "7312ee08fe0a3ad596d595e2245b12ff6db74f28baa361be0bd850c56febb3c1"
+      },
+      {
+        "path": "logs/environment/M0-05_20261002_trt_wheels.json",
+        "bytes": 331,
+        "sha256": "f7d69fb9a97acee97f401fbc79ce55be669bf2c305a17d0f598b778a148f8867"
+      },
+      {
+        "path": "logs/environment/M0-05_20261002_trt_windows_packages.json",
+        "bytes": 2568,
+        "sha256": "15769098d226267d8ffdc0d3d330da5decfabb065a889ecd7dc8a454deabd989"
+      },
+      {
+        "path": "logs/environment/M0-06_20261002_141228_402908/archive.json",
+        "bytes": 5290,
+        "sha256": "847e4d3cda3b6bd1fb59bf9e7a7501cd10fd58bdbf9092b2a0dc0b7ab8172125"
+      },
+      {
+        "path": "logs/environment/M0-06_20261002_141228_402908/conda_explicit_win64.txt",
+        "bytes": 1590,
+        "sha256": "1d3ac8ea93576d7fb9a8b8a1292efb5ffb00e885c8507c411a1dfcd55298bae0"
+      },
+      {
+        "path": "logs/environment/M0-06_20261002_141228_402908/conda_full.yml",
+        "bytes": 5090,
+        "sha256": "639b4449b1a1f08a41dd386da12aa56d94c6739344b2712391d9cc49ad3ab4f1"
+      },
+      {
+        "path": "logs/environment/M0-06_20261002_141228_402908/conda_list.json",
+        "bytes": 48148,
+        "sha256": "39396d356e477140b15c8471c6f51940dab476d8caa47d10e3f01c459804bbc5"
+      },
+      {
+        "path": "logs/environment/M0-06_20261002_141228_402908/conda_version.txt",
+        "bytes": 14,
+        "sha256": "10d2ceb1fc30fef64dacd3f03f479f61a62c59202c7cae932617a2452df54d86"
+      },
+      {
+        "path": "logs/environment/M0-06_20261002_141228_402908/model_origins.json",
+        "bytes": 4384,
+        "sha256": "2c15ab26a985f03313d1c269ac047e75cd1091bfb8adbed075dc4f20218f2a0f"
+      },
+      {
+        "path": "logs/environment/M0-06_20261002_141228_402908/nvidia_smi.txt",
+        "bytes": 53,
+        "sha256": "d06bedc034602d5c9b8ef50cf81bb4e759e005c12044867f01bcecf88d805d41"
+      },
+      {
+        "path": "logs/environment/M0-06_20261002_141228_402908/packages.json",
+        "bytes": 4321,
+        "sha256": "f088a9c61526cad18d95a5bc328048aa588a903d7d0096719c552dc9551b9d87"
+      },
+      {
+        "path": "logs/environment/M0-06_20261002_141228_402908/pip_check.txt",
+        "bytes": 31,
+        "sha256": "672aec65a45bed50e70229c70934a7eebf0462595c459b83023027645d57cccf"
+      },
+      {
+        "path": "logs/environment/M0-06_20261002_141228_402908/pip_freeze_all.txt",
+        "bytes": 4480,
+        "sha256": "09825298d1ce3b18ea2f17cc82b3628f9266267ad8e70ea1cc81eddf504e6e89"
+      },
+      {
+        "path": "logs/environment/M0-06_20261002_141228_402908/source-lock.json",
+        "bytes": 289,
+        "sha256": "f93722ff4b006e9d3a799fa25013f11e993d9e844c01f1d0e42057ea2a813bcf"
+      },
+      {
+        "path": "logs/environment/M0-06_20261002_141228_402908/source_commit.txt",
+        "bytes": 42,
+        "sha256": "86e14f88a150f5dfc5425a3e38f9829dbcb185cb5af373cf1867b7d281554dae"
+      },
+      {
+        "path": "logs/environment/M0-06_20261002_141228_402908/source_status.txt",
+        "bytes": 0,
+        "sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855"
+      },
+      {
+        "path": "logs/environment/M0-06_20261002_142116_389565/archive.json",
+        "bytes": 5996,
+        "sha256": "ee1a9963a61860100bfb3d41b22d80ea1b3b3ea997a2918cf00aa0cb4d7a9444"
+      },
+      {
+        "path": "logs/environment/M0-06_20261002_142116_389565/conda_explicit_win64.txt",
+        "bytes": 1590,
+        "sha256": "1d3ac8ea93576d7fb9a8b8a1292efb5ffb00e885c8507c411a1dfcd55298bae0"
+      },
+      {
+        "path": "logs/environment/M0-06_20261002_142116_389565/conda_full.yml",
+        "bytes": 5090,
+        "sha256": "639b4449b1a1f08a41dd386da12aa56d94c6739344b2712391d9cc49ad3ab4f1"
+      },
+      {
+        "path": "logs/environment/M0-06_20261002_142116_389565/conda_list.json",
+        "bytes": 48148,
+        "sha256": "39396d356e477140b15c8471c6f51940dab476d8caa47d10e3f01c459804bbc5"
+      },
+      {
+        "path": "logs/environment/M0-06_20261002_142116_389565/conda_version.txt",
+        "bytes": 14,
+        "sha256": "10d2ceb1fc30fef64dacd3f03f479f61a62c59202c7cae932617a2452df54d86"
+      },
+      {
+        "path": "logs/environment/M0-06_20261002_142116_389565/model_origins.json",
+        "bytes": 4384,
+        "sha256": "2c15ab26a985f03313d1c269ac047e75cd1091bfb8adbed075dc4f20218f2a0f"
+      },
+      {
+        "path": "logs/environment/M0-06_20261002_142116_389565/nvidia_smi.txt",
+        "bytes": 53,
+        "sha256": "d06bedc034602d5c9b8ef50cf81bb4e759e005c12044867f01bcecf88d805d41"
+      },
+      {
+        "path": "logs/environment/M0-06_20261002_142116_389565/packages.json",
+        "bytes": 4321,
+        "sha256": "f088a9c61526cad18d95a5bc328048aa588a903d7d0096719c552dc9551b9d87"
+      },
+      {
+        "path": "logs/environment/M0-06_20261002_142116_389565/pip_check.txt",
+        "bytes": 31,
+        "sha256": "672aec65a45bed50e70229c70934a7eebf0462595c459b83023027645d57cccf"
+      },
+      {
+        "path": "logs/environment/M0-06_20261002_142116_389565/pip_freeze_all.txt",
+        "bytes": 4480,
+        "sha256": "09825298d1ce3b18ea2f17cc82b3628f9266267ad8e70ea1cc81eddf504e6e89"
+      },
+      {
+        "path": "logs/environment/M0-06_20261002_142116_389565/source-lock.json",
+        "bytes": 289,
+        "sha256": "f93722ff4b006e9d3a799fa25013f11e993d9e844c01f1d0e42057ea2a813bcf"
+      },
+      {
+        "path": "logs/environment/M0-06_20261002_142116_389565/source_commit.txt",
+        "bytes": 42,
+        "sha256": "86e14f88a150f5dfc5425a3e38f9829dbcb185cb5af373cf1867b7d281554dae"
+      },
+      {
+        "path": "logs/environment/M0-06_20261002_142116_389565/source_status.txt",
+        "bytes": 0,
+        "sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855"
+      },
+      {
+        "path": "logs/environment/M0-06_20261002_143323_895437/archive.json",
+        "bytes": 6032,
+        "sha256": "09a2dfb78272ede19392a8f3ef7ecf84b7ebc9a9fb735816aa304d23c42dce1c"
+      },
+      {
+        "path": "logs/environment/M0-06_20261002_143323_895437/conda_explicit_win64.txt",
+        "bytes": 1590,
+        "sha256": "1d3ac8ea93576d7fb9a8b8a1292efb5ffb00e885c8507c411a1dfcd55298bae0"
+      },
+      {
+        "path": "logs/environment/M0-06_20261002_143323_895437/conda_full.yml",
+        "bytes": 5090,
+        "sha256": "639b4449b1a1f08a41dd386da12aa56d94c6739344b2712391d9cc49ad3ab4f1"
+      },
+      {
+        "path": "logs/environment/M0-06_20261002_143323_895437/conda_list.json",
+        "bytes": 48148,
+        "sha256": "39396d356e477140b15c8471c6f51940dab476d8caa47d10e3f01c459804bbc5"
+      },
+      {
+        "path": "logs/environment/M0-06_20261002_143323_895437/conda_registered_packages.json",
+        "bytes": 7203,
+        "sha256": "02592c306a4d370ec71cb0c28e3cde9392e8507e14dc2e8062e9a5e2890c6445"
+      },
+      {
+        "path": "logs/environment/M0-06_20261002_143323_895437/conda_version.txt",
+        "bytes": 14,
+        "sha256": "10d2ceb1fc30fef64dacd3f03f479f61a62c59202c7cae932617a2452df54d86"
+      },
+      {
+        "path": "logs/environment/M0-06_20261002_143323_895437/model_origins.json",
+        "bytes": 4384,
+        "sha256": "2c15ab26a985f03313d1c269ac047e75cd1091bfb8adbed075dc4f20218f2a0f"
+      },
+      {
+        "path": "logs/environment/M0-06_20261002_143323_895437/nvidia_smi.txt",
+        "bytes": 53,
+        "sha256": "d06bedc034602d5c9b8ef50cf81bb4e759e005c12044867f01bcecf88d805d41"
+      },
+      {
+        "path": "logs/environment/M0-06_20261002_143323_895437/packages.json",
+        "bytes": 4321,
+        "sha256": "f088a9c61526cad18d95a5bc328048aa588a903d7d0096719c552dc9551b9d87"
+      },
+      {
+        "path": "logs/environment/M0-06_20261002_143323_895437/pip_check.txt",
+        "bytes": 31,
+        "sha256": "672aec65a45bed50e70229c70934a7eebf0462595c459b83023027645d57cccf"
+      },
+      {
+        "path": "logs/environment/M0-06_20261002_143323_895437/pip_freeze_all.txt",
+        "bytes": 4480,
+        "sha256": "09825298d1ce3b18ea2f17cc82b3628f9266267ad8e70ea1cc81eddf504e6e89"
+      },
+      {
+        "path": "logs/environment/M0-06_20261002_143323_895437/source-lock.json",
+        "bytes": 289,
+        "sha256": "f93722ff4b006e9d3a799fa25013f11e993d9e844c01f1d0e42057ea2a813bcf"
+      },
+      {
+        "path": "logs/environment/M0-06_20261002_143323_895437/source_commit.txt",
+        "bytes": 42,
+        "sha256": "86e14f88a150f5dfc5425a3e38f9829dbcb185cb5af373cf1867b7d281554dae"
+      },
+      {
+        "path": "logs/environment/M0-06_20261002_143323_895437/source_status.txt",
+        "bytes": 0,
+        "sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855"
+      },
+      {
+        "path": "logs/environment/M0-06_20261002_artifact_validation.json",
+        "bytes": 1159,
+        "sha256": "ff3b4897f04e6b53933d69855cf20d8c4503b40f1f652db015d944d7282f9685"
+      },
+      {
+        "path": "logs/environment/M0-06_20261002_conda_restore_dry_run.json",
+        "bytes": 1085,
+        "sha256": "096072f1df268705487142aa6ef5ff187a97ab82d605c492a5b99f50f7dcfad9"
+      },
+      {
+        "path": "logs/environment/M0-06_20261002_conda_restore_dry_run.stderr.txt",
+        "bytes": 247,
+        "sha256": "7b40a379a1900911c4482b1e6cd3800fc9cf3ae71cf3a825c1aed9ce62645cee"
+      },
+      {
+        "path": "logs/environment/M0-06_20261002_initial_conda_list.json",
+        "bytes": 48148,
+        "sha256": "39396d356e477140b15c8471c6f51940dab476d8caa47d10e3f01c459804bbc5"
+      },
+      {
+        "path": "logs/environment/M0-06_20261002_pytorch_restore_wheels.json",
+        "bytes": 657,
+        "sha256": "1b2682fc400cf99bc913b50e3cce1046e656a77d39976351a46ce7613c216233"
+      },
+      {
+        "path": "logs/environment/M0-06_20261002_restore_pip_plan.json",
+        "bytes": 49560,
+        "sha256": "bcfbe78f755cfe0919aacdc912d533580d677e5f4226f5965a5b332d28f743f8"
+      },
+      {
+        "path": "logs/environment/M0-06_latest.json",
+        "bytes": 6032,
+        "sha256": "09a2dfb78272ede19392a8f3ef7ecf84b7ebc9a9fb735816aa304d23c42dce1c"
+      },
+      {
+        "path": "logs/reproducibility/M0-06_20261002_141615_392736/deployment/M0-05_export.json",
+        "bytes": 4950,
+        "sha256": "45b1fc0e33fa706cce3f70cdc9998443274310a0bca17f2dcde8f4c3bc92041f"
+      },
+      {
+        "path": "logs/reproducibility/M0-06_20261002_141615_392736/deployment/M0-05_ort_cpu.json",
+        "bytes": 2844,
+        "sha256": "2c81d0272f39e69645a02ee0674742deb39ba66d324b06309ae9c6c1e3cd5863"
+      },
+      {
+        "path": "logs/reproducibility/M0-06_20261002_141615_392736/deployment/M0-05_ort_cuda.json",
+        "bytes": 3713,
+        "sha256": "8819d17bcb3dcc6ff57f095c79f1f5e2b07a0758f197b1e1fff113564d300895"
+      },
+      {
+        "path": "logs/reproducibility/M0-06_20261002_141615_392736/deployment_config.yaml",
+        "bytes": 635,
+        "sha256": "c47375c69e53dcc12376cf2b2443e03c23c0172457db3245a70d5704716f4e8c"
+      },
+      {
+        "path": "logs/reproducibility/M0-06_20261002_141615_392736/e0_bus.log",
+        "bytes": 1872,
+        "sha256": "8860be83a8f5bbb775701424b4548310ad052801e47145f90b563d80b5a5f6f6"
+      },
+      {
+        "path": "logs/reproducibility/M0-06_20261002_141615_392736/e0_desktop.log",
+        "bytes": 1970,
+        "sha256": "85304f5fea9b02c6aaff11c38d6e00ad9ab176d80b2e5cefd2d9829dc9613428"
+      },
+      {
+        "path": "logs/reproducibility/M0-06_20261002_141615_392736/export.log",
+        "bytes": 2472,
+        "sha256": "bc83209ff1a97480eae2da52683743b804e2939cc5806833e0f1b43a7b74ad66"
+      },
+      {
+        "path": "logs/reproducibility/M0-06_20261002_141615_392736/ort_cpu.log",
+        "bytes": 1864,
+        "sha256": "1c0e668f88aee2c34004d1c642cc5514768382fd1d06c182b7807632b754710d"
+      },
+      {
+        "path": "logs/reproducibility/M0-06_20261002_141615_392736/ort_cuda.log",
+        "bytes": 1858,
+        "sha256": "badeb5a9177c31c87af70fde52158b0bf26101404036c617fed79baeaaf01cdc"
+      },
+      {
+        "path": "logs/reproducibility/M0-06_20261002_141615_392736/source.log",
+        "bytes": 118,
+        "sha256": "67779b6526066e792f1b13b52b92bca40371a22ac1cefac7660463433cf10d50"
+      },
+      {
+        "path": "logs/reproducibility/M0-06_20261002_141615_392736/summary.json",
+        "bytes": 12914,
+        "sha256": "169c0c28c95fddf9d06d929016892d62bb9e11b347cf0903985fea927e5eb9ba"
+      },
+      {
+        "path": "logs/reproducibility/M0-06_20261002_141615_392736/training.json",
+        "bytes": 10704,
+        "sha256": "b33784346a4570bda38634080b00b814c20eb1c924a407bb6b4199fb2acd33d9"
+      },
+      {
+        "path": "logs/reproducibility/M0-06_20261002_141615_392736/training.log",
+        "bytes": 0,
+        "sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855"
+      },
+      {
+        "path": "logs/reproducibility/M0-06_20261002_142123_863995/deployment/M0-05_export.json",
+        "bytes": 4950,
+        "sha256": "8b3c9388a1dbd5485a173810f96954e9e8b08c4d9a35270f9fa70f4dee78d612"
+      },
+      {
+        "path": "logs/reproducibility/M0-06_20261002_142123_863995/deployment/M0-05_ort_cpu.json",
+        "bytes": 2844,
+        "sha256": "35a5eb56a3c39e7d819bbac4709db2919070cde5fcb4438a106f9fe5de3ee3ca"
+      },
+      {
+        "path": "logs/reproducibility/M0-06_20261002_142123_863995/deployment/M0-05_ort_cuda.json",
+        "bytes": 3716,
+        "sha256": "151aa463336e58b1df039421fd712cfc0b14c1c58e8d13c0b315d34b917493ad"
+      },
+      {
+        "path": "logs/reproducibility/M0-06_20261002_142123_863995/deployment_config.yaml",
+        "bytes": 635,
+        "sha256": "ca1ea32c928759972feb1d7c561ebe1a1320b0b92a12f94653ea1af8233b3925"
+      },
+      {
+        "path": "logs/reproducibility/M0-06_20261002_142123_863995/e0_bus.log",
+        "bytes": 1872,
+        "sha256": "fb401bfef83ae1241e121b2438d81354ef98d0a0721cccbbccf2fd7b1fa4e1db"
+      },
+      {
+        "path": "logs/reproducibility/M0-06_20261002_142123_863995/e0_desktop.log",
+        "bytes": 1970,
+        "sha256": "ac62f0353405534c2bf8e0d0b30cca7f0b4dc57da6b48050f1dfc5f58bafd392"
+      },
+      {
+        "path": "logs/reproducibility/M0-06_20261002_142123_863995/export.log",
+        "bytes": 2472,
+        "sha256": "597e468cefa5942df92d2ae93bb54962531300204b4a9bc8deb911a02429421b"
+      },
+      {
+        "path": "logs/reproducibility/M0-06_20261002_142123_863995/ort_cpu.log",
+        "bytes": 1864,
+        "sha256": "1c0e668f88aee2c34004d1c642cc5514768382fd1d06c182b7807632b754710d"
+      },
+      {
+        "path": "logs/reproducibility/M0-06_20261002_142123_863995/ort_cuda.log",
+        "bytes": 1861,
+        "sha256": "6dcaaafe3581dffdd25d5ffcd6e3b9b469e7e74594a402527d883a0fbec8de5e"
+      },
+      {
+        "path": "logs/reproducibility/M0-06_20261002_142123_863995/source.log",
+        "bytes": 118,
+        "sha256": "67779b6526066e792f1b13b52b92bca40371a22ac1cefac7660463433cf10d50"
+      },
+      {
+        "path": "logs/reproducibility/M0-06_20261002_142123_863995/summary.json",
+        "bytes": 12919,
+        "sha256": "eed068f7f5c0b1f6a810bb1d3843e74612aae8b9ec129acfb68dbb80c12f0f8d"
+      },
+      {
+        "path": "logs/reproducibility/M0-06_20261002_142123_863995/training.json",
+        "bytes": 10704,
+        "sha256": "366cd3ab03261263de8770b42229b9ca89b8c8bd1c8a2af6af0c39621fd22859"
+      },
+      {
+        "path": "logs/reproducibility/M0-06_20261002_142123_863995/training.log",
+        "bytes": 0,
+        "sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855"
+      },
+      {
+        "path": "logs/reproducibility/M0-06_20261002_143331_549349/deployment/M0-05_export.json",
+        "bytes": 4950,
+        "sha256": "d7c23a31039cce8239b004a39d69860d5292cc6008377bb362a01aa167ef8f13"
+      },
+      {
+        "path": "logs/reproducibility/M0-06_20261002_143331_549349/deployment/M0-05_ort_cpu.json",
+        "bytes": 2844,
+        "sha256": "8654549e8a65e2accbbcbe08d8e4a14b4e55dd2e748c19554045472317732a56"
+      },
+      {
+        "path": "logs/reproducibility/M0-06_20261002_143331_549349/deployment/M0-05_ort_cuda.json",
+        "bytes": 3715,
+        "sha256": "f1f4d3630a414b4c2bef1606b8597b8ad2ad4dcbaf522343e2d5255b2f23da18"
+      },
+      {
+        "path": "logs/reproducibility/M0-06_20261002_143331_549349/deployment_config.yaml",
+        "bytes": 635,
+        "sha256": "adac07ac9b0aae19fbad48fdc9303fb6bdd210eb2f1fe9710118afb6cecd4200"
+      },
+      {
+        "path": "logs/reproducibility/M0-06_20261002_143331_549349/e0_bus.log",
+        "bytes": 1872,
+        "sha256": "8391d74ab20056eca10fbef31a3de2c14566300335e77396c5b4f443e96c9235"
+      },
+      {
+        "path": "logs/reproducibility/M0-06_20261002_143331_549349/e0_desktop.log",
+        "bytes": 1969,
+        "sha256": "b8575afdf809dfce80afd8dcc09547de45a500b629d10e0485d57fae96e2abbd"
+      },
+      {
+        "path": "logs/reproducibility/M0-06_20261002_143331_549349/export.log",
+        "bytes": 2472,
+        "sha256": "034ceea793662ff91113aa71a4c9e61bf09b9377e00590b04c04553a4688e8f7"
+      },
+      {
+        "path": "logs/reproducibility/M0-06_20261002_143331_549349/ort_cpu.log",
+        "bytes": 1864,
+        "sha256": "1c0e668f88aee2c34004d1c642cc5514768382fd1d06c182b7807632b754710d"
+      },
+      {
+        "path": "logs/reproducibility/M0-06_20261002_143331_549349/ort_cuda.log",
+        "bytes": 1860,
+        "sha256": "203dee36ba60b51c5d6640935362f059bb904419890e7da6d4f14a9e3ccf1ec7"
+      },
+      {
+        "path": "logs/reproducibility/M0-06_20261002_143331_549349/source.log",
+        "bytes": 118,
+        "sha256": "67779b6526066e792f1b13b52b92bca40371a22ac1cefac7660463433cf10d50"
+      },
+      {
+        "path": "logs/reproducibility/M0-06_20261002_143331_549349/summary.json",
+        "bytes": 12917,
+        "sha256": "4b50e4096805187b77dba17c1b295f8eed363f9ff3b801a4e62bbf33be14b4d8"
+      },
+      {
+        "path": "logs/reproducibility/M0-06_20261002_143331_549349/training.json",
+        "bytes": 10704,
+        "sha256": "d4ba0d8a827cf5a40127ce3062c6345d85b9493eb8cca407f22bb378f11d6af8"
+      },
+      {
+        "path": "logs/reproducibility/M0-06_20261002_143331_549349/training.log",
+        "bytes": 0,
+        "sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855"
+      },
+      {
+        "path": "logs/reproducibility/M0-06_latest.json",
+        "bytes": 12917,
+        "sha256": "4b50e4096805187b77dba17c1b295f8eed363f9ff3b801a4e62bbf33be14b4d8"
+      },
+      {
+        "path": "logs/ultralytics_settings/Ultralytics/settings.json",
+        "bytes": 604,
+        "sha256": "0a4cf3f829b24bb987c735480acf8c6515b751309beacf2156743e0644a35f96"
+      },
+      {
+        "path": "reports/deployment/M0-05_部署兼容性预检查.md",
+        "bytes": 7481,
+        "sha256": "fdee480266b343180ac32078562f79811b1381bb11cd2963255361fef3743b56"
+      },
+      {
+        "path": "reports/E0_预训练模型验证.md",
+        "bytes": 7105,
+        "sha256": "e9951aff746cc7c2773655fb1ede0e1f89dc346ea850270e2d843bc7cbf34ac8"
+      },
+      {
+        "path": "reports/environment/M0-06_环境归档与复现验收.md",
+        "bytes": 5598,
+        "sha256": "ce73adca4f035e2fe60214a3ec176dbbe933ac9a0744a0a5606149d8d5b41bd5"
+      },
+      {
+        "path": "reports/environment.md",
+        "bytes": 22561,
+        "sha256": "e2ebdb179353807d14d8bfd50d2219fef3769df6d70b3b5d52e1aaea4eaaf4b1"
+      },
+      {
+        "path": "runs/E0/M0-06_20261002_141615_392736_bus/best_frame.json",
+        "bytes": 1773,
+        "sha256": "9153f23eeec49c87aa7a469a59382499c66a8f3dea81cdb90b25ad2a66c9c475"
+      },
+      {
+        "path": "runs/E0/M0-06_20261002_141615_392736_bus/frames.jsonl",
+        "bytes": 1206,
+        "sha256": "44567e16881518a1d4b0391da0e9520ddfedffa7b3be9e1e1865efd74980fb72"
+      },
+      {
+        "path": "runs/E0/M0-06_20261002_141615_392736_bus/input_best.jpg",
+        "bytes": 329855,
+        "sha256": "26b0ec2433832330b828da66f3b7e382692e319fb4a46191ba572561cfb9dc56"
+      },
+      {
+        "path": "runs/E0/M0-06_20261002_141615_392736_bus/input_first.jpg",
+        "bytes": 329855,
+        "sha256": "26b0ec2433832330b828da66f3b7e382692e319fb4a46191ba572561cfb9dc56"
+      },
+      {
+        "path": "runs/E0/M0-06_20261002_141615_392736_bus/result_best.jpg",
+        "bytes": 340753,
+        "sha256": "78f6fa782dc71db932b103da2dba124f692eae7edd8fec4336c38064598fd583"
+      },
+      {
+        "path": "runs/E0/M0-06_20261002_141615_392736_bus/result_first.jpg",
+        "bytes": 340753,
+        "sha256": "78f6fa782dc71db932b103da2dba124f692eae7edd8fec4336c38064598fd583"
+      },
+      {
+        "path": "runs/E0/M0-06_20261002_141615_392736_bus/summary.json",
+        "bytes": 1872,
+        "sha256": "8860be83a8f5bbb775701424b4548310ad052801e47145f90b563d80b5a5f6f6"
+      },
+      {
+        "path": "runs/E0/M0-06_20261002_141615_392736_desktop/best_frame.json",
+        "bytes": 1154,
+        "sha256": "dcf2d95eca740994ec1619d7fd86d9d27d7e7b2bd5dc4c0052691a8bc46f0abb"
+      },
+      {
+        "path": "runs/E0/M0-06_20261002_141615_392736_desktop/frames.jsonl",
+        "bytes": 785,
+        "sha256": "30aa043221db4d83b949384c3eae3041855d4c87e43b1e9d03d436070913153e"
+      },
+      {
+        "path": "runs/E0/M0-06_20261002_141615_392736_desktop/input_best.jpg",
+        "bytes": 109298,
+        "sha256": "de77130771d6f07de0f45500dc54a81f00e33f72e46f204b9775724325251c3c"
+      },
+      {
+        "path": "runs/E0/M0-06_20261002_141615_392736_desktop/input_first.jpg",
+        "bytes": 109298,
+        "sha256": "de77130771d6f07de0f45500dc54a81f00e33f72e46f204b9775724325251c3c"
+      },
+      {
+        "path": "runs/E0/M0-06_20261002_141615_392736_desktop/result_best.jpg",
+        "bytes": 114882,
+        "sha256": "e26c8488d2f30d603c37b1a640098f07334c202a4213be32f3fa3d88e06449cd"
+      },
+      {
+        "path": "runs/E0/M0-06_20261002_141615_392736_desktop/result_first.jpg",
+        "bytes": 114882,
+        "sha256": "e26c8488d2f30d603c37b1a640098f07334c202a4213be32f3fa3d88e06449cd"
+      },
+      {
+        "path": "runs/E0/M0-06_20261002_141615_392736_desktop/summary.json",
+        "bytes": 1970,
+        "sha256": "85304f5fea9b02c6aaff11c38d6e00ad9ab176d80b2e5cefd2d9829dc9613428"
+      },
+      {
+        "path": "runs/E0/M0-06_20261002_142123_863995_bus/best_frame.json",
+        "bytes": 1773,
+        "sha256": "7ca388ffd69561a92cc3707f22401984410f0955880b41cb3f390eb4ed01129a"
+      },
+      {
+        "path": "runs/E0/M0-06_20261002_142123_863995_bus/frames.jsonl",
+        "bytes": 1206,
+        "sha256": "ad8c6306b9a650136d00259aae242ca295e1a3fdf8525d04c4b2a3c51226e073"
+      },
+      {
+        "path": "runs/E0/M0-06_20261002_142123_863995_bus/input_best.jpg",
+        "bytes": 329855,
+        "sha256": "26b0ec2433832330b828da66f3b7e382692e319fb4a46191ba572561cfb9dc56"
+      },
+      {
+        "path": "runs/E0/M0-06_20261002_142123_863995_bus/input_first.jpg",
+        "bytes": 329855,
+        "sha256": "26b0ec2433832330b828da66f3b7e382692e319fb4a46191ba572561cfb9dc56"
+      },
+      {
+        "path": "runs/E0/M0-06_20261002_142123_863995_bus/result_best.jpg",
+        "bytes": 340753,
+        "sha256": "78f6fa782dc71db932b103da2dba124f692eae7edd8fec4336c38064598fd583"
+      },
+      {
+        "path": "runs/E0/M0-06_20261002_142123_863995_bus/result_first.jpg",
+        "bytes": 340753,
+        "sha256": "78f6fa782dc71db932b103da2dba124f692eae7edd8fec4336c38064598fd583"
+      },
+      {
+        "path": "runs/E0/M0-06_20261002_142123_863995_bus/summary.json",
+        "bytes": 1872,
+        "sha256": "fb401bfef83ae1241e121b2438d81354ef98d0a0721cccbbccf2fd7b1fa4e1db"
+      },
+      {
+        "path": "runs/E0/M0-06_20261002_142123_863995_desktop/best_frame.json",
+        "bytes": 1153,
+        "sha256": "e157e3ec59b4323769fa100a753f5d26a3ea74364a6047ee152ea2468567c499"
+      },
+      {
+        "path": "runs/E0/M0-06_20261002_142123_863995_desktop/frames.jsonl",
+        "bytes": 784,
+        "sha256": "0f17882066b259397ee03e3e08d6d0f6c73f9a84b9cc4e43bb25817e2b346591"
+      },
+      {
+        "path": "runs/E0/M0-06_20261002_142123_863995_desktop/input_best.jpg",
+        "bytes": 109298,
+        "sha256": "de77130771d6f07de0f45500dc54a81f00e33f72e46f204b9775724325251c3c"
+      },
+      {
+        "path": "runs/E0/M0-06_20261002_142123_863995_desktop/input_first.jpg",
+        "bytes": 109298,
+        "sha256": "de77130771d6f07de0f45500dc54a81f00e33f72e46f204b9775724325251c3c"
+      },
+      {
+        "path": "runs/E0/M0-06_20261002_142123_863995_desktop/result_best.jpg",
+        "bytes": 114882,
+        "sha256": "e26c8488d2f30d603c37b1a640098f07334c202a4213be32f3fa3d88e06449cd"
+      },
+      {
+        "path": "runs/E0/M0-06_20261002_142123_863995_desktop/result_first.jpg",
+        "bytes": 114882,
+        "sha256": "e26c8488d2f30d603c37b1a640098f07334c202a4213be32f3fa3d88e06449cd"
+      },
+      {
+        "path": "runs/E0/M0-06_20261002_142123_863995_desktop/summary.json",
+        "bytes": 1970,
+        "sha256": "ac62f0353405534c2bf8e0d0b30cca7f0b4dc57da6b48050f1dfc5f58bafd392"
+      },
+      {
+        "path": "tmp/camera_recheck/cap_dshow_4_11.cpp",
+        "bytes": 126422,
+        "sha256": "42b206a14b267c964de24a558289143e3ec2c325f8a5e42edd60fcc57dd6c35d"
+      },
+      {
+        "path": "tmp/e0_timeout_regression/summary.json",
+        "bytes": 131,
+        "sha256": "109f2599cba903d65fe83f3a7e0e287a1e638fb6c3940fb8ba547a729afa8b8b"
+      },
+      {
+        "path": "tmp/e0_timeout_regression/worker_stderr.log",
+        "bytes": 0,
+        "sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855"
+      },
+      {
+        "path": "tmp/e0_timeout_regression/worker_stdout.log",
+        "bytes": 25,
+        "sha256": "74bb11b81252f7b2e3f2a12eca42e9388e2e7c635cca6d1878968db5526a2a90"
+      },
+      {
+        "path": "tmp/tensorrt-cu12-bindings.html",
+        "bytes": 92189,
+        "sha256": "7bfdab6073ea825c9b9e17dc248da820b3a2a0c15a17c5e794c1a414da6c07d3"
+      },
+      {
+        "path": "tmp/tensorrt-cu12-libs.html",
+        "bytes": 16454,
+        "sha256": "b03504f5e9480fa24cd6fae8b474c90b7579cb957807b9b5a45ba2f3c043cf3f"
+      }
+    ]
+  },
+  "protected": {
+    "core_project_files_sha256": {
+      "environment.yml": "689855ac842d1f539644a5d100b3134e1cd12c653e542602fc98caf1885a9b25",
+      "configs/constraints-runtime.txt": "6a75c47bd1264298fea2915b3d8bd053e37cc19eb9d96c3d601362c93f18986e",
+      "requirements-train.txt": "9fb1708c55bd4c3265fb3acf26572c73a53de88d5c3cb2aed125115e0abb5887",
+      "requirements-deploy.txt": "9bf08491c14f338665aff1e95c79111b510b8cb5eb7192424107684cba2954bd",
+      "configs/constraints-train.txt": "e6dc2a3ec41bb7482a461f417f732cca5e318881336d2fcdcb81be3c843edeac",
+      "configs/source-lock.json": "6cd235d218c22f784703cc92b0608c5ca6b68507454427c62ab655c4886e5323",
+      "configs/e0.yaml": "3cfaf7a89a6db4ee21c001bd0ecebbdc3e6f8e61e20e4173b29b618297bb7a8f",
+      "configs/deploy-precheck.yaml": "a0ef8eb6426f280c243c582f7d90de4195b5b37e12684591a30907bcfcc665a0",
+      "configs/paths.yaml": "369618404d8f7679626fc1b754b60bbc7b6ece018fb7e7ca8322d4dd239b288f",
+      "scripts/save_environment.py": "92018bb550ed41052e56065137ba2d16c49462eeac6a88450d56b74ed9b77be3",
+      "scripts/verify_reproducibility.py": "793eceaba774ef020b942e260a300d315c2a557303f960ce7682d0b1047f490d",
+      "scripts/setup_source.py": "17770796b6cf37e89564a22d2c22166aeb128d33f3d0947195054452eba44c50",
+      "scripts/prepare_e0.py": "aa7fe703a64966fd67f0a4aebf008a7be29094a3d0d7015f9e0880b011ff9192",
+      "scripts/predict_e0.py": "17c0743cb65d8f7d723001c11892b4004562a17bfec878e2da633757a4a7ad3e",
+      "scripts/check_deployment.py": "8fcae20de31f8d123e7c18b266c3fe8754559319d7715be5cf967bb4054aed92",
+      "deploy/paths.py": "32d319f0b56bbd2f8a9bb1eb4724f0fa36e85fefa7117edb298346c39c22d6e1"
+    },
+    "logs": [
+      "logs/deployment/M0-05_export.json",
+      "logs/deployment/M0-05_export.log",
+      "logs/deployment/M0-05_ort_cpu.json",
+      "logs/deployment/M0-05_ort_cpu.log",
+      "logs/deployment/M0-05_ort_cuda.json",
+      "logs/deployment/M0-05_ort_cuda.log",
+      "logs/deployment/M0-05_summary.json",
+      "logs/deployment/M0-05_trt.json",
+      "logs/deployment/M0-05_trt.log",
+      "logs/deployment/M0-05_trt_attempt1_unicode.json",
+      "logs/deployment/M0-05_trt_attempt1_unicode.log",
+      "logs/environment/M0-01_20261002_snapshot.json",
+      "logs/environment/M0-02_20261002_conda_clone.log",
+      "logs/environment/M0-02_20261002_install_snapshot.json",
+      "logs/environment/M0-02_20261002_pip_dry_run.log",
+      "logs/environment/M0-02_20261002_pip_install.log",
+      "logs/environment/M0-02_20261002_yolo_snapshot.json",
+      "logs/environment/M0-03_20261002_114408_074569_snapshot.json",
+      "logs/environment/M0-03_20261002_123401_124014_snapshot.json",
+      "logs/environment/M0-03_20261002_recheck.log",
+      "logs/environment/M0-03_20261002_recheck_stream.json",
+      "logs/environment/M0-04_20261002_artifact_validation.json",
+      "logs/environment/M0-04_20261002_weights_download.json",
+      "logs/environment/M0-04_e0_assets.json",
+      "logs/environment/M0-05_20261002_artifact_validation.json",
+      "logs/environment/M0-05_20261002_original_tf2_check.json",
+      "logs/environment/M0-05_20261002_package_changes.json",
+      "logs/environment/M0-05_20261002_training_regression.json",
+      "logs/environment/M0-05_20261002_trt_hash_validation.json",
+      "logs/environment/M0-06_20261002_143323_895437/archive.json",
+      "logs/environment/M0-06_20261002_143323_895437/conda_explicit_win64.txt",
+      "logs/environment/M0-06_20261002_143323_895437/conda_full.yml",
+      "logs/environment/M0-06_20261002_143323_895437/conda_list.json",
+      "logs/environment/M0-06_20261002_143323_895437/conda_registered_packages.json",
+      "logs/environment/M0-06_20261002_143323_895437/conda_version.txt",
+      "logs/environment/M0-06_20261002_143323_895437/model_origins.json",
+      "logs/environment/M0-06_20261002_143323_895437/nvidia_smi.txt",
+      "logs/environment/M0-06_20261002_143323_895437/packages.json",
+      "logs/environment/M0-06_20261002_143323_895437/pip_check.txt",
+      "logs/environment/M0-06_20261002_143323_895437/pip_freeze_all.txt",
+      "logs/environment/M0-06_20261002_143323_895437/source-lock.json",
+      "logs/environment/M0-06_20261002_143323_895437/source_commit.txt",
+      "logs/environment/M0-06_20261002_143323_895437/source_status.txt",
+      "logs/environment/M0-06_20261002_artifact_validation.json",
+      "logs/environment/M0-06_20261002_conda_restore_dry_run.json",
+      "logs/environment/M0-06_20261002_pytorch_restore_wheels.json",
+      "logs/environment/M0-06_20261002_restore_pip_plan.json",
+      "logs/environment/M0-06_latest.json",
+      "logs/reproducibility/M0-06_20261002_143331_549349/deployment/M0-05_export.json",
+      "logs/reproducibility/M0-06_20261002_143331_549349/deployment/M0-05_ort_cpu.json",
+      "logs/reproducibility/M0-06_20261002_143331_549349/deployment/M0-05_ort_cuda.json",
+      "logs/reproducibility/M0-06_20261002_143331_549349/deployment_config.yaml",
+      "logs/reproducibility/M0-06_20261002_143331_549349/e0_bus.log",
+      "logs/reproducibility/M0-06_20261002_143331_549349/e0_desktop.log",
+      "logs/reproducibility/M0-06_20261002_143331_549349/export.log",
+      "logs/reproducibility/M0-06_20261002_143331_549349/ort_cpu.log",
+      "logs/reproducibility/M0-06_20261002_143331_549349/ort_cuda.log",
+      "logs/reproducibility/M0-06_20261002_143331_549349/source.log",
+      "logs/reproducibility/M0-06_20261002_143331_549349/summary.json",
+      "logs/reproducibility/M0-06_20261002_143331_549349/training.json",
+      "logs/reproducibility/M0-06_20261002_143331_549349/training.log",
+      "logs/reproducibility/M0-06_latest.json",
+      "logs/ultralytics_settings/Ultralytics/settings.json"
+    ],
+    "runtime_artifacts": [
+      {
+        "path": "artifacts/precheck/M0-05/bus_ort_cpu.npz",
+        "sha256": "4b929f626108815365eb80a5e271d087be2adf7469d58349a63db912ae437f56"
+      },
+      {
+        "path": "artifacts/precheck/M0-05/bus_ort_cuda.npz",
+        "sha256": "3672a5d64cb88f34cdfb93574cf7696ff9af8fc526b8064ed4994758eca2331d"
+      },
+      {
+        "path": "artifacts/precheck/M0-05/bus_reference.npz",
+        "sha256": "bc570a947920503e26c8bebb9755a6555b379968cab11588b6e25ff59f7f77a8"
+      },
+      {
+        "path": "artifacts/precheck/M0-05/bus_trt.npz",
+        "sha256": "4a184250fbb96221d07b607785405d69dcb23c334e32b5eb038060ab818a3dd8"
+      },
+      {
+        "path": "artifacts/precheck/M0-05/desktop_ort_cpu.npz",
+        "sha256": "f213c13f26a4e9e34e85cc2a7c41a2365c9e713defb289ec5d0282ad5bd74cf6"
+      },
+      {
+        "path": "artifacts/precheck/M0-05/desktop_ort_cuda.npz",
+        "sha256": "1845208216a351b84f95dbb422466b27665984bdbde6081f7416df092a246e93"
+      },
+      {
+        "path": "artifacts/precheck/M0-05/desktop_reference.npz",
+        "sha256": "35319dfa78237f3b8d866d5b663046d188f4588c99b5a15938315660715721c2"
+      },
+      {
+        "path": "artifacts/precheck/M0-05/desktop_trt.npz",
+        "sha256": "002a2f3a02ec05f9f409d4f3609debb4a4dde313fadc264c376fef72ea16b40f"
+      },
+      {
+        "path": "artifacts/precheck/M0-05/export.json",
+        "sha256": "e015629e79cb5f5c32e4737241c33c080c9032f60388e796215165684b1bbe30"
+      },
+      {
+        "path": "artifacts/precheck/M0-05/ort_cpu_profile_2026-10-02_13-49-14.json",
+        "sha256": "fe86b1059f47b4da09c19814cdd405e2ac9748c1607d4cdf82f8c7e53a429180"
+      },
+      {
+        "path": "artifacts/precheck/M0-05/ort_cuda_profile_2026-10-02_13-49-16.json",
+        "sha256": "28ee6ca0a1d159ec7d8b8a7bc6050c1871dd73fd0f166a999a7f16cfde715231"
+      },
+      {
+        "path": "artifacts/precheck/M0-05/yolo11n-seg.engine",
+        "sha256": "636001a880cf21fbdb03b0a3f56313ee691c3bdf0dac7f6cf2bcf5c0fe6a89cc"
+      },
+      {
+        "path": "artifacts/precheck/M0-05/yolo11n-seg.onnx",
+        "sha256": "ad4f7023bb6e8f2e2223926502bcd3dbd2d963dd479f750b51eea08f5db92f8e"
+      },
+      {
+        "path": "artifacts/precheck/M0-05/yolo11n-seg.pt",
+        "sha256": "55ed65c56c91713d23e8402371c6c49a6fd84f257f7dce452e8d70e41dcbe152"
+      },
+      {
+        "path": "artifacts/pretrained/yolo11n-seg.pt",
+        "sha256": "55ed65c56c91713d23e8402371c6c49a6fd84f257f7dce452e8d70e41dcbe152"
+      },
+      {
+        "path": "artifacts/reproducibility/M0-06_20261002_143331_549349/bus_ort_cpu.npz",
+        "sha256": "dcfbd8b44782e4ddf0713da712284435fd4475333d465326d284e2cb9433c229"
+      },
+      {
+        "path": "artifacts/reproducibility/M0-06_20261002_143331_549349/bus_ort_cuda.npz",
+        "sha256": "fd8bbf7e48804fc64aa267fa646675b9aaf621333b4f9bdc9bf8b6951565f535"
+      },
+      {
+        "path": "artifacts/reproducibility/M0-06_20261002_143331_549349/bus_reference.npz",
+        "sha256": "ff21f340731e52c10b97156ffd3b614caba759126bdb4c16591c7a33ad0e7bd9"
+      },
+      {
+        "path": "artifacts/reproducibility/M0-06_20261002_143331_549349/desktop_ort_cpu.npz",
+        "sha256": "f213c13f26a4e9e34e85cc2a7c41a2365c9e713defb289ec5d0282ad5bd74cf6"
+      },
+      {
+        "path": "artifacts/reproducibility/M0-06_20261002_143331_549349/desktop_ort_cuda.npz",
+        "sha256": "c8eb0e6051e2ebd05e826f5d3ae0e04df00dd12a906726635de7fdec0ad1f744"
+      },
+      {
+        "path": "artifacts/reproducibility/M0-06_20261002_143331_549349/desktop_reference.npz",
+        "sha256": "35319dfa78237f3b8d866d5b663046d188f4588c99b5a15938315660715721c2"
+      },
+      {
+        "path": "artifacts/reproducibility/M0-06_20261002_143331_549349/export.json",
+        "sha256": "925981568c6aca78cddcc7e4506b6e5060016f94d8e8c1eea9d19491cc606aa0"
+      },
+      {
+        "path": "artifacts/reproducibility/M0-06_20261002_143331_549349/ort_cpu_profile_2026-10-02_14-33-44.json",
+        "sha256": "37b5c5db4f77cbb1a41c37e251febcb373f23f34c60453e25f7f5c335ae9956c"
+      },
+      {
+        "path": "artifacts/reproducibility/M0-06_20261002_143331_549349/ort_cuda_profile_2026-10-02_14-33-46.json",
+        "sha256": "c757c1835513bf6799529324393c597e1760a14d8627f933fd23547b678e10cf"
+      },
+      {
+        "path": "artifacts/reproducibility/M0-06_20261002_143331_549349/yolo11n-seg.onnx",
+        "sha256": "56231bb419c07bee8550c01767faf2b3e877b80032626cd36d6ab88f27cfa594"
+      },
+      {
+        "path": "artifacts/reproducibility/M0-06_20261002_143331_549349/yolo11n-seg.pt",
+        "sha256": "55ed65c56c91713d23e8402371c6c49a6fd84f257f7dce452e8d70e41dcbe152"
+      },
+      {
+        "path": "runs/E0/M0-06_20261002_143331_549349_bus/best_frame.json",
+        "sha256": "2c737ac8bf10ad04dd4bb8438bd60bac14b1995fee41baad9f8ffc3b4772cfca"
+      },
+      {
+        "path": "runs/E0/M0-06_20261002_143331_549349_bus/frames.jsonl",
+        "sha256": "1bb7bb6c069f05ddf0318429d26d5ba20424467c2f35592d1d32c8bcf7e2e13b"
+      },
+      {
+        "path": "runs/E0/M0-06_20261002_143331_549349_bus/input_best.jpg",
+        "sha256": "26b0ec2433832330b828da66f3b7e382692e319fb4a46191ba572561cfb9dc56"
+      },
+      {
+        "path": "runs/E0/M0-06_20261002_143331_549349_bus/input_first.jpg",
+        "sha256": "26b0ec2433832330b828da66f3b7e382692e319fb4a46191ba572561cfb9dc56"
+      },
+      {
+        "path": "runs/E0/M0-06_20261002_143331_549349_bus/result_best.jpg",
+        "sha256": "78f6fa782dc71db932b103da2dba124f692eae7edd8fec4336c38064598fd583"
+      },
+      {
+        "path": "runs/E0/M0-06_20261002_143331_549349_bus/result_first.jpg",
+        "sha256": "78f6fa782dc71db932b103da2dba124f692eae7edd8fec4336c38064598fd583"
+      },
+      {
+        "path": "runs/E0/M0-06_20261002_143331_549349_bus/summary.json",
+        "sha256": "8391d74ab20056eca10fbef31a3de2c14566300335e77396c5b4f443e96c9235"
+      },
+      {
+        "path": "runs/E0/M0-06_20261002_143331_549349_desktop/best_frame.json",
+        "sha256": "7441a01accad15ce89057216df0403630e9b848ef2316f85238c0913a9f20d1f"
+      },
+      {
+        "path": "runs/E0/M0-06_20261002_143331_549349_desktop/frames.jsonl",
+        "sha256": "080d0870b3e8d2329e7e4c305db65aa80e3a35959f969c8d6d5ba81980f48586"
+      },
+      {
+        "path": "runs/E0/M0-06_20261002_143331_549349_desktop/input_best.jpg",
+        "sha256": "de77130771d6f07de0f45500dc54a81f00e33f72e46f204b9775724325251c3c"
+      },
+      {
+        "path": "runs/E0/M0-06_20261002_143331_549349_desktop/input_first.jpg",
+        "sha256": "de77130771d6f07de0f45500dc54a81f00e33f72e46f204b9775724325251c3c"
+      },
+      {
+        "path": "runs/E0/M0-06_20261002_143331_549349_desktop/result_best.jpg",
+        "sha256": "e26c8488d2f30d603c37b1a640098f07334c202a4213be32f3fa3d88e06449cd"
+      },
+      {
+        "path": "runs/E0/M0-06_20261002_143331_549349_desktop/result_first.jpg",
+        "sha256": "e26c8488d2f30d603c37b1a640098f07334c202a4213be32f3fa3d88e06449cd"
+      },
+      {
+        "path": "runs/E0/M0-06_20261002_143331_549349_desktop/summary.json",
+        "sha256": "b8575afdf809dfce80afd8dcc09547de45a500b629d10e0485d57fae96e2abbd"
+      }
+    ],
+    "camera_run_policy": "Keep all M0-04 runs and four independent timestamped camera runs.",
+    "source_commit": "86f5c8c401a630da651d321e691ab0af540812cf",
+    "source_clean": true,
+    "environment_package_count": 167
+  },
+  "navigation_edits": [
+    "README.md",
+    "plan/00_YOLO_分阶段推进与进度跟踪.md",
+    "plan/YOLO_项目目录规划.md",
+    ".gitignore"
+  ],
+  "execution_requirements": [
+    "Delete only after explicit user approval of groups.",
+    "Resolve targets within root, reject symlinks/reparse points or unexpected/new content.",
+    "Recheck every candidate SHA256 and archive SHA256 immediately before deletion.",
+    "Leave .git, third_party, data, canonical artifacts and all independent camera runs intact.",
+    "Delete exact files then only directories empty after deletion; no wildcard root cleanup.",
+    "Record result and rerun link/core-file verification; do not auto-commit or push."
+  ],
+  "verification": {
+    "passed": true,
+    "protected_files_sha256_unchanged_before_document_updates": 1432,
+    "unchanged_after_document_updates": 1427,
+    "document_updates": [
+      "README.md",
+      "docs/M0_环境与模型使用手册.md",
+      "reports/M0_阶段验收报告.md",
+      "plan/00_YOLO_分阶段推进与进度跟踪.md",
+      "reports/maintenance/20261002_文件整理与清理清单.md"
+    ],
+    "core_hashes_passed": true,
+    "runtime_artifacts_hashes_passed": true,
+    "package_versions_match_archive": true,
+    "package_count": 167,
+    "pip_check_passed": true,
+    "archive_entries_verified": 217,
+    "archive_sha256_unchanged": true,
+    "local_link_count": 247,
+    "missing_links": [],
+    "all_approved_files_and_directories_absent": true,
+    "runtime_smoke_passed": true,
+    "all_configured_paths_exist": true,
+    "source_clean": true,
+    "scope": "Owned navigation, plans, learning documents and M0 docs; upstream snapshots excluded."
+  },
+  "execution": {
+    "approval": "User: 按照清单推荐的方式开展清除工作",
+    "started_at": "2026-10-02T15:35:05.7163288+08:00",
+    "approved_groups": [
+      "A1",
+      "A2",
+      "A3",
+      "B",
+      "C",
+      "D"
+    ],
+    "status": "complete",
+    "deleted_files": [
+      "tmp/deploy_wheels/tensorrt_cu12_libs-11.3.0.99-py3-none-win_amd64.whl",
+      "tmp/camera_opencv410/cv2/__init__.py",
+      "tmp/camera_opencv410/cv2/__init__.pyi",
+      "tmp/camera_opencv410/cv2/__pycache__/__init__.cpython-39.pyc",
+      "tmp/camera_opencv410/cv2/__pycache__/config-3.cpython-39.pyc",
+      "tmp/camera_opencv410/cv2/__pycache__/config.cpython-39.pyc",
+      "tmp/camera_opencv410/cv2/__pycache__/load_config_py2.cpython-39.pyc",
+      "tmp/camera_opencv410/cv2/__pycache__/load_config_py3.cpython-39.pyc",
+      "tmp/camera_opencv410/cv2/__pycache__/version.cpython-39.pyc",
+      "tmp/camera_opencv410/cv2/aruco/__init__.pyi",
+      "tmp/camera_opencv410/cv2/barcode/__init__.pyi",
+      "tmp/camera_opencv410/cv2/config-3.py",
+      "tmp/camera_opencv410/cv2/config.py",
+      "tmp/camera_opencv410/cv2/cuda/__init__.pyi",
+      "tmp/camera_opencv410/cv2/cv2.pyd",
+      "tmp/camera_opencv410/cv2/data/__init__.py",
+      "tmp/camera_opencv410/cv2/data/__pycache__/__init__.cpython-39.pyc",
+      "tmp/camera_opencv410/cv2/data/haarcascade_eye.xml",
+      "tmp/camera_opencv410/cv2/data/haarcascade_eye_tree_eyeglasses.xml",
+      "tmp/camera_opencv410/cv2/data/haarcascade_frontalcatface.xml",
+      "tmp/camera_opencv410/cv2/data/haarcascade_frontalcatface_extended.xml",
+      "tmp/camera_opencv410/cv2/data/haarcascade_frontalface_alt.xml",
+      "tmp/camera_opencv410/cv2/data/haarcascade_frontalface_alt2.xml",
+      "tmp/camera_opencv410/cv2/data/haarcascade_frontalface_alt_tree.xml",
+      "tmp/camera_opencv410/cv2/data/haarcascade_frontalface_default.xml",
+      "tmp/camera_opencv410/cv2/data/haarcascade_fullbody.xml",
+      "tmp/camera_opencv410/cv2/data/haarcascade_lefteye_2splits.xml",
+      "tmp/camera_opencv410/cv2/data/haarcascade_license_plate_rus_16stages.xml",
+      "tmp/camera_opencv410/cv2/data/haarcascade_lowerbody.xml",
+      "tmp/camera_opencv410/cv2/data/haarcascade_profileface.xml",
+      "tmp/camera_opencv410/cv2/data/haarcascade_righteye_2splits.xml",
+      "tmp/camera_opencv410/cv2/data/haarcascade_russian_plate_number.xml",
+      "tmp/camera_opencv410/cv2/data/haarcascade_smile.xml",
+      "tmp/camera_opencv410/cv2/data/haarcascade_upperbody.xml",
+      "tmp/camera_opencv410/cv2/detail/__init__.pyi",
+      "tmp/camera_opencv410/cv2/dnn/__init__.pyi",
+      "tmp/camera_opencv410/cv2/Error/__init__.pyi",
+      "tmp/camera_opencv410/cv2/fisheye/__init__.pyi",
+      "tmp/camera_opencv410/cv2/flann/__init__.pyi",
+      "tmp/camera_opencv410/cv2/gapi/__init__.py",
+      "tmp/camera_opencv410/cv2/gapi/__init__.pyi",
+      "tmp/camera_opencv410/cv2/gapi/__pycache__/__init__.cpython-39.pyc",
+      "tmp/camera_opencv410/cv2/gapi/core/__init__.pyi",
+      "tmp/camera_opencv410/cv2/gapi/core/cpu/__init__.pyi",
+      "tmp/camera_opencv410/cv2/gapi/core/fluid/__init__.pyi",
+      "tmp/camera_opencv410/cv2/gapi/core/ocl/__init__.pyi",
+      "tmp/camera_opencv410/cv2/gapi/ie/__init__.pyi",
+      "tmp/camera_opencv410/cv2/gapi/ie/detail/__init__.pyi",
+      "tmp/camera_opencv410/cv2/gapi/imgproc/__init__.pyi",
+      "tmp/camera_opencv410/cv2/gapi/imgproc/fluid/__init__.pyi",
+      "tmp/camera_opencv410/cv2/gapi/oak/__init__.pyi",
+      "tmp/camera_opencv410/cv2/gapi/onnx/__init__.pyi",
+      "tmp/camera_opencv410/cv2/gapi/onnx/ep/__init__.pyi",
+      "tmp/camera_opencv410/cv2/gapi/ot/__init__.pyi",
+      "tmp/camera_opencv410/cv2/gapi/ot/cpu/__init__.pyi",
+      "tmp/camera_opencv410/cv2/gapi/ov/__init__.pyi",
+      "tmp/camera_opencv410/cv2/gapi/own/__init__.pyi",
+      "tmp/camera_opencv410/cv2/gapi/own/detail/__init__.pyi",
+      "tmp/camera_opencv410/cv2/gapi/render/__init__.pyi",
+      "tmp/camera_opencv410/cv2/gapi/render/ocv/__init__.pyi",
+      "tmp/camera_opencv410/cv2/gapi/streaming/__init__.pyi",
+      "tmp/camera_opencv410/cv2/gapi/video/__init__.pyi",
+      "tmp/camera_opencv410/cv2/gapi/wip/__init__.pyi",
+      "tmp/camera_opencv410/cv2/gapi/wip/draw/__init__.pyi",
+      "tmp/camera_opencv410/cv2/gapi/wip/gst/__init__.pyi",
+      "tmp/camera_opencv410/cv2/gapi/wip/onevpl/__init__.pyi",
+      "tmp/camera_opencv410/cv2/ipp/__init__.pyi",
+      "tmp/camera_opencv410/cv2/LICENSE-3RD-PARTY.txt",
+      "tmp/camera_opencv410/cv2/LICENSE.txt",
+      "tmp/camera_opencv410/cv2/load_config_py2.py",
+      "tmp/camera_opencv410/cv2/load_config_py3.py",
+      "tmp/camera_opencv410/cv2/mat_wrapper/__init__.py",
+      "tmp/camera_opencv410/cv2/mat_wrapper/__pycache__/__init__.cpython-39.pyc",
+      "tmp/camera_opencv410/cv2/misc/__init__.py",
+      "tmp/camera_opencv410/cv2/misc/__pycache__/__init__.cpython-39.pyc",
+      "tmp/camera_opencv410/cv2/misc/__pycache__/version.cpython-39.pyc",
+      "tmp/camera_opencv410/cv2/misc/version.py",
+      "tmp/camera_opencv410/cv2/ml/__init__.pyi",
+      "tmp/camera_opencv410/cv2/ocl/__init__.pyi",
+      "tmp/camera_opencv410/cv2/ogl/__init__.pyi",
+      "tmp/camera_opencv410/cv2/opencv_videoio_ffmpeg4100_64.dll",
+      "tmp/camera_opencv410/cv2/parallel/__init__.pyi",
+      "tmp/camera_opencv410/cv2/py.typed",
+      "tmp/camera_opencv410/cv2/samples/__init__.pyi",
+      "tmp/camera_opencv410/cv2/segmentation/__init__.pyi",
+      "tmp/camera_opencv410/cv2/typing/__init__.py",
+      "tmp/camera_opencv410/cv2/typing/__pycache__/__init__.cpython-39.pyc",
+      "tmp/camera_opencv410/cv2/utils/__init__.py",
+      "tmp/camera_opencv410/cv2/utils/__init__.pyi",
+      "tmp/camera_opencv410/cv2/utils/__pycache__/__init__.cpython-39.pyc",
+      "tmp/camera_opencv410/cv2/utils/fs/__init__.pyi",
+      "tmp/camera_opencv410/cv2/utils/nested/__init__.pyi",
+      "tmp/camera_opencv410/cv2/version.py",
+      "tmp/camera_opencv410/cv2/videoio_registry/__init__.pyi",
+      "tmp/camera_opencv410/opencv_python-4.10.0.84.dist-info/INSTALLER",
+      "tmp/camera_opencv410/opencv_python-4.10.0.84.dist-info/LICENSE-3RD-PARTY.txt",
+      "tmp/camera_opencv410/opencv_python-4.10.0.84.dist-info/LICENSE.txt",
+      "tmp/camera_opencv410/opencv_python-4.10.0.84.dist-info/METADATA",
+      "tmp/camera_opencv410/opencv_python-4.10.0.84.dist-info/RECORD",
+      "tmp/camera_opencv410/opencv_python-4.10.0.84.dist-info/REQUESTED",
+      "tmp/camera_opencv410/opencv_python-4.10.0.84.dist-info/top_level.txt",
+      "tmp/camera_opencv410/opencv_python-4.10.0.84.dist-info/WHEEL",
+      "tmp/camera_recheck/cap_dshow_4_11.cpp",
+      "tmp/e0_timeout_regression/summary.json",
+      "tmp/e0_timeout_regression/worker_stderr.log",
+      "tmp/e0_timeout_regression/worker_stdout.log",
+      "tmp/pdfs/learning_refs/GFL_2020_2006.04388.txt",
+      "tmp/pdfs/learning_refs/TOOD_2021_2108.07755.txt",
+      "tmp/pdfs/learning_refs/YOLACT_2019_1904.02689.txt",
+      "tmp/pdfs/learning_refs/YOLO26_2026_2606.03748.txt",
+      "tmp/pdfs/learning_refs/YOLO9000_2016_1612.08242.txt",
+      "tmp/pdfs/learning_refs/YOLOv10_2024_2405.14458.txt",
+      "tmp/pdfs/learning_refs/YOLOv12_2025_2502.12524.txt",
+      "tmp/pdfs/learning_refs/YOLOv3_2018_1804.02767.txt",
+      "tmp/pdfs/learning_refs/YOLOv7_2022_2207.02696.txt",
+      "tmp/pdfs/learning_refs/YOLOX_2021_2107.08430.txt",
+      "tmp/pdfs/source-01.png",
+      "tmp/pdfs/source-02.png",
+      "tmp/pdfs/source-03.png",
+      "tmp/pdfs/source-04.png",
+      "tmp/pdfs/source-05.png",
+      "tmp/pdfs/source-06.png",
+      "tmp/pdfs/source-07.png",
+      "tmp/pdfs/source-08.png",
+      "tmp/pdfs/source-09.png",
+      "tmp/pdfs/source-10.png",
+      "tmp/pdfs/yolo26_review-03.png",
+      "tmp/pdfs/yolo26_review-04.png",
+      "tmp/pdfs/YOLO_extracted.txt",
+      "tmp/pdfs/yolox_review-3.png",
+      "tmp/tensorrt-cu12-bindings.html",
+      "tmp/tensorrt-cu12-libs.html",
+      "deploy/__pycache__/__init__.cpython-39.pyc",
+      "deploy/__pycache__/paths.cpython-39.pyc",
+      "scripts/__pycache__/check_env.cpython-39.pyc",
+      "scripts/__pycache__/predict_e0.cpython-39.pyc",
+      "scripts/__pycache__/verify_training_setup.cpython-39.pyc",
+      "artifacts/precheck/M0-05/ort_cpu_profile_2026-10-02_13-45-24.json",
+      "artifacts/precheck/M0-05/ort_cuda_profile_2026-10-02_13-45-27.json",
+      "artifacts/reproducibility/M0-06_20261002_141615_392736/bus_ort_cpu.npz",
+      "artifacts/reproducibility/M0-06_20261002_141615_392736/bus_ort_cuda.npz",
+      "artifacts/reproducibility/M0-06_20261002_141615_392736/bus_reference.npz",
+      "artifacts/reproducibility/M0-06_20261002_141615_392736/desktop_ort_cpu.npz",
+      "artifacts/reproducibility/M0-06_20261002_141615_392736/desktop_ort_cuda.npz",
+      "artifacts/reproducibility/M0-06_20261002_141615_392736/desktop_reference.npz",
+      "artifacts/reproducibility/M0-06_20261002_141615_392736/export.json",
+      "artifacts/reproducibility/M0-06_20261002_141615_392736/ort_cpu_profile_2026-10-02_14-16-28.json",
+      "artifacts/reproducibility/M0-06_20261002_141615_392736/ort_cuda_profile_2026-10-02_14-16-30.json",
+      "artifacts/reproducibility/M0-06_20261002_141615_392736/yolo11n-seg.onnx",
+      "artifacts/reproducibility/M0-06_20261002_141615_392736/yolo11n-seg.pt",
+      "artifacts/reproducibility/M0-06_20261002_142123_863995/bus_ort_cpu.npz",
+      "artifacts/reproducibility/M0-06_20261002_142123_863995/bus_ort_cuda.npz",
+      "artifacts/reproducibility/M0-06_20261002_142123_863995/bus_reference.npz",
+      "artifacts/reproducibility/M0-06_20261002_142123_863995/desktop_ort_cpu.npz",
+      "artifacts/reproducibility/M0-06_20261002_142123_863995/desktop_ort_cuda.npz",
+      "artifacts/reproducibility/M0-06_20261002_142123_863995/desktop_reference.npz",
+      "artifacts/reproducibility/M0-06_20261002_142123_863995/export.json",
+      "artifacts/reproducibility/M0-06_20261002_142123_863995/ort_cpu_profile_2026-10-02_14-21-36.json",
+      "artifacts/reproducibility/M0-06_20261002_142123_863995/ort_cuda_profile_2026-10-02_14-21-38.json",
+      "artifacts/reproducibility/M0-06_20261002_142123_863995/yolo11n-seg.onnx",
+      "artifacts/reproducibility/M0-06_20261002_142123_863995/yolo11n-seg.pt",
+      "runs/E0/M0-06_20261002_141615_392736_bus/best_frame.json",
+      "runs/E0/M0-06_20261002_141615_392736_bus/frames.jsonl",
+      "runs/E0/M0-06_20261002_141615_392736_bus/input_best.jpg",
+      "runs/E0/M0-06_20261002_141615_392736_bus/input_first.jpg",
+      "runs/E0/M0-06_20261002_141615_392736_bus/result_best.jpg",
+      "runs/E0/M0-06_20261002_141615_392736_bus/result_first.jpg",
+      "runs/E0/M0-06_20261002_141615_392736_bus/summary.json",
+      "runs/E0/M0-06_20261002_141615_392736_desktop/best_frame.json",
+      "runs/E0/M0-06_20261002_141615_392736_desktop/frames.jsonl",
+      "runs/E0/M0-06_20261002_141615_392736_desktop/input_best.jpg",
+      "runs/E0/M0-06_20261002_141615_392736_desktop/input_first.jpg",
+      "runs/E0/M0-06_20261002_141615_392736_desktop/result_best.jpg",
+      "runs/E0/M0-06_20261002_141615_392736_desktop/result_first.jpg",
+      "runs/E0/M0-06_20261002_141615_392736_desktop/summary.json",
+      "runs/E0/M0-06_20261002_142123_863995_bus/best_frame.json",
+      "runs/E0/M0-06_20261002_142123_863995_bus/frames.jsonl",
+      "runs/E0/M0-06_20261002_142123_863995_bus/input_best.jpg",
+      "runs/E0/M0-06_20261002_142123_863995_bus/input_first.jpg",
+      "runs/E0/M0-06_20261002_142123_863995_bus/result_best.jpg",
+      "runs/E0/M0-06_20261002_142123_863995_bus/result_first.jpg",
+      "runs/E0/M0-06_20261002_142123_863995_bus/summary.json",
+      "runs/E0/M0-06_20261002_142123_863995_desktop/best_frame.json",
+      "runs/E0/M0-06_20261002_142123_863995_desktop/frames.jsonl",
+      "runs/E0/M0-06_20261002_142123_863995_desktop/input_best.jpg",
+      "runs/E0/M0-06_20261002_142123_863995_desktop/input_first.jpg",
+      "runs/E0/M0-06_20261002_142123_863995_desktop/result_best.jpg",
+      "runs/E0/M0-06_20261002_142123_863995_desktop/result_first.jpg",
+      "runs/E0/M0-06_20261002_142123_863995_desktop/summary.json",
+      "logs/environment/M0-02_20261002_download_hashes.json",
+      "logs/environment/M0-02_20261002_package_changes.json",
+      "logs/environment/M0-02_20261002_pip_dry_run.json",
+      "logs/environment/M0-02_20261002_pip_dry_run_mirror.log",
+      "logs/environment/M0-02_20261002_pip_freeze.txt",
+      "logs/environment/M0-02_20261002_pip_install.json",
+      "logs/environment/M0-02_20261002_verify.log",
+      "logs/environment/M0-03_20261002_112743_062523_snapshot.json",
+      "logs/environment/M0-03_20261002_113023_201976_snapshot.json",
+      "logs/environment/M0-03_20261002_113358_932574_snapshot.json",
+      "logs/environment/M0-03_20261002_114028_379769_snapshot.json",
+      "logs/environment/M0-03_20261002_123216_374580_snapshot.json",
+      "logs/environment/M0-03_20261002_camera_devices.json",
+      "logs/environment/M0-03_20261002_camera_diagnostics.json",
+      "logs/environment/M0-03_20261002_camera_msmf_no_hw.json",
+      "logs/environment/M0-03_20261002_camera_native_release.json",
+      "logs/environment/M0-03_20261002_camera_opencv410.json",
+      "logs/environment/M0-03_20261002_check.log",
+      "logs/environment/M0-03_20261002_check_diagnostic.log",
+      "logs/environment/M0-03_20261002_check_final.log",
+      "logs/environment/M0-03_20261002_check_mjpeg.log",
+      "logs/environment/M0-03_20261002_opencv410_probe_install.log",
+      "logs/environment/M0-03_20261002_recheck_com_warmup.json",
+      "logs/environment/M0-03_20261002_recheck_minimal.json",
+      "logs/environment/M0-03_20261002_recheck_paired_com.json",
+      "logs/environment/M0-03_20261002_recheck_variants.json",
+      "logs/environment/M0-03_20261002_recheck_worker.json",
+      "logs/environment/M0-04_20261002_desktop_all_classes.log",
+      "logs/environment/M0-04_20261002_desktop_image.log",
+      "logs/environment/M0-04_20261002_desktop_video.log",
+      "logs/environment/M0-04_20261002_M0-04_20261002_bus_all.log",
+      "logs/environment/M0-04_20261002_M0-04_20261002_camera_targets.log",
+      "logs/environment/M0-04_20261002_prediction_statistics.json",
+      "logs/environment/M0-04_20261002_prepare.log",
+      "logs/environment/M0-05_20261002_before_install.json",
+      "logs/environment/M0-05_20261002_cp39_candidates.json",
+      "logs/environment/M0-05_20261002_install_step1.txt",
+      "logs/environment/M0-05_20261002_install_step2.txt",
+      "logs/environment/M0-05_20261002_install_step3.txt",
+      "logs/environment/M0-05_20261002_onnx_install_validation.json",
+      "logs/environment/M0-05_20261002_pip_freeze.txt",
+      "logs/environment/M0-05_20261002_pip_install_onnx.json",
+      "logs/environment/M0-05_20261002_pip_plan.json",
+      "logs/environment/M0-05_20261002_pypi_compatibility.json",
+      "logs/environment/M0-05_20261002_trt_install.txt",
+      "logs/environment/M0-05_20261002_trt_pip_install.json",
+      "logs/environment/M0-05_20261002_trt_pip_plan.json",
+      "logs/environment/M0-05_20261002_trt_wheels.json",
+      "logs/environment/M0-05_20261002_trt_windows_packages.json",
+      "logs/environment/M0-06_20261002_141228_402908/archive.json",
+      "logs/environment/M0-06_20261002_141228_402908/conda_explicit_win64.txt",
+      "logs/environment/M0-06_20261002_141228_402908/conda_full.yml",
+      "logs/environment/M0-06_20261002_141228_402908/conda_list.json",
+      "logs/environment/M0-06_20261002_141228_402908/conda_version.txt",
+      "logs/environment/M0-06_20261002_141228_402908/model_origins.json",
+      "logs/environment/M0-06_20261002_141228_402908/nvidia_smi.txt",
+      "logs/environment/M0-06_20261002_141228_402908/packages.json",
+      "logs/environment/M0-06_20261002_141228_402908/pip_check.txt",
+      "logs/environment/M0-06_20261002_141228_402908/pip_freeze_all.txt",
+      "logs/environment/M0-06_20261002_141228_402908/source-lock.json",
+      "logs/environment/M0-06_20261002_141228_402908/source_commit.txt",
+      "logs/environment/M0-06_20261002_141228_402908/source_status.txt",
+      "logs/environment/M0-06_20261002_142116_389565/archive.json",
+      "logs/environment/M0-06_20261002_142116_389565/conda_explicit_win64.txt",
+      "logs/environment/M0-06_20261002_142116_389565/conda_full.yml",
+      "logs/environment/M0-06_20261002_142116_389565/conda_list.json",
+      "logs/environment/M0-06_20261002_142116_389565/conda_version.txt",
+      "logs/environment/M0-06_20261002_142116_389565/model_origins.json",
+      "logs/environment/M0-06_20261002_142116_389565/nvidia_smi.txt",
+      "logs/environment/M0-06_20261002_142116_389565/packages.json",
+      "logs/environment/M0-06_20261002_142116_389565/pip_check.txt",
+      "logs/environment/M0-06_20261002_142116_389565/pip_freeze_all.txt",
+      "logs/environment/M0-06_20261002_142116_389565/source-lock.json",
+      "logs/environment/M0-06_20261002_142116_389565/source_commit.txt",
+      "logs/environment/M0-06_20261002_142116_389565/source_status.txt",
+      "logs/environment/M0-06_20261002_conda_restore_dry_run.stderr.txt",
+      "logs/environment/M0-06_20261002_initial_conda_list.json",
+      "logs/reproducibility/M0-06_20261002_141615_392736/deployment/M0-05_export.json",
+      "logs/reproducibility/M0-06_20261002_141615_392736/deployment/M0-05_ort_cpu.json",
+      "logs/reproducibility/M0-06_20261002_141615_392736/deployment/M0-05_ort_cuda.json",
+      "logs/reproducibility/M0-06_20261002_141615_392736/deployment_config.yaml",
+      "logs/reproducibility/M0-06_20261002_141615_392736/e0_bus.log",
+      "logs/reproducibility/M0-06_20261002_141615_392736/e0_desktop.log",
+      "logs/reproducibility/M0-06_20261002_141615_392736/export.log",
+      "logs/reproducibility/M0-06_20261002_141615_392736/ort_cpu.log",
+      "logs/reproducibility/M0-06_20261002_141615_392736/ort_cuda.log",
+      "logs/reproducibility/M0-06_20261002_141615_392736/source.log",
+      "logs/reproducibility/M0-06_20261002_141615_392736/summary.json",
+      "logs/reproducibility/M0-06_20261002_141615_392736/training.json",
+      "logs/reproducibility/M0-06_20261002_141615_392736/training.log",
+      "logs/reproducibility/M0-06_20261002_142123_863995/deployment/M0-05_export.json",
+      "logs/reproducibility/M0-06_20261002_142123_863995/deployment/M0-05_ort_cpu.json",
+      "logs/reproducibility/M0-06_20261002_142123_863995/deployment/M0-05_ort_cuda.json",
+      "logs/reproducibility/M0-06_20261002_142123_863995/deployment_config.yaml",
+      "logs/reproducibility/M0-06_20261002_142123_863995/e0_bus.log",
+      "logs/reproducibility/M0-06_20261002_142123_863995/e0_desktop.log",
+      "logs/reproducibility/M0-06_20261002_142123_863995/export.log",
+      "logs/reproducibility/M0-06_20261002_142123_863995/ort_cpu.log",
+      "logs/reproducibility/M0-06_20261002_142123_863995/ort_cuda.log",
+      "logs/reproducibility/M0-06_20261002_142123_863995/source.log",
+      "logs/reproducibility/M0-06_20261002_142123_863995/summary.json",
+      "logs/reproducibility/M0-06_20261002_142123_863995/training.json",
+      "logs/reproducibility/M0-06_20261002_142123_863995/training.log",
+      "docs/E0_预训练模型使用说明.md",
+      "docs/环境安装记录.md",
+      "docs/环境恢复与复现说明.md",
+      "docs/环境检查使用说明.md",
+      "docs/部署预检查使用说明.md",
+      "reports/deployment/M0-05_部署兼容性预检查.md",
+      "reports/E0_预训练模型验证.md",
+      "reports/environment/M0-06_环境归档与复现验收.md",
+      "reports/environment.md"
+    ],
+    "deleted_directories": [
+      "logs/reproducibility/M0-06_20261002_141615_392736/deployment",
+      "logs/reproducibility/M0-06_20261002_142123_863995/deployment",
+      "artifacts/reproducibility/M0-06_20261002_141615_392736",
+      "artifacts/reproducibility/M0-06_20261002_142123_863995",
+      "tmp/camera_opencv410/opencv_python-4.10.0.84.dist-info",
+      "logs/reproducibility/M0-06_20261002_141615_392736",
+      "logs/reproducibility/M0-06_20261002_142123_863995",
+      "tmp/camera_opencv410/cv2/mat_wrapper/__pycache__",
+      "logs/environment/M0-06_20261002_141228_402908",
+      "logs/environment/M0-06_20261002_142116_389565",
+      "runs/E0/M0-06_20261002_141615_392736_desktop",
+      "runs/E0/M0-06_20261002_142123_863995_desktop",
+      "tmp/camera_opencv410/cv2/typing/__pycache__",
+      "tmp/camera_opencv410/cv2/gapi/imgproc/fluid",
+      "tmp/camera_opencv410/cv2/utils/__pycache__",
+      "tmp/camera_opencv410/cv2/gapi/__pycache__",
+      "tmp/camera_opencv410/cv2/data/__pycache__",
+      "tmp/camera_opencv410/cv2/videoio_registry",
+      "tmp/camera_opencv410/cv2/misc/__pycache__",
+      "tmp/camera_opencv410/cv2/gapi/render/ocv",
+      "tmp/camera_opencv410/cv2/gapi/own/detail",
+      "runs/E0/M0-06_20261002_141615_392736_bus",
+      "tmp/camera_opencv410/cv2/gapi/core/fluid",
+      "tmp/camera_opencv410/cv2/gapi/wip/onevpl",
+      "runs/E0/M0-06_20261002_142123_863995_bus",
+      "codex/旧目录结构/data/raw/camera/annotations",
+      "tmp/camera_opencv410/cv2/gapi/streaming",
+      "tmp/camera_opencv410/cv2/gapi/ie/detail",
+      "tmp/camera_opencv410/cv2/gapi/core/ocl",
+      "tmp/camera_opencv410/cv2/gapi/wip/draw",
+      "tmp/camera_opencv410/cv2/gapi/core/cpu",
+      "tmp/camera_opencv410/cv2/gapi/imgproc",
+      "tmp/camera_opencv410/cv2/gapi/onnx/ep",
+      "tmp/camera_opencv410/cv2/utils/nested",
+      "tmp/camera_opencv410/cv2/segmentation",
+      "codex/旧目录结构/data/desktop/images/train",
+      "tmp/camera_opencv410/cv2/gapi/wip/gst",
+      "codex/旧目录结构/data/raw/coco/annotations",
+      "codex/旧目录结构/data/desktop/labels/train",
+      "tmp/camera_opencv410/cv2/gapi/render",
+      "tmp/camera_opencv410/cv2/mat_wrapper",
+      "codex/旧目录结构/data/desktop/labels/test",
+      "tmp/camera_opencv410/cv2/__pycache__",
+      "tmp/camera_opencv410/cv2/gapi/ot/cpu",
+      "codex/旧目录结构/data/desktop/images/test",
+      "tmp/camera_opencv410/cv2/gapi/video",
+      "codex/旧目录结构/data/desktop/labels/val",
+      "codex/旧目录结构/data/desktop/images/val",
+      "tmp/camera_opencv410/cv2/gapi/core",
+      "tmp/camera_opencv410/cv2/gapi/onnx",
+      "codex/旧目录结构/data/raw/camera/frames",
+      "codex/旧目录结构/data/raw/camera/videos",
+      "tmp/camera_opencv410/cv2/utils/fs",
+      "tmp/camera_opencv410/cv2/parallel",
+      "codex/旧目录结构/data/desktop/metadata",
+      "tmp/camera_opencv410/cv2/gapi/own",
+      "tmp/camera_opencv410/cv2/gapi/oak",
+      "tmp/camera_opencv410/cv2/gapi/wip",
+      "tmp/camera_opencv410/cv2/samples",
+      "tmp/camera_opencv410/cv2/gapi/ie",
+      "tmp/camera_opencv410/cv2/fisheye",
+      "codex/旧目录结构/artifacts/pretrained",
+      "tmp/camera_opencv410/cv2/gapi/ov",
+      "tmp/camera_opencv410/cv2/gapi/ot",
+      "tmp/camera_opencv410/cv2/barcode",
+      "codex/旧目录结构/data/raw/coco/images",
+      "codex/旧目录结构/reports/performance",
+      "tmp/camera_opencv410/cv2/typing",
+      "codex/旧目录结构/data/desktop/images",
+      "codex/旧目录结构/data/desktop/labels",
+      "tmp/camera_opencv410/cv2/detail",
+      "codex/旧目录结构/data/desktop/splits",
+      "codex/旧目录结构/reports/experiments",
+      "tmp/camera_opencv410/cv2/utils",
+      "tmp/camera_opencv410/cv2/Error",
+      "codex/旧目录结构/docs/model_changes",
+      "tmp/camera_opencv410/cv2/aruco",
+      "codex/旧目录结构/reports/deployment",
+      "tmp/camera_opencv410/cv2/flann",
+      "tmp/camera_opencv410/cv2/cuda",
+      "tmp/camera_opencv410/cv2/data",
+      "tmp/camera_opencv410/cv2/misc",
+      "codex/旧目录结构/data/fixed_checks",
+      "tmp/camera_opencv410/cv2/gapi",
+      "codex/旧目录结构/reports/stability",
+      "codex/旧目录结构/logs/environment",
+      "tmp/camera_opencv410/cv2/ogl",
+      "codex/旧目录结构/demo/screenshots",
+      "tmp/camera_opencv410/cv2/dnn",
+      "tmp/camera_opencv410/cv2/ipp",
+      "tmp/camera_opencv410/cv2/ocl",
+      "tmp/camera_opencv410/cv2/ml",
+      "codex/旧目录结构/demo/recordings",
+      "codex/旧目录结构/data/raw/camera",
+      "codex/旧目录结构/runs/benchmark",
+      "codex/旧目录结构/data/raw/coco",
+      "tmp/e0_timeout_regression",
+      "codex/旧目录结构/artifacts/E2",
+      "codex/旧目录结构/reports/data",
+      "codex/旧目录结构/artifacts/E3",
+      "tmp/camera_opencv410/cv2",
+      "codex/旧目录结构/artifacts/E1",
+      "codex/旧目录结构/data/desktop",
+      "codex/旧目录结构/runs/export",
+      "codex/旧目录结构/third_party",
+      "tmp/pdfs/learning_refs",
+      "codex/旧目录结构/logs/build",
+      "codex/旧目录结构/demo/input",
+      "codex/旧目录结构/runs/train",
+      "codex/旧目录结构/artifacts",
+      "codex/旧目录结构/runs/eval",
+      "codex/旧目录结构/data/raw",
+      "tmp/camera_opencv410",
+      "codex/旧目录结构/logs/app",
+      "scripts/__pycache__",
+      "codex/旧目录结构/configs",
+      "codex/旧目录结构/reports",
+      "codex/旧目录结构/scripts",
+      "reports/environment",
+      "tmp/camera_recheck",
+      "reports/deployment",
+      "deploy/__pycache__",
+      "codex/旧目录结构/deploy",
+      "tmp/deploy_wheels",
+      "codex/旧目录结构/data",
+      "codex/旧目录结构/demo",
+      "codex/旧目录结构/runs",
+      "codex/旧目录结构/logs",
+      "codex/旧目录结构/docs",
+      "codex/旧目录结构/app",
+      "codex/旧目录结构",
+      "tmp/pdfs"
+    ],
+    "deleted_bytes": 2481877464,
+    "error": null,
+    "completed_at": "2026-10-02T15:35:06.2085148+08:00",
+    "runtime_smoke_check": {
+      "passed": true,
+      "gpu": "NVIDIA GeForce RTX 5060 Ti",
+      "pytorch_e0": {
+        "class_counts": {
+          "person": 4,
+          "bus": 1
+        },
+        "nonempty_masks": 5,
+        "device": "cuda:0"
+      },
+      "ort_cpu": [
+        {
+          "case": "bus",
+          "providers": [
+            "CPUExecutionProvider"
+          ],
+          "cpu_node_fallback_disabled": false,
+          "comparisons": [
+            {
+              "output": "output0",
+              "shape": [
+                1,
+                116,
+                8400
+              ],
+              "maximum_absolute_difference": 0.00225830078125,
+              "outside_tolerance_elements": 0
+            },
+            {
+              "output": "output1",
+              "shape": [
+                1,
+                32,
+                160,
+                160
+              ],
+              "maximum_absolute_difference": 1.621246337890625e-05,
+              "outside_tolerance_elements": 0
+            }
+          ]
+        },
+        {
+          "case": "desktop",
+          "providers": [
+            "CPUExecutionProvider"
+          ],
+          "cpu_node_fallback_disabled": false,
+          "comparisons": [
+            {
+              "output": "output0",
+              "shape": [
+                1,
+                116,
+                8400
+              ],
+              "maximum_absolute_difference": 0.00225830078125,
+              "outside_tolerance_elements": 0
+            },
+            {
+              "output": "output1",
+              "shape": [
+                1,
+                32,
+                160,
+                160
+              ],
+              "maximum_absolute_difference": 1.8358230590820312e-05,
+              "outside_tolerance_elements": 0
+            }
+          ]
+        }
+      ],
+      "ort_cuda": [
+        {
+          "case": "bus",
+          "providers": [
+            "CUDAExecutionProvider",
+            "CPUExecutionProvider"
+          ],
+          "cpu_node_fallback_disabled": true,
+          "comparisons": [
+            {
+              "output": "output0",
+              "shape": [
+                1,
+                116,
+                8400
+              ],
+              "maximum_absolute_difference": 0.00152587890625,
+              "outside_tolerance_elements": 0
+            },
+            {
+              "output": "output1",
+              "shape": [
+                1,
+                32,
+                160,
+                160
+              ],
+              "maximum_absolute_difference": 1.3589859008789062e-05,
+              "outside_tolerance_elements": 0
+            }
+          ]
+        },
+        {
+          "case": "desktop",
+          "providers": [
+            "CUDAExecutionProvider",
+            "CPUExecutionProvider"
+          ],
+          "cpu_node_fallback_disabled": true,
+          "comparisons": [
+            {
+              "output": "output0",
+              "shape": [
+                1,
+                116,
+                8400
+              ],
+              "maximum_absolute_difference": 0.002532958984375,
+              "outside_tolerance_elements": 0
+            },
+            {
+              "output": "output1",
+              "shape": [
+                1,
+                32,
+                160,
+                160
+              ],
+              "maximum_absolute_difference": 1.2755393981933594e-05,
+              "outside_tolerance_elements": 0
+            }
+          ]
+        }
+      ],
+      "tensorrt": [
+        {
+          "case": "bus",
+          "comparisons": [
+            {
+              "output": "output0",
+              "shape": [
+                1,
+                116,
+                8400
+              ],
+              "maximum_absolute_difference": 0.001800537109375,
+              "outside_tolerance_elements": 0
+            },
+            {
+              "output": "output1",
+              "shape": [
+                1,
+                32,
+                160,
+                160
+              ],
+              "maximum_absolute_difference": 1.6808509826660156e-05,
+              "outside_tolerance_elements": 0
+            }
+          ]
+        },
+        {
+          "case": "desktop",
+          "comparisons": [
+            {
+              "output": "output0",
+              "shape": [
+                1,
+                116,
+                8400
+              ],
+              "maximum_absolute_difference": 0.0020751953125,
+              "outside_tolerance_elements": 0
+            },
+            {
+              "output": "output1",
+              "shape": [
+                1,
+                32,
+                160,
+                160
+              ],
+              "maximum_absolute_difference": 1.895427703857422e-05,
+              "outside_tolerance_elements": 0
+            }
+          ]
+        }
+      ],
+      "scope": "Retained model/image runtime check; no export, engine rebuild, camera collection, accuracy or performance benchmark."
+    },
+    "verified_at": "2026-10-02T15:47:29.117632+08:00",
+    "stats_before": {
+      "files": 2174,
+      "directories": 592,
+      "bytes": 2797428644
+    },
+    "stats_after": {
+      "files": 1883,
+      "directories": 462,
+      "bytes": 316006963,
+      "top_level": {
+        "(root files)": {
+          "files": 6,
+          "bytes": 6772
+        },
+        ".git": {
+          "files": 419,
+          "bytes": 61380034
+        },
+        "artifacts": {
+          "files": 26,
+          "bytes": 141267768
+        },
+        "codex": {
+          "files": 6,
+          "bytes": 180624
+        },
+        "configs": {
+          "files": 6,
+          "bytes": 5472
+        },
+        "demo": {
+          "files": 2,
+          "bytes": 8262704
+        },
+        "deploy": {
+          "files": 2,
+          "bytes": 786
+        },
+        "docs": {
+          "files": 1,
+          "bytes": 13911
+        },
+        "logs": {
+          "files": 64,
+          "bytes": 4387922
+        },
+        "plan": {
+          "files": 3,
+          "bytes": 117090
+        },
+        "ref": {
+          "files": 20,
+          "bytes": 44569006
+        },
+        "reports": {
+          "files": 4,
+          "bytes": 219179
+        },
+        "runs": {
+          "files": 101,
+          "bytes": 38413101
+        },
+        "scripts": {
+          "files": 9,
+          "bytes": 82484
+        },
+        "third_party": {
+          "files": 1208,
+          "bytes": 16170216
+        },
+        "tmp": {
+          "files": 6,
+          "bytes": 929894
+        }
+      },
+      "includes_source_git_and_small_audit_helpers": true
+    }
+  },
+  "preparation_verification": {
+    "local_link_count": 238,
+    "missing_links": [],
+    "links_to_pending_delete": [],
+    "link_check_scope": "Owned navigation, plans, learning books and M0 docs; upstream reference snapshots retain original upstream-relative links.",
+    "core_hashes_passed": true,
+    "packages_match_archive": true,
+    "all_archive_originals_present_unchanged": true,
+    "all_configured_paths_exist": true,
+    "runtime_imports_outside_tmp": true,
+    "git_diff_check_passed": true,
+    "history_archive_git_ignored": true
+  }
+}

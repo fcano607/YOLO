@@ -1,0 +1,10 @@
+{
+  "repository": "https://github.com/ultralytics/ultralytics.git",
+  "tag": "v8.4.171",
+  "commit": "86f5c8c401a630da651d321e691ab0af540812cf",
+  "version": "8.4.171",
+  "path": "third_party/ultralytics",
+  "model": "yolo11n-seg",
+  "locked_on": "2026-10-02",
+  "patches": []
+}

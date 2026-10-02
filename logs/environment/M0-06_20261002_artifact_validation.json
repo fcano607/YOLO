@@ -1,0 +1,38 @@
+{
+  "task": "M0-06",
+  "passed": true,
+  "timestamp": "2026-10-02T14:37:56.520160+08:00",
+  "archive": "logs\\environment\\M0-06_20261002_143323_895437",
+  "reproduction_summary": "logs\\reproducibility\\M0-06_20261002_143331_549349\\summary.json",
+  "package_count": 167,
+  "conda_registered_count": 19,
+  "conda_list_non_pypi_count": 18,
+  "packages_unchanged_from_M0_05": true,
+  "core_file_hashes_checked": 16,
+  "fresh_worker_count": 7,
+  "all_worker_exit_codes_zero": true,
+  "persisted_onnx_comparisons_passed": true,
+  "e0_outputs_readable": true,
+  "e0_image_decode_method": "Python read_bytes plus cv2.imdecode to support Chinese paths",
+  "pip_check": "No broken requirements found.",
+  "local_links_checked": 253,
+  "broken_links": [],
+  "completed_tasks": [
+    "M0-01",
+    "M0-02",
+    "M0-03",
+    "M0-04",
+    "M0-05",
+    "M0-06"
+  ],
+  "progress": "6/54",
+  "completed_modules": "1/9",
+  "next_task": "M1-01",
+  "not_tested": [
+    "clean environment reinstall",
+    "other-machine restore",
+    "full independent postprocessing",
+    "training/backward",
+    "controlled performance evaluation"
+  ]
+}

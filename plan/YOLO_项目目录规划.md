@@ -4,11 +4,13 @@
 
 本文件规划需要在你的 Windows 电脑中建立的目录与文件。2026-10-02 已完成 M0-02：必要一级目录、`configs/paths.yaml`、源码锁定清单、训练 requirements、路径解析与安装验收脚本已建立；后续数据、训练和部署脚本按任务逐步实现，表中其余文件仍是规划。实际进展见[进度跟踪](00_YOLO_分阶段推进与进度跟踪.md)。
 
-同日已实现 `scripts/check_env.py`，生成 JSON 快照与 `reports/environment_check.md`；12:34 的复测已通过同一后端连续三次摄像头读取与正常释放，M0-03 已验收，见[检查使用说明](../docs/环境检查使用说明.md)。
+同日已实现 `scripts/check_env.py`，生成 JSON 快照与 `reports/environment_check.md`；12:34 的复测已通过同一后端连续三次摄像头读取与正常释放，M0-03 已验收，见[检查使用说明](../docs/M0_环境与模型使用手册.md)。
 
-同日 M0-04 已验收：新增 `scripts/prepare_e0.py`、`scripts/predict_e0.py` 与 `configs/e0.yaml`，预训练图片、文件视频和摄像头推理通过；产出保存在 `runs/E0/`、`demo/E0/`，见[E0 报告](../reports/E0_预训练模型验证.md)。
+同日 M0-04 已验收：新增 `scripts/prepare_e0.py`、`scripts/predict_e0.py` 与 `configs/e0.yaml`，预训练图片、文件视频和摄像头推理通过；产出保存在 `runs/E0/`、`demo/E0/`，见[E0 报告](../reports/M0_阶段验收报告.md)。
 
-同日 M0-05 已验收：新增 `scripts/check_deployment.py`、`configs/deploy-precheck.yaml` 与 `requirements-deploy.txt`，完成 ONNX / ORT CPU/CUDA / TensorRT FP32 实际执行及同输入原始输出对照。模型和数组在 `artifacts/precheck/M0-05/`，小型执行证据在 `logs/deployment/`，见[部署报告](../reports/deployment/M0-05_部署兼容性预检查.md)；完整 M5/M6 仍待开展。
+同日 M0-05 已验收：新增 `scripts/check_deployment.py`、`configs/deploy-precheck.yaml` 与 `requirements-deploy.txt`，完成 ONNX / ORT CPU/CUDA / TensorRT FP32 实际执行及同输入原始输出对照。模型和数组在 `artifacts/precheck/M0-05/`，小型执行证据在 `logs/deployment/`，见[部署报告](../reports/M0_阶段验收报告.md)；完整 M5/M6 仍待开展。
+
+同日 M0-06 已验收，M0 模块完成：新增 `environment.yml`、`configs/constraints-runtime.txt`、`scripts/save_environment.py`、`scripts/verify_reproducibility.py`。归档位于 `logs/environment/M0-06_<时间戳>/`，新进程记录在 `logs/reproducibility/`，新模型 / 数组在 `artifacts/reproducibility/`；见[恢复说明](../docs/M0_环境与模型使用手册.md)和[验收报告](../reports/M0_阶段验收报告.md)。
 
 以下路径均相对于项目根目录，使用 `/` 表示子目录。例如 `configs/runtime.yaml` 在你的电脑上对应 `E:\秋招\项目相关\YOLO\configs\runtime.yaml`。
 
@@ -38,11 +40,12 @@
 | `README.md` | 项目介绍、环境安装、数据准备、训练、部署与运行命令 |
 | `requirements-train.txt` | 训练环境的 Python 依赖与版本 |
 | `requirements-deploy.txt` | 部署环境的 Python 依赖与版本 |
+| `environment.yml` | M0-06 生成的 Windows Conda 基础恢复定义；GPU torch 与项目 pip 依赖分步安装 |
 | `.gitignore` | Git 忽略大型数据、自动生成结果、临时文件等 |
 
 `requirements` 在环境验证后锁定版本。驱动、GPU、CUDA、cuDNN 与 TensorRT 等信息另外写入环境报告，不只依靠 `pip freeze`。
 
-当前 `requirements-train.txt` 已验证；`requirements-deploy.txt` 待 M0-05 确认兼容性后建立。上游源码由 `configs/source-lock.json` 与 `scripts/setup_source.py` 恢复，当前原始源码不重复上传到本项目 Git；后续修改以登记的 patch 保存。
+当前 `requirements-train.txt` 与 `requirements-deploy.txt` 均已建立并在 M0 验证；日常操作与验收统一查阅合并后的 M0 手册和报告。上游源码由 `configs/source-lock.json` 与 `scripts/setup_source.py` 恢复，当前原始源码不重复上传到本项目 Git；后续修改以登记的 patch 保存。
 
 Conda 环境不需要放在项目目录中。若后续使用 Git，重点版本管理代码、配置、文档和小型实验清单；大数据与全部训练权重另行管理。
 
@@ -132,6 +135,8 @@ Conda 环境不需要放在项目目录中。若后续使用 Git，重点版本�
 | --- | --- | --- |
 | `scripts/check_env.py` | 检查版本、GPU、provider、摄像头 | 最先 |
 | `scripts/check_deployment.py` | M0-05：固定 FP32 ONNX 导出、ORT CPU/CUDA 与 TensorRT 构建 / 执行、同输入原始输出对照 | 已实现，M0-05 |
+| `scripts/save_environment.py` | 归档 Conda / pip / 硬件 / 源码 / 模型，生成恢复定义与当前版本约束 | 已实现，M0-06 |
+| `scripts/verify_reproducibility.py` | 从项目外工作目录启动新进程，复现 E0 与 ONNX | 已实现，M0-06 |
 | `scripts/prepare_e0.py` | 恢复并校验固定预训练权重及通用图片 | M0-04 已实现 |
 | `scripts/predict_e0.py` | E0 图片、视频、摄像头推理，保存框、mask 与运行证据 | M0-04 已实现 |
 | `scripts/prepare_coco_subset.py` | 筛选、下载、转换、类别重映射 | 数据阶段 |

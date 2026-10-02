@@ -1,0 +1,182 @@
+{
+  "task": "M0-06",
+  "run_id": "M0-06_20261002_143323_895437",
+  "timestamp": "2026-10-02T14:33:31.236512+08:00",
+  "environment_saved": true,
+  "fresh_process_reproduction": "passed",
+  "python": "3.9.23 (main, Jun  5 2025, 13:25:08) [MSC v.1929 64 bit (AMD64)]",
+  "executable": "D:\\software\\anaconda\\envs\\yolo\\python.exe",
+  "prefix": "D:\\software\\anaconda\\envs\\yolo",
+  "platform": "Windows-10-10.0.19045-SP0",
+  "conda_version": "conda 24.1.2",
+  "package_count": 167,
+  "conda_managed_count": 19,
+  "conda_list_non_pypi_count": 18,
+  "gpu": {
+    "nvidia_smi": "NVIDIA GeForce RTX 5060 Ti, 576.88, 16311 MiB, 12.0",
+    "name": "NVIDIA GeForce RTX 5060 Ti",
+    "capability": [
+      12,
+      0
+    ],
+    "torch": "2.8.0+cu129",
+    "cuda": "12.9",
+    "cudnn": 91002
+  },
+  "source": {
+    "repository": "https://github.com/ultralytics/ultralytics.git",
+    "tag": "v8.4.171",
+    "commit": "86f5c8c401a630da651d321e691ab0af540812cf",
+    "version": "8.4.171",
+    "path": "third_party/ultralytics",
+    "model": "yolo11n-seg",
+    "locked_on": "2026-10-02",
+    "patches": []
+  },
+  "source_clean": true,
+  "pinned_direct_packages": {
+    "torch": "2.8.0+cu129",
+    "torchvision": "0.23.0+cu129",
+    "numpy": "1.26.4",
+    "opencv-python": "4.11.0.86",
+    "matplotlib": "3.8.4",
+    "pillow": "11.0.0",
+    "PyYAML": "6.0.3",
+    "requests": "2.32.5",
+    "psutil": "7.1.0",
+    "cloudpickle": "3.1.1",
+    "filelock": "3.19.1",
+    "polars": "1.36.1",
+    "polars-runtime-32": "1.36.1",
+    "nvidia-ml-py": "13.615.71",
+    "ultralytics-thop": "2.2.2",
+    "pandas": "2.2.1",
+    "scipy": "1.13.1",
+    "tqdm": "4.67.3",
+    "onnx": "1.17.0",
+    "onnxruntime-gpu": "1.19.2",
+    "protobuf": "4.25.8",
+    "coloredlogs": "15.0.1",
+    "humanfriendly": "10.0",
+    "pyreadline3": "3.5.6",
+    "tensorrt-cu12": "11.3.0.99",
+    "tensorrt-cu12-bindings": "11.3.0.99",
+    "tensorrt-cu12-libs": "11.3.0.99"
+  },
+  "project_files_sha256": {
+    "environment.yml": "689855ac842d1f539644a5d100b3134e1cd12c653e542602fc98caf1885a9b25",
+    "configs/constraints-runtime.txt": "6a75c47bd1264298fea2915b3d8bd053e37cc19eb9d96c3d601362c93f18986e",
+    "requirements-train.txt": "9fb1708c55bd4c3265fb3acf26572c73a53de88d5c3cb2aed125115e0abb5887",
+    "requirements-deploy.txt": "9bf08491c14f338665aff1e95c79111b510b8cb5eb7192424107684cba2954bd",
+    "configs/constraints-train.txt": "e6dc2a3ec41bb7482a461f417f732cca5e318881336d2fcdcb81be3c843edeac",
+    "configs/source-lock.json": "6cd235d218c22f784703cc92b0608c5ca6b68507454427c62ab655c4886e5323",
+    "configs/e0.yaml": "3cfaf7a89a6db4ee21c001bd0ecebbdc3e6f8e61e20e4173b29b618297bb7a8f",
+    "configs/deploy-precheck.yaml": "a0ef8eb6426f280c243c582f7d90de4195b5b37e12684591a30907bcfcc665a0",
+    "configs/paths.yaml": "369618404d8f7679626fc1b754b60bbc7b6ece018fb7e7ca8322d4dd239b288f",
+    "scripts/save_environment.py": "92018bb550ed41052e56065137ba2d16c49462eeac6a88450d56b74ed9b77be3",
+    "scripts/verify_reproducibility.py": "793eceaba774ef020b942e260a300d315c2a557303f960ce7682d0b1047f490d",
+    "scripts/setup_source.py": "17770796b6cf37e89564a22d2c22166aeb128d33f3d0947195054452eba44c50",
+    "scripts/prepare_e0.py": "aa7fe703a64966fd67f0a4aebf008a7be29094a3d0d7015f9e0880b011ff9192",
+    "scripts/predict_e0.py": "17c0743cb65d8f7d723001c11892b4004562a17bfec878e2da633757a4a7ad3e",
+    "scripts/check_deployment.py": "8fcae20de31f8d123e7c18b266c3fe8754559319d7715be5cf967bb4054aed92",
+    "deploy/paths.py": "32d319f0b56bbd2f8a9bb1eb4724f0fa36e85fefa7117edb298346c39c22d6e1"
+  },
+  "commands": [
+    {
+      "args": [
+        "D:\\software\\anaconda\\Scripts\\conda.exe",
+        "list",
+        "--prefix",
+        "D:\\software\\anaconda\\envs\\yolo",
+        "--json"
+      ],
+      "exit_code": 0,
+      "output": "conda_list.json"
+    },
+    {
+      "args": [
+        "D:\\software\\anaconda\\Scripts\\conda.exe",
+        "env",
+        "export",
+        "--prefix",
+        "D:\\software\\anaconda\\envs\\yolo"
+      ],
+      "exit_code": 0,
+      "output": "conda_full.yml"
+    },
+    {
+      "args": [
+        "D:\\software\\anaconda\\Scripts\\conda.exe",
+        "list",
+        "--prefix",
+        "D:\\software\\anaconda\\envs\\yolo",
+        "--explicit"
+      ],
+      "exit_code": 0,
+      "output": "conda_explicit_win64.txt"
+    },
+    {
+      "args": [
+        "D:\\software\\anaconda\\envs\\yolo\\python.exe",
+        "-m",
+        "pip",
+        "freeze",
+        "--all"
+      ],
+      "exit_code": 0,
+      "output": "pip_freeze_all.txt"
+    },
+    {
+      "args": [
+        "D:\\software\\anaconda\\envs\\yolo\\python.exe",
+        "-m",
+        "pip",
+        "check"
+      ],
+      "exit_code": 0,
+      "output": "pip_check.txt"
+    },
+    {
+      "args": [
+        "D:\\software\\anaconda\\Scripts\\conda.exe",
+        "--version"
+      ],
+      "exit_code": 0,
+      "output": "conda_version.txt"
+    },
+    {
+      "args": [
+        "nvidia-smi",
+        "--query-gpu=name,driver_version,memory.total,compute_cap",
+        "--format=csv,noheader"
+      ],
+      "exit_code": 0,
+      "output": "nvidia_smi.txt"
+    },
+    {
+      "args": [
+        "git",
+        "-C",
+        "E:\\秋招\\项目相关\\YOLO\\third_party\\ultralytics",
+        "rev-parse",
+        "HEAD"
+      ],
+      "exit_code": 0,
+      "output": "source_commit.txt"
+    },
+    {
+      "args": [
+        "git",
+        "-C",
+        "E:\\秋招\\项目相关\\YOLO\\third_party\\ultralytics",
+        "status",
+        "--porcelain"
+      ],
+      "exit_code": 0,
+      "output": "source_status.txt"
+    }
+  ],
+  "archive": "logs\\environment\\M0-06_20261002_143323_895437",
+  "scope": "Current environment records and recovery recipe; no clean reinstall or other-machine test.",
+  "reproduction_summary": "logs\\reproducibility\\M0-06_20261002_143331_549349\\summary.json"
+}

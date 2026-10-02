@@ -1,0 +1,14 @@
+[
+  {
+    "package": "torch",
+    "version": "2.8.0+cu129",
+    "index": "https://download.pytorch.org/whl/cu129/torch/",
+    "cp39_windows_wheel": "https://download-r2.pytorch.org/whl/cu129/torch-2.8.0%2Bcu129-cp39-cp39-win_amd64.whl#sha256=d852178da46723dab0e2d9f7be570a073bb21c355b3e6b2d3f89e14062198e05"
+  },
+  {
+    "package": "torchvision",
+    "version": "0.23.0+cu129",
+    "index": "https://download.pytorch.org/whl/cu129/torchvision/",
+    "cp39_windows_wheel": "https://download-r2.pytorch.org/whl/cu129/torchvision-0.23.0%2Bcu129-cp39-cp39-win_amd64.whl#sha256=aad54c7f5ae06c2f3437b49ea9ce83cad7195a40ed3f0c3c2bc45dc1117d27fd"
+  }
+]

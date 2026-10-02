@@ -1,0 +1,401 @@
+{
+  "task": "M0-06",
+  "run_id": "M0-06_20261002_143331_549349",
+  "timestamp": "2026-10-02T14:33:31.550346+08:00",
+  "parent_pid": 29732,
+  "python": "D:\\software\\anaconda\\envs\\yolo\\python.exe",
+  "worker_cwd": "E:\\秋招\\项目相关",
+  "cwd_is_outside_project": true,
+  "archive": "logs\\environment\\M0-06_20261002_143323_895437",
+  "steps": [
+    {
+      "name": "source",
+      "pid": 50368,
+      "cwd": "E:\\秋招\\项目相关",
+      "command": [
+        "D:\\software\\anaconda\\envs\\yolo\\python.exe",
+        "-X",
+        "utf8",
+        "E:\\秋招\\项目相关\\YOLO\\scripts\\setup_source.py"
+      ],
+      "exit_code": 0,
+      "elapsed_seconds": 0.066,
+      "log": "logs\\reproducibility\\M0-06_20261002_143331_549349\\source.log"
+    },
+    {
+      "name": "training",
+      "pid": 14916,
+      "cwd": "E:\\秋招\\项目相关",
+      "command": [
+        "D:\\software\\anaconda\\envs\\yolo\\python.exe",
+        "-X",
+        "utf8",
+        "E:\\秋招\\项目相关\\YOLO\\scripts\\verify_reproducibility.py",
+        "--training-worker",
+        "E:\\秋招\\项目相关\\YOLO\\logs\\reproducibility\\M0-06_20261002_143331_549349\\training.json"
+      ],
+      "exit_code": 0,
+      "elapsed_seconds": 3.04,
+      "log": "logs\\reproducibility\\M0-06_20261002_143331_549349\\training.log"
+    },
+    {
+      "name": "e0_bus",
+      "pid": 51968,
+      "cwd": "E:\\秋招\\项目相关",
+      "command": [
+        "D:\\software\\anaconda\\envs\\yolo\\python.exe",
+        "-X",
+        "utf8",
+        "E:\\秋招\\项目相关\\YOLO\\scripts\\predict_e0.py",
+        "--source",
+        "E:\\秋招\\项目相关\\YOLO\\demo\\input\\E0\\bus.jpg",
+        "--output",
+        "E:\\秋招\\项目相关\\YOLO\\runs\\E0\\M0-06_20261002_143331_549349_bus",
+        "--all-classes"
+      ],
+      "exit_code": 0,
+      "elapsed_seconds": 2.987,
+      "log": "logs\\reproducibility\\M0-06_20261002_143331_549349\\e0_bus.log"
+    },
+    {
+      "name": "e0_desktop",
+      "pid": 49052,
+      "cwd": "E:\\秋招\\项目相关",
+      "command": [
+        "D:\\software\\anaconda\\envs\\yolo\\python.exe",
+        "-X",
+        "utf8",
+        "E:\\秋招\\项目相关\\YOLO\\scripts\\predict_e0.py",
+        "--source",
+        "E:\\秋招\\项目相关\\YOLO\\runs\\E0\\M0-04_20261002_desktop_image\\input_first.jpg",
+        "--output",
+        "E:\\秋招\\项目相关\\YOLO\\runs\\E0\\M0-06_20261002_143331_549349_desktop"
+      ],
+      "exit_code": 0,
+      "elapsed_seconds": 3.003,
+      "log": "logs\\reproducibility\\M0-06_20261002_143331_549349\\e0_desktop.log"
+    },
+    {
+      "name": "export",
+      "pid": 41564,
+      "cwd": "E:\\秋招\\项目相关",
+      "command": [
+        "D:\\software\\anaconda\\envs\\yolo\\python.exe",
+        "-X",
+        "utf8",
+        "E:\\秋招\\项目相关\\YOLO\\scripts\\check_deployment.py",
+        "--config",
+        "E:\\秋招\\项目相关\\YOLO\\logs\\reproducibility\\M0-06_20261002_143331_549349\\deployment_config.yaml",
+        "--stage",
+        "export",
+        "--worker"
+      ],
+      "exit_code": 0,
+      "elapsed_seconds": 3.537,
+      "log": "logs\\reproducibility\\M0-06_20261002_143331_549349\\export.log"
+    },
+    {
+      "name": "ort_cpu",
+      "pid": 50416,
+      "cwd": "E:\\秋招\\项目相关",
+      "command": [
+        "D:\\software\\anaconda\\envs\\yolo\\python.exe",
+        "-X",
+        "utf8",
+        "E:\\秋招\\项目相关\\YOLO\\scripts\\check_deployment.py",
+        "--config",
+        "E:\\秋招\\项目相关\\YOLO\\logs\\reproducibility\\M0-06_20261002_143331_549349\\deployment_config.yaml",
+        "--stage",
+        "ort_cpu",
+        "--worker"
+      ],
+      "exit_code": 0,
+      "elapsed_seconds": 1.121,
+      "log": "logs\\reproducibility\\M0-06_20261002_143331_549349\\ort_cpu.log"
+    },
+    {
+      "name": "ort_cuda",
+      "pid": 11980,
+      "cwd": "E:\\秋招\\项目相关",
+      "command": [
+        "D:\\software\\anaconda\\envs\\yolo\\python.exe",
+        "-X",
+        "utf8",
+        "E:\\秋招\\项目相关\\YOLO\\scripts\\check_deployment.py",
+        "--config",
+        "E:\\秋招\\项目相关\\YOLO\\logs\\reproducibility\\M0-06_20261002_143331_549349\\deployment_config.yaml",
+        "--stage",
+        "ort_cuda",
+        "--worker"
+      ],
+      "exit_code": 0,
+      "elapsed_seconds": 3.794,
+      "log": "logs\\reproducibility\\M0-06_20261002_143331_549349\\ort_cuda.log"
+    }
+  ],
+  "passed": true,
+  "scope": "Fresh processes on this existing workstation; no clean environment reinstall or other-machine test.",
+  "training": {
+    "passed": true,
+    "packages_unchanged": true,
+    "report": "logs\\reproducibility\\M0-06_20261002_143331_549349\\training.json",
+    "gpu": {
+      "name": "NVIDIA GeForce RTX 5060 Ti",
+      "capability": [
+        12,
+        0
+      ],
+      "torch": "2.8.0+cu129",
+      "cuda": "12.9",
+      "cudnn": 91002
+    }
+  },
+  "e0": [
+    {
+      "name": "bus",
+      "passed": true,
+      "image_sha256": "c02019c4979c191eb739ddd944445ef408dad5679acab6fd520ef9d434bfbc63",
+      "output": "runs\\E0\\M0-06_20261002_143331_549349_bus",
+      "detections_by_name": {
+        "person": 4,
+        "bus": 1
+      },
+      "mask_count": 5
+    },
+    {
+      "name": "desktop",
+      "passed": true,
+      "image_sha256": "3b92aca423e4d7a6aac39a68678e0504be5057200d20e4bf5148f983648b0e04",
+      "output": "runs\\E0\\M0-06_20261002_143331_549349_desktop",
+      "detections_by_name": {
+        "cell phone": 1,
+        "cup": 2
+      },
+      "mask_count": 3
+    }
+  ],
+  "onnx": {
+    "export": {
+      "passed": true,
+      "report": "logs\\reproducibility\\M0-06_20261002_143331_549349\\deployment\\M0-05_export.json",
+      "onnx_sha256": "56231bb419c07bee8550c01767faf2b3e877b80032626cd36d6ab88f27cfa594",
+      "reference_manifest_sha256": "925981568c6aca78cddcc7e4506b6e5060016f94d8e8c1eea9d19491cc606aa0",
+      "profile_node_events_by_provider": null,
+      "cases": [
+        {
+          "name": "bus",
+          "image": "E:\\秋招\\项目相关\\YOLO\\demo\\input\\E0\\bus.jpg",
+          "image_sha256": "c02019c4979c191eb739ddd944445ef408dad5679acab6fd520ef9d434bfbc63",
+          "original_shape": [
+            1080,
+            810,
+            3
+          ],
+          "tensor_file": "bus_reference.npz",
+          "tensor_sha256": "ff21f340731e52c10b97156ffd3b614caba759126bdb4c16591c7a33ad0e7bd9",
+          "input_shape": [
+            1,
+            3,
+            640,
+            640
+          ],
+          "input_sha256": "64d11ef4c1e470282a385f7d293607b639da2f40405c92238897253dd1e23f14"
+        },
+        {
+          "name": "desktop",
+          "image": "E:\\秋招\\项目相关\\YOLO\\runs\\E0\\M0-04_20261002_desktop_image\\input_first.jpg",
+          "image_sha256": "3b92aca423e4d7a6aac39a68678e0504be5057200d20e4bf5148f983648b0e04",
+          "original_shape": [
+            480,
+            640,
+            3
+          ],
+          "tensor_file": "desktop_reference.npz",
+          "tensor_sha256": "35319dfa78237f3b8d866d5b663046d188f4588c99b5a15938315660715721c2",
+          "input_shape": [
+            1,
+            3,
+            640,
+            640
+          ],
+          "input_sha256": "5c1befa16c051c0812ba289f8b96e4c8c382c254060e27ee8f718d754c2391a4"
+        }
+      ]
+    },
+    "ort_cpu": {
+      "passed": true,
+      "report": "logs\\reproducibility\\M0-06_20261002_143331_549349\\deployment\\M0-05_ort_cpu.json",
+      "onnx_sha256": "56231bb419c07bee8550c01767faf2b3e877b80032626cd36d6ab88f27cfa594",
+      "reference_manifest_sha256": "925981568c6aca78cddcc7e4506b6e5060016f94d8e8c1eea9d19491cc606aa0",
+      "profile_node_events_by_provider": {
+        "CPUExecutionProvider": 912
+      },
+      "cases": [
+        {
+          "name": "bus",
+          "comparisons": [
+            {
+              "name": "output0",
+              "shape": [
+                1,
+                116,
+                8400
+              ],
+              "dtype": "float32",
+              "finite": true,
+              "max_abs": 0.0012359619140625,
+              "mean_abs": 1.2242861917574536e-06,
+              "p99_abs": 3.0517578125e-05,
+              "outside_tolerance": 0,
+              "allclose": true
+            },
+            {
+              "name": "output1",
+              "shape": [
+                1,
+                32,
+                160,
+                160
+              ],
+              "dtype": "float32",
+              "finite": true,
+              "max_abs": 2.962350845336914e-05,
+              "mean_abs": 8.106344761005246e-07,
+              "p99_abs": 4.5299530029296875e-06,
+              "outside_tolerance": 0,
+              "allclose": true
+            }
+          ],
+          "passed": true
+        },
+        {
+          "name": "desktop",
+          "comparisons": [
+            {
+              "name": "output0",
+              "shape": [
+                1,
+                116,
+                8400
+              ],
+              "dtype": "float32",
+              "finite": true,
+              "max_abs": 0.00225830078125,
+              "mean_abs": 1.551428877953097e-06,
+              "p99_abs": 4.57763671875e-05,
+              "outside_tolerance": 0,
+              "allclose": true
+            },
+            {
+              "name": "output1",
+              "shape": [
+                1,
+                32,
+                160,
+                160
+              ],
+              "dtype": "float32",
+              "finite": true,
+              "max_abs": 1.8358230590820312e-05,
+              "mean_abs": 1.024733146201273e-06,
+              "p99_abs": 5.602836608886719e-06,
+              "outside_tolerance": 0,
+              "allclose": true
+            }
+          ],
+          "passed": true
+        }
+      ]
+    },
+    "ort_cuda": {
+      "passed": true,
+      "report": "logs\\reproducibility\\M0-06_20261002_143331_549349\\deployment\\M0-05_ort_cuda.json",
+      "onnx_sha256": "56231bb419c07bee8550c01767faf2b3e877b80032626cd36d6ab88f27cfa594",
+      "reference_manifest_sha256": "925981568c6aca78cddcc7e4506b6e5060016f94d8e8c1eea9d19491cc606aa0",
+      "profile_node_events_by_provider": {
+        "CUDAExecutionProvider": 530
+      },
+      "cases": [
+        {
+          "name": "bus",
+          "comparisons": [
+            {
+              "name": "output0",
+              "shape": [
+                1,
+                116,
+                8400
+              ],
+              "dtype": "float32",
+              "finite": true,
+              "max_abs": 0.00189208984375,
+              "mean_abs": 1.0657310397298697e-06,
+              "p99_abs": 3.0517578125e-05,
+              "outside_tolerance": 0,
+              "allclose": true
+            },
+            {
+              "name": "output1",
+              "shape": [
+                1,
+                32,
+                160,
+                160
+              ],
+              "dtype": "float32",
+              "finite": true,
+              "max_abs": 1.1682510375976562e-05,
+              "mean_abs": 7.049895763726333e-07,
+              "p99_abs": 3.814697265625e-06,
+              "outside_tolerance": 0,
+              "allclose": true
+            }
+          ],
+          "passed": true
+        },
+        {
+          "name": "desktop",
+          "comparisons": [
+            {
+              "name": "output0",
+              "shape": [
+                1,
+                116,
+                8400
+              ],
+              "dtype": "float32",
+              "finite": true,
+              "max_abs": 0.00213623046875,
+              "mean_abs": 1.2126849423884473e-06,
+              "p99_abs": 3.0517578125e-05,
+              "outside_tolerance": 0,
+              "allclose": true
+            },
+            {
+              "name": "output1",
+              "shape": [
+                1,
+                32,
+                160,
+                160
+              ],
+              "dtype": "float32",
+              "finite": true,
+              "max_abs": 1.6748905181884766e-05,
+              "mean_abs": 8.186759547917921e-07,
+              "p99_abs": 4.291534423828125e-06,
+              "outside_tolerance": 0,
+              "allclose": true
+            }
+          ],
+          "passed": true
+        }
+      ]
+    }
+  },
+  "same_onnx_and_inputs": true,
+  "artifact_dir": "artifacts\\reproducibility\\M0-06_20261002_143331_549349",
+  "fresh_worker_count": 7,
+  "distinct_worker_pids": true,
+  "finished_at": "2026-10-02T14:33:49.106502+08:00"
+}
