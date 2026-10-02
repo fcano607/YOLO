@@ -1,0 +1,30 @@
+{
+  "checked_at": "2026-10-02T16:07:29.295581+08:00",
+  "passed": true,
+  "entry": "app/live_camera.py",
+  "default_target_ids": [
+    41,
+    39,
+    67
+  ],
+  "public_image_gpu_prediction": {
+    "class_counts": {
+      "person": 4,
+      "bus": 1
+    },
+    "nonempty_masks": 5,
+    "device": "cuda:0"
+  },
+  "same_frame_panes_verified": true,
+  "source_image_unchanged": true,
+  "simulated_checks": [
+    "1/2/3 mode switching",
+    "Q exit and release",
+    "window close and release",
+    "camera unavailable and release",
+    "unresponsive worker termination"
+  ],
+  "real_camera_or_visible_window_tested": false,
+  "camera_images_or_videos_saved": false,
+  "scope": "Real GPU image prediction and simulated camera/GUI lifecycle; live desktop window and camera await manual verification."
+}

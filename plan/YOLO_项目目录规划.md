@@ -12,6 +12,8 @@
 
 同日 M0-06 已验收，M0 模块完成：新增 `environment.yml`、`configs/constraints-runtime.txt`、`scripts/save_environment.py`、`scripts/verify_reproducibility.py`。归档位于 `logs/environment/M0-06_<时间戳>/`，新进程记录在 `logs/reproducibility/`，新模型 / 数组在 `artifacts/reproducibility/`；见[恢复说明](../docs/M0_环境与模型使用手册.md)和[验收报告](../reports/M0_阶段验收报告.md)。
 
+同日新增 M7 实时预览原型 [app/live_camera.py](../app/live_camera.py)：同一摄像头显示原图和同帧 YOLO 分割结果，默认不录制；复用 `configs/e0.yaml` 与现有预训练权重。GPU 图片与模拟交互检查见 [logs/application/live_preview_check.json](../logs/application/live_preview_check.json)，真实摄像头窗口和持续运行仍待验证。操作与源码见[使用手册](../docs/M0_环境与模型使用手册.md#live-camera)，本次操作已登记[工作日志](00_YOLO_分阶段推进与进度跟踪.md#live-camera-record)。
+
 以下路径均相对于项目根目录，使用 `/` 表示子目录。例如 `configs/runtime.yaml` 在你的电脑上对应 `E:\秋招\项目相关\YOLO\configs\runtime.yaml`。
 
 ## 一、一级目录
@@ -22,7 +24,7 @@
 | `data/` | 原始资料、训练数据、标签、划分与固定推理样本 | 开始时 |
 | `scripts/` | 环境检查、数据准备、训练、评估、导出与测速入口 | 开始时 |
 | `deploy/` | 共享预处理、后处理、三种推理后端 | 开始时，可暂为空 |
-| `app/` | 摄像头实时程序、采集、绘图与录制 | 开始时，可暂为空 |
+| `app/` | 当前实时预览入口；后续采集、绘图与录制模块 | 已有 `live_camera.py` 原型，其余按 M7 实现 |
 | `third_party/` | 锁定版本的 Ultralytics 源码 | 准备环境时 |
 | `artifacts/` | 下载的预训练模型，以及整理后的项目模型与部署文件 | 开始时 |
 | `runs/` | 各次训练、评估、导出和测速产生的完整实验结果 | 实验执行时 |
@@ -175,15 +177,16 @@ Conda 环境不需要放在项目目录中。若后续使用 Git，重点版本�
 
 ## 七、app：摄像头应用
 
-| 文件 | 职责 |
-| --- | --- |
-| `app/__init__.py` | Python 包入口 |
-| `app/webcam.py` | 读取配置，串联采集、推理、绘制与退出 |
-| `app/capture.py` | 摄像头与文件视频采集；必要时维护最新帧缓冲 |
-| `app/render.py` | 绘制框、掩膜、类别、实例数、FPS 和耗时 |
-| `app/recorder.py` | 截图、录像与输出日志管理 |
+| 文件 | 职责 | 当前状态 |
+| --- | --- | --- |
+| [app/live_camera.py](../app/live_camera.py) | 使用 E0 预训练模型进行实时原图 / 分割结果预览，支持视图切换和三类 / 全类别选择，默认不录制 | 原型已实现；真实摄像头窗口待验证 |
+| `app/__init__.py` | Python 包入口 | 规划 |
+| `app/webcam.py` | 读取配置，串联采集、统一后端推理、绘制与退出 | 规划 |
+| `app/capture.py` | 摄像头与文件视频采集；必要时维护最新帧缓冲 | 规划 |
+| `app/render.py` | 绘制框、掩膜、类别、实例数、FPS 和耗时 | 规划 |
+| `app/recorder.py` | 截图、录像与输出日志管理 | 规划 |
 
-初期先用一个 `webcam.py` 跑通，代码变复杂后再拆出 capture、render、recorder。最终入口采用 `python -m app.webcam`，从项目根目录运行。
+当前可运行入口是 `python app/live_camera.py`，从项目根目录运行；按键、参数与退出方式集中在[使用手册](../docs/M0_环境与模型使用手册.md#live-camera)。该入口目前使用 PyTorch / Ultralytics，尚未统一 ONNX Runtime / TensorRT 后端。后续按 M7 任务整理摄像头、文件视频、后端切换、截图与录制；`python -m app.webcam` 是后续规划入口，当前尚不可用。
 
 ## 八、third_party：模型源码与结构修改
 
@@ -255,6 +258,7 @@ SE 类与解析逻辑改在该源码中对应的模块文件。自定义连接�
 | --- | --- |
 | `logs/environment/` | 环境检查原始日志 |
 | `logs/build/` | ONNX 导出与 TensorRT parser/builder 日志 |
+| [logs/application/live_preview_check.json](../logs/application/live_preview_check.json) | 已有 Live Camera 原型检查结果，明确区分真实 GPU 图片与模拟摄像头 / GUI |
 | `logs/app/` | 摄像头运行、耗时和异常日志 |
 
 reports 是你归纳后的结论，logs 是程序直接记录的过程。训练工具已保存在 runs 中的日志不必重复复制一份。
