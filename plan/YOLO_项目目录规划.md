@@ -18,6 +18,8 @@
 
 同日按用户安排先推进 M1-02：新增 [scripts/inspect_structure.py](../scripts/inspect_structure.py) 检查已加载模型的 YAML / 模块属性与连接，`reports/model/M1-02/` 仅保存结构记录和概览图；详细讲解合并到已有模型学习笔记第 2 节。M1-01 留待用户后续学习再讨论。
 
+同日继续 M1-03：新增 [scripts/inspect_tensors.py](../scripts/inspect_tensors.py)，复用已有预处理与记录函数，执行两图关键层 / 分支 hook、普通 / export 对照和临时副本训练模式前向。`reports/model/M1-03/` 仅保存一份 [tensor_check.json](../reports/model/M1-03/tensor_check.json)，不保存完整大数组、额外视频或预测图；详细解释与复现命令合并到已有学习笔记第 3 节。工程检查与个人学习验收分别记录。
+
 以下路径均相对于项目根目录，使用 `/` 表示子目录。例如 `configs/runtime.yaml` 在你的电脑上对应 `E:\秋招\项目相关\YOLO\configs\runtime.yaml`。
 
 ## 一、一级目录
