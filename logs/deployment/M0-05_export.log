@@ -1,0 +1,58 @@
+Ultralytics 8.4.171  Python-3.9.23 torch-2.8.0+cu129 CUDA:0 (NVIDIA GeForce RTX 5060 Ti, 16311MiB)
+WARNING This model has no one-to-one head; using one-to-many outputs.
+YOLO11n-seg summary (fused): 113 layers, 2,868,664 parameters, 0 gradients, 9.8 GFLOPs
+
+[34m[1mPyTorch:[0m starting from 'E:\\\YOLO\artifacts\precheck\M0-05\yolo11n-seg.pt' with input shape (1, 3, 640, 640) BCHW and output shape(s) ((1, 116, 8400), (1, 32, 160, 160)) (5.9 MB)
+
+[34m[1mONNX:[0m starting export with onnx 1.17.0 opset 17...
+[34m[1mONNX:[0m export success  0.5s, saved as 'E:\\\YOLO\artifacts\precheck\M0-05\yolo11n-seg.onnx' (11.2 MB)
+
+Export complete (1.1s)
+Results saved to [1mE:\\\YOLO\artifacts\precheck\M0-05\yolo11n-seg.onnx[0m
+Predict:         yolo predict task=segment model=E:\\\YOLO\artifacts\precheck\M0-05\yolo11n-seg.onnx imgsz=640 
+Validate:        yolo val task=segment model=E:\\\YOLO\artifacts\precheck\M0-05\yolo11n-seg.onnx imgsz=640   
+Visualize:       https://netron.app
+{
+  "passed": true,
+  "cases": [
+    {
+      "name": "bus",
+      "image": "E:\\\u79cb\u62db\\\u9879\u76ee\u76f8\u5173\\YOLO\\runs\\E0\\M0-04_20261002_bus_all\\input_first.jpg",
+      "image_sha256": "26b0ec2433832330b828da66f3b7e382692e319fb4a46191ba572561cfb9dc56",
+      "original_shape": [
+        1080,
+        810,
+        3
+      ],
+      "tensor_file": "bus_reference.npz",
+      "tensor_sha256": "bc570a947920503e26c8bebb9755a6555b379968cab11588b6e25ff59f7f77a8",
+      "input_shape": [
+        1,
+        3,
+        640,
+        640
+      ],
+      "input_sha256": "fdfcbbcbe47adc8ad3af2a8b272ba8ee268e4a94a3571f284c7451e24be40101"
+    },
+    {
+      "name": "desktop",
+      "image": "E:\\\u79cb\u62db\\\u9879\u76ee\u76f8\u5173\\YOLO\\runs\\E0\\M0-04_20261002_desktop_image\\input_first.jpg",
+      "image_sha256": "3b92aca423e4d7a6aac39a68678e0504be5057200d20e4bf5148f983648b0e04",
+      "original_shape": [
+        480,
+        640,
+        3
+      ],
+      "tensor_file": "desktop_reference.npz",
+      "tensor_sha256": "35319dfa78237f3b8d866d5b663046d188f4588c99b5a15938315660715721c2",
+      "input_shape": [
+        1,
+        3,
+        640,
+        640
+      ],
+      "input_sha256": "5c1befa16c051c0812ba289f8b96e4c8c382c254060e27ee8f718d754c2391a4"
+    }
+  ],
+  "stage": "export"
+}

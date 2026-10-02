@@ -1,0 +1,359 @@
+{
+  "version": "1",
+  "pip_version": "25.2",
+  "install": [
+    {
+      "download_info": {
+        "url": "https://pypi.tuna.tsinghua.edu.cn/packages/57/8e/ce0e20200bdf8e8b47679cd56efb1057aa218b29ccdf60a3b4fb6b91064c/onnx-1.17.0-cp39-cp39-win_amd64.whl",
+        "archive_info": {
+          "hash": "sha256=5ca7a0894a86d028d509cdcf99ed1864e19bfe5727b44322c11691d834a1c546",
+          "hashes": {
+            "sha256": "5ca7a0894a86d028d509cdcf99ed1864e19bfe5727b44322c11691d834a1c546"
+          }
+        }
+      },
+      "is_direct": false,
+      "is_yanked": false,
+      "requested": true,
+      "metadata": {
+        "metadata_version": "2.1",
+        "name": "onnx",
+        "version": "1.17.0",
+        "summary": "Open Neural Network Exchange",
+        "description_content_type": "text/markdown",
+        "author_email": "ONNX Contributors <onnx-technical-discuss@lists.lfaidata.foundation>",
+        "license": "Apache License v2.0",
+        "license_file": [
+          "LICENSE"
+        ],
+        "classifier": [
+          "Programming Language :: Python :: 3"
+        ],
+        "requires_dist": [
+          "numpy >=1.20",
+          "protobuf >=3.20.2",
+          "google-re2 ; extra == 'reference'",
+          "Pillow ; extra == 'reference'"
+        ],
+        "requires_python": ">=3.8",
+        "project_url": [
+          "Homepage, https://onnx.ai/",
+          "Repository, https://github.com/onnx/onnx"
+        ],
+        "provides_extra": [
+          "reference"
+        ],
+        "description": "<!--\r\nCopyright (c) ONNX Project Contributors\r\n\r\nSPDX-License-Identifier: Apache-2.0\r\n-->\r\n\r\n<p align=\"center\"><img width=\"40%\" src=\"https://github.com/onnx/onnx/raw/main/docs/onnx-horizontal-color.png\" /></p>\r\n\r\n[![PyPI - Version](https://img.shields.io/pypi/v/onnx.svg)](https://pypi.org/project/onnx)\r\n[![CI](https://github.com/onnx/onnx/actions/workflows/main.yml/badge.svg)](https://github.com/onnx/onnx/actions/workflows/main.yml)\r\n[![CII Best Practices](https://bestpractices.coreinfrastructure.org/projects/3313/badge)](https://bestpractices.coreinfrastructure.org/projects/3313)\r\n[![OpenSSF Scorecard](https://api.securityscorecards.dev/projects/github.com/onnx/onnx/badge)](https://api.securityscorecards.dev/projects/github.com/onnx/onnx)\r\n[![REUSE compliant](https://api.reuse.software/badge/github.com/onnx/onnx)](https://api.reuse.software/info/github.com/onnx/onnx)\r\n[![Ruff](https://img.shields.io/endpoint?url=https://raw.githubusercontent.com/astral-sh/ruff/main/assets/badge/v2.json)](https://github.com/astral-sh/ruff)\r\n[![Black](https://img.shields.io/badge/code%20style-black-000000.svg)](https://github.com/psf/black)\r\n\r\n[Open Neural Network Exchange (ONNX)](https://onnx.ai) is an open ecosystem that empowers AI developers\r\nto choose the right tools as their project evolves. ONNX provides an open source format for AI models, both deep learning and traditional ML. It defines an extensible computation graph model, as well as definitions of built-in operators and standard\r\ndata types. Currently we focus on the capabilities needed for inferencing (scoring).\r\n\r\nONNX is [widely supported](http://onnx.ai/supported-tools) and can be found in many frameworks, tools, and hardware. Enabling interoperability between different frameworks and streamlining the path from research to production helps increase the speed of innovation in the AI community. We invite the community to join us and further evolve ONNX.\r\n\r\n# Use ONNX\r\n\r\n* [Documentation of ONNX Python Package](https://onnx.ai/onnx/)\r\n* [Tutorials for creating ONNX models](https://github.com/onnx/tutorials)\r\n* [Pre-trained ONNX models](https://github.com/onnx/models)\r\n\r\n# Learn about the ONNX spec\r\n\r\n* [Overview](https://github.com/onnx/onnx/blob/main/docs/Overview.md)\r\n* [ONNX intermediate representation spec](https://github.com/onnx/onnx/blob/main/docs/IR.md)\r\n* [Versioning principles of the spec](https://github.com/onnx/onnx/blob/main/docs/Versioning.md)\r\n* [Operators documentation](https://github.com/onnx/onnx/blob/main/docs/Operators.md)\r\n* [Operators documentation](https://onnx.ai/onnx/operators/index.html) (latest release)\r\n* [Python API Overview](https://github.com/onnx/onnx/blob/main/docs/PythonAPIOverview.md)\r\n\r\n# Programming utilities for working with ONNX Graphs\r\n\r\n* [Shape and Type Inference](https://github.com/onnx/onnx/blob/main/docs/ShapeInference.md)\r\n* [Graph Optimization](https://github.com/onnx/optimizer)\r\n* [Opset Version Conversion](https://github.com/onnx/onnx/blob/main/docs/docsgen/source/api/version_converter.md)\r\n\r\n# Contribute\r\n\r\nONNX is a community project and the open governance model is described [here](https://github.com/onnx/onnx/blob/main/community/readme.md). We encourage you to join the effort and contribute feedback, ideas, and code. You can participate in the [Special Interest Groups](https://github.com/onnx/onnx/blob/main/community/sigs.md) and [Working Groups](https://github.com/onnx/onnx/blob/main/community/working-groups.md) to shape the future of ONNX.\r\n\r\nCheck out our [contribution guide](https://github.com/onnx/onnx/blob/main/CONTRIBUTING.md) to get started.\r\n\r\nIf you think some operator should be added to ONNX specification, please read\r\n[this document](https://github.com/onnx/onnx/blob/main/docs/AddNewOp.md).\r\n\r\n# Community meetings\r\n\r\nThe schedules of the regular meetings of the Steering Committee, the working groups and the SIGs can be found [here](https://onnx.ai/calendar)\r\n\r\nCommunity Meetups are held at least once a year. Content from previous community meetups are at:\r\n\r\n* 2020.04.09 <https://wiki.lfaidata.foundation/display/DL/LF+AI+Day+-ONNX+Community+Virtual+Meetup+-+Silicon+Valley+-+April+9>\r\n* 2020.10.14 <https://wiki.lfaidata.foundation/display/DL/LF+AI+Day+-+ONNX+Community+Workshop+-+October+14>\r\n* 2021.03.24 <https://wiki.lfaidata.foundation/pages/viewpage.action?pageId=35160391>\r\n* 2021.10.21 <https://wiki.lfaidata.foundation/pages/viewpage.action?pageId=46989689>\r\n* 2022.06.24 <https://wiki.lfaidata.foundation/display/DL/ONNX+Community+Day+-+June+24>\r\n* 2023.06.28 <https://wiki.lfaidata.foundation/display/DL/ONNX+Community+Day+2023+-+June+28>\r\n\r\n# Discuss\r\n\r\nWe encourage you to open [Issues](https://github.com/onnx/onnx/issues), or use [Slack](https://lfaifoundation.slack.com/) (If you have not joined yet, please use this [link](https://join.slack.com/t/lfaifoundation/shared_invite/zt-o65errpw-gMTbwNr7FnNbVXNVFkmyNA) to join the group) for more real-time discussion.\r\n\r\n# Follow Us\r\n\r\nStay up to date with the latest ONNX news. [[Facebook](https://www.facebook.com/onnxai/)] [[Twitter](https://twitter.com/onnxai)]\r\n\r\n# Roadmap\r\n\r\nA roadmap process takes place every year. More details can be found [here](https://github.com/onnx/steering-committee/tree/main/roadmap)\r\n\r\n# Installation\r\n\r\n## Official Python packages\r\n\r\nONNX released packages are published in PyPi.\r\n\r\n```sh\r\npip install onnx  # or pip install onnx[reference] for optional reference implementation dependencies\r\n```\r\n\r\n[ONNX weekly packages](https://pypi.org/project/onnx-weekly/) are published in PyPI to enable experimentation and early testing.\r\n\r\n## vcpkg packages\r\n\r\nonnx is in the maintenance list of [vcpkg](https://github.com/microsoft/vcpkg), you can easily use vcpkg to build and install it.\r\n\r\n```sh\r\ngit clone https://github.com/microsoft/vcpkg.git\r\ncd vcpkg\r\n./bootstrap-vcpkg.bat # For powershell\r\n./bootstrap-vcpkg.sh # For bash\r\n./vcpkg install onnx\r\n```\r\n\r\n## Conda packages\r\n\r\nA binary build of ONNX is available from [Conda](https://conda.io), in [conda-forge](https://conda-forge.org/):\r\n\r\n```sh\r\nconda install -c conda-forge onnx\r\n```\r\n\r\n## Build ONNX from Source\r\n\r\nBefore building from source uninstall any existing versions of onnx `pip uninstall onnx`.\r\n\r\nc++17 or higher C++ compiler version is required to build ONNX from source. Still, users can specify their own `CMAKE_CXX_STANDARD` version for building ONNX.\r\n\r\nIf you don't have protobuf installed, ONNX will internally download and build protobuf for ONNX build.\r\n\r\nOr, you can manually install [protobuf C/C++ libraries and tools](https://github.com/protocolbuffers/protobuf) with specified version before proceeding forward. Then depending on how you installed protobuf, you need to set environment variable CMAKE_ARGS to \"-DONNX_USE_PROTOBUF_SHARED_LIBS=ON\" or \"-DONNX_USE_PROTOBUF_SHARED_LIBS=OFF\".  For example, you may need to run the following command:\r\n\r\nLinux:\r\n\r\n```sh\r\nexport CMAKE_ARGS=\"-DONNX_USE_PROTOBUF_SHARED_LIBS=ON\"\r\n```\r\n\r\nWindows:\r\n\r\n```bat\r\nset CMAKE_ARGS=\"-DONNX_USE_PROTOBUF_SHARED_LIBS=ON\"\r\n```\r\n\r\nThe ON/OFF depends on what kind of protobuf library you have. Shared libraries are files ending with \\*.dll/\\*.so/\\*.dylib. Static libraries are files ending with \\*.a/\\*.lib. This option depends on how you get your protobuf library and how it was built. And it is default OFF. You don't need to run the commands above if you'd prefer to use a static protobuf library.\r\n\r\n### Windows\r\n\r\nIf you are building ONNX from source, it is recommended that you also build Protobuf locally as a static library. The version distributed with conda-forge is a DLL, but ONNX expects it to be a static library. Building protobuf locally also lets you control the version of protobuf. The tested and recommended version is 3.21.12.\r\n\r\nThe instructions in this README assume you are using Visual Studio.  It is recommended that you run all the commands from a shell started from \"x64 Native Tools Command Prompt for VS 2019\" and keep the build system generator for cmake (e.g., cmake -G \"Visual Studio 16 2019\") consistent while building protobuf as well as ONNX.\r\n\r\nYou can get protobuf by running the following commands:\r\n\r\n```bat\r\ngit clone https://github.com/protocolbuffers/protobuf.git\r\ncd protobuf\r\ngit checkout v21.12\r\ncd cmake\r\ncmake -G \"Visual Studio 16 2019\" -A x64 -DCMAKE_INSTALL_PREFIX=<protobuf_install_dir> -Dprotobuf_MSVC_STATIC_RUNTIME=OFF -Dprotobuf_BUILD_SHARED_LIBS=OFF -Dprotobuf_BUILD_TESTS=OFF -Dprotobuf_BUILD_EXAMPLES=OFF .\r\nmsbuild protobuf.sln /m /p:Configuration=Release\r\nmsbuild INSTALL.vcxproj /p:Configuration=Release\r\n```\r\n\r\nThen it will be built as a static library and installed to <protobuf_install_dir>. Please add the bin directory(which contains protoc.exe) to your PATH.\r\n\r\n```bat\r\nset CMAKE_PREFIX_PATH=<protobuf_install_dir>;%CMAKE_PREFIX_PATH%\r\n```\r\n\r\nPlease note: if your protobuf_install_dir contains spaces, **do not** add quotation marks around it.\r\n\r\nAlternative: if you don't want to change your PATH, you can set ONNX_PROTOC_EXECUTABLE instead.\r\n\r\n```bat\r\nset CMAKE_ARGS=-DONNX_PROTOC_EXECUTABLE=<full_path_to_protoc.exe>\r\n```\r\n\r\nThen you can build ONNX as:\r\n\r\n```\r\ngit clone https://github.com/onnx/onnx.git\r\ncd onnx\r\ngit submodule update --init --recursive\r\n# prefer lite proto\r\nset CMAKE_ARGS=-DONNX_USE_LITE_PROTO=ON\r\npip install -e . -v\r\n```\r\n\r\n### Linux\r\n\r\nFirst, you need to install protobuf. The minimum Protobuf compiler (protoc) version required by ONNX is 3.6.1. Please note that old protoc versions might not work with `CMAKE_ARGS=-DONNX_USE_LITE_PROTO=ON`.\r\n\r\nUbuntu 20.04 (and newer) users may choose to install protobuf via\r\n\r\n```sh\r\napt-get install python3-pip python3-dev libprotobuf-dev protobuf-compiler\r\n```\r\n\r\nIn this case, it is required to add `-DONNX_USE_PROTOBUF_SHARED_LIBS=ON` to CMAKE_ARGS in the ONNX build step.\r\n\r\nA more general way is to build and install it from source. See the instructions below for more details.\r\n\r\n<details>\r\n  <summary> Installing Protobuf from source </summary>\r\n\r\n  Debian/Ubuntu:\r\n\r\n  ```sh\r\n    git clone https://github.com/protocolbuffers/protobuf.git\r\n    cd protobuf\r\n    git checkout v21.12\r\n    git submodule update --init --recursive\r\n    mkdir build_source && cd build_source\r\n    cmake ../cmake -Dprotobuf_BUILD_SHARED_LIBS=OFF -DCMAKE_INSTALL_PREFIX=/usr -DCMAKE_INSTALL_SYSCONFDIR=/etc -DCMAKE_POSITION_INDEPENDENT_CODE=ON -Dprotobuf_BUILD_TESTS=OFF -DCMAKE_BUILD_TYPE=Release\r\n    make -j$(nproc)\r\n    make install\r\n  ```\r\n\r\n  CentOS/RHEL/Fedora:\r\n\r\n  ```sh\r\n    git clone https://github.com/protocolbuffers/protobuf.git\r\n    cd protobuf\r\n    git checkout v21.12\r\n    git submodule update --init --recursive\r\n    mkdir build_source && cd build_source\r\n    cmake ../cmake  -DCMAKE_INSTALL_LIBDIR=lib64 -Dprotobuf_BUILD_SHARED_LIBS=OFF -DCMAKE_INSTALL_PREFIX=/usr -DCMAKE_INSTALL_SYSCONFDIR=/etc -DCMAKE_POSITION_INDEPENDENT_CODE=ON -Dprotobuf_BUILD_TESTS=OFF -DCMAKE_BUILD_TYPE=Release\r\n    make -j$(nproc)\r\n    make install\r\n  ```\r\n\r\n  Here \"-DCMAKE_POSITION_INDEPENDENT_CODE=ON\" is crucial. By default static libraries are built without \"-fPIC\" flag, they are not position independent code. But shared libraries must be position independent code. Python C/C++ extensions(like ONNX) are shared libraries. So if a static library was not built with \"-fPIC\", it can't be linked to such a shared library.\r\n\r\n  Once build is successful, update PATH to include protobuf paths.\r\n\r\n</details>\r\n\r\nThen you can build ONNX as:\r\n\r\n```sh\r\ngit clone https://github.com/onnx/onnx.git\r\ncd onnx\r\ngit submodule update --init --recursive\r\n# Optional: prefer lite proto\r\nexport CMAKE_ARGS=-DONNX_USE_LITE_PROTO=ON\r\npip install -e . -v\r\n```\r\n\r\n### Mac\r\n\r\n```sh\r\nexport NUM_CORES=`sysctl -n hw.ncpu`\r\nbrew update\r\nbrew install autoconf && brew install automake\r\nwget https://github.com/protocolbuffers/protobuf/releases/download/v21.12/protobuf-cpp-3.21.12.tar.gz\r\ntar -xvf protobuf-cpp-3.21.12.tar.gz\r\ncd protobuf-3.21.12\r\nmkdir build_source && cd build_source\r\ncmake ../cmake -Dprotobuf_BUILD_SHARED_LIBS=OFF -DCMAKE_POSITION_INDEPENDENT_CODE=ON -Dprotobuf_BUILD_TESTS=OFF -DCMAKE_BUILD_TYPE=Release\r\nmake -j${NUM_CORES}\r\nmake install\r\n```\r\n\r\nOnce build is successful, update PATH to include protobuf paths.\r\n\r\nThen you can build ONNX as:\r\n\r\n```sh\r\ngit clone --recursive https://github.com/onnx/onnx.git\r\ncd onnx\r\n# Optional: prefer lite proto\r\nset CMAKE_ARGS=-DONNX_USE_LITE_PROTO=ON\r\npip install -e . -v\r\n```\r\n\r\n## Verify Installation\r\n\r\nAfter installation, run\r\n\r\n```sh\r\npython -c \"import onnx\"\r\n```\r\n\r\nto verify it works.\r\n\r\n## Common Build Options\r\n\r\nFor full list refer to CMakeLists.txt\r\n\r\n### Environment variables\r\n\r\n* `USE_MSVC_STATIC_RUNTIME` should be 1 or 0, not ON or OFF. When set to 1 onnx links statically to runtime library.\r\n**Default**: `USE_MSVC_STATIC_RUNTIME=0`\r\n\r\n* `DEBUG` should be 0 or 1. When set to 1 onnx is built in debug mode. or debug versions of the dependencies, you need to open the [CMakeLists file](https://github.com/onnx/onnx/blob/main/CMakeLists.txt) and append a letter `d` at the end of the package name lines. For example, `NAMES protobuf-lite` would become `NAMES protobuf-lited`.\r\n**Default**: `Debug=0`\r\n\r\n### CMake variables\r\n\r\n* `ONNX_USE_PROTOBUF_SHARED_LIBS` should be `ON` or `OFF`.\r\n**Default**: `ONNX_USE_PROTOBUF_SHARED_LIBS=OFF USE_MSVC_STATIC_RUNTIME=0`\r\n`ONNX_USE_PROTOBUF_SHARED_LIBS` determines how onnx links to protobuf libraries.\r\n  * When set to `ON` - onnx will dynamically link to protobuf shared libs, PROTOBUF_USE_DLLS will be defined as described [here](https://github.com/protocolbuffers/protobuf/blob/main/cmake/README.md#dlls-vs-static-linking), Protobuf_USE_STATIC_LIBS will be set to `OFF` and `USE_MSVC_STATIC_RUNTIME` must be 0.\r\n  * When set to `OFF` - onnx will link statically to protobuf, and Protobuf_USE_STATIC_LIBS will be set to `ON` (to force the use of the static libraries) and `USE_MSVC_STATIC_RUNTIME` can be `0` or `1`.\r\n\r\n* `ONNX_USE_LITE_PROTO` should be `ON` or `OFF`. When set to `ON` onnx uses lite protobuf instead of full protobuf.\r\n**Default**: `ONNX_USE_LITE_PROTO=OFF`\r\n\r\n* `ONNX_WERROR` should be `ON` or `OFF`. When set to `ON` warnings are treated as errors.\r\n**Default**: `ONNX_WERROR=OFF` in local builds, `ON` in CI and release pipelines.\r\n\r\n## Common Errors\r\n\r\n* Note: the `import onnx` command does not work from the source checkout directory; in this case you'll see `ModuleNotFoundError: No module named 'onnx.onnx_cpp2py_export'`. Change into another directory to fix this error.\r\n\r\n* If you run into any issues while building Protobuf as a static library, please ensure that shared Protobuf libraries, like libprotobuf, are not installed on your device or in the conda environment. If these shared libraries exist, either remove them to build Protobuf from source as a static library, or skip the Protobuf build from source to use the shared version directly.\r\n\r\n* If you run into any issues while building ONNX from source, and your error message reads, `Could not find pythonXX.lib`, ensure that you have consistent Python versions for common commands, such as `python` and `pip`. Clean all existing build files and rebuild ONNX again.\r\n\r\n# Testing\r\n\r\nONNX uses [pytest](https://docs.pytest.org) as test driver. In order to run tests, you will first need to install `pytest`:\r\n\r\n```sh\r\npip install pytest nbval\r\n```\r\n\r\nAfter installing pytest, use the following command to run tests.\r\n\r\n```sh\r\npytest\r\n```\r\n\r\n# Development\r\n\r\nCheck out the [contributor guide](https://github.com/onnx/onnx/blob/main/CONTRIBUTING.md) for instructions.\r\n\r\n# License\r\n\r\n[Apache License v2.0](LICENSE)\r\n\r\n# Code of Conduct\r\n\r\n[ONNX Open Source Code of Conduct](https://onnx.ai/codeofconduct.html)\r\n"
+      }
+    },
+    {
+      "download_info": {
+        "url": "https://pypi.tuna.tsinghua.edu.cn/packages/10/6d/fae011a8a9ef7a8c0496be684ff576e520a8adeccaf9dd85d7d20236dfc2/onnxruntime_gpu-1.19.2-cp39-cp39-win_amd64.whl",
+        "archive_info": {
+          "hash": "sha256=c8b8128174b0470537e9f4983aeecc002a435d13914970c2af2f41d244ef2781",
+          "hashes": {
+            "sha256": "c8b8128174b0470537e9f4983aeecc002a435d13914970c2af2f41d244ef2781"
+          }
+        }
+      },
+      "is_direct": false,
+      "is_yanked": false,
+      "requested": true,
+      "metadata": {
+        "metadata_version": "2.1",
+        "name": "onnxruntime-gpu",
+        "version": "1.19.2",
+        "summary": "ONNX Runtime is a runtime accelerator for Machine Learning models",
+        "keywords": [
+          "onnx",
+          "machine",
+          "learning"
+        ],
+        "home_page": "https://onnxruntime.ai",
+        "download_url": "https://github.com/microsoft/onnxruntime/tags",
+        "author": "Microsoft Corporation",
+        "author_email": "onnxruntime@microsoft.com",
+        "license": "MIT License",
+        "classifier": [
+          "Development Status :: 5 - Production/Stable",
+          "Intended Audience :: Developers",
+          "License :: OSI Approved :: MIT License",
+          "Operating System :: POSIX :: Linux",
+          "Topic :: Scientific/Engineering",
+          "Topic :: Scientific/Engineering :: Mathematics",
+          "Topic :: Scientific/Engineering :: Artificial Intelligence",
+          "Topic :: Software Development",
+          "Topic :: Software Development :: Libraries",
+          "Topic :: Software Development :: Libraries :: Python Modules",
+          "Programming Language :: Python",
+          "Programming Language :: Python :: 3 :: Only",
+          "Programming Language :: Python :: 3.7",
+          "Programming Language :: Python :: 3.8",
+          "Programming Language :: Python :: 3.9",
+          "Programming Language :: Python :: 3.10",
+          "Programming Language :: Python :: 3.11",
+          "Programming Language :: Python :: 3.12",
+          "Operating System :: Microsoft :: Windows",
+          "Operating System :: MacOS"
+        ],
+        "requires_dist": [
+          "coloredlogs",
+          "flatbuffers",
+          "numpy>=1.21.6",
+          "packaging",
+          "protobuf",
+          "sympy"
+        ],
+        "description": "ONNX Runtime\r\n============\r\n\r\nONNX Runtime is a performance-focused scoring engine for Open Neural Network Exchange (ONNX) models.\r\nFor more information on ONNX Runtime, please see `aka.ms/onnxruntime <https://aka.ms/onnxruntime/>`_ or the `Github project <https://github.com/microsoft/onnxruntime/>`_.\r\n\r\n\r\nChanges\r\n-------\r\n\r\n1.19.2\r\n^^^^^^\r\n\r\nRelease Notes : https://github.com/Microsoft/onnxruntime/releases/tag/v1.19.2\r\n\r\n1.19.1\r\n^^^^^^\r\n\r\nRelease Notes : https://github.com/Microsoft/onnxruntime/releases/tag/v1.19.1\r\n\r\n1.19.0\r\n^^^^^^\r\n\r\nRelease Notes : https://github.com/Microsoft/onnxruntime/releases/tag/v1.19.0\r\n\r\n1.18.0\r\n^^^^^^\r\n\r\nRelease Notes : https://github.com/Microsoft/onnxruntime/releases/tag/v1.18.0\r\n\r\n1.17.0\r\n^^^^^^\r\n\r\nRelease Notes : https://github.com/Microsoft/onnxruntime/releases/tag/v1.17.0\r\n\r\n1.16.0\r\n^^^^^^\r\n\r\nRelease Notes : https://github.com/Microsoft/onnxruntime/releases/tag/v1.16.0\r\n\r\n1.15.0\r\n^^^^^^\r\n\r\nRelease Notes : https://github.com/Microsoft/onnxruntime/releases/tag/v1.15.0\r\n\r\n1.14.0\r\n^^^^^^\r\n\r\nRelease Notes : https://github.com/Microsoft/onnxruntime/releases/tag/v1.14.0\r\n\r\n1.13.0\r\n^^^^^^\r\n\r\nRelease Notes : https://github.com/Microsoft/onnxruntime/releases/tag/v1.13.0\r\n\r\n1.12.0\r\n^^^^^^\r\n\r\nRelease Notes : https://github.com/Microsoft/onnxruntime/releases/tag/v1.12.0\r\n\r\n1.11.0\r\n^^^^^^\r\n\r\nRelease Notes : https://github.com/Microsoft/onnxruntime/releases/tag/v1.11.0\r\n\r\n1.10.0\r\n^^^^^^\r\n\r\nRelease Notes : https://github.com/Microsoft/onnxruntime/releases/tag/v1.10.0\r\n\r\n1.9.0\r\n^^^^^\r\n\r\nRelease Notes : https://github.com/Microsoft/onnxruntime/releases/tag/v1.9.0\r\n\r\n1.8.2\r\n^^^^^\r\n\r\nRelease Notes : https://github.com/Microsoft/onnxruntime/releases/tag/v1.8.2\r\n\r\n1.8.1\r\n^^^^^\r\n\r\nRelease Notes : https://github.com/Microsoft/onnxruntime/releases/tag/v1.8.1\r\n\r\n1.8.0\r\n^^^^^\r\n\r\nRelease Notes : https://github.com/Microsoft/onnxruntime/releases/tag/v1.8.0\r\n\r\n1.7.0\r\n^^^^^\r\n\r\nRelease Notes : https://github.com/Microsoft/onnxruntime/releases/tag/v1.7.0\r\n\r\n1.6.0\r\n^^^^^\r\n\r\nRelease Notes : https://github.com/Microsoft/onnxruntime/releases/tag/v1.6.0\r\n\r\n1.5.3\r\n^^^^^\r\n\r\nRelease Notes : https://github.com/Microsoft/onnxruntime/releases/tag/v1.5.3\r\n\r\n1.5.2\r\n^^^^^\r\n\r\nRelease Notes : https://github.com/Microsoft/onnxruntime/releases/tag/v1.5.2\r\n\r\n1.5.1\r\n^^^^^\r\n\r\nRelease Notes : https://github.com/Microsoft/onnxruntime/releases/tag/v1.5.1\r\n\r\n\r\n1.4.0\r\n^^^^^\r\n\r\nRelease Notes : https://github.com/Microsoft/onnxruntime/releases/tag/v1.4.0\r\n\r\n1.3.1\r\n^^^^^\r\n\r\nRelease Notes : https://github.com/Microsoft/onnxruntime/releases/tag/v1.3.1\r\n\r\n1.3.0\r\n^^^^^\r\n\r\nRelease Notes : https://github.com/Microsoft/onnxruntime/releases/tag/v1.3.0\r\n\r\n1.2.0\r\n^^^^^\r\n\r\nRelease Notes : https://github.com/Microsoft/onnxruntime/releases/tag/v1.2.0\r\n\r\n1.1.0\r\n^^^^^\r\n\r\nRelease Notes : https://github.com/Microsoft/onnxruntime/releases/tag/v1.1.0\r\n\r\n1.0.0\r\n^^^^^\r\n\r\nRelease Notes : https://github.com/Microsoft/onnxruntime/releases/tag/v1.0.0\r\n\r\n0.5.0\r\n^^^^^\r\n\r\nRelease Notes : https://github.com/Microsoft/onnxruntime/releases/tag/v0.5.0\r\n\r\n0.4.0\r\n^^^^^\r\n\r\nRelease Notes : https://github.com/Microsoft/onnxruntime/releases/tag/v0.4.0\r\n"
+      }
+    },
+    {
+      "download_info": {
+        "url": "https://pypi.tuna.tsinghua.edu.cn/packages/de/3f/2e1812771b4e28b2a70b566527963e40670d1ec90d3639b6b5f7206ac287/protobuf-4.25.8-cp39-cp39-win_amd64.whl",
+        "archive_info": {
+          "hash": "sha256=f4510b93a3bec6eba8fd8f1093e9d7fb0d4a24d1a81377c10c0e5bbfe9e4ed24",
+          "hashes": {
+            "sha256": "f4510b93a3bec6eba8fd8f1093e9d7fb0d4a24d1a81377c10c0e5bbfe9e4ed24"
+          }
+        }
+      },
+      "is_direct": false,
+      "is_yanked": false,
+      "requested": true,
+      "metadata": {
+        "metadata_version": "2.1",
+        "name": "protobuf",
+        "version": "4.25.8",
+        "home_page": "https://developers.google.com/protocol-buffers/",
+        "author": "protobuf@googlegroups.com",
+        "author_email": "protobuf@googlegroups.com",
+        "license": "3-Clause BSD License",
+        "classifier": [
+          "Programming Language :: Python",
+          "Programming Language :: Python :: 3",
+          "Programming Language :: Python :: 3.8",
+          "Programming Language :: Python :: 3.9",
+          "Programming Language :: Python :: 3.10",
+          "Programming Language :: Python :: 3.11"
+        ],
+        "requires_python": ">=3.8",
+        "description": "UNKNOWN\n"
+      }
+    },
+    {
+      "download_info": {
+        "url": "https://pypi.tuna.tsinghua.edu.cn/packages/a7/06/3d6badcf13db419e25b07041d9c7b4a2c331d3f4e7134445ec5df57714cd/coloredlogs-15.0.1-py2.py3-none-any.whl",
+        "archive_info": {
+          "hash": "sha256=612ee75c546f53e92e70049c9dbfcc18c935a2b9a53b66085ce9ef6a6e5c0934",
+          "hashes": {
+            "sha256": "612ee75c546f53e92e70049c9dbfcc18c935a2b9a53b66085ce9ef6a6e5c0934"
+          }
+        }
+      },
+      "is_direct": false,
+      "is_yanked": false,
+      "requested": true,
+      "metadata": {
+        "metadata_version": "2.1",
+        "name": "coloredlogs",
+        "version": "15.0.1",
+        "platform": [
+          "UNKNOWN"
+        ],
+        "summary": "Colored terminal output for Python's logging module",
+        "home_page": "https://coloredlogs.readthedocs.io",
+        "author": "Peter Odding",
+        "author_email": "peter@peterodding.com",
+        "license": "MIT",
+        "classifier": [
+          "Development Status :: 5 - Production/Stable",
+          "Environment :: Console",
+          "Intended Audience :: Developers",
+          "Intended Audience :: Information Technology",
+          "Intended Audience :: System Administrators",
+          "License :: OSI Approved :: MIT License",
+          "Operating System :: MacOS",
+          "Operating System :: Microsoft :: Windows",
+          "Operating System :: POSIX",
+          "Operating System :: Unix",
+          "Programming Language :: Python",
+          "Programming Language :: Python :: 2",
+          "Programming Language :: Python :: 2.7",
+          "Programming Language :: Python :: 3",
+          "Programming Language :: Python :: 3.5",
+          "Programming Language :: Python :: 3.6",
+          "Programming Language :: Python :: 3.7",
+          "Programming Language :: Python :: 3.8",
+          "Programming Language :: Python :: Implementation :: CPython",
+          "Programming Language :: Python :: Implementation :: PyPy",
+          "Topic :: Communications",
+          "Topic :: Scientific/Engineering :: Human Machine Interfaces",
+          "Topic :: Software Development",
+          "Topic :: Software Development :: Libraries :: Python Modules",
+          "Topic :: Software Development :: User Interfaces",
+          "Topic :: System",
+          "Topic :: System :: Shells",
+          "Topic :: System :: System Shells",
+          "Topic :: System :: Console Fonts",
+          "Topic :: System :: Logging",
+          "Topic :: System :: Systems Administration",
+          "Topic :: Terminals",
+          "Topic :: Utilities"
+        ],
+        "requires_dist": [
+          "humanfriendly (>=9.1)",
+          "capturer (>=2.4) ; extra == 'cron'"
+        ],
+        "requires_python": ">=2.7, !=3.0.*, !=3.1.*, !=3.2.*, !=3.3.*, !=3.4.*",
+        "provides_extra": [
+          "cron"
+        ],
+        "description": "coloredlogs: Colored terminal output for Python's logging module\n================================================================\n\n.. image:: https://travis-ci.org/xolox/python-coloredlogs.svg?branch=master\n   :target: https://travis-ci.org/xolox/python-coloredlogs\n\n.. image:: https://coveralls.io/repos/github/xolox/python-coloredlogs/badge.svg?branch=master\n   :target: https://coveralls.io/github/xolox/python-coloredlogs?branch=master\n\nThe `coloredlogs` package enables colored terminal output for Python's logging_\nmodule. The ColoredFormatter_ class inherits from `logging.Formatter`_ and uses\n`ANSI escape sequences`_ to render your logging messages in color. It uses only\nstandard colors so it should work on any UNIX terminal. It's currently tested\non Python 2.7, 3.5+ and PyPy (2 and 3). On Windows `coloredlogs` automatically\ntries to enable native ANSI support (on up-to-date Windows 10 installations)\nand falls back on using colorama_ (if installed). Here is a screen shot of the\ndemo that is printed when the command ``coloredlogs --demo`` is executed:\n\n.. image:: https://coloredlogs.readthedocs.io/en/latest/_images/defaults.png\n\nNote that the screenshot above includes custom logging levels defined by my\nverboselogs_ package: if you install both `coloredlogs` and `verboselogs` it\nwill Just Work (`verboselogs` is of course not required to use\n`coloredlogs`).\n\n.. contents::\n   :local:\n\nInstallation\n------------\n\nThe `coloredlogs` package is available on PyPI_ which means installation should\nbe as simple as:\n\n.. code-block:: console\n\n   $ pip install coloredlogs\n\nThere's actually a multitude of ways to install Python packages (e.g. the `per\nuser site-packages directory`_, `virtual environments`_ or just installing\nsystem wide) and I have no intention of getting into that discussion here, so\nif this intimidates you then read up on your options before returning to these\ninstructions 😉.\n\nOptional dependencies\n~~~~~~~~~~~~~~~~~~~~~\n\nNative ANSI support on Windows requires an up-to-date Windows 10 installation.\nIf this is not working for you then consider installing the colorama_ package:\n\n.. code-block:: console\n\n   $ pip install colorama\n\nOnce colorama_ is installed it will be used automatically.\n\nUsage\n-----\n\nHere's an example of how easy it is to get started:\n\n.. code-block:: python\n\n   import coloredlogs, logging\n\n   # Create a logger object.\n   logger = logging.getLogger(__name__)\n\n   # By default the install() function installs a handler on the root logger,\n   # this means that log messages from your code and log messages from the\n   # libraries that you use will all show up on the terminal.\n   coloredlogs.install(level='DEBUG')\n\n   # If you don't want to see log messages from libraries, you can pass a\n   # specific logger object to the install() function. In this case only log\n   # messages originating from that logger will show up on the terminal.\n   coloredlogs.install(level='DEBUG', logger=logger)\n\n   # Some examples.\n   logger.debug(\"this is a debugging message\")\n   logger.info(\"this is an informational message\")\n   logger.warning(\"this is a warning message\")\n   logger.error(\"this is an error message\")\n   logger.critical(\"this is a critical message\")\n\nFormat of log messages\n----------------------\n\nThe ColoredFormatter_ class supports user defined log formats so you can use\nany log format you like. The default log format is as follows::\n\n %(asctime)s %(hostname)s %(name)s[%(process)d] %(levelname)s %(message)s\n\nThis log format results in the following output::\n\n 2015-10-23 03:32:22 peter-macbook coloredlogs.demo[30462] DEBUG message with level 'debug'\n 2015-10-23 03:32:23 peter-macbook coloredlogs.demo[30462] VERBOSE message with level 'verbose'\n 2015-10-23 03:32:24 peter-macbook coloredlogs.demo[30462] INFO message with level 'info'\n ...\n\nYou can customize the log format and styling using environment variables as\nwell as programmatically, please refer to the `online documentation`_ for\ndetails.\n\nEnabling millisecond precision\n~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~\n\nIf you're switching from `logging.basicConfig()`_ to `coloredlogs.install()`_\nyou may notice that timestamps no longer include milliseconds. This is because\ncoloredlogs doesn't output milliseconds in timestamps unless you explicitly\ntell it to. There are three ways to do that:\n\n1. The easy way is to pass the `milliseconds` argument to `coloredlogs.install()`_::\n\n    coloredlogs.install(milliseconds=True)\n\n   This became supported in `release 7.1`_ (due to `#16`_).\n\n2. Alternatively you can change the log format `to include 'msecs'`_::\n\n    %(asctime)s,%(msecs)03d %(hostname)s %(name)s[%(process)d] %(levelname)s %(message)s\n\n   Here's what the call to `coloredlogs.install()`_ would then look like::\n\n    coloredlogs.install(fmt='%(asctime)s,%(msecs)03d %(hostname)s %(name)s[%(process)d] %(levelname)s %(message)s')\n\n   Customizing the log format also enables you to change the delimiter that\n   separates seconds from milliseconds (the comma above). This became possible\n   in `release 3.0`_ which added support for user defined log formats.\n\n3. If the use of ``%(msecs)d`` isn't flexible enough you can instead add ``%f``\n   to the date/time format, it will be replaced by the value of ``%(msecs)03d``.\n   Support for the ``%f`` directive was added to `release 9.3`_ (due to `#45`_).\n\nCustom logging fields\n~~~~~~~~~~~~~~~~~~~~~\n\nThe following custom log format fields are supported:\n\n- ``%(hostname)s`` provides the hostname of the local system.\n- ``%(programname)s`` provides the name of the currently running program.\n- ``%(username)s`` provides the username of the currently logged in user.\n\nWhen `coloredlogs.install()`_ detects that any of these fields are used in the\nformat string the applicable logging.Filter_ subclasses are automatically\nregistered to populate the relevant log record fields.\n\nChanging text styles and colors\n-------------------------------\n\nThe online documentation contains `an example of customizing the text styles and\ncolors <https://coloredlogs.readthedocs.io/en/latest/api.html#changing-the-colors-styles>`_.\n\nColored output from cron\n------------------------\n\nWhen `coloredlogs` is used in a cron_ job, the output that's e-mailed to you by\ncron won't contain any ANSI escape sequences because `coloredlogs` realizes\nthat it's not attached to an interactive terminal. If you'd like to have colors\ne-mailed to you by cron there are two ways to make it happen:\n\n.. contents::\n   :local:\n\nModifying your crontab\n~~~~~~~~~~~~~~~~~~~~~~\n\nHere's an example of a minimal crontab::\n\n    MAILTO=\"your-email-address@here\"\n    CONTENT_TYPE=\"text/html\"\n    * * * * * root coloredlogs --to-html your-command\n\nThe ``coloredlogs`` program is installed when you install the `coloredlogs`\nPython package. When you execute ``coloredlogs --to-html your-command`` it runs\n``your-command`` under the external program ``script`` (you need to have this\ninstalled). This makes ``your-command`` think that it's attached to an\ninteractive terminal which means it will output ANSI escape sequences which\nwill then be converted to HTML by the ``coloredlogs`` program. Yes, this is a\nbit convoluted, but it works great :-)\n\nModifying your Python code\n~~~~~~~~~~~~~~~~~~~~~~~~~~\n\nThe ColoredCronMailer_ class provides a context manager that automatically\nenables HTML output when the ``$CONTENT_TYPE`` variable has been correctly set\nin the crontab.\n\nThis requires my capturer_ package which you can install using ``pip install\n'coloredlogs[cron]'``. The ``[cron]`` extra will pull in capturer_ 2.4 or newer\nwhich is required to capture the output while silencing it - otherwise you'd\nget duplicate output in the emails sent by ``cron``.\n\nThe context manager can also be used to retroactively silence output that has\nalready been produced, this can be useful to avoid spammy cron jobs that have\nnothing useful to do but still email their output to the system administrator\nevery few minutes :-).\n\nContact\n-------\n\nThe latest version of `coloredlogs` is available on PyPI_ and GitHub_. The\n`online documentation`_ is available on Read The Docs and includes a\nchangelog_. For bug reports please create an issue on GitHub_. If you have\nquestions, suggestions, etc. feel free to send me an e-mail at\n`peter@peterodding.com`_.\n\nLicense\n-------\n\nThis software is licensed under the `MIT license`_.\n\n© 2020 Peter Odding.\n\n\n.. External references:\n.. _#16: https://github.com/xolox/python-coloredlogs/issues/16\n.. _#45: https://github.com/xolox/python-coloredlogs/issues/45\n.. _ANSI escape sequences: https://en.wikipedia.org/wiki/ANSI_escape_code#Colors\n.. _capturer: https://pypi.org/project/capturer\n.. _changelog: https://coloredlogs.readthedocs.org/en/latest/changelog.html\n.. _colorama: https://pypi.org/project/colorama\n.. _ColoredCronMailer: https://coloredlogs.readthedocs.io/en/latest/api.html#coloredlogs.converter.ColoredCronMailer\n.. _ColoredFormatter: https://coloredlogs.readthedocs.io/en/latest/api.html#coloredlogs.ColoredFormatter\n.. _coloredlogs.install(): https://coloredlogs.readthedocs.io/en/latest/api.html#coloredlogs.install\n.. _cron: https://en.wikipedia.org/wiki/Cron\n.. _GitHub: https://github.com/xolox/python-coloredlogs\n.. _logging.basicConfig(): https://docs.python.org/2/library/logging.html#logging.basicConfig\n.. _logging.Filter: https://docs.python.org/3/library/logging.html#filter-objects\n.. _logging.Formatter: https://docs.python.org/2/library/logging.html#logging.Formatter\n.. _logging: https://docs.python.org/2/library/logging.html\n.. _MIT license: https://en.wikipedia.org/wiki/MIT_License\n.. _online documentation: https://coloredlogs.readthedocs.io/\n.. _per user site-packages directory: https://www.python.org/dev/peps/pep-0370/\n.. _peter@peterodding.com: peter@peterodding.com\n.. _PyPI: https://pypi.org/project/coloredlogs\n.. _release 3.0: https://coloredlogs.readthedocs.io/en/latest/changelog.html#release-3-0-2015-10-23\n.. _release 7.1: https://coloredlogs.readthedocs.io/en/latest/changelog.html#release-7-1-2017-07-15\n.. _release 9.3: https://coloredlogs.readthedocs.io/en/latest/changelog.html#release-9-3-2018-04-29\n.. _to include 'msecs': https://stackoverflow.com/questions/6290739/python-logging-use-milliseconds-in-time-format\n.. _verboselogs: https://pypi.org/project/verboselogs\n.. _virtual environments: http://docs.python-guide.org/en/latest/dev/virtualenvs/\n\n\n"
+      }
+    },
+    {
+      "download_info": {
+        "url": "https://pypi.tuna.tsinghua.edu.cn/packages/f0/0f/310fb31e39e2d734ccaa2c0fb981ee41f7bd5056ce9bc29b2248bd569169/humanfriendly-10.0-py2.py3-none-any.whl",
+        "archive_info": {
+          "hash": "sha256=1697e1a8a8f550fd43c2865cd84542fc175a61dcb779b6fee18cf6b6ccba1477",
+          "hashes": {
+            "sha256": "1697e1a8a8f550fd43c2865cd84542fc175a61dcb779b6fee18cf6b6ccba1477"
+          }
+        }
+      },
+      "is_direct": false,
+      "is_yanked": false,
+      "requested": true,
+      "metadata": {
+        "metadata_version": "2.1",
+        "name": "humanfriendly",
+        "version": "10.0",
+        "platform": [
+          "UNKNOWN"
+        ],
+        "summary": "Human friendly output for text interfaces using Python",
+        "home_page": "https://humanfriendly.readthedocs.io",
+        "author": "Peter Odding",
+        "author_email": "peter@peterodding.com",
+        "license": "MIT",
+        "classifier": [
+          "Development Status :: 6 - Mature",
+          "Environment :: Console",
+          "Framework :: Sphinx :: Extension",
+          "Intended Audience :: Developers",
+          "Intended Audience :: System Administrators",
+          "License :: OSI Approved :: MIT License",
+          "Natural Language :: English",
+          "Programming Language :: Python",
+          "Programming Language :: Python :: 2",
+          "Programming Language :: Python :: 2.7",
+          "Programming Language :: Python :: 3",
+          "Programming Language :: Python :: 3.5",
+          "Programming Language :: Python :: 3.6",
+          "Programming Language :: Python :: 3.7",
+          "Programming Language :: Python :: 3.8",
+          "Programming Language :: Python :: 3.9",
+          "Programming Language :: Python :: Implementation :: CPython",
+          "Programming Language :: Python :: Implementation :: PyPy",
+          "Topic :: Communications",
+          "Topic :: Scientific/Engineering :: Human Machine Interfaces",
+          "Topic :: Software Development",
+          "Topic :: Software Development :: Libraries :: Python Modules",
+          "Topic :: Software Development :: User Interfaces",
+          "Topic :: System :: Shells",
+          "Topic :: System :: System Shells",
+          "Topic :: System :: Systems Administration",
+          "Topic :: Terminals",
+          "Topic :: Text Processing :: General",
+          "Topic :: Text Processing :: Linguistic",
+          "Topic :: Utilities"
+        ],
+        "requires_dist": [
+          "monotonic ; python_version == \"2.7\"",
+          "pyreadline ; sys_platform == \"win32\" and python_version<\"3.8\"",
+          "pyreadline3 ; sys_platform == \"win32\" and python_version>=\"3.8\""
+        ],
+        "requires_python": ">=2.7, !=3.0.*, !=3.1.*, !=3.2.*, !=3.3.*, !=3.4.*",
+        "description": "humanfriendly: Human friendly input/output in Python\n====================================================\n\n.. image:: https://github.com/xolox/python-humanfriendly/actions/workflows/test.yml/badge.svg?branch=master\n   :target: https://github.com/xolox/python-humanfriendly/actions\n\n.. image:: https://codecov.io/gh/xolox/python-humanfriendly/branch/master/graph/badge.svg?token=jYaj4T74TU\n   :target: https://codecov.io/gh/xolox/python-humanfriendly\n\nThe functions and classes in the `humanfriendly` package can be used to make\ntext interfaces more user friendly. Some example features:\n\n- Parsing and formatting numbers, file sizes, pathnames and timespans in\n  simple, human friendly formats.\n\n- Easy to use timers for long running operations, with human friendly\n  formatting of the resulting timespans.\n\n- Prompting the user to select a choice from a list of options by typing the\n  option's number or a unique substring of the option.\n\n- Terminal interaction including text styling (`ANSI escape sequences`_), user\n  friendly rendering of usage messages and querying the terminal for its\n  size.\n\nThe `humanfriendly` package is currently tested on Python 2.7, 3.5+ and PyPy\n(2.7) on Linux and macOS. While the intention is to support Windows as well,\nyou may encounter some rough edges.\n\n.. contents::\n   :local:\n\nGetting started\n---------------\n\nIt's very simple to start using the `humanfriendly` package::\n\n   >>> from humanfriendly import format_size, parse_size\n   >>> from humanfriendly.prompts import prompt_for_input\n   >>> user_input = prompt_for_input(\"Enter a readable file size: \")\n\n     Enter a readable file size: 16G\n\n   >>> num_bytes = parse_size(user_input)\n   >>> print(num_bytes)\n   16000000000\n   >>> print(\"You entered:\", format_size(num_bytes))\n   You entered: 16 GB\n   >>> print(\"You entered:\", format_size(num_bytes, binary=True))\n   You entered: 14.9 GiB\n\nTo get a demonstration of supported terminal text styles (based on\n`ANSI escape sequences`_) you can run the following command::\n\n   $ humanfriendly --demo\n\nCommand line\n------------\n\n.. A DRY solution to avoid duplication of the `humanfriendly --help' text:\n..\n.. [[[cog\n.. from humanfriendly.usage import inject_usage\n.. inject_usage('humanfriendly.cli')\n.. ]]]\n\n**Usage:** `humanfriendly [OPTIONS]`\n\nHuman friendly input/output (text formatting) on the command\nline based on the Python package with the same name.\n\n**Supported options:**\n\n.. csv-table::\n   :header: Option, Description\n   :widths: 30, 70\n\n\n   \"``-c``, ``--run-command``\",\"Execute an external command (given as the positional arguments) and render\n   a spinner and timer while the command is running. The exit status of the\n   command is propagated.\"\n   ``--format-table``,\"Read tabular data from standard input (each line is a row and each\n   whitespace separated field is a column), format the data as a table and\n   print the resulting table to standard output. See also the ``--delimiter``\n   option.\"\n   \"``-d``, ``--delimiter=VALUE``\",\"Change the delimiter used by ``--format-table`` to ``VALUE`` (a string). By default\n   all whitespace is treated as a delimiter.\"\n   \"``-l``, ``--format-length=LENGTH``\",\"Convert a length count (given as the integer or float ``LENGTH``) into a human\n   readable string and print that string to standard output.\"\n   \"``-n``, ``--format-number=VALUE``\",\"Format a number (given as the integer or floating point number ``VALUE``) with\n   thousands separators and two decimal places (if needed) and print the\n   formatted number to standard output.\"\n   \"``-s``, ``--format-size=BYTES``\",\"Convert a byte count (given as the integer ``BYTES``) into a human readable\n   string and print that string to standard output.\"\n   \"``-b``, ``--binary``\",\"Change the output of ``-s``, ``--format-size`` to use binary multiples of bytes\n   (base-2) instead of the default decimal multiples of bytes (base-10).\"\n   \"``-t``, ``--format-timespan=SECONDS``\",\"Convert a number of seconds (given as the floating point number ``SECONDS``)\n   into a human readable timespan and print that string to standard output.\"\n   ``--parse-length=VALUE``,\"Parse a human readable length (given as the string ``VALUE``) and print the\n   number of metres to standard output.\"\n   ``--parse-size=VALUE``,\"Parse a human readable data size (given as the string ``VALUE``) and print the\n   number of bytes to standard output.\"\n   ``--demo``,\"Demonstrate changing the style and color of the terminal font using ANSI\n   escape sequences.\"\n   \"``-h``, ``--help``\",Show this message and exit.\n\n.. [[[end]]]\n\nA note about size units\n-----------------------\n\nWhen I originally published the `humanfriendly` package I went with binary\nmultiples of bytes (powers of two). It was pointed out several times that this\nwas a poor choice (see issue `#4`_ and pull requests `#8`_ and `#9`_) and thus\nthe new default became decimal multiples of bytes (powers of ten):\n\n+------+---------------+---------------+\n| Unit | Binary value  | Decimal value |\n+------+---------------+---------------+\n| KB   |          1024 |          1000 +\n+------+---------------+---------------+\n| MB   |       1048576 |       1000000 |\n+------+---------------+---------------+\n| GB   |    1073741824 |    1000000000 |\n+------+---------------+---------------+\n| TB   | 1099511627776 | 1000000000000 |\n+------+---------------+---------------+\n| etc  |               |               |\n+------+---------------+---------------+\n\nThe option to use binary multiples of bytes remains by passing the keyword\nargument `binary=True` to the `format_size()`_ and `parse_size()`_ functions.\n\nWindows support\n---------------\n\nWindows 10 gained native support for ANSI escape sequences which means commands\nlike ``humanfriendly --demo`` should work out of the box (if your system is\nup-to-date enough). If this doesn't work then you can install the colorama_\npackage, it will be used automatically once installed.\n\nContact\n-------\n\nThe latest version of `humanfriendly` is available on PyPI_ and GitHub_. The\ndocumentation is hosted on `Read the Docs`_ and includes a changelog_. For bug\nreports please create an issue on GitHub_. If you have questions, suggestions,\netc. feel free to send me an e-mail at `peter@peterodding.com`_.\n\nLicense\n-------\n\nThis software is licensed under the `MIT license`_.\n\n© 2021 Peter Odding.\n\n.. External references:\n.. _#4: https://github.com/xolox/python-humanfriendly/issues/4\n.. _#8: https://github.com/xolox/python-humanfriendly/pull/8\n.. _#9: https://github.com/xolox/python-humanfriendly/pull/9\n.. _ANSI escape sequences: https://en.wikipedia.org/wiki/ANSI_escape_code\n.. _changelog: https://humanfriendly.readthedocs.io/en/latest/changelog.html\n.. _colorama: https://pypi.org/project/colorama\n.. _format_size(): https://humanfriendly.readthedocs.io/en/latest/#humanfriendly.format_size\n.. _GitHub: https://github.com/xolox/python-humanfriendly\n.. _MIT license: https://en.wikipedia.org/wiki/MIT_License\n.. _parse_size(): https://humanfriendly.readthedocs.io/en/latest/#humanfriendly.parse_size\n.. _peter@peterodding.com: peter@peterodding.com\n.. _PyPI: https://pypi.org/project/humanfriendly\n.. _Read the Docs: https://humanfriendly.readthedocs.io\n\n\n"
+      }
+    },
+    {
+      "download_info": {
+        "url": "https://pypi.tuna.tsinghua.edu.cn/packages/f7/5e/35c856e186b74678c24927847ad9895a51f1bc02a0c6126477a6c6040064/pyreadline3-3.5.6-py3-none-any.whl",
+        "archive_info": {
+          "hash": "sha256=8449b734232e42a5dcd74048e39b60db2839a4c38cf3ae2bf7707d58b5389c0d",
+          "hashes": {
+            "sha256": "8449b734232e42a5dcd74048e39b60db2839a4c38cf3ae2bf7707d58b5389c0d"
+          }
+        }
+      },
+      "is_direct": false,
+      "is_yanked": false,
+      "requested": true,
+      "metadata": {
+        "metadata_version": "2.4",
+        "name": "pyreadline3",
+        "version": "3.5.6",
+        "dynamic": [
+          "license-file"
+        ],
+        "summary": "A python implementation of GNU readline.",
+        "description_content_type": "text/markdown",
+        "keywords": [
+          "readline",
+          "pyreadline",
+          "pyreadline3"
+        ],
+        "author_email": "Bassem Girgis <brgirgis@gmail.com>, Jorgen Stenarson <jorgen.stenarson@kroywen.se>, Gary Bishop <unknwon@unknown.com>, Jack Trainor <unknwon@unknown.com>",
+        "maintainer_email": "Bassem Girgis <brgirgis@gmail.com>",
+        "license": "BSD",
+        "license_file": [
+          "LICENSE.md"
+        ],
+        "classifier": [
+          "Development Status :: 5 - Production/Stable",
+          "Environment :: Console",
+          "Operating System :: Microsoft :: Windows",
+          "License :: OSI Approved :: BSD License",
+          "Programming Language :: Python :: 3.8",
+          "Programming Language :: Python :: 3.9",
+          "Programming Language :: Python :: 3.10",
+          "Programming Language :: Python :: 3.11",
+          "Programming Language :: Python :: 3.12"
+        ],
+        "requires_dist": [
+          "build; extra == \"dev\"",
+          "flake8; extra == \"dev\"",
+          "mypy; extra == \"dev\"",
+          "pytest; extra == \"dev\"",
+          "twine; extra == \"dev\""
+        ],
+        "requires_python": ">=3.8",
+        "project_url": [
+          "Homepage, https://github.com/pyreadline3/pyreadline3",
+          "Documentation, https://github.com/pyreadline3/pyreadline3",
+          "Repository, https://github.com/pyreadline3/pyreadline3.git",
+          "Issues, https://github.com/pyreadline3/pyreadline3/issues",
+          "Changelog, https://github.com/pyreadline3/pyreadline3/blob/master/doc/ChangeLog"
+        ],
+        "provides_extra": [
+          "dev"
+        ],
+        "description": "# pyreadline3\r\n\r\n[![PyPi Badge](https://img.shields.io/pypi/v/pyreadline3)](https://pypi.org/project/pyreadline3/)\r\n![Publish](https://github.com/pyreadline3/pyreadline3/workflows/Publish/badge.svg)\r\n![Test](https://github.com/pyreadline3/pyreadline3/workflows/Test/badge.svg)\r\n[![Downloads](https://static.pepy.tech/personalized-badge/pyreadline3?period=week&units=international_system&left_color=black&right_color=orange&left_text=Last%20Week)](https://pepy.tech/project/pyreadline3)\r\n[![Downloads](https://static.pepy.tech/personalized-badge/pyreadline3?period=month&units=international_system&left_color=black&right_color=orange&left_text=Month)](https://pepy.tech/project/pyreadline3)\r\n[![Downloads](https://static.pepy.tech/personalized-badge/pyreadline3?period=total&units=international_system&left_color=black&right_color=orange&left_text=Total)](https://pepy.tech/project/pyreadline3)\r\n\r\nThe `pyreadline3` package is based on the stale package `pyreadline` located\r\n[here](https://github.com/pyreadline/pyreadline).\r\nThe original `pyreadline` package is a Python implementation of GNU `readline`\r\nfunctionality.\r\nIt is based on the `ctypes` based UNC `readline` package by Gary Bishop.\r\nIt is not complete.\r\nIt has been tested for use with Windows 10.\r\n\r\nVersion 3.4+ of pyreadline3 runs on Python 3.8+.\r\n\r\n`pyreadline3` is available on PyPI and can be installed with\r\n\r\n    pip install pyreadline3\r\n\r\n## Features\r\n\r\n- keyboard text selection and copy/paste\r\n- Shift-arrowkeys for text selection\r\n- Control-c can be used for copy activate with allow_ctrl_c(True) in config file\r\n- Double tapping ctrl-c will raise a KeyboardInterrupt, use ctrl_c_tap_time_interval(x)\r\n- where x is your preferred tap time window, default 0.3 s.\r\n- paste pastes first line of content on clipboard.\r\n- ipython_paste, pastes tab-separated data as list of lists or numpy array if all data is numeric\r\n- paste_mulitline_code pastes multi line code, removing any empty lines.\r\n\r\nThe latest development version is always available at the project git\r\n[repository](https://github.com/pyreadline3/pyreadline3)\r\n\r\n## Development\r\n\r\nTo clone the library for development:\r\n\r\n    git clone git@github.com:pyreadline3/pyreadline3.git\r\n\r\nor\r\n\r\n    git clone https://github.com/pyreadline3/pyreadline3.git\r\n\r\n### Build The Virtual Environment\r\n\r\nThe current earliest Python version supported is `3.8`. You need to be able to create a virtual environment at this version to make sure any changes you make is combatible.\r\n\r\nIf you are using `conda`:\r\n\r\n    conda create --prefix=.venv python=3.8 --yes\r\n\r\nIf you are using `venv`, make sure you have the right base package:\r\n\r\n    >> python --version\r\n    Python 3.8.x\r\n\r\nOnce you verify your base Python, you can then create a virtual environment using:\r\n\r\n    virtualenv -p py3.8 .venv\r\n\r\n### Setup\r\n\r\nOnce you have created your virtual environment and made sure it is active in your current command line:\r\n\r\n    pip install -e .[dev]\r\n\r\nThis should all the dependencies you need for developing into the library and also allow you to run the unit tests:\r\n\r\n    pytest\r\n\r\n### Debugging\r\n\r\n WIP\r\n"
+      }
+    }
+  ],
+  "environment": {
+    "implementation_name": "cpython",
+    "implementation_version": "3.9.23",
+    "os_name": "nt",
+    "platform_machine": "",
+    "platform_release": "10",
+    "platform_system": "Windows",
+    "platform_version": "10.0.19045",
+    "python_full_version": "3.9.23",
+    "platform_python_implementation": "CPython",
+    "python_version": "3.9",
+    "sys_platform": "win32"
+  }
+}

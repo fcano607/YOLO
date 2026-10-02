@@ -1,0 +1,21 @@
+Looking in indexes: https://pypi.tuna.tsinghua.edu.cn/simple
+Processing e:\秋招\项目相关\yolo\tmp\deploy_wheels\tensorrt_cu12_libs-11.3.0.99-py3-none-win_amd64.whl
+Collecting tensorrt-cu12==11.3.0.99
+  Using cached https://pypi.tuna.tsinghua.edu.cn/packages/e3/69/ba3f7afca36b471a216a878cba2d04a21d5a5e3c5289b6eda30688ae67e9/tensorrt_cu12-11.3.0.99.tar.gz (17 kB)
+  Installing build dependencies: started
+  Installing build dependencies: finished with status 'done'
+  Getting requirements to build wheel: started
+  Getting requirements to build wheel: finished with status 'done'
+  Preparing metadata (pyproject.toml): started
+  Preparing metadata (pyproject.toml): finished with status 'done'
+Collecting tensorrt-cu12-bindings==11.3.0.99
+  Using cached https://pypi.tuna.tsinghua.edu.cn/packages/0b/10/bb8ed011a1d855bfdcc725f37597ace805e8dc1e42c2c77e4a60378360a1/tensorrt_cu12_bindings-11.3.0.99-cp39-none-win_amd64.whl (835 kB)
+Building wheels for collected packages: tensorrt-cu12
+  Building wheel for tensorrt-cu12 (pyproject.toml): started
+  Building wheel for tensorrt-cu12 (pyproject.toml): finished with status 'done'
+  Created wheel for tensorrt-cu12: filename=tensorrt_cu12-11.3.0.99-py3-none-any.whl size=23071 sha256=f58af3356a187b20cd3c13e6deee21dff5c5d331c0b29b9a56becbd5bb1914c4
+  Stored in directory: c:\users\administrator\appdata\local\pip\cache\wheels\a6\69\c9\541f45e4a3e325bfda564c27249d2a3565763fa156ede3366c
+Successfully built tensorrt-cu12
+Installing collected packages: tensorrt-cu12-libs, tensorrt-cu12-bindings, tensorrt-cu12
+
+Successfully installed tensorrt-cu12-11.3.0.99 tensorrt-cu12-bindings-11.3.0.99 tensorrt-cu12-libs-11.3.0.99

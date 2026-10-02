@@ -1,12 +1,12 @@
 # YOLO 项目环境报告
 
-检查 / 更新日期：2026-10-02。当前完成任务：**M0-01 至 M0-04**，包含硬件、专用环境与源码锁定、正式检查及 E0 预训练演示。主线累计 4/54。
+检查 / 更新日期：2026-10-02。当前完成任务：**M0-01 至 M0-05**，包含硬件、专用环境与源码锁定、正式检查、E0 演示与部署兼容性预检查。主线累计 5/54。
 
 **M0-03 已完成：**训练环境通过；12:34 的正式复测在 DSHOW 下连续三次各读取三帧并正常释放，程序 exit code 0。之前的间歇性关闭超时已恢复，根因未确定。最新状态见[正式检查报告](environment_check.md)和第 11 节。
 
 **M0-04 已完成：**官方预训练 YOLO11n-seg 已在 GPU 上运行图片、文件视频和摄像头；10 秒 / 297 帧演示正常保存并释放设备。三类映射、实际预测与漏检 / 误分类见[E0 报告](E0_预训练模型验证.md)及第 12 节。
 
-本报告记录本机实际检查、环境创建、训练依赖安装和随机权重模型前向。前半部分保留 M0-01 的原始检查，当前安装状态见第 10 节。机器可读取证据见 [M0-01 检查快照](../logs/environment/M0-01_20261002_snapshot.json)、[M0-02 克隆快照](../logs/environment/M0-02_20261002_yolo_snapshot.json)与[安装验收快照](../logs/environment/M0-02_20261002_install_snapshot.json)。
+本报告记录本机各阶段实际检查。前半部分保留历史状态；当前统一训练 / 部署环境见第 13 节。历史证据见 [M0-01 检查快照](../logs/environment/M0-01_20261002_snapshot.json)、[M0-02 克隆快照](../logs/environment/M0-02_20261002_yolo_snapshot.json)与[安装验收快照](../logs/environment/M0-02_20261002_install_snapshot.json)。
 
 ## 1. 本次结论
 
@@ -227,3 +227,20 @@ nvidia-smi --query-gpu=name,memory.total,driver_version,compute_cap --format=csv
 用户确认右侧杯子后方黑色矩形为手机、最右物体为瓶子，另有左侧被手遮挡的手机。右侧手机有预测；左侧遮挡手机漏检；瓶子没有 bottle 输出，部分帧被预测为 cup。这些逐例现象不是数据集精度指标，也没有证据将它们单独归因于某个原因。
 
 本次没有更换依赖、驱动或锁定源码。脚本、参数、权重来源、输入和预测证据见 [E0 使用说明](../docs/E0_预训练模型使用说明.md)、[E0 报告](E0_预训练模型验证.md)、[产出验收 JSON](../logs/environment/M0-04_20261002_artifact_validation.json)。下一步 M0-05；项目训练、独立部署和持续运行稳定性继续按模块验收。
+
+## 13. M0-05：当前统一训练 / 部署环境与实际执行
+
+按用户选择，在 yolo 中移除继承的 TensorFlow 2.10 及旧 TensorBoard / Keras / estimator 等 6 个组件，protobuf 升为 4.25.8；新增 ONNX 1.17.0、onnxruntime-gpu 1.19.2、TensorRT CUDA 12 的 11.3.0.99 与配套包。当前登记 167 个发行包，其他已有包版本不变。Python、cu129 PyTorch、torchvision、NumPy、OpenCV、Ultralytics 源码 commit 和驱动保留原组合。原 tf2 只读复查仍保留 TensorFlow 2.10.0 与 protobuf 3.19.6。
+
+| 检查 | 实际结果 |
+| --- | --- |
+| 训练环境回归 | 18 项直接依赖、pip check、源码 / OpenCV / 随机权重 CUDA 前向通过 |
+| E0 回归 | 桌面图片在新进程 GPU FP32 上输出框与 mask；仍为 1 个手机、2 个 cup 预测，原瓶子误分类没有改善 |
+| ONNX | 固定 `[1,3,640,640]` FP32、opset17、无 NMS 导出并 full_check 通过；输出 `[1,116,8400]` 与 `[1,32,160,160]` |
+| ORT CPU / CUDA | 实际 session.run 两张已保存图片的同一输入；profile 分别为 912 次 CPU / 530 次 CUDA 节点事件；CUDA 没有 CPU 节点事件 |
+| TensorRT FP32 | 直接 Python API 构建、反序列化与 GPU execute_async_v3 通过；读取 ONNX bytes 解决中文文件路径 API 失败 |
+| 原始数值对照 | 两个输出均 finite；预先固定 atol=1e-3、rtol=1e-4，所有后端 / 两图均无超出联合容差元素 |
+
+模型仍是原始 80 类 COCO 预训练模型。本次未实现完整独立后处理、训练后模型部署、FP16、正式 mAP/FPS 或长期摄像头验收；完整 M5/M6/M7 继续按计划开展。ORT provider 声明不替代执行证据，未使用 ORT TensorRT EP。
+
+当前证据：[部署报告](deployment/M0-05_部署兼容性预检查.md)、[部署汇总](../logs/deployment/M0-05_summary.json)、[包变化](../logs/environment/M0-05_20261002_package_changes.json)、[训练回归](../logs/environment/M0-05_20261002_training_regression.json)、[安装与恢复说明](../docs/环境安装记录.md)。M0-05 已完成，主线 5/54；下一项 M0-06 保存完整环境与复现入口。

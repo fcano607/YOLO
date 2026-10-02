@@ -1,0 +1,33 @@
+Looking in indexes: https://pypi.tuna.tsinghua.edu.cn/simple
+Collecting onnx==1.17.0
+  Using cached https://pypi.tuna.tsinghua.edu.cn/packages/57/8e/ce0e20200bdf8e8b47679cd56efb1057aa218b29ccdf60a3b4fb6b91064c/onnx-1.17.0-cp39-cp39-win_amd64.whl (14.5 MB)
+Collecting onnxruntime-gpu==1.19.2
+  Using cached https://pypi.tuna.tsinghua.edu.cn/packages/10/6d/fae011a8a9ef7a8c0496be684ff576e520a8adeccaf9dd85d7d20236dfc2/onnxruntime_gpu-1.19.2-cp39-cp39-win_amd64.whl (226.4 MB)
+Collecting protobuf==4.25.8
+  Using cached https://pypi.tuna.tsinghua.edu.cn/packages/de/3f/2e1812771b4e28b2a70b566527963e40670d1ec90d3639b6b5f7206ac287/protobuf-4.25.8-cp39-cp39-win_amd64.whl (413 kB)
+Collecting coloredlogs==15.0.1
+  Using cached https://pypi.tuna.tsinghua.edu.cn/packages/a7/06/3d6badcf13db419e25b07041d9c7b4a2c331d3f4e7134445ec5df57714cd/coloredlogs-15.0.1-py2.py3-none-any.whl (46 kB)
+Collecting humanfriendly==10.0
+  Using cached https://pypi.tuna.tsinghua.edu.cn/packages/f0/0f/310fb31e39e2d734ccaa2c0fb981ee41f7bd5056ce9bc29b2248bd569169/humanfriendly-10.0-py2.py3-none-any.whl (86 kB)
+Collecting pyreadline3==3.5.6
+  Using cached https://pypi.tuna.tsinghua.edu.cn/packages/f7/5e/35c856e186b74678c24927847ad9895a51f1bc02a0c6126477a6c6040064/pyreadline3-3.5.6-py3-none-any.whl (85 kB)
+Requirement already satisfied: numpy>=1.20 in d:\software\anaconda\envs\yolo\lib\site-packages (from onnx==1.17.0) (1.26.4)
+Requirement already satisfied: flatbuffers in d:\software\anaconda\envs\yolo\lib\site-packages (from onnxruntime-gpu==1.19.2) (25.9.23)
+Requirement already satisfied: packaging in d:\software\anaconda\envs\yolo\lib\site-packages (from onnxruntime-gpu==1.19.2) (25.0)
+Requirement already satisfied: sympy in d:\software\anaconda\envs\yolo\lib\site-packages (from onnxruntime-gpu==1.19.2) (1.13.3)
+Requirement already satisfied: mpmath<1.4,>=1.1.0 in d:\software\anaconda\envs\yolo\lib\site-packages (from sympy->onnxruntime-gpu==1.19.2) (1.3.0)
+Installing collected packages: pyreadline3, protobuf, onnx, humanfriendly, coloredlogs, onnxruntime-gpu
+  Attempting uninstall: protobuf
+    Found existing installation: protobuf 3.19.6
+    Uninstalling protobuf-3.19.6:
+      Successfully uninstalled protobuf-3.19.6
+  WARNING: The scripts backend-test-tools.exe, check-model.exe and check-node.exe are installed in 'D:\software\anaconda\envs\yolo\Scripts' which is not on PATH.
+  Consider adding this directory to PATH or, if you prefer to suppress this warning, use --no-warn-script-location.
+  WARNING: The script humanfriendly.exe is installed in 'D:\software\anaconda\envs\yolo\Scripts' which is not on PATH.
+  Consider adding this directory to PATH or, if you prefer to suppress this warning, use --no-warn-script-location.
+  WARNING: The script coloredlogs.exe is installed in 'D:\software\anaconda\envs\yolo\Scripts' which is not on PATH.
+  Consider adding this directory to PATH or, if you prefer to suppress this warning, use --no-warn-script-location.
+  WARNING: The script onnxruntime_test.exe is installed in 'D:\software\anaconda\envs\yolo\Scripts' which is not on PATH.
+  Consider adding this directory to PATH or, if you prefer to suppress this warning, use --no-warn-script-location.
+
+Successfully installed coloredlogs-15.0.1 humanfriendly-10.0 onnx-1.17.0 onnxruntime-gpu-1.19.2 protobuf-4.25.8 pyreadline3-3.5.6

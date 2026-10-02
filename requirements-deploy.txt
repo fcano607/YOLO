@@ -1,0 +1,13 @@
+# Windows x64 / Python 3.9; shares the verified training environment.
+-c configs/constraints-train.txt
+onnx==1.17.0
+onnxruntime-gpu==1.19.2
+protobuf==4.25.8
+coloredlogs==15.0.1
+humanfriendly==10.0
+pyreadline3==3.5.6
+# NVIDIA supplies the Windows runtime wheel through its own package index.
+--extra-index-url https://pypi.nvidia.com
+tensorrt-cu12==11.3.0.99
+tensorrt-cu12-bindings==11.3.0.99
+tensorrt-cu12-libs==11.3.0.99

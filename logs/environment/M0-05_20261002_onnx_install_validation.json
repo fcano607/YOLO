@@ -1,0 +1,102 @@
+{
+  "timestamp": "2026-10-02T13:41:14.856458",
+  "wheel_validation": [
+    {
+      "name": "onnx",
+      "version": "1.17.0",
+      "filename": "onnx-1.17.0-cp39-cp39-win_amd64.whl",
+      "sha256": "5ca7a0894a86d028d509cdcf99ed1864e19bfe5727b44322c11691d834a1c546",
+      "official_hash_verified": true
+    },
+    {
+      "name": "onnxruntime-gpu",
+      "version": "1.19.2",
+      "filename": "onnxruntime_gpu-1.19.2-cp39-cp39-win_amd64.whl",
+      "sha256": "c8b8128174b0470537e9f4983aeecc002a435d13914970c2af2f41d244ef2781",
+      "official_hash_verified": true
+    },
+    {
+      "name": "protobuf",
+      "version": "4.25.8",
+      "filename": "protobuf-4.25.8-cp39-cp39-win_amd64.whl",
+      "sha256": "f4510b93a3bec6eba8fd8f1093e9d7fb0d4a24d1a81377c10c0e5bbfe9e4ed24",
+      "official_hash_verified": true
+    },
+    {
+      "name": "coloredlogs",
+      "version": "15.0.1",
+      "filename": "coloredlogs-15.0.1-py2.py3-none-any.whl",
+      "sha256": "612ee75c546f53e92e70049c9dbfcc18c935a2b9a53b66085ce9ef6a6e5c0934",
+      "official_hash_verified": true
+    },
+    {
+      "name": "humanfriendly",
+      "version": "10.0",
+      "filename": "humanfriendly-10.0-py2.py3-none-any.whl",
+      "sha256": "1697e1a8a8f550fd43c2865cd84542fc175a61dcb779b6fee18cf6b6ccba1477",
+      "official_hash_verified": true
+    },
+    {
+      "name": "pyreadline3",
+      "version": "3.5.6",
+      "filename": "pyreadline3-3.5.6-py3-none-any.whl",
+      "sha256": "8449b734232e42a5dcd74048e39b60db2839a4c38cf3ae2bf7707d58b5389c0d",
+      "official_hash_verified": true
+    }
+  ],
+  "commands": [
+    {
+      "args": [
+        "D:\\software\\anaconda\\envs\\yolo\\python.exe",
+        "-m",
+        "pip",
+        "uninstall",
+        "-y",
+        "tensorflow-gpu",
+        "tensorflow-estimator",
+        "keras",
+        "tensorboard",
+        "tensorboard-data-server",
+        "tensorboard-plugin-wit"
+      ],
+      "exit_code": 0,
+      "log": "logs/environment/M0-05_20261002_install_step1.txt"
+    },
+    {
+      "args": [
+        "D:\\software\\anaconda\\envs\\yolo\\python.exe",
+        "-m",
+        "pip",
+        "install",
+        "--report",
+        "logs/environment/M0-05_20261002_pip_install_onnx.json",
+        "-c",
+        "configs/constraints-train.txt",
+        "onnx==1.17.0",
+        "onnxruntime-gpu==1.19.2",
+        "protobuf==4.25.8",
+        "coloredlogs==15.0.1",
+        "humanfriendly==10.0",
+        "pyreadline3==3.5.6",
+        "-i",
+        "https://pypi.tuna.tsinghua.edu.cn/simple",
+        "--timeout",
+        "60",
+        "--retries",
+        "2"
+      ],
+      "exit_code": 0,
+      "log": "logs/environment/M0-05_20261002_install_step2.txt"
+    },
+    {
+      "args": [
+        "D:\\software\\anaconda\\envs\\yolo\\python.exe",
+        "-m",
+        "pip",
+        "check"
+      ],
+      "exit_code": 0,
+      "log": "logs/environment/M0-05_20261002_install_step3.txt"
+    }
+  ]
+}

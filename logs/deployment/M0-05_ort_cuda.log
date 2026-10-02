@@ -1,0 +1,80 @@
+{
+  "passed": true,
+  "cases": [
+    {
+      "name": "bus",
+      "comparisons": [
+        {
+          "name": "output0",
+          "shape": [
+            1,
+            116,
+            8400
+          ],
+          "dtype": "float32",
+          "finite": true,
+          "max_abs": 0.002227783203125,
+          "mean_abs": 1.0182670755774304e-06,
+          "p99_abs": 3.0517578125e-05,
+          "outside_tolerance": 0,
+          "allclose": true
+        },
+        {
+          "name": "output1",
+          "shape": [
+            1,
+            32,
+            160,
+            160
+          ],
+          "dtype": "float32",
+          "finite": true,
+          "max_abs": 2.014636993408203e-05,
+          "mean_abs": 6.831701994144957e-07,
+          "p99_abs": 3.635883331298828e-06,
+          "outside_tolerance": 0,
+          "allclose": true
+        }
+      ],
+      "passed": true
+    },
+    {
+      "name": "desktop",
+      "comparisons": [
+        {
+          "name": "output0",
+          "shape": [
+            1,
+            116,
+            8400
+          ],
+          "dtype": "float32",
+          "finite": true,
+          "max_abs": 0.002716064453125,
+          "mean_abs": 1.2051528257492523e-06,
+          "p99_abs": 3.0517578125e-05,
+          "outside_tolerance": 0,
+          "allclose": true
+        },
+        {
+          "name": "output1",
+          "shape": [
+            1,
+            32,
+            160,
+            160
+          ],
+          "dtype": "float32",
+          "finite": true,
+          "max_abs": 1.8358230590820312e-05,
+          "mean_abs": 8.177122070218701e-07,
+          "p99_abs": 4.410743713378906e-06,
+          "outside_tolerance": 0,
+          "allclose": true
+        }
+      ],
+      "passed": true
+    }
+  ],
+  "stage": "ort_cuda"
+}

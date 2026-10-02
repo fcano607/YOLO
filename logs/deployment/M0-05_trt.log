@@ -1,0 +1,110 @@
+[10/02/2026-13:49:20] [TRT] [I] [MemUsageChange] Init CUDA: CPU +2, GPU +0, now: CPU 20726, GPU 1238 (MiB)
+[10/02/2026-13:49:20] [TRT] [I] ----------------------------------------------------------------
+[10/02/2026-13:49:20] [TRT] [I] ONNX IR version:  0.0.8
+[10/02/2026-13:49:20] [TRT] [I] Opset version:    17
+[10/02/2026-13:49:20] [TRT] [I] Producer name:    pytorch
+[10/02/2026-13:49:20] [TRT] [I] Producer version: 2.8.0
+[10/02/2026-13:49:20] [TRT] [I] Domain:           
+[10/02/2026-13:49:20] [TRT] [I] Model version:    0
+[10/02/2026-13:49:20] [TRT] [I] Doc string:       
+[10/02/2026-13:49:20] [TRT] [I] ----------------------------------------------------------------
+[10/02/2026-13:49:20] [TRT] [I] [MemUsageChange] Init builder kernel library: CPU +791, GPU +4, now: CPU 21864, GPU 1242 (MiB)
+[10/02/2026-13:49:23] [TRT] [I] Local timing cache in use. Profiling results in this builder pass will not be stored.
+[10/02/2026-13:49:23] [TRT] [I] Compiler backend is used during engine build.
+[10/02/2026-13:49:39] [TRT] [I] Detected 1 inputs and 2 output network tensors.
+[10/02/2026-13:49:39] [TRT] [I] Total Host Persistent Memory: 80 bytes
+[10/02/2026-13:49:39] [TRT] [I] Total Device Persistent Memory: 0 bytes
+[10/02/2026-13:49:39] [TRT] [I] Max Scratch Memory: 44034048 bytes
+[10/02/2026-13:49:39] [TRT] [I] [BlockAssignment] Started assigning block shifts. This will take 1 steps to complete.
+[10/02/2026-13:49:39] [TRT] [I] [BlockAssignment] Algorithm ShiftNTopDown took 0.0087ms to assign 1 blocks to 1 nodes requiring 44034048 bytes.
+[10/02/2026-13:49:39] [TRT] [I] Total Activation Memory: 44034048 bytes
+[10/02/2026-13:49:39] [TRT] [I] Total Weights Memory: 14405056 bytes
+[10/02/2026-13:49:39] [TRT] [I] Compiler backend is used during engine execution.
+[10/02/2026-13:49:39] [TRT] [I] Engine generation completed in 16.5428 seconds.
+[10/02/2026-13:49:39] [TRT] [I] [MemUsageStats] Peak memory usage of TRT CPU/GPU memory allocators: CPU 0 MiB, GPU 14 MiB
+[10/02/2026-13:49:39] [TRT] [I] Loaded engine size: 15 MiB
+[10/02/2026-13:49:39] [TRT] [I] [MS] Running engine with multi stream info
+[10/02/2026-13:49:39] [TRT] [I] [MS] Number of aux streams is 4
+[10/02/2026-13:49:39] [TRT] [I] [MS] Number of total worker streams is 5
+[10/02/2026-13:49:39] [TRT] [I] [MS] The main stream provided by execute/enqueue calls is the first worker stream
+[10/02/2026-13:49:39] [TRT] [I] [MemUsageChange] TensorRT-managed allocation in IExecutionContext creation: CPU +0, GPU +42, now: CPU 0, GPU 55 (MiB)
+{
+  "passed": true,
+  "cases": [
+    {
+      "name": "bus",
+      "comparisons": [
+        {
+          "name": "output0",
+          "shape": [
+            1,
+            116,
+            8400
+          ],
+          "dtype": "float32",
+          "finite": true,
+          "max_abs": 0.001800537109375,
+          "mean_abs": 1.1695204507165279e-06,
+          "p99_abs": 3.0517578125e-05,
+          "outside_tolerance": 0,
+          "allclose": true
+        },
+        {
+          "name": "output1",
+          "shape": [
+            1,
+            32,
+            160,
+            160
+          ],
+          "dtype": "float32",
+          "finite": true,
+          "max_abs": 1.6808509826660156e-05,
+          "mean_abs": 7.913837020995241e-07,
+          "p99_abs": 4.351139068603516e-06,
+          "outside_tolerance": 0,
+          "allclose": true
+        }
+      ],
+      "passed": true
+    },
+    {
+      "name": "desktop",
+      "comparisons": [
+        {
+          "name": "output0",
+          "shape": [
+            1,
+            116,
+            8400
+          ],
+          "dtype": "float32",
+          "finite": true,
+          "max_abs": 0.0020751953125,
+          "mean_abs": 1.5220701243319336e-06,
+          "p99_abs": 4.57763671875e-05,
+          "outside_tolerance": 0,
+          "allclose": true
+        },
+        {
+          "name": "output1",
+          "shape": [
+            1,
+            32,
+            160,
+            160
+          ],
+          "dtype": "float32",
+          "finite": true,
+          "max_abs": 1.895427703857422e-05,
+          "mean_abs": 1.0530472770324538e-06,
+          "p99_abs": 5.9604644775390625e-06,
+          "outside_tolerance": 0,
+          "allclose": true
+        }
+      ],
+      "passed": true
+    }
+  ],
+  "stage": "trt"
+}

@@ -1,0 +1,16 @@
+[
+  {
+    "name": "tensorrt_cu12",
+    "version": "11.3.0.99",
+    "filename": "tensorrt_cu12-11.3.0.99.tar.gz",
+    "sha256": "6db43954730b176779e4a2631fb858d1d04e6f4cfdeaecf2ef9eedf89bc71342",
+    "official_hash_verified": true
+  },
+  {
+    "name": "tensorrt_cu12_bindings",
+    "version": "11.3.0.99",
+    "filename": "tensorrt_cu12_bindings-11.3.0.99-cp39-none-win_amd64.whl",
+    "sha256": "a15c3acbc42f602f1a7eabfe12f9229a5c545db74ed3fa0703e5a52f7a4e2514",
+    "official_hash_verified": true
+  }
+]

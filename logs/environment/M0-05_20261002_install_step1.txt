@@ -1,0 +1,18 @@
+Found existing installation: tensorflow-gpu 2.10.0
+Uninstalling tensorflow-gpu-2.10.0:
+  Successfully uninstalled tensorflow-gpu-2.10.0
+Found existing installation: tensorflow-estimator 2.10.0
+Uninstalling tensorflow-estimator-2.10.0:
+  Successfully uninstalled tensorflow-estimator-2.10.0
+Found existing installation: keras 2.10.0
+Uninstalling keras-2.10.0:
+  Successfully uninstalled keras-2.10.0
+Found existing installation: tensorboard 2.10.1
+Uninstalling tensorboard-2.10.1:
+  Successfully uninstalled tensorboard-2.10.1
+Found existing installation: tensorboard-data-server 0.6.1
+Uninstalling tensorboard-data-server-0.6.1:
+  Successfully uninstalled tensorboard-data-server-0.6.1
+Found existing installation: tensorboard-plugin-wit 1.8.1
+Uninstalling tensorboard-plugin-wit-1.8.1:
+  Successfully uninstalled tensorboard-plugin-wit-1.8.1

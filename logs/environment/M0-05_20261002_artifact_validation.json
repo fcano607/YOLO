@@ -1,0 +1,84 @@
+{
+  "task": "M0-05",
+  "passed": true,
+  "all_backends_passed": true,
+  "same_artifacts_verified": true,
+  "persisted_array_comparisons": [
+    {
+      "case": "bus",
+      "backend": "ort_cpu",
+      "passed": true
+    },
+    {
+      "case": "bus",
+      "backend": "ort_cuda",
+      "passed": true
+    },
+    {
+      "case": "bus",
+      "backend": "trt",
+      "passed": true
+    },
+    {
+      "case": "desktop",
+      "backend": "ort_cpu",
+      "passed": true
+    },
+    {
+      "case": "desktop",
+      "backend": "ort_cuda",
+      "passed": true
+    },
+    {
+      "case": "desktop",
+      "backend": "trt",
+      "passed": true
+    }
+  ],
+  "pinned_versions": {
+    "torch": "2.8.0+cu129",
+    "torchvision": "0.23.0+cu129",
+    "numpy": "1.26.4",
+    "opencv-python": "4.11.0.86",
+    "matplotlib": "3.8.4",
+    "pillow": "11.0.0",
+    "PyYAML": "6.0.3",
+    "requests": "2.32.5",
+    "psutil": "7.1.0",
+    "cloudpickle": "3.1.1",
+    "filelock": "3.19.1",
+    "polars": "1.36.1",
+    "polars-runtime-32": "1.36.1",
+    "nvidia-ml-py": "13.615.71",
+    "ultralytics-thop": "2.2.2",
+    "pandas": "2.2.1",
+    "scipy": "1.13.1",
+    "tqdm": "4.67.3",
+    "onnx": "1.17.0",
+    "onnxruntime-gpu": "1.19.2",
+    "protobuf": "4.25.8",
+    "coloredlogs": "15.0.1",
+    "humanfriendly": "10.0",
+    "pyreadline3": "3.5.6",
+    "tensorrt-cu12": "11.3.0.99",
+    "tensorrt-cu12-bindings": "11.3.0.99",
+    "tensorrt-cu12-libs": "11.3.0.99"
+  },
+  "pip_check": "No broken requirements found.",
+  "package_count": 167,
+  "progress": {
+    "completed": [
+      "M0-01",
+      "M0-02",
+      "M0-03",
+      "M0-04",
+      "M0-05"
+    ],
+    "total": 54
+  },
+  "updated_document_count": 10,
+  "local_links_checked": 202,
+  "broken_links": [],
+  "e0_regression_summary": "runs/E0/M0-05_20261002_regression/summary.json",
+  "scope": "M0-05 precheck; M0-06 and full M5/M6 remain pending"
+}

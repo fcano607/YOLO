@@ -1,0 +1,185 @@
+{
+  "onnx": {
+    "latest": "1.23.1",
+    "requires_python": ">=3.10",
+    "requires_dist": [
+      "numpy>=1.23.2",
+      "protobuf>=6.31.1",
+      "typing_extensions>=4.7.1",
+      "ml_dtypes>=0.5.4",
+      "Pillow>=12.2.0; extra == \"reference\""
+    ],
+    "windows_candidates": [
+      {
+        "version": "1.23.1",
+        "filename": "onnx-1.23.1-cp311-cp311-win_amd64.whl",
+        "size": 7875391,
+        "requires_python": ">=3.10",
+        "sha256": "e3ab8abe95c684e3fd0da67e19b99df38906706d5ac0f91839060fb658606696"
+      },
+      {
+        "version": "1.23.0",
+        "filename": "onnx-1.23.0-cp311-cp311-win_amd64.whl",
+        "size": 7875098,
+        "requires_python": ">=3.10",
+        "sha256": "9da2d023dec5c627a09db8e8da0cf0fd199d997be3c6d54071a0a00051068d48"
+      },
+      {
+        "version": "1.22.0",
+        "filename": "onnx-1.22.0-cp311-cp311-win_amd64.whl",
+        "size": 17215684,
+        "requires_python": ">=3.10",
+        "sha256": "8561a2c00041c07e08db0c228593b5b4694100398685f348532af7dbb84189da"
+      },
+      {
+        "version": "1.21.0",
+        "filename": "onnx-1.21.0-cp311-cp311-win_amd64.whl",
+        "size": 16443748,
+        "requires_python": ">=3.10",
+        "sha256": "5f78c411743db317a76e5d009f84f7e3d5380411a1567a868e82461a1e5c775d"
+      },
+      {
+        "version": "1.20.1",
+        "filename": "onnx-1.20.1-cp311-cp311-win_amd64.whl",
+        "size": 16392120,
+        "requires_python": ">=3.10",
+        "sha256": "d78cde72d7ca8356a2d99c5dc0dbf67264254828cae2c5780184486c0cd7b3bf"
+      },
+      {
+        "version": "1.20.0",
+        "filename": "onnx-1.20.0-cp311-cp311-win_amd64.whl",
+        "size": 16488019,
+        "requires_python": ">=3.10",
+        "sha256": "3a6de7dda77926c323b0e5a830dc9c2866ce350c1901229e193be1003a076c25"
+      }
+    ]
+  },
+  "onnxruntime-gpu": {
+    "latest": "1.30.0",
+    "requires_python": ">=3.11",
+    "requires_dist": [
+      "flatbuffers",
+      "numpy>=1.21.6",
+      "packaging",
+      "protobuf>=4.25.8",
+      "sympy; extra == \"symbolic\"",
+      "ml_dtypes; extra == \"quantization\"",
+      "nvidia-cuda-nvrtc~=13.0; extra == \"cuda\"",
+      "nvidia-cuda-runtime~=13.0; extra == \"cuda\"",
+      "nvidia-cufft~=12.0; extra == \"cuda\"",
+      "nvidia-curand~=10.0; extra == \"cuda\"",
+      "nvidia-cudnn-cu13~=9.0; extra == \"cudnn\""
+    ],
+    "windows_candidates": [
+      {
+        "version": "1.30.0",
+        "filename": "onnxruntime_gpu-1.30.0-cp311-cp311-win_amd64.whl",
+        "size": 160469661,
+        "requires_python": ">=3.11",
+        "sha256": "fea66ebd743717de6f254955293b5f978825be7867c87a99c4a0ac1fe6f1d763"
+      },
+      {
+        "version": "1.29.0",
+        "filename": "onnxruntime_gpu-1.29.0-cp311-cp311-win_amd64.whl",
+        "size": 148175258,
+        "requires_python": ">=3.11",
+        "sha256": "fb6045d8623a5b9f949449bb4b93bab92e7f77578a2dc34420babacd16e2908c"
+      },
+      {
+        "version": "1.28.0",
+        "filename": "onnxruntime_gpu-1.28.0-cp311-cp311-win_amd64.whl",
+        "size": 241446409,
+        "requires_python": ">=3.11",
+        "sha256": "d5004c1d38da77970d4534e2e20e34ade9c4fb167bfc685a9843d2863a58122a"
+      },
+      {
+        "version": "1.27.0",
+        "filename": "onnxruntime_gpu-1.27.0-cp311-cp311-win_amd64.whl",
+        "size": 213618726,
+        "requires_python": ">=3.11",
+        "sha256": "c68799b35fc4818e6c1d50f5270681bf5ab8a652ac118e11a987b23f488e18dd"
+      },
+      {
+        "version": "1.26.0",
+        "filename": "onnxruntime_gpu-1.26.0-cp311-cp311-win_amd64.whl",
+        "size": 226539455,
+        "requires_python": ">=3.11",
+        "sha256": "cc5329aad02d9745cc3ae9cdb185bfa1aad242a7bf89b8c471280002ec40f98a"
+      },
+      {
+        "version": "1.25.1",
+        "filename": "onnxruntime_gpu-1.25.1-cp311-cp311-win_amd64.whl",
+        "size": 221700978,
+        "requires_python": ">=3.11",
+        "sha256": "5c2d00d7b62c098e5d0c720ae9e81dcb3143a4285516a43e39c4997fa9fcc1f3"
+      }
+    ]
+  },
+  "tensorrt-cu12": {
+    "latest": "11.3.0.99",
+    "requires_python": ">=3.8",
+    "requires_dist": [
+      "tensorrt_cu12_libs==11.3.0.99",
+      "tensorrt_cu12_bindings==11.3.0.99",
+      "numpy; extra == \"numpy\""
+    ],
+    "windows_candidates": []
+  },
+  "tensorrt-cu12-bindings": {
+    "latest": "11.3.0.99",
+    "requires_python": null,
+    "requires_dist": [
+      "numpy; extra == \"numpy\""
+    ],
+    "windows_candidates": [
+      {
+        "version": "11.3.0.99",
+        "filename": "tensorrt_cu12_bindings-11.3.0.99-cp311-none-win_amd64.whl",
+        "size": 894125,
+        "requires_python": null,
+        "sha256": "3ac69e39d4d94ecc5f72b1104e9f22dfcb2979998f94f01aaf261b1aba62add5"
+      },
+      {
+        "version": "11.3.0.99",
+        "filename": "tensorrt_cu12_bindings-11.3.0.99-cp39-none-win_amd64.whl",
+        "size": 835636,
+        "requires_python": null,
+        "sha256": "a15c3acbc42f602f1a7eabfe12f9229a5c545db74ed3fa0703e5a52f7a4e2514"
+      },
+      {
+        "version": "11.2.1.2",
+        "filename": "tensorrt_cu12_bindings-11.2.1.2-cp311-none-win_amd64.whl",
+        "size": 892195,
+        "requires_python": null,
+        "sha256": "5b160806c8c92b911f8fb79f3369e595b863f289caa62ad0d11c55838c98bb53"
+      },
+      {
+        "version": "11.2.1.2",
+        "filename": "tensorrt_cu12_bindings-11.2.1.2-cp39-none-win_amd64.whl",
+        "size": 834019,
+        "requires_python": null,
+        "sha256": "72dd41c93034dc70e86b871306304080e951c1991d544dbec4605efe9434c9c4"
+      },
+      {
+        "version": "11.1.0.106",
+        "filename": "tensorrt_cu12_bindings-11.1.0.106-cp311-none-win_amd64.whl",
+        "size": 886799,
+        "requires_python": null,
+        "sha256": "a6afa53f5dce5e6f9feb08ede4c795844ebdb1ec08e52188e998213248502e03"
+      },
+      {
+        "version": "11.1.0.106",
+        "filename": "tensorrt_cu12_bindings-11.1.0.106-cp39-none-win_amd64.whl",
+        "size": 828713,
+        "requires_python": null,
+        "sha256": "05362893bed0079192d434a213556195a9eb743dc72944099f4d252f3cfc7df7"
+      }
+    ]
+  },
+  "tensorrt-cu12-libs": {
+    "latest": "11.3.0.99",
+    "requires_python": null,
+    "requires_dist": null,
+    "windows_candidates": []
+  }
+}

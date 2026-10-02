@@ -1,0 +1,80 @@
+{
+  "passed": true,
+  "cases": [
+    {
+      "name": "bus",
+      "comparisons": [
+        {
+          "name": "output0",
+          "shape": [
+            1,
+            116,
+            8400
+          ],
+          "dtype": "float32",
+          "finite": true,
+          "max_abs": 0.00225830078125,
+          "mean_abs": 1.2346399291131751e-06,
+          "p99_abs": 3.0517578125e-05,
+          "outside_tolerance": 0,
+          "allclose": true
+        },
+        {
+          "name": "output1",
+          "shape": [
+            1,
+            32,
+            160,
+            160
+          ],
+          "dtype": "float32",
+          "finite": true,
+          "max_abs": 1.621246337890625e-05,
+          "mean_abs": 8.05278728533143e-07,
+          "p99_abs": 4.410743713378906e-06,
+          "outside_tolerance": 0,
+          "allclose": true
+        }
+      ],
+      "passed": true
+    },
+    {
+      "name": "desktop",
+      "comparisons": [
+        {
+          "name": "output0",
+          "shape": [
+            1,
+            116,
+            8400
+          ],
+          "dtype": "float32",
+          "finite": true,
+          "max_abs": 0.00225830078125,
+          "mean_abs": 1.551428877953097e-06,
+          "p99_abs": 4.57763671875e-05,
+          "outside_tolerance": 0,
+          "allclose": true
+        },
+        {
+          "name": "output1",
+          "shape": [
+            1,
+            32,
+            160,
+            160
+          ],
+          "dtype": "float32",
+          "finite": true,
+          "max_abs": 1.8358230590820312e-05,
+          "mean_abs": 1.024733146201273e-06,
+          "p99_abs": 5.602836608886719e-06,
+          "outside_tolerance": 0,
+          "allclose": true
+        }
+      ],
+      "passed": true
+    }
+  ],
+  "stage": "ort_cpu"
+}

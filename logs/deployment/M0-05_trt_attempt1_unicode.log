@@ -1,0 +1,7 @@
+[10/02/2026-13:47:02] [TRT] [I] [MemUsageChange] Init CUDA: CPU +9, GPU +0, now: CPU 20370, GPU 1238 (MiB)
+[10/02/2026-13:47:03] [TRT] [E] In node -1 with name:  and operator:  (parseFromFile): INVALID_VALUE: Assertion failed: stat(onnxModelFile, &sb) == 0 && S_ISREG(sb.st_mode): Input file cannot be found, or is not a regular file: E:\秋招\项目相关\YOLO\artifacts\precheck\M0-05\yolo11n-seg.onnx
+{
+  "stage": "trt",
+  "passed": false,
+  "error": "In node -1 with name:  and operator:  (parseFromFile): INVALID_VALUE: Assertion failed: stat(onnxModelFile, &sb) == 0 && S_ISREG(sb.st_mode): Input file cannot be found, or is not a regular file: E:\\\u79cb\u62db\\\u9879\u76ee\u76f8\u5173\\YOLO\\artifacts\\precheck\\M0-05\\yolo11n-seg.onnx"
+}

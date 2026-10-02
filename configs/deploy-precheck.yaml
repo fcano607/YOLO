@@ -1,0 +1,28 @@
+# M0-05 feasibility check, before full M5/M6 deployment work.
+weights_config: configs/e0.yaml
+output_dir: artifacts/precheck/M0-05
+report_dir: logs/deployment
+export:
+  imgsz: 640
+  batch: 1
+  dynamic: false
+  quantize: 32
+  opset: 17
+  simplify: false
+  nms: false
+  device: '0'
+cases:
+  - name: bus
+    image: runs/E0/M0-04_20261002_bus_all/input_first.jpg
+  - name: desktop
+    image: runs/E0/M0-04_20261002_desktop_image/input_first.jpg
+comparison:
+  atol: 0.001
+  rtol: 0.0001
+trt:
+  workspace_gib: 1
+timeouts:
+  export: 300
+  ort_cpu: 120
+  ort_cuda: 120
+  trt: 600

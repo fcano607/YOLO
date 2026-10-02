@@ -1,0 +1,108 @@
+{
+  "passed": true,
+  "backend": "ort_cpu",
+  "version": "1.19.2",
+  "available_providers": [
+    "TensorrtExecutionProvider",
+    "CUDAExecutionProvider",
+    "CPUExecutionProvider"
+  ],
+  "session_providers": [
+    "CPUExecutionProvider"
+  ],
+  "provider_options": {
+    "CPUExecutionProvider": {}
+  },
+  "profile": "E:\\秋招\\项目相关\\YOLO\\artifacts\\precheck\\M0-05\\ort_cpu_profile_2026-10-02_13-49-14.json",
+  "profile_node_events_by_provider": {
+    "CPUExecutionProvider": 912
+  },
+  "ultralytics_imported": false,
+  "pytorch_model_executed": false,
+  "cases": [
+    {
+      "name": "bus",
+      "comparisons": [
+        {
+          "name": "output0",
+          "shape": [
+            1,
+            116,
+            8400
+          ],
+          "dtype": "float32",
+          "finite": true,
+          "max_abs": 0.00225830078125,
+          "mean_abs": 1.2346399291131751e-06,
+          "p99_abs": 3.0517578125e-05,
+          "outside_tolerance": 0,
+          "allclose": true
+        },
+        {
+          "name": "output1",
+          "shape": [
+            1,
+            32,
+            160,
+            160
+          ],
+          "dtype": "float32",
+          "finite": true,
+          "max_abs": 1.621246337890625e-05,
+          "mean_abs": 8.05278728533143e-07,
+          "p99_abs": 4.410743713378906e-06,
+          "outside_tolerance": 0,
+          "allclose": true
+        }
+      ],
+      "passed": true
+    },
+    {
+      "name": "desktop",
+      "comparisons": [
+        {
+          "name": "output0",
+          "shape": [
+            1,
+            116,
+            8400
+          ],
+          "dtype": "float32",
+          "finite": true,
+          "max_abs": 0.00225830078125,
+          "mean_abs": 1.551428877953097e-06,
+          "p99_abs": 4.57763671875e-05,
+          "outside_tolerance": 0,
+          "allclose": true
+        },
+        {
+          "name": "output1",
+          "shape": [
+            1,
+            32,
+            160,
+            160
+          ],
+          "dtype": "float32",
+          "finite": true,
+          "max_abs": 1.8358230590820312e-05,
+          "mean_abs": 1.024733146201273e-06,
+          "p99_abs": 5.602836608886719e-06,
+          "outside_tolerance": 0,
+          "allclose": true
+        }
+      ],
+      "passed": true
+    }
+  ],
+  "tolerance": {
+    "atol": 0.001,
+    "rtol": 0.0001
+  },
+  "task": "M0-05",
+  "stage": "ort_cpu",
+  "timestamp": "2026-10-02T13:49:15.271591+08:00",
+  "python": "D:\\software\\anaconda\\envs\\yolo\\python.exe",
+  "onnx_sha256": "ad4f7023bb6e8f2e2223926502bcd3dbd2d963dd479f750b51eea08f5db92f8e",
+  "reference_manifest_sha256": "e015629e79cb5f5c32e4737241c33c080c9032f60388e796215165684b1bbe30"
+}

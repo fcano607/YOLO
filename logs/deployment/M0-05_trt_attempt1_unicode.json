@@ -1,0 +1,9 @@
+{
+  "task": "M0-05",
+  "stage": "trt",
+  "passed": false,
+  "error": "In node -1 with name:  and operator:  (parseFromFile): INVALID_VALUE: Assertion failed: stat(onnxModelFile, &sb) == 0 && S_ISREG(sb.st_mode): Input file cannot be found, or is not a regular file: E:\\秋招\\项目相关\\YOLO\\artifacts\\precheck\\M0-05\\yolo11n-seg.onnx",
+  "traceback": "Traceback (most recent call last):\n  File \"E:\\秋招\\项目相关\\YOLO\\scripts\\check_deployment.py\", line 279, in worker\n    result = trt_execute(config)\n  File \"E:\\秋招\\项目相关\\YOLO\\scripts\\check_deployment.py\", line 222, in trt_execute\n    raise RuntimeError('\\n'.join(str(parser.get_error(i)) for i in range(parser.num_errors)))\nRuntimeError: In node -1 with name:  and operator:  (parseFromFile): INVALID_VALUE: Assertion failed: stat(onnxModelFile, &sb) == 0 && S_ISREG(sb.st_mode): Input file cannot be found, or is not a regular file: E:\\秋招\\项目相关\\YOLO\\artifacts\\precheck\\M0-05\\yolo11n-seg.onnx\n",
+  "timestamp": "2026-10-02T13:47:03.010628+08:00",
+  "python": "D:\\software\\anaconda\\envs\\yolo\\python.exe"
+}

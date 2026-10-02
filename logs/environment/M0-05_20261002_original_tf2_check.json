@@ -1,0 +1,11 @@
+{
+  "original_environment": "D:/software/anaconda/envs/tf2",
+  "read_only_verification": true,
+  "packages": {
+    "tensorflow-gpu": "2.10.0",
+    "tensorflow-estimator": "2.10.0",
+    "keras": "2.10.0",
+    "tensorboard": "2.10.1",
+    "protobuf": "3.19.6"
+  }
+}

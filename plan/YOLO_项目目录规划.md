@@ -8,6 +8,8 @@
 
 同日 M0-04 已验收：新增 `scripts/prepare_e0.py`、`scripts/predict_e0.py` 与 `configs/e0.yaml`，预训练图片、文件视频和摄像头推理通过；产出保存在 `runs/E0/`、`demo/E0/`，见[E0 报告](../reports/E0_预训练模型验证.md)。
 
+同日 M0-05 已验收：新增 `scripts/check_deployment.py`、`configs/deploy-precheck.yaml` 与 `requirements-deploy.txt`，完成 ONNX / ORT CPU/CUDA / TensorRT FP32 实际执行及同输入原始输出对照。模型和数组在 `artifacts/precheck/M0-05/`，小型执行证据在 `logs/deployment/`，见[部署报告](../reports/deployment/M0-05_部署兼容性预检查.md)；完整 M5/M6 仍待开展。
+
 以下路径均相对于项目根目录，使用 `/` 表示子目录。例如 `configs/runtime.yaml` 在你的电脑上对应 `E:\秋招\项目相关\YOLO\configs\runtime.yaml`。
 
 ## 一、一级目录
@@ -129,6 +131,7 @@ Conda 环境不需要放在项目目录中。若后续使用 Git，重点版本�
 | 文件 | 职责 | 编写顺序 |
 | --- | --- | --- |
 | `scripts/check_env.py` | 检查版本、GPU、provider、摄像头 | 最先 |
+| `scripts/check_deployment.py` | M0-05：固定 FP32 ONNX 导出、ORT CPU/CUDA 与 TensorRT 构建 / 执行、同输入原始输出对照 | 已实现，M0-05 |
 | `scripts/prepare_e0.py` | 恢复并校验固定预训练权重及通用图片 | M0-04 已实现 |
 | `scripts/predict_e0.py` | E0 图片、视频、摄像头推理，保存框、mask 与运行证据 | M0-04 已实现 |
 | `scripts/prepare_coco_subset.py` | 筛选、下载、转换、类别重映射 | 数据阶段 |

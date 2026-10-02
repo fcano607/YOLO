@@ -1,0 +1,132 @@
+{
+  "passed": true,
+  "backend": "ort_cuda",
+  "version": "1.19.2",
+  "available_providers": [
+    "TensorrtExecutionProvider",
+    "CUDAExecutionProvider",
+    "CPUExecutionProvider"
+  ],
+  "session_providers": [
+    "CUDAExecutionProvider",
+    "CPUExecutionProvider"
+  ],
+  "provider_options": {
+    "CUDAExecutionProvider": {
+      "device_id": "0",
+      "has_user_compute_stream": "0",
+      "cudnn_conv1d_pad_to_nc1d": "0",
+      "user_compute_stream": "0",
+      "gpu_external_alloc": "0",
+      "gpu_mem_limit": "18446744073709551615",
+      "enable_cuda_graph": "0",
+      "gpu_external_free": "0",
+      "gpu_external_empty_cache": "0",
+      "arena_extend_strategy": "kNextPowerOfTwo",
+      "cudnn_conv_algo_search": "EXHAUSTIVE",
+      "do_copy_in_default_stream": "1",
+      "cudnn_conv_use_max_workspace": "1",
+      "tunable_op_enable": "0",
+      "tunable_op_tuning_enable": "0",
+      "tunable_op_max_tuning_duration_ms": "0",
+      "enable_skip_layer_norm_strict_mode": "0",
+      "prefer_nhwc": "0",
+      "use_ep_level_unified_stream": "0",
+      "use_tf32": "0",
+      "sdpa_kernel": "0"
+    },
+    "CPUExecutionProvider": {}
+  },
+  "profile": "E:\\秋招\\项目相关\\YOLO\\artifacts\\precheck\\M0-05\\ort_cuda_profile_2026-10-02_13-49-16.json",
+  "profile_node_events_by_provider": {
+    "CUDAExecutionProvider": 530
+  },
+  "ultralytics_imported": false,
+  "pytorch_model_executed": false,
+  "cases": [
+    {
+      "name": "bus",
+      "comparisons": [
+        {
+          "name": "output0",
+          "shape": [
+            1,
+            116,
+            8400
+          ],
+          "dtype": "float32",
+          "finite": true,
+          "max_abs": 0.002227783203125,
+          "mean_abs": 1.0182670755774304e-06,
+          "p99_abs": 3.0517578125e-05,
+          "outside_tolerance": 0,
+          "allclose": true
+        },
+        {
+          "name": "output1",
+          "shape": [
+            1,
+            32,
+            160,
+            160
+          ],
+          "dtype": "float32",
+          "finite": true,
+          "max_abs": 2.014636993408203e-05,
+          "mean_abs": 6.831701994144957e-07,
+          "p99_abs": 3.635883331298828e-06,
+          "outside_tolerance": 0,
+          "allclose": true
+        }
+      ],
+      "passed": true
+    },
+    {
+      "name": "desktop",
+      "comparisons": [
+        {
+          "name": "output0",
+          "shape": [
+            1,
+            116,
+            8400
+          ],
+          "dtype": "float32",
+          "finite": true,
+          "max_abs": 0.002716064453125,
+          "mean_abs": 1.2051528257492523e-06,
+          "p99_abs": 3.0517578125e-05,
+          "outside_tolerance": 0,
+          "allclose": true
+        },
+        {
+          "name": "output1",
+          "shape": [
+            1,
+            32,
+            160,
+            160
+          ],
+          "dtype": "float32",
+          "finite": true,
+          "max_abs": 1.8358230590820312e-05,
+          "mean_abs": 8.177122070218701e-07,
+          "p99_abs": 4.410743713378906e-06,
+          "outside_tolerance": 0,
+          "allclose": true
+        }
+      ],
+      "passed": true
+    }
+  ],
+  "tolerance": {
+    "atol": 0.001,
+    "rtol": 0.0001
+  },
+  "task": "M0-05",
+  "stage": "ort_cuda",
+  "timestamp": "2026-10-02T13:49:18.749589+08:00",
+  "python": "D:\\software\\anaconda\\envs\\yolo\\python.exe",
+  "onnx_sha256": "ad4f7023bb6e8f2e2223926502bcd3dbd2d963dd479f750b51eea08f5db92f8e",
+  "reference_manifest_sha256": "e015629e79cb5f5c32e4737241c33c080c9032f60388e796215165684b1bbe30"
+}

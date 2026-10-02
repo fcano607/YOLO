@@ -1,0 +1,26 @@
+{
+  "added": {
+    "coloredlogs": "15.0.1",
+    "humanfriendly": "10.0",
+    "onnx": "1.17.0",
+    "onnxruntime-gpu": "1.19.2",
+    "pyreadline3": "3.5.6",
+    "tensorrt_cu12": "11.3.0.99",
+    "tensorrt_cu12_bindings": "11.3.0.99",
+    "tensorrt_cu12_libs": "11.3.0.99"
+  },
+  "removed": {
+    "keras": "2.10.0",
+    "tensorboard": "2.10.1",
+    "tensorboard-data-server": "0.6.1",
+    "tensorboard-plugin-wit": "1.8.1",
+    "tensorflow-estimator": "2.10.0",
+    "tensorflow-gpu": "2.10.0"
+  },
+  "changed": {
+    "protobuf": {
+      "before": "3.19.6",
+      "after": "4.25.8"
+    }
+  }
+}

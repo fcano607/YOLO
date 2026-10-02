@@ -1,0 +1,75 @@
+[
+  {
+    "name": "tensorrt-cu12-libs",
+    "version": "11.3.0.99",
+    "requires_dist": null,
+    "files": [
+      {
+        "filename": "tensorrt_cu12_libs-11.3.0.99.tar.gz",
+        "size": 15503,
+        "url": "https://files.pythonhosted.org/packages/2e/32/fcdd228a7f5b5ac3984d1f21a48fe98a8d5ede1d9051474b3b905d0dd972/tensorrt_cu12_libs-11.3.0.99.tar.gz",
+        "sha256": "9ef664972590d67b4dc62f45d0421d364b85964704bcf3aa004d4973df07429e"
+      }
+    ]
+  },
+  {
+    "name": "tensorrt-cu12-libs",
+    "version": "11.0.0.114",
+    "requires_dist": null,
+    "files": [
+      {
+        "filename": "tensorrt_cu12_libs-11.0.0.114.tar.gz",
+        "size": 15754,
+        "url": "https://files.pythonhosted.org/packages/f9/37/3db83f53d38263cbe0be586110229bf3638813145f2997bfdd5cd19f9bcf/tensorrt_cu12_libs-11.0.0.114.tar.gz",
+        "sha256": "07a9b227b206bd7c149847174c77837fc6a6c889f792c8dc20b8ff09e0eca8ae"
+      }
+    ]
+  },
+  {
+    "name": "tensorrt-cu12-libs",
+    "version": "10.13.3.9",
+    "requires_dist": [
+      "nvidia-cuda-runtime-cu12"
+    ],
+    "files": [
+      {
+        "filename": "tensorrt_cu12_libs-10.13.3.9.tar.gz",
+        "size": 703,
+        "url": "https://files.pythonhosted.org/packages/e1/d3/82b9a603cac94975dbb25d33c7ffb1dba6851980f2dc630f2bf9caf0bffb/tensorrt_cu12_libs-10.13.3.9.tar.gz",
+        "sha256": "99d11dd42a27705bcb2ea4e2e0f76817a2a9403d892ec1272c502bd2722ebbd9"
+      }
+    ]
+  },
+  {
+    "name": "tensorrt-cu12-libs",
+    "version": "10.9.0.34",
+    "requires_dist": [
+      "nvidia-cuda-runtime-cu12"
+    ],
+    "files": [
+      {
+        "filename": "tensorrt_cu12_libs-10.9.0.34.tar.gz",
+        "size": 704,
+        "url": "https://files.pythonhosted.org/packages/ea/eb/932f9b007a3a77824dcd964e2f58b2272d957ac8b3923a6accf9a026f328/tensorrt_cu12_libs-10.9.0.34.tar.gz",
+        "sha256": "9aa7ee34b9f1cebde126f48718eddd3602a38914f6050d60d2c12af8eb597043"
+      }
+    ]
+  },
+  {
+    "name": "tensorrt-cu12",
+    "version": "10.13.3.9",
+    "requires_dist": [
+      "tensorrt_cu12_libs==10.13.3.9",
+      "tensorrt_cu12_bindings==10.13.3.9",
+      "numpy; extra == \"numpy\""
+    ],
+    "files": [
+      {
+        "filename": "tensorrt_cu12-10.13.3.9.tar.gz",
+        "size": 18175,
+        "url": "https://files.pythonhosted.org/packages/1a/aa/5a630ac02d05f7bbc774bd11b2bc9a3d31aa0bd7d38b4cfeef06733544b3/tensorrt_cu12-10.13.3.9.tar.gz",
+        "sha256": "b507abc536ceeaac3b2e6527bd65100bef19000d204e7072db6fe85f9f859a84"
+      }
+    ]
+  }
+]

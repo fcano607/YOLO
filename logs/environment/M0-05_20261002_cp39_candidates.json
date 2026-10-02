@@ -1,0 +1,151 @@
+{
+  "onnx": [
+    {
+      "version": "1.19.1",
+      "requires_dist": [
+        "numpy>=1.22",
+        "protobuf>=4.25.1",
+        "typing_extensions>=4.7.1",
+        "ml_dtypes>=0.5.0",
+        "Pillow; extra == \"reference\""
+      ],
+      "files": [
+        {
+          "filename": "onnx-1.19.1-cp39-cp39-win_amd64.whl",
+          "size": 16477933,
+          "url": "https://files.pythonhosted.org/packages/13/78/b4562507ea247ea14507ba5e4a2882771d0f9d495ee7914e73e03a2fab1c/onnx-1.19.1-cp39-cp39-win_amd64.whl",
+          "digests": {
+            "blake2b_256": "1378b4562507ea247ea14507ba5e4a2882771d0f9d495ee7914e73e03a2fab1c",
+            "md5": "39f3b9dfa6f066d5d3d8548cad7794c2",
+            "sha256": "4650d053c7c26e40a080b7378d61446958d6da4e217e1d0d422eb9264f8064ae"
+          },
+          "requires_python": ">=3.9"
+        }
+      ]
+    },
+    {
+      "version": "1.19.0",
+      "requires_dist": [
+        "numpy>=1.22",
+        "protobuf>=4.25.1",
+        "typing_extensions>=4.7.1",
+        "ml_dtypes",
+        "Pillow; extra == \"reference\""
+      ],
+      "files": [
+        {
+          "filename": "onnx-1.19.0-cp39-cp39-win_amd64.whl",
+          "size": 16466153,
+          "url": "https://files.pythonhosted.org/packages/ea/79/d829a17c7cc55eca7e20011192b510d36741eede20d15b7557b971fab8ad/onnx-1.19.0-cp39-cp39-win_amd64.whl",
+          "digests": {
+            "blake2b_256": "ea79d829a17c7cc55eca7e20011192b510d36741eede20d15b7557b971fab8ad",
+            "md5": "a13fbedd1184215adb29375ebd818465",
+            "sha256": "82ae838c047278e78a9c17776343fc2eb0145ed586e1bc36fa2992c8669aee62"
+          },
+          "requires_python": ">=3.9"
+        }
+      ]
+    }
+  ],
+  "onnxruntime-gpu": [
+    {
+      "version": "1.19.2",
+      "requires_dist": [
+        "coloredlogs",
+        "flatbuffers",
+        "numpy>=1.21.6",
+        "packaging",
+        "protobuf",
+        "sympy"
+      ],
+      "files": [
+        {
+          "filename": "onnxruntime_gpu-1.19.2-cp39-cp39-win_amd64.whl",
+          "size": 226377602,
+          "url": "https://files.pythonhosted.org/packages/10/6d/fae011a8a9ef7a8c0496be684ff576e520a8adeccaf9dd85d7d20236dfc2/onnxruntime_gpu-1.19.2-cp39-cp39-win_amd64.whl",
+          "digests": {
+            "blake2b_256": "106dfae011a8a9ef7a8c0496be684ff576e520a8adeccaf9dd85d7d20236dfc2",
+            "md5": "b514f0a3ee08c41d8f7abb373e344316",
+            "sha256": "c8b8128174b0470537e9f4983aeecc002a435d13914970c2af2f41d244ef2781"
+          },
+          "requires_python": null
+        }
+      ]
+    },
+    {
+      "version": "1.19.0",
+      "requires_dist": [
+        "coloredlogs",
+        "flatbuffers",
+        "numpy>=1.21.6",
+        "packaging",
+        "protobuf",
+        "sympy"
+      ],
+      "files": [
+        {
+          "filename": "onnxruntime_gpu-1.19.0-cp39-cp39-win_amd64.whl",
+          "size": 223251013,
+          "url": "https://files.pythonhosted.org/packages/7c/21/dccb6a554032a2c9bf337e31de7558dd6b004ce61b8c898f91068a0d1322/onnxruntime_gpu-1.19.0-cp39-cp39-win_amd64.whl",
+          "digests": {
+            "blake2b_256": "7c21dccb6a554032a2c9bf337e31de7558dd6b004ce61b8c898f91068a0d1322",
+            "md5": "443d3b9b549874c753089b6724744a15",
+            "sha256": "c30cc85fd09ee9ddd0915855901f9dc80add98572a969ea3c1e8ae9a7e96e94c"
+          },
+          "requires_python": null
+        }
+      ]
+    }
+  ],
+  "tensorrt-cu12-libs": {
+    "requires_dist": null,
+    "files": [
+      {
+        "filename": "tensorrt_cu12_libs-11.3.0.99.tar.gz",
+        "size": 15503,
+        "url": "https://files.pythonhosted.org/packages/2e/32/fcdd228a7f5b5ac3984d1f21a48fe98a8d5ede1d9051474b3b905d0dd972/tensorrt_cu12_libs-11.3.0.99.tar.gz",
+        "digests": {
+          "blake2b_256": "2e32fcdd228a7f5b5ac3984d1f21a48fe98a8d5ede1d9051474b3b905d0dd972",
+          "md5": "444c2d325e0834cdd6972e2d299d081d",
+          "sha256": "9ef664972590d67b4dc62f45d0421d364b85964704bcf3aa004d4973df07429e"
+        }
+      }
+    ]
+  },
+  "tensorrt-cu12-bindings": {
+    "requires_dist": [
+      "numpy; extra == \"numpy\""
+    ],
+    "files": [
+      {
+        "filename": "tensorrt_cu12_bindings-11.3.0.99-cp39-none-win_amd64.whl",
+        "size": 835636,
+        "url": "https://files.pythonhosted.org/packages/0b/10/bb8ed011a1d855bfdcc725f37597ace805e8dc1e42c2c77e4a60378360a1/tensorrt_cu12_bindings-11.3.0.99-cp39-none-win_amd64.whl",
+        "digests": {
+          "blake2b_256": "0b10bb8ed011a1d855bfdcc725f37597ace805e8dc1e42c2c77e4a60378360a1",
+          "md5": "57f4c6a7c85a33415476f171518e2b77",
+          "sha256": "a15c3acbc42f602f1a7eabfe12f9229a5c545db74ed3fa0703e5a52f7a4e2514"
+        }
+      }
+    ]
+  },
+  "tensorrt-cu12": {
+    "requires_dist": [
+      "tensorrt_cu12_libs==11.3.0.99",
+      "tensorrt_cu12_bindings==11.3.0.99",
+      "numpy; extra == \"numpy\""
+    ],
+    "files": [
+      {
+        "filename": "tensorrt_cu12-11.3.0.99.tar.gz",
+        "size": 17996,
+        "url": "https://files.pythonhosted.org/packages/e3/69/ba3f7afca36b471a216a878cba2d04a21d5a5e3c5289b6eda30688ae67e9/tensorrt_cu12-11.3.0.99.tar.gz",
+        "digests": {
+          "blake2b_256": "e369ba3f7afca36b471a216a878cba2d04a21d5a5e3c5289b6eda30688ae67e9",
+          "md5": "68cd08700d626777a0546e43fd3ce02a",
+          "sha256": "6db43954730b176779e4a2631fb858d1d04e6f4cfdeaecf2ef9eedf89bc71342"
+        }
+      }
+    ]
+  }
+}
