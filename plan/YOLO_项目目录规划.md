@@ -14,6 +14,8 @@
 
 同日新增 M7 实时预览原型 [app/live_camera.py](../app/live_camera.py)：同一摄像头显示原图和同帧 YOLO 分割结果，默认不录制；复用 `configs/e0.yaml` 与现有预训练权重。GPU 图片与模拟交互检查见 [logs/application/live_preview_check.json](../logs/application/live_preview_check.json)，真实摄像头窗口和持续运行仍待验证。操作与源码见[使用手册](../docs/M0_环境与模型使用手册.md#live-camera)，本次操作已登记[工作日志](00_YOLO_分阶段推进与进度跟踪.md#live-camera-record)。
 
+同日 M1 已开始：新增 [scripts/inspect_model.py](../scripts/inspect_model.py)、[docs/模型学习笔记.md](../docs/模型学习笔记.md)、[reports/model_notes.md](../reports/model_notes.md)。本轮 JSON 和四张图集中在 `reports/model/M1/`，不另建逐层大数组目录。工程实操通过，个人学习验收仍待完成。
+
 以下路径均相对于项目根目录，使用 `/` 表示子目录。例如 `configs/runtime.yaml` 在你的电脑上对应 `E:\秋招\项目相关\YOLO\configs\runtime.yaml`。
 
 ## 一、一级目录
