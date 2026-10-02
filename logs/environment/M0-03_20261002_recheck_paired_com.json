@@ -1,0 +1,101 @@
+{
+  "checked_at": "2026-10-02T12:29:49.962555+08:00",
+  "tests": [
+    {
+      "pair": 1,
+      "variant": "native",
+      "exit_code": 0,
+      "stdout": "{\"stage\": \"opened\", \"success\": true, \"seconds\": 0.431}\n{\"stage\": \"releasing\", \"shape\": [480, 640, 3], \"seconds\": 0.563}\n{\"stage\": \"released\", \"seconds\": 0.837}\n",
+      "stderr": "",
+      "elapsed_seconds": 0.978
+    },
+    {
+      "pair": 1,
+      "variant": "MTA",
+      "exit_code": 0,
+      "stdout": "{\"stage\": \"opened\", \"success\": true, \"seconds\": 0.368}\n{\"stage\": \"releasing\", \"shape\": [480, 640, 3], \"seconds\": 0.501}\n{\"stage\": \"released\", \"seconds\": 0.774}\n",
+      "stderr": "",
+      "elapsed_seconds": 0.912
+    },
+    {
+      "pair": 2,
+      "variant": "native",
+      "exit_code": 0,
+      "stdout": "{\"stage\": \"opened\", \"success\": true, \"seconds\": 0.382}\n{\"stage\": \"releasing\", \"shape\": [480, 640, 3], \"seconds\": 0.514}\n{\"stage\": \"released\", \"seconds\": 0.796}\n",
+      "stderr": "",
+      "elapsed_seconds": 0.924
+    },
+    {
+      "pair": 2,
+      "variant": "MTA",
+      "exit_code": 0,
+      "stdout": "{\"stage\": \"opened\", \"success\": true, \"seconds\": 0.372}\n{\"stage\": \"releasing\", \"shape\": [480, 640, 3], \"seconds\": 0.506}\n{\"stage\": \"released\", \"seconds\": 0.777}\n",
+      "stderr": "",
+      "elapsed_seconds": 0.905
+    },
+    {
+      "pair": 3,
+      "variant": "native",
+      "exit_code": 0,
+      "stdout": "{\"stage\": \"opened\", \"success\": true, \"seconds\": 0.381}\n{\"stage\": \"releasing\", \"shape\": [480, 640, 3], \"seconds\": 0.514}\n{\"stage\": \"released\", \"seconds\": 0.794}\n",
+      "stderr": "",
+      "elapsed_seconds": 0.924
+    },
+    {
+      "pair": 3,
+      "variant": "MTA",
+      "exit_code": 0,
+      "stdout": "{\"stage\": \"opened\", \"success\": true, \"seconds\": 0.366}\n{\"stage\": \"releasing\", \"shape\": [480, 640, 3], \"seconds\": 0.499}\n{\"stage\": \"released\", \"seconds\": 0.78}\n",
+      "stderr": "",
+      "elapsed_seconds": 0.919
+    },
+    {
+      "pair": 4,
+      "variant": "native",
+      "exit_code": 0,
+      "stdout": "{\"stage\": \"opened\", \"success\": true, \"seconds\": 0.366}\n{\"stage\": \"releasing\", \"shape\": [480, 640, 3], \"seconds\": 0.503}\n{\"stage\": \"released\", \"seconds\": 0.78}\n",
+      "stderr": "",
+      "elapsed_seconds": 0.916
+    },
+    {
+      "pair": 4,
+      "variant": "MTA",
+      "exit_code": 0,
+      "stdout": "{\"stage\": \"opened\", \"success\": true, \"seconds\": 0.371}\n{\"stage\": \"releasing\", \"shape\": [480, 640, 3], \"seconds\": 0.503}\n{\"stage\": \"released\", \"seconds\": 0.777}\n",
+      "stderr": "",
+      "elapsed_seconds": 0.917
+    },
+    {
+      "pair": 5,
+      "variant": "native",
+      "exit_code": 0,
+      "stdout": "{\"stage\": \"opened\", \"success\": true, \"seconds\": 0.365}\n{\"stage\": \"releasing\", \"shape\": [480, 640, 3], \"seconds\": 0.499}\n{\"stage\": \"released\", \"seconds\": 0.779}\n",
+      "stderr": "",
+      "elapsed_seconds": 0.909
+    },
+    {
+      "pair": 5,
+      "variant": "MTA",
+      "exit_code": 0,
+      "stdout": "{\"stage\": \"opened\", \"success\": true, \"seconds\": 0.379}\n{\"stage\": \"releasing\", \"shape\": [480, 640, 3], \"seconds\": 0.512}\n{\"stage\": \"released\", \"seconds\": 0.784}\n",
+      "stderr": "",
+      "elapsed_seconds": 0.913
+    },
+    {
+      "pair": 6,
+      "variant": "native",
+      "exit_code": 0,
+      "stdout": "{\"stage\": \"opened\", \"success\": true, \"seconds\": 0.372}\n{\"stage\": \"releasing\", \"shape\": [480, 640, 3], \"seconds\": 0.505}\n{\"stage\": \"released\", \"seconds\": 0.781}\n",
+      "stderr": "",
+      "elapsed_seconds": 0.916
+    },
+    {
+      "pair": 6,
+      "variant": "MTA",
+      "exit_code": 0,
+      "stdout": "{\"stage\": \"opened\", \"success\": true, \"seconds\": 0.365}\n{\"stage\": \"releasing\", \"shape\": [480, 640, 3], \"seconds\": 0.5}\n{\"stage\": \"released\", \"seconds\": 0.774}\n",
+      "stderr": "",
+      "elapsed_seconds": 0.9
+    }
+  ]
+}

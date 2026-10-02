@@ -1,0 +1,8 @@
+{
+  "exit_code": 0,
+  "stdout": "{\"stage\": \"opening\", \"elapsed\": 0.0}\n{\"stage\": \"opened:True\", \"elapsed\": 0.428}\n{\"read\": 1, \"ok\": true, \"shape\": [480, 640, 3], \"pixel_max\": 255}\n{\"read\": 2, \"ok\": true, \"shape\": [480, 640, 3], \"pixel_max\": 255}\n{\"read\": 3, \"ok\": true, \"shape\": [480, 640, 3], \"pixel_max\": 255}\n{\"stage\": \"releasing\", \"elapsed\": 2.769}\n{\"stage\": \"released\", \"elapsed\": 3.046}\n",
+  "stderr": "",
+  "timed_out": false,
+  "checked_at": "2026-10-02T12:22:38.031184+08:00",
+  "wall_seconds": 3.175
+}

@@ -1,0 +1,114 @@
+Checking training environment, source and GPU...
+Checking camera index 0...
+{
+  "task_complete": true,
+  "training": "passed",
+  "camera": {
+    "status": "passed",
+    "index": 0,
+    "mode": "native",
+    "required_cycles": 3,
+    "completed_cycles": 3,
+    "selected_backend": "DSHOW",
+    "attempts": [
+      {
+        "index": 0,
+        "requested_backend": "DSHOW",
+        "mode": "native",
+        "passed": true,
+        "valid_frames": 3,
+        "released": true,
+        "opencv_version": "4.11.0",
+        "opencv_file": "D:\\software\\anaconda\\envs\\yolo\\lib\\site-packages\\cv2\\__init__.py",
+        "open_seconds": 0.41,
+        "opened": true,
+        "actual_backend": "DSHOW",
+        "frame_shape": [
+          480,
+          640,
+          3
+        ],
+        "frame_dtype": "uint8",
+        "frame_min": 0,
+        "frame_max": 255,
+        "read_seconds": 0.134,
+        "reported_fps": 0.0,
+        "release_seconds": 0.273,
+        "driver_messages": "stage=opening\nstage=opened success=True\nstage=reading attempt=1\nstage=reading attempt=2\nstage=reading attempt=3\ncamera_result={\"index\": 0, \"requested_backend\": \"DSHOW\", \"mode\": \"native\", \"passed\": true, \"valid_frames\": 3, \"released\": false, \"opencv_version\": \"4.11.0\", \"opencv_file\": \"D:\\\\software\\\\anaconda\\\\envs\\\\yolo\\\\lib\\\\site-packages\\\\cv2\\\\__init__.py\", \"open_seconds\": 0.41, \"opened\": true, \"actual_backend\": \"DSHOW\", \"frame_shape\": [480, 640, 3], \"frame_dtype\": \"uint8\", \"frame_min\": 0, \"frame_max\": 255, \"read_seconds\": 0.134, \"reported_fps\": 0.0}\nstage=releasing\nstage=released",
+        "cycle": 1,
+        "elapsed_seconds": 0.957
+      },
+      {
+        "index": 0,
+        "requested_backend": "DSHOW",
+        "mode": "native",
+        "passed": true,
+        "valid_frames": 3,
+        "released": true,
+        "opencv_version": "4.11.0",
+        "opencv_file": "D:\\software\\anaconda\\envs\\yolo\\lib\\site-packages\\cv2\\__init__.py",
+        "open_seconds": 0.377,
+        "opened": true,
+        "actual_backend": "DSHOW",
+        "frame_shape": [
+          480,
+          640,
+          3
+        ],
+        "frame_dtype": "uint8",
+        "frame_min": 0,
+        "frame_max": 255,
+        "read_seconds": 0.133,
+        "reported_fps": 0.0,
+        "release_seconds": 0.273,
+        "driver_messages": "stage=opening\nstage=opened success=True\nstage=reading attempt=1\nstage=reading attempt=2\nstage=reading attempt=3\ncamera_result={\"index\": 0, \"requested_backend\": \"DSHOW\", \"mode\": \"native\", \"passed\": true, \"valid_frames\": 3, \"released\": false, \"opencv_version\": \"4.11.0\", \"opencv_file\": \"D:\\\\software\\\\anaconda\\\\envs\\\\yolo\\\\lib\\\\site-packages\\\\cv2\\\\__init__.py\", \"open_seconds\": 0.377, \"opened\": true, \"actual_backend\": \"DSHOW\", \"frame_shape\": [480, 640, 3], \"frame_dtype\": \"uint8\", \"frame_min\": 0, \"frame_max\": 255, \"read_seconds\": 0.133, \"reported_fps\": 0.0}\nstage=releasing\nstage=released",
+        "cycle": 2,
+        "elapsed_seconds": 0.925
+      },
+      {
+        "index": 0,
+        "requested_backend": "DSHOW",
+        "mode": "native",
+        "passed": true,
+        "valid_frames": 3,
+        "released": true,
+        "opencv_version": "4.11.0",
+        "opencv_file": "D:\\software\\anaconda\\envs\\yolo\\lib\\site-packages\\cv2\\__init__.py",
+        "open_seconds": 0.374,
+        "opened": true,
+        "actual_backend": "DSHOW",
+        "frame_shape": [
+          480,
+          640,
+          3
+        ],
+        "frame_dtype": "uint8",
+        "frame_min": 0,
+        "frame_max": 255,
+        "read_seconds": 0.133,
+        "reported_fps": 0.0,
+        "release_seconds": 0.273,
+        "driver_messages": "stage=opening\nstage=opened success=True\nstage=reading attempt=1\nstage=reading attempt=2\nstage=reading attempt=3\ncamera_result={\"index\": 0, \"requested_backend\": \"DSHOW\", \"mode\": \"native\", \"passed\": true, \"valid_frames\": 3, \"released\": false, \"opencv_version\": \"4.11.0\", \"opencv_file\": \"D:\\\\software\\\\anaconda\\\\envs\\\\yolo\\\\lib\\\\site-packages\\\\cv2\\\\__init__.py\", \"open_seconds\": 0.374, \"opened\": true, \"actual_backend\": \"DSHOW\", \"frame_shape\": [480, 640, 3], \"frame_dtype\": \"uint8\", \"frame_min\": 0, \"frame_max\": 255, \"read_seconds\": 0.133, \"reported_fps\": 0.0}\nstage=releasing\nstage=released",
+        "cycle": 3,
+        "elapsed_seconds": 0.921
+      }
+    ]
+  },
+  "deployment": {
+    "onnx": {
+      "status": "not_installed",
+      "next_task": "M0-05"
+    },
+    "onnxruntime": {
+      "status": "not_installed",
+      "next_task": "M0-05"
+    },
+    "tensorrt": {
+      "status": "not_installed",
+      "next_task": "M0-05"
+    }
+  },
+  "snapshot": "E:\\秋招\\项目相关\\YOLO\\logs\\environment\\M0-03_20261002_123401_124014_snapshot.json",
+  "report": "E:\\秋招\\项目相关\\YOLO\\reports\\environment_check.md"
+}
+

@@ -10,6 +10,7 @@ from pathlib import Path
 import platform
 import subprocess
 import sys
+import time
 import traceback
 
 ROOT = Path(__file__).resolve().parents[1]
@@ -20,12 +21,14 @@ def camera_worker(index, backend, mode):
     """Read three frames and release the device; do not save or display images."""
     import cv2
 
+    started = time.perf_counter()
     api = {"DSHOW": cv2.CAP_DSHOW, "MSMF": cv2.CAP_MSMF, "ANY": cv2.CAP_ANY}[backend]
     print("stage=opening", file=sys.stderr, flush=True)
     capture = cv2.VideoCapture(index, api)
     result = {"index": index, "requested_backend": backend, "mode": mode,
               "passed": False, "valid_frames": 0, "released": False,
-              "opencv_version": cv2.__version__, "opencv_file": cv2.__file__}
+              "opencv_version": cv2.__version__, "opencv_file": cv2.__file__,
+              "open_seconds": round(time.perf_counter() - started, 3)}
     try:
         result["opened"] = capture.isOpened()
         print(f"stage=opened success={result['opened']}", file=sys.stderr, flush=True)
@@ -39,6 +42,7 @@ def camera_worker(index, backend, mode):
                 "width_640": capture.set(cv2.CAP_PROP_FRAME_WIDTH, 640),
                 "height_480": capture.set(cv2.CAP_PROP_FRAME_HEIGHT, 480),
             }
+        reading_started = time.perf_counter()
         for attempt in range(10):
             print(f"stage=reading attempt={attempt + 1}", file=sys.stderr, flush=True)
             read_ok, frame = capture.read()
@@ -51,6 +55,7 @@ def camera_worker(index, backend, mode):
                 if result["valid_frames"] == 3:
                     result["passed"] = True
                     break
+        result["read_seconds"] = round(time.perf_counter() - reading_started, 3)
         result["reported_fps"] = capture.get(cv2.CAP_PROP_FPS)
         if not result["passed"]:
             result["error"] = "Could not read three valid frames in ten attempts"
@@ -58,44 +63,61 @@ def camera_worker(index, backend, mode):
     finally:
         print("camera_result=" + json.dumps(result), file=sys.stderr, flush=True)
         print("stage=releasing", file=sys.stderr, flush=True)
+        releasing_started = time.perf_counter()
         capture.release()
         result["released"] = True
+        result["release_seconds"] = round(time.perf_counter() - releasing_started, 3)
         print("stage=released", file=sys.stderr, flush=True)
 
 
-def check_camera(index, timeout, backend, mode):
-    """Use bounded subprocesses so a blocked camera driver cannot stall the report."""
+def check_camera(index, timeout, backend, mode, cycles=3):
+    """Require consecutive read/release cycles on one backend, using bounded workers."""
     attempts = []
+    completed_cycles = 0
     backends = (["DSHOW", "MSMF"] if platform.system() == "Windows" else ["ANY"]) if backend == "AUTO" else [backend]
     for backend in backends:
         command = [sys.executable, str(Path(__file__).resolve()), "--camera-worker",
                    "--camera-index", str(index), "--camera-backend", backend, "--camera-mode", mode]
-        try:
-            worker = subprocess.run(command, cwd=ROOT, capture_output=True, text=True,
-                                    encoding="utf-8", errors="replace", timeout=timeout,
-                                    env={**os.environ, "PYTHONUTF8": "1"})
-            if worker.returncode == 0:
-                attempt = json.loads(worker.stdout)
-            else:
-                attempt = {"requested_backend": backend, "passed": False,
-                           "error": worker.stderr.strip() or worker.stdout.strip()}
-            if worker.stderr.strip():
-                attempt["driver_messages"] = worker.stderr.strip()
-        except subprocess.TimeoutExpired as error:
-            attempt = {"requested_backend": backend, "passed": False, "error": f"Timeout after {timeout}s"}
-            if error.stderr:
-                attempt["driver_messages"] = error.stderr.decode("utf-8", errors="replace") if isinstance(error.stderr, bytes) else error.stderr
-                for line in attempt["driver_messages"].splitlines():
-                    if line.startswith("camera_result="):
-                        partial = json.loads(line.split("=", 1)[1])
-                        partial["frames_read"] = partial.pop("passed")
-                        attempt.update(partial)
-        except (OSError, ValueError) as error:
-            attempt = {"requested_backend": backend, "passed": False, "error": str(error)}
-        attempts.append(attempt)
-        if attempt["passed"]:
-            break
-    return {"status": "passed" if attempts[-1]["passed"] else "failed", "index": index, "mode": mode, "attempts": attempts}
+        for cycle in range(1, cycles + 1):
+            started = time.perf_counter()
+            try:
+                worker = subprocess.run(command, cwd=ROOT, capture_output=True, text=True,
+                                        encoding="utf-8", errors="replace", timeout=timeout,
+                                        env={**os.environ, "PYTHONUTF8": "1"})
+                if worker.returncode == 0:
+                    attempt = json.loads(worker.stdout)
+                    if not attempt.get("released"):
+                        attempt["passed"] = False
+                        attempt["error"] = "Worker did not confirm device release"
+                else:
+                    attempt = {"requested_backend": backend, "passed": False,
+                               "error": worker.stderr.strip() or worker.stdout.strip()}
+                if worker.stderr.strip():
+                    attempt["driver_messages"] = worker.stderr.strip()
+            except subprocess.TimeoutExpired as error:
+                attempt = {"requested_backend": backend, "passed": False, "error": f"Timeout after {timeout}s"}
+                if error.stderr:
+                    attempt["driver_messages"] = error.stderr.decode("utf-8", errors="replace") if isinstance(error.stderr, bytes) else error.stderr
+                    for line in attempt["driver_messages"].splitlines():
+                        if line.startswith("camera_result="):
+                            partial = json.loads(line.split("=", 1)[1])
+                            partial["frames_read"] = partial.pop("passed")
+                            attempt.update(partial)
+            except (OSError, ValueError) as error:
+                attempt = {"requested_backend": backend, "passed": False, "error": str(error)}
+            attempt["cycle"] = cycle
+            attempt["elapsed_seconds"] = round(time.perf_counter() - started, 3)
+            attempts.append(attempt)
+            if not attempt["passed"]:
+                break
+            completed_cycles = max(completed_cycles, cycle)
+            if cycle == cycles:
+                return {"status": "passed", "index": index, "mode": mode,
+                        "required_cycles": cycles, "completed_cycles": cycles,
+                        "selected_backend": backend, "attempts": attempts}
+    return {"status": "failed", "index": index, "mode": mode,
+            "required_cycles": cycles, "completed_cycles": completed_cycles,
+            "selected_backend": None, "attempts": attempts}
 
 
 def check_deployment():
@@ -142,10 +164,12 @@ def write_markdown(report, snapshot):
         lines += ["", "```text", training["error"], "```"]
     lines += ["", "## 2. 摄像头", "", f"状态：**{camera['status']}**；设备索引：{camera['index']}。", ""]
     for attempt in camera.get("attempts", []):
-        lines += [f"- {attempt['requested_backend']}：{'通过' if attempt['passed'] else '失败'}。"]
+        lines += [f"- {attempt['requested_backend']} / 第 {attempt['cycle']} 次：{'通过' if attempt['passed'] else '失败'}。"]
         if attempt["passed"]:
             lines += [f"  已读取 {attempt['valid_frames']} 帧，形状 {attempt['frame_shape']}，"
                       f"类型 {attempt['frame_dtype']}，设备报告帧率 {attempt['reported_fps']}。"]
+            lines += [f"  设备正常释放：{attempt['released']}；打开 / 读取 / 释放耗时："
+                      f"{attempt['open_seconds']} / {attempt['read_seconds']} / {attempt['release_seconds']} 秒。"]
         else:
             lines += [f"  错误：{attempt['error']}"]
             if attempt.get("valid_frames"):
@@ -164,7 +188,8 @@ def write_markdown(report, snapshot):
         lines += [f"| {name} | {details} | M0-05 安装/执行验证 |"]
     lines += ["", "部署依赖缺失在本阶段如实登记，不作为训练环境或摄像头检查已通过的证据。provider 列表也不等同于模型实际执行。",
               "", "## 4. 验收边界与下一步", "",
-              "M0-03 验收要求：训练检查通过、摄像头实际读到三帧并正常释放，并记录部署模块状态。",
+              f"本次摄像头要求在同一后端连续完成 {camera.get('required_cycles', 3)} 次打开、读取三帧和正常释放；任一次失败均不能通过该后端。",
+              "M0-03 验收要求：训练检查通过、摄像头重复读取和释放通过，并记录部署模块状态。",
               "尚未验证：E0 预训练模型、训练/反向、ONNX 模型执行、TensorRT 构建/执行和长时间摄像头稳定性。"]
     lines += ["下一步 M0-04：运行预训练 YOLO11n-seg，检查图片、视频和摄像头中的目标框与实例掩膜。"
               if report["task_complete"] else "下一步：解决报告中的未通过项并重新检查，再验收 M0-03。", ""]
@@ -175,7 +200,8 @@ def write_markdown(report, snapshot):
 def main():
     parser = argparse.ArgumentParser(description=__doc__)
     parser.add_argument("--camera-index", type=int, default=0)
-    parser.add_argument("--camera-timeout", type=float, default=15.0, help="Seconds allowed per camera backend")
+    parser.add_argument("--camera-timeout", type=float, default=15.0, help="Seconds allowed per camera cycle")
+    parser.add_argument("--camera-cycles", type=int, default=3, help="Consecutive successful cycles required on one backend")
     parser.add_argument("--skip-camera", action="store_true", help="Record camera as skipped; M0-03 stays incomplete")
     parser.add_argument("--output", help="JSON snapshot path, relative to the project root or absolute")
     parser.add_argument("--camera-worker", action="store_true", help=argparse.SUPPRESS)
@@ -183,8 +209,8 @@ def main():
     parser.add_argument("--camera-mode", choices=["native", "mjpeg640"], default="native",
                         help="native preserves defaults; mjpeg640 requests MJPG at 640x480")
     args = parser.parse_args()
-    if args.camera_index < 0 or args.camera_timeout <= 0:
-        parser.error("camera-index must be nonnegative and camera-timeout must be positive")
+    if args.camera_index < 0 or args.camera_timeout <= 0 or args.camera_cycles < 1:
+        parser.error("camera-index must be nonnegative; camera-timeout and camera-cycles must be positive")
     if args.camera_worker:
         print(json.dumps(camera_worker(args.camera_index, args.camera_backend, args.camera_mode)))
         return 0
@@ -210,7 +236,8 @@ def main():
         report["camera"] = {"status": "skipped", "index": args.camera_index}
     else:
         print(f"Checking camera index {args.camera_index}...", flush=True)
-        report["camera"] = check_camera(args.camera_index, args.camera_timeout, args.camera_backend, args.camera_mode)
+        report["camera"] = check_camera(args.camera_index, args.camera_timeout, args.camera_backend,
+                                        args.camera_mode, args.camera_cycles)
     report["task_complete"] = report["training"]["status"] == "passed" and report["camera"]["status"] == "passed"
     stamp = checked_at.strftime("%Y%m%d_%H%M%S_%f")
     snapshot = Path(args.output) if args.output else Path(f"logs/environment/M0-03_{stamp}_snapshot.json")

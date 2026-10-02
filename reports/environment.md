@@ -1,8 +1,8 @@
 # YOLO 项目环境报告
 
-检查 / 更新日期：2026-10-02。当前完成任务：**M0-01，确认硬件和已有环境**；**M0-02，专用环境、训练依赖与源码锁定**。
+检查 / 更新日期：2026-10-02。当前完成任务：**M0-01，确认硬件和已有环境**；**M0-02，专用环境、训练依赖与源码锁定**；**M0-03，正式检查入口与摄像头复测**。
 
-**M0-03 进行中：**正式环境检查脚本已实现；训练环境通过，摄像头实际读取三帧，但正常释放设备未通过。最新状态见[正式检查报告](environment_check.md)和第 11 节。
+**M0-03 已完成：**训练环境通过；12:34 的正式复测在 DSHOW 下连续三次各读取三帧并正常释放，程序 exit code 0。之前的间歇性关闭超时已恢复，根因未确定。最新状态见[正式检查报告](environment_check.md)和第 11 节。
 
 本报告记录本机实际检查、环境创建、训练依赖安装和随机权重模型前向。前半部分保留 M0-01 的原始检查，当前安装状态见第 10 节。机器可读取证据见 [M0-01 检查快照](../logs/environment/M0-01_20261002_snapshot.json)、[M0-02 克隆快照](../logs/environment/M0-02_20261002_yolo_snapshot.json)与[安装验收快照](../logs/environment/M0-02_20261002_install_snapshot.json)。
 
@@ -143,12 +143,12 @@ nvidia-smi --query-gpu=name,memory.total,driver_version,compute_cap --format=csv
 
 - **已完成：M0-01。** 硬件、驱动、已有 Python/Conda、当前 Toolkit 编译器及 Python 3.9 的基础 GPU 运算有记录。
 - **已完成：M0-02。** 专用 yolo 环境、训练依赖、Ultralytics 可编辑源码、tag/commit 和路径规则均已验证，详见第 10 节。
-- **进行中：M0-03。** 正式 `scripts/check_env.py` 已实现；18 项固定版本、源码、依赖一致性、OpenCV 和 GPU 通过，部署状态已登记；摄像头读取成功但释放设备失败，暂未验收。
+- **已完成：M0-03。** 正式 `scripts/check_env.py` 已实现；18 项固定版本、源码、依赖一致性、OpenCV 和 GPU 通过，部署状态已登记；同一后端连续三次摄像头读取和释放通过，另有 10 秒采集记录。
 - **未完成：M0-04 至 M0-06。** 未执行 E0、ONNX 或 TensorRT 项目流程。
-- **尚未通过或未检查：**摄像头正常关闭和长时间稳定性、预训练 E0、训练/反向、ONNX 导出及运行、TensorRT 构建及运行。随机权重模型前向及摄像头三帧读取已证实。
+- **尚未通过或未检查：**摄像头长时间稳定性、预训练 E0、训练/反向、ONNX 导出及运行、TensorRT 构建及运行。随机权重模型前向、摄像头短时采集和正常关闭已证实；历史关闭超时的根因未确定。
 - **环境变更：**M0-01 仅做检查；M0-02 从 tf2 离线克隆 yolo，初始 159 包版本一致；随后仅在 yolo 新增 6 包、升级 filelock，当前 165 包。既有 tf2 的关键版本复查未变，驱动、Toolkit 和全局 PATH 配置未调整。
 
-下一步继续 M0-03：确认摄像头占用情况，重新拔插设备并核查系统“相机”是否能正常显示和关闭，再复测；随后 M0-04 运行 E0，M0-05 核查部署依赖并实际执行。
+下一步 M0-04 运行 E0，获取图片、视频与摄像头中的目标框和实例掩膜；M0-05 核查部署依赖并实际执行。后续摄像头优先使用本机已验证的 DSHOW。
 
 ## 9. yolo 专用环境创建与验收
 
@@ -183,23 +183,28 @@ nvidia-smi --query-gpu=name,memory.total,driver_version,compute_cap --format=csv
 
 本次证据：[安装日志](../logs/environment/M0-02_20261002_pip_install.log)、[下载哈希](../logs/environment/M0-02_20261002_download_hashes.json)、[包变化](../logs/environment/M0-02_20261002_package_changes.json)、[安装验收快照](../logs/environment/M0-02_20261002_install_snapshot.json)、[验收日志](../logs/environment/M0-02_20261002_verify.log)。完整恢复和重启后的 E0/ONNX 验收继续保留在 M0-06。
 
-## 11. M0-03 正式检查入口与摄像头问题
+## 11. M0-03 正式检查入口与摄像头复测
 
-已实现 [scripts/check_env.py](../scripts/check_env.py)，复用 M0-02 的检查函数，并增加 requirements 中 18 项直接依赖的固定版本比对、部署模块状态和限时摄像头子进程。每次保存独立 JSON 快照，生成最近一次的 [environment_check.md](environment_check.md)；人工维护的本报告继续保留。
+已实现 [scripts/check_env.py](../scripts/check_env.py)，复用 M0-02 的检查函数，并增加 requirements 中 18 项直接依赖的固定版本比对、部署模块状态和限时摄像头子进程。针对间歇性问题，摄像头默认要求同一后端连续三次打开、各读取三帧、正常释放，记录各阶段耗时。任一次失败都不能通过该后端。每次保存独立 JSON 快照，生成最近一次的 [environment_check.md](environment_check.md)；人工维护的本报告继续保留。
 
-最后一次正式检查：[2026-10-02 11:44:08 快照](../logs/environment/M0-03_20261002_114408_074569_snapshot.json)、[执行日志](../logs/environment/M0-03_20261002_check_final.log)。训练环境检查通过；摄像头未完整通过，程序返回 exit code 1，没有残留属于本次检查的摄像头工作进程。
+最后一次正式检查：[2026-10-02 12:34:01 快照](../logs/environment/M0-03_20261002_123401_124014_snapshot.json)、[执行日志](../logs/environment/M0-03_20261002_recheck.log)。从项目外工作目录调用，训练检查与摄像头检查均通过，程序 exit code 0。DSHOW 三次的释放耗时均为 0.273 秒；12:32 的前一轮正式检查也通过。
+
+此前 [11:44:08 失败快照](../logs/environment/M0-03_20261002_114408_074569_snapshot.json)和[失败执行日志](../logs/environment/M0-03_20261002_check_final.log)继续保留。本轮开始复测时仍重现过一次“读取成功、释放超时”，随后原始方式恢复正常；不能把后来通过归因于某项未经验证的修改。
 
 | 摄像头检查 | 实际发现 |
 | --- | --- |
 | Windows 设备 | FHD USB camera；PnP 问题码 0；驱动提供者 Microsoft，版本 10.0.19041.6033 |
 | 隐私权限清点 | HKCU / HKLM webcam ConsentStore 为 Allow，不代表已经排除其他软件占用 |
-| DSHOW / 索引 0 | 能打开并读取三帧，`[480,640,3]` / uint8，像素最大值非零；在 release 阶段阻塞并超时 |
-| MSMF / 索引 0 | 初始化成功但读帧失败，`can't grab frame` / `-2147483638` |
-| 延长等待 | 30 秒仍未完整通过 |
-| MJPG 参数与关闭 MSMF 硬件转换 | 本次均未解决问题，细节见使用说明 |
-| OpenCV 4.10 对照 | 临时目录加载的 4.10.0.84 也重现异常；项目环境仍加载 4.11.0.86 |
+| DSHOW / 索引 0，当前 | 两轮正式检查均连续三次读取和释放通过；`[480,640,3]` / uint8，像素最大值 255 |
+| DSHOW 短时持续采集 | 10.003 秒读取 286 帧，读取失败 0 次，随后 release 耗时 0.274 秒；不是 YOLO 应用 FPS 或长时间稳定性验收 |
+| 历史 DSHOW 异常 | 读取三帧成功，但 release 超时；本轮最小程序还出现过释放约 7.6 秒，之后正常 |
+| 历史 MSMF 异常 | 初始化成功但读帧失败，`can't grab frame` / `-2147483638`；恢复后的正式检查使用 DSHOW，没有重新验收 MSMF |
+| 历史参数 / 版本对照 | 增加等待、MJPG、关闭 MSMF 硬件转换、临时 OpenCV 4.10 均未解除当时的问题 |
+| 当前环境 | 仍为 opencv-python 4.11.0.86，没有更换驱动、调整 USB 配置或采用 COM 修改 |
 | ORT / TensorRT 状态 | 模块未安装；provider 列表未获得，实际部署执行待 M0-05 |
 
-目前已确认摄像头读取和释放的行为，尚未确定根因。需要用户确认其他软件占用情况，重新拔插设备，并反馈系统“相机”能否正常显示与关闭，再进行针对性复测。摄像头需要正常完成读取和释放后才勾选 M0-03，主线继续为 2/54。
+用户已确认其他摄像头程序都已关闭。原始方式与 COM MTA 方式的交替对照均通过，不能证明 COM 是根因。当前已确认 DSHOW 恢复可用，尚未确定历史异常的根因；没有证据将它归因于 YOLO 依赖或硬件损坏，也不能宣称驱动问题已被永久修复。M0-03 按当前运行证据勾选，主线为 3/54；M7 保留持续运行验收。
+
+本轮补充证据：[原检查连续复开记录](../logs/environment/M0-03_20261002_recheck_worker.json)、[最小程序及采集时长对照](../logs/environment/M0-03_20261002_recheck_variants.json)、[COM 交替对照](../logs/environment/M0-03_20261002_recheck_paired_com.json)、[10 秒采集记录](../logs/environment/M0-03_20261002_recheck_stream.json)。
 
 操作说明、参数、退出码与诊断证据见 [docs/环境检查使用说明.md](../docs/环境检查使用说明.md)。摄像头画面没有保存或显示；设备报告帧率未作为应用 FPS。预训练 E0、训练及部署仍待开展。

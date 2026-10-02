@@ -1,0 +1,53 @@
+{
+  "checked_at": "2026-10-02T12:28:59.059698+08:00",
+  "tests": [
+    {
+      "variant": "COM_MTA",
+      "cycle": 1,
+      "exit_code": 0,
+      "stdout": "COM_MTA=0\n{\"stage\": \"opening\", \"elapsed\": 0.0}\n{\"stage\": \"opened:True\", \"elapsed\": 0.419}\n{\"valid_frames\": 3, \"backend\": \"DSHOW\", \"reported_fps\": 0.0}\n{\"stage\": \"releasing\", \"elapsed\": 0.551}\n{\"stage\": \"released\", \"elapsed\": 0.826}\n",
+      "stderr": "",
+      "elapsed_seconds": 0.96
+    },
+    {
+      "variant": "COM_MTA",
+      "cycle": 2,
+      "exit_code": 0,
+      "stdout": "COM_MTA=0\n{\"stage\": \"opening\", \"elapsed\": 0.0}\n{\"stage\": \"opened:True\", \"elapsed\": 0.372}\n{\"valid_frames\": 3, \"backend\": \"DSHOW\", \"reported_fps\": 0.0}\n{\"stage\": \"releasing\", \"elapsed\": 0.506}\n{\"stage\": \"released\", \"elapsed\": 0.778}\n",
+      "stderr": "",
+      "elapsed_seconds": 0.927
+    },
+    {
+      "variant": "COM_MTA",
+      "cycle": 3,
+      "exit_code": 0,
+      "stdout": "COM_MTA=0\n{\"stage\": \"opening\", \"elapsed\": 0.0}\n{\"stage\": \"opened:True\", \"elapsed\": 0.378}\n{\"valid_frames\": 3, \"backend\": \"DSHOW\", \"reported_fps\": 0.0}\n{\"stage\": \"releasing\", \"elapsed\": 0.512}\n{\"stage\": \"released\", \"elapsed\": 0.791}\n",
+      "stderr": "",
+      "elapsed_seconds": 0.927
+    },
+    {
+      "variant": "warmup_1_second",
+      "cycle": 1,
+      "exit_code": 0,
+      "stdout": "{\"stage\": \"opening\", \"elapsed\": 0.0}\n{\"stage\": \"opened:True\", \"elapsed\": 0.371}\n{\"valid_frames\": 33, \"backend\": \"DSHOW\", \"reported_fps\": 0.0}\n{\"stage\": \"releasing\", \"elapsed\": 1.514}\n{\"stage\": \"released\", \"elapsed\": 1.788}\n",
+      "stderr": "",
+      "elapsed_seconds": 1.926
+    },
+    {
+      "variant": "warmup_1_second",
+      "cycle": 2,
+      "exit_code": 0,
+      "stdout": "{\"stage\": \"opening\", \"elapsed\": 0.0}\n{\"stage\": \"opened:True\", \"elapsed\": 0.375}\n{\"valid_frames\": 33, \"backend\": \"DSHOW\", \"reported_fps\": 0.0}\n{\"stage\": \"releasing\", \"elapsed\": 1.516}\n{\"stage\": \"released\", \"elapsed\": 1.797}\n",
+      "stderr": "",
+      "elapsed_seconds": 1.934
+    },
+    {
+      "variant": "warmup_1_second",
+      "cycle": 3,
+      "exit_code": 0,
+      "stdout": "{\"stage\": \"opening\", \"elapsed\": 0.0}\n{\"stage\": \"opened:True\", \"elapsed\": 0.407}\n{\"valid_frames\": 33, \"backend\": \"DSHOW\", \"reported_fps\": 0.0}\n{\"stage\": \"releasing\", \"elapsed\": 1.549}\n{\"stage\": \"released\", \"elapsed\": 1.849}\n",
+      "stderr": "",
+      "elapsed_seconds": 1.98
+    }
+  ]
+}

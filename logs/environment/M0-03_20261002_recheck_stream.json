@@ -1,0 +1,29 @@
+{
+  "checked_at": "2026-10-02T12:33:11.799825+08:00",
+  "test": "native_DSHOW_10_seconds",
+  "exit_code": 0,
+  "events": [
+    {
+      "stage": "opened",
+      "opened": true
+    },
+    {
+      "stage": "releasing",
+      "valid_frames": 286,
+      "failed_reads": 0,
+      "shape": [
+        480,
+        640,
+        3
+      ],
+      "first_frame_seconds": 0.5,
+      "capture_seconds": 10.003
+    },
+    {
+      "stage": "released",
+      "release_seconds": 0.274
+    }
+  ],
+  "stderr": "",
+  "elapsed_seconds": 10.41
+}
