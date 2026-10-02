@@ -16,6 +16,8 @@
 
 同日 M1 已开始：新增 [scripts/inspect_model.py](../scripts/inspect_model.py)、[docs/模型学习笔记.md](../docs/模型学习笔记.md)、[reports/model_notes.md](../reports/model_notes.md)。本轮 JSON 和四张图集中在 `reports/model/M1/`，不另建逐层大数组目录。工程实操通过，个人学习验收仍待完成。
 
+同日按用户安排先推进 M1-02：新增 [scripts/inspect_structure.py](../scripts/inspect_structure.py) 检查已加载模型的 YAML / 模块属性与连接，`reports/model/M1-02/` 仅保存结构记录和概览图；详细讲解合并到已有模型学习笔记第 2 节。M1-01 留待用户后续学习再讨论。
+
 以下路径均相对于项目根目录，使用 `/` 表示子目录。例如 `configs/runtime.yaml` 在你的电脑上对应 `E:\秋招\项目相关\YOLO\configs\runtime.yaml`。
 
 ## 一、一级目录

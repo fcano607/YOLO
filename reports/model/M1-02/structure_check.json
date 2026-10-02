@@ -1,0 +1,1009 @@
+{
+  "task": "M1-02",
+  "checked_at": "2026-10-02T18:13:34.690711+08:00",
+  "status": "structure_checks_passed",
+  "source_commit": "86f5c8c401a630da651d321e691ab0af540812cf",
+  "yaml_path": "third_party/ultralytics/ultralytics/cfg/models/11/yolo11-seg.yaml",
+  "yaml_sha256": "6dc34ced2910fafbad6683e98325ba66dfde5026e5bc4c90eabe55f92c8031ec",
+  "weight_sha256": "55ed65c56c91713d23e8402371c6c49a6fd84f257f7dce452e8d70e41dcbe152",
+  "yaml_sections_match_checkpoint": {
+    "backbone": true,
+    "head": true,
+    "scales": true,
+    "nc": true
+  },
+  "scale": {
+    "name": "n",
+    "depth": 0.5,
+    "width": 0.25,
+    "max_channels": 1024
+  },
+  "forward_evidence": {
+    "path": "reports/model/M1/summary.json",
+    "sha256": "c3bbc981e0b57f87e0cfe3e509a0a54a8cff555e6afc021939d7294e67b77116",
+    "original_checked_at": "2026-10-02T17:44:10.562682+08:00"
+  },
+  "layers": [
+    {
+      "index": 0,
+      "from": -1,
+      "module": "Conv",
+      "yaml_repeats": 1,
+      "yaml_args": [
+        64,
+        3,
+        2
+      ],
+      "parameters": 464,
+      "recorded_output_shape": [
+        1,
+        16,
+        320,
+        320
+      ],
+      "resolved_inputs": [
+        -1
+      ],
+      "section": "backbone",
+      "conv": {
+        "in_channels": 3,
+        "out_channels": 16,
+        "kernel": [
+          3,
+          3
+        ],
+        "stride": [
+          2,
+          2
+        ],
+        "padding": [
+          1,
+          1
+        ],
+        "activation": "SiLU"
+      }
+    },
+    {
+      "index": 1,
+      "from": -1,
+      "module": "Conv",
+      "yaml_repeats": 1,
+      "yaml_args": [
+        128,
+        3,
+        2
+      ],
+      "parameters": 4672,
+      "recorded_output_shape": [
+        1,
+        32,
+        160,
+        160
+      ],
+      "resolved_inputs": [
+        0
+      ],
+      "section": "backbone",
+      "conv": {
+        "in_channels": 16,
+        "out_channels": 32,
+        "kernel": [
+          3,
+          3
+        ],
+        "stride": [
+          2,
+          2
+        ],
+        "padding": [
+          1,
+          1
+        ],
+        "activation": "SiLU"
+      }
+    },
+    {
+      "index": 2,
+      "from": -1,
+      "module": "C3k2",
+      "yaml_repeats": 2,
+      "yaml_args": [
+        256,
+        false,
+        0.25
+      ],
+      "parameters": 6640,
+      "recorded_output_shape": [
+        1,
+        64,
+        160,
+        160
+      ],
+      "resolved_inputs": [
+        1
+      ],
+      "section": "backbone",
+      "internal_repeats": 1,
+      "internal_types": [
+        "Bottleneck"
+      ],
+      "hidden_channels": 16
+    },
+    {
+      "index": 3,
+      "from": -1,
+      "module": "Conv",
+      "yaml_repeats": 1,
+      "yaml_args": [
+        256,
+        3,
+        2
+      ],
+      "parameters": 36992,
+      "recorded_output_shape": [
+        1,
+        64,
+        80,
+        80
+      ],
+      "resolved_inputs": [
+        2
+      ],
+      "section": "backbone",
+      "conv": {
+        "in_channels": 64,
+        "out_channels": 64,
+        "kernel": [
+          3,
+          3
+        ],
+        "stride": [
+          2,
+          2
+        ],
+        "padding": [
+          1,
+          1
+        ],
+        "activation": "SiLU"
+      }
+    },
+    {
+      "index": 4,
+      "from": -1,
+      "module": "C3k2",
+      "yaml_repeats": 2,
+      "yaml_args": [
+        512,
+        false,
+        0.25
+      ],
+      "parameters": 26080,
+      "recorded_output_shape": [
+        1,
+        128,
+        80,
+        80
+      ],
+      "resolved_inputs": [
+        3
+      ],
+      "section": "backbone",
+      "internal_repeats": 1,
+      "internal_types": [
+        "Bottleneck"
+      ],
+      "hidden_channels": 32
+    },
+    {
+      "index": 5,
+      "from": -1,
+      "module": "Conv",
+      "yaml_repeats": 1,
+      "yaml_args": [
+        512,
+        3,
+        2
+      ],
+      "parameters": 147712,
+      "recorded_output_shape": [
+        1,
+        128,
+        40,
+        40
+      ],
+      "resolved_inputs": [
+        4
+      ],
+      "section": "backbone",
+      "conv": {
+        "in_channels": 128,
+        "out_channels": 128,
+        "kernel": [
+          3,
+          3
+        ],
+        "stride": [
+          2,
+          2
+        ],
+        "padding": [
+          1,
+          1
+        ],
+        "activation": "SiLU"
+      }
+    },
+    {
+      "index": 6,
+      "from": -1,
+      "module": "C3k2",
+      "yaml_repeats": 2,
+      "yaml_args": [
+        512,
+        true
+      ],
+      "parameters": 87040,
+      "recorded_output_shape": [
+        1,
+        128,
+        40,
+        40
+      ],
+      "resolved_inputs": [
+        5
+      ],
+      "section": "backbone",
+      "internal_repeats": 1,
+      "internal_types": [
+        "C3k"
+      ],
+      "hidden_channels": 64
+    },
+    {
+      "index": 7,
+      "from": -1,
+      "module": "Conv",
+      "yaml_repeats": 1,
+      "yaml_args": [
+        1024,
+        3,
+        2
+      ],
+      "parameters": 295424,
+      "recorded_output_shape": [
+        1,
+        256,
+        20,
+        20
+      ],
+      "resolved_inputs": [
+        6
+      ],
+      "section": "backbone",
+      "conv": {
+        "in_channels": 128,
+        "out_channels": 256,
+        "kernel": [
+          3,
+          3
+        ],
+        "stride": [
+          2,
+          2
+        ],
+        "padding": [
+          1,
+          1
+        ],
+        "activation": "SiLU"
+      }
+    },
+    {
+      "index": 8,
+      "from": -1,
+      "module": "C3k2",
+      "yaml_repeats": 2,
+      "yaml_args": [
+        1024,
+        true
+      ],
+      "parameters": 346112,
+      "recorded_output_shape": [
+        1,
+        256,
+        20,
+        20
+      ],
+      "resolved_inputs": [
+        7
+      ],
+      "section": "backbone",
+      "internal_repeats": 1,
+      "internal_types": [
+        "C3k"
+      ],
+      "hidden_channels": 128
+    },
+    {
+      "index": 9,
+      "from": -1,
+      "module": "SPPF",
+      "yaml_repeats": 1,
+      "yaml_args": [
+        1024,
+        5
+      ],
+      "parameters": 164608,
+      "recorded_output_shape": [
+        1,
+        256,
+        20,
+        20
+      ],
+      "resolved_inputs": [
+        8
+      ],
+      "section": "backbone",
+      "sppf": {
+        "pool_kernel": 5,
+        "pool_stride": 1,
+        "pool_padding": 2,
+        "pool_repetitions": 3,
+        "loaded_cv1_activation": "SiLU",
+        "fresh_constructor_cv1_activation": "Identity",
+        "loaded_shortcut": false
+      }
+    },
+    {
+      "index": 10,
+      "from": -1,
+      "module": "C2PSA",
+      "yaml_repeats": 2,
+      "yaml_args": [
+        1024
+      ],
+      "parameters": 249728,
+      "recorded_output_shape": [
+        1,
+        256,
+        20,
+        20
+      ],
+      "resolved_inputs": [
+        9
+      ],
+      "section": "backbone",
+      "internal_repeats": 1,
+      "internal_types": [
+        "PSABlock"
+      ],
+      "hidden_channels": 128
+    },
+    {
+      "index": 11,
+      "from": -1,
+      "module": "Upsample",
+      "yaml_repeats": 1,
+      "yaml_args": [
+        "None",
+        2,
+        "nearest"
+      ],
+      "parameters": 0,
+      "recorded_output_shape": [
+        1,
+        256,
+        40,
+        40
+      ],
+      "resolved_inputs": [
+        10
+      ],
+      "section": "fusion",
+      "upsample": {
+        "scale_factor": 2.0,
+        "mode": "nearest"
+      }
+    },
+    {
+      "index": 12,
+      "from": [
+        -1,
+        6
+      ],
+      "module": "Concat",
+      "yaml_repeats": 1,
+      "yaml_args": [
+        1
+      ],
+      "parameters": 0,
+      "recorded_output_shape": [
+        1,
+        384,
+        40,
+        40
+      ],
+      "resolved_inputs": [
+        11,
+        6
+      ],
+      "section": "fusion",
+      "concat_dimension": 1,
+      "input_shapes": [
+        [
+          1,
+          256,
+          40,
+          40
+        ],
+        [
+          1,
+          128,
+          40,
+          40
+        ]
+      ]
+    },
+    {
+      "index": 13,
+      "from": -1,
+      "module": "C3k2",
+      "yaml_repeats": 2,
+      "yaml_args": [
+        512,
+        false
+      ],
+      "parameters": 111296,
+      "recorded_output_shape": [
+        1,
+        128,
+        40,
+        40
+      ],
+      "resolved_inputs": [
+        12
+      ],
+      "section": "fusion",
+      "internal_repeats": 1,
+      "internal_types": [
+        "Bottleneck"
+      ],
+      "hidden_channels": 64
+    },
+    {
+      "index": 14,
+      "from": -1,
+      "module": "Upsample",
+      "yaml_repeats": 1,
+      "yaml_args": [
+        "None",
+        2,
+        "nearest"
+      ],
+      "parameters": 0,
+      "recorded_output_shape": [
+        1,
+        128,
+        80,
+        80
+      ],
+      "resolved_inputs": [
+        13
+      ],
+      "section": "fusion",
+      "upsample": {
+        "scale_factor": 2.0,
+        "mode": "nearest"
+      }
+    },
+    {
+      "index": 15,
+      "from": [
+        -1,
+        4
+      ],
+      "module": "Concat",
+      "yaml_repeats": 1,
+      "yaml_args": [
+        1
+      ],
+      "parameters": 0,
+      "recorded_output_shape": [
+        1,
+        256,
+        80,
+        80
+      ],
+      "resolved_inputs": [
+        14,
+        4
+      ],
+      "section": "fusion",
+      "concat_dimension": 1,
+      "input_shapes": [
+        [
+          1,
+          128,
+          80,
+          80
+        ],
+        [
+          1,
+          128,
+          80,
+          80
+        ]
+      ]
+    },
+    {
+      "index": 16,
+      "from": -1,
+      "module": "C3k2",
+      "yaml_repeats": 2,
+      "yaml_args": [
+        256,
+        false
+      ],
+      "parameters": 32096,
+      "recorded_output_shape": [
+        1,
+        64,
+        80,
+        80
+      ],
+      "resolved_inputs": [
+        15
+      ],
+      "section": "fusion",
+      "internal_repeats": 1,
+      "internal_types": [
+        "Bottleneck"
+      ],
+      "hidden_channels": 32
+    },
+    {
+      "index": 17,
+      "from": -1,
+      "module": "Conv",
+      "yaml_repeats": 1,
+      "yaml_args": [
+        256,
+        3,
+        2
+      ],
+      "parameters": 36992,
+      "recorded_output_shape": [
+        1,
+        64,
+        40,
+        40
+      ],
+      "resolved_inputs": [
+        16
+      ],
+      "section": "fusion",
+      "conv": {
+        "in_channels": 64,
+        "out_channels": 64,
+        "kernel": [
+          3,
+          3
+        ],
+        "stride": [
+          2,
+          2
+        ],
+        "padding": [
+          1,
+          1
+        ],
+        "activation": "SiLU"
+      }
+    },
+    {
+      "index": 18,
+      "from": [
+        -1,
+        13
+      ],
+      "module": "Concat",
+      "yaml_repeats": 1,
+      "yaml_args": [
+        1
+      ],
+      "parameters": 0,
+      "recorded_output_shape": [
+        1,
+        192,
+        40,
+        40
+      ],
+      "resolved_inputs": [
+        17,
+        13
+      ],
+      "section": "fusion",
+      "concat_dimension": 1,
+      "input_shapes": [
+        [
+          1,
+          64,
+          40,
+          40
+        ],
+        [
+          1,
+          128,
+          40,
+          40
+        ]
+      ]
+    },
+    {
+      "index": 19,
+      "from": -1,
+      "module": "C3k2",
+      "yaml_repeats": 2,
+      "yaml_args": [
+        512,
+        false
+      ],
+      "parameters": 86720,
+      "recorded_output_shape": [
+        1,
+        128,
+        40,
+        40
+      ],
+      "resolved_inputs": [
+        18
+      ],
+      "section": "fusion",
+      "internal_repeats": 1,
+      "internal_types": [
+        "Bottleneck"
+      ],
+      "hidden_channels": 64
+    },
+    {
+      "index": 20,
+      "from": -1,
+      "module": "Conv",
+      "yaml_repeats": 1,
+      "yaml_args": [
+        512,
+        3,
+        2
+      ],
+      "parameters": 147712,
+      "recorded_output_shape": [
+        1,
+        128,
+        20,
+        20
+      ],
+      "resolved_inputs": [
+        19
+      ],
+      "section": "fusion",
+      "conv": {
+        "in_channels": 128,
+        "out_channels": 128,
+        "kernel": [
+          3,
+          3
+        ],
+        "stride": [
+          2,
+          2
+        ],
+        "padding": [
+          1,
+          1
+        ],
+        "activation": "SiLU"
+      }
+    },
+    {
+      "index": 21,
+      "from": [
+        -1,
+        10
+      ],
+      "module": "Concat",
+      "yaml_repeats": 1,
+      "yaml_args": [
+        1
+      ],
+      "parameters": 0,
+      "recorded_output_shape": [
+        1,
+        384,
+        20,
+        20
+      ],
+      "resolved_inputs": [
+        20,
+        10
+      ],
+      "section": "fusion",
+      "concat_dimension": 1,
+      "input_shapes": [
+        [
+          1,
+          128,
+          20,
+          20
+        ],
+        [
+          1,
+          256,
+          20,
+          20
+        ]
+      ]
+    },
+    {
+      "index": 22,
+      "from": -1,
+      "module": "C3k2",
+      "yaml_repeats": 2,
+      "yaml_args": [
+        1024,
+        true
+      ],
+      "parameters": 378880,
+      "recorded_output_shape": [
+        1,
+        256,
+        20,
+        20
+      ],
+      "resolved_inputs": [
+        21
+      ],
+      "section": "fusion",
+      "internal_repeats": 1,
+      "internal_types": [
+        "C3k"
+      ],
+      "hidden_channels": 128
+    },
+    {
+      "index": 23,
+      "from": [
+        16,
+        19,
+        22
+      ],
+      "module": "Segment",
+      "yaml_repeats": 1,
+      "yaml_args": [
+        "nc",
+        32,
+        256
+      ],
+      "parameters": 717680,
+      "recorded_output_shape": null,
+      "resolved_inputs": [
+        16,
+        19,
+        22
+      ],
+      "section": "segment",
+      "segment": {
+        "nc": 80,
+        "nm": 32,
+        "npr": 64,
+        "reg_max": 16,
+        "strides": [
+          8.0,
+          16.0,
+          32.0
+        ],
+        "input_channels": [
+          64,
+          128,
+          256
+        ],
+        "branches": {
+          "cv2": [
+            64,
+            64,
+            64
+          ],
+          "cv3": [
+            80,
+            80,
+            80
+          ],
+          "cv4": [
+            32,
+            32,
+            32
+          ]
+        },
+        "proto_input_layer": 16,
+        "proto_upsample": "ConvTranspose2d"
+      }
+    }
+  ],
+  "input_edges": [
+    {
+      "from": -1,
+      "to": 0
+    },
+    {
+      "from": 0,
+      "to": 1
+    },
+    {
+      "from": 1,
+      "to": 2
+    },
+    {
+      "from": 2,
+      "to": 3
+    },
+    {
+      "from": 3,
+      "to": 4
+    },
+    {
+      "from": 4,
+      "to": 5
+    },
+    {
+      "from": 5,
+      "to": 6
+    },
+    {
+      "from": 6,
+      "to": 7
+    },
+    {
+      "from": 7,
+      "to": 8
+    },
+    {
+      "from": 8,
+      "to": 9
+    },
+    {
+      "from": 9,
+      "to": 10
+    },
+    {
+      "from": 10,
+      "to": 11
+    },
+    {
+      "from": 11,
+      "to": 12
+    },
+    {
+      "from": 6,
+      "to": 12
+    },
+    {
+      "from": 12,
+      "to": 13
+    },
+    {
+      "from": 13,
+      "to": 14
+    },
+    {
+      "from": 14,
+      "to": 15
+    },
+    {
+      "from": 4,
+      "to": 15
+    },
+    {
+      "from": 15,
+      "to": 16
+    },
+    {
+      "from": 16,
+      "to": 17
+    },
+    {
+      "from": 17,
+      "to": 18
+    },
+    {
+      "from": 13,
+      "to": 18
+    },
+    {
+      "from": 18,
+      "to": 19
+    },
+    {
+      "from": 19,
+      "to": 20
+    },
+    {
+      "from": 20,
+      "to": 21
+    },
+    {
+      "from": 10,
+      "to": 21
+    },
+    {
+      "from": 21,
+      "to": 22
+    },
+    {
+      "from": 16,
+      "to": 23
+    },
+    {
+      "from": 19,
+      "to": 23
+    },
+    {
+      "from": 22,
+      "to": 23
+    }
+  ],
+  "source_refs": {
+    "Conv": {
+      "path": "third_party/ultralytics/ultralytics/nn/modules/conv.py",
+      "line": 48,
+      "sha256": "eb2b933385078e14708af94e1ea2f53f3c9e903b402c5b28639df3773741ecef"
+    },
+    "Concat": {
+      "path": "third_party/ultralytics/ultralytics/nn/modules/conv.py",
+      "line": 625,
+      "sha256": "eb2b933385078e14708af94e1ea2f53f3c9e903b402c5b28639df3773741ecef"
+    },
+    "C2f": {
+      "path": "third_party/ultralytics/ultralytics/nn/modules/block.py",
+      "line": 291,
+      "sha256": "037d9d6f9eb6028b20e630f7cb93fb3d074616c15e38d2651e1de7d9f28cc1a4"
+    },
+    "C3k2": {
+      "path": "third_party/ultralytics/ultralytics/nn/modules/block.py",
+      "line": 1069,
+      "sha256": "037d9d6f9eb6028b20e630f7cb93fb3d074616c15e38d2651e1de7d9f28cc1a4"
+    },
+    "SPPF": {
+      "path": "third_party/ultralytics/ultralytics/nn/modules/block.py",
+      "line": 211,
+      "sha256": "037d9d6f9eb6028b20e630f7cb93fb3d074616c15e38d2651e1de7d9f28cc1a4"
+    },
+    "C2PSA": {
+      "path": "third_party/ultralytics/ultralytics/nn/modules/block.py",
+      "line": 1442,
+      "sha256": "037d9d6f9eb6028b20e630f7cb93fb3d074616c15e38d2651e1de7d9f28cc1a4"
+    },
+    "Proto": {
+      "path": "third_party/ultralytics/ultralytics/nn/modules/block.py",
+      "line": 85,
+      "sha256": "037d9d6f9eb6028b20e630f7cb93fb3d074616c15e38d2651e1de7d9f28cc1a4"
+    },
+    "Segment": {
+      "path": "third_party/ultralytics/ultralytics/nn/modules/head.py",
+      "line": 298,
+      "sha256": "3eed30f9699813d2b0aed464b848527a5919a4d9a69c510d7ca0b9cf6494d0a6"
+    },
+    "parse_model": {
+      "path": "third_party/ultralytics/ultralytics/nn/tasks.py",
+      "line": 2041,
+      "sha256": "53e85fd3949e9d356d95ecf11aeb3e7bdaa25630745de46a27a5c3e0a31d2778"
+    }
+  },
+  "script_sha256": "b30adf8f9721ceabd6631c11024110d0045ac5fc4d532fb88aa930315e9c5815",
+  "scope": {
+    "new_forward_pass": false,
+    "training": false,
+    "model_modified": false,
+    "human_learning_acceptance": "pending"
+  },
+  "diagram_sha256": "451e3e4f45ac61df51b3d5f8d2acccf7e34f5a66b4659300b2730481386c5281"
+}
