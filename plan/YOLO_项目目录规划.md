@@ -2,7 +2,9 @@
 
 项目根目录：`E:\秋招\项目相关\YOLO`
 
-本文件规划需要在你的 Windows 电脑中建立的目录与文件。目前交付的是规划文档，没有直接在你的 E 盘创建目录，也未交付这些脚本的完整实现。
+本文件规划需要在你的 Windows 电脑中建立的目录与文件。2026-10-02 已完成 M0-02：必要一级目录、`configs/paths.yaml`、源码锁定清单、训练 requirements、路径解析与安装验收脚本已建立；后续数据、训练和部署脚本按任务逐步实现，表中其余文件仍是规划。实际进展见[进度跟踪](00_YOLO_分阶段推进与进度跟踪.md)。
+
+同日已实现 `scripts/check_env.py`，生成 JSON 快照与 `reports/environment_check.md`；M0-03 的摄像头正常释放仍未通过，见[检查使用说明](../docs/环境检查使用说明.md)。
 
 以下路径均相对于项目根目录，使用 `/` 表示子目录。例如 `configs/runtime.yaml` 在你的电脑上对应 `E:\秋招\项目相关\YOLO\configs\runtime.yaml`。
 
@@ -35,6 +37,8 @@
 | `.gitignore` | Git 忽略大型数据、自动生成结果、临时文件等 |
 
 `requirements` 在环境验证后锁定版本。驱动、GPU、CUDA、cuDNN 与 TensorRT 等信息另外写入环境报告，不只依靠 `pip freeze`。
+
+当前 `requirements-train.txt` 已验证；`requirements-deploy.txt` 待 M0-05 确认兼容性后建立。上游源码由 `configs/source-lock.json` 与 `scripts/setup_source.py` 恢复，当前原始源码不重复上传到本项目 Git；后续修改以登记的 patch 保存。
 
 Conda 环境不需要放在项目目录中。若后续使用 Git，重点版本管理代码、配置、文档和小型实验清单；大数据与全部训练权重另行管理。
 

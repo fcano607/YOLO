@@ -12,3 +12,21 @@
 建议首次完成学习手册第 1 课的任务区分、坐标与 IoU 练习。资料准备、知识掌握、实际运行和实验有效性分别验收。
 
 资料维护脚本位于 [scripts/download_learning_refs.py](scripts/download_learning_refs.py)。`tmp/` 用于可重建的文本提取和页面查看缓存，可在不用时清理，已加入 Git 忽略规则；原始论文与来源记录保存在 `ref/`。
+
+## 工程环境与当前进展
+
+M0-01、M0-02 已完成，主线已验收 **2/54**，M0-03 进行中。已建立专用 `yolo` 环境并可编辑安装 Ultralytics 8.4.171，模型主线为 YOLO11n-seg。正式环境检查入口已实现，依赖、源码和 GPU 通过；摄像头读到三帧但释放超时，问题仍待处理。E0、训练和部署继续按任务清单推进。
+
+- [环境安装记录](docs/环境安装记录.md)：版本、实际命令、问题处理与恢复顺序。
+- [训练依赖](requirements-train.txt)、[源码锁定清单](configs/source-lock.json)、[统一路径配置](configs/paths.yaml)。
+- [环境报告](reports/environment.md)：硬件与本次运行证据。
+- [正式环境检查报告](reports/environment_check.md)、[检查使用说明](docs/环境检查使用说明.md)：一键检查与当前摄像头问题。
+
+本机从项目根目录复查：
+
+```powershell
+conda activate yolo
+python scripts/check_env.py
+```
+
+解释器应为 `D:\software\anaconda\envs\yolo\python.exe`。移机时先按安装记录恢复源码和依赖；源码恢复入口为 `python scripts/setup_source.py`。当前训练依赖已锁定，部署依赖在 M0-05 验证后另行记录。

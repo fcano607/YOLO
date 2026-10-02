@@ -1,0 +1,13 @@
+# Relative paths are resolved from the project root by deploy.paths.
+paths:
+  configs: configs
+  data: data
+  fixed_checks: data/fixed_checks
+  source: third_party/ultralytics
+  artifacts: artifacts
+  pretrained: artifacts/pretrained
+  runs: runs
+  reports: reports
+  logs: logs
+  docs: docs
+  demo: demo

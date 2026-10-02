@@ -1,0 +1,6 @@
+Looking in indexes: https://pypi.tuna.tsinghua.edu.cn/simple
+Collecting opencv-python==4.10.0.84
+  Downloading https://pypi.tuna.tsinghua.edu.cn/packages/ec/6c/fab8113424af5049f85717e8e527ca3773299a3c6b02506e66436e19874f/opencv_python-4.10.0.84-cp37-abi3-win_amd64.whl (38.8 MB)
+     ---------------------------------------- 38.8/38.8 MB 11.6 MB/s  0:00:03
+Installing collected packages: opencv-python
+Successfully installed opencv-python-4.10.0.84

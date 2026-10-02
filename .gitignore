@@ -4,3 +4,19 @@
 # Python bytecode caches
 __pycache__/
 *.py[cod]
+
+# Upstream source is restored with scripts/setup_source.py and its pinned manifest.
+/third_party/ultralytics/
+
+# Datasets, model binaries and generated experiment outputs
+/data/raw/
+/data/desktop/images/
+/data/desktop/labels/
+/data/fixed_checks/
+/artifacts/
+/runs/
+/demo/
+*.egg-info/
+
+# Project-local Ultralytics settings may contain machine-specific paths.
+/logs/ultralytics_settings/

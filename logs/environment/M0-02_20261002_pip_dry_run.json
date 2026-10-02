@@ -1,0 +1,618 @@
+{
+  "version": "1",
+  "pip_version": "25.2",
+  "install": [
+    {
+      "download_info": {
+        "url": "file:///E:/%E7%A7%8B%E6%8B%9B/%E9%A1%B9%E7%9B%AE%E7%9B%B8%E5%85%B3/YOLO/third_party/ultralytics",
+        "dir_info": {
+          "editable": true
+        }
+      },
+      "is_direct": true,
+      "is_yanked": false,
+      "requested": true,
+      "metadata": {
+        "metadata_version": "2.4",
+        "name": "ultralytics",
+        "version": "8.4.171",
+        "dynamic": [
+          "license-file"
+        ],
+        "summary": "Ultralytics YOLO 🚀 for SOTA object detection, instance segmentation, semantic segmentation, depth estimation, classification, pose estimation, oriented object detection, and multi-object tracking.",
+        "description_content_type": "text/markdown",
+        "keywords": [
+          "machine-learning",
+          "deep-learning",
+          "computer-vision",
+          "ML",
+          "DL",
+          "AI",
+          "RT-DETR",
+          "SAM3",
+          "YOLO",
+          "YOLOv3",
+          "YOLOv5",
+          "YOLOv8",
+          "YOLO11",
+          "YOLO26",
+          "Platform",
+          "Ultralytics"
+        ],
+        "author_email": "Glenn Jocher <glenn.jocher@ultralytics.com>, Jing Qiu <jing.qiu@ultralytics.com>",
+        "maintainer_email": "Ultralytics <hello@ultralytics.com>",
+        "license": "AGPL-3.0",
+        "license_file": [
+          "LICENSE"
+        ],
+        "classifier": [
+          "Development Status :: 5 - Production/Stable",
+          "Intended Audience :: Developers",
+          "Intended Audience :: Education",
+          "Intended Audience :: Science/Research",
+          "License :: OSI Approved :: GNU Affero General Public License v3 or later (AGPLv3+)",
+          "Programming Language :: Python :: 3",
+          "Programming Language :: Python :: 3.8",
+          "Programming Language :: Python :: 3.9",
+          "Programming Language :: Python :: 3.10",
+          "Programming Language :: Python :: 3.11",
+          "Programming Language :: Python :: 3.12",
+          "Programming Language :: Python :: 3.13",
+          "Topic :: Software Development",
+          "Topic :: Scientific/Engineering",
+          "Topic :: Scientific/Engineering :: Artificial Intelligence",
+          "Topic :: Scientific/Engineering :: Image Recognition",
+          "Operating System :: POSIX :: Linux",
+          "Operating System :: MacOS",
+          "Operating System :: Microsoft :: Windows"
+        ],
+        "requires_dist": [
+          "cloudpickle>=3.1.1",
+          "filelock>=3.16.1",
+          "numpy>=1.23.0; platform_system != \"Darwin\"",
+          "numpy!=2.0.*,!=2.1.*,!=2.2.*,!=2.3.0,!=2.3.1,!=2.3.2,!=2.3.3,!=2.3.4,>=1.23.0; platform_system == \"Darwin\"",
+          "matplotlib>=3.3.0",
+          "opencv-python!=4.13.0.90,>=4.7.0",
+          "pillow>=7.1.2",
+          "pyyaml>=5.3.1",
+          "requests>=2.23.0",
+          "torch>=1.8.0",
+          "torch!=2.4.0,>=1.8.0; sys_platform == \"win32\"",
+          "torchvision>=0.9.0",
+          "psutil>=5.8.0",
+          "polars>=0.20.0",
+          "nvidia-ml-py>=12.0.0",
+          "ultralytics-thop>=2.2.2",
+          "ultralytics-platform>=0.1.45; python_version >= \"3.11\"",
+          "ipython; extra == \"dev\"",
+          "pytest; extra == \"dev\"",
+          "pytest-cov; extra == \"dev\"",
+          "pytest-xdist>=3.0.0; extra == \"dev\"",
+          "coverage[toml]; extra == \"dev\"",
+          "zensical>=0.0.58; python_version >= \"3.10\" and extra == \"dev\"",
+          "minijinja>=2.0.0; extra == \"dev\"",
+          "onnx>=1.12.0; platform_system != \"Darwin\" and extra == \"export-base\"",
+          "onnx<1.18.0,>=1.12.0; (platform_system == \"Darwin\" and python_version < \"3.13\") and extra == \"export-base\"",
+          "onnx>=1.20.0; (platform_system == \"Darwin\" and python_version >= \"3.13\") and extra == \"export-base\"",
+          "onnxslim>=0.1.82; extra == \"export-base\"",
+          "onnxruntime<1.20.0; (python_version < \"3.11\" and (platform_machine != \"aarch64\" or platform_system != \"Linux\")) and extra == \"export-base\"",
+          "onnxruntime>=1.20.0; python_version >= \"3.11\" and extra == \"export-base\"",
+          "nncf>=2.14.0; python_version >= \"3.9\" and extra == \"export-openvino\"",
+          "openvino>=2024.0.0; extra == \"export-openvino\"",
+          "packaging>=26.0; (platform_machine == \"aarch64\" and platform_system == \"Linux\" and python_version >= \"3.9\") and extra == \"export-openvino\"",
+          "numpy<2; python_version < \"3.13\" and extra == \"export-legacy-torch\"",
+          "setuptools<81.0.0; python_version >= \"3.9\" and extra == \"export-legacy-torch\"",
+          "nncf<3.0.0; python_version >= \"3.9\" and extra == \"export-legacy-torch\"",
+          "numpy<2.0.0; python_version < \"3.13\" and extra == \"export-tensorflow\"",
+          "tensorflow<=2.19.0,>=2.0.0; python_version < \"3.13\" and extra == \"export-tensorflow\"",
+          "tensorflow>2.19.0; python_version >= \"3.13\" and extra == \"export-tensorflow\"",
+          "ydf<0.13.0; (platform_machine != \"aarch64\" and python_version <= \"3.12\") and extra == \"export-tensorflow\"",
+          "googleapis-common-protos<1.74.0; python_version <= \"3.12\" and extra == \"export-tensorflow\"",
+          "tensorstore>=0.1.63; (platform_machine == \"aarch64\" and python_version >= \"3.9\") and extra == \"export-tensorflow\"",
+          "h5py!=3.11.0; platform_machine == \"aarch64\" and extra == \"export-tensorflow\"",
+          "coreai-torch>=0.4.3; (((platform_system == \"Darwin\" and platform_machine == \"arm64\") or (platform_system == \"Linux\" and platform_machine == \"x86_64\")) and python_version >= \"3.11\" and python_version < \"3.15\") and extra == \"export-coreai\"",
+          "numpy<=2.3.5; (platform_system != \"Windows\" and python_version <= \"3.13\") and extra == \"export-coreml\"",
+          "coremltools>=9.0; (platform_system != \"Windows\" and python_version <= \"3.13\") and extra == \"export-coreml\"",
+          "scikit-learn>=1.3.2; (platform_system != \"Windows\" and python_version <= \"3.13\") and extra == \"export-coreml\"",
+          "executorch; extra == \"export-executorch\"",
+          "numpy<=2.3.5; extra == \"export-executorch\"",
+          "dx_com; extra == \"export-deepx\"",
+          "numpy<2; python_version < \"3.13\" and extra == \"export-deepx\"",
+          "litert-torch>=0.9.0; (((platform_system == \"Linux\" and platform_machine == \"x86_64\") or platform_system == \"Darwin\") and python_version >= \"3.10\") and extra == \"export-litert\"",
+          "ai-edge-litert>=2.1.4; (((platform_system == \"Linux\" and platform_machine == \"x86_64\") or platform_system == \"Darwin\") and python_version >= \"3.10\") and extra == \"export-litert\"",
+          "ai-edge-quantizer>=0.6.0; (((platform_system == \"Linux\" and platform_machine == \"x86_64\") or platform_system == \"Darwin\") and python_version >= \"3.10\") and extra == \"export-litert\"",
+          "ultralytics[export-base]; extra == \"export\"",
+          "ultralytics[export-openvino]; extra == \"export\"",
+          "ultralytics[export-tensorflow]; extra == \"export\"",
+          "ultralytics[export-coreml]; extra == \"export\"",
+          "ultralytics[export-litert]; extra == \"export\"",
+          "torch<2.13.0,>=2.12.0; (platform_system == \"Linux\" and platform_machine == \"aarch64\" and python_version == \"3.11\") and extra == \"export\"",
+          "shapely>=2.0.0; extra == \"solutions\"",
+          "lap>=0.5.12; extra == \"solutions\"",
+          "streamlit>=1.51.0; python_version >= \"3.10\" and extra == \"solutions\"",
+          "streamlit<1.51.0,>=1.29.0; (python_version < \"3.10\" and (platform_machine != \"aarch64\" or platform_system != \"Linux\")) and extra == \"solutions\"",
+          "flask>=3.0.1; extra == \"solutions\"",
+          "openai>=2.0.0; extra == \"llm\"",
+          "wandb; extra == \"logging\"",
+          "tensorboard; extra == \"logging\"",
+          "mlflow; extra == \"logging\"",
+          "ipython; extra == \"extra\"",
+          "albumentations>=1.4.6; extra == \"extra\"",
+          "faster-coco-eval>=1.6.7; extra == \"extra\"",
+          "types-pillow; extra == \"typing\"",
+          "types-psutil; extra == \"typing\"",
+          "types-pyyaml; extra == \"typing\"",
+          "types-requests; extra == \"typing\"",
+          "types-shapely; extra == \"typing\""
+        ],
+        "requires_python": ">=3.8",
+        "project_url": [
+          "Homepage, https://ultralytics.com",
+          "Source, https://github.com/ultralytics/ultralytics",
+          "Documentation, https://docs.ultralytics.com",
+          "Bug Reports, https://github.com/ultralytics/ultralytics/issues",
+          "Changelog, https://github.com/ultralytics/ultralytics/releases"
+        ],
+        "provides_extra": [
+          "dev",
+          "export-base",
+          "export-openvino",
+          "export-legacy-torch",
+          "export-tensorflow",
+          "export-coreai",
+          "export-coreml",
+          "export-executorch",
+          "export-deepx",
+          "export-litert",
+          "export",
+          "solutions",
+          "llm",
+          "logging",
+          "extra",
+          "typing"
+        ],
+        "description": "<div align=\"center\">\r\n  <p>\r\n    <a href=\"https://www.ultralytics.com/yolo/yolo27?utm_source=github&utm_medium=social&utm_campaign=yolo27-launch-2026&utm_content=banner\" target=\"_blank\">\r\n      <img width=\"100%\" src=\"https://raw.githubusercontent.com/ultralytics/assets/main/yolov8/banner-yolov8.png\" alt=\"Ultralytics YOLO banner\"></a>\r\n  </p>\r\n\r\n[中文](https://docs.ultralytics.com/zh) | [한국어](https://docs.ultralytics.com/ko) | [日本語](https://docs.ultralytics.com/ja) | [Русский](https://docs.ultralytics.com/ru) | [Deutsch](https://docs.ultralytics.com/de) | [Français](https://docs.ultralytics.com/fr) | [Español](https://docs.ultralytics.com/es) | [Português](https://docs.ultralytics.com/pt) | [Türkçe](https://docs.ultralytics.com/tr) | [Tiếng Việt](https://docs.ultralytics.com/vi) | [العربية](https://docs.ultralytics.com/ar) <br>\r\n\r\n<div>\r\n    <a href=\"https://github.com/ultralytics/ultralytics/actions/workflows/ci.yml\"><img src=\"https://github.com/ultralytics/ultralytics/actions/workflows/ci.yml/badge.svg\" alt=\"Ultralytics CI\"></a>\r\n    <a href=\"https://clickpy.clickhouse.com/dashboard/ultralytics\"><img src=\"https://static.pepy.tech/badge/ultralytics\" alt=\"Ultralytics Downloads\"></a>\r\n    <a href=\"https://discord.com/invite/ultralytics\"><img alt=\"Ultralytics Discord\" src=\"https://img.shields.io/discord/1089800235347353640?logo=discord&logoColor=white&label=Discord&color=blue\"></a>\r\n    <a href=\"https://community.ultralytics.com\"><img alt=\"Ultralytics Forums\" src=\"https://img.shields.io/discourse/users?server=https%3A%2F%2Fcommunity.ultralytics.com&logo=discourse&label=Forums&color=blue\"></a>\r\n    <a href=\"https://www.reddit.com/r/ultralytics/\"><img alt=\"Ultralytics Reddit\" src=\"https://img.shields.io/reddit/subreddit-subscribers/ultralytics?style=flat&logo=reddit&logoColor=white&label=Reddit&color=blue\"></a>\r\n    <br>\r\n    <a href=\"https://console.paperspace.com/github/ultralytics/ultralytics\"><img src=\"https://assets.paperspace.io/img/gradient-badge.svg\" alt=\"Run Ultralytics on Gradient\"></a>\r\n    <a href=\"https://colab.research.google.com/github/ultralytics/ultralytics/blob/main/examples/tutorial.ipynb\"><img src=\"https://colab.research.google.com/assets/colab-badge.svg\" alt=\"Open Ultralytics In Colab\"></a>\r\n    <a href=\"https://www.kaggle.com/models/ultralytics/yolo26\"><img src=\"https://kaggle.com/static/images/open-in-kaggle.svg\" alt=\"Open Ultralytics In Kaggle\"></a>\r\n    <a href=\"https://mybinder.org/v2/gh/ultralytics/ultralytics/HEAD?labpath=examples%2Ftutorial.ipynb\"><img src=\"https://mybinder.org/badge_logo.svg\" alt=\"Open Ultralytics In Binder\"></a>\r\n</div>\r\n</div>\r\n<br>\r\n\r\n<div align=\"center\">\r\n  <a href=\"https://trendshift.io/repositories/1556?utm_source=repository-badge&amp;utm_medium=badge&amp;utm_campaign=badge-repository-1556\" target=\"_blank\" rel=\"noopener noreferrer\"><img src=\"https://trendshift.io/api/badge/repositories/1556\" alt=\"ultralytics%2Fultralytics | Trendshift\" width=\"250\" height=\"55\"/></a>\r\n</div>\r\n<br>\r\n\r\n[Ultralytics](https://www.ultralytics.com) creates cutting-edge, state-of-the-art (SOTA) [YOLO models](https://www.ultralytics.com/yolo) built on years of foundational research in computer vision and AI. Constantly updated for performance and flexibility, our models are **fast**, **accurate**, and **easy to use**. They excel at [object detection](https://docs.ultralytics.com/tasks/detect), [instance segmentation](https://docs.ultralytics.com/tasks/segment), [semantic segmentation](https://docs.ultralytics.com/tasks/semantic), [depth estimation](https://docs.ultralytics.com/tasks/depth), [image classification](https://docs.ultralytics.com/tasks/classify), [pose estimation](https://docs.ultralytics.com/tasks/pose), and [oriented object detection](https://docs.ultralytics.com/tasks/obb) tasks, and can [track](https://docs.ultralytics.com/modes/track) detected objects across video frames.\r\n\r\nFind detailed documentation in the [Ultralytics Docs](https://docs.ultralytics.com). Get support via [GitHub Issues](https://github.com/ultralytics/ultralytics/issues/new/choose). Join discussions on [Discord](https://discord.com/invite/ultralytics), [Reddit](https://www.reddit.com/r/ultralytics/), and the [Ultralytics Community Forums](https://community.ultralytics.com)!\r\n\r\nRequest an Enterprise License for commercial use at [Ultralytics Licensing](https://www.ultralytics.com/license).\r\n\r\n<a href=\"https://platform.ultralytics.com/ultralytics/yolo26\" target=\"_blank\">\r\n  <img width=\"100%\" src=\"https://raw.githubusercontent.com/ultralytics/assets/refs/heads/main/yolo/performance-comparison.png\" alt=\"YOLO26 performance plots\">\r\n</a>\r\n\r\n<div align=\"center\">\r\n  <a href=\"https://github.com/ultralytics\"><img src=\"https://github.com/ultralytics/assets/raw/main/social/logo-social-github.png\" width=\"2%\" alt=\"Ultralytics GitHub\"></a>\r\n  <img src=\"https://github.com/ultralytics/assets/raw/main/social/logo-transparent.png\" width=\"2%\" alt=\"space\">\r\n  <a href=\"https://www.linkedin.com/company/ultralytics/\"><img src=\"https://github.com/ultralytics/assets/raw/main/social/logo-social-linkedin.png\" width=\"2%\" alt=\"Ultralytics LinkedIn\"></a>\r\n  <img src=\"https://github.com/ultralytics/assets/raw/main/social/logo-transparent.png\" width=\"2%\" alt=\"space\">\r\n  <a href=\"https://twitter.com/ultralytics\"><img src=\"https://github.com/ultralytics/assets/raw/main/social/logo-social-twitter.png\" width=\"2%\" alt=\"Ultralytics Twitter\"></a>\r\n  <img src=\"https://github.com/ultralytics/assets/raw/main/social/logo-transparent.png\" width=\"2%\" alt=\"space\">\r\n  <a href=\"https://www.youtube.com/ultralytics?sub_confirmation=1\"><img src=\"https://github.com/ultralytics/assets/raw/main/social/logo-social-youtube.png\" width=\"2%\" alt=\"Ultralytics YouTube\"></a>\r\n  <img src=\"https://github.com/ultralytics/assets/raw/main/social/logo-transparent.png\" width=\"2%\" alt=\"space\">\r\n  <a href=\"https://www.tiktok.com/@ultralytics\"><img src=\"https://github.com/ultralytics/assets/raw/main/social/logo-social-tiktok.png\" width=\"2%\" alt=\"Ultralytics TikTok\"></a>\r\n  <img src=\"https://github.com/ultralytics/assets/raw/main/social/logo-transparent.png\" width=\"2%\" alt=\"space\">\r\n  <a href=\"https://ultralytics.com/bilibili\"><img src=\"https://github.com/ultralytics/assets/raw/main/social/logo-social-bilibili.png\" width=\"2%\" alt=\"Ultralytics BiliBili\"></a>\r\n  <img src=\"https://github.com/ultralytics/assets/raw/main/social/logo-transparent.png\" width=\"2%\" alt=\"space\">\r\n  <a href=\"https://discord.com/invite/ultralytics\"><img src=\"https://github.com/ultralytics/assets/raw/main/social/logo-social-discord.png\" width=\"2%\" alt=\"Ultralytics Discord\"></a>\r\n</div>\r\n\r\n## 📄 Documentation\r\n\r\nSee below for quickstart installation and usage examples. For comprehensive guidance on training, validation, prediction, and deployment, refer to our full [Ultralytics Docs](https://docs.ultralytics.com).\r\n\r\n<details open>\r\n<summary>Install</summary>\r\n\r\nInstall the `ultralytics` package, including all [requirements](https://github.com/ultralytics/ultralytics/blob/main/pyproject.toml), in a [**Python>=3.8**](https://www.python.org/) environment with [**PyTorch>=1.8**](https://pytorch.org/get-started/locally/).\r\n\r\n[![PyPI - Version](https://img.shields.io/pypi/v/ultralytics?logo=pypi&logoColor=white)](https://pypi.org/project/ultralytics/) [![Ultralytics Downloads](https://static.pepy.tech/badge/ultralytics)](https://clickpy.clickhouse.com/dashboard/ultralytics) [![PyPI - Python Version](https://img.shields.io/pypi/pyversions/ultralytics?logo=python&logoColor=gold)](https://pypi.org/project/ultralytics/)\r\n\r\n```bash\r\npip install ultralytics\r\n```\r\n\r\nFor alternative installation methods, including [Conda](https://anaconda.org/conda-forge/ultralytics), [Docker](https://hub.docker.com/r/ultralytics/ultralytics), and building from source via Git, please consult the [Quickstart Guide](https://docs.ultralytics.com/quickstart).\r\n\r\n[![Conda Version](https://img.shields.io/conda/vn/conda-forge/ultralytics?logo=condaforge)](https://anaconda.org/conda-forge/ultralytics) [![Docker Image Version](https://img.shields.io/docker/v/ultralytics/ultralytics?sort=semver&logo=docker)](https://hub.docker.com/r/ultralytics/ultralytics) [![Ultralytics Docker Pulls](https://img.shields.io/docker/pulls/ultralytics/ultralytics?logo=docker)](https://hub.docker.com/r/ultralytics/ultralytics)\r\n\r\n</details>\r\n\r\n<details open>\r\n<summary>Usage</summary>\r\n\r\n### CLI\r\n\r\nYou can use Ultralytics YOLO directly from the Command Line Interface (CLI) with the `yolo` command:\r\n\r\n```bash\r\n# Predict using a pretrained YOLO model (e.g., YOLO26n) on an image\r\nyolo predict model=yolo26n.pt source='https://ultralytics.com/images/bus.jpg'\r\n```\r\n\r\nThe `yolo` command supports various tasks and modes, accepting additional arguments like `imgsz=640`. Explore the YOLO [CLI Docs](https://docs.ultralytics.com/usage/cli) for more examples.\r\n\r\n### Python\r\n\r\nUltralytics YOLO can also be integrated directly into your Python projects. It accepts the same [configuration arguments](https://docs.ultralytics.com/usage/cfg) as the CLI:\r\n\r\n```python\r\nfrom ultralytics import YOLO\r\n\r\n# Load a pretrained YOLO26n model\r\nmodel = YOLO(\"yolo26n.pt\")\r\n\r\n# Train the model on the COCO8 dataset for 100 epochs\r\ntrain_results = model.train(\r\n    data=\"coco8.yaml\",  # Path to dataset configuration file\r\n    epochs=100,  # Number of training epochs\r\n    imgsz=640,  # Image size for training\r\n    device=\"cpu\",  # Device to run on (e.g., 'cpu', 0, [0,1,2,3])\r\n)\r\n\r\n# Evaluate the model's performance on the validation set\r\nmetrics = model.val()\r\n\r\n# Perform object detection on an image\r\nresults = model(\"path/to/image.jpg\")  # Predict on an image\r\nresults[0].show()  # Display results\r\n\r\n# Export the model to ONNX format for deployment\r\npath = model.export(format=\"onnx\")  # Returns the path to the exported model\r\n```\r\n\r\nDiscover more examples in the YOLO [Python Docs](https://docs.ultralytics.com/usage/python).\r\n\r\n</details>\r\n\r\n## ✨ Models\r\n\r\n> **[YOLO27 — Coming Soon](https://docs.ultralytics.com/models/yolo27/):** Preview the upcoming family, currently undergoing final R&D. Models are not yet available, and no launch date is set.\r\n\r\nUltralytics supports a wide range of YOLO models, from early versions like [YOLOv3](https://docs.ultralytics.com/models/yolov3) to the latest [YOLO26](https://docs.ultralytics.com/models/yolo26). The tables below showcase YOLO26 models pretrained on [COCO](https://docs.ultralytics.com/datasets/detect/coco) for [Detection](https://docs.ultralytics.com/tasks/detect), [Segmentation](https://docs.ultralytics.com/tasks/segment), and [Pose Estimation](https://docs.ultralytics.com/tasks/pose). [Semantic Segmentation](https://docs.ultralytics.com/tasks/semantic) models are pretrained on [Cityscapes](https://docs.ultralytics.com/datasets/semantic/cityscapes), [Depth Estimation](https://docs.ultralytics.com/tasks/depth) models are pretrained on a broad multi-dataset mix and evaluated on [NYU Depth V2](https://cs.nyu.edu/~fergus/datasets/nyu_depth_v2.html), [Classification](https://docs.ultralytics.com/tasks/classify) models are pretrained on [ImageNet](https://docs.ultralytics.com/datasets/classify/imagenet), and [OBB](https://docs.ultralytics.com/tasks/obb) models are pretrained on [DOTAv1](https://docs.ultralytics.com/datasets/obb/dota-v2#dota-v10). [Tracking](https://docs.ultralytics.com/modes/track) mode is compatible with Detection, Segmentation, Pose, and OBB models. The listed [pretrained models](https://docs.ultralytics.com/models) download automatically from the latest Ultralytics [release](https://github.com/ultralytics/assets/releases) on first use.\r\n\r\n<a href=\"https://docs.ultralytics.com/tasks\" target=\"_blank\">\r\n    <img width=\"100%\" src=\"https://cdn.ul.run/i/c99d914c3958d0755b5a3d7204b6f24a.avif\" alt=\"Ultralytics YOLO supported tasks\">\r\n</a>\r\n<br>\r\n<br>\r\n\r\n<details open><summary>Detection (COCO)</summary>\r\n\r\nExplore the [Detection Docs](https://docs.ultralytics.com/tasks/detect) for usage examples. These models are trained on the [COCO dataset](https://cocodataset.org/), featuring 80 object classes.\r\n\r\n| Model                                                                  | size<br><sup>(pixels)</sup> | mAP<sup>val<br>50-95</sup> | mAP<sup>val<br>50-95(e2e)</sup> | Speed<br><sup>CPU ONNX<br>(ms)</sup> | Speed<br><sup>T4 TensorRT10<br>(ms)</sup> | params<br><sup>(M)</sup> | FLOPs<br><sup>(B)</sup> |\r\n| ---------------------------------------------------------------------- | --------------------------- | -------------------------- | ------------------------------- | ------------------------------------ | ----------------------------------------- | ------------------------ | ----------------------- |\r\n| [YOLO26n](https://platform.ultralytics.com/ultralytics/yolo26/yolo26n) | 640                         | 40.9                       | 40.1                            | 38.9 ± 0.7                           | 1.7 ± 0.0                                 | 2.4                      | 5.5                     |\r\n| [YOLO26s](https://platform.ultralytics.com/ultralytics/yolo26/yolo26s) | 640                         | 48.6                       | 47.8                            | 87.2 ± 0.9                           | 2.5 ± 0.0                                 | 9.5                      | 20.9                    |\r\n| [YOLO26m](https://platform.ultralytics.com/ultralytics/yolo26/yolo26m) | 640                         | 53.1                       | 52.5                            | 220.0 ± 1.4                          | 4.7 ± 0.1                                 | 20.4                     | 68.4                    |\r\n| [YOLO26l](https://platform.ultralytics.com/ultralytics/yolo26/yolo26l) | 640                         | 55.0                       | 54.4                            | 286.2 ± 2.0                          | 6.2 ± 0.2                                 | 24.8                     | 86.8                    |\r\n| [YOLO26x](https://platform.ultralytics.com/ultralytics/yolo26/yolo26x) | 640                         | 57.5                       | 56.9                            | 525.8 ± 4.0                          | 11.8 ± 0.2                                | 55.7                     | 194.4                   |\r\n\r\n- **mAP<sup>val</sup>** values refer to single-model single-scale performance on the [COCO val2017](https://cocodataset.org/) dataset. See [YOLO Performance Metrics](https://docs.ultralytics.com/guides/yolo-performance-metrics) for details. <br>Reproduce with `yolo val detect data=coco.yaml device=0`\r\n- **Speed** metrics are averaged over COCO val images using an [Amazon EC2 P4d](https://aws.amazon.com/ec2/instance-types/p4/) instance. CPU speeds measured with [ONNX](https://onnx.ai/) export. GPU speeds measured with [TensorRT](https://developer.nvidia.com/tensorrt) export. <br>Reproduce with `yolo val detect data=coco.yaml batch=1 device=0|cpu`\r\n\r\n</details>\r\n\r\n<details><summary>Segmentation (COCO)</summary>\r\n\r\nRefer to the [Segmentation Docs](https://docs.ultralytics.com/tasks/segment) for usage examples. These models are trained on [COCO-Seg](https://docs.ultralytics.com/datasets/segment/coco), including 80 classes.\r\n\r\n| Model                                                                          | size<br><sup>(pixels)</sup> | mAP<sup>box<br>50-95(e2e)</sup> | mAP<sup>mask<br>50-95(e2e)</sup> | Speed<br><sup>CPU ONNX<br>(ms)</sup> | Speed<br><sup>T4 TensorRT10<br>(ms)</sup> | params<br><sup>(M)</sup> | FLOPs<br><sup>(B)</sup> |\r\n| ------------------------------------------------------------------------------ | --------------------------- | ------------------------------- | -------------------------------- | ------------------------------------ | ----------------------------------------- | ------------------------ | ----------------------- |\r\n| [YOLO26n-seg](https://platform.ultralytics.com/ultralytics/yolo26/yolo26n-seg) | 640                         | 39.6                            | 33.9                             | 53.3 ± 0.5                           | 2.1 ± 0.0                                 | 2.7                      | 9.3                     |\r\n| [YOLO26s-seg](https://platform.ultralytics.com/ultralytics/yolo26/yolo26s-seg) | 640                         | 47.3                            | 40.0                             | 118.4 ± 0.9                          | 3.3 ± 0.0                                 | 10.4                     | 34.5                    |\r\n| [YOLO26m-seg](https://platform.ultralytics.com/ultralytics/yolo26/yolo26m-seg) | 640                         | 52.5                            | 44.1                             | 328.2 ± 2.4                          | 6.7 ± 0.1                                 | 23.6                     | 121.7                   |\r\n| [YOLO26l-seg](https://platform.ultralytics.com/ultralytics/yolo26/yolo26l-seg) | 640                         | 54.4                            | 45.5                             | 387.0 ± 3.7                          | 8.0 ± 0.1                                 | 28.0                     | 140.1                   |\r\n| [YOLO26x-seg](https://platform.ultralytics.com/ultralytics/yolo26/yolo26x-seg) | 640                         | 56.5                            | 47.0                             | 787.0 ± 6.8                          | 16.4 ± 0.1                                | 62.8                     | 314.0                   |\r\n\r\n- **mAP<sup>val</sup>** values are for single-model single-scale on the [COCO val2017](https://cocodataset.org/) dataset. See [YOLO Performance Metrics](https://docs.ultralytics.com/guides/yolo-performance-metrics) for details. <br>Reproduce with `yolo val segment data=coco.yaml device=0`\r\n- **Speed** metrics are averaged over COCO val images using an [Amazon EC2 P4d](https://aws.amazon.com/ec2/instance-types/p4/) instance. CPU speeds measured with [ONNX](https://onnx.ai/) export. GPU speeds measured with [TensorRT](https://developer.nvidia.com/tensorrt) export. <br>Reproduce with `yolo val segment data=coco.yaml batch=1 device=0|cpu`\r\n\r\n</details>\r\n\r\n<details><summary>Semantic Segmentation (Cityscapes)</summary>\r\n\r\nSee the [Semantic Segmentation Docs](https://docs.ultralytics.com/tasks/semantic) for usage examples. These models are trained on [Cityscapes](https://docs.ultralytics.com/datasets/semantic/cityscapes), including 19 classes.\r\n\r\n| Model                                                                          | size<br><sup>(pixels)</sup> | mIoU<sup>val</sup> | Speed<br><sup>RTX3090 PyTorch<br>(ms)</sup> | params<br><sup>(M)</sup> | FLOPs<br><sup>(B)</sup> |\r\n| ------------------------------------------------------------------------------ | --------------------------- | ------------------ | ------------------------------------------- | ------------------------ | ----------------------- |\r\n| [YOLO26n-sem](https://platform.ultralytics.com/ultralytics/yolo26/yolo26n-sem) | 1024 &times; 2048           | 78.3               | 4.4 ± 0.0                                   | 1.6                      | 23.8                    |\r\n| [YOLO26s-sem](https://platform.ultralytics.com/ultralytics/yolo26/yolo26s-sem) | 1024 &times; 2048           | 80.8               | 8.4 ± 0.0                                   | 6.5                      | 91.0                    |\r\n| [YOLO26m-sem](https://platform.ultralytics.com/ultralytics/yolo26/yolo26m-sem) | 1024 &times; 2048           | 82.0               | 19.9 ± 0.1                                  | 14.3                     | 305.5                   |\r\n| [YOLO26l-sem](https://platform.ultralytics.com/ultralytics/yolo26/yolo26l-sem) | 1024 &times; 2048           | 82.9               | 26.5 ± 0.1                                  | 17.8                     | 388.2                   |\r\n| [YOLO26x-sem](https://platform.ultralytics.com/ultralytics/yolo26/yolo26x-sem) | 1024 &times; 2048           | 83.6               | 48.9 ± 0.2                                  | 40.1                     | 866.9                   |\r\n\r\n- **mIoU<sup>val</sup>** values are for single-model single-scale on the [Cityscapes](https://www.cityscapes-dataset.com/) validation set. <br>Reproduce with `yolo semantic val data=cityscapes.yaml device=0 imgsz=2048`\r\n- **Speed** metrics are averaged over Cityscapes validation images using an RTX3090 instance. <br>Reproduce with `yolo semantic val data=cityscapes.yaml batch=1 device=0|cpu imgsz=2048`\r\n\r\n</details>\r\n\r\n<details><summary>Depth Estimation (NYU Depth V2)</summary>\r\n\r\nSee the [Depth Estimation Docs](https://docs.ultralytics.com/tasks/depth) for usage examples. These models are pretrained on a broad multi-dataset mix and evaluated on the [NYU Depth V2](https://cs.nyu.edu/~fergus/datasets/nyu_depth_v2.html) Eigen test split, predicting per-pixel depth in meters.\r\n\r\n| Model                                                                              | size<br><sup>(pixels)</sup> | delta1<sup>NYU</sup> | abs_rel<sup>NYU</sup> | rmse<sup>NYU</sup> | Speed<br><sup>CPU ONNX<br>(ms)</sup> | Speed<br><sup>T4 TensorRT10<br>(ms)</sup> | params<br><sup>(M)</sup> | FLOPs<br><sup>(B)</sup> |\r\n| ---------------------------------------------------------------------------------- | --------------------------- | -------------------- | --------------------- | ------------------ | ------------------------------------ | ----------------------------------------- | ------------------------ | ----------------------- |\r\n| [YOLO26n-depth](https://platform.ultralytics.com/ultralytics/yolo26/yolo26n-depth) | 768                         | 0.882                | 0.109                 | 0.414              | 272.0 ± 27.2                         | 2.7 ± 0.1                                 | 6.3                      | 46.9                    |\r\n| [YOLO26s-depth](https://platform.ultralytics.com/ultralytics/yolo26/yolo26s-depth) | 768                         | 0.896                | 0.104                 | 0.399              | 393.7 ± 13.1                         | 3.8 ± 0.0                                 | 13.2                     | 68.0                    |\r\n| [YOLO26m-depth](https://platform.ultralytics.com/ultralytics/yolo26/yolo26m-depth) | 768                         | 0.921                | 0.089                 | 0.364              | 621.5 ± 49.7                         | 6.0 ± 0.1                                 | 23.3                     | 130.4                   |\r\n| [YOLO26l-depth](https://platform.ultralytics.com/ultralytics/yolo26/yolo26l-depth) | 768                         | 0.930                | 0.083                 | 0.351              | 821.9 ± 50.7                         | 7.7 ± 0.1                                 | 27.7                     | 157.0                   |\r\n| [YOLO26x-depth](https://platform.ultralytics.com/ultralytics/yolo26/yolo26x-depth) | 768                         | 0.933                | 0.080                 | 0.344              | 1240.9 ± 73.3                        | 13.6 ± 0.2                                | 57.0                     | 301.7                   |\r\n\r\n- **delta1<sup>NYU</sup>** is the percentage of pixels where the predicted depth is within a factor of 1.25 of the ground truth, on the NYU Depth V2 Eigen test split (654 images) with multi-scale + horizontal-flip TTA and log-least-squares alignment.\r\n- Single-scale accuracy without TTA is reproducible with `yolo depth val model=yolo26n-depth.pt data=nyu-depth.yaml imgsz=768 device=0` (substitute `model=` for each size), which uses median (scale-only) alignment and scores lower: delta1 0.783 (n), 0.793 (s), 0.840 (m), 0.853 (l), 0.860 (x).\r\n- **abs_rel** is the mean absolute relative error between predicted and ground-truth depth values.\r\n- **rmse** is the root mean squared error in meters.\r\n- **Speed** is inference-only latency (pre/post-processing excluded) at `imgsz=768`, `batch=1`, reported as mean ± std over timed runs after warmup. **CPU ONNX** is ONNX Runtime fp32 on a 32-core Intel Xeon (Skylake); **T4 TensorRT10** is TensorRT fp16 on a Tesla T4.\r\n- **params** and **FLOPs** are measured at 768×768, the training resolution of the released weights.\r\n\r\n</details>\r\n\r\n<details><summary>Classification (ImageNet)</summary>\r\n\r\nConsult the [Classification Docs](https://docs.ultralytics.com/tasks/classify) for usage examples. These models are trained on [ImageNet](https://docs.ultralytics.com/datasets/classify/imagenet), covering 1000 classes.\r\n\r\n| Model                                                                          | size<br><sup>(pixels)</sup> | acc<br><sup>top1</sup> | acc<br><sup>top5</sup> | Speed<br><sup>CPU ONNX<br>(ms)</sup> | Speed<br><sup>T4 TensorRT10<br>(ms)</sup> | params<br><sup>(M)</sup> | FLOPs<br><sup>(B) at 224</sup> |\r\n| ------------------------------------------------------------------------------ | --------------------------- | ---------------------- | ---------------------- | ------------------------------------ | ----------------------------------------- | ------------------------ | ------------------------------ |\r\n| [YOLO26n-cls](https://platform.ultralytics.com/ultralytics/yolo26/yolo26n-cls) | 224                         | 71.4                   | 90.1                   | 5.0 ± 0.3                            | 1.1 ± 0.0                                 | 2.8                      | 0.4                            |\r\n| [YOLO26s-cls](https://platform.ultralytics.com/ultralytics/yolo26/yolo26s-cls) | 224                         | 76.0                   | 92.9                   | 7.9 ± 0.2                            | 1.3 ± 0.0                                 | 6.7                      | 1.5                            |\r\n| [YOLO26m-cls](https://platform.ultralytics.com/ultralytics/yolo26/yolo26m-cls) | 224                         | 78.1                   | 94.2                   | 17.2 ± 0.4                           | 2.0 ± 0.0                                 | 11.6                     | 4.8                            |\r\n| [YOLO26l-cls](https://platform.ultralytics.com/ultralytics/yolo26/yolo26l-cls) | 224                         | 79.0                   | 94.6                   | 23.2 ± 0.3                           | 2.8 ± 0.0                                 | 14.1                     | 6.0                            |\r\n| [YOLO26x-cls](https://platform.ultralytics.com/ultralytics/yolo26/yolo26x-cls) | 224                         | 79.9                   | 95.0                   | 41.4 ± 0.9                           | 3.8 ± 0.0                                 | 29.6                     | 13.5                           |\r\n\r\n- **acc** values represent model accuracy on the [ImageNet](https://www.image-net.org/) dataset validation set. <br>Reproduce with `yolo val classify data=path/to/ImageNet device=0`\r\n- **Speed** metrics are averaged over ImageNet val images using an [Amazon EC2 P4d](https://aws.amazon.com/ec2/instance-types/p4/) instance. CPU speeds measured with [ONNX](https://onnx.ai/) export. GPU speeds measured with [TensorRT](https://developer.nvidia.com/tensorrt) export. <br>Reproduce with `yolo val classify data=path/to/ImageNet batch=1 device=0|cpu`\r\n\r\n</details>\r\n\r\n<details><summary>Pose (COCO)</summary>\r\n\r\nSee the [Pose Estimation Docs](https://docs.ultralytics.com/tasks/pose) for usage examples. These models are trained on [COCO-Pose](https://docs.ultralytics.com/datasets/pose/coco), focusing on the 'person' class.\r\n\r\n| Model                                                                            | size<br><sup>(pixels)</sup> | mAP<sup>pose<br>50-95(e2e)</sup> | mAP<sup>pose<br>50(e2e)</sup> | Speed<br><sup>CPU ONNX<br>(ms)</sup> | Speed<br><sup>T4 TensorRT10<br>(ms)</sup> | params<br><sup>(M)</sup> | FLOPs<br><sup>(B)</sup> |\r\n| -------------------------------------------------------------------------------- | --------------------------- | -------------------------------- | ----------------------------- | ------------------------------------ | ----------------------------------------- | ------------------------ | ----------------------- |\r\n| [YOLO26n-pose](https://platform.ultralytics.com/ultralytics/yolo26/yolo26n-pose) | 640                         | 57.2                             | 83.3                          | 40.3 ± 0.5                           | 1.8 ± 0.0                                 | 2.9                      | 7.6                     |\r\n| [YOLO26s-pose](https://platform.ultralytics.com/ultralytics/yolo26/yolo26s-pose) | 640                         | 63.0                             | 86.6                          | 85.3 ± 0.9                           | 2.7 ± 0.0                                 | 10.4                     | 24.1                    |\r\n| [YOLO26m-pose](https://platform.ultralytics.com/ultralytics/yolo26/yolo26m-pose) | 640                         | 68.8                             | 89.6                          | 218.0 ± 1.5                          | 5.0 ± 0.1                                 | 21.5                     | 73.3                    |\r\n| [YOLO26l-pose](https://platform.ultralytics.com/ultralytics/yolo26/yolo26l-pose) | 640                         | 70.4                             | 90.5                          | 275.4 ± 2.4                          | 6.5 ± 0.1                                 | 25.9                     | 91.7                    |\r\n| [YOLO26x-pose](https://platform.ultralytics.com/ultralytics/yolo26/yolo26x-pose) | 640                         | 71.6                             | 91.6                          | 565.4 ± 3.0                          | 12.2 ± 0.2                                | 57.6                     | 202.3                   |\r\n\r\n- **mAP<sup>val</sup>** values are for single-model single-scale on the [COCO Keypoints val2017](https://docs.ultralytics.com/datasets/pose/coco) dataset. See [YOLO Performance Metrics](https://docs.ultralytics.com/guides/yolo-performance-metrics) for details. <br>Reproduce with `yolo val pose data=coco-pose.yaml device=0`\r\n- **Speed** metrics are averaged over COCO val images using an [Amazon EC2 P4d](https://aws.amazon.com/ec2/instance-types/p4/) instance. CPU speeds measured with [ONNX](https://onnx.ai/) export. GPU speeds measured with [TensorRT](https://developer.nvidia.com/tensorrt) export. <br>Reproduce with `yolo val pose data=coco-pose.yaml batch=1 device=0|cpu`\r\n\r\n</details>\r\n\r\n<details><summary>Oriented Bounding Boxes (DOTAv1)</summary>\r\n\r\nCheck the [OBB Docs](https://docs.ultralytics.com/tasks/obb) for usage examples. These models are trained on [DOTAv1](https://docs.ultralytics.com/datasets/obb/dota-v2#dota-v10), including 15 classes.\r\n\r\n| Model                                                                          | size<br><sup>(pixels)</sup> | mAP<sup>test<br>50-95(e2e)</sup> | mAP<sup>test<br>50(e2e)</sup> | Speed<br><sup>CPU ONNX<br>(ms)</sup> | Speed<br><sup>T4 TensorRT10<br>(ms)</sup> | params<br><sup>(M)</sup> | FLOPs<br><sup>(B)</sup> |\r\n| ------------------------------------------------------------------------------ | --------------------------- | -------------------------------- | ----------------------------- | ------------------------------------ | ----------------------------------------- | ------------------------ | ----------------------- |\r\n| [YOLO26n-obb](https://platform.ultralytics.com/ultralytics/yolo26/yolo26n-obb) | 1024                        | 52.4                             | 78.9                          | 97.7 ± 0.9                           | 2.8 ± 0.0                                 | 2.4                      | 14.8                    |\r\n| [YOLO26s-obb](https://platform.ultralytics.com/ultralytics/yolo26/yolo26s-obb) | 1024                        | 54.8                             | 80.9                          | 218.0 ± 1.4                          | 4.9 ± 0.1                                 | 9.8                      | 56.7                    |\r\n| [YOLO26m-obb](https://platform.ultralytics.com/ultralytics/yolo26/yolo26m-obb) | 1024                        | 55.3                             | 81.0                          | 579.2 ± 3.8                          | 10.2 ± 0.3                                | 21.2                     | 184.9                   |\r\n| [YOLO26l-obb](https://platform.ultralytics.com/ultralytics/yolo26/yolo26l-obb) | 1024                        | 56.2                             | 81.6                          | 735.6 ± 3.1                          | 13.0 ± 0.2                                | 25.6                     | 232.4                   |\r\n| [YOLO26x-obb](https://platform.ultralytics.com/ultralytics/yolo26/yolo26x-obb) | 1024                        | 56.7                             | 81.7                          | 1485.7 ± 11.5                        | 30.5 ± 0.9                                | 57.6                     | 520.1                   |\r\n\r\n- **mAP<sup>test</sup>** values are for single-model multiscale performance on the [DOTAv1 test set](https://captain-whu.github.io/DOTA/dataset.html). <br>Reproduce by `yolo val obb data=DOTAv1.yaml device=0 split=test` and submit merged results to the [DOTA evaluation server](https://captain-whu.github.io/DOTA/evaluation.html).\r\n- **Speed** metrics are averaged over [DOTAv1 val images](https://docs.ultralytics.com/datasets/obb/dota-v2#dota-v10) using an [Amazon EC2 P4d](https://aws.amazon.com/ec2/instance-types/p4/) instance. CPU speeds measured with [ONNX](https://onnx.ai/) export. GPU speeds measured with [TensorRT](https://developer.nvidia.com/tensorrt) export. <br>Reproduce by `yolo val obb data=DOTAv1.yaml batch=1 device=0|cpu`\r\n\r\n</details>\r\n\r\n## 🧩 Integrations\r\n\r\nOur key integrations with leading AI platforms extend the functionality of Ultralytics' offerings, enhancing tasks like dataset labeling, training, visualization, and model management. Discover how Ultralytics, in collaboration with partners like [Weights & Biases](https://docs.ultralytics.com/integrations/weights-biases), [Comet ML](https://docs.ultralytics.com/integrations/comet), [Roboflow](https://docs.ultralytics.com/integrations/roboflow), and [Intel OpenVINO](https://docs.ultralytics.com/integrations/openvino), can optimize your AI workflow. Explore more at [Ultralytics Integrations](https://docs.ultralytics.com/integrations).\r\n\r\n<a href=\"https://platform.ultralytics.com\" target=\"_blank\">\r\n    <img width=\"100%\" src=\"https://github.com/ultralytics/assets/raw/main/yolov8/banner-integrations.png\" alt=\"Ultralytics active learning integrations\">\r\n</a>\r\n\r\n## 🤝 Contribute\r\n\r\nWe thrive on community collaboration! Ultralytics YOLO wouldn't be the SOTA framework it is without contributions from developers like you. Please see our [Contributing Guide](https://docs.ultralytics.com/help/contributing) to get started. We also welcome your feedback—share your experience by completing our [Survey](https://www.ultralytics.com/survey?utm_source=github&utm_medium=social&utm_campaign=Survey). A huge **Thank You** 🙏 to everyone who contributes!\r\n\r\n<!-- SVG image from https://opencollective.com/ultralytics/contributors.svg?width=1280 -->\r\n\r\n[![Ultralytics open-source contributors](https://raw.githubusercontent.com/ultralytics/assets/main/im/image-contributors.png)](https://github.com/ultralytics/ultralytics/graphs/contributors)\r\n\r\nWe look forward to your contributions to help make the Ultralytics ecosystem even better!\r\n\r\n## 📜 License\r\n\r\nUltralytics offers two licensing options to suit different needs:\r\n\r\n- **AGPL-3.0 License**: This [OSI-approved](https://opensource.org/license/agpl-3.0) open-source license is perfect for students, researchers, and enthusiasts. It encourages open collaboration and knowledge sharing. See the [LICENSE](https://github.com/ultralytics/ultralytics/blob/main/LICENSE) file for full details.\r\n- **Ultralytics Enterprise License**: For development and production use, this license enables seamless integration of Ultralytics software and AI models into business products and services, including internal tools, automated workflows, and production deployments, bypassing the open-source requirements of AGPL-3.0. To get started, please contact us via [Ultralytics Licensing](https://www.ultralytics.com/license).\r\n\r\n## 📞 Contact\r\n\r\nFor bug reports and feature requests related to Ultralytics software, please visit [GitHub Issues](https://github.com/ultralytics/ultralytics/issues). For questions, discussions, and community support, join our active communities on [Discord](https://discord.com/invite/ultralytics), [Reddit](https://www.reddit.com/r/ultralytics/), and the [Ultralytics Community Forums](https://community.ultralytics.com). We're here to help with all things Ultralytics!\r\n\r\n<br>\r\n<div align=\"center\">\r\n  <a href=\"https://github.com/ultralytics\"><img src=\"https://github.com/ultralytics/assets/raw/main/social/logo-social-github.png\" width=\"3%\" alt=\"Ultralytics GitHub\"></a>\r\n  <img src=\"https://github.com/ultralytics/assets/raw/main/social/logo-transparent.png\" width=\"3%\" alt=\"space\">\r\n  <a href=\"https://www.linkedin.com/company/ultralytics/\"><img src=\"https://github.com/ultralytics/assets/raw/main/social/logo-social-linkedin.png\" width=\"3%\" alt=\"Ultralytics LinkedIn\"></a>\r\n  <img src=\"https://github.com/ultralytics/assets/raw/main/social/logo-transparent.png\" width=\"3%\" alt=\"space\">\r\n  <a href=\"https://twitter.com/ultralytics\"><img src=\"https://github.com/ultralytics/assets/raw/main/social/logo-social-twitter.png\" width=\"3%\" alt=\"Ultralytics Twitter\"></a>\r\n  <img src=\"https://github.com/ultralytics/assets/raw/main/social/logo-transparent.png\" width=\"3%\" alt=\"space\">\r\n  <a href=\"https://www.youtube.com/ultralytics?sub_confirmation=1\"><img src=\"https://github.com/ultralytics/assets/raw/main/social/logo-social-youtube.png\" width=\"3%\" alt=\"Ultralytics YouTube\"></a>\r\n  <img src=\"https://github.com/ultralytics/assets/raw/main/social/logo-transparent.png\" width=\"3%\" alt=\"space\">\r\n  <a href=\"https://www.tiktok.com/@ultralytics\"><img src=\"https://github.com/ultralytics/assets/raw/main/social/logo-social-tiktok.png\" width=\"3%\" alt=\"Ultralytics TikTok\"></a>\r\n  <img src=\"https://github.com/ultralytics/assets/raw/main/social/logo-transparent.png\" width=\"3%\" alt=\"space\">\r\n  <a href=\"https://ultralytics.com/bilibili\"><img src=\"https://github.com/ultralytics/assets/raw/main/social/logo-social-bilibili.png\" width=\"3%\" alt=\"Ultralytics BiliBili\"></a>\r\n  <img src=\"https://github.com/ultralytics/assets/raw/main/social/logo-transparent.png\" width=\"3%\" alt=\"space\">\r\n  <a href=\"https://discord.com/invite/ultralytics\"><img src=\"https://github.com/ultralytics/assets/raw/main/social/logo-social-discord.png\" width=\"3%\" alt=\"Ultralytics Discord\"></a>\r\n</div>\r\n"
+      }
+    },
+    {
+      "download_info": {
+        "url": "https://pypi.tuna.tsinghua.edu.cn/packages/42/14/42b2651a2f46b022ccd948bca9f2d5af0fd8929c4eec235b8d6d844fbe67/filelock-3.19.1-py3-none-any.whl",
+        "archive_info": {
+          "hash": "sha256=d38e30481def20772f5baf097c122c3babc4fcdb7e14e57049eb9d88c6dc017d",
+          "hashes": {
+            "sha256": "d38e30481def20772f5baf097c122c3babc4fcdb7e14e57049eb9d88c6dc017d"
+          }
+        }
+      },
+      "is_direct": false,
+      "is_yanked": false,
+      "requested": false,
+      "metadata": {
+        "metadata_version": "2.4",
+        "name": "filelock",
+        "version": "3.19.1",
+        "summary": "A platform independent file lock.",
+        "description_content_type": "text/markdown",
+        "keywords": [
+          "application",
+          "cache",
+          "directory",
+          "log",
+          "user"
+        ],
+        "maintainer_email": "Bernát Gábor <gaborjbernat@gmail.com>",
+        "license_expression": "Unlicense",
+        "license_file": [
+          "LICENSE"
+        ],
+        "classifier": [
+          "Development Status :: 5 - Production/Stable",
+          "Intended Audience :: Developers",
+          "License :: OSI Approved :: The Unlicense (Unlicense)",
+          "Operating System :: OS Independent",
+          "Programming Language :: Python",
+          "Programming Language :: Python :: 3 :: Only",
+          "Programming Language :: Python :: 3.9",
+          "Programming Language :: Python :: 3.10",
+          "Programming Language :: Python :: 3.11",
+          "Programming Language :: Python :: 3.12",
+          "Programming Language :: Python :: 3.13",
+          "Topic :: Internet",
+          "Topic :: Software Development :: Libraries",
+          "Topic :: System"
+        ],
+        "requires_python": ">=3.9",
+        "project_url": [
+          "Documentation, https://py-filelock.readthedocs.io",
+          "Homepage, https://github.com/tox-dev/py-filelock",
+          "Source, https://github.com/tox-dev/py-filelock",
+          "Tracker, https://github.com/tox-dev/py-filelock/issues"
+        ],
+        "description": "# filelock\n\n[![PyPI](https://img.shields.io/pypi/v/filelock)](https://pypi.org/project/filelock/)\n[![Supported Python\nversions](https://img.shields.io/pypi/pyversions/filelock.svg)](https://pypi.org/project/filelock/)\n[![Documentation\nstatus](https://readthedocs.org/projects/py-filelock/badge/?version=latest)](https://py-filelock.readthedocs.io/en/latest/?badge=latest)\n[![Code style:\nblack](https://img.shields.io/badge/code%20style-black-000000.svg)](https://github.com/psf/black)\n[![Downloads](https://static.pepy.tech/badge/filelock/month)](https://pepy.tech/project/filelock)\n[![check](https://github.com/tox-dev/py-filelock/actions/workflows/check.yaml/badge.svg)](https://github.com/tox-dev/py-filelock/actions/workflows/check.yaml)\n\nFor more information checkout the [official documentation](https://py-filelock.readthedocs.io/en/latest/index.html).\n"
+      }
+    },
+    {
+      "download_info": {
+        "url": "https://pypi.tuna.tsinghua.edu.cn/packages/53/a1/1681dfa1c904d4e3e72e51b55a0ff012d50b766843ef832d584abe2113c6/nvidia_ml_py-13.615.71-py3-none-any.whl",
+        "archive_info": {
+          "hash": "sha256=959bf4adf6fe1308e4bd739e722236b0d1ec8392e2cefad33ff70c311380b9b6",
+          "hashes": {
+            "sha256": "959bf4adf6fe1308e4bd739e722236b0d1ec8392e2cefad33ff70c311380b9b6"
+          }
+        }
+      },
+      "is_direct": false,
+      "is_yanked": false,
+      "requested": false,
+      "metadata": {
+        "metadata_version": "2.4",
+        "name": "nvidia-ml-py",
+        "version": "13.615.71",
+        "dynamic": [
+          "author",
+          "author-email",
+          "classifier",
+          "description",
+          "description-content-type",
+          "home-page",
+          "license",
+          "summary"
+        ],
+        "summary": "Python Bindings for the NVIDIA Management Library",
+        "description_content_type": "text/markdown",
+        "home_page": "https://forums.developer.nvidia.com",
+        "author": "NVIDIA Corporation",
+        "author_email": "nvml-bindings@nvidia.com",
+        "license": "BSD",
+        "classifier": [
+          "Development Status :: 5 - Production/Stable",
+          "Intended Audience :: Developers",
+          "Intended Audience :: System Administrators",
+          "License :: OSI Approved :: BSD License",
+          "Operating System :: Microsoft :: Windows",
+          "Operating System :: POSIX :: Linux",
+          "Programming Language :: Python",
+          "Topic :: Software Development :: Libraries :: Python Modules",
+          "Topic :: System :: Hardware",
+          "Topic :: System :: Systems Administration"
+        ],
+        "description": "pyNVML\n======\n\nPython bindings to the NVIDIA Management Library\n------------------------------------------------\n\nProvides a Python interface to GPU management and monitoring functions.\n\nThis is a wrapper around the NVML library.\nFor information about the NVML library, see the NVML developer page\nhttp://developer.nvidia.com/nvidia-management-library-nvml\n\nDownload the latest package from:\nhttp://pypi.python.org/pypi/nvidia-ml-py/\n\nNote this file can be run with 'python -m doctest -v README.txt'\nalthough the results are system dependent\n\nThe nvml header file contains function documentation that is relevant\nto this wrapper. The header file is distributed with.\nhttps://developer.nvidia.com/gpu-deployment-kit\n\nThe main difference is this library handles allocating structs and\npassing pointers to the functions, before returning the desired value.\nNon-success return codes are raised as exceptions as described in the\nsection below.\n\nREQUIRES\n--------\nPython 2.5, or an earlier version with the ctypes module.\n\nINSTALLATION\n------------\n\nPip Installation with python3:\n- `python3 -m pip install nvidia-ml-py`\n\nManual Installation:\n```\n$ tar -xzf nvidia-ml-py-$major-$minor-$patch.tar.gz`\n$ cd nvidia-ml-py-$major-$minor-$patch\n$ sudo python setup.py install\n```\n\nUSAGE\n-----\n```\n>>> from pynvml import *\n>>> nvmlInit()\n>>> print(f\"Driver Version: {nvmlSystemGetDriverVersion()}\")\nDriver Version: 11.515.48\n>>> deviceCount = nvmlDeviceGetCount()\n>>> for i in range(deviceCount):\n...     handle = nvmlDeviceGetHandleByIndex(i)\n...     print(f\"Device {i} : {nvmlDeviceGetName(handle)}\")\n...\nDevice 0 : Tesla K40c\n\n>>> nvmlShutdown()\n```\n\nFUNCTIONS\n---------\nPython methods wrap NVML functions, implemented in a C shared library.\nEach function's use is the same with the following exceptions:\n\n- Instead of returning error codes, failing error codes are raised as Python exceptions.\n\n```\n>>> try:\n...     nvmlDeviceGetCount()\n... except NVMLError as error:\n...     print(error)\n...\nUninitialized\n```\n\n- C function output parameters are returned from the corresponding Python function left to right.\n```\nnvmlReturn_t nvmlDeviceGetEccMode(nvmlDevice_t device,\n                                  nvmlEnableState_t *current,\n                                  nvmlEnableState_t *pending);\n\n>>> nvmlInit()\n>>> handle = nvmlDeviceGetHandleByIndex(0)\n>>> (current, pending) = nvmlDeviceGetEccMode(handle)\n```\n- C structs are converted into Python classes.\n\n```\n// C Function and typedef struct\nnvmlReturn_t DECLDIR nvmlDeviceGetMemoryInfo(nvmlDevice_t device,\n                                             nvmlMemory_t *memory);\ntypedef struct nvmlMemory_st {\n    unsigned long long total;\n    unsigned long long free;\n    unsigned long long used;\n} nvmlMemory_t;\n\n\n# Python call to function and accessing members of ctype struct\n>>> info = nvmlDeviceGetMemoryInfo(handle)\n>>> print(f\"Total memory: {info.total}\")\nTotal memory: 5636292608\n>>> print(f\"Free memory:, {info.free}\")\nFree memory: 5578420224\n>>> print(f\"Used memory: {info.used}\")\nUsed memory: 57872384\n```\n\n- Python handles string buffer creation.\n\n```\n// C Function that needs character array and length\nnvmlReturn_t nvmlSystemGetDriverVersion(char* version,\n                                        unsigned int length);\n\n# Python function handles memory\n>>> version = nvmlSystemGetDriverVersion()\n>>> print(version)\n... 11.520.75\n>>> nvmlShutdown()\n```\n\nFor usage information see the NVML documentation.\n\nVARIABLES\n---------\nAll meaningful NVML constants and enums are exposed in Python.\n\nThe NVML_VALUE_NOT_AVAILABLE constant is not used.  Instead None is mapped to the field.\n\nEXCEPTIONS\n----------\nSince the C library uses return codes and python prefers exception handling, the\nlibrary converts all return codes to various exceptions. The exceptions are generated\nautomatically via a function at run time instead of being defined manually.\n\nThe list of exceptions can be found in NVMLError base class.\n\nThe example seen above in the FUNCTIONS section:\n\n```\n>>> try:\n...     nvmlDeviceGetCount()\n... except NVMLError as error:\n...     print(error)\n...\nUninitialized\n```\n\nCan be more accurately caught like this:\n\n```\n>>> try:\n...     nvmlDeviceGetCount()\n... except NVMLError_Uninitialized as error:\n...     print(error)\n...\nUninitialized\n```\n\nThe conversion from name to exception is like this for all exceptions:\n* `NVML_ERROR_UNINITIALIZED` => `NVMLError_Uninitialized`\n* `NVML_ERROR_LIBRARY_NOT_FOUND` => `NVMLError_LibraryNotFound`\n* `NVML_ERROR_ALREADY_INITIALIZED` => `NVMLError_AlreadyInitialized`\n\nRELEASE NOTES\n-------------\nVersion 2.285.0\n- Added new functions for NVML 2.285.  See NVML documentation for more information.\n- Ported to support Python 3.0 and Python 2.0 syntax.\n- Added nvidia_smi.py tool as a sample app.\n\nVersion 3.295.0\n- Added new functions for NVML 3.295.  See NVML documentation for more information.\n- Updated nvidia_smi.py tool\n- Includes additional error handling\n\nVersion 4.304.0\n- Added new functions for NVML 4.304.  See NVML documentation for more information.\n- Updated nvidia_smi.py tool\n\nVersion 4.304.3\n- Fixing nvmlUnitGetDeviceCount bug\n\nVersion 5.319.0\n- Added new functions for NVML 5.319.  See NVML documentation for more information.\n\nVersion 6.340.0\n- Added new functions for NVML 6.340.  See NVML documentation for more information.\n\nVersion 7.346.0\n- Added new functions for NVML 7.346.  See NVML documentation for more information.\n\nVersion 7.352.0\n- Added new functions for NVML 7.352.  See NVML documentation for more information.\n\nVersion 10.418\n- Added new functions for NVML 10.418.  See NVML documentation for more information.\n- Fixed issues with using the bindings with Python 3.x\n- Replaced sample app nvidia_smi.py with example.py\n\nVersion 11.515.48\n- Python3 support added\n- Updated API to add function new to NVML, bringing pynvml up to date with NVML\n- Added auto-version to handle byte and string conversion automatically for both structs and functions\n- Minor bug fixes\n- Added README.txt correctly in long_description for pypi.org\n\nVersion 11.520\n- Updated Long Description to be actual markdown\n- Added new functions for NVML 11.520\n\nVersion 11.525\n- Added new functions for NVML 11.525\n\nVersion 12.535\n- Added new functions for NVML 12.535. See NVML documentation for more information.\n\nVersion 12.550\n- Added new functions for NVML 12.550. See NVML documentation for more information.\n\nVersion 12.555\n- Added new functions for NVML 12.555. See NVML documentation for more information.\n\nVersion 12.560\n- Added new functions for NVML 12.560. See NVML documentation for more information.\n\nVersion 12.565\n- Added new functions for NVML 12.565. See NVML documentation for more information.\n\nVersion 12.575\n- Added new functions for NVML 12.575. See NVML documentation for more information.\n\nVersion 13.580\n- Major version increased to 13.\n- Several APIs are now deprecated and will be removed in a future release. Please see NVML documentation for more information.\n- Added new functions for NVML 13.580. See NVML documentation for more information.\n- Added a new constant named \"NVML_GPU_FABRIC_HEALTH_MASK_INCORRECT_CONFIGURATION_INVALID_LOCATION\" to fix a typo in the constant names.\n\nCOPYRIGHT\n---------\nCopyright (c) 2011-2025, NVIDIA Corporation.  All rights reserved.\n\nLICENSE\n-------\nRedistribution and use in source and binary forms, with or without modification, are permitted provided that the following conditions are met:\n\n- Redistributions of source code must retain the above copyright notice, this list of conditions and the following disclaimer.\n\n- Redistributions in binary form must reproduce the above copyright notice, this list of conditions and the following disclaimer in the documentation and/or other materials provided with the distribution.\n\n- Neither the name of the NVIDIA Corporation nor the names of its contributors may be used to endorse or promote products derived from this software without specific prior written permission.\n\nTHIS SOFTWARE IS PROVIDED BY THE COPYRIGHT HOLDERS AND CONTRIBUTORS \"AS IS\" AND ANY EXPRESS OR IMPLIED WARRANTIES, INCLUDING, BUT NOT LIMITED TO, THE IMPLIED WARRANTIES OF MERCHANTABILITY AND FITNESS FOR A PARTICULAR PURPOSE ARE DISCLAIMED. IN NO EVENT SHALL THE COPYRIGHT HOLDER OR CONTRIBUTORS BE LIABLE FOR ANY DIRECT, INDIRECT, INCIDENTAL, SPECIAL, EXEMPLARY, OR CONSEQUENTIAL DAMAGES (INCLUDING, BUT NOT LIMITED TO, PROCUREMENT OF SUBSTITUTE GOODS OR SERVICES; LOSS OF USE, DATA, OR PROFITS; OR BUSINESS INTERRUPTION) HOWEVER CAUSED AND ON ANY THEORY OF LIABILITY, WHETHER IN CONTRACT, STRICT LIABILITY, OR TORT (INCLUDING NEGLIGENCE OR OTHERWISE) ARISING IN ANY WAY OUT OF THE USE OF THIS SOFTWARE, EVEN IF ADVISED OF THE POSSIBILITY OF SUCH DAMAGE.\n\n"
+      }
+    },
+    {
+      "download_info": {
+        "url": "https://pypi.tuna.tsinghua.edu.cn/packages/a4/7d/f1c30a92854540bf789e9cd5dde7ef49bbe63f855b85a2e6b3db8135c591/opencv_python-4.11.0.86-cp37-abi3-win_amd64.whl",
+        "archive_info": {
+          "hash": "sha256=085ad9b77c18853ea66283e98affefe2de8cc4c1f43eda4c100cf9b2721142ec",
+          "hashes": {
+            "sha256": "085ad9b77c18853ea66283e98affefe2de8cc4c1f43eda4c100cf9b2721142ec"
+          }
+        }
+      },
+      "is_direct": false,
+      "is_yanked": false,
+      "requested": false,
+      "metadata": {
+        "metadata_version": "2.1",
+        "name": "opencv-python",
+        "version": "4.11.0.86",
+        "platform": [
+          "UNKNOWN"
+        ],
+        "summary": "Wrapper package for OpenCV python bindings.",
+        "description_content_type": "text/markdown",
+        "home_page": "https://github.com/opencv/opencv-python",
+        "maintainer": "OpenCV Team",
+        "license": "Apache 2.0",
+        "license_file": [
+          "LICENSE-3RD-PARTY.txt",
+          "LICENSE.txt"
+        ],
+        "classifier": [
+          "Development Status :: 5 - Production/Stable",
+          "Environment :: Console",
+          "Intended Audience :: Developers",
+          "Intended Audience :: Education",
+          "Intended Audience :: Information Technology",
+          "Intended Audience :: Science/Research",
+          "License :: OSI Approved :: Apache Software License",
+          "Operating System :: MacOS",
+          "Operating System :: Microsoft :: Windows",
+          "Operating System :: POSIX",
+          "Operating System :: Unix",
+          "Programming Language :: Python",
+          "Programming Language :: Python :: 3",
+          "Programming Language :: Python :: 3 :: Only",
+          "Programming Language :: Python :: 3.6",
+          "Programming Language :: Python :: 3.7",
+          "Programming Language :: Python :: 3.8",
+          "Programming Language :: Python :: 3.9",
+          "Programming Language :: Python :: 3.10",
+          "Programming Language :: Python :: 3.11",
+          "Programming Language :: Python :: 3.12",
+          "Programming Language :: Python :: 3.13",
+          "Programming Language :: C++",
+          "Programming Language :: Python :: Implementation :: CPython",
+          "Topic :: Scientific/Engineering",
+          "Topic :: Scientific/Engineering :: Image Recognition",
+          "Topic :: Software Development"
+        ],
+        "requires_dist": [
+          "numpy>=1.13.3; python_version < \"3.7\"",
+          "numpy>=1.21.0; python_version <= \"3.9\" and platform_system == \"Darwin\" and platform_machine == \"arm64\"",
+          "numpy>=1.21.2; python_version >= \"3.10\"",
+          "numpy>=1.21.4; python_version >= \"3.10\" and platform_system == \"Darwin\"",
+          "numpy>=1.23.5; python_version >= \"3.11\"",
+          "numpy>=1.26.0; python_version >= \"3.12\"",
+          "numpy>=1.19.3; python_version >= \"3.6\" and platform_system == \"Linux\" and platform_machine == \"aarch64\"",
+          "numpy>=1.17.0; python_version >= \"3.7\"",
+          "numpy>=1.17.3; python_version >= \"3.8\"",
+          "numpy>=1.19.3; python_version >= \"3.9\""
+        ],
+        "requires_python": ">=3.6",
+        "description": "[![Downloads](https://static.pepy.tech/badge/opencv-python)](http://pepy.tech/project/opencv-python)\r\n\r\n### Keep OpenCV Free\r\n\r\nOpenCV is raising funds to keep the library free for everyone, and we need the support of the entire community to do it. [Donate to OpenCV on Github](https://github.com/sponsors/opencv) to show your support.\r\n\r\n- [OpenCV on Wheels](#opencv-on-wheels)\r\n  - [Installation and Usage](#installation-and-usage)\r\n- [Frequently Asked Questions](#frequently-asked-questions)\r\n- [Documentation for opencv-python](#documentation-for-opencv-python)\r\n  - [CI build process](#ci-build-process)\r\n  - [Manual builds](#manual-builds)\r\n    - [Manual debug builds](#manual-debug-builds)\r\n    - [Source distributions](#source-distributions)\r\n  - [Licensing](#licensing)\r\n  - [Versioning](#versioning)\r\n  - [Releases](#releases)\r\n  - [Development builds](#development-builds)\r\n  - [Manylinux wheels](#manylinux-wheels)\r\n  - [Supported Python versions](#supported-python-versions)\r\n  - [Backward compatibility](#backward-compatibility)\r\n\r\n## OpenCV on Wheels\r\n\r\nPre-built CPU-only OpenCV packages for Python.\r\n\r\nCheck the manual build section if you wish to compile the bindings from source to enable additional modules such as CUDA.\r\n\r\n### Installation and Usage\r\n\r\n1. If you have previous/other manually installed (= not installed via ``pip``) version of OpenCV installed (e.g. cv2 module in the root of Python's site-packages), remove it before installation to avoid conflicts.\r\n2. Make sure that your `pip` version is up-to-date (19.3 is the minimum supported version): `pip install --upgrade pip`. Check version with `pip -V`. For example Linux distributions ship usually with very old `pip` versions which cause a lot of unexpected problems especially with the `manylinux` format.\r\n3. Select the correct package for your environment:\r\n\r\n    There are four different packages (see options 1, 2, 3 and 4 below) and you should **SELECT ONLY ONE OF THEM**. Do not install multiple different packages in the same environment. There is no plugin architecture: all the packages use the same namespace (`cv2`). If you installed multiple different packages in the same environment, uninstall them all with ``pip uninstall`` and reinstall only one package.\r\n\r\n    **a.** Packages for standard desktop environments (Windows, macOS, almost any GNU/Linux distribution)\r\n\r\n    - Option 1 - Main modules package: ``pip install opencv-python``\r\n    - Option 2 - Full package (contains both main modules and contrib/extra modules): ``pip install opencv-contrib-python`` (check contrib/extra modules listing from [OpenCV documentation](https://docs.opencv.org/master/))\r\n\r\n    **b.** Packages for server (headless) environments (such as Docker, cloud environments etc.), no GUI library dependencies\r\n\r\n    These packages are smaller than the two other packages above because they do not contain any GUI functionality (not compiled with Qt / other GUI components). This means that the packages avoid a heavy dependency chain to X11 libraries and you will have for example smaller Docker images as a result. You should always use these packages if you do not use `cv2.imshow` et al. or you are using some other package (such as PyQt) than OpenCV to create your GUI.\r\n\r\n    - Option 3 - Headless main modules package: ``pip install opencv-python-headless``\r\n    - Option 4 - Headless full package (contains both main modules and contrib/extra modules): ``pip install opencv-contrib-python-headless`` (check contrib/extra modules listing from [OpenCV documentation](https://docs.opencv.org/master/))\r\n\r\n4. Import the package:\r\n\r\n    ``import cv2``\r\n\r\n    All packages contain Haar cascade files. ``cv2.data.haarcascades`` can be used as a shortcut to the data folder. For example:\r\n\r\n    ``cv2.CascadeClassifier(cv2.data.haarcascades + \"haarcascade_frontalface_default.xml\")``\r\n\r\n5. Read [OpenCV documentation](https://docs.opencv.org/master/)\r\n\r\n6. Before opening a new issue, read the FAQ below and have a look at the other issues which are already open.\r\n\r\nFrequently Asked Questions\r\n--------------------------\r\n\r\n**Q: Do I need to install also OpenCV separately?**\r\n\r\nA: No, the packages are special wheel binary packages and they already contain statically built OpenCV binaries.\r\n\r\n**Q: Pip install fails with ``ModuleNotFoundError: No module named 'skbuild'``?**\r\n\r\nSince ``opencv-python`` version 4.3.0.\\*, ``manylinux1`` wheels were replaced by ``manylinux2014`` wheels. If your pip is too old, it will try to use the new source distribution introduced in 4.3.0.38 to manually build OpenCV because it does not know how to install ``manylinux2014`` wheels. However, source build will also fail because of too old ``pip`` because it does not understand build dependencies in ``pyproject.toml``. To use the new ``manylinux2014`` pre-built wheels (or to build from source), your ``pip`` version must be >= 19.3. Please upgrade ``pip`` with ``pip install --upgrade pip``.\r\n\r\n**Q: Import fails on Windows: ``ImportError: DLL load failed: The specified module could not be found.``?**\r\n\r\nA: If the import fails on Windows, make sure you have [Visual C++ redistributable 2015](https://www.microsoft.com/en-us/download/details.aspx?id=48145) installed. If you are using older Windows version than Windows 10 and latest system updates are not installed, [Universal C Runtime](https://support.microsoft.com/en-us/help/2999226/update-for-universal-c-runtime-in-windows) might be also required.\r\n\r\nWindows N and KN editions do not include Media Feature Pack which is required by OpenCV. If you are using Windows N or KN edition, please install also [Windows Media Feature Pack](https://support.microsoft.com/en-us/help/3145500/media-feature-pack-list-for-windows-n-editions).\r\n\r\nIf you have Windows Server 2012+, media DLLs are probably missing too; please install the Feature called \"Media Foundation\" in the Server Manager. Beware, some posts advise to install \"Windows Server Essentials Media Pack\", but this one requires the \"Windows Server Essentials Experience\" role, and this role will deeply affect your Windows Server configuration (by enforcing active directory integration etc.); so just installing the \"Media Foundation\" should be a safer choice.\r\n\r\nIf the above does not help, check if you are using Anaconda. Old Anaconda versions have a bug which causes the error, see [this issue](https://github.com/opencv/opencv-python/issues/36) for a manual fix.\r\n\r\nIf you still encounter the error after you have checked all the previous solutions, download [Dependencies](https://github.com/lucasg/Dependencies) and open the ``cv2.pyd`` (located usually at ``C:\\Users\\username\\AppData\\Local\\Programs\\Python\\PythonXX\\Lib\\site-packages\\cv2``) file with it to debug missing DLL issues.\r\n\r\n**Q: I have some other import errors?**\r\n\r\nA: Make sure you have removed old manual installations of OpenCV Python bindings (cv2.so or cv2.pyd in site-packages).\r\n\r\n**Q: Function foo() or method bar() returns wrong result, throws exception or crashes interpreter. What should I do?**\r\n\r\nA: The repository contains only OpenCV-Python package build scripts, but not OpenCV itself. Python bindings for OpenCV are developed in official OpenCV repository and it's the best place to report issues. Also please check [OpenCV wiki](https://github.com/opencv/opencv/wiki) and [the official OpenCV forum](https://forum.opencv.org/) before file new bugs.\r\n\r\n**Q: Why the packages do not include non-free algorithms?**\r\n\r\nA: Non-free algorithms such as SURF are not included in these packages because they are patented / non-free and therefore cannot be distributed as built binaries. Note that SIFT is included in the builds due to patent expiration since OpenCV versions 4.3.0 and 3.4.10. See this issue for more info: https://github.com/skvark/opencv-python/issues/126\r\n\r\n**Q: Why the package and import are different (opencv-python vs. cv2)?**\r\n\r\nA: It's easier for users to understand ``opencv-python`` than ``cv2`` and it makes it easier to find the package with search engines. `cv2` (old interface in old OpenCV versions was named as `cv`) is the name that OpenCV developers chose when they created the binding generators. This is kept as the import name to be consistent with different kind of tutorials around the internet. Changing the import name or behaviour would be also confusing to experienced users who are accustomed to the ``import cv2``.\r\n\r\n## Documentation for opencv-python\r\n\r\n[![Windows Build Status](https://github.com/opencv/opencv-python/actions/workflows/build_wheels_windows.yml/badge.svg)](https://github.com/opencv/opencv-python/actions/workflows/build_wheels_windows.yml)\r\n[![(Linux Build status)](https://github.com/opencv/opencv-python/actions/workflows/build_wheels_linux.yml/badge.svg)](https://github.com/opencv/opencv-python/actions/workflows/build_wheels_linux.yml)\r\n[![(Mac OS Build status)](https://github.com/opencv/opencv-python/actions/workflows/build_wheels_macos.yml/badge.svg)](https://github.com/opencv/opencv-python/actions/workflows/build_wheels_macos.yml)\r\n\r\nThe aim of this repository is to provide means to package each new [OpenCV release](https://github.com/opencv/opencv/releases) for the most used Python versions and platforms.\r\n\r\n### CI build process\r\n\r\nThe project is structured like a normal Python package with a standard ``setup.py`` file.\r\nThe build process for a single entry in the build matrices is as follows (see for example `.github/workflows/build_wheels_linux.yml` file):\r\n\r\n0. In Linux and MacOS build: get OpenCV's optional C dependencies that we compile against\r\n\r\n1. Checkout repository and submodules\r\n\r\n   -  OpenCV is included as submodule and the version is updated\r\n      manually by maintainers when a new OpenCV release has been made\r\n   -  Contrib modules are also included as a submodule\r\n\r\n2. Find OpenCV version from the sources\r\n\r\n3. Build OpenCV\r\n\r\n   -  tests are disabled, otherwise build time increases too much\r\n   -  there are 4 build matrix entries for each build combination: with and without contrib modules, with and without GUI (headless)\r\n   -  Linux builds run in manylinux Docker containers (CentOS 5)\r\n   -  source distributions are separate entries in the build matrix\r\n\r\n4. Rearrange OpenCV's build result, add our custom files and generate wheel\r\n\r\n5. Linux and macOS wheels are transformed with auditwheel and delocate, correspondingly\r\n\r\n6. Install the generated wheel\r\n7. Test that Python can import the library and run some sanity checks\r\n8. Use twine to upload the generated wheel to PyPI (only in release builds)\r\n\r\nSteps 1--4 are handled by ``pip wheel``.\r\n\r\nThe build can be customized with environment variables. In addition to any variables that OpenCV's build accepts, we recognize:\r\n\r\n- ``CI_BUILD``. Set to ``1`` to emulate the CI environment build behaviour. Used only in CI builds to force certain build flags on in ``setup.py``. Do not use this unless you know what you are doing.\r\n- ``ENABLE_CONTRIB`` and ``ENABLE_HEADLESS``. Set to ``1`` to build the contrib and/or headless version\r\n- ``ENABLE_JAVA``, Set to ``1`` to enable the Java client build.  This is disabled by default.\r\n- ``CMAKE_ARGS``. Additional arguments for OpenCV's CMake invocation. You can use this to make a custom build.\r\n\r\nSee the next section for more info about manual builds outside the CI environment.\r\n\r\n### Manual builds\r\n\r\nIf some dependency is not enabled in the pre-built wheels, you can also run the build locally to create a custom wheel.\r\n\r\n1. Clone this repository: `git clone --recursive https://github.com/opencv/opencv-python.git`\r\n2. ``cd opencv-python``\r\n    - you can use `git` to checkout some other version of OpenCV in the `opencv` and `opencv_contrib` submodules if needed\r\n3. Add custom Cmake flags if needed, for example: `export CMAKE_ARGS=\"-DSOME_FLAG=ON -DSOME_OTHER_FLAG=OFF\"` (in Windows you need to set environment variables differently depending on Command Line or PowerShell)\r\n4. Select the package flavor which you wish to build with `ENABLE_CONTRIB` and `ENABLE_HEADLESS`: i.e. `export ENABLE_CONTRIB=1` if you wish to build `opencv-contrib-python`\r\n5. Run ``pip wheel . --verbose``. NOTE: make sure you have the latest ``pip`` version, the ``pip wheel`` command replaces the old ``python setup.py bdist_wheel`` command which does not support ``pyproject.toml``.\r\n    - this might take anything from 5 minutes to over 2 hours depending on your hardware\r\n6. Pip will print fresh wheel location at the end of build procedure. If you use old approach with `setup.py` file wheel package will be placed in `dist` folder. Package is ready and you can do with that whatever you wish.\r\n    - Optional: on Linux use some of the `manylinux` images as a build hosts if maximum portability is needed and run `auditwheel` for the wheel after build\r\n    - Optional: on macOS use ``delocate`` (same as ``auditwheel`` but for macOS) for better portability\r\n\r\n#### Manual debug builds\r\n\r\nIn order to build `opencv-python` in an unoptimized debug build, you need to side-step the normal process a bit.\r\n\r\n1. Install the packages `scikit-build` and `numpy` via pip.\r\n2. Run the command `python setup.py bdist_wheel --build-type=Debug`.\r\n3. Install the generated wheel file in the `dist/` folder with `pip install dist/wheelname.whl`.\r\n\r\nIf you would like the build produce all compiler commands, then the following combination of flags and environment variables has been tested to work on Linux:\r\n```\r\nexport CMAKE_ARGS='-DCMAKE_VERBOSE_MAKEFILE=ON'\r\nexport VERBOSE=1\r\n\r\npython3 setup.py bdist_wheel --build-type=Debug\r\n```\r\n\r\nSee this issue for more discussion: https://github.com/opencv/opencv-python/issues/424\r\n\r\n#### Source distributions\r\n\r\nSince OpenCV version 4.3.0, also source distributions are provided in PyPI. This means that if your system is not compatible with any of the wheels in PyPI, ``pip`` will attempt to build OpenCV from sources. If you need a OpenCV version which is not available in PyPI as a source distribution, please follow the manual build guidance above instead of this one.\r\n\r\nYou can also force ``pip`` to build the wheels from the source distribution. Some examples:\r\n\r\n- ``pip install --no-binary opencv-python opencv-python``\r\n- ``pip install --no-binary :all: opencv-python``\r\n\r\nIf you need contrib modules or headless version, just change the package name (step 4 in the previous section is not needed). However, any additional CMake flags can be provided via environment variables as described in step 3 of the manual build section. If none are provided, OpenCV's CMake scripts will attempt to find and enable any suitable dependencies. Headless distributions have hard coded CMake flags which disable all possible GUI dependencies.\r\n\r\nOn slow systems such as Raspberry Pi the full build may take several hours. On a 8-core Ryzen 7 3700X the build takes about 6 minutes.\r\n\r\n### Licensing\r\n\r\nOpencv-python package (scripts in this repository) is available under MIT license.\r\n\r\nOpenCV itself is available under [Apache 2](https://github.com/opencv/opencv/blob/master/LICENSE) license.\r\n\r\nThird party package licenses are at [LICENSE-3RD-PARTY.txt](https://github.com/opencv/opencv-python/blob/master/LICENSE-3RD-PARTY.txt).\r\n\r\nAll wheels ship with [FFmpeg](http://ffmpeg.org) licensed under the [LGPLv2.1](http://www.gnu.org/licenses/old-licenses/lgpl-2.1.html).\r\n\r\nNon-headless Linux wheels ship with [Qt 5](http://doc.qt.io/qt-5/lgpl.html) licensed under the [LGPLv3](http://www.gnu.org/licenses/lgpl-3.0.html).\r\n\r\nThe packages include also other binaries. Full list of licenses can be found from [LICENSE-3RD-PARTY.txt](https://github.com/opencv/opencv-python/blob/master/LICENSE-3RD-PARTY.txt).\r\n\r\n### Versioning\r\n\r\n``find_version.py`` script searches for the version information from OpenCV sources and appends also a revision number specific to this repository to the version string. It saves the version information to ``version.py`` file under ``cv2`` in addition to some other flags.\r\n\r\n### Releases\r\n\r\nA release is made and uploaded to PyPI when a new tag is pushed to master branch. These tags differentiate packages (this repo might have modifications but OpenCV version stays same) and should be incremented sequentially. In practice, release version numbers look like this:\r\n\r\n``cv_major.cv_minor.cv_revision.package_revision`` e.g. ``3.1.0.0``\r\n\r\nThe master branch follows OpenCV master branch releases. 3.4 branch follows OpenCV 3.4 bugfix releases.\r\n\r\n### Development builds\r\n\r\nEvery commit to the master branch of this repo will be built. Possible build artifacts use local version identifiers:\r\n\r\n``cv_major.cv_minor.cv_revision+git_hash_of_this_repo`` e.g. ``3.1.0+14a8d39``\r\n\r\nThese artifacts can't be and will not be uploaded to PyPI.\r\n\r\n### Manylinux wheels\r\n\r\nLinux wheels are built using [manylinux2014](https://github.com/pypa/manylinux). These wheels should work out of the box for most of the distros (which use GNU C standard library) out there since they are built against an old version of glibc.\r\n\r\nThe default ``manylinux2014`` images have been extended with some OpenCV dependencies. See [Docker folder](https://github.com/skvark/opencv-python/tree/master/docker) for more info.\r\n\r\n### Supported Python versions\r\n\r\nPython 3.x compatible pre-built wheels are provided for the officially supported Python versions (not in EOL):\r\n\r\n- 3.7\r\n- 3.8\r\n- 3.9\r\n- 3.10\r\n- 3.11\r\n- 3.12\r\n\r\n### Backward compatibility\r\n\r\nStarting from 4.2.0 and 3.4.9 builds the macOS Travis build environment was updated to XCode 9.4. The change effectively dropped support for older than 10.13 macOS versions.\r\n\r\nStarting from 4.3.0 and 3.4.10 builds the Linux build environment was updated from `manylinux1` to `manylinux2014`. This dropped support for old Linux distributions.\r\n\r\nStarting from version 4.7.0 the Mac OS GitHub Actions build environment was update to version 11. Mac OS 10.x support deprecated. See https://github.com/actions/runner-images/issues/5583\r\n\r\nStarting from version 4.9.0 the Mac OS GitHub Actions build environment was update to version 12. Mac OS 10.x support deprecated by Brew and most of used packages.\r\n\r\n\r\n"
+      }
+    },
+    {
+      "download_info": {
+        "url": "https://pypi.tuna.tsinghua.edu.cn/packages/f6/c6/36a1b874036b49893ecae0ac44a2f63d1a76e6212631a5b2f50a86e0e8af/polars-1.36.1-py3-none-any.whl",
+        "archive_info": {
+          "hash": "sha256=853c1bbb237add6a5f6d133c15094a9b727d66dd6a4eb91dbb07cdb056b2b8ef",
+          "hashes": {
+            "sha256": "853c1bbb237add6a5f6d133c15094a9b727d66dd6a4eb91dbb07cdb056b2b8ef"
+          }
+        }
+      },
+      "is_direct": false,
+      "is_yanked": false,
+      "requested": false,
+      "metadata": {
+        "metadata_version": "2.4",
+        "name": "polars",
+        "version": "1.36.1",
+        "dynamic": [
+          "license-file"
+        ],
+        "summary": "Blazingly fast DataFrame library",
+        "description_content_type": "text/markdown",
+        "keywords": [
+          "dataframe",
+          "arrow",
+          "out-of-core"
+        ],
+        "author_email": "Ritchie Vink <ritchie46@gmail.com>",
+        "license": "Copyright (c) 2025 Ritchie Vink\n        Some portions Copyright (c) 2024 NVIDIA CORPORATION & AFFILIATES. All rights reserved.\n        \n        Permission is hereby granted, free of charge, to any person obtaining a copy\n        of this software and associated documentation files (the \"Software\"), to deal\n        in the Software without restriction, including without limitation the rights\n        to use, copy, modify, merge, publish, distribute, sublicense, and/or sell\n        copies of the Software, and to permit persons to whom the Software is\n        furnished to do so, subject to the following conditions:\n        \n        The above copyright notice and this permission notice shall be included in all\n        copies or substantial portions of the Software.\n        \n        THE SOFTWARE IS PROVIDED \"AS IS\", WITHOUT WARRANTY OF ANY KIND, EXPRESS OR\n        IMPLIED, INCLUDING BUT NOT LIMITED TO THE WARRANTIES OF MERCHANTABILITY,\n        FITNESS FOR A PARTICULAR PURPOSE AND NONINFRINGEMENT. IN NO EVENT SHALL THE\n        AUTHORS OR COPYRIGHT HOLDERS BE LIABLE FOR ANY CLAIM, DAMAGES OR OTHER\n        LIABILITY, WHETHER IN AN ACTION OF CONTRACT, TORT OR OTHERWISE, ARISING FROM,\n        OUT OF OR IN CONNECTION WITH THE SOFTWARE OR THE USE OR OTHER DEALINGS IN THE\n        SOFTWARE.\n        ",
+        "license_file": [
+          "LICENSE"
+        ],
+        "classifier": [
+          "Development Status :: 5 - Production/Stable",
+          "Environment :: Console",
+          "Intended Audience :: Science/Research",
+          "License :: OSI Approved :: MIT License",
+          "Operating System :: OS Independent",
+          "Programming Language :: Python",
+          "Programming Language :: Python :: 3",
+          "Programming Language :: Python :: 3 :: Only",
+          "Programming Language :: Python :: 3.9",
+          "Programming Language :: Python :: 3.10",
+          "Programming Language :: Python :: 3.11",
+          "Programming Language :: Python :: 3.12",
+          "Programming Language :: Python :: 3.13",
+          "Programming Language :: Rust",
+          "Topic :: Scientific/Engineering",
+          "Typing :: Typed"
+        ],
+        "requires_dist": [
+          "polars-runtime-32==1.36.1",
+          "polars-runtime-64==1.36.1; extra == \"rt64\"",
+          "polars-runtime-compat==1.36.1; extra == \"rtcompat\"",
+          "polars_cloud>=0.4.0; extra == \"polars-cloud\"",
+          "numpy>=1.16.0; extra == \"numpy\"",
+          "pandas; extra == \"pandas\"",
+          "polars[pyarrow]; extra == \"pandas\"",
+          "pyarrow>=7.0.0; extra == \"pyarrow\"",
+          "pydantic; extra == \"pydantic\"",
+          "fastexcel>=0.9; extra == \"calamine\"",
+          "openpyxl>=3.0.0; extra == \"openpyxl\"",
+          "xlsx2csv>=0.8.0; extra == \"xlsx2csv\"",
+          "xlsxwriter; extra == \"xlsxwriter\"",
+          "polars[calamine,openpyxl,xlsx2csv,xlsxwriter]; extra == \"excel\"",
+          "adbc-driver-manager[dbapi]; extra == \"adbc\"",
+          "adbc-driver-sqlite[dbapi]; extra == \"adbc\"",
+          "connectorx>=0.3.2; extra == \"connectorx\"",
+          "sqlalchemy; extra == \"sqlalchemy\"",
+          "polars[pandas]; extra == \"sqlalchemy\"",
+          "polars[adbc,connectorx,sqlalchemy]; extra == \"database\"",
+          "fsspec; extra == \"fsspec\"",
+          "deltalake>=1.0.0; extra == \"deltalake\"",
+          "pyiceberg>=0.7.1; extra == \"iceberg\"",
+          "gevent; extra == \"async\"",
+          "cloudpickle; extra == \"cloudpickle\"",
+          "matplotlib; extra == \"graph\"",
+          "altair>=5.4.0; extra == \"plot\"",
+          "great-tables>=0.8.0; extra == \"style\"",
+          "tzdata; platform_system == \"Windows\" and extra == \"timezone\"",
+          "cudf-polars-cu12; extra == \"gpu\"",
+          "polars[async,cloudpickle,database,deltalake,excel,fsspec,graph,iceberg,numpy,pandas,plot,pyarrow,pydantic,style,timezone]; extra == \"all\""
+        ],
+        "requires_python": ">=3.9",
+        "project_url": [
+          "Homepage, https://www.pola.rs/",
+          "Documentation, https://docs.pola.rs/api/python/stable/reference/index.html",
+          "Repository, https://github.com/pola-rs/polars",
+          "Changelog, https://github.com/pola-rs/polars/releases"
+        ],
+        "provides_extra": [
+          "rt64",
+          "rtcompat",
+          "polars-cloud",
+          "numpy",
+          "pandas",
+          "pyarrow",
+          "pydantic",
+          "calamine",
+          "openpyxl",
+          "xlsx2csv",
+          "xlsxwriter",
+          "excel",
+          "adbc",
+          "connectorx",
+          "sqlalchemy",
+          "database",
+          "fsspec",
+          "deltalake",
+          "iceberg",
+          "async",
+          "cloudpickle",
+          "graph",
+          "plot",
+          "style",
+          "timezone",
+          "gpu",
+          "all"
+        ],
+        "description": "<h1 align=\"center\">\n  <a href=\"https://pola.rs\">\n    <img src=\"https://raw.githubusercontent.com/pola-rs/polars-static/master/banner/polars_github_banner.svg\" alt=\"Polars logo\">\n  </a>\n</h1>\n\n<div align=\"center\">\n  <a href=\"https://crates.io/crates/polars\">\n    <img src=\"https://img.shields.io/crates/v/polars.svg\" alt=\"crates.io Latest Release\"/>\n  </a>\n  <a href=\"https://pypi.org/project/polars/\">\n    <img src=\"https://img.shields.io/pypi/v/polars.svg\" alt=\"PyPi Latest Release\"/>\n  </a>\n  <a href=\"https://www.npmjs.com/package/nodejs-polars\">\n    <img src=\"https://img.shields.io/npm/v/nodejs-polars.svg\" alt=\"NPM Latest Release\"/>\n  </a>\n  <a href=\"https://community.r-multiverse.org/polars\">\n    <img src=\"https://img.shields.io/badge/dynamic/json?url=https%3A%2F%2Fcommunity.r-multiverse.org%2Fapi%2Fpackages%2Fpolars&query=%24.Version&label=r-multiverse\" alt=\"R-multiverse Latest Release\"/>\n  </a>\n  <a href=\"https://doi.org/10.5281/zenodo.7697217\">\n    <img src=\"https://zenodo.org/badge/DOI/10.5281/zenodo.7697217.svg\" alt=\"DOI Latest Release\"/>\n  </a>\n</div>\n\n<p align=\"center\">\n  <b>Documentation</b>:\n  <a href=\"https://docs.pola.rs/api/python/stable/reference/index.html\">Python</a>\n  -\n  <a href=\"https://docs.rs/polars/latest/polars/\">Rust</a>\n  -\n  <a href=\"https://pola-rs.github.io/nodejs-polars/index.html\">Node.js</a>\n  -\n  <a href=\"https://pola-rs.github.io/r-polars/index.html\">R</a>\n  |\n  <b>StackOverflow</b>:\n  <a href=\"https://stackoverflow.com/questions/tagged/python-polars\">Python</a>\n  -\n  <a href=\"https://stackoverflow.com/questions/tagged/rust-polars\">Rust</a>\n  -\n  <a href=\"https://stackoverflow.com/questions/tagged/nodejs-polars\">Node.js</a>\n  -\n  <a href=\"https://stackoverflow.com/questions/tagged/r-polars\">R</a>\n  |\n  <a href=\"https://docs.pola.rs/\">User guide</a>\n  |\n  <a href=\"https://discord.gg/4UfP5cfBE7\">Discord</a>\n</p>\n\n## Polars: Extremely fast Query Engine for DataFrames, written in Rust\n\nPolars is an analytical query engine written for DataFrames. It is designed to be fast, easy to use\nand expressive. Key features are:\n\n- Lazy | Eager execution\n- Streaming (larger-than-RAM datasets)\n- Query optimization\n- Multi-threaded\n- Written in Rust\n- SIMD\n- Powerful expression API\n- Front end in Python | Rust | NodeJS | R | SQL\n- [Apache Arrow Columnar Format](https://arrow.apache.org/docs/format/Columnar.html)\n\nTo learn more, read the [user guide](https://docs.pola.rs/).\n\n## Performance 🚀🚀\n\n### Blazingly fast\n\nPolars is very fast. In fact, it is one of the best performing solutions available. See the\n[PDS-H benchmarks](https://www.pola.rs/benchmarks.html) results.\n\n### Lightweight\n\nPolars is also very lightweight. It comes with zero required dependencies, and this shows in the\nimport times:\n\n- polars: 70ms\n- numpy: 104ms\n- pandas: 520ms\n\n### Handles larger-than-RAM data\n\nIf you have data that does not fit into memory, Polars' query engine is able to process your query\n(or parts of your query) in a streaming fashion. This drastically reduces memory requirements, so\nyou might be able to process your 250GB dataset on your laptop. Collect with\n`collect(engine='streaming')` to run the query streaming.\n\n## Setup\n\n### Python\n\nInstall the latest Polars version with:\n\n```sh\npip install polars\n```\n\nSee the [User Guide](https://docs.pola.rs/user-guide/installation/#feature-flags) for more details\non optional dependencies\n\nTo see the current Polars version and a full list of its optional dependencies, run:\n\n```python\npl.show_versions()\n```\n\n## Contributing\n\nWant to contribute? Read our [contributing guide](https://docs.pola.rs/development/contributing/).\n\n## Managed/Distributed Polars\n\nDo you want a managed solution or scale out to distributed clusters? Consider our\n[offering](https://cloud.pola.rs/) and help the project!\n\n## Python: compile Polars from source\n\nIf you want a bleeding edge release or maximal performance you should compile Polars from source.\n\nThis can be done by going through the following steps in sequence:\n\n1. Install the latest [Rust compiler](https://www.rust-lang.org/tools/install)\n2. Install [maturin](https://maturin.rs/): `pip install maturin`\n3. `cd py-polars` and choose one of the following:\n   - `make build`, slow binary with debug assertions and symbols, fast compile times\n   - `make build-release`, fast binary without debug assertions, minimal debug symbols, long compile\n     times\n   - `make build-nodebug-release`, same as build-release but without any debug symbols, slightly\n     faster to compile\n   - `make build-debug-release`, same as build-release but with full debug symbols, slightly slower\n     to compile\n   - `make build-dist-release`, fastest binary, extreme compile times\n\nBy default the binary is compiled with optimizations turned on for a modern CPU. Specify `LTS_CPU=1`\nwith the command if your CPU is older and does not support e.g. AVX2.\n\nNote that the Rust crate implementing the Python bindings is called `py-polars` to distinguish from\nthe wrapped Rust crate `polars` itself. However, both the Python package and the Python module are\nnamed `polars`, so you can `pip install polars` and `import polars`.\n\n## Using custom Rust functions in Python\n\nExtending Polars with UDFs compiled in Rust is easy. We expose PyO3 extensions for `DataFrame` and\n`Series` data structures. See more in https://github.com/pola-rs/polars/tree/main/pyo3-polars.\n\n## Going big...\n\nDo you expect more than 2^32 (~4.2 billion) rows? Compile Polars with the `bigidx` feature flag or,\nfor Python users, install `pip install polars[rt64]`.\n\nDon't use this unless you hit the row boundary as the default build of Polars is faster and consumes\nless memory.\n\n## Legacy\n\nDo you want Polars to run on an old CPU (e.g. dating from before 2011), or on an `x86-64` build of\nPython on Apple Silicon under Rosetta? Install `pip install polars[rtcompat]`. This version of\nPolars is compiled without [AVX](https://en.wikipedia.org/wiki/Advanced_Vector_Extensions) target\nfeatures.\n"
+      }
+    },
+    {
+      "download_info": {
+        "url": "https://pypi.tuna.tsinghua.edu.cn/packages/05/0f/e629713a72999939b7b4bfdbf030a32794db588b04fdf3dc977dd8ea6c53/polars_runtime_32-1.36.1-cp39-abi3-win_amd64.whl",
+        "archive_info": {
+          "hash": "sha256=cc17101f28c9a169ff8b5b8d4977a3683cd403621841623825525f440b564cf0",
+          "hashes": {
+            "sha256": "cc17101f28c9a169ff8b5b8d4977a3683cd403621841623825525f440b564cf0"
+          }
+        }
+      },
+      "is_direct": false,
+      "is_yanked": false,
+      "requested": false,
+      "metadata": {
+        "metadata_version": "2.4",
+        "name": "polars-runtime-32",
+        "version": "1.36.1",
+        "summary": "Blazingly fast DataFrame library",
+        "description_content_type": "text/markdown; charset=UTF-8; variant=GFM",
+        "keywords": [
+          "dataframe",
+          "arrow",
+          "out-of-core"
+        ],
+        "author_email": "Ritchie Vink <ritchie46@gmail.com>",
+        "license_file": [
+          "LICENSE"
+        ],
+        "classifier": [
+          "Development Status :: 5 - Production/Stable",
+          "Environment :: Console",
+          "Intended Audience :: Science/Research",
+          "License :: OSI Approved :: MIT License",
+          "Operating System :: OS Independent",
+          "Programming Language :: Python",
+          "Programming Language :: Python :: 3",
+          "Programming Language :: Python :: 3 :: Only",
+          "Programming Language :: Python :: 3.9",
+          "Programming Language :: Python :: 3.10",
+          "Programming Language :: Python :: 3.11",
+          "Programming Language :: Python :: 3.12",
+          "Programming Language :: Python :: 3.13",
+          "Programming Language :: Rust",
+          "Topic :: Scientific/Engineering",
+          "Typing :: Typed"
+        ],
+        "requires_python": ">=3.9",
+        "project_url": [
+          "Homepage, https://www.pola.rs/",
+          "Documentation, https://docs.pola.rs/api/python/stable/reference/index.html",
+          "Repository, https://github.com/pola-rs/polars",
+          "Changelog, https://github.com/pola-rs/polars/releases"
+        ],
+        "description": "# Polars Runtime\r\n\r\nPackages that contain the binary shared libraries that back the polars python package. Not meant for\r\ngeneral consumption and just meant as dependencies for the polars main package.\r\n\n"
+      }
+    },
+    {
+      "download_info": {
+        "url": "https://pypi.tuna.tsinghua.edu.cn/packages/e7/53/0141f38ee122fc25b234ad1318e0c87050f3dfa84158f8dd46cd0c90da1a/ultralytics_thop-2.2.2-py3-none-any.whl",
+        "archive_info": {
+          "hash": "sha256=10ef0f4ab45261516008660619fef114cddc2b7c8383d9d3bd76c1e551208ca3",
+          "hashes": {
+            "sha256": "10ef0f4ab45261516008660619fef114cddc2b7c8383d9d3bd76c1e551208ca3"
+          }
+        }
+      },
+      "is_direct": false,
+      "is_yanked": false,
+      "requested": false,
+      "metadata": {
+        "metadata_version": "2.4",
+        "name": "ultralytics-thop",
+        "version": "2.2.2",
+        "dynamic": [
+          "license-file"
+        ],
+        "summary": "Ultralytics THOP package for fast computation of PyTorch model FLOPs and parameters.",
+        "description_content_type": "text/markdown",
+        "keywords": [
+          "FLOPs",
+          "PyTorch",
+          "Model Analysis"
+        ],
+        "author_email": "Ligeng Zhu <ligeng.zhu+github@gmail.com>",
+        "maintainer_email": "Ultralytics <hello@ultralytics.com>",
+        "license": "AGPL-3.0",
+        "license_file": [
+          "LICENSE"
+        ],
+        "classifier": [
+          "Development Status :: 4 - Beta",
+          "Intended Audience :: Developers",
+          "Intended Audience :: Education",
+          "Intended Audience :: Science/Research",
+          "License :: OSI Approved :: GNU Affero General Public License v3 or later (AGPLv3+)",
+          "Programming Language :: Python :: 3",
+          "Programming Language :: Python :: 3.8",
+          "Programming Language :: Python :: 3.9",
+          "Programming Language :: Python :: 3.10",
+          "Programming Language :: Python :: 3.11",
+          "Programming Language :: Python :: 3.12",
+          "Programming Language :: Python :: 3.13",
+          "Programming Language :: Python :: 3.14",
+          "Topic :: Software Development",
+          "Topic :: Scientific/Engineering",
+          "Topic :: Scientific/Engineering :: Artificial Intelligence",
+          "Topic :: Scientific/Engineering :: Image Recognition",
+          "Operating System :: POSIX :: Linux",
+          "Operating System :: MacOS",
+          "Operating System :: Microsoft :: Windows"
+        ],
+        "requires_dist": [
+          "numpy",
+          "torch"
+        ],
+        "requires_python": ">=3.8",
+        "project_url": [
+          "Homepage, https://ultralytics.com",
+          "Source, https://github.com/ultralytics/thop",
+          "Documentation, https://docs.ultralytics.com",
+          "Bug Reports, https://github.com/ultralytics/thop/issues",
+          "Changelog, https://github.com/ultralytics/thop/releases"
+        ],
+        "description": "<a href=\"https://www.ultralytics.com\"><img src=\"https://raw.githubusercontent.com/ultralytics/assets/main/logo/Ultralytics_Logotype_Original.svg\" width=\"320\" alt=\"Ultralytics logo\"></a>\n\n[English](README.md) | [简体中文](README.zh-CN.md)\n\n# 🚀 THOP: PyTorch-OpCounter\n\n[THOP](https://github.com/ultralytics/thop) profiles [PyTorch](https://pytorch.org/) models by counting Multiply-Accumulate Operations (MACs) and parameters. It is lightweight, easy to extend, and maintained by [Ultralytics](https://www.ultralytics.com).\n\n[![THOP CI](https://github.com/ultralytics/thop/actions/workflows/ci.yml/badge.svg)](https://github.com/ultralytics/thop/actions/workflows/ci.yml)\n[![Ultralytics Actions](https://github.com/ultralytics/thop/actions/workflows/format.yml/badge.svg)](https://github.com/ultralytics/thop/actions/workflows/format.yml)\n[![Ultralytics Discord](https://img.shields.io/discord/1089800235347353640?logo=discord&logoColor=white&label=Discord&color=blue)](https://discord.com/invite/ultralytics)\n[![Ultralytics Forums](https://img.shields.io/discourse/users?server=https%3A%2F%2Fcommunity.ultralytics.com&logo=discourse&label=Forums&color=blue)](https://community.ultralytics.com)\n[![Ultralytics Reddit](https://img.shields.io/reddit/subreddit-subscribers/ultralytics?style=flat&logo=reddit&logoColor=white&label=Reddit&color=blue)](https://www.reddit.com/r/ultralytics/)\n\n## 📄 Description\n\nTHOP measures a model with one forward pass, making it useful for comparing architecture complexity before training or deployment. It includes counting rules for common convolutional, normalization, pooling, activation, linear, and recurrent layers, with support for custom rules.\n\n## 📦 Installation\n\n[![PyPI - Version](https://img.shields.io/pypi/v/ultralytics-thop?logo=pypi&logoColor=white)](https://pypi.org/project/ultralytics-thop/) [![Downloads](https://static.pepy.tech/badge/ultralytics-thop)](https://clickpy.clickhouse.com/dashboard/ultralytics-thop) [![PyPI - Python Version](https://img.shields.io/pypi/pyversions/ultralytics-thop?logo=python&logoColor=gold)](https://pypi.org/project/ultralytics-thop/)\n\n```bash\npip install ultralytics-thop\n```\n\nTo install the latest development version:\n\n```bash\npip install --upgrade git+https://github.com/ultralytics/thop.git\n```\n\n## 🛠️ How to Use\n\n### Basic Usage\n\nPass the model and a tuple of example inputs to `profile()`:\n\n```python\nimport torch\nfrom torchvision.models import resnet50\n\nfrom thop import profile\n\nmodel = resnet50()\ninputs = (torch.randn(1, 3, 224, 224),)\nmacs, params = profile(model, inputs=inputs)\n\nprint(f\"MACs: {macs}, Parameters: {params}\")\n# Expected output: MACs: 4133742592.0, Parameters: 25557032.0\n```\n\nFor image models, pass the target-size input and the model stride to estimate MACs from smaller stride-aligned\nprofiles. `profile()` retains a single-profile fast path for spatial-only models, fits two points when size-independent\noperations may be present, fits three points and checks a fourth when attention, functional products or `custom_ops`\nmay make the cost quadratic in image area, and falls back to the target input when the smaller inputs are unsuitable or\nno smaller than a quarter of it. Raise `min_cells` when the cost only takes its final form past some input width, e.g.\na decoder selecting a fixed number of queries from its anchors:\n\n```python\ninputs = (torch.randn(1, 3, 640, 640),)\nmacs, params = profile(model, inputs=inputs, stride=32)\n```\n\nCalls that omit `stride` retain the exact profiling behavior shown in the basic example.\n\nOn torch>=1.13, `profile()` also counts the products a forward runs functionally (`@`, `torch.matmul`, `torch.bmm`,\ntwo-operand `torch.einsum` and `scaled_dot_product_attention`), which no module hook observes, except inside a module\nwhose own counting rule already accounts for them.\n\n### Define Custom Rules for Third-Party Modules\n\nMap an unsupported module type to a forward-hook function. The hook receives the module, its inputs, and its output, then adds the operation count to `module.total_ops`. Parameters need no hook — they are read from the module tree. A rule covers subclasses of the type it is registered for, the nearest registered ancestor winning, so an entry for `nn.Conv2d` also counts an `nn.Conv2d` subclass. A subclass whose forward computes something different needs its own entry, or it is counted as its base.\n\n```python\nimport torch\nfrom torch import nn\n\nfrom thop import profile\n\n\ndef count_silu(module, inputs, output):\n    \"\"\"Count one operation per output element as a simple example.\"\"\"\n    module.total_ops += output.numel()\n\n\nmodel = nn.Sequential(nn.Conv2d(3, 64, 3, padding=1), nn.SiLU())\ninputs = (torch.randn(1, 3, 224, 224),)\nmacs, params = profile(model, inputs=inputs, custom_ops={nn.SiLU: count_silu})\n\nprint(f\"Custom MACs: {macs}, Parameters: {params}\")\n# Expected output: Custom MACs: 89915392.0, Parameters: 1792.0\n```\n\n### Improve Output Readability\n\nUse `clever_format()` to convert raw counts into human-readable values:\n\n```python\nimport torch\nfrom torchvision.models import resnet50\n\nfrom thop import clever_format, profile\n\nmodel = resnet50()\ninputs = (torch.randn(1, 3, 224, 224),)\nmacs, params = profile(model, inputs=inputs)\nmacs_readable, params_readable = clever_format([macs, params], \"%.3f\")\n\nprint(f\"Formatted MACs: {macs_readable}, Formatted Parameters: {params_readable}\")\n# Expected output: Formatted MACs: 4.134G, Formatted Parameters: 25.557M\n```\n\n## 📊 Results of Recent Models\n\nThe following detection models were profiled at 640 × 640 from their fused architecture definitions using `ultralytics==8.4.106`. Install that version, then run `python benchmark/evaluate_famous_models.py` to reproduce the table without downloading model weights. FLOPs are often approximated as twice the MAC count.\n\n| Model                                                                  | size<br><sup>(pixels)</sup> | params<br><sup>(M)</sup> | MACs<br><sup>(B)</sup> |\n| ---------------------------------------------------------------------- | --------------------------- | ------------------------ | ---------------------- |\n| [YOLOv8n](https://platform.ultralytics.com/ultralytics/yolov8/yolov8n) | 640                         | 3.15                     | 4.37                   |\n| [YOLOv8s](https://platform.ultralytics.com/ultralytics/yolov8/yolov8s) | 640                         | 11.16                    | 14.30                  |\n| [YOLOv8m](https://platform.ultralytics.com/ultralytics/yolov8/yolov8m) | 640                         | 25.89                    | 39.47                  |\n| [YOLOv8l](https://platform.ultralytics.com/ultralytics/yolov8/yolov8l) | 640                         | 43.67                    | 82.57                  |\n| [YOLOv8x](https://platform.ultralytics.com/ultralytics/yolov8/yolov8x) | 640                         | 68.20                    | 128.90                 |\n| [YOLO11n](https://platform.ultralytics.com/ultralytics/yolo11/yolo11n) | 640                         | 2.62                     | 3.24                   |\n| [YOLO11s](https://platform.ultralytics.com/ultralytics/yolo11/yolo11s) | 640                         | 9.44                     | 10.73                  |\n| [YOLO11m](https://platform.ultralytics.com/ultralytics/yolo11/yolo11m) | 640                         | 20.09                    | 33.99                  |\n| [YOLO11l](https://platform.ultralytics.com/ultralytics/yolo11/yolo11l) | 640                         | 25.34                    | 43.46                  |\n| [YOLO11x](https://platform.ultralytics.com/ultralytics/yolo11/yolo11x) | 640                         | 56.92                    | 97.45                  |\n| [YOLO26n](https://platform.ultralytics.com/ultralytics/yolo26/yolo26n) | 640                         | 2.41                     | 2.68                   |\n| [YOLO26s](https://platform.ultralytics.com/ultralytics/yolo26/yolo26s) | 640                         | 9.50                     | 10.34                  |\n| [YOLO26m](https://platform.ultralytics.com/ultralytics/yolo26/yolo26m) | 640                         | 20.41                    | 34.09                  |\n| [YOLO26l](https://platform.ultralytics.com/ultralytics/yolo26/yolo26l) | 640                         | 24.81                    | 43.21                  |\n| [YOLO26x](https://platform.ultralytics.com/ultralytics/yolo26/yolo26x) | 640                         | 55.73                    | 96.93                  |\n\n## 🤝 Contribute\n\nWe thrive on community collaboration! THOP wouldn't be the tool it is without contributions from developers like you. Please see our [Contributing Guide](https://docs.ultralytics.com/help/contributing) to get started. We also welcome your feedback—share your experience by completing our [Survey](https://www.ultralytics.com/survey?utm_source=github&utm_medium=social&utm_campaign=Survey). A huge **Thank You** 🙏 to everyone who contributes!\n\n<!-- SVG image from https://opencollective.com/ultralytics/contributors.svg?width=1280 -->\n\n[![Ultralytics open-source contributors](https://raw.githubusercontent.com/ultralytics/assets/main/im/image-contributors.png)](https://github.com/ultralytics/thop/graphs/contributors)\n\nWe look forward to your contributions to help make the Ultralytics ecosystem even better!\n\n## 📜 License\n\nUltralytics offers two licensing options to suit different needs:\n\n- **AGPL-3.0 License**: This [OSI-approved](https://opensource.org/license/agpl-3.0) open-source license is perfect for students, researchers, and enthusiasts. It encourages open collaboration and knowledge sharing. See the [LICENSE](https://github.com/ultralytics/thop/blob/main/LICENSE) file for full details.\n- **Ultralytics Enterprise License**: For development and production use, this license enables seamless integration of Ultralytics software and AI models into business products and services, including internal tools, automated workflows, and production deployments, bypassing the open-source requirements of AGPL-3.0. To get started, please contact us via [Ultralytics Licensing](https://www.ultralytics.com/license).\n\n## 📞 Contact\n\nFor bug reports and feature requests related to THOP, please visit [GitHub Issues](https://github.com/ultralytics/thop/issues). For questions, discussions, and community support, join our active communities on [Discord](https://discord.com/invite/ultralytics), [Reddit](https://www.reddit.com/r/ultralytics/), and the [Ultralytics Community Forums](https://community.ultralytics.com). We're here to help with all things Ultralytics!\n\n<br>\n<div align=\"center\">\n  <a href=\"https://github.com/ultralytics\"><img src=\"https://github.com/ultralytics/assets/raw/main/social/logo-social-github.png\" width=\"3%\" alt=\"Ultralytics GitHub\"></a>\n  <img src=\"https://github.com/ultralytics/assets/raw/main/social/logo-transparent.png\" width=\"3%\" alt=\"space\">\n  <a href=\"https://www.linkedin.com/company/ultralytics/\"><img src=\"https://github.com/ultralytics/assets/raw/main/social/logo-social-linkedin.png\" width=\"3%\" alt=\"Ultralytics LinkedIn\"></a>\n  <img src=\"https://github.com/ultralytics/assets/raw/main/social/logo-transparent.png\" width=\"3%\" alt=\"space\">\n  <a href=\"https://twitter.com/ultralytics\"><img src=\"https://github.com/ultralytics/assets/raw/main/social/logo-social-twitter.png\" width=\"3%\" alt=\"Ultralytics Twitter\"></a>\n  <img src=\"https://github.com/ultralytics/assets/raw/main/social/logo-transparent.png\" width=\"3%\" alt=\"space\">\n  <a href=\"https://www.youtube.com/ultralytics?sub_confirmation=1\"><img src=\"https://github.com/ultralytics/assets/raw/main/social/logo-social-youtube.png\" width=\"3%\" alt=\"Ultralytics YouTube\"></a>\n  <img src=\"https://github.com/ultralytics/assets/raw/main/social/logo-transparent.png\" width=\"3%\" alt=\"space\">\n  <a href=\"https://www.tiktok.com/@ultralytics\"><img src=\"https://github.com/ultralytics/assets/raw/main/social/logo-social-tiktok.png\" width=\"3%\" alt=\"Ultralytics TikTok\"></a>\n  <img src=\"https://github.com/ultralytics/assets/raw/main/social/logo-transparent.png\" width=\"3%\" alt=\"space\">\n  <a href=\"https://ultralytics.com/bilibili\"><img src=\"https://github.com/ultralytics/assets/raw/main/social/logo-social-bilibili.png\" width=\"3%\" alt=\"Ultralytics BiliBili\"></a>\n  <img src=\"https://github.com/ultralytics/assets/raw/main/social/logo-transparent.png\" width=\"3%\" alt=\"space\">\n  <a href=\"https://discord.com/invite/ultralytics\"><img src=\"https://github.com/ultralytics/assets/raw/main/social/logo-social-discord.png\" width=\"3%\" alt=\"Ultralytics Discord\"></a>\n</div>\n"
+      }
+    }
+  ],
+  "environment": {
+    "implementation_name": "cpython",
+    "implementation_version": "3.9.23",
+    "os_name": "nt",
+    "platform_machine": "",
+    "platform_release": "10",
+    "platform_system": "Windows",
+    "platform_version": "10.0.19045",
+    "python_full_version": "3.9.23",
+    "platform_python_implementation": "CPython",
+    "python_version": "3.9",
+    "sys_platform": "win32"
+  }
+}

@@ -1,0 +1,23 @@
+# Verified on Windows x64, Python 3.9.23, RTX 5060 Ti.
+# Restore source first: python scripts/setup_source.py
+# Install the cu129 torch wheels first; see docs/环境安装记录.md.
+-c configs/constraints-train.txt
+torch==2.8.0+cu129
+torchvision==0.23.0+cu129
+numpy==1.26.4
+opencv-python==4.11.0.86
+matplotlib==3.8.4
+pillow==11.0.0
+PyYAML==6.0.3
+requests==2.32.5
+psutil==7.1.0
+cloudpickle==3.1.1
+filelock==3.19.1
+polars==1.36.1
+polars-runtime-32==1.36.1
+nvidia-ml-py==13.615.71
+ultralytics-thop==2.2.2
+pandas==2.2.1
+scipy==1.13.1
+tqdm==4.67.3
+-e ./third_party/ultralytics

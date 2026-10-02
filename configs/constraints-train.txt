@@ -1,0 +1,7 @@
+# Preserve the verified Windows / Python 3.9 / RTX 5060 Ti combination.
+torch==2.8.0+cu129
+torchvision==0.23.0+cu129
+numpy==1.26.4
+opencv-python==4.11.0.86
+# Inherited TensorFlow 2.10 requires protobuf <3.20; deployment is resolved separately.
+protobuf==3.19.6
