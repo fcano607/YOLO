@@ -1,8 +1,10 @@
 # YOLO 项目环境报告
 
-检查 / 更新日期：2026-10-02。当前完成任务：**M0-01，确认硬件和已有环境**；**M0-02，专用环境、训练依赖与源码锁定**；**M0-03，正式检查入口与摄像头复测**。
+检查 / 更新日期：2026-10-02。当前完成任务：**M0-01 至 M0-04**，包含硬件、专用环境与源码锁定、正式检查及 E0 预训练演示。主线累计 4/54。
 
 **M0-03 已完成：**训练环境通过；12:34 的正式复测在 DSHOW 下连续三次各读取三帧并正常释放，程序 exit code 0。之前的间歇性关闭超时已恢复，根因未确定。最新状态见[正式检查报告](environment_check.md)和第 11 节。
+
+**M0-04 已完成：**官方预训练 YOLO11n-seg 已在 GPU 上运行图片、文件视频和摄像头；10 秒 / 297 帧演示正常保存并释放设备。三类映射、实际预测与漏检 / 误分类见[E0 报告](E0_预训练模型验证.md)及第 12 节。
 
 本报告记录本机实际检查、环境创建、训练依赖安装和随机权重模型前向。前半部分保留 M0-01 的原始检查，当前安装状态见第 10 节。机器可读取证据见 [M0-01 检查快照](../logs/environment/M0-01_20261002_snapshot.json)、[M0-02 克隆快照](../logs/environment/M0-02_20261002_yolo_snapshot.json)与[安装验收快照](../logs/environment/M0-02_20261002_install_snapshot.json)。
 
@@ -144,11 +146,12 @@ nvidia-smi --query-gpu=name,memory.total,driver_version,compute_cap --format=csv
 - **已完成：M0-01。** 硬件、驱动、已有 Python/Conda、当前 Toolkit 编译器及 Python 3.9 的基础 GPU 运算有记录。
 - **已完成：M0-02。** 专用 yolo 环境、训练依赖、Ultralytics 可编辑源码、tag/commit 和路径规则均已验证，详见第 10 节。
 - **已完成：M0-03。** 正式 `scripts/check_env.py` 已实现；18 项固定版本、源码、依赖一致性、OpenCV 和 GPU 通过，部署状态已登记；同一后端连续三次摄像头读取和释放通过，另有 10 秒采集记录。
-- **未完成：M0-04 至 M0-06。** 未执行 E0、ONNX 或 TensorRT 项目流程。
-- **尚未通过或未检查：**摄像头长时间稳定性、预训练 E0、训练/反向、ONNX 导出及运行、TensorRT 构建及运行。随机权重模型前向、摄像头短时采集和正常关闭已证实；历史关闭超时的根因未确定。
+- **已完成：M0-04。** 官方 E0 预训练权重、GPU 实际推理、三种输入与实例结果保存均通过，详见第 12 节。
+- **未完成：M0-05、M0-06。** 未执行 ONNX 或 TensorRT 项目流程，也未进行完整环境恢复验收。
+- **尚未通过或未检查：**摄像头长时间稳定性、项目训练 / 反向及正式精度评价、ONNX 导出及运行、TensorRT 构建及运行。随机权重与预训练模型推理、短时采集和正常关闭已证实；历史关闭超时的根因未确定。
 - **环境变更：**M0-01 仅做检查；M0-02 从 tf2 离线克隆 yolo，初始 159 包版本一致；随后仅在 yolo 新增 6 包、升级 filelock，当前 165 包。既有 tf2 的关键版本复查未变，驱动、Toolkit 和全局 PATH 配置未调整。
 
-下一步 M0-04 运行 E0，获取图片、视频与摄像头中的目标框和实例掩膜；M0-05 核查部署依赖并实际执行。后续摄像头优先使用本机已验证的 DSHOW。
+下一步 M0-05 核查部署依赖，导出 ONNX 并实际执行，记录 TensorRT 构建 / 执行兼容性。后续摄像头优先使用本机已验证的 DSHOW。
 
 ## 9. yolo 专用环境创建与验收
 
@@ -175,7 +178,7 @@ nvidia-smi --query-gpu=name,memory.total,driver_version,compute_cap --format=csv
 
 训练依赖见 [requirements-train.txt](../requirements-train.txt)，约束见 [configs/constraints-train.txt](../configs/constraints-train.txt)，源码锁定见 [configs/source-lock.json](../configs/source-lock.json)。源码恢复脚本只在 commit 一致时继续；上游目录当前工作树无源码修改。
 
-运行 [scripts/verify_training_setup.py](../scripts/verify_training_setup.py) 返回 exit code 0。由官方 YAML 构建随机初始化的 YOLO11n-seg，n 规模、80 类、Segment 头，参数 2876848；FP32 输入 `[1,3,640,640]` 实际在 RTX 5060 Ti / cuda:0 上前向，全部输出有限。推理候选为 `[1,116,8400]`，原型为 `[1,32,160,160]`，其余原始输出结构见快照。该结果仅说明模型可运行，E0 和训练尚未开展。
+运行 [scripts/verify_training_setup.py](../scripts/verify_training_setup.py) 返回 exit code 0。由官方 YAML 构建随机初始化的 YOLO11n-seg，n 规模、80 类、Segment 头，参数 2876848；FP32 输入 `[1,3,640,640]` 实际在 RTX 5060 Ti / cuda:0 上前向，全部输出有限。推理候选为 `[1,116,8400]`，原型为 `[1,32,160,160]`，其余原始输出结构见快照。该 M0-02 结果仅说明随机权重模型可运行；之后 E0 的实际推理见第 12 节，项目训练仍未开展。
 
 已建立必要一级目录、`artifacts/pretrained/`、路径配置及统一解析函数。从项目外工作目录调用 `deploy.paths.load_paths()` 也能得到正确项目路径。项目本机 Ultralytics 配置位于忽略的 `logs/ultralytics_settings/`，使用项目 data、pretrained 和 runs 路径。
 
@@ -203,8 +206,24 @@ nvidia-smi --query-gpu=name,memory.total,driver_version,compute_cap --format=csv
 | 当前环境 | 仍为 opencv-python 4.11.0.86，没有更换驱动、调整 USB 配置或采用 COM 修改 |
 | ORT / TensorRT 状态 | 模块未安装；provider 列表未获得，实际部署执行待 M0-05 |
 
-用户已确认其他摄像头程序都已关闭。原始方式与 COM MTA 方式的交替对照均通过，不能证明 COM 是根因。当前已确认 DSHOW 恢复可用，尚未确定历史异常的根因；没有证据将它归因于 YOLO 依赖或硬件损坏，也不能宣称驱动问题已被永久修复。M0-03 按当前运行证据勾选，主线为 3/54；M7 保留持续运行验收。
+用户已确认其他摄像头程序都已关闭。原始方式与 COM MTA 方式的交替对照均通过，不能证明 COM 是根因。当前已确认 DSHOW 恢复可用，尚未确定历史异常的根因；没有证据将它归因于 YOLO 依赖或硬件损坏，也不能宣称驱动问题已被永久修复。M0-03 验收时主线为 3/54；之后 M0-04 完成后为 4/54；M7 保留持续运行验收。
 
 本轮补充证据：[原检查连续复开记录](../logs/environment/M0-03_20261002_recheck_worker.json)、[最小程序及采集时长对照](../logs/environment/M0-03_20261002_recheck_variants.json)、[COM 交替对照](../logs/environment/M0-03_20261002_recheck_paired_com.json)、[10 秒采集记录](../logs/environment/M0-03_20261002_recheck_stream.json)。
 
-操作说明、参数、退出码与诊断证据见 [docs/环境检查使用说明.md](../docs/环境检查使用说明.md)。摄像头画面没有保存或显示；设备报告帧率未作为应用 FPS。预训练 E0、训练及部署仍待开展。
+操作说明、参数、退出码与诊断证据见 [docs/环境检查使用说明.md](../docs/环境检查使用说明.md)。M0-03 检查本身没有保存或显示摄像头画面；M0-04 的演示产出另见下节。设备报告帧率未作为应用 FPS。
+
+## 12. M0-04：E0 预训练模型实际运行
+
+已下载并固定官方 `yolo11n-seg.pt`，新增 [scripts/prepare_e0.py](../scripts/prepare_e0.py)、[scripts/predict_e0.py](../scripts/predict_e0.py) 和 [configs/e0.yaml](../configs/e0.yaml)。保留原模型 80 类，通过实际 `model.names` 得到 cup=41、bottle=39、cell phone=67，另外记录项目三类 ID 0、1、2。
+
+| 输入 | 实际验证 |
+| --- | --- |
+| 官方 bus.jpg | GPU FP32 推理得到 4 个 person、1 个 bus 及 5 张非空 mask |
+| 自采桌面图 | 三类筛选预测到 cup、cell phone，保存原图 / 结果图；从项目外工作目录运行成功 |
+| 摄像头 | DSHOW 10.003 秒处理 297 帧，保存原始 / 结果 MP4；正常释放耗时 0.270 秒 |
+| 同段文件视频 | 独立进程完整处理 297 帧，保存可视化；从项目外工作目录运行成功，文件资源正常释放 |
+| 输出核对 | 原始 / 结果视频可重新完整解码，帧数一致；框与 mask 数匹配、数值有限、mask 非空且输出在 cuda:0 |
+
+用户确认右侧杯子后方黑色矩形为手机、最右物体为瓶子，另有左侧被手遮挡的手机。右侧手机有预测；左侧遮挡手机漏检；瓶子没有 bottle 输出，部分帧被预测为 cup。这些逐例现象不是数据集精度指标，也没有证据将它们单独归因于某个原因。
+
+本次没有更换依赖、驱动或锁定源码。脚本、参数、权重来源、输入和预测证据见 [E0 使用说明](../docs/E0_预训练模型使用说明.md)、[E0 报告](E0_预训练模型验证.md)、[产出验收 JSON](../logs/environment/M0-04_20261002_artifact_validation.json)。下一步 M0-05；项目训练、独立部署和持续运行稳定性继续按模块验收。

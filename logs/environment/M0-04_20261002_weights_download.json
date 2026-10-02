@@ -1,0 +1,14 @@
+{
+  "downloaded_at": "2026-10-02T12:55:51.507785+08:00",
+  "name": "yolo11n-seg.pt",
+  "path": "artifacts/pretrained/yolo11n-seg.pt",
+  "repository": "ultralytics/assets",
+  "release_tag": "v8.3.0",
+  "asset_id": 196201396,
+  "url": "https://github.com/ultralytics/assets/releases/download/v8.3.0/yolo11n-seg.pt",
+  "size_bytes": 6182636,
+  "sha256": "55ed65c56c91713d23e8402371c6c49a6fd84f257f7dce452e8d70e41dcbe152",
+  "official_digest": null,
+  "digest_note": "GitHub API has no digest for this asset; SHA256 is recorded locally for reproducibility.",
+  "elapsed_seconds": 3.097
+}

@@ -1,0 +1,78 @@
+{
+  "checked_at": "2026-10-02T13:13:18.419299+08:00",
+  "task": "M0-04",
+  "task_complete": true,
+  "runs": [
+    {
+      "run": "M0-04_20261002_bus_all",
+      "summary": "runs\\E0\\M0-04_20261002_bus_all\\summary.json",
+      "frames": 1,
+      "GPU_boxes_and_masks": true,
+      "all_masks_nonempty": true,
+      "images_decode": true,
+      "videos": {}
+    },
+    {
+      "run": "M0-04_20261002_camera_targets",
+      "summary": "runs\\E0\\M0-04_20261002_camera_targets\\summary.json",
+      "frames": 297,
+      "GPU_boxes_and_masks": true,
+      "all_masks_nonempty": true,
+      "images_decode": true,
+      "videos": {
+        "input.mp4": {
+          "decoded_frames": 297,
+          "size_bytes": 2869777
+        },
+        "result.mp4": {
+          "decoded_frames": 297,
+          "size_bytes": 4107403
+        }
+      }
+    },
+    {
+      "run": "M0-04_20261002_desktop_image",
+      "summary": "runs\\E0\\M0-04_20261002_desktop_image\\summary.json",
+      "frames": 1,
+      "GPU_boxes_and_masks": true,
+      "all_masks_nonempty": true,
+      "images_decode": true,
+      "videos": {}
+    },
+    {
+      "run": "M0-04_20261002_desktop_video",
+      "summary": "runs\\E0\\M0-04_20261002_desktop_video\\summary.json",
+      "frames": 297,
+      "GPU_boxes_and_masks": true,
+      "all_masks_nonempty": true,
+      "images_decode": true,
+      "videos": {
+        "input.mp4": {
+          "decoded_frames": 297,
+          "size_bytes": 2753186
+        },
+        "result.mp4": {
+          "decoded_frames": 297,
+          "size_bytes": 3233501
+        }
+      }
+    },
+    {
+      "run": "M0-04_20261002_desktop_all_classes",
+      "summary": "runs\\E0\\M0-04_20261002_desktop_all_classes\\summary.json",
+      "frames": 1,
+      "GPU_boxes_and_masks": true,
+      "all_masks_nonempty": true,
+      "images_decode": true,
+      "videos": {}
+    }
+  ],
+  "guards": {
+    "camera_timeout_cannot_pass": true,
+    "existing_output_not_overwritten": true,
+    "weights_SHA256": true,
+    "task_count": "4/54",
+    "document_links_and_UTF8": true
+  },
+  "preview": "demo/E0/preview.gif"
+}

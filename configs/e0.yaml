@@ -1,0 +1,27 @@
+# M0-04: COCO pretrained demonstration. This does not change the 80-class model.
+weights:
+  path: artifacts/pretrained/yolo11n-seg.pt
+  url: https://github.com/ultralytics/assets/releases/download/v8.3.0/yolo11n-seg.pt
+  release_tag: v8.3.0
+  size_bytes: 6182636
+  sha256: 55ed65c56c91713d23e8402371c6c49a6fd84f257f7dce452e8d70e41dcbe152
+targets:
+  - {project_id: 0, name: cup}
+  - {project_id: 1, name: bottle}
+  - {project_id: 2, name: cell phone}
+predict:
+  device: '0'
+  imgsz: 640
+  rect: false
+  quantize: 32
+  conf: 0.25
+  iou: 0.7
+  max_det: 100
+  retina_masks: true
+camera:
+  index: 0
+  backend: DSHOW
+  seconds: 10
+  timeout: 60
+video:
+  fallback_fps: 30

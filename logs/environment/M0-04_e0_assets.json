@@ -1,0 +1,17 @@
+{
+  "checked_at": "2026-10-02T13:00:02.983945+08:00",
+  "weights": {
+    "path": "artifacts/pretrained/yolo11n-seg.pt",
+    "url": "https://github.com/ultralytics/assets/releases/download/v8.3.0/yolo11n-seg.pt",
+    "release_tag": "v8.3.0",
+    "size_bytes": 6182636,
+    "sha256": "55ed65c56c91713d23e8402371c6c49a6fd84f257f7dce452e8d70e41dcbe152"
+  },
+  "weights_verified": true,
+  "sample": {
+    "path": "demo\\input\\E0\\bus.jpg",
+    "source": "third_party\\ultralytics\\ultralytics\\assets\\bus.jpg",
+    "sha256": "c02019c4979c191eb739ddd944445ef408dad5679acab6fd520ef9d434bfbc63"
+  },
+  "hash_note": "Weight hash was recorded from the official download; GitHub supplied no asset digest."
+}

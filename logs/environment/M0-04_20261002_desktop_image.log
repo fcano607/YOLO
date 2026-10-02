@@ -1,0 +1,73 @@
+{
+  "task": "M0-04",
+  "experiment": "E0",
+  "status": "passed",
+  "started_at": "2026-10-02T13:00:41.815068+08:00",
+  "source": "E:\\秋招\\项目相关\\YOLO\\runs\\E0\\M0-04_20261002_camera_targets\\input_best.jpg",
+  "output_dir": "E:\\秋招\\项目相关\\YOLO\\runs\\E0\\M0-04_20261002_desktop_image",
+  "python": "D:\\software\\anaconda\\envs\\yolo\\python.exe",
+  "versions": {
+    "ultralytics": "8.4.171",
+    "torch": "2.8.0+cu129",
+    "opencv": "4.11.0"
+  },
+  "source_commit": "86f5c8c401a630da651d321e691ab0af540812cf",
+  "weights": {
+    "path": "E:\\秋招\\项目相关\\YOLO\\artifacts\\pretrained\\yolo11n-seg.pt",
+    "sha256": "55ed65c56c91713d23e8402371c6c49a6fd84f257f7dce452e8d70e41dcbe152"
+  },
+  "model": {
+    "task": "segment",
+    "class_count": 80,
+    "execution_device": "cuda:0",
+    "fp16": false
+  },
+  "class_mapping": [
+    {
+      "project_id": 0,
+      "name": "cup",
+      "pretrained_id": 41
+    },
+    {
+      "project_id": 1,
+      "name": "bottle",
+      "pretrained_id": 39
+    },
+    {
+      "project_id": 2,
+      "name": "cell phone",
+      "pretrained_id": 67
+    }
+  ],
+  "all_classes": false,
+  "predict": {
+    "device": "0",
+    "imgsz": 640,
+    "rect": false,
+    "quantize": 32,
+    "conf": 0.25,
+    "iou": 0.7,
+    "max_det": 100,
+    "retina_masks": true,
+    "save": false,
+    "verbose": false,
+    "classes": [
+      41,
+      39,
+      67
+    ]
+  },
+  "frames_processed": 1,
+  "detections_by_name": {
+    "cell phone": 1,
+    "cup": 2
+  },
+  "frames_with_detections": 1,
+  "capture_released": null,
+  "camera_backend": null,
+  "timing_note": "Demo timings include copying/plotting/saving; they are not a controlled inference benchmark.",
+  "evaluation_note": "No project training or labeled precision/recall/mAP evaluation is performed.",
+  "processing_seconds": 0.049,
+  "finished_at": "2026-10-02T13:00:41.865909+08:00"
+}
+
