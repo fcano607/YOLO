@@ -1,0 +1,1927 @@
+=== PAGE 1 ===
+TOOD: Task-aligned One-stage Object Detection
+Chengjian Feng∗
+Intellifusion Inc.
+feng.chengjian@intellif.com
+Yujie Zhong∗
+Meituan Inc.
+zhongyujie@meituan.com
+Yu Gao
+ByteDance Inc.
+gaoyu.1520@bytedance.com
+Matthew R. Scott
+Malong LLC
+mscott@malongtech.com
+Weilin Huang†
+Alibaba Group
+weilin.hwl@alibaba-inc.com
+Abstract
+One-stage object detection is commonly implemented by
+optimizing two sub-tasks: object classiﬁcation and localiza-
+tion, using heads with two parallel branches, which might
+lead to a certain level of spatial misalignment in predic-
+tions between the two tasks. In this work, we propose a
+Task-aligned One-stage Object Detection (TOOD) that ex-
+plicitly aligns the two tasks in a learning-based manner.
+First, we design a novel Task-aligned Head (T-Head) which
+offers a better balance between learning task-interactive
+and task-speciﬁc features, as well as a greater ﬂexibility to
+learn the alignment via a task-aligned predictor. Second,
+we propose Task Alignment Learning (TAL) to explicitly pull
+closer (or even unify) the optimal anchors for the two tasks
+during training via a designed sample assignment scheme
+and a task-aligned loss. Extensive experiments are con-
+ducted on MS-COCO, where TOOD achieves a 51.1 AP at
+single-model single-scale testing. This surpasses the recent
+one-stage detectors by a large margin, such as ATSS [31]
+(47.7 AP), GFL [14] (48.2 AP), and PAA [9] (49.0 AP),
+with fewer parameters and FLOPs. Qualitative results also
+demonstrate the effectiveness of TOOD for better aligning
+the tasks of object classiﬁcation and localization. Code is
+available at https://github.com/fcjian/TOOD.
+1. Introduction
+Object detection aims to localize and recognize objects
+of interest from natural images, and is a fundamental yet
+challenging task in computer vision. It is commonly formu-
+lated as a multi-task learning problem by jointly optimizing
+object classiﬁcation and localization [4, 6, 7, 16, 22, 33].
+The classiﬁcation task is designed to learn discriminative
+features that focus on the key or salient part of an object,
+∗Equal contributions.† Corresponding author.
+Result Score IoU
+Figure 1. Illustration of detection results (‘Result’) and spatial
+distributions of classiﬁcation scores (‘Score’) and localization
+scores (‘IoU’) predicted by ATSS [31] (top row) and the proposed
+TOOD (bottom row). Ground-truth is indicated by yellow boxes,
+and a white arrow means the main direction of the best anchor
+away from the center of an object. In the ‘Result’ column, a
+red/green patch is the location of the best anchor for classiﬁca-
+tion/localization, while a red/green box means an object bounding
+box predicted from the anchor in the red/green patch (if they coin-
+cide, we only show the red patches and boxes).
+while the localization task works on precisely locating the
+whole object with its boundaries. Due to the divergence
+of learning mechanisms for classiﬁcation and localization,
+spatial distributions of the learned features by the two tasks
+can be different, causing a certain level of misalignment
+when predictions are made by using two separate branches.
+Recent one-stage object detectors attempted to predict
+consistent outputs of the two separate tasks, by focusing on
+the center of an object [3, 10, 27, 31]. They assume that
+an anchor (i.e., an anchor-point for an anchor-free detector,
+or an anchor-box for an anchor-based detector) at the cen-
+ter of the object is likely to give more accurate predictions
+for both classiﬁcation and localization. For example, re-
+cent FCOS [27] and ATSS [31] both use a centerness branch
+arXiv:2108.07755v3  [cs.CV]  28 Aug 2021
+
+=== PAGE 2 ===
+to enhance classiﬁcation scores predicted from the anchors
+near the center of the object, and assign larger weights to
+the localization loss for the corresponding anchors. Besides,
+FoveaBox [10] regards the anchors inside a predeﬁned cen-
+tral region of the object as positive samples. Such heuristic
+designs have achieved excellent results, but these methods
+might suffer from two limitations:
+(1) Independence of classiﬁcation and localization. Re-
+cent one-stage detectors perform object classiﬁcation and
+localization independently by using two separate branches
+in parallel ( i.e., heads). Such a two-branch design might
+cause a lack of interaction between the two tasks, leading to
+an inconsistency in predictions when performing them. As
+shown in the ‘Result’ column in Figure 1, an ATSS detector
+recognizes an object of ‘Dining table’ (indicated by the an-
+chor shown with a red patch), but localizes another object
+of ‘Pizza’ more accurately (red bounding box).
+(2) Task-agnostic sample assignment. Most anchor-free
+detectors use a geometry-based assignment scheme to se-
+lect anchor-points near the center of an object for both clas-
+siﬁcation and localization [3, 10, 31], while anchor-based
+detectors often assign anchor-boxes by computing IoUs be-
+tween the anchor boxes and ground truth [22, 23, 31]. How-
+ever, the optimal anchors for classiﬁcation and localization
+are often inconsistent, and may vary considerably depend-
+ing on the shape and characteristics of the objects. The
+widely used sample assignment scheme is task agnostic,
+and thus may be difﬁcult to make an accurate yet consis-
+tent prediction for the two tasks, as demonstrated in ‘Score’
+and ‘IoU’ distributions of ATSS in Figure 1. The ‘Result’
+column also illustrates that a spatial location of the best lo-
+calization anchor (green patch) can be not at the center of
+the object, and it is not well aligned with the best classiﬁ-
+cation anchor (red patch). As a result, a precise bounding
+box may be suppressed by the less accurate one during Non-
+Maximum Suppression (NMS).
+To address such limitations, we propose a Task-aligned
+One-stage Object Detection (TOOD) that aims to align the
+two tasks more accurately by designing a new head struc-
+ture with an alignment-oriented learning approach:
+Task-aligned head. In contrast to the conventional head
+in one-stage object detection where classiﬁcation and local-
+ization are implemented separately by using two branches
+in parallel, we design a Task-aligned head (T-head) to en-
+hance an interaction between the two tasks. This allows the
+two tasks to work more collaboratively, which in turn aligns
+their predictions more accurately. T-head is conceptually
+simple: it computes task-interactive features, and makes
+predictions via a novel Task-Aligned Predictor (TAP). Then
+it aligns spatial distributions of the two predictions accord-
+ing to the learning signals provided by a task alignment
+learning, as described next.
+Task alignment learning. To further overcome the mis-
+alignment problem, we propose a Task Alignment Learning
+(TAL) to explicitly pull closer the optimal anchors for the
+two tasks. It is performed by designing a sample assign-
+ment scheme and a task-aligned loss. The sample assign-
+ment collects training samples ( i.e., positives or negatives)
+by computing a degree of task-alignment at each anchor,
+whereas the task-aligned loss gradually uniﬁes the best an-
+chors for predicting both classiﬁcation and localization dur-
+ing the training. Therefore, at inference, a bounding box
+with the highest classiﬁcation score and jointly having the
+most precise localization can be preserved.
+The proposed T-head and learning strategy can work col-
+laboratively towards making predictions with high quality
+in both classiﬁcation and localization. The main contribu-
+tions of this work can be summarized as follows: (1) we de-
+sign a new T-head to enhance the interaction between clas-
+siﬁcation and localization while maintaining their charac-
+teristics, and further align the two tasks at the predictions;
+(2) we propose TAL to explicitly align the two tasks at the
+identiﬁed task-aligned anchors, as well as providing learn-
+ing signals for the proposed predictor; (3) we conducted ex-
+tensive experiments on MSCOCO [17], where our TOOD
+achieved a 51.1 AP, surpassing recent one-stage detectors
+such as ATSS [31], GFL [14] and PAA [9], by a large mar-
+gin. Qualitative results further validate the effectiveness of
+our task-alignment approaches.
+2. Related Work
+One-stage detectors. OverFeat [25] is one of the earli-
+est CNN-based one-stage detectors. Afterward, YOLO [22]
+was developed to directly predict bounding boxes and clas-
+siﬁcation scores, without an additional stage to generate re-
+gion proposals. SSD [18] introduces anchors with multi-
+scale predictions from multi-layer convolutional features,
+and Focal loss [16] was proposed to address the problem
+of class imbalance for one-stage detectors like RetinaNet.
+Keypoint-based detection methods, such as [3, 11, 34],
+address the detection problem by identifying and group-
+ing multiple key points of a bounding box. Recently,
+FCOS [27] and FoveaBox [10] were developed to locate
+objects of interest via anchor-points and point-to-boundary
+distances. Most mainstream one-stage detectors are com-
+posed of two FCN-based branches for classiﬁcation and lo-
+calization, which may lead to the misalignment between the
+two tasks. In this paper, we enhance the alignment between
+the two tasks via a new head structure and an alignment-
+oriented learning approach.
+Training sample assignment. Most anchor-based detec-
+tors such as [22, 31], collect training samples by computing
+IoUs between proposals and ground truth, while an anchor-
+free detector regards the anchors inside the center region
+of an object as positive samples [3, 10, 27]. Recent stud-
+
+=== PAGE 3 ===
+Classification probability Localization precision
+Task-aligned metric
+Task-interactive features
+offset offset
+TAP
+TAL
+Classification probability Localization precision
+Task-aligned metric
+Task-interactive features
+offset
+TAP
+TAL
+prob
+Prediction & 
+Alignment (prob)
+Prediction & 
+Alignment (offset)
+: The location of the best anchor for classification or localization
+: The location of the most aligned anchor in the proposed metric
+: Forward propagation : Back propagation
+Classification probability Localization precision
+Alignment metric
+FPN features
+offset
+T-head
+TAL
+prob
+Prediction & 
+Alignment (prob)
+Prediction & 
+Alignment (offset)
+: The location of the best anchor for classification or localization
+: The location of the most aligned anchor in the proposed metric
+: Forward propagation : Back propagation
+Figure 2. Overall learning mechanism of TOOD. First, predictions
+are made by T-head on the FPN features. Second, the predictions
+are used to compute a task alignment metric at each anchor point,
+based on which TAL produces learning signals for T-head . Lastly,
+T-head adjusts the distributions of classiﬁcation and localization
+accordingly. Speciﬁcally, the most aligned anchor obtains a higher
+classiﬁcation score through ‘prob’ (probability map), and acquires
+a more accurate bounding box prediction via a learned ‘offset’.
+ies attempted to train the detectors more effectively by col-
+lecting more informative training samples using output re-
+sults. For example, FSAF [36] selects meaningful samples
+from feature pyramids based on the computed loss, and sim-
+ilarly, SAPD [35] provides a soft-selection version of FSAF
+by designing a meta-selection network. FreeAnchor [32]
+and MAL [8] identify the best anchor-box by computing
+the losses in an effort to improve the matching between an-
+chors and objects. PAA [9] adaptively separates the anchors
+into positive and negative samples by ﬁtting a probability
+distribution to the anchor scores. Mutual Guidance [29] im-
+proves anchor assignment for one task by considering the
+prediction quality on the other task. Different from the pos-
+itive/negative sample assignment, PISA [1] re-weights the
+training samples according to the precision rank of the out-
+puts. Noisy Anchor [12] assigns soft labels to the training
+samples, and re-weights the anchor-boxes using a cleanli-
+ness score to mitigate the noise incurred by binary labels.
+GFL [14] replaces the binary classiﬁcation label with an
+IoU score to integrate the localization quality into classi-
+ﬁcation. These excellent approaches inspired the current
+work to develop a new assignment mechanism from a task-
+alignment point of view.
+3. Task-aligned One-stage Object Detection
+Overview. Similar to recent one-stage detectors such
+as [14, 31], the proposed TOOD has an overall pipeline
+of ‘backbone-FPN-head’. Moreover, by considering efﬁ-
+ciency and simplicity, TOOD uses a single anchor per lo-
+cation (same as ATSS [31]), where the ‘anchor’ means an
+anchor point for an anchor-free detector, or an anchor box
+for an anchor-based detector. As discussed, existing one-
+stage detectors have limitations of task misalignment be-
+tween classiﬁcation and localization, due to the divergence
+of two tasks which are often implemented using two sep-
+arate head branches. In this work, we propose to align
+the two tasks more explicitly using a designed Task-aligned
+head (T-head) with a new Task Alignment Learning (TAL).
+As illustrated in Figure 2, T-head and TAL can work col-
+laboratively to improve the alignment of two tasks. Specif-
+ically, T-head ﬁrst makes predictions for the classiﬁcation
+and localization on the FPN features. Then TAL computes
+task alignment signals based on a new task alignment met-
+ric which measures the degree of alignment between the two
+predictions. Lastly, T-head automatically adjusts its classiﬁ-
+cation probabilities and localization predictions using learn-
+ing signals computed from TAL during back propagation.
+3.1. Task-aligned Head
+Our goal is to design an efﬁcient head structure to im-
+prove the conventional design of the head in one-stage de-
+tectors (as shown in Figure 3(a)). In this work, we achieve
+this by considering two aspects: (1) increasing the interac-
+tion between the two tasks, and (2) enhancing the detector
+ability of learning the alignment. The proposed T-head is
+shown in Figure 3(b), where it has a simple feature extrac-
+tor with two Task-Aligned Predictors (TAP).
+To enhance the interaction between classiﬁcation and lo-
+calization, we use a feature extractor to learn a stack oftask-
+interactive features from multiple convolutional layers, as
+shown by the blue part in Figure 3(b). This design not only
+facilitates the task interaction, but also provides multi-level
+features with multi-scale effective receptive ﬁelds for the
+two tasks. Formally, let Xfpn ∈ RH×W ×C denotes the
+FPN features, where H, W and C indicate height, width
+and the number of channels, respectively. The feature ex-
+tractor usesN consecutive conv layers with activation func-
+tions to compute the task-interactive features:
+Xinter
+k =
+{
+δ(convk(Xfpn)),k = 1
+δ(convk(Xinter
+k−1 )),k> 1,∀k∈{ 1,2,...,N}, (1)
+whereconvk andδ refer to the k-th conv layer and a relu
+function, respectively. Thus we extract rich multi-scale fea-
+tures from the FPN features using a single branch in the
+head. Then, the computed task-interactive features will be
+fed into two TAP for aligning classiﬁcation and localization.
+Task-aligned Predictor (TAP). We perform both ob-
+ject classiﬁcation and localization on the computed task-
+interactive features, where the two tasks can well perceive
+the state of each other. However, due to the single branch
+
+=== PAGE 4 ===
+H×W×C
+H×W×80
+Conv
+Sigmoid
+H×W×C
+H×W×4
+Conv
+Conv ×4
+Conv ×4
+H×W×C
+TransferLAM
+Conv ×N
+Conv
+Conv
+LAM
+fpnX Transfer
+Conv
+Conv&
+Sigmoid Cat &
+ GAP
+Fc Fc & Sigmoid
+H×W×NC
+NC C / 8 N
+interx w
+specX
+Cat
+PAM
+LAM
+H×W×C
+H×W×80
+H×W×4
+H×W×80
+H×W×4
+H×W×80
+H×W×4
+H×W×C
+H×W×C
+TransferLAM
+Conv ×N
+Conv
+Conv
+LAM Transfer
+Conv PAM
+H×W×80
+H×W×4
+H×W×80
+H×W×4
+H×W×1
+H×W×4
+H×W×C
+H×W×C H×W×8
+Conv
+Sigmoid
+H×W×80
+Cat &
+ GAP
+Fc Fc & Sigmoid
+H×W×NC
+NC NC / 16 N
+Cat
+LAM
+H×W×C
+TransferLAM
+Conv ×N
+Conv
+Conv
+LAM
+fpnX Transfer
+H×W×80
+H×W×4
+H×W×80
+H×W×4
+H×W×80
+H×W×4
+H×W×C
+H×W×C
+PAM
+PAM
+Cat &
+ GAP
+Fc Fc & Sigmoid
+H×W×NC
+NC NC / 16 N
+CatH×W×C
+Conv
+PAM
+H×
+W×
+1
+H×W×4
+H
+×W
+×
+8
+Conv
+Sigmoid
+H×W×80
+H×W×C
+H×W×C
+H×W×80
+H×W×4
+H×W×80
+H×W×1
+H×W×80
+H×W×C
+H×W×80
+Transfer
+Conv ×N
+Conv
+Conv
+Transfer
+Conv PAM
+H×W×80
+H×W×4
+H×W×80
+H×W×4
+H×W×1
+H×W×4
+H×W×C
+H×W×C H×W×
+8
+Conv
+Sigmoid
+H×W×80
+H×W×80
+H×W×80
+TransferLAM
+Conv ×N
+Conv
+Conv
+LAM Transfer
+Conv
+PAM
+H×W×80
+H×W×4
+H×W×80
+H×W×4
+H×W×1
+H×W×4
+H×W×C
+H×W×C H×W×8
+Conv &Sigmoid
+H×W×80
+Cat &
+ GAP
+Fc Fc & Sigmoid
+H×W×NC
+NC C / 8 N
+Cat
+LAM
+H×W×C
+TransferLAM
+Conv ×N
+Conv
+Conv
+LAM Transfer
+Conv PAM
+H×W×80
+H×W×4
+H×W×80
+H×W×4
+H
+×
+W×
+1
+H×W×4
+H×W×C
+H×W×C H
+×
+W
+×8
+Conv
+Sigmoid
+H×W×80
+Cat &
+ GAP
+Fc Fc & Sigmoid
+H×W×NC
+NC NC / 16 N
+Cat
+LAM
+H×W×C
+H×W×C
+H×W×80
+Conv
+H×W×C
+H×W×4
+Conv
+Conv ×4
+Conv ×4
+H×W×C
+fpnX
+Transfer
+Transfer
+H×W×80
+H×W×4
+H×W×C
+Classification
+supervision
+Localization
+supervision
+Classification
+supervision
+Localization
+supervision
+Task-
+alignment
+H×W×C
+H×W×80
+Conv
+H×W×C
+H×W×4
+Conv
+Conv ×4
+Conv ×4
+H×W×C
+fpnX
+Transfer
+Transfer
+H×W×80
+H×W×4
+TAP
+Conv ×N
+TAP
+H×W×80
+H×W×4
+H×W×C
+H×W×C
+Cat
+ GAP
+Fc
+Sigmoid
+Cat
+Conv A
+Cat & Conv 
+（Sigmoid）
+Cat
+ GAP
+Fc
+Sigmoid
+Cat
+Conv
+H×W×C
+H×W×C
+H×W×C
+A
+H×W×C
+H×W×C
+Cat & Conv 
+（Sigmoid）
+Layer attention
+Task-aware prediction
+H×W×80
+/4
+H×W×80
+/4
+H×W×1
+/8
+H×W×C
+H×W×C
+Prediction alignment
+Cat
+ GAP
+Fc
+Sigmoid
+A
+Cat & Conv 
+（Sigmoid）
+Layer attention
+H×W×80
+/4
+H×W×80
+/4
+H×W×C
+H×W×C
+H×W×1
+/8
+: Element-wise product A : Element-wise product for classification
+Spatial offset for localization 
+Cat & Conv
+(Sigmoid)
+Classification
+supervision
+Localization
+supervision
+Classification
+supervision
+Localization
+supervision
+Task-
+alignment
+Xfpn
+Xcls
+Xreg
+P
+B
+Xfpn
+P
+B
+Xinter
+1∼N Xtask
+1∼N P/B P align/Balign
+M/σ
+Sigmoid
+xinter
+w
+(a) Parallel head
+H×W×C
+H×W×80
+Conv
+Sigmoid
+H×W×C
+H×W×4
+Conv
+Conv ×4
+Conv ×4
+H×W×C
+TransferLAM
+Conv ×N
+Conv
+Conv
+LAM
+fpnX Transfer
+Conv
+Conv&
+Sigmoid Cat &
+GAP
+Fc Fc & Sigmoid
+H×W×NC
+NC C / 8 N
+interx w
+specX
+Cat
+PAM
+LAM
+H×W×C
+H×W×80
+H×W×4
+H×W×80
+H×W×4
+H×W×80
+H×W×4
+H×W×C
+H×W×C
+TransferLAM
+Conv ×N
+Conv
+Conv
+LAM Transfer
+Conv PAM
+H×W×80
+H×W×4
+H×W×80
+H×W×4
+H×W×1
+H×W×4
+H×W×C
+H×W×C H×W×8
+Conv
+Sigmoid
+H×W×80
+Cat &
+GAP
+Fc Fc & Sigmoid
+H×W×NC
+NC NC / 16 N
+Cat
+LAM
+H×W×C
+TransferLAM
+Conv ×N
+Conv
+Conv
+LAM
+fpnX Transfer
+H×W×80
+H×W×4
+H×W×80
+H×W×4
+H×W×80
+H×W×4
+H×W×C
+H×W×C
+PAM
+PAM
+Cat &
+GAP
+Fc Fc & Sigmoid
+H×W×NC
+NC NC / 16 N
+CatH×W×C
+Conv
+PAM
+H×
+W×
+1
+H×W×4
+H
+×W
+×
+8
+Conv
+Sigmoid
+H×W×80
+H×W×C
+H×W×C
+H×W×80
+H×W×4
+H×W×80
+H×W×1
+H×W×80
+H×W×C
+H×W×80
+Transfer
+Conv ×N
+Conv
+Conv
+Transfer
+Conv PAM
+H×W×80
+H×W×4
+H×W×80
+H×W×4
+H×W×1
+H×W×4
+H×W×C
+H×W×C H×W×
+8
+Conv
+Sigmoid
+H×W×80
+H×W×80
+H×W×80
+TransferLAM
+Conv ×N
+Conv
+Conv
+LAM Transfer
+Conv
+PAM
+H×W×80
+H×W×4
+H×W×80
+H×W×4
+H×W×1
+H×W×4
+H×W×C
+H×W×C H×W×8
+Conv&Sigmoid
+H×W×80
+Cat &
+GAP
+Fc Fc & Sigmoid
+H×W×NC
+NC C / 8 N
+Cat
+LAM
+H×W×C
+TransferLAM
+Conv ×N
+Conv
+Conv
+LAM Transfer
+Conv PAM
+H×W×80
+H×W×4
+H×W×80
+H×W×4
+H
+×
+W×
+1
+H×W×4
+H×W×C
+H×W×C H
+×
+W
+×8
+Conv
+Sigmoid
+H×W×80
+Cat &
+GAP
+Fc Fc & Sigmoid
+H×W×NC
+NC NC / 16 N
+Cat
+LAM
+H×W×C
+H×W×C
+H×W×80
+Conv
+H×W×C
+H×W×4
+Conv
+Conv ×4
+Conv ×4
+H×W×C
+fpnX
+Transfer
+Transfer
+H×W×80
+H×W×4
+H×W×C
+Classification
+supervision
+Localization
+supervision
+Classification
+supervision
+Localization
+supervision
+Task-
+alignment
+H×W×C
+H×W×80
+Conv
+H×W×C
+H×W×4
+Conv
+Conv ×4
+Conv ×4
+H×W×C
+fpnX
+Transfer
+Transfer
+H×W×80
+H×W×4
+TAP
+TAP
+Conv ×N
+TAP
+H×W×80
+H×W×4
+H×W×C
+H×W×C
+Cat
+GAP
+Fc
+Sigmoid
+Cat
+Conv A
+Cat & Conv
+（Sigmoid）
+Cat
+GAP
+Fc
+Sigmoid
+Cat
+Conv
+H×W×C
+H×W×C
+H×W×C
+A
+H×W×C
+H×W×C
+Cat & Conv
+（Sigmoid）
+Layer attention
+Task-aware prediction
+H×W×80
+/4
+H×W×80
+/4
+H×W×1
+/8
+H×W×C
+H×W×C
+Prediction alignment
+Cat
+GAP
+Fc
+Sigmoid
+A
+Cat & Conv
+（Sigmoid）
+Layer attention
+H×W×80
+/4
+H×W×80
+/4
+H×W×C
+H×W×C
+H×W×1
+/8
+: Element-wise product A : Element-wise product for classification
+Spatial offset for localization 
+Cat & Conv
+(Sigmoid)
+Classification
+supervision
+Localization
+supervision
+Classification
+supervision
+Localization
+supervision
+Task-
+alignment
+Xfpn
+Xcls
+Xreg
+P
+B
+Xfpn
+P
+B
+Xinter
+1∼N Xtask
+1∼N P/B P align/Balign
+M/σ
+Sigmoid
+xinter
+w
+Xinter
+1∼N (b) Task-aligned head (T-Head)
+H×W×C
+H×W×80
+Conv
+Sigmoid
+H×W×C
+H×W×4
+Conv
+Conv ×4
+Conv ×4
+H×W×C
+TransferLAM
+Conv ×N
+Conv
+Conv
+LAM
+fpnX Transfer
+Conv
+Conv&
+Sigmoid Cat &
+GAP
+Fc Fc & Sigmoid
+H×W×NC
+NC C / 8 N
+interx w
+specX
+Cat
+PAM
+LAM
+H×W×C
+H×W×80
+H×W×4
+H×W×80
+H×W×4
+H×W×80
+H×W×4
+H×W×C
+H×W×C
+TransferLAM
+Conv ×N
+Conv
+Conv
+LAM Transfer
+Conv PAM
+H×W×80
+H×W×4
+H×W×80
+H×W×4
+H×W×1
+H×W×4
+H×W×C
+H×W×C H×W×8
+Conv
+Sigmoid
+H×W×80
+Cat &
+GAP
+Fc Fc & Sigmoid
+H×W×NC
+NC NC / 16 N
+Cat
+LAM
+H×W×C
+TransferLAM
+Conv ×N
+Conv
+Conv
+LAM
+fpnX Transfer
+H×W×80
+H×W×4
+H×W×80
+H×W×4
+H×W×80
+H×W×4
+H×W×C
+H×W×C
+PAM
+PAM
+Cat &
+GAP
+Fc Fc & Sigmoid
+H×W×NC
+NC NC / 16 N
+CatH×W×C
+Conv
+PAM
+H×
+W×
+1
+H×W×4
+H
+×W
+×
+8
+Conv
+Sigmoid
+H×W×80
+H×W×C
+H×W×C
+H×W×80
+H×W×4
+H×W×80
+H×W×1
+H×W×80
+H×W×C
+H×W×80
+Transfer
+Conv ×N
+Conv
+Conv
+Transfer
+Conv PAM
+H×W×80
+H×W×4
+H×W×80
+H×W×4
+H×W×1
+H×W×4
+H×W×C
+H×W×C H×W×
+8
+Conv
+Sigmoid
+H×W×80
+H×W×80
+H×W×80
+TransferLAM
+Conv ×N
+Conv
+Conv
+LAM Transfer
+Conv
+PAM
+H×W×80
+H×W×4
+H×W×80
+H×W×4
+H×W×1
+H×W×4
+H×W×C
+H×W×C H×W×8
+Conv&Sigmoid
+H×W×80
+Cat &
+GAP
+Fc Fc & Sigmoid
+H×W×NC
+NC C / 8 N
+Cat
+LAM
+H×W×C
+TransferLAM
+Conv ×N
+Conv
+Conv
+LAM Transfer
+Conv PAM
+H×W×80
+H×W×4
+H×W×80
+H×W×4
+H
+×
+W×
+1
+H×W×4
+H×W×C
+H×W×C H
+×
+W
+×8
+Conv
+Sigmoid
+H×W×80
+Cat &
+GAP
+Fc Fc & Sigmoid
+H×W×NC
+NC NC / 16 N
+Cat
+LAM
+H×W×C
+H×W×C
+H×W×80
+Conv
+H×W×C
+H×W×4
+Conv
+Conv ×4
+Conv ×4
+H×W×C
+fpnX
+Transfer
+Transfer
+H×W×80
+H×W×4
+H×W×C
+Classification
+supervision
+Localization
+supervision
+Classification
+supervision
+Localization
+supervision
+Task-
+alignment
+H×W×C
+H×W×80
+Conv
+H×W×C
+H×W×4
+Conv
+Conv ×4
+Conv ×4
+H×W×C
+fpnX
+Transfer
+Transfer
+H×W×80
+H×W×4
+TAP
+Conv ×N
+TAP
+H×W×80
+H×W×4
+H×W×C
+H×W×C
+Cat
+GAP
+Fc
+Sigmoid
+Cat
+Conv A
+Cat & Conv
+（Sigmoid）
+Cat
+GAP
+Fc
+Sigmoid
+Cat
+Conv
+H×W×C
+H×W×C
+H×W×C
+A
+H×W×C
+H×W×C
+Cat & Conv
+（Sigmoid）
+Layer attention
+Task-aware prediction
+H×W×80
+/4
+H×W×80
+/4
+H×W×1
+/8
+H×W×C
+H×W×C
+Prediction alignment
+Cat
+ GAP
+Fc
+A
+Cat & Conv 
+（Sigmoid）
+Layer attention
+H×W×80
+/4
+H×W×80
+/4
+H×W×C
+H×W×C
+H×W×1
+/8
+: Element-wise product
+ A : Element-wise product for classification
+Spatial offset for localization 
+Cat & Conv
+(Sigmoid)
+Classification
+supervision
+Localization
+supervision
+Classification
+supervision
+Localization
+supervision
+Task-
+alignment
+Xfpn
+Xcls
+Xreg
+P
+B
+Xfpn
+P
+B
+Xinter
+1∼N Xtask
+1∼N P align/Balign
+M/σ
+Sigmoid 
+xinter
+w
+Ztask(P/B) (c) Task-aligned predictor (TAP)
+Figure 3. Comparison between the conventional parallel head and the proposed T-Head.
+design, the task-interactive features inevitably introduce a
+certain level of feature conﬂicts between two different tasks,
+which have also been discussed in [26, 28]. Intuitively, the
+tasks of object classiﬁcation and localization have different
+targets, and thus focus on different types of features ( e.g.,
+different levels or receptive ﬁelds). Consequently, we pro-
+pose a layer attention mechanism to encourage task decom-
+position by dynamically computing such task-speciﬁc fea-
+tures at the layer level. As shown in Figure 3(c), the task-
+speciﬁc features are computed separately for each task of
+classiﬁcation or localization:
+Xtask
+k = wk·Xinter
+k ,∀k∈{ 1, 2,...,N}, (2)
+where wk is the k-th element of the learned layer atten-
+tion w∈ RN . w is computed from the cross-layer task-
+interactive features, and is able to capture the dependencies
+between layers:
+w =σ(fc 2(δ(fc 1(xinter)))), (3)
+where fc 1 and fc 2 refer to two fully-connected layers. σ
+is a sigmoid function, and xinter is obtained by applying
+an average pooling to Xinter which are the concatenated
+features of Xinter
+k . Finally, the results of classiﬁcation or
+localization are predicted from eachXtask:
+Ztask =conv2(δ(conv1(Xtask))), (4)
+where Xtask is the concatenated features of Xtask
+k , and
+conv1 is a 1×1 conv layer for dimension reduction. Ztask
+is then converted into dense classiﬁcation scores P ∈
+RH×W ×80 using sigmoid function, or object bounding
+boxes B ∈ RH×W ×4 with distance-to-bbox conversion
+as applied in [27, 31].
+Prediction alignment. At the prediction step, we further
+align the two tasks explicitly by adjusting the spatial dis-
+tributions of the two predictions: P andB. Different from
+the previous works using a centerness branch [27] or an IoU
+branch [9] which can only adjust the classiﬁcation predic-
+tion based on either classiﬁcation features or localization
+features, we align the two predictions by considering both
+tasks jointly using the computed task-interactive features.
+Notably, we perform the alignment method separately on
+the two tasks. As shown in Figure 3(c), we use a spatial
+probability mapM∈ RH×W ×1 to adjust the classiﬁcation
+prediction:
+Palign =
+√
+P×M, (5)
+whereM is computed from the interactive features, allow-
+ing it to learn a degree of consistency between the two tasks
+at each spatial location.
+Meanwhile, to make an alignment on localization pre-
+diction, we further learn spatial offset mapsO∈ RH×W ×8
+from the interactive features, which are used to adjust the
+predicted bounding box at each location. Speciﬁcally, the
+learned spatial offset enables the most aligned anchor point
+to identify the best boundary predictions around it:
+Balign(i,j,c) =B(i+O(i,j,2×c),j +O(i,j,2×c+ 1),c), (6)
+where an index (i,j,c ) denotes the (i,j )-th spatial location
+at thec-th channel in a tensor. Eq.(6) is implemented by bi-
+linear interpolation, and its computational overhead is neg-
+ligible due to the very small channel dimension ofB. Note-
+worthily, offsets are learned independently for each chan-
+nel, which means each boundary of the object has its own
+learned offset. This allows for a more accurate prediction of
+the four boundaries because each of them can individually
+learn from the most precise anchor point near it. Therefore,
+our method not only aligns the two tasks, but also improves
+the localization accuracy by identifying a precise anchor
+point for each side.
+The alignment mapsM andO are learned automatically
+from the stack of interactive features:
+M =σ(conv2(δ(conv1(Xinter)))) (7)
+O =conv4(δ(conv3(Xinter))) (8)
+whereconv1 andconv3 are two 1×1 conv layers for dimen-
+sion reduction. The learning of M andO is performed by
+using the proposed Task Alignment Learning (TAL) which
+
+=== PAGE 5 ===
+will be described next. Notice that our T-head is an inde-
+pendent module and can work well without TAL. It can be
+readily applied to various one-stage object detectors in a
+plug-and-play manner to improve detection performance.
+3.2. Task Alignment Learning
+We further introduce a Task Alignment Learning (TAL)
+that further guides our T-head to make task-aligned predic-
+tions. TAL differs from previous methods [1, 8, 9, 12, 14,
+29, 32] in two aspects. First, from the task-alignment point
+of view, it dynamically selects high-quality anchors based
+on a designed metric. Second, it considers both anchor
+assignment and weighting simultaneously. It comprises a
+sample assignment strategy and new losses designed specif-
+ically for aligning the two tasks.
+3.2.1 Task-aligned Sample Assignment
+To cope with NMS, the anchor assignment for a training in-
+stance should satisfy the following rules: (1) a well-aligned
+anchor should be able to predict a high classiﬁcation score
+with a precise localization jointly; (2) a misaligned anchor
+should have a low classiﬁcation score and be suppressed
+subsequently. With the two objectives, we design a new an-
+chor alignment metric to explicitly measure the degree of
+task-alignment at the anchor level. The alignment metric is
+integrated into the sample assignment and loss functions to
+dynamically reﬁne the predictions at each anchor.
+Anchor alignment metric. Considering that a classiﬁca-
+tion score and an IoU between the predicted bounding box
+and the ground truth indicate the quality of the predictions
+by the two tasks, we measure the degree of task-alignment
+using a high-order combination of the classiﬁcation score
+and the IoU. To be speciﬁc, we design the following metric
+to compute anchor-level alignment for each instance:
+t =sα×uβ, (9)
+where s and u denote a classiﬁcation score and an IoU
+value, respectively. α andβ are used to control the impact
+of the two tasks in the anchor alignment metric. Notably,
+t plays a critical role in the joint optimization of the two
+tasks towards the goal of task-alignment. It encourages the
+networks to dynamically focus on high-quality ( i.e., task-
+aligned) anchors from the perspective of joint optimization.
+Training sample assignment. As discussed in [31, 32],
+training sample assignment is crucial to the training of ob-
+ject detectors. To improve the alignment of two tasks, we
+focus on the task-aligned anchors, and adopt a simple as-
+signment rule to select the training samples: for each in-
+stance, we select m anchors having the largest t values as
+positive samples, while using the remaining anchors as neg-
+ative ones. Again, the training is performed by comput-
+ing new loss functions designed speciﬁcally for aligning the
+tasks of classiﬁcation and localization.
+3.2.2 Task-aligned Loss
+Classiﬁcation objective. To explicitly increase classiﬁca-
+tion scores for the aligned anchors, and at the same time, re-
+duce the scores of the misaligned ones ( i.e., having a small
+t), we use t to replace the binary label of a positive anchor
+during training. However, we found that the network can-
+not converge when the labels (i.e.,t) of the positive anchors
+become small with the increase of α andβ. Therefore, we
+use a normalized t, namely ˆt, to replace the binary label of
+the positive anchor, where ˆt is normalized by the follow-
+ing two properties: (1) to ensure effective learning of hard
+instances (which usually have a small t for all correspond-
+ing positive anchors); (2) to preserve the rank between in-
+stances based on the precision of the predicted bounding
+boxes. Thus, we adopt a simple instance-level normaliza-
+tion to adjust the scale ofˆt: the maximum of ˆt is equal to the
+largest IoU value (u) within each instance. Then Binary
+CrossEntropy (BCE ) computed on the positive anchors
+for the classiﬁcation task can be rewritten as,
+Lclspos =
+Npos∑
+i=1
+BCE (si, ˆti), (10)
+wherei denotes thei-th anchor from the Npos positive an-
+chors corresponding to one instance. Following [16], we
+employ a focal loss for classiﬁcation to mitigate the im-
+balance between the negative and positive samples during
+training. The focal loss computed on the positive anchors
+can be reformulated by Eq.(10), and the ﬁnal loss function
+for the classiﬁcation task is deﬁned as follows:
+Lcls=
+Npos∑
+i=1
+⏐⏐ˆti−si
+⏐⏐γBCE(si,ˆti) +
+Nneg∑
+j=1
+sγ
+j BCE(sj,0), (11)
+where j denotes the j-th anchor from the Nneg negative
+anchors, andγ is the focusing parameter [16].
+Localization objective. A bounding box predicted by a
+well-aligned anchor (i.e., having a larget) usually has both
+a large classiﬁcation score with a precise localization, and
+such a bounding box is more likely to be preserved dur-
+ing NMS. In addition, t can be applied for selecting high-
+quality bounding boxes by weighting the loss more care-
+fully to improve the training. As discussed in [21], learn-
+ing from high-quality bounding boxes is beneﬁcial to the
+performance of a model, while the low-quality ones often
+have a negative impact on the training by producing a large
+amount of less informative and redundant signals to update
+the model. In our case, we apply the t value for measuring
+the quality of a bounding box. Thus, we improve the task
+alignment and regression precision by focusing on the well-
+aligned anchors (with a large t), while reducing the impact
+of the misaligned anchors (with a small t) during bounding
+
+=== PAGE 6 ===
+Method Head Head/full Params (M) Head/full FLOPs (G) AP AP 50 AP75
+FoveaBox [10] Parallel head 4.92/36.20 104.87/206.28 37.3 56.2 39.7
+T-head 4.82/36.10 100.79/202.20 38.0 56.8 40.5
+FCOS w/ imprv [27] Parallel head 4.92/32.02 104.91/200.50 38.6 57.2 41.7
+T-head 4.82/31.92 100.79/196.38 40.5 58.5 43.8
+ATSS (anchor-based) [31] Parallel head 4.92/32.07 104.87/205.21 39.3 57.5 42.8
+T-head 4.82/31.98 100.79/201.13 41.1 58.6 44.5
+ATSS (anchor-free) [31] Parallel head 4.92/32.07 104.87/205.21 39.2 57.4 42.2
+T-head 4.82/31.98 100.79/201.13 41.1 58.4 44.5
+Table 1. Comparisons between different head structures in various detectors. FLOPs are measured on the input image size of 1280×800.
+box regression. Similar to the classiﬁcation objective, we
+re-weight the loss of bounding box regression computed for
+each anchor based on ˆt, and aGIoU loss (LGIoU ) [24] can
+be reformulated as follows:
+Lreg =
+Npos∑
+i=1
+ˆtiLGIoU (bi, ¯bi), (12)
+whereb and ¯b denote the predicted bounding boxes and the
+corresponding ground-truth boxes. The total training loss
+for TAL is the sum ofLcls andLreg.
+4. Experiments and Results
+Dataset and evaluation protocol. All experiments are
+implemented on the large-scale detection benchmark MS-
+COCO 2017 [17]. Following the standard practice [15, 16],
+we use the trainval135k set (115K images) for training
+andminival set (5K images) as validation for our ablation
+study. We report our main results on the test-dev set for
+comparison with the state-of-the-art detectors. The perfor-
+mance is measured by COCO Average Precision (AP) [17].
+Implementation details. As with most one-stage de-
+tectors [10, 16, 27], we use the detection pipeline of
+‘backbone-FPN-head’, with different backbones includ-
+ing ResNet-50, ResNet-101 and ResNeXt-101-64×4d pre-
+trained on ImageNet [2]. Similar to ATSS [31], TOOD tiles
+one anchor per location. Unless speciﬁed, we report exper-
+imental results of an anchor-free TOOD (an anchor-based
+TOOD can achieve a similar performance as shown in Ta-
+ble 3). The number of interactive layers N is set as 6 to
+make T-head have a similar number of parameters as the
+conventional parallel head, and the focusing parameterγ is
+set to 2 as used in [14, 16]. More implementation and train-
+ing details are presented in Supplementary Material (SM).
+4.1. Ablation Study
+For an ablation study, we use the ResNet-50 backbone
+and train the model for 12 epochs unless speciﬁed. The
+performances are reported on COCOminival set.
+Anchor assignment Pos/neg Weight AP AP 50 AP75
+IoU-based [16] ﬁxed ﬁxed 36.5 55.5 38.7
+Center sampling [10] ﬁxed ﬁxed 37.3 56.2 39.3
+Centerness [27] ﬁxed ﬁxed 37.4 56.1 40.3
+ATSS [31] ﬁxed ﬁxed 39.2 57.4 42.2
+PISA [1] ﬁxed ada 37.3 56.5 40.3
+NoisyAnchor [12] ﬁxed ada 38.0 56.9 40.6
+ATSS+QFL [14] ﬁxed ada 39.9 58.5 43.0
+FreeAnchor [32] ada ﬁxed 39.1 58.2 42.1
+MAL [8] ada ﬁxed 39.2 58.0 42.3
+PAA [9]∗ ada ﬁxed 39.9 59.1 42.8
+PAA+IoU pred. [9]∗ ada ﬁxed 40.9 59.4 43.9
+TAL ada ada 40.3 58.5 43.8
+TAL∗ ada ada 40.9 59.3 44.3
+TAL + TAP∗ ada ada 42.5 60.3 46.4
+Table 2. Comparisons between different schemes of training sam-
+ple assignments. ‘Pos/neg’: positive/negative anchor assignment.
+‘Weight’: anchor weight assignment. ‘ﬁxed’: ﬁxed assignment.
+‘ada’: adaptive assignment. Here TAP aligns the predictions based
+on both classiﬁcation and localization features from the last head
+tower.∗ indicates the model is trained for 18 epochs.
+On head structures. We compare our T-head with the
+conventional parallel head in Table 1. It can be adopted
+in various one-stage detectors in a plug-and-play manner,
+and consistently outperforms the conventional head by 0.7
+to 1.9 AP, with fewer parameters and FLOPs. This vali-
+dates the effectiveness of our design, and demonstrates that
+T-head can work more efﬁciently with higher performance,
+by introducing task interaction and prediction alignment.
+On sample assignments. To demonstrate the effective-
+ness of TAL, we compare TAL with other learning meth-
+ods using different sample assignment methods, as shown
+in Table 2. Training sample assignment can be divided into
+the ﬁxed assignment and adaptive assignment according to
+whether it is a learning-based method. Different from the
+existing assignment methods, TAL adaptively assigns both
+positive and negative anchors, and at the same time, com-
+putes the weights of positive anchors more carefully, result-
+ing in higher performance. To compare with PAA (+IoU
+pred.) which has an additional prediction structure, we inte-
+
+=== PAGE 7 ===
+Parallel head+
+ATSS
+T-head+
+ATSS
+Parallel head+
+TAL
+T-head+
+TAL
+Figure 4. Illustration of several detection results predicted from the best anchors for classiﬁcation (in red) and localization (in green). The
+illustrated patches and bounding boxes correspond to that in Figure 1.
+grate TAP into TAL, resulting in a higher AP of 42.5. More
+discussions on the differences between TAL and previous
+methods are presented in SM.
+TOOD. We evaluate the performance of the complete
+TOOD (T-head + TAL). As shown in Table 3, the anchor-
+free TOOD and anchor-based TOOD can achieve similar
+performance, i.e., 42.5 AP and 42.4 AP. Compared with
+ATSS, TOOD improves the performance of ∼3.2 AP. To
+be more speciﬁc, the improvements on AP 75 are signiﬁ-
+cant, which yields ∼3.8 points higher AP in TOOD. This
+validates that aligning the two tasks can improve the de-
+tection performance. Notably, TOOD brings a higher im-
+provement (+3.3 AP) than the sum of the individual im-
+provements by T-head + ATSS (+1.9 AP) and Parallel head
++ TAL (+1.1 AP), as shown in Table 6. It suggests that T-
+head and TAL can compensate strongly to each other.
+On hyper-parameters. We ﬁrst investigate the perfor-
+mance using different values of α and β for TAL, which
+control the inﬂuence of classiﬁcation conﬁdence and local-
+ization precision on anchor alignment metric viat. Through
+a coarse search shown in Table 4, we adopt α = 1 and
+β = 6 for our TAL. We then conduct several experiments
+to study the robustness of the hyper-parameter m, which is
+used to select positive anchors. We use different values of
+m in [5, 9, 13, 17, 21], and achieve results in a range of
+42.0∼42.5 AP, which suggests the performance is insensi-
+tive tom. Thus, we adoptm = 13 in all our experiments.
+4.2. Comparison with the State-of-the-Art
+We compare our TOOD with other one-stage detectors
+on the COCO test-dev in Table 5. The models are trained
+with scale jitter (480-800) and for 2× learning schedule (24
+Type Method AP AP 50 AP75
+Anchor-free ATSS [31] 39.2 57.4 42.2
+TOOD 42.5 59.8 46.4
+Anchor-based ATSS [31] 39.3 57.5 42.8
+TOOD 42.4 59.8 46.1
+Table 3. Performance of the complete TOOD (T-head + TAL).
+α β AP AP 50 AP75
+0.5 2 42.4 60.0 46.1
+0.5 4 42.3 59.3 45.8
+0.5 6 41.7 58.1 45.1
+1.0 6 42.5 59.8 46.4
+1.0 8 42.2 59.0 46.0
+1.5 8 41.5 59.4 44.7
+Table 4. Analysis of different hyper-parameters fort.
+epochs) as the most current method [14]. For a fair com-
+parison, we report results of single model and single test-
+ing scale. With ResNet-101 and ResNeXt-101-64 ×4d,
+TOOD achieves 46.7 AP and 48.3 AP, outperforming the
+most current one-stage detectors such as ATSS [31] (by∼3
+AP) and GFL [14] (by∼2 AP). Furthermore, with ResNet-
+101-DCN and ResNeXt-101-64×4d-DCN, TOOD brings a
+larger improvement, comparing to other detectors. For ex-
+ample, it obtains an improvement of 2.8 AP (48.3 →51.1
+AP) while ATSS has a 2.1 AP (45.6 →47.7 AP) improve-
+ment. This validates that TOOD can cooperate with De-
+formable Convolutional Networks (DCN) [37] more efﬁ-
+ciently, by adaptively adjusting the spatial distribution of
+the learned features for task-alignment. Note that in TOOD,
+DCN is applied to the ﬁrst two layers in the head tower. As
+shown in Table 5, TOOD achieves a new state-of-the-art re-
+sult with 51.1 AP in one-stage object detection.
+
+=== PAGE 8 ===
+Method Reference Backbone AP AP 50 AP75 APS APM APL
+RetinaNet [16] ICCV17 ResNet-101 39.1 59.1 42.3 21.9 42.7 50.2
+FoveaBox [10] - ResNet-101 40.6 60.1 43.5 23.3 45.2 54.5
+FCOS w/ imprv [27] ICCV19 ResNet-101 43.0 61.7 46.3 26.0 46.8 55.0
+Noisy Anchor [12] CVPR20 ResNet-101 41.8 61.1 44.9 23.4 44.9 52.9
+MAL [8] CVPR20 ResNet-101 43.6 62.8 47.1 25.0 46.9 55.8
+SAPD [35] CVPR20 ResNet-101 43.5 63.6 46.5 24.9 46.8 54.6
+ATSS [31] CVPR20 ResNet-101 43.6 62.1 47.4 26.1 47.0 53.6
+PAA [9] ECCV20 ResNet-101 44.8 63.3 48.7 26.5 48.8 56.3
+GFL [14] NeurIPS20 ResNet-101 45.0 63.7 48.9 27.2 48.8 54.5
+TOOD (ours) - ResNet-101 46.7 64.6 50.7 28.9 49.6 57.0
+SAPD [35] CVPR20 ResNeXt-101-64 ×4d 45.4 65.6 48.9 27.3 48.7 56.8
+ATSS [31] CVPR20 ResNeXt-101-64 ×4d 45.6 64.6 49.7 28.5 48.9 55.6
+PAA [9] ECCV20 ResNeXt-101-64 ×4d 46.6 65.6 50.8 28.8 50.4 57.9
+GFL [14] NeurIPS20 ResNeXt-101-32 ×4d 46.0 65.1 50.1 28.2 49.6 56.0
+TOOD (ours) - ResNeXt-101-64 ×4d 48.3 66.5 52.4 30.7 51.3 58.6
+SAPD [35] CVPR20 ResNet-101-DCN 46.0 65.9 49.6 26.3 49.2 59.6
+ATSS [31] CVPR20 ResNet-101-DCN 46.3 64.7 50.4 27.7 49.8 58.4
+PAA [9] ECCV20 ResNet-101-DCN 47.4 65.7 51.6 27.9 51.3 60.6
+GFL [14] NeurIPS20 ResNet-101-DCN 47.3 66.3 51.4 28.0 51.1 59.2
+TOOD (ours) - ResNet-101-DCN 49.6 67.4 54.1 30.5 52.7 62.4
+SAPD [35] CVPR20 ResNeXt-101-64 ×4d-DCN 47.4 67.4 51.1 28.1 50.3 61.5
+ATSS [31] CVPR20 ResNeXt-101-64 ×4d-DCN 47.7 66.5 51.9 29.7 50.8 59.4
+PAA [9] ECCV20 ResNeXt-101-64 ×4d-DCN 49.0 67.8 53.3 30.2 52.8 62.2
+GFL [14] NeurIPS20 ResNeXt-101-32 ×4d-DCN 48.2 67.4 52.6 29.2 51.7 60.2
+GFLV2 [13]† CVPR21 ResNeXt-101-32 ×4d-DCN 49.0 67.6 53.5 29.7 52.4 61.4
+OTA [5]† CVPR21 ResNeXt-101-64 ×4d-DCN 49.2 67.6 53.5 30.0 52.5 62.3
+IQDet [19]† CVPR21 ResNeXt-101-64 ×4d-DCN 49.0 67.5 53.1 30.0 52.3 62.0
+VFNet [30]† CVPR21 ResNeXt-101-64 ×4d-DCN 49.9 68.5 54.3 30.7 53.1 62.8
+TOOD (ours) - ResNeXt-101-64 ×4d-DCN 51.1 69.4 55.5 31.9 54.1 63.7
+Table 5. Detection results on the COCOtest-dev set.† indicates the concurrent work.
+Method AP PCC (top-50) IoU (top-10) #Correct boxes #Redundant boxes #Error boxes
+Parallel head + ATSS [31] 39.2 0.408 0.637 30,261 25,428 92,677
+T-head + ATSS [31] 41.1 0.440 0.644 30,601 21,838 79,189
+Parallel head + TAL 40.3 0.415 0.643 30,506 15,927 72,320
+T-head + TAL 42.5 0.452 0.661 30,734 15,242 69,013
+Table 6. Analysis for task-alignment of TOOD with backbone ResNet-50.
+4.3. Quantitative Analysis for Task-alignment
+We quantitatively analyze the effect of the proposed
+methods on the alignment of two tasks. Without NMS, we
+calculate a Pearson Correlation Coefﬁcient (PCC) between
+the rankings [20] of classiﬁcation and localization by se-
+lecting top-50 conﬁdent predictions for each instance, and
+a mean IoU of the top-10 conﬁdent predictions, averaged
+over instances. As shown in Table 6, the mean PCC and
+IoU are improved by using T-head and TAL. Meanwhile,
+with NMS, the number of the correct boxes (IoU>=0.5) in-
+creases while those of the redundant (IoU>=0.5) and error
+boxes (0.1<IoU<0.5) decrease substantially when applying
+T-head and TAL. The statistics suggest that TOOD is more
+compatible with NMS, by preserving more correct boxes,
+and suppressing the redundant/error boxes signiﬁcantly. At
+last, detection performance is improved by 3.3 AP in total.
+Several detection examples are illustrated in Figure 4.
+5. Conclusion
+In this work, we illustrate the misalignment between
+classiﬁcation and localization in the existing one-stage de-
+tectors, and propose TOOD to align the two tasks. In par-
+ticular, we design a task-aligned head to enhance the inter-
+action of two tasks, and then improve its ability of learning
+the alignment. Furthermore, a new task-aligned learning
+strategy is developed by introducing a sample assignment
+scheme and new loss functions, both of which are computed
+via an anchor alignment metric. With these improvements,
+TOOD achieved a 51.1 AP on MS-COCO, surpassing the
+state-of-the-art one-stage detectors by a large margin.
+
+=== PAGE 9 ===
+References
+[1] Yuhang Cao, Kai Chen, Chen Change Loy, and Dahua Lin.
+Prime sample attention in object detection. In Proceedings
+of the IEEE Conference on Computer Vision and Pattern
+Recognition, pages 11583–11591, 2020.
+[2] Jia Deng, Wei Dong, Richard Socher, Li-Jia Li, Kai Li,
+and Li Fei-Fei. Imagenet: A large-scale hierarchical image
+database. In Proceedings of the IEEE Conference on Com-
+puter Vision and Pattern Recognition, pages 248–255, 2009.
+[3] Kaiwen Duan, Song Bai, Lingxi Xie, Honggang Qi, Qing-
+ming Huang, and Qi Tian. Centernet: Keypoint triplets for
+object detection. In Proceedings of the IEEE International
+Conference on Computer Vision, pages 6569–6578, 2019.
+[4] Chengjian Feng, Yujie Zhong, and Weilin Huang. Explor-
+ing classiﬁcation equilibrium in long-tailed object detection.
+arXiv preprint arXiv:2108.07507, 2021.
+[5] Zheng Ge, Songtao Liu, Zeming Li, Osamu Yoshie, and Jian
+Sun. Ota: Optimal transport assignment for object detection.
+In Proceedings of the IEEE Conference on Computer Vision
+and Pattern Recognition, pages 303–312, 2021.
+[6] Ross Girshick, Jeff Donahue, Trevor Darrell, and Jitendra
+Malik. Rich feature hierarchies for accurate object detection
+and semantic segmentation. InProceedings of the IEEE Con-
+ference on Computer Vision and Pattern Recognition, pages
+580–587, 2014.
+[7] Borui Jiang, Ruixuan Luo, Jiayuan Mao, Tete Xiao, and Yun-
+ing Jiang. Acquisition of localization conﬁdence for accurate
+object detection. In Proceedings of the European Conference
+on Computer Vision, pages 784–799, 2018.
+[8] Wei Ke, Tianliang Zhang, Zeyi Huang, Qixiang Ye,
+Jianzhuang Liu, and Dong Huang. Multiple anchor learning
+for visual object detection. In Proceedings of the IEEE Con-
+ference on Computer Vision and Pattern Recognition, pages
+10206–10215, 2020.
+[9] Kang Kim and Hee Seok Lee. Probabilistic anchor assign-
+ment with iou prediction for object detection. InProceedings
+of the European Conference on Computer Vision, 2020.
+[10] Tao Kong, Fuchun Sun, Huaping Liu, Yuning Jiang, Lei Li,
+and Jianbo Shi. Foveabox: Beyound anchor-based object de-
+tection. IEEE Transactions on Image Processing, 29:7389–
+7398, 2020.
+[11] Hei Law and Jia Deng. Cornernet: Detecting objects as
+paired keypoints. In Proceedings of the European Confer-
+ence on Computer Vision, pages 734–750, 2018.
+[12] Hengduo Li, Zuxuan Wu, Chen Zhu, Caiming Xiong,
+Richard Socher, and Larry S Davis. Learning from noisy
+anchors for one-stage object detection. In Proceedings of the
+IEEE Conference on Computer Vision and Pattern Recogni-
+tion, pages 10588–10597, 2020.
+[13] Xiang Li, Wenhai Wang, Xiaolin Hu, Jun Li, Jinhui Tang,
+and Jian Yang. Generalized focal loss v2: Learning reli-
+able localization quality estimation for dense object detec-
+tion. In Proceedings of the IEEE Conference on Computer
+Vision and Pattern Recognition, pages 11632–11641, 2021.
+[14] Xiang Li, Wenhai Wang, Lijun Wu, Shuo Chen, Xiaolin Hu,
+Jun Li, Jinhui Tang, and Jian Yang. Generalized focal loss:
+Learning qualiﬁed and distributed bounding boxes for dense
+object detection. In Advances in Neural Information Pro-
+cessing Systems, 2020.
+[15] Tsung-Yi Lin, Piotr Doll ´ar, Ross Girshick, Kaiming He,
+Bharath Hariharan, and Serge Belongie. Feature pyramid
+networks for object detection. In Proceedings of the IEEE
+Conference on Computer Vision and Pattern Recognition ,
+pages 2117–2125, 2017.
+[16] Tsung-Yi Lin, Priya Goyal, Ross Girshick, Kaiming He, and
+Piotr Doll´ar. Focal loss for dense object detection. In Pro-
+ceedings of the IEEE International Conference on Computer
+Vision, pages 2980–2988, 2017.
+[17] Tsung-Yi Lin, Michael Maire, Serge Belongie, James Hays,
+Pietro Perona, Deva Ramanan, Piotr Doll´ar, and C Lawrence
+Zitnick. Microsoft coco: Common objects in context. In
+Proceedings of the European Conference on Computer Vi-
+sion, pages 740–755, 2014.
+[18] Wei Liu, Dragomir Anguelov, Dumitru Erhan, Christian
+Szegedy, Scott Reed, Cheng-Yang Fu, and Alexander C
+Berg. Ssd: Single shot multibox detector. In Proceedings
+of the European Conference on Computer Vision, pages 21–
+37, 2016.
+[19] Yuchen Ma, Songtao Liu, Zeming Li, and Jian Sun. Iqdet:
+Instance-wise quality distribution sampling for object detec-
+tion. In Proceedings of the IEEE Conference on Computer
+Vision and Pattern Recognition, pages 1717–1725, 2021.
+[20] Kemal Oksuz, Baris Can Cam, Emre Akbas, and Sinan
+Kalkan. A ranking-based, balanced loss function unifying
+classiﬁcation and localisation in object detection. In Ad-
+vances in Neural Information Processing Systems, 2020.
+[21] Jiangmiao Pang, Kai Chen, Jianping Shi, Huajun Feng,
+Wanli Ouyang, and Dahua Lin. Libra r-cnn: Towards bal-
+anced learning for object detection. In Proceedings of the
+IEEE Conference on Computer Vision and Pattern Recogni-
+tion, pages 821–830, 2019.
+[22] Joseph Redmon, Santosh Divvala, Ross Girshick, and Ali
+Farhadi. You only look once: Uniﬁed, real-time object de-
+tection. In Proceedings of the IEEE Conference on Computer
+Vision and Pattern Recognition, pages 779–788, 2016.
+[23] Shaoqing Ren, Kaiming He, Ross Girshick, and Jian Sun.
+Faster r-cnn: Towards real-time object detection with region
+proposal networks. In Advances in Neural Information Pro-
+cessing Systems, pages 91–99, 2015.
+[24] Hamid Rezatoﬁghi, Nathan Tsoi, JunYoung Gwak, Amir
+Sadeghian, Ian Reid, and Silvio Savarese. Generalized in-
+tersection over union: A metric and a loss for bounding box
+regression. In Proceedings of the IEEE Conference on Com-
+puter Vision and Pattern Recognition, pages 658–666, 2019.
+[25] Pierre Sermanet, David Eigen, Xiang Zhang, Micha ¨el Math-
+ieu, Rob Fergus, and Yann LeCun. Overfeat: Integrated
+recognition, localization and detection using convolutional
+networks. arXiv preprint arXiv:1312.6229, 2013.
+[26] Guanglu Song, Yu Liu, and Xiaogang Wang. Revisiting the
+sibling head in object detector. In Proceedings of the IEEE
+Conference on Computer Vision and Pattern Recognition ,
+pages 11563–11572, 2020.
+[27] Zhi Tian, Chunhua Shen, Hao Chen, and Tong He. Fcos:
+Fully convolutional one-stage object detection. In Proceed-
+
+=== PAGE 10 ===
+ings of the IEEE International Conference on Computer Vi-
+sion, pages 9627–9636, 2019.
+[28] Yue Wu, Yinpeng Chen, Lu Yuan, Zicheng Liu, Lijuan
+Wang, Hongzhi Li, and Yun Fu. Double-head rcnn: Rethink-
+ing classiﬁcation and localization for object detection.arXiv
+preprint arXiv:1904.06493, 2, 2019.
+[29] Heng Zhang, Elisa Fromont, S ´ebastien Lef `evre, and Bruno
+Avignon. Localize to classify and classify to localize: Mu-
+tual guidance in object detection. InProceedings of the Asian
+Conference on Computer Vision, 2020.
+[30] Haoyang Zhang, Ying Wang, Feras Dayoub, and Niko Sun-
+derhauf. Varifocalnet: An iou-aware dense object detector.
+In Proceedings of the IEEE Conference on Computer Vision
+and Pattern Recognition, pages 8514–8523, 2021.
+[31] Shifeng Zhang, Cheng Chi, Yongqiang Yao, Zhen Lei, and
+Stan Z Li. Bridging the gap between anchor-based and
+anchor-free detection via adaptive training sample selection.
+In Proceedings of the IEEE Conference on Computer Vision
+and Pattern Recognition, pages 9759–9768, 2020.
+[32] Xiaosong Zhang, Fang Wan, Chang Liu, Rongrong Ji, and
+Qixiang Ye. Freeanchor: Learning to match anchors for vi-
+sual object detection. In Advances in Neural Information
+Processing Systems, pages 147–155, 2019.
+[33] Yujie Zhong, Zelu Deng, Sheng Guo, Matthew R Scott, and
+Weilin Huang. Representation sharing for fast object detec-
+tor search and beyond. In Proceedings of the European Con-
+ference on Computer Vision, pages 471–487, 2020.
+[34] Xingyi Zhou, Dequan Wang, and Philipp Kr ¨ahenb¨uhl. Ob-
+jects as points. arXiv preprint arXiv:1904.07850, 2019.
+[35] Chenchen Zhu, Fangyi Chen, Zhiqiang Shen, and Marios
+Savvides. Soft anchor-point object detection. In Proceed-
+ings of the European Conference on Computer Vision, 2020.
+[36] Chenchen Zhu, Yihui He, and Marios Savvides. Feature se-
+lective anchor-free module for single-shot object detection.
+In Proceedings of the IEEE Conference on Computer Vision
+and Pattern Recognition, pages 840–849, 2019.
+[37] Xizhou Zhu, Han Hu, Stephen Lin, and Jifeng Dai. De-
+formable convnets v2: More deformable, better results. In
+Proceedings of the IEEE Conference on Computer Vision
+and Pattern Recognition, pages 9308–9316, 2019.
+
+=== PAGE 11 ===
+– Supplementary material –
+TOOD: Task-aligned One-stage Object Detection
+1. Implementation details
+In this section, we describe the processes of network op-
+timization and inference in more detail.
+Optimization. Our implementations are based on the
+MMDetection toolbox [2] and Pytorch [7]. The models
+with backbone ResNet-50 are trained with 4 GPUs and a
+mini-batch of 4 per GPU, while the others are trained with 8
+GPUs and a mini-batch of 2 per GPU. We use the Stochastic
+Gradient Descent (SGD) optimizer with a weight decay of
+0.0001 and a momentum of 0.9. Unless speciﬁc, the mod-
+els are trained for 12 epochs (1× learning schedule) and the
+initial learning rate is set to 0.01 and then reduced by a fac-
+tor of 10 at the 8-th epoch and the 11-th epoch. The input
+images are resized to have a shorter side of 800 while the
+longer side is kept less than 1333. Speciﬁcally, if an anchor
+is assigned to the positive samples of more than one object,
+we only assign this anchor to the object with the minimal
+area. For the experiments compared with the state-of-the-
+art detectors, we train the models with scale jitter and for
+24 epochs (2× learning schedule) as [6].
+Inference. The inference phase is the same as that of
+ATSS [9]. Namely, we resize the input image in the same
+way as the training phase (i.e., the shorter side is resized to
+800 while the longer side is kept less than 1333), and then
+forward it through the detection network to obtain the pre-
+dicted bounding boxes with a predicted class. Afterward,
+we use a conﬁdence threshold of 0.05 to ﬁlter out the predic-
+tions with low conﬁdence, and then select the top 1000 scor-
+ing boxes from each feature pyramid. Finally, we adopt the
+Non-Maximum Suppression (NMS) with the IoU threshold
+of 0.6 per class to generate the ﬁnal top 100 conﬁdent pre-
+dictions per image.
+2. Discussion
+Differences between TAL and previous works. As dis-
+cussed, the proposed TAL is a learning-based approach for
+anchor selection and weighting. Here we discuss the dif-
+ferences between our TAL and several recent methods in
+terms of anchor selection and weighting. As mentioned in
+the paper, the adaptive methods can be divided into two
+categories: (1) positive/negative anchor collection such as
+FreeAnchor [10], MAL [3], PAA [4] and Mutual Guid-
+ance [8]; (2) anchor weighting such as PISA [1], NoisyAn-
+chor [5] and GFL [6] ( e.g., by modifying the loss func-
+tions). These methods adaptively perform either anchor col-
+lection or anchor weighting. We propose TAL that consid-
+ers both aspects at the same time, allowing it to measure in-
+formative or high-quality anchors more accurately. Specif-
+ically, TAL is designed to dynamically collect the posi-
+tive/negative anchors from a task-alignment point of view,
+and further weight the positive anchors carefully, according
+to the degree of task-alignment at each location. Compared
+with the current assignment methods such as ATSS [6] and
+PAA [4] which ﬁrst select a set of candidate anchors based
+on the IoU score, and then analyze the distribution charac-
+teristics of the anchors to assign samples, the design of TAL
+is simpler yet more efﬁcient by directly assigning the sam-
+ples based on the proposed alignment metric. Particularly,
+recent Mutual Guidance [8] tackles the task-misalignment
+problem by assigning positive/negative anchors for one task
+according to the predeﬁned anchors and the prediction qual-
+ity on the other task. Different from Mutual Guidance, TAL
+assigns positive/negative anchors for each task based on the
+alignment between both two tasks, and is completely in-
+dependent of the predeﬁned anchors. Besides, GFL [6]
+attempted to align the tasks by replacing a binary classi-
+ﬁcation label with an IoU score, on the basis of ATSS.
+TAL is different from the GFL, by using the proposed task-
+alignment metric to design both sample assignment and an-
+chor weighting, which allows it to explicitly learn to reﬁne
+both classiﬁcation and localization in a coordinated fashion.
+References
+[1] Yuhang Cao, Kai Chen, Chen Change Loy, and Dahua Lin.
+Prime sample attention in object detection. In Proceedings
+of the IEEE Conference on Computer Vision and Pattern
+Recognition, pages 11583–11591, 2020.
+[2] Kai Chen, Jiaqi Wang, Jiangmiao Pang, Yuhang Cao, Yu
+Xiong, Xiaoxiao Li, Shuyang Sun, Wansen Feng, Ziwei Liu,
+Jiarui Xu, et al. Mmdetection: Open mmlab detection tool-
+box and benchmark. arXiv preprint arXiv:1906.07155, 2019.
+
+=== PAGE 12 ===
+[3] Wei Ke, Tianliang Zhang, Zeyi Huang, Qixiang Ye,
+Jianzhuang Liu, and Dong Huang. Multiple anchor learning
+for visual object detection. In Proceedings of the IEEE Con-
+ference on Computer Vision and Pattern Recognition , pages
+10206–10215, 2020.
+[4] Kang Kim and Hee Seok Lee. Probabilistic anchor assign-
+ment with iou prediction for object detection. InProceedings
+of the European Conference on Computer Vision , 2020.
+[5] Hengduo Li, Zuxuan Wu, Chen Zhu, Caiming Xiong,
+Richard Socher, and Larry S Davis. Learning from noisy
+anchors for one-stage object detection. In Proceedings of the
+IEEE Conference on Computer Vision and Pattern Recogni-
+tion, pages 10588–10597, 2020.
+[6] Xiang Li, Wenhai Wang, Lijun Wu, Shuo Chen, Xiaolin Hu,
+Jun Li, Jinhui Tang, and Jian Yang. Generalized focal loss:
+Learning qualiﬁed and distributed bounding boxes for dense
+object detection. In Advances in Neural Information Pro-
+cessing Systems, 2020.
+[7] Adam Paskze and Soumith Chintala. Tensors and dynamic
+neural networks in python with strong gpu acceleration.
+https://github.com/pytorch, 2017.
+[8] Heng Zhang, Elisa Fromont, S ´ebastien Lef `evre, and Bruno
+Avignon. Localize to classify and classify to localize: Mu-
+tual guidance in object detection. InProceedings of the Asian
+Conference on Computer Vision, 2020.
+[9] Shifeng Zhang, Cheng Chi, Yongqiang Yao, Zhen Lei, and
+Stan Z Li. Bridging the gap between anchor-based and
+anchor-free detection via adaptive training sample selection.
+In Proceedings of the IEEE Conference on Computer Vision
+and Pattern Recognition, pages 9759–9768, 2020.
+[10] Xiaosong Zhang, Fang Wan, Chang Liu, Rongrong Ji, and
+Qixiang Ye. Freeanchor: Learning to match anchors for vi-
+sual object detection. In Advances in Neural Information
+Processing Systems, pages 147–155, 2019.

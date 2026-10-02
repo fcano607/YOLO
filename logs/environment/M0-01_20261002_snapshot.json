@@ -1,0 +1,145 @@
+{
+  "checked_on": "2026-10-02",
+  "task": "M0-01",
+  "scope": "Hardware and existing Python environment inventory; basic GPU operation validation",
+  "hardware": {
+    "os": "Microsoft Windows 10 Pro",
+    "os_version": "10.0.19045",
+    "architecture": "64-bit",
+    "cpu": "Intel Core i5-14600KF",
+    "ram_gib": 31.78,
+    "gpu": "NVIDIA GeForce RTX 5060 Ti",
+    "vram_mib": 16311,
+    "driver": "576.88",
+    "nvidia_smi_cuda_supported": "12.9",
+    "compute_capability": "12.0"
+  },
+  "environment_manager": {
+    "name": "Conda",
+    "version": "24.1.2",
+    "root": "D:\\software\\anaconda",
+    "current_shell_python": "D:\\software\\anaconda\\python.exe",
+    "current_shell_python_version": "3.11.7"
+  },
+  "environments": [
+    {
+      "name": "base",
+      "prefix": "D:\\software\\anaconda",
+      "python": "3.11.7",
+      "torch": null
+    },
+    {
+      "name": "tf2",
+      "prefix": "D:\\software\\anaconda\\envs\\tf2",
+      "python": "3.9.23",
+      "torch": "2.8.0+cu129",
+      "torchvision": "0.23.0+cu129"
+    },
+    {
+      "name": "PEFT project",
+      "prefix": "E:\\秋招\\项目相关\\PEFT(Parameter-Efficient Fine-tuning)\\.conda",
+      "python": "3.11.7",
+      "torch": "2.8.0+cu128",
+      "torchvision": null
+    },
+    {
+      "name": "Intel Python",
+      "prefix": "E:\\IntelSWTools2020\\intelpython3",
+      "python": "3.7.7",
+      "packages_inspected": false
+    }
+  ],
+  "active_nvcc": {
+    "path": "D:\\software\\cuda\\computing_development\\bin\\nvcc.exe",
+    "toolkit_version": "11.2",
+    "compiler_version": "11.2.67"
+  },
+  "disk_free_gib": {
+    "C": 38.9,
+    "D": 46.4,
+    "E": 301.2
+  },
+  "python39_runtime_validation": {
+    "python": "D:\\software\\anaconda\\envs\\tf2\\python.exe",
+    "tests": {
+      "cuda_matmul": {
+        "shape": [
+          16,
+          16
+        ],
+        "finite": true,
+        "matches_cpu": true
+      },
+      "cuda_conv2d": {
+        "shape": [
+          1,
+          8,
+          64,
+          64
+        ],
+        "finite": true
+      },
+      "nms_cpu": [
+        0,
+        2
+      ],
+      "nms_cuda": [
+        0,
+        2
+      ]
+    },
+    "torch": "2.8.0+cu129",
+    "torch_cuda": "12.9",
+    "cudnn": 91002,
+    "cuda_available": true,
+    "compiled_arches": [
+      "sm_70",
+      "sm_75",
+      "sm_80",
+      "sm_86",
+      "sm_90",
+      "sm_100",
+      "sm_120"
+    ],
+    "gpu": "NVIDIA GeForce RTX 5060 Ti",
+    "capability": [
+      12,
+      0
+    ],
+    "vram_bytes": 17102864384,
+    "torchvision": "0.23.0+cu129",
+    "packages": {
+      "opencv-python": null,
+      "opencv-python-headless": null,
+      "opencv-contrib-python": null,
+      "opencv-contrib-python-headless": null,
+      "ultralytics": null,
+      "onnx": null,
+      "onnxruntime": null,
+      "onnxruntime-gpu": null,
+      "tensorrt": null,
+      "tensorrt-cu12": null,
+      "tensorrt-cu13": null,
+      "numpy": "1.26.4",
+      "pandas": "2.2.1",
+      "matplotlib": "3.8.4",
+      "scipy": "1.13.1",
+      "pyyaml": "6.0.3"
+    },
+    "module_presence": {
+      "cv2": false,
+      "ultralytics": false,
+      "onnx": false,
+      "onnxruntime": false,
+      "tensorrt": false
+    }
+  },
+  "not_validated": [
+    "camera capture",
+    "YOLO model execution",
+    "training",
+    "ONNX export or execution",
+    "TensorRT build or execution"
+  ],
+  "changes_to_existing_environments": "No packages installed, removed, or upgraded; no driver/Toolkit updates or PATH configuration changes"
+}

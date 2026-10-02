@@ -1,0 +1,126 @@
+{
+  "fetched_date": "2026-09-30",
+  "papers": [
+    {
+      "filename": "GFL_2020_2006.04388.pdf",
+      "arxiv_id": "2006.04388",
+      "title": "Generalized Focal Loss: Learning Qualified and Distributed Bounding Boxes for Dense Object Detection",
+      "version": "2006.04388v1",
+      "pages": 14,
+      "bytes": 2882899,
+      "sha256": "04a56cf0bd1c144ff940ad12a4134b75090843994bbfc22b84a04c1e5ed68a54",
+      "landing_url": "https://arxiv.org/abs/2006.04388",
+      "download_url": "https://arxiv.org/pdf/2006.04388",
+      "fetched_date": "2026-09-30"
+    },
+    {
+      "filename": "TOOD_2021_2108.07755.pdf",
+      "arxiv_id": "2108.07755",
+      "title": "TOOD: Task-aligned One-stage Object Detection",
+      "version": "2108.07755v3",
+      "pages": 12,
+      "bytes": 3328021,
+      "sha256": "ede5d01fe07bba7e662ade68c9e88ad49868a1406bdff13c52f0dc4914eaf758",
+      "landing_url": "https://arxiv.org/abs/2108.07755",
+      "download_url": "https://arxiv.org/pdf/2108.07755",
+      "fetched_date": "2026-09-30"
+    },
+    {
+      "filename": "YOLACT_2019_1904.02689.pdf",
+      "arxiv_id": "1904.02689",
+      "title": "YOLACT: Real-time Instance Segmentation",
+      "version": "1904.02689v2",
+      "pages": 11,
+      "bytes": 8090124,
+      "sha256": "223c83bd8f229beeaaf316b4eb4d4a92b1798c4ff61346d4ed142ad81e345d16",
+      "landing_url": "https://arxiv.org/abs/1904.02689",
+      "download_url": "https://arxiv.org/pdf/1904.02689",
+      "fetched_date": "2026-09-30"
+    },
+    {
+      "filename": "YOLO26_2026_2606.03748.pdf",
+      "arxiv_id": "2606.03748",
+      "title": "Ultralytics YOLO26: Unified Real-Time End-to-End Vision Models",
+      "version": "2606.03748v1",
+      "pages": 31,
+      "bytes": 9613058,
+      "sha256": "8dec3ca2adbbc78cbd4f338eb33235e4b9c13704e355e19d029fd0a4bc67fcff",
+      "landing_url": "https://arxiv.org/abs/2606.03748",
+      "download_url": "https://arxiv.org/pdf/2606.03748",
+      "fetched_date": "2026-09-30"
+    },
+    {
+      "filename": "YOLO9000_2016_1612.08242.pdf",
+      "arxiv_id": "1612.08242",
+      "title": "YOLO9000: Better, Faster, Stronger",
+      "version": "1612.08242v1",
+      "pages": 9,
+      "bytes": 5256083,
+      "sha256": "6c5e99e00874eeebb58de6a6676c98a6e650b80e4a867a64ea1e7cd748ac738a",
+      "landing_url": "https://arxiv.org/abs/1612.08242",
+      "download_url": "https://arxiv.org/pdf/1612.08242",
+      "fetched_date": "2026-09-30"
+    },
+    {
+      "filename": "YOLOX_2021_2107.08430.pdf",
+      "arxiv_id": "2107.08430",
+      "title": "YOLOX: Exceeding YOLO Series in 2021",
+      "version": "2107.08430v2",
+      "pages": 7,
+      "bytes": 871604,
+      "sha256": "8b3d8689b65887885b5f6f1061ff9c278a59bcdfa2063ca0a0484d00040e8889",
+      "landing_url": "https://arxiv.org/abs/2107.08430",
+      "download_url": "https://arxiv.org/pdf/2107.08430",
+      "fetched_date": "2026-09-30"
+    },
+    {
+      "filename": "YOLOv10_2024_2405.14458.pdf",
+      "arxiv_id": "2405.14458",
+      "title": "YOLOv10: Real-Time End-to-End Object Detection",
+      "version": "2405.14458v2",
+      "pages": 21,
+      "bytes": 1345990,
+      "sha256": "db381148c9c2f5d8c45617e1ab05d581280963f44f84b358da2462fa84c2f36d",
+      "landing_url": "https://arxiv.org/abs/2405.14458",
+      "download_url": "https://arxiv.org/pdf/2405.14458",
+      "fetched_date": "2026-09-30"
+    },
+    {
+      "filename": "YOLOv12_2025_2502.12524.pdf",
+      "arxiv_id": "2502.12524",
+      "title": "YOLOv12: Attention-Centric Real-Time Object Detectors",
+      "version": "2502.12524v1",
+      "pages": 13,
+      "bytes": 2909966,
+      "sha256": "c99d1ab39ed6dfc35f8f7f4597956994ee6e526c158d5b9d92a949a0a6257931",
+      "landing_url": "https://arxiv.org/abs/2502.12524",
+      "download_url": "https://arxiv.org/pdf/2502.12524",
+      "fetched_date": "2026-09-30"
+    },
+    {
+      "filename": "YOLOv3_2018_1804.02767.pdf",
+      "arxiv_id": "1804.02767",
+      "title": "YOLOv3: An Incremental Improvement",
+      "version": "1804.02767v1",
+      "pages": 6,
+      "bytes": 2456177,
+      "sha256": "37049049b5e06f67c6cd22b72f7b9352914b0eb3a03e99abf54594c1005a8468",
+      "landing_url": "https://arxiv.org/abs/1804.02767",
+      "download_url": "https://arxiv.org/pdf/1804.02767",
+      "fetched_date": "2026-09-30"
+    },
+    {
+      "filename": "YOLOv7_2022_2207.02696.pdf",
+      "arxiv_id": "2207.02696",
+      "title": "YOLOv7: Trainable bag-of-freebies sets new state-of-the-art for real-time object detectors",
+      "version": "2207.02696v1",
+      "pages": 15,
+      "bytes": 2269417,
+      "sha256": "61827f8908649249cbe20f75a96c2899fae0ec2e1a888869572271eb5fd0ca4f",
+      "landing_url": "https://arxiv.org/abs/2207.02696",
+      "download_url": "https://arxiv.org/pdf/2207.02696",
+      "fetched_date": "2026-09-30"
+    }
+  ],
+  "errors": []
+}

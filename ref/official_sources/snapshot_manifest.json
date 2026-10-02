@@ -1,0 +1,49 @@
+{
+  "date": "2026-09-30",
+  "repository": "ultralytics/ultralytics",
+  "commit": "6956125297ae5a90f5d6d371cca93ea51d8320f9",
+  "files": [
+    {
+      "source_path": "ultralytics/cfg/models/11/yolo11-seg.yaml",
+      "local_file": "ultralytics__cfg__models__11__yolo11-seg.yaml",
+      "url": "https://raw.githubusercontent.com/ultralytics/ultralytics/6956125297ae5a90f5d6d371cca93ea51d8320f9/ultralytics/cfg/models/11/yolo11-seg.yaml",
+      "bytes": 2046,
+      "sha256": "c724d65611684accc5d4b84d108ce7216f1018a535cf410022f929e0ec18b65b"
+    },
+    {
+      "source_path": "ultralytics/nn/modules/head.py",
+      "local_file": "ultralytics__nn__modules__head.py",
+      "url": "https://raw.githubusercontent.com/ultralytics/ultralytics/6956125297ae5a90f5d6d371cca93ea51d8320f9/ultralytics/nn/modules/head.py",
+      "bytes": 88508,
+      "sha256": "6b118882874ee2550b2c5c819a712774e1c729faf9fdc5ae6f068996c9893d02"
+    },
+    {
+      "source_path": "ultralytics/utils/loss.py",
+      "local_file": "ultralytics__utils__loss.py",
+      "url": "https://raw.githubusercontent.com/ultralytics/ultralytics/6956125297ae5a90f5d6d371cca93ea51d8320f9/ultralytics/utils/loss.py",
+      "bytes": 73120,
+      "sha256": "8eb4e089b7c36cef13bb872f9aa37e346da5c022bcfd979e11e7a57a0666b106"
+    },
+    {
+      "source_path": "ultralytics/utils/tal.py",
+      "local_file": "ultralytics__utils__tal.py",
+      "url": "https://raw.githubusercontent.com/ultralytics/ultralytics/6956125297ae5a90f5d6d371cca93ea51d8320f9/ultralytics/utils/tal.py",
+      "bytes": 27549,
+      "sha256": "c69ec67990777a4d13df219ef9b254085b2df283fbe5fd283245b76d6b461b3c"
+    },
+    {
+      "source_path": "docs/en/models/yolo11.md",
+      "local_file": "docs__en__models__yolo11.md",
+      "url": "https://raw.githubusercontent.com/ultralytics/ultralytics/6956125297ae5a90f5d6d371cca93ea51d8320f9/docs/en/models/yolo11.md",
+      "bytes": 23885,
+      "sha256": "01537b3e852961842ee7683abee1e4c920212219ef4efbfc2f438ed1719ff25f"
+    },
+    {
+      "source_path": "docs/en/models/yolo26.md",
+      "local_file": "docs__en__models__yolo26.md",
+      "url": "https://raw.githubusercontent.com/ultralytics/ultralytics/6956125297ae5a90f5d6d371cca93ea51d8320f9/docs/en/models/yolo26.md",
+      "bytes": 18491,
+      "sha256": "e47a78545b2b4286e5ebf0f5286ea0bf43a9b603e52672d2e0ed7c93743a8aa7"
+    }
+  ]
+}
