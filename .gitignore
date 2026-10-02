@@ -1,0 +1,6 @@
+# Regenerable document-processing caches
+/tmp/
+
+# Python bytecode caches
+__pycache__/
+*.py[cod]

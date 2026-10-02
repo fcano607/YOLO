@@ -1,3 +1,9 @@
+"""Download/check supplementary papers and regenerate disposable PDF text caches.
+
+Run from any working directory; requires pypdf. Formal PDFs and their manifest
+are stored under ref/, and generated text caches are stored under tmp/pdfs/.
+"""
+
 from pathlib import Path
 from concurrent.futures import ThreadPoolExecutor, as_completed
 from urllib.request import Request, urlopen
@@ -7,7 +13,7 @@ import json
 import re
 from pypdf import PdfReader
 
-ROOT = Path(__file__).resolve().parents[2]
+ROOT = Path(__file__).resolve().parents[1]
 REF = ROOT / 'ref'
 EXTRACT = ROOT / 'tmp' / 'pdfs' / 'learning_refs'
 EXTRACT.mkdir(parents=True, exist_ok=True)
