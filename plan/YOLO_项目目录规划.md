@@ -32,7 +32,7 @@
 | `data/` | 原始资料、训练数据、标签、划分与固定推理样本 | 开始时 |
 | `scripts/` | 环境检查、数据准备、训练、评估、导出与测速入口 | 开始时 |
 | `deploy/` | 共享预处理、后处理、三种推理后端 | 开始时，可暂为空 |
-| `app/` | 当前实时预览入口；后续采集、绘图与录制模块 | 已有 `live_camera.py` 原型，其余按 M7 实现 |
+| `app/` | 实时预览与 M2 本地商品轮廓审核；后续统一后端 / 录制模块 | 已有 live camera 和商品审核入口；M7 后续模块按任务实现 |
 | `third_party/` | 锁定版本的 Ultralytics 源码 | 准备环境时 |
 | `artifacts/` | 下载的预训练模型，以及整理后的项目模型与部署文件 | 开始时 |
 | `runs/` | 各次训练、评估、导出和测速产生的完整实验结果 | 实验执行时 |
@@ -88,9 +88,10 @@ Conda 环境不需要放在项目目录中。若后续使用 Git，重点版本�
 | `data/raw/coco/images/` | 旧通用三类预留路径；不将 cup / bottle 图片直接改名成商品数据 |
 | `data/raw/camera/videos/` | 自采原始摄像头短视频 |
 | `data/raw/camera/frames/` | 抽取、筛选后的待标注图片 |
-| `data/raw/camera/annotations/` | 标注工具导出的原始多边形标注及审核记录 |
-| `data/raw/camera/annotations/drafts/` | 模型提议轮廓和原预测类别 / 分数，仅作草稿，待实施时创建 |
-| `data/raw/camera/annotations/reviewed/` | 人工确认商品类别并修正后的轮廓，进入正式转换，待实施时创建 |
+| `data/raw/camera/annotations/` | 模型草稿、逐图人工审核及少量批次预览；原图不涂画 |
+| `data/raw/camera/sessions/` | 两批采集清单及合并审核列表，包含拍摄组、原图哈希、原提示与用户身份更正 |
+| `data/raw/camera/annotations/drafts/` | M2-02 已生成首批模型轮廓 / 原 COCO 类别 / 分数草稿，不是训练真值 |
+| `data/raw/camera/annotations/reviewed/` | 本地页面明确人工确认后保存审核 JSON / 分割 TXT；排除图不输出标签 |
 
 原始资料用于追溯与重新转换。训练程序读取下一节整理后的数据，避免临时调整和原始标注混在一起。
 
@@ -150,7 +151,7 @@ Conda 环境不需要放在项目目录中。若后续使用 Git，重点版本�
 | `scripts/verify_reproducibility.py` | 从项目外工作目录启动新进程，复现 E0 与 ONNX | 已实现，M0-06 |
 | `scripts/prepare_e0.py` | 恢复并校验固定预训练权重及通用图片 | M0-04 已实现 |
 | `scripts/predict_e0.py` | E0 图片、视频、摄像头推理，保存框、mask 与运行证据 | M0-04 已实现 |
-| `scripts/annotate_product_drafts.py` | 现有分割模型提议轮廓，记录来源 / 原分数；不直接生成审核真值 | M2 试标阶段，待实现 |
+| [scripts/annotate_product_drafts.py](../scripts/annotate_product_drafts.py) | 手动按空格采集原图 / 导入照片 / 原 COCO 全类别轮廓提议，保留来源；不生成审核真值 | M2-02 已实现，两批共 20 张采集与 GPU 草稿已运行；合并只引用图片，并保留原拍摄组 |
 | `scripts/extract_frames.py` | 抽帧并记录拍摄组 | 数据阶段 |
 | `scripts/prepare_camera_labels.py` | 转换人工审核商品标注，类别 + 多边形，不写置信度 | 数据阶段，待实现 |
 | `scripts/build_splits.py` | 按组划分、生成清单并防止重叠 | 数据阶段 |
@@ -189,6 +190,9 @@ Conda 环境不需要放在项目目录中。若后续使用 Git，重点版本�
 | 文件 | 职责 | 当前状态 |
 | --- | --- | --- |
 | [app/live_camera.py](../app/live_camera.py) | 使用 E0 预训练模型进行实时原图 / 分割结果预览，支持视图切换和三类 / 全类别选择，默认不录制 | 原型已实现；真实摄像头窗口待验证 |
+| [app/annotate_products.py](../app/annotate_products.py) | 本地浏览器审核入口，明确确认后保存商品多边形标签与耗时统计 | M2-02 已实现；20 张人工标签已保存并验收 |
+| [app/product_review.html](../app/product_review.html) | 多边形补画、拖点、改类、删非目标及逐图审核页面 | 已实现并完成浏览器操作检查 |
+| [app/product_data.py](../app/product_data.py) | 类别读取、原图 I/O、多边形检查、标签导出和试标统计 | 已实现，12 项工程测试通过；包含闭合点与失败保存回归 |
 | `app/__init__.py` | Python 包入口 | 规划 |
 | `app/webcam.py` | 读取配置，串联采集、统一后端推理、绘制与退出 | 规划 |
 | `app/capture.py` | 摄像头与文件视频采集；必要时维护最新帧缓冲 | 规划 |

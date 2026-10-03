@@ -1,0 +1,1042 @@
+{
+  "schema_version": 1,
+  "task": "M2-02",
+  "group_id": "pilot_20261003130657_all",
+  "updated_at": "2026-10-03T22:15:57.803260+08:00",
+  "mapping_version": "products-v1",
+  "raw_images": 20,
+  "draft_images": 20,
+  "draft_per_image": [
+    {
+      "image_id": "pilot_20261003130657_001",
+      "predict_conf": 0.1,
+      "candidates": []
+    },
+    {
+      "image_id": "pilot_20261003130657_002",
+      "predict_conf": 0.1,
+      "candidates": []
+    },
+    {
+      "image_id": "pilot_20261003130657_003",
+      "predict_conf": 0.1,
+      "candidates": [
+        {
+          "coco_name": "book",
+          "score": 0.3400762677192688,
+          "vertices": 134
+        }
+      ]
+    },
+    {
+      "image_id": "pilot_20261003130657_004",
+      "predict_conf": 0.1,
+      "candidates": [
+        {
+          "coco_name": "cell phone",
+          "score": 0.27160191535949707,
+          "vertices": 293
+        }
+      ]
+    },
+    {
+      "image_id": "pilot_20261003130657_005",
+      "predict_conf": 0.1,
+      "candidates": [
+        {
+          "coco_name": "vase",
+          "score": 0.7264398336410522,
+          "vertices": 589
+        },
+        {
+          "coco_name": "dining table",
+          "score": 0.33470243215560913,
+          "vertices": 611
+        },
+        {
+          "coco_name": "chair",
+          "score": 0.15738685429096222,
+          "vertices": 294
+        }
+      ]
+    },
+    {
+      "image_id": "pilot_20261003130657_006",
+      "predict_conf": 0.1,
+      "candidates": [
+        {
+          "coco_name": "cup",
+          "score": 0.5424957275390625,
+          "vertices": 718
+        },
+        {
+          "coco_name": "dining table",
+          "score": 0.4760303497314453,
+          "vertices": 1477
+        }
+      ]
+    },
+    {
+      "image_id": "pilot_20261003130657_more_001",
+      "predict_conf": 0.1,
+      "candidates": [
+        {
+          "coco_name": "book",
+          "score": 0.2517831325531006,
+          "vertices": 109
+        },
+        {
+          "coco_name": "book",
+          "score": 0.11052560806274414,
+          "vertices": 320
+        },
+        {
+          "coco_name": "dining table",
+          "score": 0.10089562088251114,
+          "vertices": 118
+        }
+      ]
+    },
+    {
+      "image_id": "pilot_20261003130657_more_002",
+      "predict_conf": 0.1,
+      "candidates": [
+        {
+          "coco_name": "mouse",
+          "score": 0.3366395831108093,
+          "vertices": 253
+        },
+        {
+          "coco_name": "dining table",
+          "score": 0.20362550020217896,
+          "vertices": 1661
+        },
+        {
+          "coco_name": "book",
+          "score": 0.11879973858594894,
+          "vertices": 468
+        },
+        {
+          "coco_name": "book",
+          "score": 0.1116996482014656,
+          "vertices": 1394
+        }
+      ]
+    },
+    {
+      "image_id": "pilot_20261003130657_more_003",
+      "predict_conf": 0.1,
+      "candidates": [
+        {
+          "coco_name": "book",
+          "score": 0.20336870849132538,
+          "vertices": 707
+        },
+        {
+          "coco_name": "mouse",
+          "score": 0.1588422954082489,
+          "vertices": 156
+        },
+        {
+          "coco_name": "dining table",
+          "score": 0.1377275437116623,
+          "vertices": 5349
+        },
+        {
+          "coco_name": "cell phone",
+          "score": 0.10459649562835693,
+          "vertices": 277
+        }
+      ]
+    },
+    {
+      "image_id": "pilot_20261003130657_more_004",
+      "predict_conf": 0.1,
+      "candidates": [
+        {
+          "coco_name": "remote",
+          "score": 0.5374799966812134,
+          "vertices": 322
+        },
+        {
+          "coco_name": "mouse",
+          "score": 0.416767418384552,
+          "vertices": 276
+        },
+        {
+          "coco_name": "book",
+          "score": 0.11910068243741989,
+          "vertices": 570
+        },
+        {
+          "coco_name": "book",
+          "score": 0.1164650171995163,
+          "vertices": 342
+        },
+        {
+          "coco_name": "mouse",
+          "score": 0.10240574181079865,
+          "vertices": 148
+        }
+      ]
+    },
+    {
+      "image_id": "pilot_20261003130657_more_005",
+      "predict_conf": 0.1,
+      "candidates": [
+        {
+          "coco_name": "mouse",
+          "score": 0.16976633667945862,
+          "vertices": 57
+        },
+        {
+          "coco_name": "cake",
+          "score": 0.1263395994901657,
+          "vertices": 177
+        }
+      ]
+    },
+    {
+      "image_id": "pilot_20261003130657_more_006",
+      "predict_conf": 0.1,
+      "candidates": [
+        {
+          "coco_name": "cup",
+          "score": 0.7328884601593018,
+          "vertices": 529
+        },
+        {
+          "coco_name": "mouse",
+          "score": 0.5447614192962646,
+          "vertices": 241
+        },
+        {
+          "coco_name": "dining table",
+          "score": 0.42609918117523193,
+          "vertices": 2410
+        },
+        {
+          "coco_name": "mouse",
+          "score": 0.32760757207870483,
+          "vertices": 129
+        }
+      ]
+    },
+    {
+      "image_id": "pilot_20261003130657_more_007",
+      "predict_conf": 0.1,
+      "candidates": [
+        {
+          "coco_name": "book",
+          "score": 0.37719738483428955,
+          "vertices": 676
+        },
+        {
+          "coco_name": "book",
+          "score": 0.1534837931394577,
+          "vertices": 338
+        },
+        {
+          "coco_name": "bottle",
+          "score": 0.12305422872304916,
+          "vertices": 529
+        }
+      ]
+    },
+    {
+      "image_id": "pilot_20261003130657_more_008",
+      "predict_conf": 0.1,
+      "candidates": [
+        {
+          "coco_name": "cake",
+          "score": 0.22270411252975464,
+          "vertices": 216
+        },
+        {
+          "coco_name": "toothbrush",
+          "score": 0.21545842289924622,
+          "vertices": 453
+        },
+        {
+          "coco_name": "book",
+          "score": 0.13396835327148438,
+          "vertices": 1379
+        },
+        {
+          "coco_name": "book",
+          "score": 0.13190510869026184,
+          "vertices": 480
+        },
+        {
+          "coco_name": "bed",
+          "score": 0.12693263590335846,
+          "vertices": 4
+        }
+      ]
+    },
+    {
+      "image_id": "pilot_20261003130657_more_009",
+      "predict_conf": 0.1,
+      "candidates": [
+        {
+          "coco_name": "cup",
+          "score": 0.7814931869506836,
+          "vertices": 668
+        },
+        {
+          "coco_name": "keyboard",
+          "score": 0.47653132677078247,
+          "vertices": 329
+        },
+        {
+          "coco_name": "keyboard",
+          "score": 0.42932936549186707,
+          "vertices": 565
+        },
+        {
+          "coco_name": "keyboard",
+          "score": 0.342487096786499,
+          "vertices": 927
+        },
+        {
+          "coco_name": "keyboard",
+          "score": 0.17688262462615967,
+          "vertices": 800
+        },
+        {
+          "coco_name": "mouse",
+          "score": 0.17261092364788055,
+          "vertices": 108
+        },
+        {
+          "coco_name": "keyboard",
+          "score": 0.15624357759952545,
+          "vertices": 976
+        },
+        {
+          "coco_name": "keyboard",
+          "score": 0.10181614756584167,
+          "vertices": 281
+        }
+      ]
+    },
+    {
+      "image_id": "pilot_20261003130657_more_010",
+      "predict_conf": 0.1,
+      "candidates": [
+        {
+          "coco_name": "cup",
+          "score": 0.8763277530670166,
+          "vertices": 366
+        },
+        {
+          "coco_name": "mouse",
+          "score": 0.6395126581192017,
+          "vertices": 268
+        },
+        {
+          "coco_name": "mouse",
+          "score": 0.6138086318969727,
+          "vertices": 40
+        },
+        {
+          "coco_name": "bottle",
+          "score": 0.43755167722702026,
+          "vertices": 308
+        },
+        {
+          "coco_name": "keyboard",
+          "score": 0.32305780053138733,
+          "vertices": 220
+        },
+        {
+          "coco_name": "keyboard",
+          "score": 0.28897061944007874,
+          "vertices": 674
+        },
+        {
+          "coco_name": "mouse",
+          "score": 0.27682873606681824,
+          "vertices": 187
+        },
+        {
+          "coco_name": "person",
+          "score": 0.25998780131340027,
+          "vertices": 601
+        },
+        {
+          "coco_name": "keyboard",
+          "score": 0.22854283452033997,
+          "vertices": 381
+        },
+        {
+          "coco_name": "laptop",
+          "score": 0.13046281039714813,
+          "vertices": 659
+        }
+      ]
+    },
+    {
+      "image_id": "pilot_20261003130657_more_011",
+      "predict_conf": 0.1,
+      "candidates": [
+        {
+          "coco_name": "mouse",
+          "score": 0.8514792323112488,
+          "vertices": 245
+        },
+        {
+          "coco_name": "keyboard",
+          "score": 0.24914705753326416,
+          "vertices": 86
+        },
+        {
+          "coco_name": "mouse",
+          "score": 0.18722568452358246,
+          "vertices": 97
+        },
+        {
+          "coco_name": "keyboard",
+          "score": 0.10285666584968567,
+          "vertices": 486
+        }
+      ]
+    },
+    {
+      "image_id": "pilot_20261003130657_more_012",
+      "predict_conf": 0.1,
+      "candidates": [
+        {
+          "coco_name": "keyboard",
+          "score": 0.8478008508682251,
+          "vertices": 320
+        },
+        {
+          "coco_name": "person",
+          "score": 0.773881196975708,
+          "vertices": 771
+        },
+        {
+          "coco_name": "tv",
+          "score": 0.7127867937088013,
+          "vertices": 184
+        },
+        {
+          "coco_name": "keyboard",
+          "score": 0.4668596088886261,
+          "vertices": 233
+        },
+        {
+          "coco_name": "bed",
+          "score": 0.26041582226753235,
+          "vertices": 581
+        },
+        {
+          "coco_name": "keyboard",
+          "score": 0.1120447888970375,
+          "vertices": 347
+        },
+        {
+          "coco_name": "mouse",
+          "score": 0.1117275208234787,
+          "vertices": 133
+        }
+      ]
+    },
+    {
+      "image_id": "pilot_20261003130657_more_013",
+      "predict_conf": 0.1,
+      "candidates": [
+        {
+          "coco_name": "cup",
+          "score": 0.602415919303894,
+          "vertices": 498
+        },
+        {
+          "coco_name": "cell phone",
+          "score": 0.25226619839668274,
+          "vertices": 156
+        },
+        {
+          "coco_name": "dining table",
+          "score": 0.2342875599861145,
+          "vertices": 2859
+        },
+        {
+          "coco_name": "spoon",
+          "score": 0.15261271595954895,
+          "vertices": 314
+        },
+        {
+          "coco_name": "keyboard",
+          "score": 0.131760373711586,
+          "vertices": 267
+        },
+        {
+          "coco_name": "remote",
+          "score": 0.12356429547071457,
+          "vertices": 564
+        }
+      ]
+    },
+    {
+      "image_id": "pilot_20261003130657_more_014",
+      "predict_conf": 0.1,
+      "candidates": [
+        {
+          "coco_name": "person",
+          "score": 0.5407679080963135,
+          "vertices": 331
+        },
+        {
+          "coco_name": "cup",
+          "score": 0.4560716450214386,
+          "vertices": 402
+        },
+        {
+          "coco_name": "person",
+          "score": 0.4279347360134125,
+          "vertices": 435
+        },
+        {
+          "coco_name": "laptop",
+          "score": 0.3813495934009552,
+          "vertices": 1091
+        },
+        {
+          "coco_name": "remote",
+          "score": 0.3122069835662842,
+          "vertices": 278
+        },
+        {
+          "coco_name": "mouse",
+          "score": 0.2871915400028229,
+          "vertices": 128
+        },
+        {
+          "coco_name": "person",
+          "score": 0.1175016462802887,
+          "vertices": 566
+        }
+      ]
+    }
+  ],
+  "reviewed_target_images": 16,
+  "confirmed_negative_images": 4,
+  "excluded_images": 0,
+  "unreviewed_images": 0,
+  "instances": 30,
+  "retained_unchanged": 0,
+  "retained_boundary_edited": 8,
+  "manual_polygons": 22,
+  "manual_polygon_fraction": 0.7333333333333333,
+  "active_review_seconds": 1821.987,
+  "per_image": [
+    {
+      "image_id": "pilot_20261003130657_001",
+      "status": "reviewed",
+      "active_seconds": 176.223,
+      "draft_candidates": 0,
+      "retained_unchanged": 0,
+      "retained_boundary_edited": 0,
+      "manual_polygons": 1,
+      "discarded_candidates": 0
+    },
+    {
+      "image_id": "pilot_20261003130657_002",
+      "status": "reviewed",
+      "active_seconds": 49.935,
+      "draft_candidates": 0,
+      "retained_unchanged": 0,
+      "retained_boundary_edited": 0,
+      "manual_polygons": 1,
+      "discarded_candidates": 0
+    },
+    {
+      "image_id": "pilot_20261003130657_003",
+      "status": "reviewed",
+      "active_seconds": 11.663,
+      "draft_candidates": 1,
+      "retained_unchanged": 0,
+      "retained_boundary_edited": 1,
+      "manual_polygons": 0,
+      "discarded_candidates": 0
+    },
+    {
+      "image_id": "pilot_20261003130657_004",
+      "status": "reviewed",
+      "active_seconds": 24.108,
+      "draft_candidates": 1,
+      "retained_unchanged": 0,
+      "retained_boundary_edited": 1,
+      "manual_polygons": 0,
+      "discarded_candidates": 0
+    },
+    {
+      "image_id": "pilot_20261003130657_005",
+      "status": "reviewed",
+      "active_seconds": 55.074,
+      "draft_candidates": 3,
+      "retained_unchanged": 0,
+      "retained_boundary_edited": 1,
+      "manual_polygons": 0,
+      "discarded_candidates": 2
+    },
+    {
+      "image_id": "pilot_20261003130657_006",
+      "status": "reviewed",
+      "active_seconds": 65.256,
+      "draft_candidates": 2,
+      "retained_unchanged": 0,
+      "retained_boundary_edited": 1,
+      "manual_polygons": 0,
+      "discarded_candidates": 1
+    },
+    {
+      "image_id": "pilot_20261003130657_more_001",
+      "status": "reviewed",
+      "active_seconds": 32.44,
+      "draft_candidates": 3,
+      "retained_unchanged": 0,
+      "retained_boundary_edited": 0,
+      "manual_polygons": 1,
+      "discarded_candidates": 3
+    },
+    {
+      "image_id": "pilot_20261003130657_more_002",
+      "status": "reviewed",
+      "active_seconds": 48.503,
+      "draft_candidates": 4,
+      "retained_unchanged": 0,
+      "retained_boundary_edited": 1,
+      "manual_polygons": 0,
+      "discarded_candidates": 3
+    },
+    {
+      "image_id": "pilot_20261003130657_more_003",
+      "status": "reviewed",
+      "active_seconds": 76.771,
+      "draft_candidates": 4,
+      "retained_unchanged": 0,
+      "retained_boundary_edited": 0,
+      "manual_polygons": 2,
+      "discarded_candidates": 4
+    },
+    {
+      "image_id": "pilot_20261003130657_more_004",
+      "status": "reviewed",
+      "active_seconds": 111.343,
+      "draft_candidates": 5,
+      "retained_unchanged": 0,
+      "retained_boundary_edited": 0,
+      "manual_polygons": 2,
+      "discarded_candidates": 5
+    },
+    {
+      "image_id": "pilot_20261003130657_more_005",
+      "status": "reviewed",
+      "active_seconds": 655.997,
+      "draft_candidates": 2,
+      "retained_unchanged": 0,
+      "retained_boundary_edited": 0,
+      "manual_polygons": 3,
+      "discarded_candidates": 2
+    },
+    {
+      "image_id": "pilot_20261003130657_more_006",
+      "status": "reviewed",
+      "active_seconds": 70.484,
+      "draft_candidates": 4,
+      "retained_unchanged": 0,
+      "retained_boundary_edited": 1,
+      "manual_polygons": 2,
+      "discarded_candidates": 3
+    },
+    {
+      "image_id": "pilot_20261003130657_more_007",
+      "status": "reviewed",
+      "active_seconds": 133.008,
+      "draft_candidates": 3,
+      "retained_unchanged": 0,
+      "retained_boundary_edited": 0,
+      "manual_polygons": 3,
+      "discarded_candidates": 3
+    },
+    {
+      "image_id": "pilot_20261003130657_more_008",
+      "status": "reviewed",
+      "active_seconds": 98.379,
+      "draft_candidates": 5,
+      "retained_unchanged": 0,
+      "retained_boundary_edited": 0,
+      "manual_polygons": 3,
+      "discarded_candidates": 5
+    },
+    {
+      "image_id": "pilot_20261003130657_more_009",
+      "status": "reviewed",
+      "active_seconds": 75.519,
+      "draft_candidates": 8,
+      "retained_unchanged": 0,
+      "retained_boundary_edited": 1,
+      "manual_polygons": 2,
+      "discarded_candidates": 7
+    },
+    {
+      "image_id": "pilot_20261003130657_more_010",
+      "status": "reviewed",
+      "active_seconds": 80.315,
+      "draft_candidates": 10,
+      "retained_unchanged": 0,
+      "retained_boundary_edited": 1,
+      "manual_polygons": 2,
+      "discarded_candidates": 9
+    },
+    {
+      "image_id": "pilot_20261003130657_more_011",
+      "status": "negative",
+      "active_seconds": 19.22,
+      "draft_candidates": 4,
+      "retained_unchanged": 0,
+      "retained_boundary_edited": 0,
+      "manual_polygons": 0,
+      "discarded_candidates": 4
+    },
+    {
+      "image_id": "pilot_20261003130657_more_012",
+      "status": "negative",
+      "active_seconds": 8.342,
+      "draft_candidates": 7,
+      "retained_unchanged": 0,
+      "retained_boundary_edited": 0,
+      "manual_polygons": 0,
+      "discarded_candidates": 7
+    },
+    {
+      "image_id": "pilot_20261003130657_more_013",
+      "status": "negative",
+      "active_seconds": 11.064,
+      "draft_candidates": 6,
+      "retained_unchanged": 0,
+      "retained_boundary_edited": 0,
+      "manual_polygons": 0,
+      "discarded_candidates": 6
+    },
+    {
+      "image_id": "pilot_20261003130657_more_014",
+      "status": "negative",
+      "active_seconds": 18.343,
+      "draft_candidates": 7,
+      "retained_unchanged": 0,
+      "retained_boundary_edited": 0,
+      "manual_polygons": 0,
+      "discarded_candidates": 7
+    }
+  ],
+  "limits": [
+    "Manual polygons include both missed targets and replacement of unusable drafts.",
+    "Discarded COCO candidates are not automatically false positives of the new product model.",
+    "Pilot data are not a formal test set or evidence of product model training."
+  ],
+  "label_load_checks": [
+    {
+      "image_id": "pilot_20261003130657_001",
+      "status": "reviewed",
+      "instances": 1,
+      "mask_nonzero_pixels": [
+        5542
+      ],
+      "physical_ids": [
+        "yili_shuhua_001"
+      ],
+      "image_sha256": "df00cbe77da124a8aa8582744b9c6d02a04f1f7dd950cd404176ef425de7dfd2",
+      "label_sha256": "c42ee6ace67f20c6a55e06ec62a4e3a48fc9fbc3f0065546fa780e7ef8bb1926",
+      "review_sha256": "5f5f3d5dc115bde0b48bf2e8198ce3163fb4e63ba2070993ad46448aab089e2a"
+    },
+    {
+      "image_id": "pilot_20261003130657_002",
+      "status": "reviewed",
+      "instances": 1,
+      "mask_nonzero_pixels": [
+        9433
+      ],
+      "physical_ids": [
+        "yili_shuhua_001"
+      ],
+      "image_sha256": "d556977fb908d79948cc851fa868e805b60a8734550bd6410fef06d6282bc25c",
+      "label_sha256": "ceb00ff7ceeeb10ec33a7661756ea4ad5459c9db8d539e5bf06fff4d01839342",
+      "review_sha256": "d63d9db6f1ebf9d6bafc9be28102e687e8717ad6a5ece7813a7aa15738380f0e"
+    },
+    {
+      "image_id": "pilot_20261003130657_003",
+      "status": "reviewed",
+      "instances": 1,
+      "mask_nonzero_pixels": [
+        12270
+      ],
+      "physical_ids": [
+        "sam_milk_001"
+      ],
+      "image_sha256": "279bc363919a579ad3ecb65279f43fcb7ca8772fddc56b7a1cad23f421843f27",
+      "label_sha256": "70375fc19fe645018ea3a72acd0e6f801776750e23ceec5b464e18eda765d584",
+      "review_sha256": "91da0c0880bf66b38050f0b927086ecf4a6af08d22e2033b495656bff43d3273"
+    },
+    {
+      "image_id": "pilot_20261003130657_004",
+      "status": "reviewed",
+      "instances": 1,
+      "mask_nonzero_pixels": [
+        8122
+      ],
+      "physical_ids": [
+        "sam_milk_001"
+      ],
+      "image_sha256": "2107fafb6db60b75399f256767085ccc1a202d98dfec0979a995006191c258a2",
+      "label_sha256": "5f17b98157ecbf406348207c62e6f982e9b8d365554ec5ac75bee57d2c1de62c",
+      "review_sha256": "cbd1a9f7e507a6c6583cf2e66622c65d6e568d46de561f7ec2723f8c2d46cac3"
+    },
+    {
+      "image_id": "pilot_20261003130657_005",
+      "status": "reviewed",
+      "instances": 1,
+      "mask_nonzero_pixels": [
+        12188
+      ],
+      "physical_ids": [
+        "luckin_cup_001"
+      ],
+      "image_sha256": "6b6cddf93a5faf49862020f1a00a34468fde5e7a94729af8c0e22304a9fd241c",
+      "label_sha256": "f40b48d8564cb10e90a94d7e1bab0e92e25c78568096bf1ec08c2947e547bb56",
+      "review_sha256": "86800444ca73d0c79bfd9055a38194c487f5e3d9b2d9d57acc56b4ea98a3391f"
+    },
+    {
+      "image_id": "pilot_20261003130657_006",
+      "status": "reviewed",
+      "instances": 1,
+      "mask_nonzero_pixels": [
+        10650
+      ],
+      "physical_ids": [
+        "luckin_cup_001"
+      ],
+      "image_sha256": "ef87ee98df4d41b3429f761914a27dc40e4006d410e525fe5103a62c00cc40c1",
+      "label_sha256": "a06d5a966ae7bc1be6f6b607467c1d7ff256b9818606f91f2564e281f0ea59fd",
+      "review_sha256": "f177ee55e67f5c794643bd92c98b747d125de74740a6ead23b1fdb96fba774ac"
+    },
+    {
+      "image_id": "pilot_20261003130657_more_001",
+      "status": "reviewed",
+      "instances": 1,
+      "mask_nonzero_pixels": [
+        4815
+      ],
+      "physical_ids": [
+        "sam_milk_001"
+      ],
+      "image_sha256": "78c03068d894a01e6623a9463e8297fef804e5738a8b41f8df04b70a6ed5fe53",
+      "label_sha256": "f77307dec415e90800659ec0b0b0d9bcc544dca5591cb7d1c64669f9702b4efa",
+      "review_sha256": "7f3ee3b0bc370cb1bf0dbc2d8ee1a49f3cee6d589f2941b98d55b65965bcaab9"
+    },
+    {
+      "image_id": "pilot_20261003130657_more_002",
+      "status": "reviewed",
+      "instances": 1,
+      "mask_nonzero_pixels": [
+        6011
+      ],
+      "physical_ids": [
+        "sam_milk_001"
+      ],
+      "image_sha256": "b5f0fd54ae58770aee7ca1a84271d39b705288ebbe42e5315f8deb0d2124e569",
+      "label_sha256": "7cd9be67563c2ef97a0c8eb08a76cd30f14aeb3e8c1a4b746e22c98ad0a83f2e",
+      "review_sha256": "bedd2c1ca6e71d20508132e21fd77e9af05c993df847d65854062fd6f73ce32a"
+    },
+    {
+      "image_id": "pilot_20261003130657_more_003",
+      "status": "reviewed",
+      "instances": 2,
+      "mask_nonzero_pixels": [
+        3962,
+        1216
+      ],
+      "physical_ids": [
+        "sam_milk_001",
+        "yili_shuhua_001"
+      ],
+      "image_sha256": "3475390f4a7910637c1f5a530c0c08e0b3a5f3d78ab78c7e47533ab314ca8d7a",
+      "label_sha256": "d2df040c09d532c24657fac3cfaa999dc477bca5cf493bc5f5bb396e92594a9d",
+      "review_sha256": "af9a930d2af4f906f0e5d9316aa143756e0673003d3f3e168fdd7def47650a0d"
+    },
+    {
+      "image_id": "pilot_20261003130657_more_004",
+      "status": "reviewed",
+      "instances": 2,
+      "mask_nonzero_pixels": [
+        4083,
+        1170
+      ],
+      "physical_ids": [
+        "sam_milk_001",
+        "yili_shuhua_001"
+      ],
+      "image_sha256": "fcc60fde6f442be3544cf959514d8daffb978336fe4b4adf640f1e83fd1caba4",
+      "label_sha256": "321791f00a7789ca17c731d3ecee3d0ece5005b6ada1bdb87cd098cb9742b3a8",
+      "review_sha256": "845870d92dac909d583edb1f3b5753e8eda70e9b6385c09289e6a0914ae4f003"
+    },
+    {
+      "image_id": "pilot_20261003130657_more_005",
+      "status": "reviewed",
+      "instances": 3,
+      "mask_nonzero_pixels": [
+        7524,
+        1104,
+        1108
+      ],
+      "physical_ids": [
+        "sam_milk_001",
+        "yili_shuhua_001",
+        "luckin_cup_001"
+      ],
+      "image_sha256": "8f3b76bda6518d99d2785b7fce3008fef0600709e01a38c9e8b43152d9b29a9d",
+      "label_sha256": "e680b628d8fef8571982174b4511aa9be32ca9a0d2ead043358a45220b27e6f9",
+      "review_sha256": "227437b5ca79241d86160d97236c758fe6f451504f89eb078a4563e53c83c072"
+    },
+    {
+      "image_id": "pilot_20261003130657_more_006",
+      "status": "reviewed",
+      "instances": 3,
+      "mask_nonzero_pixels": [
+        8625,
+        1191,
+        807
+      ],
+      "physical_ids": [
+        "sam_milk_001",
+        "yili_shuhua_001",
+        "luckin_cup_001"
+      ],
+      "image_sha256": "ea4adfaa1c3b1223209ebe7f7c1e3ae4e7973097c4712375113ee6e6abe57ddb",
+      "label_sha256": "24634019251c960499d118bc9790061bad5c15dc2eeeb4e6a3de708b63c029a7",
+      "review_sha256": "29ca67442fbe7cfe775b6e3027655ef325c67e17c6749e967a53a978dff82949"
+    },
+    {
+      "image_id": "pilot_20261003130657_more_007",
+      "status": "reviewed",
+      "instances": 3,
+      "mask_nonzero_pixels": [
+        4733,
+        6866,
+        3458
+      ],
+      "physical_ids": [
+        "sam_milk_001",
+        "yili_shuhua_001",
+        "luckin_cup_001"
+      ],
+      "image_sha256": "e3f0e6a4c1de3f54f23e9f4641b78e97d9ad763201c200a82b39672075d55492",
+      "label_sha256": "dc92d4ba6a9f2cba00e6d4bcb889d7d3dc53a6a740de177a6a076d45c11620f7",
+      "review_sha256": "a70fb025fcc1a90cabd6761118023aef6ece29f79604b351b044f0ed839fb591"
+    },
+    {
+      "image_id": "pilot_20261003130657_more_008",
+      "status": "reviewed",
+      "instances": 3,
+      "mask_nonzero_pixels": [
+        9121,
+        4247,
+        3816
+      ],
+      "physical_ids": [
+        "sam_milk_001",
+        "yili_shuhua_001",
+        "luckin_cup_001"
+      ],
+      "image_sha256": "ea46bb856876541d6a7418d616ce73d15cf479d807c0f0613267497077446872",
+      "label_sha256": "83bd2b17a6b0b39db3a7455c50caa6989937000d1344af72c8981d548eb3cd9a",
+      "review_sha256": "33a70d831e2cde870f7229faea8e3cdbf690a7ea0cedbc87e23c48ca9db0d328"
+    },
+    {
+      "image_id": "pilot_20261003130657_more_009",
+      "status": "reviewed",
+      "instances": 3,
+      "mask_nonzero_pixels": [
+        10384,
+        1480,
+        2442
+      ],
+      "physical_ids": [
+        "sam_milk_001",
+        "yili_shuhua_001",
+        "luckin_cup_001"
+      ],
+      "image_sha256": "006f95e140472fede9a1cd431b2ac64ebdfd6233ca2a2b5a970daf03a5279335",
+      "label_sha256": "d40c1e2b25efe57f71af09850047ac163348a3857800c9f3b6e515c28a73c822",
+      "review_sha256": "49aa166879ca732d42b3222002a51f3cdb85957b11685219a4534d43e8f168a2"
+    },
+    {
+      "image_id": "pilot_20261003130657_more_010",
+      "status": "reviewed",
+      "instances": 3,
+      "mask_nonzero_pixels": [
+        3371,
+        4372,
+        1764
+      ],
+      "physical_ids": [
+        "sam_milk_001",
+        "yili_shuhua_001",
+        "luckin_cup_001"
+      ],
+      "image_sha256": "b6680e60c93c9073bed437966c2775673c6edf0f0039e66c5e704a1af596e335",
+      "label_sha256": "1c0cd3292b303c9e5df2ae2df3d3e7b2f570f45359e48889c37bcfc48ab2718f",
+      "review_sha256": "39df3b1cff8b56f2a0288d3133b6213b77a7880944d250b25cae278b2cc746ac"
+    },
+    {
+      "image_id": "pilot_20261003130657_more_011",
+      "status": "negative",
+      "instances": 0,
+      "mask_nonzero_pixels": [],
+      "physical_ids": [],
+      "image_sha256": "98472b6d8bb4081a2bbfc3a6b097fdcd7c0cd778a487c7bde74e98719b584d87",
+      "label_sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855",
+      "review_sha256": "30df45c6676008e213c74c4c9b15a44ea0d6339edf29ad38c2a793ca39641a26"
+    },
+    {
+      "image_id": "pilot_20261003130657_more_012",
+      "status": "negative",
+      "instances": 0,
+      "mask_nonzero_pixels": [],
+      "physical_ids": [],
+      "image_sha256": "19bab5e34308797a5ef2b9e4835118a00adc3cc2448fa1b471ed99dd2287bc98",
+      "label_sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855",
+      "review_sha256": "7929fe5be0a840052bd0add5bf38f4d28bd84c9133950a3f20beb415e852af4c"
+    },
+    {
+      "image_id": "pilot_20261003130657_more_013",
+      "status": "negative",
+      "instances": 0,
+      "mask_nonzero_pixels": [],
+      "physical_ids": [],
+      "image_sha256": "f4406b9b6b1aeaed84e8ae44460b8b72aa57a8da830a6a228393b04b3a669f2c",
+      "label_sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855",
+      "review_sha256": "db19abc04c183e4af648e225b0f7c1ce638a3f8f26696cdac9045a29fc4429d7"
+    },
+    {
+      "image_id": "pilot_20261003130657_more_014",
+      "status": "negative",
+      "instances": 0,
+      "mask_nonzero_pixels": [],
+      "physical_ids": [],
+      "image_sha256": "d90b01545a3f1c7ff094ad39425fce4f07b7a949d23c568aed1aa120b07569f7",
+      "label_sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855",
+      "review_sha256": "604457d73a208692c7d491dff17a892e71298064304b32ea28a1eecb785a433b"
+    }
+  ],
+  "class_instance_counts": [
+    12,
+    10,
+    8
+  ],
+  "loader_source_commit": "86f5c8c401a630da651d321e691ab0af540812cf",
+  "label_check_status": "all_images_reviewed_and_labels_passed"
+}

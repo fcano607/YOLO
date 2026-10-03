@@ -3,7 +3,7 @@
   "catalog_version": "products-v1",
   "updated_date": "2026-10-03",
   "source": "user_description",
-  "reference_photo_status": "to_collect_in_M2-02",
+  "reference_photo_status": "collected_and_product_identity_reviewed",
   "products": [
     {
       "class_id": 0,
@@ -14,10 +14,12 @@
       "product_variant": "全脂",
       "volume_ml": 200,
       "physical_count": 1,
-      "reference_photos": [],
+      "reference_photos": [
+        "data/raw/camera/frames/pilot_20261003130657/pilot_20261003130657_003.png",
+        "data/raw/camera/frames/pilot_20261003130657/pilot_20261003130657_004.png"
+      ],
       "optional_details_pending": [
-        "包装上印的厂家品牌与正式商品全名",
-        "包装版本参考照片"
+        "包装上印的厂家品牌与正式商品全名"
       ]
     },
     {
@@ -29,10 +31,12 @@
       "product_variant": null,
       "volume_ml": 220,
       "physical_count": 1,
-      "reference_photos": [],
+      "reference_photos": [
+        "data/raw/camera/frames/pilot_20261003130657/pilot_20261003130657_001.png",
+        "data/raw/camera/frames/pilot_20261003130657/pilot_20261003130657_002.png"
+      ],
       "optional_details_pending": [
-        "全脂或低脂等具体版本",
-        "包装版本参考照片"
+        "全脂或低脂等具体版本"
       ]
     },
     {
@@ -44,18 +48,32 @@
       "sleeve_present": true,
       "volume_ml": null,
       "physical_count": 1,
-      "reference_photos": [],
+      "reference_photos": [
+        "data/raw/camera/frames/pilot_20261003130657/pilot_20261003130657_005.png",
+        "data/raw/camera/frames/pilot_20261003130657/pilot_20261003130657_006.png"
+      ],
       "optional_details_pending": [
-        "杯容量",
-        "包装版本参考照片"
+        "杯容量"
       ]
     }
   ],
-  "collection_status": "not_started",
+  "collection_status": "M2-02_completed_20_pilot_images",
   "notes": [
     "未确认信息保留 null，不从购买来源猜测厂家品牌。",
     "用户要求按现有实物直接开展模型辅助标注，详细品牌、奶品版本和杯容量不作为首版阻塞条件。",
-    "reference_photos 为空表示尚未采集；本文件不构成标注数据或训练结果。",
+    "首批照片已采集，奶盒顺序按用户更正登记；参考照不等于已审核标签或训练结果。",
     "classes.json 为类别 ID / 英文名的唯一映射依据；本清单通过 class_id 关联实物。"
-  ]
+  ],
+  "reference_photo_group_id": "pilot_20261003130657",
+  "pilot_review_group_id": "pilot_20261003130657_all",
+  "pilot_label_counts": {
+    "images": 20,
+    "target_images": 16,
+    "negative_images": 4,
+    "instances_by_class_id": {
+      "0": 12,
+      "1": 10,
+      "2": 8
+    }
+  }
 }

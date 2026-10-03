@@ -1,0 +1,232 @@
+{
+  "schema_version": 1,
+  "task": "M2-02",
+  "group_id": "pilot_20261003130657",
+  "updated_at": "2026-10-03T21:37:24.742796+08:00",
+  "mapping_version": "products-v1",
+  "raw_images": 6,
+  "draft_images": 6,
+  "draft_per_image": [
+    {
+      "image_id": "pilot_20261003130657_001",
+      "predict_conf": 0.1,
+      "candidates": []
+    },
+    {
+      "image_id": "pilot_20261003130657_002",
+      "predict_conf": 0.1,
+      "candidates": []
+    },
+    {
+      "image_id": "pilot_20261003130657_003",
+      "predict_conf": 0.1,
+      "candidates": [
+        {
+          "coco_name": "book",
+          "score": 0.3400762677192688,
+          "vertices": 134
+        }
+      ]
+    },
+    {
+      "image_id": "pilot_20261003130657_004",
+      "predict_conf": 0.1,
+      "candidates": [
+        {
+          "coco_name": "cell phone",
+          "score": 0.27160191535949707,
+          "vertices": 293
+        }
+      ]
+    },
+    {
+      "image_id": "pilot_20261003130657_005",
+      "predict_conf": 0.1,
+      "candidates": [
+        {
+          "coco_name": "vase",
+          "score": 0.7264398336410522,
+          "vertices": 589
+        },
+        {
+          "coco_name": "dining table",
+          "score": 0.33470243215560913,
+          "vertices": 611
+        },
+        {
+          "coco_name": "chair",
+          "score": 0.15738685429096222,
+          "vertices": 294
+        }
+      ]
+    },
+    {
+      "image_id": "pilot_20261003130657_006",
+      "predict_conf": 0.1,
+      "candidates": [
+        {
+          "coco_name": "cup",
+          "score": 0.5424957275390625,
+          "vertices": 718
+        },
+        {
+          "coco_name": "dining table",
+          "score": 0.4760303497314453,
+          "vertices": 1477
+        }
+      ]
+    }
+  ],
+  "reviewed_target_images": 6,
+  "confirmed_negative_images": 0,
+  "excluded_images": 0,
+  "unreviewed_images": 0,
+  "instances": 6,
+  "retained_unchanged": 3,
+  "retained_boundary_edited": 1,
+  "manual_polygons": 2,
+  "manual_polygon_fraction": 0.3333333333333333,
+  "active_review_seconds": 348.506,
+  "per_image": [
+    {
+      "image_id": "pilot_20261003130657_001",
+      "status": "reviewed",
+      "active_seconds": 155.841,
+      "draft_candidates": 0,
+      "retained_unchanged": 0,
+      "retained_boundary_edited": 0,
+      "manual_polygons": 1,
+      "discarded_candidates": 0
+    },
+    {
+      "image_id": "pilot_20261003130657_002",
+      "status": "reviewed",
+      "active_seconds": 49.285,
+      "draft_candidates": 0,
+      "retained_unchanged": 0,
+      "retained_boundary_edited": 0,
+      "manual_polygons": 1,
+      "discarded_candidates": 0
+    },
+    {
+      "image_id": "pilot_20261003130657_003",
+      "status": "reviewed",
+      "active_seconds": 6.925,
+      "draft_candidates": 1,
+      "retained_unchanged": 1,
+      "retained_boundary_edited": 0,
+      "manual_polygons": 0,
+      "discarded_candidates": 0
+    },
+    {
+      "image_id": "pilot_20261003130657_004",
+      "status": "reviewed",
+      "active_seconds": 21.173,
+      "draft_candidates": 1,
+      "retained_unchanged": 1,
+      "retained_boundary_edited": 0,
+      "manual_polygons": 0,
+      "discarded_candidates": 0
+    },
+    {
+      "image_id": "pilot_20261003130657_005",
+      "status": "reviewed",
+      "active_seconds": 55.074,
+      "draft_candidates": 3,
+      "retained_unchanged": 0,
+      "retained_boundary_edited": 1,
+      "manual_polygons": 0,
+      "discarded_candidates": 2
+    },
+    {
+      "image_id": "pilot_20261003130657_006",
+      "status": "reviewed",
+      "active_seconds": 60.208,
+      "draft_candidates": 2,
+      "retained_unchanged": 1,
+      "retained_boundary_edited": 0,
+      "manual_polygons": 0,
+      "discarded_candidates": 1
+    }
+  ],
+  "limits": [
+    "Manual polygons include both missed targets and replacement of unusable drafts.",
+    "Discarded COCO candidates are not automatically false positives of the new product model.",
+    "Pilot data are not a formal test set or evidence of product model training."
+  ],
+  "label_load_checks": [
+    {
+      "image_id": "pilot_20261003130657_001",
+      "status": "reviewed",
+      "instances": 1,
+      "mask_nonzero_pixels": [
+        5542
+      ],
+      "image_sha256": "df00cbe77da124a8aa8582744b9c6d02a04f1f7dd950cd404176ef425de7dfd2",
+      "label_sha256": "c42ee6ace67f20c6a55e06ec62a4e3a48fc9fbc3f0065546fa780e7ef8bb1926",
+      "review_sha256": "2e0eb750ab8ccc0946b5ca288d98aa616a6a2424e2084b66cf1b10e87d24115a"
+    },
+    {
+      "image_id": "pilot_20261003130657_002",
+      "status": "reviewed",
+      "instances": 1,
+      "mask_nonzero_pixels": [
+        9433
+      ],
+      "image_sha256": "d556977fb908d79948cc851fa868e805b60a8734550bd6410fef06d6282bc25c",
+      "label_sha256": "ceb00ff7ceeeb10ec33a7661756ea4ad5459c9db8d539e5bf06fff4d01839342",
+      "review_sha256": "286db6d16c3ceac3d254b7032de8838abe8f393acaf3393f7f713ed315781e3c"
+    },
+    {
+      "image_id": "pilot_20261003130657_003",
+      "status": "reviewed",
+      "instances": 1,
+      "mask_nonzero_pixels": [
+        12263
+      ],
+      "image_sha256": "279bc363919a579ad3ecb65279f43fcb7ca8772fddc56b7a1cad23f421843f27",
+      "label_sha256": "c47f93384fd14329685d1b5701d48f9cc6ce8b32496675e22f06985d8c38f7b0",
+      "review_sha256": "873c7c1f53cf751a60b79d2695fb38084ca264e4175a070729997128b40cd440"
+    },
+    {
+      "image_id": "pilot_20261003130657_004",
+      "status": "reviewed",
+      "instances": 1,
+      "mask_nonzero_pixels": [
+        8129
+      ],
+      "image_sha256": "2107fafb6db60b75399f256767085ccc1a202d98dfec0979a995006191c258a2",
+      "label_sha256": "d9372ac0e245bf50b394d063b59b1753f0d5ef9b612bea017e1775570375f4c4",
+      "review_sha256": "3eb70c2a9e62bf720620ff593acd43f5641b8877054d53d2c8d1a586e18b09b6"
+    },
+    {
+      "image_id": "pilot_20261003130657_005",
+      "status": "reviewed",
+      "instances": 1,
+      "mask_nonzero_pixels": [
+        12188
+      ],
+      "image_sha256": "6b6cddf93a5faf49862020f1a00a34468fde5e7a94729af8c0e22304a9fd241c",
+      "label_sha256": "f40b48d8564cb10e90a94d7e1bab0e92e25c78568096bf1ec08c2947e547bb56",
+      "review_sha256": "86800444ca73d0c79bfd9055a38194c487f5e3d9b2d9d57acc56b4ea98a3391f"
+    },
+    {
+      "image_id": "pilot_20261003130657_006",
+      "status": "reviewed",
+      "instances": 1,
+      "mask_nonzero_pixels": [
+        10653
+      ],
+      "image_sha256": "ef87ee98df4d41b3429f761914a27dc40e4006d410e525fe5103a62c00cc40c1",
+      "label_sha256": "659ee35f8aa9590e6db4d4a1747e69a9734fb3ae5b10c82dd1bb4b7ebc98374e",
+      "review_sha256": "712082abf94defe9f08a7130c3b665bd3a440395df2050f247cba860aee8db2d"
+    }
+  ],
+  "class_instance_counts": [
+    2,
+    2,
+    2
+  ],
+  "loader_source_commit": "86f5c8c401a630da651d321e691ab0af540812cf",
+  "label_check_status": "all_images_reviewed_and_labels_passed"
+}

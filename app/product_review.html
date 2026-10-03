@@ -1,0 +1,138 @@
+<!doctype html>
+<html lang="zh-CN">
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>M2 商品轮廓审核</title>
+<style>
+*{box-sizing:border-box}body{margin:0;background:#f2f5f8;color:#243349;font:15px/1.55 "Microsoft YaHei",sans-serif}
+header{background:#183044;color:white;padding:15px 24px}h1{margin:0;font-size:22px}header p{margin:3px 0 0;font-size:13px;color:#cddbe6}
+main{display:grid;grid-template-columns:minmax(500px,1fr) 335px;gap:16px;padding:16px;max-width:1600px;margin:auto}
+section,aside{background:white;border:1px solid #dce3ea;border-radius:10px;padding:16px}
+button,select,input{font:inherit;border:1px solid #bdc9d5;border-radius:6px;padding:7px 10px;background:white}
+button{cursor:pointer}button:hover{background:#edf3f8}button:disabled{opacity:.4;cursor:default}.primary{background:#1861a0;color:white}.primary:hover{background:#124d80}
+.row{display:flex;align-items:center;gap:8px;flex-wrap:wrap;margin:8px 0}.small{font-size:13px;color:#596b7e}
+#wrap{overflow:auto;max-height:66vh;background:#e4e9ee;border:1px solid #dce3ea}canvas{display:block;height:auto;touch-action:none}
+#objects{max-height:270px;overflow:auto}.object{padding:9px;margin:5px 0;border:1px solid #dce3ea;border-left:5px solid #a1aab4;border-radius:5px;cursor:pointer}
+.object.selected{background:#e9f2fa;border-color:#1861a0}#notice{white-space:pre-wrap;min-height:24px;color:#185a8e}h2{font-size:16px;margin:16px 0 8px}label{cursor:pointer}
+input[type=checkbox]{width:18px;height:18px;vertical-align:middle}.danger{color:#b93030}#reason{width:100%}#stats{white-space:pre-wrap}
+@media(max-width:900px){main{grid-template-columns:1fr}}
+</style>
+<header><h1>M2 商品轮廓审核</h1><p>模型只提供候选轮廓。逐个改成商品类别，修正边界、补漏检并删除非目标，再确认保存。</p></header>
+<main><section>
+<div class="row"><button id="prev">上一张</button><select id="images"></select><button id="next">下一张</button><span id="progress" class="small"></span></div>
+<div id="hint" class="small"></div>
+<div class="row"><button id="new">补画漏检</button><button id="finish">结束画轮廓（Enter）</button><button id="cancel">取消绘制（Esc）</button><button id="undo">撤销</button><button id="toggle">隐藏/显示轮廓</button></div>
+<div class="row small"><label>查看放大 <input id="zoom" type="range" min="1" max="3" step=".25" value="1"></label><span>拖动顶点修边界；绘制时逐点点击。仅显示放大，坐标仍按原图保存。</span></div>
+<div id="wrap"><canvas id="canvas"></canvas></div>
+<div id="notice"></div>
+</section><aside>
+<h2>当前轮廓</h2><div id="objects"></div>
+<div class="row"><select id="class"><option value="">请选择商品类别</option></select><button id="assign">指定类别</button></div>
+<div class="row"><button id="simplify">简化选中轮廓</button><button id="delete" class="danger">删除选中非目标</button></div>
+<div class="row"><button id="clear" class="danger">清除本图全部轮廓（可撤销）</button></div>
+<p class="small">简化可减少密集顶点，随后要检查包装边缘。新画轮廓需要指定类别。原模型分数不会进入训练标签。</p>
+<h2>本图审核结论</h2>
+<select id="status"><option value="reviewed">含目标：已标齐三类商品</option><option value="negative">无目标：确认为空背景/其他物品</option><option value="excluded">暂不纳入：模糊/遮挡/身份不清</option></select>
+<p><input id="reason" placeholder="暂不纳入时填写原因"></p>
+<p><label><input type="checkbox" id="confirmed"> 我已核对商品身份、所有目标和轮廓</label></p>
+<div class="row"><button class="primary" id="save">确认并保存</button><button id="saveNext">保存并下一张</button></div>
+<h2>本批进展</h2><div id="stats" class="small"></div>
+<p class="small">奶盒包含连接着的盖/封口。瑞幸杯身、杯盖及贴合杯套算一个实例；不包含手、吸管和阴影。模糊或难以辨认的图暂不纳入，不能当负样本。</p>
+</aside></main>
+<script>
+"use strict";
+const $=id=>document.getElementById(id), canvas=$("canvas"),ctx=canvas.getContext("2d");
+let state, current, photo, polys=[], selected=-1, drawing=null, history=[], drag=-1, show=true, dirty=false, loading=false;
+let active=0,lastTick=performance.now(),lastAction=performance.now();
+const colors=["#29a06f","#2b7bc0","#d78024"];
+const clone=x=>JSON.parse(JSON.stringify(x));
+const notice=(text,error=false)=>{$("notice").textContent=text;$("notice").style.color=error?"#b93030":"#185a8e";};
+async function api(url, options){const r=await fetch(url,options),d=await r.json();if(!r.ok)throw Error(d.error);return d;}
+function summary(s){$("stats").textContent="原图 "+s.raw_images+" 张 · 草稿 "+s.draft_images+" 张\n已审核目标图 "+s.reviewed_target_images+" · 空背景 "+s.confirmed_negative_images+"\n暂不纳入 "+s.excluded_images+" · 待审核 "+s.unreviewed_images+"\n保留原轮廓 "+s.retained_unchanged+" · 修边界 "+s.retained_boundary_edited+" · 手工补画/重画 "+s.manual_polygons+"\n已保存的活跃审核时间 "+s.active_review_seconds.toFixed(1)+" 秒";}
+function touch(){lastAction=performance.now();}
+function workKey(){return current?"m2-work:"+current.sample.image_id+":"+current.sample.image_sha256:null;}
+function persist(){if(current){try{localStorage.setItem(workKey(),JSON.stringify({polygons:polys,drawing,status:$("status").value,reason:$("reason").value,active_seconds:active}));}catch(e){/* server also backs up failed saves */}}}
+function changed(){dirty=true;$("confirmed").checked=false;touch();persist();}
+function snapshot(){history.push(clone(polys));if(history.length>40)history.shift();changed();}
+function scale(){if(photo){canvas.style.width=($("wrap").clientWidth*Number($("zoom").value))+"px";draw();}}
+function point(e){const r=canvas.getBoundingClientRect();return [Math.max(0,Math.min(1,(e.clientX-r.left)/r.width)),Math.max(0,Math.min(1,(e.clientY-r.top)/r.height))];}
+function path(points,close){if(!points.length)return;ctx.beginPath();points.forEach((p,i)=>i?ctx.lineTo(p[0]*canvas.width,p[1]*canvas.height):ctx.moveTo(p[0]*canvas.width,p[1]*canvas.height));if(close)ctx.closePath();}
+function draw(){
+ if(!photo)return;ctx.clearRect(0,0,canvas.width,canvas.height);ctx.drawImage(photo,0,0);
+ if(!show)return;const ratio=canvas.width/canvas.getBoundingClientRect().width;
+ polys.forEach((p,i)=>{path(p.points,true);ctx.fillStyle=p.class_id===null?"#80808025":colors[p.class_id]+"30";ctx.fill();ctx.strokeStyle=i===selected?"#fff":(colors[p.class_id]||"#949aa4");ctx.lineWidth=(i===selected?3:1.5)*ratio;ctx.stroke();
+   if(i===selected)p.points.forEach(q=>{ctx.beginPath();ctx.arc(q[0]*canvas.width,q[1]*canvas.height,4*ratio,0,Math.PI*2);ctx.fillStyle="#fff";ctx.fill();ctx.strokeStyle="#145a91";ctx.lineWidth=ratio;ctx.stroke();});
+ });
+ if(drawing){path(drawing,false);ctx.strokeStyle="#ed3474";ctx.lineWidth=2*ratio;ctx.stroke();drawing.forEach(p=>{ctx.beginPath();ctx.arc(p[0]*canvas.width,p[1]*canvas.height,4*ratio,0,Math.PI*2);ctx.fillStyle="#ed3474";ctx.fill();});}
+}
+function list(){
+ const root=$("objects");root.replaceChildren();
+ polys.forEach((p,i)=>{const d=document.createElement("div");d.className="object"+(i===selected?" selected":"");d.style.borderLeftColor=colors[p.class_id]||"#949aa4";
+ const name=p.class_id===null?"未指定商品":state.classes[p.class_id].display_name;
+ const source=current.draft.candidates.find(c=>c.id===p.source_candidate_id);
+ d.textContent=(i+1)+". "+name+" · "+p.points.length+"点"+(source?"\n草稿："+source.coco_name+" "+source.score.toFixed(2):"\n人工补画");
+ d.style.whiteSpace="pre-line";d.onclick=()=>{selected=i;$("class").value=p.class_id===null?"":String(p.class_id);touch();list();draw();};root.append(d);
+ });$("delete").disabled=selected<0;$("assign").disabled=selected<0;$("simplify").disabled=selected<0;if(dirty&&!loading)persist();
+}
+async function load(index){
+ if(loading)return;if(dirty&&!confirm("本图有未保存修改，仍然切换吗？"))return;
+ loading=true;
+ try {
+ const sample=state.samples[index],data=await api("/api/sample/"+sample.image_id),im=new Image();
+ await new Promise((resolve,reject)=>{im.onload=resolve;im.onerror=()=>reject(Error("原图加载失败"));im.src="/api/image/"+sample.image_id;});
+ current=data;photo=im;canvas.width=im.naturalWidth;canvas.height=im.naturalHeight;
+ let resumed=null;
+ try{const cached=localStorage.getItem("m2-work:"+data.sample.image_id+":"+data.sample.image_sha256);if(cached)resumed=JSON.parse(cached);}catch(e){}
+ if(!resumed&&data.working&&data.working.payload&&Array.isArray(data.working.payload.polygons))resumed=data.working.payload;
+ polys=resumed?clone(resumed.polygons):(data.review?clone(data.review.polygons):data.draft.candidates.map(c=>({class_id:null,points:clone(c.points),source_candidate_id:c.id})));
+ selected=polys.length?0:-1;drawing=resumed&&resumed.drawing?clone(resumed.drawing):null;history=[];dirty=Boolean(resumed);active=resumed?resumed.active_seconds:(data.review?data.review.active_seconds:0);lastTick=lastAction=performance.now();
+ $("confirmed").checked=false;$("status").value=resumed?resumed.status:(data.review?data.review.status:"reviewed");$("reason").value=resumed?resumed.reason:(data.review?data.review.reason:"");
+ $("images").value=String(index);$("progress").textContent=(index+1)+" / "+state.samples.length;
+ const hint=data.sample.capture_hint;const names=hint.expected_class_ids.map(id=>state.classes[id].display_name).join("、");
+ const actual=data.sample.user_confirmed_class_ids;
+ $("hint").textContent=(actual?"用户更正身份："+actual.map(id=>state.classes[id].display_name).join("、")+"；原提示：":"拍摄提示：")+(names||"无指定目标")+" / "+hint.pose+"（仍需核对全部实例与边界）";
+ $("class").value=selected<0||polys[selected].class_id===null?"":String(polys[selected].class_id);
+ $("zoom").value="1";list();scale();notice(resumed?"已恢复未通过保存的修改；请修正后重新确认。":(data.review?"已有审核记录；修改后请再次保存。":"选择可用草稿指定类别；删掉非目标，漏检可直接补画。"));
+ }catch(e){notice(e.message,true);}finally{loading=false;}
+}
+function inside(p,poly){let yes=false;for(let i=0,j=poly.length-1;i<poly.length;j=i++){const a=poly[i],b=poly[j];if(((a[1]>p[1])!==(b[1]>p[1]))&&(p[0]<(b[0]-a[0])*(p[1]-a[1])/(b[1]-a[1])+a[0]))yes=!yes;}return yes;}
+canvas.onpointerdown=e=>{
+ if(loading||!photo)return;touch();const p=point(e);
+ if(drawing){const r=canvas.getBoundingClientRect();if(drawing.length>=3&&Math.hypot((p[0]-drawing[0][0])*r.width,(p[1]-drawing[0][1])*r.height)<=8){finish();return;}drawing.push(p);changed();draw();return;}
+ const r=canvas.getBoundingClientRect();
+ if(selected>=0){const hit=polys[selected].points.findIndex(q=>Math.hypot((q[0]-p[0])*r.width,(q[1]-p[1])*r.height)<9);if(hit>=0){snapshot();drag=hit;canvas.setPointerCapture(e.pointerId);return;}}
+ let hit=-1;for(let i=polys.length-1;i>=0;i--)if(inside(p,polys[i].points)){hit=i;break;}
+ selected=hit;$("class").value=hit<0||polys[hit].class_id===null?"":String(polys[hit].class_id);list();draw();
+};
+canvas.onpointermove=e=>{if(drag>=0){polys[selected].points[drag]=point(e);changed();draw();}};
+canvas.onpointerup=()=>{drag=-1;list();};canvas.onpointercancel=()=>{drag=-1;};
+$("new").onclick=()=>{if(drawing)return;drawing=[];selected=-1;notice("沿外轮廓顺时针或逆时针逐点点击，点回起点或按 Enter 完成；不用再补一个闭合点。");list();draw();touch();};
+function finish(){if(!drawing)return;if(drawing.length<3){notice("至少需要三个点。",true);return;}snapshot();polys.push({class_id:$("class").value===""?null:Number($("class").value),points:clone(drawing),source_candidate_id:null});drawing=null;selected=polys.length-1;changed();list();draw();notice("新轮廓已加入，请核对商品类别和边界。");}
+$("finish").onclick=finish;
+$("cancel").onclick=()=>{drawing=null;persist();draw();notice("绘制已取消。");};
+$("delete").onclick=()=>{if(selected<0)return;snapshot();polys.splice(selected,1);selected=-1;list();draw();};
+$("clear").onclick=()=>{if(!polys.length)return;snapshot();polys=[];selected=-1;list();draw();notice("轮廓已清除。若图中有目标，请补画；无目标时明确选择空背景。");};
+$("assign").onclick=()=>{if(selected<0||$("class").value===""){notice("先选中轮廓，再选择商品类别。",true);return;}snapshot();polys[selected].class_id=Number($("class").value);list();draw();};
+$("undo").onclick=()=>{if(drawing&&drawing.length){drawing.pop();persist();draw();return;}if(!history.length)return;polys=history.pop();selected=-1;changed();list();draw();};
+$("toggle").onclick=()=>{show=!show;draw();};
+function distance(p,a,b){const dx=b[0]-a[0],dy=b[1]-a[1],den=dx*dx+dy*dy;let t=den?((p[0]-a[0])*dx+(p[1]-a[1])*dy)/den:0;t=Math.max(0,Math.min(1,t));return Math.hypot(p[0]-a[0]-t*dx,p[1]-a[1]-t*dy);}
+function rdp(p){let max=0,index=0;for(let i=1;i<p.length-1;i++){const d=distance(p[i],p[0],p[p.length-1]);if(d>max){max=d;index=i;}}return max>2?rdp(p.slice(0,index+1)).slice(0,-1).concat(rdp(p.slice(index))):[p[0],p[p.length-1]];}
+$("simplify").onclick=()=>{if(selected<0)return;const before=polys[selected].points;let q=before.map(p=>[p[0]*canvas.width,p[1]*canvas.height]);q=rdp(q.concat([q[0]])).slice(0,-1);if(q.length<3){notice("简化会使轮廓退化，已保留原轮廓。",true);return;}snapshot();polys[selected].points=q.map(p=>[p[0]/canvas.width,p[1]/canvas.height]);list();draw();notice("已简化；请检查细节边缘，必要时撤销。");};
+$("zoom").oninput=scale;window.onresize=scale;
+$("prev").onclick=()=>load(Math.max(0,Number($("images").value)-1));$("next").onclick=()=>load(Math.min(state.samples.length-1,Number($("images").value)+1));
+$("images").onchange=()=>{const requested=Number($("images").value);$("images").value=String(state.samples.findIndex(s=>s.image_id===current.sample.image_id));load(requested);};
+async function save(next){
+ if(loading)return;if(drawing){notice("请先完成或取消正在绘制的轮廓。",true);return;}
+ if(!$("confirmed").checked){notice("请完成核对后勾选人工确认。",true);return;}
+ const status=$("status").value;if(status!=="reviewed"&&polys.length){notice("确认无目标或排除时，请先删除本图的候选轮廓。",true);return;}
+ try{const result=await api("/api/review/"+current.sample.image_id,{method:"POST",headers:{"Content-Type":"application/json"},body:JSON.stringify({confirmed:true,status,polygons:polys,reason:$("reason").value,active_seconds:active})});current.review=result.review;polys=clone(result.review.polygons);dirty=false;localStorage.removeItem(workKey());summary(result.summary);list();draw();const fixed=polys.some(p=>p.geometry_cleanup);notice("已保存审核记录"+(status==="excluded"?"，此图不生成训练标签。":"与标准分割标签。")+(fixed?"已移除距起点 5 原图像素内的多余闭合点，其余轮廓保留。":""));if(next&&Number($("images").value)<state.samples.length-1)await load(Number($("images").value)+1);}
+ catch(e){notice(e.message,true);}
+}
+$("save").onclick=()=>save(false);$("saveNext").onclick=()=>save(true);
+$("status").onchange=changed;$("reason").oninput=changed;
+document.addEventListener("pointerdown",touch);document.addEventListener("keydown",e=>{touch();if(e.target.matches("input,select,textarea"))return;if(e.key==="Enter"&&drawing){e.preventDefault();finish();}if(e.key==="Escape"){drawing=null;persist();draw();}});
+setInterval(()=>{const t=performance.now();if(current&&!loading&&!document.hidden&&document.hasFocus()&&t-lastAction<60000)active+=(t-lastTick)/1000;lastTick=t;},500);
+window.onbeforeunload=e=>{if(dirty){e.preventDefault();e.returnValue="";}};
+(async()=>{try{state=await api("/api/state");state.classes.forEach(c=>{const option=document.createElement("option");option.value=c.id;option.textContent=c.id+" "+c.display_name;$("class").append(option);});state.samples.forEach((s,i)=>{const option=document.createElement("option");option.value=i;option.textContent=(i+1)+". "+s.image_id;$("images").append(option);});summary(state.summary);const done=new Set(state.summary.per_image.map(r=>r.image_id));const first=state.samples.findIndex(s=>!done.has(s.image_id));await load(first<0?0:first);}catch(e){notice(e.message,true);}})();
+</script>
+</html>
