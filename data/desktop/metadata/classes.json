@@ -1,0 +1,35 @@
+{
+  "schema_version": 1,
+  "mapping_version": "products-v1",
+  "status": "frozen",
+  "frozen_date": "2026-10-03",
+  "task": "instance_segmentation",
+  "namespace": "products",
+  "identity_basis": "用户提供的实物名称与现有包装；容量用于登记，不要求模型执行 OCR",
+  "classes": [
+    {
+      "id": 0,
+      "name": "sam_whole_milk",
+      "display_name": "山姆全脂牛奶 200mL",
+      "physical_id": "sam_milk_001"
+    },
+    {
+      "id": 1,
+      "name": "yili_shuhua",
+      "display_name": "伊利舒化 220mL",
+      "physical_id": "yili_shuhua_001"
+    },
+    {
+      "id": 2,
+      "name": "luckin_cup",
+      "display_name": "瑞幸咖啡杯",
+      "physical_id": "luckin_cup_001"
+    }
+  ],
+  "scope_notes": [
+    "0 和 1 对应用户手头的两种奶盒包装；同品牌其他规格或包装尚未验证。",
+    "2 识别瑞幸杯外包装，不区分杯内咖啡品种。现有实物为一个带杯套的冷杯，其他杯型的泛化尚未验证。",
+    "每类目前只有一个实物，多角度采集用于验证同一包装在新场景的表现。",
+    "本映射用于后续审核标签与微调；旧 configs/e0.yaml 和 COCO 类别索引保持原样。"
+  ]
+}

@@ -1,0 +1,61 @@
+{
+  "schema_version": 1,
+  "catalog_version": "products-v1",
+  "updated_date": "2026-10-03",
+  "source": "user_description",
+  "reference_photo_status": "to_collect_in_M2-02",
+  "products": [
+    {
+      "class_id": 0,
+      "physical_id": "sam_milk_001",
+      "user_description": "山姆超市全脂牛奶，200ml",
+      "purchase_source": "山姆超市",
+      "manufacturer_brand": null,
+      "product_variant": "全脂",
+      "volume_ml": 200,
+      "physical_count": 1,
+      "reference_photos": [],
+      "optional_details_pending": [
+        "包装上印的厂家品牌与正式商品全名",
+        "包装版本参考照片"
+      ]
+    },
+    {
+      "class_id": 1,
+      "physical_id": "yili_shuhua_001",
+      "user_description": "伊利舒化，220ml",
+      "brand": "伊利",
+      "product_series": "舒化",
+      "product_variant": null,
+      "volume_ml": 220,
+      "physical_count": 1,
+      "reference_photos": [],
+      "optional_details_pending": [
+        "全脂或低脂等具体版本",
+        "包装版本参考照片"
+      ]
+    },
+    {
+      "class_id": 2,
+      "physical_id": "luckin_cup_001",
+      "user_description": "瑞幸冷杯，有杯套；只要识别出来是瑞幸即可",
+      "brand": "瑞幸咖啡",
+      "cup_type": "cold",
+      "sleeve_present": true,
+      "volume_ml": null,
+      "physical_count": 1,
+      "reference_photos": [],
+      "optional_details_pending": [
+        "杯容量",
+        "包装版本参考照片"
+      ]
+    }
+  ],
+  "collection_status": "not_started",
+  "notes": [
+    "未确认信息保留 null，不从购买来源猜测厂家品牌。",
+    "用户要求按现有实物直接开展模型辅助标注，详细品牌、奶品版本和杯容量不作为首版阻塞条件。",
+    "reference_photos 为空表示尚未采集；本文件不构成标注数据或训练结果。",
+    "classes.json 为类别 ID / 英文名的唯一映射依据；本清单通过 class_id 关联实物。"
+  ]
+}
