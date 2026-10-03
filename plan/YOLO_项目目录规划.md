@@ -2,6 +2,8 @@
 
 项目根目录：`E:\秋招\项目相关\YOLO`
 
+2026-10-03 用户正式采用三种固定包装商品方向：约 350 张自采原始照片、模型辅助轮廓与人工审核、三类微调和实时演示。具体商品名 / ID 待 M2-01 冻结，见[范围与任务](00_YOLO_分阶段推进与进度跟踪.md#product-scope)。沿用 data/desktop/ 与现有代码位置，旧 E0、环境及学习证据保留；本文件新增路径均为实施计划，不代表文件已生成。
+
 本文件规划需要在你的 Windows 电脑中建立的目录与文件。2026-10-02 已完成 M0-02：必要一级目录、`configs/paths.yaml`、源码锁定清单、训练 requirements、路径解析与安装验收脚本已建立；后续数据、训练和部署脚本按任务逐步实现，表中其余文件仍是规划。实际进展见[进度跟踪](00_YOLO_分阶段推进与进度跟踪.md)。
 
 同日已实现 `scripts/check_env.py`，生成 JSON 快照与 `reports/environment_check.md`；12:34 的复测已通过同一后端连续三次摄像头读取与正常释放，M0-03 已验收，见[检查使用说明](../docs/M0_环境与模型使用手册.md)。
@@ -64,8 +66,8 @@ Conda 环境不需要放在项目目录中。若后续使用 Git，重点版本�
 | 文件 | 内容 |
 | --- | --- |
 | `configs/paths.yaml` | 项目路径规则与必要的外部路径 |
-| `configs/desktop_public.yaml` | 公共子集训练数据配置 |
-| `configs/desktop_mixed.yaml` | 公共 + 自采训练数据配置 |
+| `configs/products_base.yaml` | E1 首批审核商品数据配置，待实现 |
+| `configs/products_expanded.yaml` | E2/E3 定向扩充训练池，共用冻结验证 / 测试清单，待实现 |
 | `configs/train_baseline.yaml` | 原模型训练超参数 |
 | `configs/train_se.yaml` | 修改模型的训练参数；与基线保持可比 |
 | `configs/yolo11n-seg-se.yaml` | 加入 P3-SE 的模型结构配置 |
@@ -82,11 +84,13 @@ Conda 环境不需要放在项目目录中。若后续使用 Git，重点版本�
 
 | 子目录 | 放什么 |
 | --- | --- |
-| `data/raw/coco/annotations/` | 下载的原始 COCO 实例标注 |
-| `data/raw/coco/images/` | 筛选并下载的原始 COCO 图片 |
+| `data/raw/coco/annotations/` | 旧通用三类方案的预留路径；商品首版不下载 COCO 标注 |
+| `data/raw/coco/images/` | 旧通用三类预留路径；不将 cup / bottle 图片直接改名成商品数据 |
 | `data/raw/camera/videos/` | 自采原始摄像头短视频 |
 | `data/raw/camera/frames/` | 抽取、筛选后的待标注图片 |
-| `data/raw/camera/annotations/` | 标注工具导出的原始多边形标注 |
+| `data/raw/camera/annotations/` | 标注工具导出的原始多边形标注及审核记录 |
+| `data/raw/camera/annotations/drafts/` | 模型提议轮廓和原预测类别 / 分数，仅作草稿，待实施时创建 |
+| `data/raw/camera/annotations/reviewed/` | 人工确认商品类别并修正后的轮廓，进入正式转换，待实施时创建 |
 
 原始资料用于追溯与重新转换。训练程序读取下一节整理后的数据，避免临时调整和原始标注混在一起。
 
@@ -104,7 +108,7 @@ Conda 环境不需要放在项目目录中。若后续使用 Git，重点版本�
 | `data/desktop/metadata/` | 类别映射、来源、拍摄组、划分与转换记录 |
 | `data/fixed_checks/` | 固定的 30 张左右部署检查图片 |
 
-首版用文件名前缀区分来源，例如 `coco_000123.jpg`、`camera_clip03_000015.jpg`。同名冲突在整理时处理，避免覆盖。
+商品首版使用实物 / 拍摄组 / 帧号命名，例如 `productA_clip03_000015.jpg`；保留原始文件，避免覆盖。E1/E2 由训练清单选择数据，复用审核照片，不复制多套数据目录。
 
 图片与标签必须对应：
 
@@ -118,18 +122,17 @@ Conda 环境不需要放在项目目录中。若后续使用 Git，重点版本�
 
 | 文件 | 用途 |
 | --- | --- |
-| `splits/train_public.txt` | E1 使用的公共训练图片清单 |
-| `splits/train_mixed.txt` | E2/E3 使用的公共 + 自采训练图片清单 |
-| `splits/val_public.txt`、`val_camera.txt` | 分来源验证集合 |
-| `splits/val_all.txt` | 统一验证与选择权重使用的集合 |
-| `splits/test_public.txt`、`test_camera.txt` | 分来源最终测试集合 |
-| `splits/test_all.txt` | 最终测试集合的组合清单 |
-| `metadata/classes.json` | 0=杯子、1=瓶子、2=手机的唯一类别映射 |
+| `splits/train_base.txt` | E1 首批审核商品训练图片清单 |
+| `splits/train_expanded.txt` | E2/E3 扩充商品训练清单，不引入验证 / 测试图片 |
+| `splits/val_all.txt` | 冻结的商品验证拍摄组清单，用于调参与选择权重 |
+| `splits/test_all.txt` | 冻结的独立测试拍摄组清单，仅用于最终评价 |
+| `metadata/classes.json` | M2-01 冻结的三商品 ID / 英文名 / 包装定义；不沿用旧杯瓶手机映射 |
 | `metadata/manifest.csv` | 文件、来源、原图 ID、拍摄 group_id 与 split |
-| `metadata/selection.json` | 公共子集选择规则、图像 ID 与种子 |
-| `metadata/conversion_summary.json` | 标签转换、筛除与人工修正统计 |
+| `metadata/selection.json` | 商品拍摄覆盖、抽帧 / 去重规则与划分种子 |
+| `metadata/conversion_summary.json` | 草稿使用、人工修正 / 重画 / 补标数量、审核与转换统计 |
+| `metadata/products.json` | 品牌、商品名、规格、包装版本、实物 ID 与可见区别（待建立） |
 
-这两套训练方案通过清单选择图片，不需要复制两份混合数据。训练、验证和测试图片应物理隔离，清单不得引入跨集合图片。
+首批与扩充训练方案通过清单选择图片，不复制两份照片。训练、验证和测试图片应物理隔离，清单不得引入跨集合图片。
 
 冻结清单建议保留项目根目录相对路径；使用前由数据脚本生成本机可读取的绝对路径清单。这样数据移动后能够重新生成，不必手工逐行修改。
 
@@ -147,14 +150,14 @@ Conda 环境不需要放在项目目录中。若后续使用 Git，重点版本�
 | `scripts/verify_reproducibility.py` | 从项目外工作目录启动新进程，复现 E0 与 ONNX | 已实现，M0-06 |
 | `scripts/prepare_e0.py` | 恢复并校验固定预训练权重及通用图片 | M0-04 已实现 |
 | `scripts/predict_e0.py` | E0 图片、视频、摄像头推理，保存框、mask 与运行证据 | M0-04 已实现 |
-| `scripts/prepare_coco_subset.py` | 筛选、下载、转换、类别重映射 | 数据阶段 |
+| `scripts/annotate_product_drafts.py` | 现有分割模型提议轮廓，记录来源 / 原分数；不直接生成审核真值 | M2 试标阶段，待实现 |
 | `scripts/extract_frames.py` | 抽帧并记录拍摄组 | 数据阶段 |
-| `scripts/prepare_camera_labels.py` | 自采标注转换与数据整理 | 数据阶段 |
+| `scripts/prepare_camera_labels.py` | 转换人工审核商品标注，类别 + 多边形，不写置信度 | 数据阶段，待实现 |
 | `scripts/build_splits.py` | 按组划分、生成清单并防止重叠 | 数据阶段 |
 | `scripts/check_dataset.py` | 图片、标签、类别和划分检查 | 数据阶段 |
 | `scripts/visualize_labels.py` | 绘制标签轮廓、检查标注 | 数据阶段 |
 | `scripts/train.py` | E1、E2、E3 的训练入口 | 训练阶段 |
-| `scripts/evaluate.py` | 公共、自采和组合集合评估 | 训练阶段 |
+| `scripts/evaluate.py` | 冻结商品验证 / 测试组、各类别与条件评价 | 训练阶段 |
 | `scripts/check_modified_model.py` | 检查结构、梯度、加载和导出 | 模型修改阶段 |
 | `scripts/export_onnx.py` | ONNX 导出与元数据记录 | 部署阶段 |
 | `scripts/build_engine.py` | 根据 TensorRT 版本构建 engine | 部署阶段 |
@@ -211,8 +214,8 @@ SE 类与解析逻辑改在该源码中对应的模块文件。自定义连接�
 | 子目录 | 内容 |
 | --- | --- |
 | `artifacts/pretrained/` | 下载的 `yolo11n-seg.pt` 等初始权重 |
-| `artifacts/E1/` | 公共数据基线选定权重与部署文件 |
-| `artifacts/E2/` | 场景适配模型选定权重与部署文件 |
+| `artifacts/E1/` | 首批自采商品微调基线选定权重与部署文件 |
+| `artifacts/E2/` | 定向扩充商品训练池模型及部署文件 |
 | `artifacts/E3/` | SE 修改模型选定权重与部署文件 |
 
 每个完成部署的实验目录包含：
@@ -302,7 +305,7 @@ reports 是你归纳后的结论，logs 是程序直接记录的过程。训练�
 5. `third_party/ultralytics/`：安装并锁定源码。
 6. `artifacts/pretrained/`：放初始模型。
 
-之后按顺序填充：数据准备脚本与数据 → 训练和评估 → SE 修改 → ONNX 与 TensorRT → 摄像头应用 → 报告与演示。
+按实际任务填充：商品登记 → 约 20 张辅助试标 / 人工审核 → 约 350 张按组划分 → E1 微调 / 留出评价 → 新权重摄像头首版。E2 定向扩充、E3 SE、完整独立 ONNX / TensorRT 与稳定性按依赖推进；不创建空脚本凑目录。
 
 ## 十二、在 Windows 本地建立目录的命令
 
