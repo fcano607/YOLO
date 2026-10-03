@@ -1,0 +1,1564 @@
+{
+  "schema_version": 1,
+  "task": "M2-03",
+  "checked_at": "2026-10-03T23:16:07.761753+08:00",
+  "status": "inventory_and_augmentation_preview_passed",
+  "source": {
+    "version": "8.4.171",
+    "commit": "86f5c8c401a630da651d321e691ab0af540812cf",
+    "module": "E:\\秋招\\项目相关\\YOLO\\third_party\\ultralytics\\ultralytics\\__init__.py"
+  },
+  "augmentation_policy": "configs\\augment_products.yaml",
+  "augmentation_policy_sha256": "0f6042fad1ae0d497097dd5b86fc2ece96106c794bbe954ecb24e5fa1d331c4d",
+  "script_sha256": "8fec1d867394b42ff900741f9f6cb39c511909bd4fb5a5028b960cb580538cae",
+  "inventory_images": 20,
+  "class_instance_counts": [
+    12,
+    10,
+    8
+  ],
+  "capture_groups": {
+    "pilot_20261003130657": {
+      "images": 6,
+      "target_images": 6,
+      "negative_images": 0,
+      "class_instances": [
+        2,
+        2,
+        2
+      ]
+    },
+    "pilot_20261003130657_more": {
+      "images": 14,
+      "target_images": 10,
+      "negative_images": 4,
+      "class_instances": [
+        10,
+        8,
+        6
+      ]
+    }
+  },
+  "exact_duplicate_pairs": 0,
+  "similarity_candidates": [],
+  "preview_variants": 60,
+  "input_instance_appearances": 90,
+  "retained_instance_appearances": 90,
+  "filtered_instance_appearances": 0,
+  "negative_variants_still_empty": 12,
+  "preview": "data/raw/camera/annotations/pilot_20261003130657_all_augmentation_contact.jpg",
+  "preview_sha256": "47a3d6d33e7fc8738a2ae469e651028a92d3b3fc71b132442e2a198dc72b2ba6",
+  "augmentation_checks": [
+    {
+      "output_shape_hw": [
+        640,
+        640
+      ],
+      "retained_class_ids": [
+        1
+      ],
+      "input_instances": 1,
+      "retained_instances": 1,
+      "filtered_instances": 0,
+      "mask_nonzero_pixels_at_stride4": [
+        1694
+      ],
+      "negative_still_empty": null,
+      "image_id": "pilot_20261003130657_001",
+      "capture_group_id": "pilot_20261003130657",
+      "effective_seed": 42,
+      "base_seed": 42,
+      "augmented_image_sha256": "767ed7a8a3c1e175a1ce5992c0e5ee4baf5f3eb209e5cb2855edaed5fa926f8a",
+      "repeated_seed_identical": true,
+      "usage": "diagnostic_preview_only"
+    },
+    {
+      "output_shape_hw": [
+        640,
+        640
+      ],
+      "retained_class_ids": [
+        1
+      ],
+      "input_instances": 1,
+      "retained_instances": 1,
+      "filtered_instances": 0,
+      "mask_nonzero_pixels_at_stride4": [
+        1589
+      ],
+      "negative_still_empty": null,
+      "image_id": "pilot_20261003130657_001",
+      "capture_group_id": "pilot_20261003130657",
+      "effective_seed": 43,
+      "base_seed": 43,
+      "augmented_image_sha256": "19ab6af59e70d7fb9536b42e5b1068ea9d7b5ca47615923e62557164a1a9cfe9",
+      "repeated_seed_identical": true,
+      "usage": "diagnostic_preview_only"
+    },
+    {
+      "output_shape_hw": [
+        640,
+        640
+      ],
+      "retained_class_ids": [
+        1
+      ],
+      "input_instances": 1,
+      "retained_instances": 1,
+      "filtered_instances": 0,
+      "mask_nonzero_pixels_at_stride4": [
+        1118
+      ],
+      "negative_still_empty": null,
+      "image_id": "pilot_20261003130657_001",
+      "capture_group_id": "pilot_20261003130657",
+      "effective_seed": 44,
+      "base_seed": 44,
+      "augmented_image_sha256": "329e5e0f32bbdb75f7285d661ab3bd52210ccc76b15f7a4d7ce0e8f64eb6947e",
+      "repeated_seed_identical": true,
+      "usage": "diagnostic_preview_only"
+    },
+    {
+      "output_shape_hw": [
+        640,
+        640
+      ],
+      "retained_class_ids": [
+        1
+      ],
+      "input_instances": 1,
+      "retained_instances": 1,
+      "filtered_instances": 0,
+      "mask_nonzero_pixels_at_stride4": [
+        2366
+      ],
+      "negative_still_empty": null,
+      "image_id": "pilot_20261003130657_002",
+      "capture_group_id": "pilot_20261003130657",
+      "effective_seed": 1042,
+      "base_seed": 42,
+      "augmented_image_sha256": "3de2945182473115102771d399ecc6e7729af9b1ec86c08be6243f27a62fe8ee",
+      "repeated_seed_identical": true,
+      "usage": "diagnostic_preview_only"
+    },
+    {
+      "output_shape_hw": [
+        640,
+        640
+      ],
+      "retained_class_ids": [
+        1
+      ],
+      "input_instances": 1,
+      "retained_instances": 1,
+      "filtered_instances": 0,
+      "mask_nonzero_pixels_at_stride4": [
+        3192
+      ],
+      "negative_still_empty": null,
+      "image_id": "pilot_20261003130657_002",
+      "capture_group_id": "pilot_20261003130657",
+      "effective_seed": 1043,
+      "base_seed": 43,
+      "augmented_image_sha256": "f963a2eaa4b56fba31b464b57564e3d78295834bb52c7324f91bbbea41686715",
+      "repeated_seed_identical": true,
+      "usage": "diagnostic_preview_only"
+    },
+    {
+      "output_shape_hw": [
+        640,
+        640
+      ],
+      "retained_class_ids": [
+        1
+      ],
+      "input_instances": 1,
+      "retained_instances": 1,
+      "filtered_instances": 0,
+      "mask_nonzero_pixels_at_stride4": [
+        2878
+      ],
+      "negative_still_empty": null,
+      "image_id": "pilot_20261003130657_002",
+      "capture_group_id": "pilot_20261003130657",
+      "effective_seed": 1044,
+      "base_seed": 44,
+      "augmented_image_sha256": "9894381ca296bb3c14be1b0d0c940c67cb68a9627053e9b61ab7870acacd4da1",
+      "repeated_seed_identical": true,
+      "usage": "diagnostic_preview_only"
+    },
+    {
+      "output_shape_hw": [
+        640,
+        640
+      ],
+      "retained_class_ids": [
+        0
+      ],
+      "input_instances": 1,
+      "retained_instances": 1,
+      "filtered_instances": 0,
+      "mask_nonzero_pixels_at_stride4": [
+        2186
+      ],
+      "negative_still_empty": null,
+      "image_id": "pilot_20261003130657_003",
+      "capture_group_id": "pilot_20261003130657",
+      "effective_seed": 2042,
+      "base_seed": 42,
+      "augmented_image_sha256": "a2b55469c1bdad70fe0d15426d7550c0c07b5065ed02c09874b94f2977c124b6",
+      "repeated_seed_identical": true,
+      "usage": "diagnostic_preview_only"
+    },
+    {
+      "output_shape_hw": [
+        640,
+        640
+      ],
+      "retained_class_ids": [
+        0
+      ],
+      "input_instances": 1,
+      "retained_instances": 1,
+      "filtered_instances": 0,
+      "mask_nonzero_pixels_at_stride4": [
+        4429
+      ],
+      "negative_still_empty": null,
+      "image_id": "pilot_20261003130657_003",
+      "capture_group_id": "pilot_20261003130657",
+      "effective_seed": 2043,
+      "base_seed": 43,
+      "augmented_image_sha256": "98105903fc8d05fd06ad9b51e50760b18c4e0f9870bd13b63091dd2a8d7cd3f7",
+      "repeated_seed_identical": true,
+      "usage": "diagnostic_preview_only"
+    },
+    {
+      "output_shape_hw": [
+        640,
+        640
+      ],
+      "retained_class_ids": [
+        0
+      ],
+      "input_instances": 1,
+      "retained_instances": 1,
+      "filtered_instances": 0,
+      "mask_nonzero_pixels_at_stride4": [
+        2524
+      ],
+      "negative_still_empty": null,
+      "image_id": "pilot_20261003130657_003",
+      "capture_group_id": "pilot_20261003130657",
+      "effective_seed": 2044,
+      "base_seed": 44,
+      "augmented_image_sha256": "1cadda6509f8c0bc1945877e8bcdb2f8c218c04c14c5d8ec7f1ffaba0f0240d7",
+      "repeated_seed_identical": true,
+      "usage": "diagnostic_preview_only"
+    },
+    {
+      "output_shape_hw": [
+        640,
+        640
+      ],
+      "retained_class_ids": [
+        0
+      ],
+      "input_instances": 1,
+      "retained_instances": 1,
+      "filtered_instances": 0,
+      "mask_nonzero_pixels_at_stride4": [
+        1992
+      ],
+      "negative_still_empty": null,
+      "image_id": "pilot_20261003130657_004",
+      "capture_group_id": "pilot_20261003130657",
+      "effective_seed": 3042,
+      "base_seed": 42,
+      "augmented_image_sha256": "c43f3bb896a39976be7d9457eced8fd56615b9ef03e5a3e0028360d12ae9c60f",
+      "repeated_seed_identical": true,
+      "usage": "diagnostic_preview_only"
+    },
+    {
+      "output_shape_hw": [
+        640,
+        640
+      ],
+      "retained_class_ids": [
+        0
+      ],
+      "input_instances": 1,
+      "retained_instances": 1,
+      "filtered_instances": 0,
+      "mask_nonzero_pixels_at_stride4": [
+        2932
+      ],
+      "negative_still_empty": null,
+      "image_id": "pilot_20261003130657_004",
+      "capture_group_id": "pilot_20261003130657",
+      "effective_seed": 3043,
+      "base_seed": 43,
+      "augmented_image_sha256": "658383e6d19095888371d67a309fe0823cbc8634bbe9040f6a202aab4c0cfab2",
+      "repeated_seed_identical": true,
+      "usage": "diagnostic_preview_only"
+    },
+    {
+      "output_shape_hw": [
+        640,
+        640
+      ],
+      "retained_class_ids": [
+        0
+      ],
+      "input_instances": 1,
+      "retained_instances": 1,
+      "filtered_instances": 0,
+      "mask_nonzero_pixels_at_stride4": [
+        1464
+      ],
+      "negative_still_empty": null,
+      "image_id": "pilot_20261003130657_004",
+      "capture_group_id": "pilot_20261003130657",
+      "effective_seed": 3044,
+      "base_seed": 44,
+      "augmented_image_sha256": "0b4c48307caac78904f2c56e8636ffae8795074c2101a827c8ff4432d30ce7e6",
+      "repeated_seed_identical": true,
+      "usage": "diagnostic_preview_only"
+    },
+    {
+      "output_shape_hw": [
+        640,
+        640
+      ],
+      "retained_class_ids": [
+        2
+      ],
+      "input_instances": 1,
+      "retained_instances": 1,
+      "filtered_instances": 0,
+      "mask_nonzero_pixels_at_stride4": [
+        3447
+      ],
+      "negative_still_empty": null,
+      "image_id": "pilot_20261003130657_005",
+      "capture_group_id": "pilot_20261003130657",
+      "effective_seed": 4042,
+      "base_seed": 42,
+      "augmented_image_sha256": "b8ab5fdd4116bd688cb331d537fc322b980d64c3db62e3f450a173562d624433",
+      "repeated_seed_identical": true,
+      "usage": "diagnostic_preview_only"
+    },
+    {
+      "output_shape_hw": [
+        640,
+        640
+      ],
+      "retained_class_ids": [
+        2
+      ],
+      "input_instances": 1,
+      "retained_instances": 1,
+      "filtered_instances": 0,
+      "mask_nonzero_pixels_at_stride4": [
+        2179
+      ],
+      "negative_still_empty": null,
+      "image_id": "pilot_20261003130657_005",
+      "capture_group_id": "pilot_20261003130657",
+      "effective_seed": 4043,
+      "base_seed": 43,
+      "augmented_image_sha256": "7e2de241736d5a5608143df3ab0981f4ead18887913c25018487cd7bb05e6bd8",
+      "repeated_seed_identical": true,
+      "usage": "diagnostic_preview_only"
+    },
+    {
+      "output_shape_hw": [
+        640,
+        640
+      ],
+      "retained_class_ids": [
+        2
+      ],
+      "input_instances": 1,
+      "retained_instances": 1,
+      "filtered_instances": 0,
+      "mask_nonzero_pixels_at_stride4": [
+        4169
+      ],
+      "negative_still_empty": null,
+      "image_id": "pilot_20261003130657_005",
+      "capture_group_id": "pilot_20261003130657",
+      "effective_seed": 4044,
+      "base_seed": 44,
+      "augmented_image_sha256": "6e11d4266d718d83ab954bf09ac72998310868f6b1c20bf9128bf73eb0bfbdf0",
+      "repeated_seed_identical": true,
+      "usage": "diagnostic_preview_only"
+    },
+    {
+      "output_shape_hw": [
+        640,
+        640
+      ],
+      "retained_class_ids": [
+        2
+      ],
+      "input_instances": 1,
+      "retained_instances": 1,
+      "filtered_instances": 0,
+      "mask_nonzero_pixels_at_stride4": [
+        3220
+      ],
+      "negative_still_empty": null,
+      "image_id": "pilot_20261003130657_006",
+      "capture_group_id": "pilot_20261003130657",
+      "effective_seed": 5042,
+      "base_seed": 42,
+      "augmented_image_sha256": "edd6b85494f28fa782b529ce59f2e989fb1e6daac9a17892aebb4060e5f0f8b9",
+      "repeated_seed_identical": true,
+      "usage": "diagnostic_preview_only"
+    },
+    {
+      "output_shape_hw": [
+        640,
+        640
+      ],
+      "retained_class_ids": [
+        2
+      ],
+      "input_instances": 1,
+      "retained_instances": 1,
+      "filtered_instances": 0,
+      "mask_nonzero_pixels_at_stride4": [
+        3289
+      ],
+      "negative_still_empty": null,
+      "image_id": "pilot_20261003130657_006",
+      "capture_group_id": "pilot_20261003130657",
+      "effective_seed": 5043,
+      "base_seed": 43,
+      "augmented_image_sha256": "33b2e858ff8008fbf518487fc745a31664b2d4799ad5e76d0100609e6bf8bf58",
+      "repeated_seed_identical": true,
+      "usage": "diagnostic_preview_only"
+    },
+    {
+      "output_shape_hw": [
+        640,
+        640
+      ],
+      "retained_class_ids": [
+        2
+      ],
+      "input_instances": 1,
+      "retained_instances": 1,
+      "filtered_instances": 0,
+      "mask_nonzero_pixels_at_stride4": [
+        2758
+      ],
+      "negative_still_empty": null,
+      "image_id": "pilot_20261003130657_006",
+      "capture_group_id": "pilot_20261003130657",
+      "effective_seed": 5044,
+      "base_seed": 44,
+      "augmented_image_sha256": "3c60256c470a81d177854aa6307cfd5b2c7f3e59359991954e8aac8db13be269",
+      "repeated_seed_identical": true,
+      "usage": "diagnostic_preview_only"
+    },
+    {
+      "output_shape_hw": [
+        640,
+        640
+      ],
+      "retained_class_ids": [
+        0
+      ],
+      "input_instances": 1,
+      "retained_instances": 1,
+      "filtered_instances": 0,
+      "mask_nonzero_pixels_at_stride4": [
+        857
+      ],
+      "negative_still_empty": null,
+      "image_id": "pilot_20261003130657_more_001",
+      "capture_group_id": "pilot_20261003130657_more",
+      "effective_seed": 6042,
+      "base_seed": 42,
+      "augmented_image_sha256": "b2c1de0c1da8c9eb8bd64ea88f6dc232e92f41896fe923160e21d65399eef14b",
+      "repeated_seed_identical": true,
+      "usage": "diagnostic_preview_only"
+    },
+    {
+      "output_shape_hw": [
+        640,
+        640
+      ],
+      "retained_class_ids": [
+        0
+      ],
+      "input_instances": 1,
+      "retained_instances": 1,
+      "filtered_instances": 0,
+      "mask_nonzero_pixels_at_stride4": [
+        858
+      ],
+      "negative_still_empty": null,
+      "image_id": "pilot_20261003130657_more_001",
+      "capture_group_id": "pilot_20261003130657_more",
+      "effective_seed": 6043,
+      "base_seed": 43,
+      "augmented_image_sha256": "62da23087ccfa1c93261bc2a1b2040a22fa432c6f38d7e9bf8840aad2be131e9",
+      "repeated_seed_identical": true,
+      "usage": "diagnostic_preview_only"
+    },
+    {
+      "output_shape_hw": [
+        640,
+        640
+      ],
+      "retained_class_ids": [
+        0
+      ],
+      "input_instances": 1,
+      "retained_instances": 1,
+      "filtered_instances": 0,
+      "mask_nonzero_pixels_at_stride4": [
+        937
+      ],
+      "negative_still_empty": null,
+      "image_id": "pilot_20261003130657_more_001",
+      "capture_group_id": "pilot_20261003130657_more",
+      "effective_seed": 6044,
+      "base_seed": 44,
+      "augmented_image_sha256": "008140ca73a7eb09670ca55e5864aad893ccee426c41c6fe7479ab5df47d49f4",
+      "repeated_seed_identical": true,
+      "usage": "diagnostic_preview_only"
+    },
+    {
+      "output_shape_hw": [
+        640,
+        640
+      ],
+      "retained_class_ids": [
+        0
+      ],
+      "input_instances": 1,
+      "retained_instances": 1,
+      "filtered_instances": 0,
+      "mask_nonzero_pixels_at_stride4": [
+        1764
+      ],
+      "negative_still_empty": null,
+      "image_id": "pilot_20261003130657_more_002",
+      "capture_group_id": "pilot_20261003130657_more",
+      "effective_seed": 7042,
+      "base_seed": 42,
+      "augmented_image_sha256": "5f0018b05ed485648aaa6d87f9cbb3f3d4a4a277f137a3ed47c709e611430348",
+      "repeated_seed_identical": true,
+      "usage": "diagnostic_preview_only"
+    },
+    {
+      "output_shape_hw": [
+        640,
+        640
+      ],
+      "retained_class_ids": [
+        0
+      ],
+      "input_instances": 1,
+      "retained_instances": 1,
+      "filtered_instances": 0,
+      "mask_nonzero_pixels_at_stride4": [
+        1253
+      ],
+      "negative_still_empty": null,
+      "image_id": "pilot_20261003130657_more_002",
+      "capture_group_id": "pilot_20261003130657_more",
+      "effective_seed": 7043,
+      "base_seed": 43,
+      "augmented_image_sha256": "66439bf1e8509c195824ce79c8072da92cd1965211be104f9c9b6ab70357cc50",
+      "repeated_seed_identical": true,
+      "usage": "diagnostic_preview_only"
+    },
+    {
+      "output_shape_hw": [
+        640,
+        640
+      ],
+      "retained_class_ids": [
+        0
+      ],
+      "input_instances": 1,
+      "retained_instances": 1,
+      "filtered_instances": 0,
+      "mask_nonzero_pixels_at_stride4": [
+        2144
+      ],
+      "negative_still_empty": null,
+      "image_id": "pilot_20261003130657_more_002",
+      "capture_group_id": "pilot_20261003130657_more",
+      "effective_seed": 7044,
+      "base_seed": 44,
+      "augmented_image_sha256": "3e75cdeba850fb68b65894ada5e9fe54c4a880f207c4ca70e7e2f34c5e587c73",
+      "repeated_seed_identical": true,
+      "usage": "diagnostic_preview_only"
+    },
+    {
+      "output_shape_hw": [
+        640,
+        640
+      ],
+      "retained_class_ids": [
+        1,
+        0
+      ],
+      "input_instances": 2,
+      "retained_instances": 2,
+      "filtered_instances": 0,
+      "mask_nonzero_pixels_at_stride4": [
+        1417,
+        437
+      ],
+      "negative_still_empty": null,
+      "image_id": "pilot_20261003130657_more_003",
+      "capture_group_id": "pilot_20261003130657_more",
+      "effective_seed": 8042,
+      "base_seed": 42,
+      "augmented_image_sha256": "b39a61d987cd898e6cc069b61643d1763853c59dafca49fce915680aa8c7bf66",
+      "repeated_seed_identical": true,
+      "usage": "diagnostic_preview_only"
+    },
+    {
+      "output_shape_hw": [
+        640,
+        640
+      ],
+      "retained_class_ids": [
+        1,
+        0
+      ],
+      "input_instances": 2,
+      "retained_instances": 2,
+      "filtered_instances": 0,
+      "mask_nonzero_pixels_at_stride4": [
+        974,
+        304
+      ],
+      "negative_still_empty": null,
+      "image_id": "pilot_20261003130657_more_003",
+      "capture_group_id": "pilot_20261003130657_more",
+      "effective_seed": 8043,
+      "base_seed": 43,
+      "augmented_image_sha256": "a573d45c6cd02b39f9181d6e16c078c7ab3d64a235930fbb6adc41d72ab4e4e2",
+      "repeated_seed_identical": true,
+      "usage": "diagnostic_preview_only"
+    },
+    {
+      "output_shape_hw": [
+        640,
+        640
+      ],
+      "retained_class_ids": [
+        1,
+        0
+      ],
+      "input_instances": 2,
+      "retained_instances": 2,
+      "filtered_instances": 0,
+      "mask_nonzero_pixels_at_stride4": [
+        1178,
+        129
+      ],
+      "negative_still_empty": null,
+      "image_id": "pilot_20261003130657_more_003",
+      "capture_group_id": "pilot_20261003130657_more",
+      "effective_seed": 8044,
+      "base_seed": 44,
+      "augmented_image_sha256": "a9e374fe538a02eb123a1594637de16acec49a4c5566329b8c12e53a5ffd74c1",
+      "repeated_seed_identical": true,
+      "usage": "diagnostic_preview_only"
+    },
+    {
+      "output_shape_hw": [
+        640,
+        640
+      ],
+      "retained_class_ids": [
+        1,
+        0
+      ],
+      "input_instances": 2,
+      "retained_instances": 2,
+      "filtered_instances": 0,
+      "mask_nonzero_pixels_at_stride4": [
+        1071,
+        266
+      ],
+      "negative_still_empty": null,
+      "image_id": "pilot_20261003130657_more_004",
+      "capture_group_id": "pilot_20261003130657_more",
+      "effective_seed": 9042,
+      "base_seed": 42,
+      "augmented_image_sha256": "cba1ff1aaa9334e2edc4ea9ae06ca06c94b89744e3eb7a9fdd70db39f65864e8",
+      "repeated_seed_identical": true,
+      "usage": "diagnostic_preview_only"
+    },
+    {
+      "output_shape_hw": [
+        640,
+        640
+      ],
+      "retained_class_ids": [
+        1,
+        0
+      ],
+      "input_instances": 2,
+      "retained_instances": 2,
+      "filtered_instances": 0,
+      "mask_nonzero_pixels_at_stride4": [
+        1353,
+        395
+      ],
+      "negative_still_empty": null,
+      "image_id": "pilot_20261003130657_more_004",
+      "capture_group_id": "pilot_20261003130657_more",
+      "effective_seed": 9043,
+      "base_seed": 43,
+      "augmented_image_sha256": "d11027cdb610debf75ecbe0bdd09a53cc13802bca9eee6c4a735362ddb0ef2f1",
+      "repeated_seed_identical": true,
+      "usage": "diagnostic_preview_only"
+    },
+    {
+      "output_shape_hw": [
+        640,
+        640
+      ],
+      "retained_class_ids": [
+        1,
+        0
+      ],
+      "input_instances": 2,
+      "retained_instances": 2,
+      "filtered_instances": 0,
+      "mask_nonzero_pixels_at_stride4": [
+        1298,
+        375
+      ],
+      "negative_still_empty": null,
+      "image_id": "pilot_20261003130657_more_004",
+      "capture_group_id": "pilot_20261003130657_more",
+      "effective_seed": 9044,
+      "base_seed": 44,
+      "augmented_image_sha256": "559a1ac0666a27288638310fdd928871c5249d4873f2ba667cb53570b1e43235",
+      "repeated_seed_identical": true,
+      "usage": "diagnostic_preview_only"
+    },
+    {
+      "output_shape_hw": [
+        640,
+        640
+      ],
+      "retained_class_ids": [
+        2,
+        1,
+        0
+      ],
+      "input_instances": 3,
+      "retained_instances": 3,
+      "filtered_instances": 0,
+      "mask_nonzero_pixels_at_stride4": [
+        2102,
+        313,
+        189
+      ],
+      "negative_still_empty": null,
+      "image_id": "pilot_20261003130657_more_005",
+      "capture_group_id": "pilot_20261003130657_more",
+      "effective_seed": 10042,
+      "base_seed": 42,
+      "augmented_image_sha256": "1890a35ad506fd05461edfc76295a49af4b564d910c5354f582c00b035dd1dd2",
+      "repeated_seed_identical": true,
+      "usage": "diagnostic_preview_only"
+    },
+    {
+      "output_shape_hw": [
+        640,
+        640
+      ],
+      "retained_class_ids": [
+        2,
+        1,
+        0
+      ],
+      "input_instances": 3,
+      "retained_instances": 3,
+      "filtered_instances": 0,
+      "mask_nonzero_pixels_at_stride4": [
+        1916,
+        287,
+        222
+      ],
+      "negative_still_empty": null,
+      "image_id": "pilot_20261003130657_more_005",
+      "capture_group_id": "pilot_20261003130657_more",
+      "effective_seed": 10043,
+      "base_seed": 43,
+      "augmented_image_sha256": "4ce8d2bfc35204d0358b5c86c6140e1b690cfe1e88065ecebc1b838bd06cf755",
+      "repeated_seed_identical": true,
+      "usage": "diagnostic_preview_only"
+    },
+    {
+      "output_shape_hw": [
+        640,
+        640
+      ],
+      "retained_class_ids": [
+        2,
+        1,
+        0
+      ],
+      "input_instances": 3,
+      "retained_instances": 3,
+      "filtered_instances": 0,
+      "mask_nonzero_pixels_at_stride4": [
+        1241,
+        185,
+        184
+      ],
+      "negative_still_empty": null,
+      "image_id": "pilot_20261003130657_more_005",
+      "capture_group_id": "pilot_20261003130657_more",
+      "effective_seed": 10044,
+      "base_seed": 44,
+      "augmented_image_sha256": "5bdc5e9b047c38d7bf2850589a85d0d8a098117840c8ccc9c8b9c2f0ca0c18ae",
+      "repeated_seed_identical": true,
+      "usage": "diagnostic_preview_only"
+    },
+    {
+      "output_shape_hw": [
+        640,
+        640
+      ],
+      "retained_class_ids": [
+        2,
+        1,
+        0
+      ],
+      "input_instances": 3,
+      "retained_instances": 3,
+      "filtered_instances": 0,
+      "mask_nonzero_pixels_at_stride4": [
+        2455,
+        350,
+        241
+      ],
+      "negative_still_empty": null,
+      "image_id": "pilot_20261003130657_more_006",
+      "capture_group_id": "pilot_20261003130657_more",
+      "effective_seed": 11042,
+      "base_seed": 42,
+      "augmented_image_sha256": "b93b4d7659b52d4a5e23765d8f60b085f92377652f9f9498423c779635f6fc61",
+      "repeated_seed_identical": true,
+      "usage": "diagnostic_preview_only"
+    },
+    {
+      "output_shape_hw": [
+        640,
+        640
+      ],
+      "retained_class_ids": [
+        2,
+        1,
+        0
+      ],
+      "input_instances": 3,
+      "retained_instances": 3,
+      "filtered_instances": 0,
+      "mask_nonzero_pixels_at_stride4": [
+        2544,
+        359,
+        244
+      ],
+      "negative_still_empty": null,
+      "image_id": "pilot_20261003130657_more_006",
+      "capture_group_id": "pilot_20261003130657_more",
+      "effective_seed": 11043,
+      "base_seed": 43,
+      "augmented_image_sha256": "24e4e85307929718706f9d1048a2d1fcd6a5198cf9a9a55d8ad639cb0dc1fef5",
+      "repeated_seed_identical": true,
+      "usage": "diagnostic_preview_only"
+    },
+    {
+      "output_shape_hw": [
+        640,
+        640
+      ],
+      "retained_class_ids": [
+        2,
+        1,
+        0
+      ],
+      "input_instances": 3,
+      "retained_instances": 3,
+      "filtered_instances": 0,
+      "mask_nonzero_pixels_at_stride4": [
+        2300,
+        323,
+        222
+      ],
+      "negative_still_empty": null,
+      "image_id": "pilot_20261003130657_more_006",
+      "capture_group_id": "pilot_20261003130657_more",
+      "effective_seed": 11044,
+      "base_seed": 44,
+      "augmented_image_sha256": "eba1267a254aa3ed2a5aa6c8b3f27fa020b0da277fce901817c8584722e0ad10",
+      "repeated_seed_identical": true,
+      "usage": "diagnostic_preview_only"
+    },
+    {
+      "output_shape_hw": [
+        640,
+        640
+      ],
+      "retained_class_ids": [
+        1,
+        2,
+        0
+      ],
+      "input_instances": 3,
+      "retained_instances": 3,
+      "filtered_instances": 0,
+      "mask_nonzero_pixels_at_stride4": [
+        1232,
+        1791,
+        905
+      ],
+      "negative_still_empty": null,
+      "image_id": "pilot_20261003130657_more_007",
+      "capture_group_id": "pilot_20261003130657_more",
+      "effective_seed": 12042,
+      "base_seed": 42,
+      "augmented_image_sha256": "d68666dc6ddbf91c211571b6085c576285c5e71a51541212b870dd16b7d72304",
+      "repeated_seed_identical": true,
+      "usage": "diagnostic_preview_only"
+    },
+    {
+      "output_shape_hw": [
+        640,
+        640
+      ],
+      "retained_class_ids": [
+        1,
+        2,
+        0
+      ],
+      "input_instances": 3,
+      "retained_instances": 3,
+      "filtered_instances": 0,
+      "mask_nonzero_pixels_at_stride4": [
+        1339,
+        1926,
+        981
+      ],
+      "negative_still_empty": null,
+      "image_id": "pilot_20261003130657_more_007",
+      "capture_group_id": "pilot_20261003130657_more",
+      "effective_seed": 12043,
+      "base_seed": 43,
+      "augmented_image_sha256": "1ba2fd9b59e01c6d31b0a121ff1a94b6db1dd8d80e3fa0fecafa76b99669eb7b",
+      "repeated_seed_identical": true,
+      "usage": "diagnostic_preview_only"
+    },
+    {
+      "output_shape_hw": [
+        640,
+        640
+      ],
+      "retained_class_ids": [
+        1,
+        2,
+        0
+      ],
+      "input_instances": 3,
+      "retained_instances": 3,
+      "filtered_instances": 0,
+      "mask_nonzero_pixels_at_stride4": [
+        1609,
+        2342,
+        1191
+      ],
+      "negative_still_empty": null,
+      "image_id": "pilot_20261003130657_more_007",
+      "capture_group_id": "pilot_20261003130657_more",
+      "effective_seed": 12044,
+      "base_seed": 44,
+      "augmented_image_sha256": "ebac671e1b561317f89e49d066b22fb885b15cf68cf682b3ac77af3bccbd6abe",
+      "repeated_seed_identical": true,
+      "usage": "diagnostic_preview_only"
+    },
+    {
+      "output_shape_hw": [
+        640,
+        640
+      ],
+      "retained_class_ids": [
+        2,
+        0,
+        1
+      ],
+      "input_instances": 3,
+      "retained_instances": 3,
+      "filtered_instances": 0,
+      "mask_nonzero_pixels_at_stride4": [
+        2373,
+        1110,
+        999
+      ],
+      "negative_still_empty": null,
+      "image_id": "pilot_20261003130657_more_008",
+      "capture_group_id": "pilot_20261003130657_more",
+      "effective_seed": 13042,
+      "base_seed": 42,
+      "augmented_image_sha256": "bd0e2e995df744b1e5113f4fa6126c7acb8a3472a9546ae8333a97f4c607744d",
+      "repeated_seed_identical": true,
+      "usage": "diagnostic_preview_only"
+    },
+    {
+      "output_shape_hw": [
+        640,
+        640
+      ],
+      "retained_class_ids": [
+        2,
+        0,
+        1
+      ],
+      "input_instances": 3,
+      "retained_instances": 3,
+      "filtered_instances": 0,
+      "mask_nonzero_pixels_at_stride4": [
+        2465,
+        1150,
+        1032
+      ],
+      "negative_still_empty": null,
+      "image_id": "pilot_20261003130657_more_008",
+      "capture_group_id": "pilot_20261003130657_more",
+      "effective_seed": 13043,
+      "base_seed": 43,
+      "augmented_image_sha256": "c5f13ffe19780598952e94dcefff1eca1db0f823cff097dadddda8bb9321c774",
+      "repeated_seed_identical": true,
+      "usage": "diagnostic_preview_only"
+    },
+    {
+      "output_shape_hw": [
+        640,
+        640
+      ],
+      "retained_class_ids": [
+        2,
+        0,
+        1
+      ],
+      "input_instances": 3,
+      "retained_instances": 3,
+      "filtered_instances": 0,
+      "mask_nonzero_pixels_at_stride4": [
+        2490,
+        1161,
+        1046
+      ],
+      "negative_still_empty": null,
+      "image_id": "pilot_20261003130657_more_008",
+      "capture_group_id": "pilot_20261003130657_more",
+      "effective_seed": 13044,
+      "base_seed": 44,
+      "augmented_image_sha256": "f96e599c7a05080540896b2be13504579aabaaa650b4f115ec23528e23694076",
+      "repeated_seed_identical": true,
+      "usage": "diagnostic_preview_only"
+    },
+    {
+      "output_shape_hw": [
+        640,
+        640
+      ],
+      "retained_class_ids": [
+        2,
+        0,
+        1
+      ],
+      "input_instances": 3,
+      "retained_instances": 3,
+      "filtered_instances": 0,
+      "mask_nonzero_pixels_at_stride4": [
+        2107,
+        304,
+        495
+      ],
+      "negative_still_empty": null,
+      "image_id": "pilot_20261003130657_more_009",
+      "capture_group_id": "pilot_20261003130657_more",
+      "effective_seed": 14042,
+      "base_seed": 42,
+      "augmented_image_sha256": "54c2dabd5164f42ac69f632560ffb758c7b4e0ac99bc741a0193dd7f64124e34",
+      "repeated_seed_identical": true,
+      "usage": "diagnostic_preview_only"
+    },
+    {
+      "output_shape_hw": [
+        640,
+        640
+      ],
+      "retained_class_ids": [
+        2,
+        0,
+        1
+      ],
+      "input_instances": 3,
+      "retained_instances": 3,
+      "filtered_instances": 0,
+      "mask_nonzero_pixels_at_stride4": [
+        3502,
+        503,
+        826
+      ],
+      "negative_still_empty": null,
+      "image_id": "pilot_20261003130657_more_009",
+      "capture_group_id": "pilot_20261003130657_more",
+      "effective_seed": 14043,
+      "base_seed": 43,
+      "augmented_image_sha256": "ff70e019ce04fd4fa34e951398f9f834df6e4e96946cd60a3741f43d92463396",
+      "repeated_seed_identical": true,
+      "usage": "diagnostic_preview_only"
+    },
+    {
+      "output_shape_hw": [
+        640,
+        640
+      ],
+      "retained_class_ids": [
+        2,
+        0,
+        1
+      ],
+      "input_instances": 3,
+      "retained_instances": 3,
+      "filtered_instances": 0,
+      "mask_nonzero_pixels_at_stride4": [
+        2986,
+        427,
+        708
+      ],
+      "negative_still_empty": null,
+      "image_id": "pilot_20261003130657_more_009",
+      "capture_group_id": "pilot_20261003130657_more",
+      "effective_seed": 14044,
+      "base_seed": 44,
+      "augmented_image_sha256": "c44c83c1829af4639bebc680bea8d2b2159ccf402261bc469893f0a159d8e219",
+      "repeated_seed_identical": true,
+      "usage": "diagnostic_preview_only"
+    },
+    {
+      "output_shape_hw": [
+        640,
+        640
+      ],
+      "retained_class_ids": [
+        2,
+        1,
+        0
+      ],
+      "input_instances": 3,
+      "retained_instances": 3,
+      "filtered_instances": 0,
+      "mask_nonzero_pixels_at_stride4": [
+        872,
+        1136,
+        464
+      ],
+      "negative_still_empty": null,
+      "image_id": "pilot_20261003130657_more_010",
+      "capture_group_id": "pilot_20261003130657_more",
+      "effective_seed": 15042,
+      "base_seed": 42,
+      "augmented_image_sha256": "85474df6655c5b7d7725d9a91e6f051ce5d4a8df91e9458acef22d03ad7311a8",
+      "repeated_seed_identical": true,
+      "usage": "diagnostic_preview_only"
+    },
+    {
+      "output_shape_hw": [
+        640,
+        640
+      ],
+      "retained_class_ids": [
+        2,
+        1,
+        0
+      ],
+      "input_instances": 3,
+      "retained_instances": 3,
+      "filtered_instances": 0,
+      "mask_nonzero_pixels_at_stride4": [
+        720,
+        941,
+        380
+      ],
+      "negative_still_empty": null,
+      "image_id": "pilot_20261003130657_more_010",
+      "capture_group_id": "pilot_20261003130657_more",
+      "effective_seed": 15043,
+      "base_seed": 43,
+      "augmented_image_sha256": "3876e4c4c5a5c80eff75b6b18557f12578ee5006fd470993db406327176d1705",
+      "repeated_seed_identical": true,
+      "usage": "diagnostic_preview_only"
+    },
+    {
+      "output_shape_hw": [
+        640,
+        640
+      ],
+      "retained_class_ids": [
+        2,
+        1,
+        0
+      ],
+      "input_instances": 3,
+      "retained_instances": 3,
+      "filtered_instances": 0,
+      "mask_nonzero_pixels_at_stride4": [
+        941,
+        1223,
+        487
+      ],
+      "negative_still_empty": null,
+      "image_id": "pilot_20261003130657_more_010",
+      "capture_group_id": "pilot_20261003130657_more",
+      "effective_seed": 15044,
+      "base_seed": 44,
+      "augmented_image_sha256": "ccbce119d82412af7c965b8ca3fee8bee6749e6a71d8401bed70dde7854ee37e",
+      "repeated_seed_identical": true,
+      "usage": "diagnostic_preview_only"
+    },
+    {
+      "output_shape_hw": [
+        640,
+        640
+      ],
+      "retained_class_ids": [],
+      "input_instances": 0,
+      "retained_instances": 0,
+      "filtered_instances": 0,
+      "mask_nonzero_pixels_at_stride4": [],
+      "negative_still_empty": true,
+      "image_id": "pilot_20261003130657_more_011",
+      "capture_group_id": "pilot_20261003130657_more",
+      "effective_seed": 16042,
+      "base_seed": 42,
+      "augmented_image_sha256": "85b421ce73e3e79acdff39a737892435b113ffe0ee6785139d135d062451da5a",
+      "repeated_seed_identical": true,
+      "usage": "diagnostic_preview_only"
+    },
+    {
+      "output_shape_hw": [
+        640,
+        640
+      ],
+      "retained_class_ids": [],
+      "input_instances": 0,
+      "retained_instances": 0,
+      "filtered_instances": 0,
+      "mask_nonzero_pixels_at_stride4": [],
+      "negative_still_empty": true,
+      "image_id": "pilot_20261003130657_more_011",
+      "capture_group_id": "pilot_20261003130657_more",
+      "effective_seed": 16043,
+      "base_seed": 43,
+      "augmented_image_sha256": "f6b7380dcc15c879679e4a756af8a9163740409da0c8c07b66f903f48fbf3719",
+      "repeated_seed_identical": true,
+      "usage": "diagnostic_preview_only"
+    },
+    {
+      "output_shape_hw": [
+        640,
+        640
+      ],
+      "retained_class_ids": [],
+      "input_instances": 0,
+      "retained_instances": 0,
+      "filtered_instances": 0,
+      "mask_nonzero_pixels_at_stride4": [],
+      "negative_still_empty": true,
+      "image_id": "pilot_20261003130657_more_011",
+      "capture_group_id": "pilot_20261003130657_more",
+      "effective_seed": 16044,
+      "base_seed": 44,
+      "augmented_image_sha256": "2a4ea99816328202eedab67de79d6eabd6414a3439e7bc990c87e1e2f76b5e72",
+      "repeated_seed_identical": true,
+      "usage": "diagnostic_preview_only"
+    },
+    {
+      "output_shape_hw": [
+        640,
+        640
+      ],
+      "retained_class_ids": [],
+      "input_instances": 0,
+      "retained_instances": 0,
+      "filtered_instances": 0,
+      "mask_nonzero_pixels_at_stride4": [],
+      "negative_still_empty": true,
+      "image_id": "pilot_20261003130657_more_012",
+      "capture_group_id": "pilot_20261003130657_more",
+      "effective_seed": 17042,
+      "base_seed": 42,
+      "augmented_image_sha256": "a4f96a2f9d7f1a6b5c8b708e73735660c30c4707d6961cd3542e242df50c914e",
+      "repeated_seed_identical": true,
+      "usage": "diagnostic_preview_only"
+    },
+    {
+      "output_shape_hw": [
+        640,
+        640
+      ],
+      "retained_class_ids": [],
+      "input_instances": 0,
+      "retained_instances": 0,
+      "filtered_instances": 0,
+      "mask_nonzero_pixels_at_stride4": [],
+      "negative_still_empty": true,
+      "image_id": "pilot_20261003130657_more_012",
+      "capture_group_id": "pilot_20261003130657_more",
+      "effective_seed": 17043,
+      "base_seed": 43,
+      "augmented_image_sha256": "3e8dca603c41718cf569c7ffd1f1d7a27f00442e0a2b278c31dca6f569e40ee7",
+      "repeated_seed_identical": true,
+      "usage": "diagnostic_preview_only"
+    },
+    {
+      "output_shape_hw": [
+        640,
+        640
+      ],
+      "retained_class_ids": [],
+      "input_instances": 0,
+      "retained_instances": 0,
+      "filtered_instances": 0,
+      "mask_nonzero_pixels_at_stride4": [],
+      "negative_still_empty": true,
+      "image_id": "pilot_20261003130657_more_012",
+      "capture_group_id": "pilot_20261003130657_more",
+      "effective_seed": 17044,
+      "base_seed": 44,
+      "augmented_image_sha256": "5e30d0c6dae168a97244657f8e7f4abb805a3cab212c84c48b93a6791a6f6ece",
+      "repeated_seed_identical": true,
+      "usage": "diagnostic_preview_only"
+    },
+    {
+      "output_shape_hw": [
+        640,
+        640
+      ],
+      "retained_class_ids": [],
+      "input_instances": 0,
+      "retained_instances": 0,
+      "filtered_instances": 0,
+      "mask_nonzero_pixels_at_stride4": [],
+      "negative_still_empty": true,
+      "image_id": "pilot_20261003130657_more_013",
+      "capture_group_id": "pilot_20261003130657_more",
+      "effective_seed": 18042,
+      "base_seed": 42,
+      "augmented_image_sha256": "dddf67b17c52d53ebd323fd655911fcf21f43a77ddc5112fb3a2eee6566a0c3d",
+      "repeated_seed_identical": true,
+      "usage": "diagnostic_preview_only"
+    },
+    {
+      "output_shape_hw": [
+        640,
+        640
+      ],
+      "retained_class_ids": [],
+      "input_instances": 0,
+      "retained_instances": 0,
+      "filtered_instances": 0,
+      "mask_nonzero_pixels_at_stride4": [],
+      "negative_still_empty": true,
+      "image_id": "pilot_20261003130657_more_013",
+      "capture_group_id": "pilot_20261003130657_more",
+      "effective_seed": 18043,
+      "base_seed": 43,
+      "augmented_image_sha256": "7e8544956c3cd540a1b7debae40781f46f87ab4729e4ad8201e17bd0e0c52688",
+      "repeated_seed_identical": true,
+      "usage": "diagnostic_preview_only"
+    },
+    {
+      "output_shape_hw": [
+        640,
+        640
+      ],
+      "retained_class_ids": [],
+      "input_instances": 0,
+      "retained_instances": 0,
+      "filtered_instances": 0,
+      "mask_nonzero_pixels_at_stride4": [],
+      "negative_still_empty": true,
+      "image_id": "pilot_20261003130657_more_013",
+      "capture_group_id": "pilot_20261003130657_more",
+      "effective_seed": 18044,
+      "base_seed": 44,
+      "augmented_image_sha256": "19ec16bbfccc7bfb301f2b27330585e7ad829446613ef9e424d39af9d5d463ba",
+      "repeated_seed_identical": true,
+      "usage": "diagnostic_preview_only"
+    },
+    {
+      "output_shape_hw": [
+        640,
+        640
+      ],
+      "retained_class_ids": [],
+      "input_instances": 0,
+      "retained_instances": 0,
+      "filtered_instances": 0,
+      "mask_nonzero_pixels_at_stride4": [],
+      "negative_still_empty": true,
+      "image_id": "pilot_20261003130657_more_014",
+      "capture_group_id": "pilot_20261003130657_more",
+      "effective_seed": 19042,
+      "base_seed": 42,
+      "augmented_image_sha256": "64c0d7078e143be469c32661dfcd5e45551bd478db704e08192609a0cbfda1e5",
+      "repeated_seed_identical": true,
+      "usage": "diagnostic_preview_only"
+    },
+    {
+      "output_shape_hw": [
+        640,
+        640
+      ],
+      "retained_class_ids": [],
+      "input_instances": 0,
+      "retained_instances": 0,
+      "filtered_instances": 0,
+      "mask_nonzero_pixels_at_stride4": [],
+      "negative_still_empty": true,
+      "image_id": "pilot_20261003130657_more_014",
+      "capture_group_id": "pilot_20261003130657_more",
+      "effective_seed": 19043,
+      "base_seed": 43,
+      "augmented_image_sha256": "1b605b630793e1a52b79fa2b5dac9666067976c8bb12101221a1cd90144855b8",
+      "repeated_seed_identical": true,
+      "usage": "diagnostic_preview_only"
+    },
+    {
+      "output_shape_hw": [
+        640,
+        640
+      ],
+      "retained_class_ids": [],
+      "input_instances": 0,
+      "retained_instances": 0,
+      "filtered_instances": 0,
+      "mask_nonzero_pixels_at_stride4": [],
+      "negative_still_empty": true,
+      "image_id": "pilot_20261003130657_more_014",
+      "capture_group_id": "pilot_20261003130657_more",
+      "effective_seed": 19044,
+      "base_seed": 44,
+      "augmented_image_sha256": "790cb6a0e5169639120299ffba3de7142d0253759e0a9b3124875bbb30392f86",
+      "repeated_seed_identical": true,
+      "usage": "diagnostic_preview_only"
+    }
+  ],
+  "sampling_budget": {
+    "schema_version": 1,
+    "mapping_version": "products-v1",
+    "baseline_image_ids": [
+      "pilot_20261003130657_001",
+      "pilot_20261003130657_002",
+      "pilot_20261003130657_003",
+      "pilot_20261003130657_004",
+      "pilot_20261003130657_005",
+      "pilot_20261003130657_006",
+      "pilot_20261003130657_more_001",
+      "pilot_20261003130657_more_002",
+      "pilot_20261003130657_more_003",
+      "pilot_20261003130657_more_004",
+      "pilot_20261003130657_more_005",
+      "pilot_20261003130657_more_006",
+      "pilot_20261003130657_more_007",
+      "pilot_20261003130657_more_008",
+      "pilot_20261003130657_more_009",
+      "pilot_20261003130657_more_010",
+      "pilot_20261003130657_more_011",
+      "pilot_20261003130657_more_012",
+      "pilot_20261003130657_more_013",
+      "pilot_20261003130657_more_014"
+    ],
+    "baseline_real_images": 20,
+    "approved_additional_real_images_max": 30,
+    "additional_image_ids": [],
+    "additional_real_images_used": 0,
+    "remaining_additional_real_images": 30,
+    "real_images_max": 50,
+    "requested_capture_this_run": 0,
+    "scope": "All newly captured real training, validation and test images and their human review.",
+    "next_suggested_capture_count": [
+      6,
+      10
+    ],
+    "capture_deferred_to": "2026-10-04 Asia/Shanghai, only when the user is available",
+    "note": "Bundles refer to originals; do not count bundle references or augmentation previews as new photos.",
+    "updated_at": "2026-10-03T23:16:07.761753+08:00"
+  },
+  "protected_input_hash_checks": [
+    {
+      "path": "configs/e0.yaml",
+      "sha256": "3cfaf7a89a6db4ee21c001bd0ecebbdc3e6f8e61e20e4173b29b618297bb7a8f",
+      "unchanged": true
+    },
+    {
+      "path": "configs/source-lock.json",
+      "sha256": "6cd235d218c22f784703cc92b0608c5ca6b68507454427c62ab655c4886e5323",
+      "unchanged": true
+    },
+    {
+      "path": "artifacts/pretrained/yolo11n-seg.pt",
+      "sha256": "55ed65c56c91713d23e8402371c6c49a6fd84f257f7dce452e8d70e41dcbe152",
+      "unchanged": true
+    },
+    {
+      "path": "environment.yml",
+      "sha256": "689855ac842d1f539644a5d100b3134e1cd12c653e542602fc98caf1885a9b25",
+      "unchanged": true
+    },
+    {
+      "path": "configs/constraints-runtime.txt",
+      "sha256": "6a75c47bd1264298fea2915b3d8bd053e37cc19eb9d96c3d601362c93f18986e",
+      "unchanged": true
+    },
+    {
+      "path": "reports/model/M1-04/postprocess_check.json",
+      "sha256": "236c2b39972bae7857a4cdf89126a15c017c0836e301abdcafa61edab620fe9b",
+      "unchanged": true
+    }
+  ],
+  "source_module_sha256": "6f2a2206843d0e7bdb3e40b61af7725f1bbc0eed535c8745e745b5e77f4bc2f6",
+  "unchanged_inputs": [
+    "original images",
+    "reviewed JSON/TXT",
+    "COCO drafts",
+    "E0 config and weights",
+    "source lock"
+  ],
+  "limits": [
+    "Preview harness uses v8_transforms and normalized reviewed polygons; not the training loader or a training run.",
+    "No split assigned. All previews are diagnostic, not new training/validation/test images.",
+    "Existing capture groups are related. Formal independent validation/test capture is deferred.",
+    "Cropping/filtering by the official transform is counted explicitly, not a model detection result.",
+    "Perceptual hash candidates are advisory and never auto-delete or relabel originals."
+  ],
+  "engineering_tests": {
+    "passed": 20,
+    "new_dataset_tests": 8,
+    "existing_annotation_tests": 12,
+    "command": "python -B -X utf8 -m unittest discover -s tests -v",
+    "fixture_note": "Temporary engineering fixtures only, not real samples or measured model accuracy."
+  }
+}

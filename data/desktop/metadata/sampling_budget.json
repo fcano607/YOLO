@@ -1,0 +1,41 @@
+{
+  "schema_version": 1,
+  "mapping_version": "products-v1",
+  "baseline_image_ids": [
+    "pilot_20261003130657_001",
+    "pilot_20261003130657_002",
+    "pilot_20261003130657_003",
+    "pilot_20261003130657_004",
+    "pilot_20261003130657_005",
+    "pilot_20261003130657_006",
+    "pilot_20261003130657_more_001",
+    "pilot_20261003130657_more_002",
+    "pilot_20261003130657_more_003",
+    "pilot_20261003130657_more_004",
+    "pilot_20261003130657_more_005",
+    "pilot_20261003130657_more_006",
+    "pilot_20261003130657_more_007",
+    "pilot_20261003130657_more_008",
+    "pilot_20261003130657_more_009",
+    "pilot_20261003130657_more_010",
+    "pilot_20261003130657_more_011",
+    "pilot_20261003130657_more_012",
+    "pilot_20261003130657_more_013",
+    "pilot_20261003130657_more_014"
+  ],
+  "baseline_real_images": 20,
+  "approved_additional_real_images_max": 30,
+  "additional_image_ids": [],
+  "additional_real_images_used": 0,
+  "remaining_additional_real_images": 30,
+  "real_images_max": 50,
+  "requested_capture_this_run": 0,
+  "scope": "All newly captured real training, validation and test images and their human review.",
+  "next_suggested_capture_count": [
+    6,
+    10
+  ],
+  "capture_deferred_to": "2026-10-04 Asia/Shanghai, only when the user is available",
+  "note": "Bundles refer to originals; do not count bundle references or augmentation previews as new photos.",
+  "updated_at": "2026-10-03T23:16:07.761753+08:00"
+}

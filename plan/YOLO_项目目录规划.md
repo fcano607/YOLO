@@ -2,7 +2,7 @@
 
 项目根目录：`E:\秋招\项目相关\YOLO`
 
-2026-10-03 用户正式采用三种固定包装商品方向：约 350 张自采原始照片、模型辅助轮廓与人工审核、三类微调和实时演示。M2-01 已冻结类别，并建立 classes.json、products.json 和[标注规范](../docs/M2_商品数据与标注规范.md)；见[范围与任务](00_YOLO_分阶段推进与进度跟踪.md#product-scope)。沿用 data/desktop/ 与现有代码位置，旧 E0、环境及学习证据保留；明确标为已建立的文件已有产出，其余后续路径仍按任务实现。
+2026-10-03 用户正式采用三种固定包装商品方向，现已根据试标成本确认小数据首版：现有 20 张起步，轻量在线增强和预训练微调；按需要少量补拍，新增人工审核累计最多 30 张（含留出，真实总量最多 50 张），不再按 350 张收集。M2-01 已冻结 classes.json / products.json，M2-02 的 20 张已验收；见[当前操作路线](00_YOLO_分阶段推进与进度跟踪.md#small-data-route)和[标注安排](../docs/M2_商品数据与标注规范.md#small-data-plan)。沿用现有 data/desktop/ 与代码路径，后续按任务实现配置，不增加空脚本。
 
 本文件规划需要在你的 Windows 电脑中建立的目录与文件。2026-10-02 已完成 M0-02：必要一级目录、`configs/paths.yaml`、源码锁定清单、训练 requirements、路径解析与安装验收脚本已建立；后续数据、训练和部署脚本按任务逐步实现，表中其余文件仍是规划。实际进展见[进度跟踪](00_YOLO_分阶段推进与进度跟踪.md)。
 
@@ -67,6 +67,7 @@ Conda 环境不需要放在项目目录中。若后续使用 Git，重点版本�
 | --- | --- |
 | `configs/paths.yaml` | 项目路径规则与必要的外部路径 |
 | `configs/products_base.yaml` | E1 首批审核商品数据配置，待实现 |
+| [configs/augment_products.yaml](../configs/augment_products.yaml) | M2-03 已建立；轻量在线增强参数，已完成预览，实际训练未执行 |
 | `configs/products_expanded.yaml` | E2/E3 定向扩充训练池，共用冻结验证 / 测试清单，待实现 |
 | `configs/train_baseline.yaml` | 原模型训练超参数 |
 | `configs/train_se.yaml` | 修改模型的训练参数；与基线保持可比 |
@@ -132,6 +133,8 @@ Conda 环境不需要放在项目目录中。若后续使用 Git，重点版本�
 | `metadata/selection.json` | 商品拍摄覆盖、抽帧 / 去重规则与划分种子 |
 | `metadata/conversion_summary.json` | 草稿使用、人工修正 / 重画 / 补标数量、审核与转换统计 |
 | `metadata/products.json` | M2-01 已建立：用户实物名称、已知容量 / 数量、冷杯与杯套，未知细节留空 |
+| [metadata/dataset_inventory.json](../data/desktop/metadata/dataset_inventory.json) | M2-03 已建立：20 张来源 / 哈希 / 标签 / 拍摄组，尚未分配 split |
+| [metadata/sampling_budget.json](../data/desktop/metadata/sampling_budget.json) | M2-03 已建立：基线 20 张、新增累计最多 30，当前用量 0；合并引用不重复计数 |
 
 首批与扩充训练方案通过清单选择图片，不复制两份照片。训练、验证和测试图片应物理隔离，清单不得引入跨集合图片。
 
@@ -155,7 +158,7 @@ Conda 环境不需要放在项目目录中。若后续使用 Git，重点版本�
 | `scripts/extract_frames.py` | 抽帧并记录拍摄组 | 数据阶段 |
 | `scripts/prepare_camera_labels.py` | 转换人工审核商品标注，类别 + 多边形，不写置信度 | 数据阶段，待实现 |
 | `scripts/build_splits.py` | 按组划分、生成清单并防止重叠 | 数据阶段 |
-| `scripts/check_dataset.py` | 图片、标签、类别和划分检查 | 数据阶段 |
+| [scripts/check_dataset.py](../scripts/check_dataset.py) | 原图 / 审核 / TXT 追溯、数据清单、锁定增强预览和累计预算 | M2-03 已实现；20 张及 60 次检查通过，正式划分与训练加载待后续 |
 | `scripts/visualize_labels.py` | 绘制标签轮廓、检查标注 | 数据阶段 |
 | `scripts/train.py` | E1、E2、E3 的训练入口 | 训练阶段 |
 | `scripts/evaluate.py` | 冻结商品验证 / 测试组、各类别与条件评价 | 训练阶段 |
@@ -193,6 +196,7 @@ Conda 环境不需要放在项目目录中。若后续使用 Git，重点版本�
 | [app/annotate_products.py](../app/annotate_products.py) | 本地浏览器审核入口，明确确认后保存商品多边形标签与耗时统计 | M2-02 已实现；20 张人工标签已保存并验收 |
 | [app/product_review.html](../app/product_review.html) | 多边形补画、拖点、改类、删非目标及逐图审核页面 | 已实现并完成浏览器操作检查 |
 | [app/product_data.py](../app/product_data.py) | 类别读取、原图 I/O、多边形检查、标签导出和试标统计 | 已实现，12 项工程测试通过；包含闭合点与失败保存回归 |
+| [app/product_dataset.py](../app/product_dataset.py) | 数据来源核验、按拍摄组统计、预算去重及原 Ultralytics 增强预览 | M2-03 已实现；新增 8 项工程测试，现有 12 项回归通过 |
 | `app/__init__.py` | Python 包入口 | 规划 |
 | `app/webcam.py` | 读取配置，串联采集、统一后端推理、绘制与退出 | 规划 |
 | `app/capture.py` | 摄像头与文件视频采集；必要时维护最新帧缓冲 | 规划 |
@@ -310,7 +314,7 @@ reports 是你归纳后的结论，logs 是程序直接记录的过程。训练�
 5. `third_party/ultralytics/`：安装并锁定源码。
 6. `artifacts/pretrained/`：放初始模型。
 
-按实际任务填充：商品登记 → 约 20 张辅助试标 / 人工审核 → 约 350 张按组划分 → E1 微调 / 留出评价 → 新权重摄像头首版。E2 定向扩充、E3 SE、完整独立 ONNX / TensorRT 与稳定性按依赖推进；不创建空脚本凑目录。
+按实际任务填充：当前 20 张整理 → 轻量在线增强 / 临时按组调试划分 → 加载与短训练 → 按需补 6–10 张独立留出并冻结版本 → E1 微调与验证 → 新商品摄像头和最终 ONNX。新增采集及人工审核累计最多 30 张；E2 定向补样本选做，SE、完整独立 ONNX / TensorRT 与稳定性按依赖推进。在线增强不重复保存多套图，合成实验只保存必要预览与来源；不创建空脚本凑目录。
 
 ## 十二、在 Windows 本地建立目录的命令
 
