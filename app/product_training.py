@@ -226,3 +226,124 @@ def build_formal_splits():
     if not split_path.exists():
         write_json(split_path, manifest)
     return manifest
+
+
+FORMAL_SPLIT_PATH = ROOT / "data/desktop/splits/products-v1.json"
+FORMAL_DATA_PATH = ROOT / "configs/products_base.yaml"
+FORMAL_LOADING_PATH = ROOT / "data/desktop/metadata/products-v1_loading.json"
+
+
+def formal_loading_plan():
+    """Reuse checked debug copies for train; stage only the ten new held-out originals."""
+    if not FORMAL_SPLIT_PATH.exists():
+        raise ValueError("Freeze the formal source assignment before configuring its loader")
+    manifest = build_formal_splits()
+    debug = verify_debug_split()
+    reusable = {s["image_id"]: s for s in debug["samples"]}
+    samples = []
+    for original in manifest["samples"]:
+        if original["split"] == "excluded":
+            continue
+        sample = dict(original)
+        prior = reusable.get(sample["image_id"])
+        if prior and sample["split"] != "train":
+            raise ValueError("Old related scenes cannot enter the new held-out pools")
+        for field, folder, suffix in (("image", "images", ".png"), ("label", "labels", ".txt")):
+            if prior:
+                if prior[field + "_sha256"] != sample[field + "_sha256"]:
+                    raise ValueError("Reusable debug copy has a different reviewed source")
+                sample["staged_" + field + "_path"] = prior["staged_" + field + "_path"]
+            else:
+                sample["staged_" + field + "_path"] = (
+                    f"data/desktop/{folder}/products-v1/{sample['split']}/{sample['image_id']}{suffix}")
+        sample["staging_method"] = "reuse_debug_pair" if prior else "copy_reviewed_pair"
+        samples.append(sample)
+    lists = {}
+    for split, name in (("train", "train_base"), ("val", "val_all"), ("test", "test_all")):
+        path = ROOT / f"data/desktop/splits/{name}.txt"
+        # The locked get_img_files anchors only './' lines to the list file's parent.
+        entries = ["./../images/" + s["staged_image_path"].split("/images/", 1)[1]
+                   for s in samples if s["split"] == split]
+        lists[split] = {"path": relative(path), "content": "\n".join(entries) + "\n"}
+    data = {split: "../" + value["path"] for split, value in lists.items()}
+    data["names"] = {c["id"]: c["name"] for c in catalog()["classes"]}
+    return manifest, samples, lists, data
+
+
+def build_formal_loading():
+    manifest, samples, lists, data = formal_loading_plan()
+    # Preflight all existing outputs before any copy; changed versions are never overwritten.
+    for sample in samples:
+        for field in ("image", "label"):
+            path = ROOT / sample["staged_" + field + "_path"]
+            if path.exists() and digest(path) != sample[field + "_sha256"]:
+                raise ValueError("Staged file changed: " + relative(path))
+    for value in lists.values():
+        path = ROOT / value["path"]
+        if path.exists() and path.read_text(encoding="utf-8") != value["content"]:
+            raise ValueError("Frozen image list changed: " + value["path"])
+    if FORMAL_DATA_PATH.exists() and yaml.safe_load(FORMAL_DATA_PATH.read_text(encoding="utf-8")) != data:
+        raise ValueError("Formal data YAML changed")
+    if FORMAL_LOADING_PATH.exists():
+        verify_formal_loading()
+        return read_json(FORMAL_LOADING_PATH)
+    for sample in samples:
+        for field in ("image", "label"):
+            path = ROOT / sample["staged_" + field + "_path"]
+            if not path.exists():
+                path.parent.mkdir(parents=True, exist_ok=True)
+                shutil.copyfile(ROOT / sample[field + "_path"], path)
+    for value in lists.values():
+        path = ROOT / value["path"]
+        if not path.exists():
+            path.write_text(value["content"], encoding="utf-8")
+    if not FORMAL_DATA_PATH.exists():
+        FORMAL_DATA_PATH.write_text(yaml.safe_dump(data, sort_keys=False, allow_unicode=True), encoding="utf-8")
+    record = {"schema_version": 1, "dataset_version": "products-v1",
+              "purpose": "immutable_formal_loader_contract",
+              "source_split_path": relative(FORMAL_SPLIT_PATH), "source_split_sha256": digest(FORMAL_SPLIT_PATH),
+              "classes_sha256": manifest["classes_sha256"],
+              "data_yaml": relative(FORMAL_DATA_PATH), "data_yaml_sha256": digest(FORMAL_DATA_PATH),
+              "augment_policy": "configs/augment_products.yaml",
+              "augment_policy_sha256": digest(ROOT / "configs/augment_products.yaml"),
+              "lists": {split: {"path": v["path"], "sha256": digest(ROOT / v["path"])}
+                        for split, v in lists.items()}, "summary": manifest["summary"], "samples": samples,
+              "staging_counts": {"reused_image_label_pairs": sum(s["staging_method"] == "reuse_debug_pair" for s in samples),
+                                 "new_image_label_pairs": sum(s["staging_method"] == "copy_reviewed_pair" for s in samples)},
+              "acceptance_report": "reports/data/M2-05_06_products-v1.json",
+              "test_use": manifest["test_use"]}
+    write_json(FORMAL_LOADING_PATH, record)
+    verify_formal_loading()
+    return record
+
+
+def verify_formal_loading():
+    record = read_json(FORMAL_LOADING_PATH)
+    manifest, samples, lists, data = formal_loading_plan()
+    if (record["purpose"] != "immutable_formal_loader_contract" or record["dataset_version"] != "products-v1" or
+            record["source_split_path"] != relative(FORMAL_SPLIT_PATH) or
+            record["data_yaml"] != relative(FORMAL_DATA_PATH) or
+            record["augment_policy"] != "configs/augment_products.yaml" or
+            set(record["lists"]) != {"train", "val", "test"} or
+            record["test_use"] != manifest["test_use"] or record["samples"] != samples or
+            record["summary"] != manifest["summary"] or record["classes_sha256"] != manifest["classes_sha256"]):
+        raise ValueError("Formal loader assignment or mapping changed")
+    check_guards({relative(FORMAL_SPLIT_PATH): record["source_split_sha256"],
+                  relative(FORMAL_DATA_PATH): record["data_yaml_sha256"],
+                  "data/desktop/metadata/classes.json": record["classes_sha256"],
+                  record["augment_policy"]: record["augment_policy_sha256"],
+                  **original_guards(samples)})
+    if yaml.safe_load(FORMAL_DATA_PATH.read_text(encoding="utf-8")) != data:
+        raise ValueError("Formal YAML does not address the frozen lists")
+    for split, expected in lists.items():
+        if record["lists"][split]["path"] != expected["path"]:
+            raise ValueError("Formal list location changed")
+        path = ROOT / expected["path"]
+        if digest(path) != record["lists"][split]["sha256"] or path.read_text(encoding="utf-8") != expected["content"]:
+            raise ValueError("Frozen image list changed: " + expected["path"])
+    for sample in samples:
+        for field in ("image", "label"):
+            path = ROOT / sample["staged_" + field + "_path"]
+            if digest(path) != sample[field + "_sha256"]:
+                raise ValueError("Staged file differs from reviewed original")
+    return record

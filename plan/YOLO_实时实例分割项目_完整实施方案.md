@@ -262,15 +262,14 @@ class_id x1 y1 x2 y2 x3 y3 ... xn yn
 
 ### 5.5 数据配置与验收
 
-计划使用 `configs/products_base.yaml` 选择首批审核训练池，`configs/products_expanded.yaml` 选择后续扩充池，共用验证 / 测试清单，目录继续沿用 `data/desktop/`，不复制两套照片。
+已实现 `configs/products_base.yaml` 选择正式 20 张训练池与各 5 张验证 / 测试清单；`configs/products_expanded.yaml` 后续选择扩充池，共用留出，继续沿用 `data/desktop/`，不复制两套照片。
 
-以下为后续配置示例，使用已冻结的 products-v1 映射；当前 20 张原图与审核标签已保存，正式训练目录、划分清单与此 YAML 仍待实现。临时调试配置须标明用途；缺少独立测试清单时暂不配置 test，不能让 test 指向 train：
+以下为 2026-10-04 已建立并通过实际加载验收的正式 YAML，使用 products-v1 三类映射；省略 path，让加载器按 YAML 所在目录定位清单。临时调试版本单独保留，正式 test 不指向 train：
 
 ```yaml
-path: E:/秋招/项目相关/YOLO/data/desktop
-train: splits/train_base.txt
-val: splits/val_all.txt
-test: splits/test_all.txt
+train: ../data/desktop/splits/train_base.txt
+val: ../data/desktop/splits/val_all.txt
+test: ../data/desktop/splits/test_all.txt
 names:
   0: sam_whole_milk
   1: yili_shuhua
@@ -289,7 +288,7 @@ names:
 
 M2-03 已将轻量策略保存为 [configs/augment_products.yaml](../configs/augment_products.yaml)，完成 20 张 / 60 次锁定源码诊断，见[实测记录](../reports/data/M2-03_dataset_check.json)。2026-10-04 夜间已进一步建立 debug-v1 的 14/6 按组配置，全部实际训练加载与 3 轮 GPU 短训练通过；三商品头、12 次更新及 best/last 重载已有[证据](../reports/experiments/M3-01_products_debug_v1.json)。conf=0.25 下六张调试验证图均无检出，正式 E1 与独立留出仍待执行；预览和关联场景调试不属于正式商品效果评价。首轮关闭镜像和强色相，Mosaic / Copy-Paste / OpenCV 换背景仍选做，最新接续步骤见[夜间结果](../docs/M2_商品数据与标注规范.md#night-debug-results)。
 
-2026-10-04 白天接续：新增两场景共 10 张已全部人工确认，M2-04 正式 [products-v1.json](../data/desktop/splits/products-v1.json) 已冻结原 20 张训练 / 新 5 张验证 / 新 5 张最终测试，共 30 原图 / 44 实例；新增额度已用 10/30、剩余 20。下一步 M2-05 质量 / 增强和 M2-06 正式实际加载，目前无需继续拍照。正式 E1 与最终测试未执行，最终测试不用于调参、选权重或追加训练数据决策；每类仍同一个实物，只评价固定包装在少量新场景的表现。最新结果与接续以[正式划分记录](../docs/M2_商品数据与标注规范.md#m2-04-holdout)为准，上段保留夜间历史证据。
+2026-10-04 白天接续：M2 6/6 已完成，正式 [products-v1.json](../data/desktop/splits/products-v1.json) 冻结 20/5/5、30 原图 / 44 实例，正式质量 / 实际加载及 60 次训练增强通过；90/90 次目标保留，空标签批次 12 次仍为空，[正式 YAML](../configs/products_base.yaml) 与加载契约齐备，34 项工程测试通过。新增额度仍为 10/30、剩余 20，当前无需继续拍照，接下来固定 E1。正式微调与最终模型测试未执行，最终 test 只做标签 / 路径验收，不用于调参、选权重或追加训练数据决策；每类仍同一个实物，只评价固定包装在少量新场景的表现。最新结果见[数据验收](../docs/M2_商品数据与标注规范.md#m2-05-06)，上段保留夜间历史证据。
 
 不为凑数量落盘生成几百个文件。验证 / 测试仅做必要的尺寸与输入预处理，禁止混入训练原图的增强版本；最终测试在模型选择后再使用。用户新增人工预算累计最多 30 张，启用增强本身不要求重复手画。
 
@@ -725,7 +724,7 @@ FPS 与延迟分别报告；摄像头 30 FPS 的上限可能掩盖模型加速�
 | `README.md` | 环境、数据、训练、部署与演示说明 |
 | `requirements-train.txt` / `requirements-deploy.txt` | 两类环境依赖与版本 |
 | `third_party/ultralytics/` | 锁定版本的源码与修改 |
-| `configs/products_base.yaml` | 首批商品审核数据配置（待实现） |
+| [configs/products_base.yaml](../configs/products_base.yaml) | 正式 20/5/5 三商品数据配置，已实现并通过实际加载验收 |
 | `configs/products_expanded.yaml` | E2/E3 扩充商品训练池配置（待实现） |
 | `configs/yolo11n-seg-se.yaml` | 修改模型配置 |
 | `configs/runtime.yaml` | 后端、尺寸、阈值、显示参数 |

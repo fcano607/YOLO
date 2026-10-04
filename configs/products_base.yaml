@@ -1,0 +1,7 @@
+train: ../data/desktop/splits/train_base.txt
+val: ../data/desktop/splits/val_all.txt
+test: ../data/desktop/splits/test_all.txt
+names:
+  0: sam_whole_milk
+  1: yili_shuhua
+  2: luckin_cup

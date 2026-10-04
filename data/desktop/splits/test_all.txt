@@ -1,0 +1,5 @@
+./../images/products-v1/test/holdout_test_20261004_095145_001.png
+./../images/products-v1/test/holdout_test_20261004_095145_002.png
+./../images/products-v1/test/holdout_test_20261004_095145_003.png
+./../images/products-v1/test/holdout_test_20261004_095145_004.png
+./../images/products-v1/test/holdout_test_20261004_095145_005.png

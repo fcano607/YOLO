@@ -1,0 +1,2716 @@
+{
+  "schema_version": 1,
+  "tasks": [
+    "M2-05",
+    "M2-06"
+  ],
+  "checked_at": "2026-10-04T10:30:22.482709+08:00",
+  "status": "formal_quality_and_loader_accepted",
+  "dataset_version": "products-v1",
+  "source": {
+    "version": "8.4.171",
+    "commit": "86f5c8c401a630da651d321e691ab0af540812cf",
+    "module": "E:\\秋招\\项目相关\\YOLO\\third_party\\ultralytics\\ultralytics\\__init__.py"
+  },
+  "source_split": "data/desktop/splits/products-v1.json",
+  "source_split_sha256": "a205b2e54b7c658ee6230d3b7c805be2b205a280110d6da454beee1274f283b5",
+  "loading_contract": "data/desktop/metadata/products-v1_loading.json",
+  "loading_contract_sha256": "33beedbf508af00a51457b926064ad302d68a378220100ea4d7e2ad98b50ec10",
+  "data_yaml": "configs/products_base.yaml",
+  "data_yaml_sha256": "10c150fb03f32af322ee617815ae286ff878db8efbd75257409d7180f15d6e88",
+  "augment_policy_sha256": "0f6042fad1ae0d497097dd5b86fc2ece96106c794bbe954ecb24e5fa1d331c4d",
+  "loader_settings": {
+    "hsv_h": 0.0,
+    "hsv_s": 0.2,
+    "hsv_v": 0.2,
+    "degrees": 5.0,
+    "translate": 0.1,
+    "scale": 0.2,
+    "shear": 0.0,
+    "perspective": 0.0,
+    "fliplr": 0.0,
+    "flipud": 0.0,
+    "mosaic": 0.0,
+    "mixup": 0.0,
+    "cutmix": 0.0,
+    "copy_paste": 0.0,
+    "augmentations": [],
+    "task": "segment",
+    "imgsz": 640,
+    "batch": 4,
+    "workers": 0,
+    "cache": false,
+    "mask_ratio": 4,
+    "overlap_mask": true,
+    "seed": 42,
+    "deterministic": true,
+    "fraction": 1.0
+  },
+  "actual_loader": {
+    "train": {
+      "images_loaded": 20,
+      "batches": 5,
+      "workers": 0,
+      "augment": false,
+      "rectangular": true,
+      "seed": 42,
+      "loss_instances": 30,
+      "filtered_instances": 0,
+      "records": [
+        {
+          "image_id": "pilot_20261003130657_more_001",
+          "source_class_ids": [
+            0
+          ],
+          "loss_class_ids": [
+            0.0
+          ],
+          "filtered_instances": 0,
+          "mask_areas": [
+            1216
+          ],
+          "shape_chw": [
+            3,
+            384,
+            672
+          ],
+          "loss_mask_hw": [
+            96,
+            168
+          ],
+          "negative_still_empty": null
+        },
+        {
+          "image_id": "pilot_20261003130657_004",
+          "source_class_ids": [
+            0
+          ],
+          "loss_class_ids": [
+            0.0
+          ],
+          "filtered_instances": 0,
+          "mask_areas": [
+            2041
+          ],
+          "shape_chw": [
+            3,
+            384,
+            672
+          ],
+          "loss_mask_hw": [
+            96,
+            168
+          ],
+          "negative_still_empty": null
+        },
+        {
+          "image_id": "pilot_20261003130657_003",
+          "source_class_ids": [
+            0
+          ],
+          "loss_class_ids": [
+            0.0
+          ],
+          "filtered_instances": 0,
+          "mask_areas": [
+            3075
+          ],
+          "shape_chw": [
+            3,
+            384,
+            672
+          ],
+          "loss_mask_hw": [
+            96,
+            168
+          ],
+          "negative_still_empty": null
+        },
+        {
+          "image_id": "pilot_20261003130657_002",
+          "source_class_ids": [
+            1
+          ],
+          "loss_class_ids": [
+            1.0
+          ],
+          "filtered_instances": 0,
+          "mask_areas": [
+            2387
+          ],
+          "shape_chw": [
+            3,
+            384,
+            672
+          ],
+          "loss_mask_hw": [
+            96,
+            168
+          ],
+          "negative_still_empty": null
+        },
+        {
+          "image_id": "pilot_20261003130657_001",
+          "source_class_ids": [
+            1
+          ],
+          "loss_class_ids": [
+            1.0
+          ],
+          "filtered_instances": 0,
+          "mask_areas": [
+            1402
+          ],
+          "shape_chw": [
+            3,
+            384,
+            672
+          ],
+          "loss_mask_hw": [
+            96,
+            168
+          ],
+          "negative_still_empty": null
+        },
+        {
+          "image_id": "pilot_20261003130657_more_014",
+          "source_class_ids": [],
+          "loss_class_ids": [],
+          "filtered_instances": 0,
+          "mask_areas": [],
+          "shape_chw": [
+            3,
+            384,
+            672
+          ],
+          "loss_mask_hw": [
+            96,
+            168
+          ],
+          "negative_still_empty": true
+        },
+        {
+          "image_id": "pilot_20261003130657_more_013",
+          "source_class_ids": [],
+          "loss_class_ids": [],
+          "filtered_instances": 0,
+          "mask_areas": [],
+          "shape_chw": [
+            3,
+            384,
+            672
+          ],
+          "loss_mask_hw": [
+            96,
+            168
+          ],
+          "negative_still_empty": true
+        },
+        {
+          "image_id": "pilot_20261003130657_more_012",
+          "source_class_ids": [],
+          "loss_class_ids": [],
+          "filtered_instances": 0,
+          "mask_areas": [],
+          "shape_chw": [
+            3,
+            384,
+            672
+          ],
+          "loss_mask_hw": [
+            96,
+            168
+          ],
+          "negative_still_empty": true
+        },
+        {
+          "image_id": "pilot_20261003130657_more_011",
+          "source_class_ids": [],
+          "loss_class_ids": [],
+          "filtered_instances": 0,
+          "mask_areas": [],
+          "shape_chw": [
+            3,
+            384,
+            672
+          ],
+          "loss_mask_hw": [
+            96,
+            168
+          ],
+          "negative_still_empty": true
+        },
+        {
+          "image_id": "pilot_20261003130657_more_010",
+          "source_class_ids": [
+            2,
+            1,
+            0
+          ],
+          "loss_class_ids": [
+            1.0,
+            2.0,
+            0.0
+          ],
+          "filtered_instances": 0,
+          "mask_areas": [
+            1105,
+            859,
+            450
+          ],
+          "shape_chw": [
+            3,
+            384,
+            672
+          ],
+          "loss_mask_hw": [
+            96,
+            168
+          ],
+          "negative_still_empty": null
+        },
+        {
+          "image_id": "pilot_20261003130657_more_009",
+          "source_class_ids": [
+            2,
+            0,
+            1
+          ],
+          "loss_class_ids": [
+            2.0,
+            1.0,
+            0.0
+          ],
+          "filtered_instances": 0,
+          "mask_areas": [
+            2609,
+            623,
+            379
+          ],
+          "shape_chw": [
+            3,
+            384,
+            672
+          ],
+          "loss_mask_hw": [
+            96,
+            168
+          ],
+          "negative_still_empty": null
+        },
+        {
+          "image_id": "pilot_20261003130657_more_008",
+          "source_class_ids": [
+            2,
+            0,
+            1
+          ],
+          "loss_class_ids": [
+            2.0,
+            0.0,
+            1.0
+          ],
+          "filtered_instances": 0,
+          "mask_areas": [
+            2314,
+            1075,
+            965
+          ],
+          "shape_chw": [
+            3,
+            384,
+            672
+          ],
+          "loss_mask_hw": [
+            96,
+            168
+          ],
+          "negative_still_empty": null
+        },
+        {
+          "image_id": "pilot_20261003130657_more_007",
+          "source_class_ids": [
+            1,
+            2,
+            0
+          ],
+          "loss_class_ids": [
+            2.0,
+            1.0,
+            0.0
+          ],
+          "filtered_instances": 0,
+          "mask_areas": [
+            1738,
+            1205,
+            884
+          ],
+          "shape_chw": [
+            3,
+            384,
+            672
+          ],
+          "loss_mask_hw": [
+            96,
+            168
+          ],
+          "negative_still_empty": null
+        },
+        {
+          "image_id": "pilot_20261003130657_more_006",
+          "source_class_ids": [
+            2,
+            1,
+            0
+          ],
+          "loss_class_ids": [
+            2.0,
+            1.0,
+            0.0
+          ],
+          "filtered_instances": 0,
+          "mask_areas": [
+            2169,
+            302,
+            213
+          ],
+          "shape_chw": [
+            3,
+            384,
+            672
+          ],
+          "loss_mask_hw": [
+            96,
+            168
+          ],
+          "negative_still_empty": null
+        },
+        {
+          "image_id": "pilot_20261003130657_more_005",
+          "source_class_ids": [
+            2,
+            1,
+            0
+          ],
+          "loss_class_ids": [
+            2.0,
+            0.0,
+            1.0
+          ],
+          "filtered_instances": 0,
+          "mask_areas": [
+            1902,
+            283,
+            286
+          ],
+          "shape_chw": [
+            3,
+            384,
+            672
+          ],
+          "loss_mask_hw": [
+            96,
+            168
+          ],
+          "negative_still_empty": null
+        },
+        {
+          "image_id": "pilot_20261003130657_more_004",
+          "source_class_ids": [
+            1,
+            0
+          ],
+          "loss_class_ids": [
+            1.0,
+            0.0
+          ],
+          "filtered_instances": 0,
+          "mask_areas": [
+            1040,
+            303
+          ],
+          "shape_chw": [
+            3,
+            384,
+            672
+          ],
+          "loss_mask_hw": [
+            96,
+            168
+          ],
+          "negative_still_empty": null
+        },
+        {
+          "image_id": "pilot_20261003130657_more_003",
+          "source_class_ids": [
+            1,
+            0
+          ],
+          "loss_class_ids": [
+            1.0,
+            0.0
+          ],
+          "filtered_instances": 0,
+          "mask_areas": [
+            1007,
+            315
+          ],
+          "shape_chw": [
+            3,
+            384,
+            672
+          ],
+          "loss_mask_hw": [
+            96,
+            168
+          ],
+          "negative_still_empty": null
+        },
+        {
+          "image_id": "pilot_20261003130657_more_002",
+          "source_class_ids": [
+            0
+          ],
+          "loss_class_ids": [
+            0.0
+          ],
+          "filtered_instances": 0,
+          "mask_areas": [
+            1519
+          ],
+          "shape_chw": [
+            3,
+            384,
+            672
+          ],
+          "loss_mask_hw": [
+            96,
+            168
+          ],
+          "negative_still_empty": null
+        },
+        {
+          "image_id": "pilot_20261003130657_005",
+          "source_class_ids": [
+            2
+          ],
+          "loss_class_ids": [
+            2.0
+          ],
+          "filtered_instances": 0,
+          "mask_areas": [
+            3090
+          ],
+          "shape_chw": [
+            3,
+            384,
+            672
+          ],
+          "loss_mask_hw": [
+            96,
+            168
+          ],
+          "negative_still_empty": null
+        },
+        {
+          "image_id": "pilot_20261003130657_006",
+          "source_class_ids": [
+            2
+          ],
+          "loss_class_ids": [
+            2.0
+          ],
+          "filtered_instances": 0,
+          "mask_areas": [
+            2681
+          ],
+          "shape_chw": [
+            3,
+            384,
+            672
+          ],
+          "loss_mask_hw": [
+            96,
+            168
+          ],
+          "negative_still_empty": null
+        }
+      ]
+    },
+    "val": {
+      "images_loaded": 5,
+      "batches": 2,
+      "workers": 0,
+      "augment": false,
+      "rectangular": true,
+      "seed": 42,
+      "loss_instances": 8,
+      "filtered_instances": 0,
+      "records": [
+        {
+          "image_id": "holdout_val_20261004_095145_001",
+          "source_class_ids": [
+            1,
+            0,
+            2
+          ],
+          "loss_class_ids": [
+            2.0,
+            0.0,
+            1.0
+          ],
+          "filtered_instances": 0,
+          "mask_areas": [
+            1076,
+            773,
+            662
+          ],
+          "shape_chw": [
+            3,
+            384,
+            672
+          ],
+          "loss_mask_hw": [
+            96,
+            168
+          ],
+          "negative_still_empty": null
+        },
+        {
+          "image_id": "holdout_val_20261004_095145_002",
+          "source_class_ids": [
+            1
+          ],
+          "loss_class_ids": [
+            1.0
+          ],
+          "filtered_instances": 0,
+          "mask_areas": [
+            681
+          ],
+          "shape_chw": [
+            3,
+            384,
+            672
+          ],
+          "loss_mask_hw": [
+            96,
+            168
+          ],
+          "negative_still_empty": null
+        },
+        {
+          "image_id": "holdout_val_20261004_095145_003",
+          "source_class_ids": [
+            2
+          ],
+          "loss_class_ids": [
+            2.0
+          ],
+          "filtered_instances": 0,
+          "mask_areas": [
+            1309
+          ],
+          "shape_chw": [
+            3,
+            384,
+            672
+          ],
+          "loss_mask_hw": [
+            96,
+            168
+          ],
+          "negative_still_empty": null
+        },
+        {
+          "image_id": "holdout_val_20261004_095145_004",
+          "source_class_ids": [
+            2,
+            1,
+            0
+          ],
+          "loss_class_ids": [
+            2.0,
+            1.0,
+            0.0
+          ],
+          "filtered_instances": 0,
+          "mask_areas": [
+            1954,
+            726,
+            178
+          ],
+          "shape_chw": [
+            3,
+            384,
+            672
+          ],
+          "loss_mask_hw": [
+            96,
+            168
+          ],
+          "negative_still_empty": null
+        },
+        {
+          "image_id": "holdout_val_20261004_095145_005",
+          "source_class_ids": [],
+          "loss_class_ids": [],
+          "filtered_instances": 0,
+          "mask_areas": [],
+          "shape_chw": [
+            3,
+            384,
+            672
+          ],
+          "loss_mask_hw": [
+            96,
+            168
+          ],
+          "negative_still_empty": true
+        }
+      ]
+    },
+    "test": {
+      "images_loaded": 5,
+      "batches": 2,
+      "workers": 0,
+      "augment": false,
+      "rectangular": true,
+      "seed": 42,
+      "loss_instances": 6,
+      "filtered_instances": 0,
+      "records": [
+        {
+          "image_id": "holdout_test_20261004_095145_001",
+          "source_class_ids": [
+            0
+          ],
+          "loss_class_ids": [
+            0.0
+          ],
+          "filtered_instances": 0,
+          "mask_areas": [
+            347
+          ],
+          "shape_chw": [
+            3,
+            384,
+            672
+          ],
+          "loss_mask_hw": [
+            96,
+            168
+          ],
+          "negative_still_empty": null
+        },
+        {
+          "image_id": "holdout_test_20261004_095145_002",
+          "source_class_ids": [
+            1
+          ],
+          "loss_class_ids": [
+            1.0
+          ],
+          "filtered_instances": 0,
+          "mask_areas": [
+            259
+          ],
+          "shape_chw": [
+            3,
+            384,
+            672
+          ],
+          "loss_mask_hw": [
+            96,
+            168
+          ],
+          "negative_still_empty": null
+        },
+        {
+          "image_id": "holdout_test_20261004_095145_003",
+          "source_class_ids": [
+            2
+          ],
+          "loss_class_ids": [
+            2.0
+          ],
+          "filtered_instances": 0,
+          "mask_areas": [
+            393
+          ],
+          "shape_chw": [
+            3,
+            384,
+            672
+          ],
+          "loss_mask_hw": [
+            96,
+            168
+          ],
+          "negative_still_empty": null
+        },
+        {
+          "image_id": "holdout_test_20261004_095145_004",
+          "source_class_ids": [
+            2,
+            1,
+            0
+          ],
+          "loss_class_ids": [
+            2.0,
+            1.0,
+            0.0
+          ],
+          "filtered_instances": 0,
+          "mask_areas": [
+            488,
+            318,
+            221
+          ],
+          "shape_chw": [
+            3,
+            384,
+            672
+          ],
+          "loss_mask_hw": [
+            96,
+            168
+          ],
+          "negative_still_empty": null
+        },
+        {
+          "image_id": "holdout_test_20261004_095145_005",
+          "source_class_ids": [],
+          "loss_class_ids": [],
+          "filtered_instances": 0,
+          "mask_areas": [],
+          "shape_chw": [
+            3,
+            384,
+            672
+          ],
+          "loss_mask_hw": [
+            96,
+            168
+          ],
+          "negative_still_empty": true
+        }
+      ]
+    }
+  },
+  "training_augmentation": [
+    {
+      "images_loaded": 20,
+      "batches": 5,
+      "workers": 0,
+      "augment": true,
+      "rectangular": false,
+      "seed": 42,
+      "loss_instances": 30,
+      "filtered_instances": 0,
+      "records": [
+        {
+          "image_id": "pilot_20261003130657_more_006",
+          "source_class_ids": [
+            2,
+            1,
+            0
+          ],
+          "loss_class_ids": [
+            2.0,
+            1.0,
+            0.0
+          ],
+          "filtered_instances": 0,
+          "mask_areas": [
+            2325,
+            324,
+            222
+          ],
+          "shape_chw": [
+            3,
+            640,
+            640
+          ],
+          "loss_mask_hw": [
+            160,
+            160
+          ],
+          "negative_still_empty": null
+        },
+        {
+          "image_id": "pilot_20261003130657_002",
+          "source_class_ids": [
+            1
+          ],
+          "loss_class_ids": [
+            1.0
+          ],
+          "filtered_instances": 0,
+          "mask_areas": [
+            2240
+          ],
+          "shape_chw": [
+            3,
+            640,
+            640
+          ],
+          "loss_mask_hw": [
+            160,
+            160
+          ],
+          "negative_still_empty": null
+        },
+        {
+          "image_id": "pilot_20261003130657_003",
+          "source_class_ids": [
+            0
+          ],
+          "loss_class_ids": [
+            0.0
+          ],
+          "filtered_instances": 0,
+          "mask_areas": [
+            2605
+          ],
+          "shape_chw": [
+            3,
+            640,
+            640
+          ],
+          "loss_mask_hw": [
+            160,
+            160
+          ],
+          "negative_still_empty": null
+        },
+        {
+          "image_id": "pilot_20261003130657_004",
+          "source_class_ids": [
+            0
+          ],
+          "loss_class_ids": [
+            0.0
+          ],
+          "filtered_instances": 0,
+          "mask_areas": [
+            1538
+          ],
+          "shape_chw": [
+            3,
+            640,
+            640
+          ],
+          "loss_mask_hw": [
+            160,
+            160
+          ],
+          "negative_still_empty": null
+        },
+        {
+          "image_id": "pilot_20261003130657_more_013",
+          "source_class_ids": [],
+          "loss_class_ids": [],
+          "filtered_instances": 0,
+          "mask_areas": [],
+          "shape_chw": [
+            3,
+            640,
+            640
+          ],
+          "loss_mask_hw": [
+            160,
+            160
+          ],
+          "negative_still_empty": true
+        },
+        {
+          "image_id": "pilot_20261003130657_more_007",
+          "source_class_ids": [
+            1,
+            2,
+            0
+          ],
+          "loss_class_ids": [
+            2.0,
+            1.0,
+            0.0
+          ],
+          "filtered_instances": 0,
+          "mask_areas": [
+            1276,
+            885,
+            655
+          ],
+          "shape_chw": [
+            3,
+            640,
+            640
+          ],
+          "loss_mask_hw": [
+            160,
+            160
+          ],
+          "negative_still_empty": null
+        },
+        {
+          "image_id": "pilot_20261003130657_more_001",
+          "source_class_ids": [
+            0
+          ],
+          "loss_class_ids": [
+            0.0
+          ],
+          "filtered_instances": 0,
+          "mask_areas": [
+            915
+          ],
+          "shape_chw": [
+            3,
+            640,
+            640
+          ],
+          "loss_mask_hw": [
+            160,
+            160
+          ],
+          "negative_still_empty": null
+        },
+        {
+          "image_id": "pilot_20261003130657_more_003",
+          "source_class_ids": [
+            1,
+            0
+          ],
+          "loss_class_ids": [
+            1.0,
+            0.0
+          ],
+          "filtered_instances": 0,
+          "mask_areas": [
+            889,
+            274
+          ],
+          "shape_chw": [
+            3,
+            640,
+            640
+          ],
+          "loss_mask_hw": [
+            160,
+            160
+          ],
+          "negative_still_empty": null
+        },
+        {
+          "image_id": "pilot_20261003130657_more_011",
+          "source_class_ids": [],
+          "loss_class_ids": [],
+          "filtered_instances": 0,
+          "mask_areas": [],
+          "shape_chw": [
+            3,
+            640,
+            640
+          ],
+          "loss_mask_hw": [
+            160,
+            160
+          ],
+          "negative_still_empty": true
+        },
+        {
+          "image_id": "pilot_20261003130657_more_005",
+          "source_class_ids": [
+            2,
+            1,
+            0
+          ],
+          "loss_class_ids": [
+            2.0,
+            1.0,
+            0.0
+          ],
+          "filtered_instances": 0,
+          "mask_areas": [
+            1321,
+            195,
+            192
+          ],
+          "shape_chw": [
+            3,
+            640,
+            640
+          ],
+          "loss_mask_hw": [
+            160,
+            160
+          ],
+          "negative_still_empty": null
+        },
+        {
+          "image_id": "pilot_20261003130657_more_004",
+          "source_class_ids": [
+            1,
+            0
+          ],
+          "loss_class_ids": [
+            1.0,
+            0.0
+          ],
+          "filtered_instances": 0,
+          "mask_areas": [
+            1197,
+            347
+          ],
+          "shape_chw": [
+            3,
+            640,
+            640
+          ],
+          "loss_mask_hw": [
+            160,
+            160
+          ],
+          "negative_still_empty": null
+        },
+        {
+          "image_id": "pilot_20261003130657_more_010",
+          "source_class_ids": [
+            2,
+            1,
+            0
+          ],
+          "loss_class_ids": [
+            1.0,
+            2.0,
+            0.0
+          ],
+          "filtered_instances": 0,
+          "mask_areas": [
+            749,
+            587,
+            309
+          ],
+          "shape_chw": [
+            3,
+            640,
+            640
+          ],
+          "loss_mask_hw": [
+            160,
+            160
+          ],
+          "negative_still_empty": null
+        },
+        {
+          "image_id": "pilot_20261003130657_more_002",
+          "source_class_ids": [
+            0
+          ],
+          "loss_class_ids": [
+            0.0
+          ],
+          "filtered_instances": 0,
+          "mask_areas": [
+            1070
+          ],
+          "shape_chw": [
+            3,
+            640,
+            640
+          ],
+          "loss_mask_hw": [
+            160,
+            160
+          ],
+          "negative_still_empty": null
+        },
+        {
+          "image_id": "pilot_20261003130657_005",
+          "source_class_ids": [
+            2
+          ],
+          "loss_class_ids": [
+            2.0
+          ],
+          "filtered_instances": 0,
+          "mask_areas": [
+            2257
+          ],
+          "shape_chw": [
+            3,
+            640,
+            640
+          ],
+          "loss_mask_hw": [
+            160,
+            160
+          ],
+          "negative_still_empty": null
+        },
+        {
+          "image_id": "pilot_20261003130657_more_009",
+          "source_class_ids": [
+            2,
+            0,
+            1
+          ],
+          "loss_class_ids": [
+            2.0,
+            1.0,
+            0.0
+          ],
+          "filtered_instances": 0,
+          "mask_areas": [
+            2422,
+            574,
+            352
+          ],
+          "shape_chw": [
+            3,
+            640,
+            640
+          ],
+          "loss_mask_hw": [
+            160,
+            160
+          ],
+          "negative_still_empty": null
+        },
+        {
+          "image_id": "pilot_20261003130657_006",
+          "source_class_ids": [
+            2
+          ],
+          "loss_class_ids": [
+            2.0
+          ],
+          "filtered_instances": 0,
+          "mask_areas": [
+            2665
+          ],
+          "shape_chw": [
+            3,
+            640,
+            640
+          ],
+          "loss_mask_hw": [
+            160,
+            160
+          ],
+          "negative_still_empty": null
+        },
+        {
+          "image_id": "pilot_20261003130657_more_008",
+          "source_class_ids": [
+            2,
+            0,
+            1
+          ],
+          "loss_class_ids": [
+            2.0,
+            0.0,
+            1.0
+          ],
+          "filtered_instances": 0,
+          "mask_areas": [
+            1585,
+            739,
+            671
+          ],
+          "shape_chw": [
+            3,
+            640,
+            640
+          ],
+          "loss_mask_hw": [
+            160,
+            160
+          ],
+          "negative_still_empty": null
+        },
+        {
+          "image_id": "pilot_20261003130657_more_014",
+          "source_class_ids": [],
+          "loss_class_ids": [],
+          "filtered_instances": 0,
+          "mask_areas": [],
+          "shape_chw": [
+            3,
+            640,
+            640
+          ],
+          "loss_mask_hw": [
+            160,
+            160
+          ],
+          "negative_still_empty": true
+        },
+        {
+          "image_id": "pilot_20261003130657_001",
+          "source_class_ids": [
+            1
+          ],
+          "loss_class_ids": [
+            1.0
+          ],
+          "filtered_instances": 0,
+          "mask_areas": [
+            1257
+          ],
+          "shape_chw": [
+            3,
+            640,
+            640
+          ],
+          "loss_mask_hw": [
+            160,
+            160
+          ],
+          "negative_still_empty": null
+        },
+        {
+          "image_id": "pilot_20261003130657_more_012",
+          "source_class_ids": [],
+          "loss_class_ids": [],
+          "filtered_instances": 0,
+          "mask_areas": [],
+          "shape_chw": [
+            3,
+            640,
+            640
+          ],
+          "loss_mask_hw": [
+            160,
+            160
+          ],
+          "negative_still_empty": true
+        }
+      ]
+    },
+    {
+      "images_loaded": 20,
+      "batches": 5,
+      "workers": 0,
+      "augment": true,
+      "rectangular": false,
+      "seed": 43,
+      "loss_instances": 30,
+      "filtered_instances": 0,
+      "records": [
+        {
+          "image_id": "pilot_20261003130657_more_009",
+          "source_class_ids": [
+            2,
+            0,
+            1
+          ],
+          "loss_class_ids": [
+            2.0,
+            1.0,
+            0.0
+          ],
+          "filtered_instances": 0,
+          "mask_areas": [
+            1702,
+            409,
+            249
+          ],
+          "shape_chw": [
+            3,
+            640,
+            640
+          ],
+          "loss_mask_hw": [
+            160,
+            160
+          ],
+          "negative_still_empty": null
+        },
+        {
+          "image_id": "pilot_20261003130657_more_006",
+          "source_class_ids": [
+            2,
+            1,
+            0
+          ],
+          "loss_class_ids": [
+            2.0,
+            1.0,
+            0.0
+          ],
+          "filtered_instances": 0,
+          "mask_areas": [
+            2670,
+            370,
+            257
+          ],
+          "shape_chw": [
+            3,
+            640,
+            640
+          ],
+          "loss_mask_hw": [
+            160,
+            160
+          ],
+          "negative_still_empty": null
+        },
+        {
+          "image_id": "pilot_20261003130657_more_002",
+          "source_class_ids": [
+            0
+          ],
+          "loss_class_ids": [
+            0.0
+          ],
+          "filtered_instances": 0,
+          "mask_areas": [
+            1617
+          ],
+          "shape_chw": [
+            3,
+            640,
+            640
+          ],
+          "loss_mask_hw": [
+            160,
+            160
+          ],
+          "negative_still_empty": null
+        },
+        {
+          "image_id": "pilot_20261003130657_more_008",
+          "source_class_ids": [
+            2,
+            0,
+            1
+          ],
+          "loss_class_ids": [
+            2.0,
+            0.0,
+            1.0
+          ],
+          "filtered_instances": 0,
+          "mask_areas": [
+            2472,
+            1156,
+            1043
+          ],
+          "shape_chw": [
+            3,
+            640,
+            640
+          ],
+          "loss_mask_hw": [
+            160,
+            160
+          ],
+          "negative_still_empty": null
+        },
+        {
+          "image_id": "pilot_20261003130657_005",
+          "source_class_ids": [
+            2
+          ],
+          "loss_class_ids": [
+            2.0
+          ],
+          "filtered_instances": 0,
+          "mask_areas": [
+            2136
+          ],
+          "shape_chw": [
+            3,
+            640,
+            640
+          ],
+          "loss_mask_hw": [
+            160,
+            160
+          ],
+          "negative_still_empty": null
+        },
+        {
+          "image_id": "pilot_20261003130657_004",
+          "source_class_ids": [
+            0
+          ],
+          "loss_class_ids": [
+            0.0
+          ],
+          "filtered_instances": 0,
+          "mask_areas": [
+            2452
+          ],
+          "shape_chw": [
+            3,
+            640,
+            640
+          ],
+          "loss_mask_hw": [
+            160,
+            160
+          ],
+          "negative_still_empty": null
+        },
+        {
+          "image_id": "pilot_20261003130657_001",
+          "source_class_ids": [
+            1
+          ],
+          "loss_class_ids": [
+            1.0
+          ],
+          "filtered_instances": 0,
+          "mask_areas": [
+            1099
+          ],
+          "shape_chw": [
+            3,
+            640,
+            640
+          ],
+          "loss_mask_hw": [
+            160,
+            160
+          ],
+          "negative_still_empty": null
+        },
+        {
+          "image_id": "pilot_20261003130657_003",
+          "source_class_ids": [
+            0
+          ],
+          "loss_class_ids": [
+            0.0
+          ],
+          "filtered_instances": 0,
+          "mask_areas": [
+            4328
+          ],
+          "shape_chw": [
+            3,
+            640,
+            640
+          ],
+          "loss_mask_hw": [
+            160,
+            160
+          ],
+          "negative_still_empty": null
+        },
+        {
+          "image_id": "pilot_20261003130657_002",
+          "source_class_ids": [
+            1
+          ],
+          "loss_class_ids": [
+            1.0
+          ],
+          "filtered_instances": 0,
+          "mask_areas": [
+            2411
+          ],
+          "shape_chw": [
+            3,
+            640,
+            640
+          ],
+          "loss_mask_hw": [
+            160,
+            160
+          ],
+          "negative_still_empty": null
+        },
+        {
+          "image_id": "pilot_20261003130657_more_011",
+          "source_class_ids": [],
+          "loss_class_ids": [],
+          "filtered_instances": 0,
+          "mask_areas": [],
+          "shape_chw": [
+            3,
+            640,
+            640
+          ],
+          "loss_mask_hw": [
+            160,
+            160
+          ],
+          "negative_still_empty": true
+        },
+        {
+          "image_id": "pilot_20261003130657_more_007",
+          "source_class_ids": [
+            1,
+            2,
+            0
+          ],
+          "loss_class_ids": [
+            2.0,
+            1.0,
+            0.0
+          ],
+          "filtered_instances": 0,
+          "mask_areas": [
+            1196,
+            834,
+            610
+          ],
+          "shape_chw": [
+            3,
+            640,
+            640
+          ],
+          "loss_mask_hw": [
+            160,
+            160
+          ],
+          "negative_still_empty": null
+        },
+        {
+          "image_id": "pilot_20261003130657_more_001",
+          "source_class_ids": [
+            0
+          ],
+          "loss_class_ids": [
+            0.0
+          ],
+          "filtered_instances": 0,
+          "mask_areas": [
+            1265
+          ],
+          "shape_chw": [
+            3,
+            640,
+            640
+          ],
+          "loss_mask_hw": [
+            160,
+            160
+          ],
+          "negative_still_empty": null
+        },
+        {
+          "image_id": "pilot_20261003130657_more_012",
+          "source_class_ids": [],
+          "loss_class_ids": [],
+          "filtered_instances": 0,
+          "mask_areas": [],
+          "shape_chw": [
+            3,
+            640,
+            640
+          ],
+          "loss_mask_hw": [
+            160,
+            160
+          ],
+          "negative_still_empty": true
+        },
+        {
+          "image_id": "pilot_20261003130657_more_003",
+          "source_class_ids": [
+            1,
+            0
+          ],
+          "loss_class_ids": [
+            1.0,
+            0.0
+          ],
+          "filtered_instances": 0,
+          "mask_areas": [
+            828,
+            257
+          ],
+          "shape_chw": [
+            3,
+            640,
+            640
+          ],
+          "loss_mask_hw": [
+            160,
+            160
+          ],
+          "negative_still_empty": null
+        },
+        {
+          "image_id": "pilot_20261003130657_more_004",
+          "source_class_ids": [
+            1,
+            0
+          ],
+          "loss_class_ids": [
+            1.0,
+            0.0
+          ],
+          "filtered_instances": 0,
+          "mask_areas": [
+            839,
+            244
+          ],
+          "shape_chw": [
+            3,
+            640,
+            640
+          ],
+          "loss_mask_hw": [
+            160,
+            160
+          ],
+          "negative_still_empty": null
+        },
+        {
+          "image_id": "pilot_20261003130657_more_013",
+          "source_class_ids": [],
+          "loss_class_ids": [],
+          "filtered_instances": 0,
+          "mask_areas": [],
+          "shape_chw": [
+            3,
+            640,
+            640
+          ],
+          "loss_mask_hw": [
+            160,
+            160
+          ],
+          "negative_still_empty": true
+        },
+        {
+          "image_id": "pilot_20261003130657_more_005",
+          "source_class_ids": [
+            2,
+            1,
+            0
+          ],
+          "loss_class_ids": [
+            2.0,
+            1.0,
+            0.0
+          ],
+          "filtered_instances": 0,
+          "mask_areas": [
+            1743,
+            259,
+            261
+          ],
+          "shape_chw": [
+            3,
+            640,
+            640
+          ],
+          "loss_mask_hw": [
+            160,
+            160
+          ],
+          "negative_still_empty": null
+        },
+        {
+          "image_id": "pilot_20261003130657_more_014",
+          "source_class_ids": [],
+          "loss_class_ids": [],
+          "filtered_instances": 0,
+          "mask_areas": [],
+          "shape_chw": [
+            3,
+            640,
+            640
+          ],
+          "loss_mask_hw": [
+            160,
+            160
+          ],
+          "negative_still_empty": true
+        },
+        {
+          "image_id": "pilot_20261003130657_more_010",
+          "source_class_ids": [
+            2,
+            1,
+            0
+          ],
+          "loss_class_ids": [
+            1.0,
+            2.0,
+            0.0
+          ],
+          "filtered_instances": 0,
+          "mask_areas": [
+            1036,
+            806,
+            427
+          ],
+          "shape_chw": [
+            3,
+            640,
+            640
+          ],
+          "loss_mask_hw": [
+            160,
+            160
+          ],
+          "negative_still_empty": null
+        },
+        {
+          "image_id": "pilot_20261003130657_006",
+          "source_class_ids": [
+            2
+          ],
+          "loss_class_ids": [
+            2.0
+          ],
+          "filtered_instances": 0,
+          "mask_areas": [
+            3059
+          ],
+          "shape_chw": [
+            3,
+            640,
+            640
+          ],
+          "loss_mask_hw": [
+            160,
+            160
+          ],
+          "negative_still_empty": null
+        }
+      ]
+    },
+    {
+      "images_loaded": 20,
+      "batches": 5,
+      "workers": 0,
+      "augment": true,
+      "rectangular": false,
+      "seed": 44,
+      "loss_instances": 30,
+      "filtered_instances": 0,
+      "records": [
+        {
+          "image_id": "pilot_20261003130657_005",
+          "source_class_ids": [
+            2
+          ],
+          "loss_class_ids": [
+            2.0
+          ],
+          "filtered_instances": 0,
+          "mask_areas": [
+            2187
+          ],
+          "shape_chw": [
+            3,
+            640,
+            640
+          ],
+          "loss_mask_hw": [
+            160,
+            160
+          ],
+          "negative_still_empty": null
+        },
+        {
+          "image_id": "pilot_20261003130657_more_012",
+          "source_class_ids": [],
+          "loss_class_ids": [],
+          "filtered_instances": 0,
+          "mask_areas": [],
+          "shape_chw": [
+            3,
+            640,
+            640
+          ],
+          "loss_mask_hw": [
+            160,
+            160
+          ],
+          "negative_still_empty": true
+        },
+        {
+          "image_id": "pilot_20261003130657_001",
+          "source_class_ids": [
+            1
+          ],
+          "loss_class_ids": [
+            1.0
+          ],
+          "filtered_instances": 0,
+          "mask_areas": [
+            1617
+          ],
+          "shape_chw": [
+            3,
+            640,
+            640
+          ],
+          "loss_mask_hw": [
+            160,
+            160
+          ],
+          "negative_still_empty": null
+        },
+        {
+          "image_id": "pilot_20261003130657_more_002",
+          "source_class_ids": [
+            0
+          ],
+          "loss_class_ids": [
+            0.0
+          ],
+          "filtered_instances": 0,
+          "mask_areas": [
+            2171
+          ],
+          "shape_chw": [
+            3,
+            640,
+            640
+          ],
+          "loss_mask_hw": [
+            160,
+            160
+          ],
+          "negative_still_empty": null
+        },
+        {
+          "image_id": "pilot_20261003130657_more_010",
+          "source_class_ids": [
+            2,
+            1,
+            0
+          ],
+          "loss_class_ids": [
+            1.0,
+            2.0,
+            0.0
+          ],
+          "filtered_instances": 0,
+          "mask_areas": [
+            981,
+            772,
+            400
+          ],
+          "shape_chw": [
+            3,
+            640,
+            640
+          ],
+          "loss_mask_hw": [
+            160,
+            160
+          ],
+          "negative_still_empty": null
+        },
+        {
+          "image_id": "pilot_20261003130657_006",
+          "source_class_ids": [
+            2
+          ],
+          "loss_class_ids": [
+            2.0
+          ],
+          "filtered_instances": 0,
+          "mask_areas": [
+            1836
+          ],
+          "shape_chw": [
+            3,
+            640,
+            640
+          ],
+          "loss_mask_hw": [
+            160,
+            160
+          ],
+          "negative_still_empty": null
+        },
+        {
+          "image_id": "pilot_20261003130657_004",
+          "source_class_ids": [
+            0
+          ],
+          "loss_class_ids": [
+            0.0
+          ],
+          "filtered_instances": 0,
+          "mask_areas": [
+            2548
+          ],
+          "shape_chw": [
+            3,
+            640,
+            640
+          ],
+          "loss_mask_hw": [
+            160,
+            160
+          ],
+          "negative_still_empty": null
+        },
+        {
+          "image_id": "pilot_20261003130657_more_001",
+          "source_class_ids": [
+            0
+          ],
+          "loss_class_ids": [
+            0.0
+          ],
+          "filtered_instances": 0,
+          "mask_areas": [
+            1139
+          ],
+          "shape_chw": [
+            3,
+            640,
+            640
+          ],
+          "loss_mask_hw": [
+            160,
+            160
+          ],
+          "negative_still_empty": null
+        },
+        {
+          "image_id": "pilot_20261003130657_more_007",
+          "source_class_ids": [
+            1,
+            2,
+            0
+          ],
+          "loss_class_ids": [
+            2.0,
+            1.0,
+            0.0
+          ],
+          "filtered_instances": 0,
+          "mask_areas": [
+            2017,
+            1361,
+            1018
+          ],
+          "shape_chw": [
+            3,
+            640,
+            640
+          ],
+          "loss_mask_hw": [
+            160,
+            160
+          ],
+          "negative_still_empty": null
+        },
+        {
+          "image_id": "pilot_20261003130657_002",
+          "source_class_ids": [
+            1
+          ],
+          "loss_class_ids": [
+            1.0
+          ],
+          "filtered_instances": 0,
+          "mask_areas": [
+            2768
+          ],
+          "shape_chw": [
+            3,
+            640,
+            640
+          ],
+          "loss_mask_hw": [
+            160,
+            160
+          ],
+          "negative_still_empty": null
+        },
+        {
+          "image_id": "pilot_20261003130657_more_004",
+          "source_class_ids": [
+            1,
+            0
+          ],
+          "loss_class_ids": [
+            1.0,
+            0.0
+          ],
+          "filtered_instances": 0,
+          "mask_areas": [
+            781,
+            227
+          ],
+          "shape_chw": [
+            3,
+            640,
+            640
+          ],
+          "loss_mask_hw": [
+            160,
+            160
+          ],
+          "negative_still_empty": null
+        },
+        {
+          "image_id": "pilot_20261003130657_more_003",
+          "source_class_ids": [
+            1,
+            0
+          ],
+          "loss_class_ids": [
+            1.0,
+            0.0
+          ],
+          "filtered_instances": 0,
+          "mask_areas": [
+            1380,
+            428
+          ],
+          "shape_chw": [
+            3,
+            640,
+            640
+          ],
+          "loss_mask_hw": [
+            160,
+            160
+          ],
+          "negative_still_empty": null
+        },
+        {
+          "image_id": "pilot_20261003130657_more_014",
+          "source_class_ids": [],
+          "loss_class_ids": [],
+          "filtered_instances": 0,
+          "mask_areas": [],
+          "shape_chw": [
+            3,
+            640,
+            640
+          ],
+          "loss_mask_hw": [
+            160,
+            160
+          ],
+          "negative_still_empty": true
+        },
+        {
+          "image_id": "pilot_20261003130657_more_005",
+          "source_class_ids": [
+            2,
+            1,
+            0
+          ],
+          "loss_class_ids": [
+            2.0,
+            0.0,
+            1.0
+          ],
+          "filtered_instances": 0,
+          "mask_areas": [
+            1591,
+            232,
+            235
+          ],
+          "shape_chw": [
+            3,
+            640,
+            640
+          ],
+          "loss_mask_hw": [
+            160,
+            160
+          ],
+          "negative_still_empty": null
+        },
+        {
+          "image_id": "pilot_20261003130657_more_009",
+          "source_class_ids": [
+            2,
+            0,
+            1
+          ],
+          "loss_class_ids": [
+            2.0,
+            1.0,
+            0.0
+          ],
+          "filtered_instances": 0,
+          "mask_areas": [
+            2339,
+            557,
+            341
+          ],
+          "shape_chw": [
+            3,
+            640,
+            640
+          ],
+          "loss_mask_hw": [
+            160,
+            160
+          ],
+          "negative_still_empty": null
+        },
+        {
+          "image_id": "pilot_20261003130657_more_013",
+          "source_class_ids": [],
+          "loss_class_ids": [],
+          "filtered_instances": 0,
+          "mask_areas": [],
+          "shape_chw": [
+            3,
+            640,
+            640
+          ],
+          "loss_mask_hw": [
+            160,
+            160
+          ],
+          "negative_still_empty": true
+        },
+        {
+          "image_id": "pilot_20261003130657_003",
+          "source_class_ids": [
+            0
+          ],
+          "loss_class_ids": [
+            0.0
+          ],
+          "filtered_instances": 0,
+          "mask_areas": [
+            2088
+          ],
+          "shape_chw": [
+            3,
+            640,
+            640
+          ],
+          "loss_mask_hw": [
+            160,
+            160
+          ],
+          "negative_still_empty": null
+        },
+        {
+          "image_id": "pilot_20261003130657_more_008",
+          "source_class_ids": [
+            2,
+            0,
+            1
+          ],
+          "loss_class_ids": [
+            2.0,
+            0.0,
+            1.0
+          ],
+          "filtered_instances": 0,
+          "mask_areas": [
+            2598,
+            1212,
+            1091
+          ],
+          "shape_chw": [
+            3,
+            640,
+            640
+          ],
+          "loss_mask_hw": [
+            160,
+            160
+          ],
+          "negative_still_empty": null
+        },
+        {
+          "image_id": "pilot_20261003130657_more_006",
+          "source_class_ids": [
+            2,
+            1,
+            0
+          ],
+          "loss_class_ids": [
+            2.0,
+            1.0,
+            0.0
+          ],
+          "filtered_instances": 0,
+          "mask_areas": [
+            1714,
+            240,
+            172
+          ],
+          "shape_chw": [
+            3,
+            640,
+            640
+          ],
+          "loss_mask_hw": [
+            160,
+            160
+          ],
+          "negative_still_empty": null
+        },
+        {
+          "image_id": "pilot_20261003130657_more_011",
+          "source_class_ids": [],
+          "loss_class_ids": [],
+          "filtered_instances": 0,
+          "mask_areas": [],
+          "shape_chw": [
+            3,
+            640,
+            640
+          ],
+          "loss_mask_hw": [
+            160,
+            160
+          ],
+          "negative_still_empty": true
+        }
+      ]
+    }
+  ],
+  "all_negative_batches": [
+    {
+      "seed": 42,
+      "images": 4,
+      "records": [
+        {
+          "image_id": "pilot_20261003130657_more_011",
+          "source_class_ids": [],
+          "loss_class_ids": [],
+          "filtered_instances": 0,
+          "mask_areas": [],
+          "shape_chw": [
+            3,
+            640,
+            640
+          ],
+          "loss_mask_hw": [
+            160,
+            160
+          ],
+          "negative_still_empty": true
+        },
+        {
+          "image_id": "pilot_20261003130657_more_012",
+          "source_class_ids": [],
+          "loss_class_ids": [],
+          "filtered_instances": 0,
+          "mask_areas": [],
+          "shape_chw": [
+            3,
+            640,
+            640
+          ],
+          "loss_mask_hw": [
+            160,
+            160
+          ],
+          "negative_still_empty": true
+        },
+        {
+          "image_id": "pilot_20261003130657_more_013",
+          "source_class_ids": [],
+          "loss_class_ids": [],
+          "filtered_instances": 0,
+          "mask_areas": [],
+          "shape_chw": [
+            3,
+            640,
+            640
+          ],
+          "loss_mask_hw": [
+            160,
+            160
+          ],
+          "negative_still_empty": true
+        },
+        {
+          "image_id": "pilot_20261003130657_more_014",
+          "source_class_ids": [],
+          "loss_class_ids": [],
+          "filtered_instances": 0,
+          "mask_areas": [],
+          "shape_chw": [
+            3,
+            640,
+            640
+          ],
+          "loss_mask_hw": [
+            160,
+            160
+          ],
+          "negative_still_empty": true
+        }
+      ]
+    },
+    {
+      "seed": 43,
+      "images": 4,
+      "records": [
+        {
+          "image_id": "pilot_20261003130657_more_011",
+          "source_class_ids": [],
+          "loss_class_ids": [],
+          "filtered_instances": 0,
+          "mask_areas": [],
+          "shape_chw": [
+            3,
+            640,
+            640
+          ],
+          "loss_mask_hw": [
+            160,
+            160
+          ],
+          "negative_still_empty": true
+        },
+        {
+          "image_id": "pilot_20261003130657_more_012",
+          "source_class_ids": [],
+          "loss_class_ids": [],
+          "filtered_instances": 0,
+          "mask_areas": [],
+          "shape_chw": [
+            3,
+            640,
+            640
+          ],
+          "loss_mask_hw": [
+            160,
+            160
+          ],
+          "negative_still_empty": true
+        },
+        {
+          "image_id": "pilot_20261003130657_more_013",
+          "source_class_ids": [],
+          "loss_class_ids": [],
+          "filtered_instances": 0,
+          "mask_areas": [],
+          "shape_chw": [
+            3,
+            640,
+            640
+          ],
+          "loss_mask_hw": [
+            160,
+            160
+          ],
+          "negative_still_empty": true
+        },
+        {
+          "image_id": "pilot_20261003130657_more_014",
+          "source_class_ids": [],
+          "loss_class_ids": [],
+          "filtered_instances": 0,
+          "mask_areas": [],
+          "shape_chw": [
+            3,
+            640,
+            640
+          ],
+          "loss_mask_hw": [
+            160,
+            160
+          ],
+          "negative_still_empty": true
+        }
+      ]
+    },
+    {
+      "seed": 44,
+      "images": 4,
+      "records": [
+        {
+          "image_id": "pilot_20261003130657_more_011",
+          "source_class_ids": [],
+          "loss_class_ids": [],
+          "filtered_instances": 0,
+          "mask_areas": [],
+          "shape_chw": [
+            3,
+            640,
+            640
+          ],
+          "loss_mask_hw": [
+            160,
+            160
+          ],
+          "negative_still_empty": true
+        },
+        {
+          "image_id": "pilot_20261003130657_more_012",
+          "source_class_ids": [],
+          "loss_class_ids": [],
+          "filtered_instances": 0,
+          "mask_areas": [],
+          "shape_chw": [
+            3,
+            640,
+            640
+          ],
+          "loss_mask_hw": [
+            160,
+            160
+          ],
+          "negative_still_empty": true
+        },
+        {
+          "image_id": "pilot_20261003130657_more_013",
+          "source_class_ids": [],
+          "loss_class_ids": [],
+          "filtered_instances": 0,
+          "mask_areas": [],
+          "shape_chw": [
+            3,
+            640,
+            640
+          ],
+          "loss_mask_hw": [
+            160,
+            160
+          ],
+          "negative_still_empty": true
+        },
+        {
+          "image_id": "pilot_20261003130657_more_014",
+          "source_class_ids": [],
+          "loss_class_ids": [],
+          "filtered_instances": 0,
+          "mask_areas": [],
+          "shape_chw": [
+            3,
+            640,
+            640
+          ],
+          "loss_mask_hw": [
+            160,
+            160
+          ],
+          "negative_still_empty": true
+        }
+      ]
+    }
+  ],
+  "quality_distribution": {
+    "class_geometry": {
+      "0": {
+        "instances": 16,
+        "vertices_min_max": [
+          6,
+          31
+        ],
+        "normalized_polygon_area_min_median_max": [
+          0.011638818079997573,
+          0.02743016810216483,
+          0.2106537460882414
+        ],
+        "normalized_bbox_width_min_max": [
+          0.0711377774944838,
+          0.24561405998986385
+        ],
+        "normalized_bbox_height_min_max": [
+          0.2004500098351122,
+          0.8847222104668617
+        ]
+      },
+      "1": {
+        "instances": 15,
+        "vertices_min_max": [
+          6,
+          32
+        ],
+        "normalized_polygon_area_min_median_max": [
+          0.01653699866418412,
+          0.04874879882012924,
+          0.16252862362355194
+        ],
+        "normalized_bbox_width_min_max": [
+          0.08281248807907104,
+          0.24137023202044222
+        ],
+        "normalized_bbox_height_min_max": [
+          0.2030237976846185,
+          0.844061773951073
+        ]
+      },
+      "2": {
+        "instances": 13,
+        "vertices_min_max": [
+          17,
+          41
+        ],
+        "normalized_polygon_area_min_median_max": [
+          0.026667751395660133,
+          0.1294318710350049,
+          0.2096824297447616
+        ],
+        "normalized_bbox_width_min_max": [
+          0.1328125,
+          0.3671875
+        ],
+        "normalized_bbox_height_min_max": [
+          0.2916666269302368,
+          0.8305555284023285
+        ]
+      }
+    },
+    "capture_prompt_pose_counts": {
+      "front": 6,
+      "angled": 6,
+      "mixed-clear-1": 1,
+      "mixed-clear-2": 1,
+      "mixed-light-occlusion-1": 1,
+      "mixed-light-occlusion-2": 1,
+      "empty-1": 1,
+      "empty-2": 1,
+      "non-target-1": 1,
+      "non-target-2": 1,
+      "front-or-slight-angle": 6,
+      "mixed-visible": 2,
+      "empty-background": 2
+    },
+    "capture_prompt_limit": "Prompts describe the collection plan, not verified per-instance occlusion/pose labels. Human-reviewed class IDs override prompt IDs.",
+    "original_image_shapes_hw": [
+      [
+        720,
+        1280
+      ]
+    ],
+    "independent_test_images": 5,
+    "formal_dataset_quality_pending": false,
+    "capture_group_summary": {
+      "train": {
+        "images": 20,
+        "class_instances": [
+          12,
+          10,
+          8
+        ],
+        "negative_images": 4,
+        "capture_groups": [
+          "pilot_20261003130657",
+          "pilot_20261003130657_more"
+        ]
+      },
+      "val": {
+        "images": 5,
+        "class_instances": [
+          2,
+          3,
+          3
+        ],
+        "negative_images": 1,
+        "capture_groups": [
+          "holdout_val_20261004_095145"
+        ]
+      },
+      "test": {
+        "images": 5,
+        "class_instances": [
+          2,
+          2,
+          2
+        ],
+        "negative_images": 1,
+        "capture_groups": [
+          "holdout_test_20261004_095145"
+        ]
+      }
+    },
+    "small_instance_indicators": [],
+    "image_edge_indicators": [
+      {
+        "image_id": "pilot_20261003130657_more_005",
+        "class_id": 1
+      },
+      {
+        "image_id": "pilot_20261003130657_more_005",
+        "class_id": 0
+      },
+      {
+        "image_id": "pilot_20261003130657_more_006",
+        "class_id": 1
+      },
+      {
+        "image_id": "holdout_val_20261004_095145_001",
+        "class_id": 2
+      }
+    ],
+    "mixed_target_images": 11,
+    "occlusion_note": "No verified per-instance occlusion tags; capture prompts are not measured occlusion labels. See original/loader overlays for visible contours."
+  },
+  "staging_counts": {
+    "reused_image_label_pairs": 20,
+    "new_image_label_pairs": 10
+  },
+  "augmentation_preview_sample_ids": [
+    "pilot_20261003130657_003",
+    "pilot_20261003130657_001",
+    "pilot_20261003130657_005",
+    "pilot_20261003130657_more_003",
+    "pilot_20261003130657_more_005",
+    "pilot_20261003130657_more_011"
+  ],
+  "previews": {
+    "reviewed_originals": {
+      "path": "data/desktop/images/products-v1_originals.jpg",
+      "sha256": "66ac3c743334d09abaee37e0db2a20e6e49c68618c7d5781bdf458f2a5115be9"
+    },
+    "unaugmented_loader": {
+      "path": "data/desktop/images/products-v1_loader.jpg",
+      "sha256": "00be01550944e11a21d2f629de0458dd393a0b1f11feca06dddbdf939dd0595c"
+    },
+    "training_augmentation": {
+      "path": "data/desktop/images/products-v1_augmentation.jpg",
+      "sha256": "a78cb060c540c6d1fdaf926b28c8905b03041d9d6b83f0ef030098979b9570a7"
+    }
+  },
+  "originals_reviews_drafts_unchanged": true,
+  "prior_90_guarded_inputs_unchanged": true,
+  "training_loader_verified_for_this_version": true,
+  "model_training_run": false,
+  "test_model_evaluation_run": false,
+  "new_images_captured": 0,
+  "implementation_sha256": {
+    "scripts/check_training_data.py": "d124329381ce6f5a950b8dc81f345816bfd53e101369796e133001e813b986f2",
+    "app/product_training.py": "1464d75112d88774242c066edc778c332bf2276baf3e121bde9c46a57b253fb7"
+  },
+  "limitations": [
+    "Different new scenes were confirmed by the user before capture; no exact duplicates or detected cross-pool pHash candidates. Same one physical item per class; broad packaging/general scene independence is not established.",
+    "Test was read only for label/path acceptance, without model inference or metrics.",
+    "Geometric small/edge indicators and capture prompts do not prove semantic label completeness."
+  ],
+  "accepted_at": "2026-10-04T10:30:23.719911+08:00",
+  "accepted_tasks": [
+    "M2-05",
+    "M2-06"
+  ],
+  "engineering_tests": {
+    "passed": 34,
+    "new_formal_contract_tests": 4,
+    "camera_opened": false,
+    "fixtures_use_project_images": false
+  },
+  "visual_acceptance": {
+    "reviewed_originals": 30,
+    "unaugmented_loader_images": 30,
+    "augmentation_rows": 6,
+    "augmentation_views": 18,
+    "preview_hashes": {
+      "reviewed_originals": "66ac3c743334d09abaee37e0db2a20e6e49c68618c7d5781bdf458f2a5115be9",
+      "unaugmented_loader": "00be01550944e11a21d2f629de0458dd393a0b1f11feca06dddbdf939dd0595c",
+      "training_augmentation": "a78cb060c540c6d1fdaf926b28c8905b03041d9d6b83f0ef030098979b9570a7"
+    },
+    "findings": [
+      "Reviewed all original and unaugmented-loader tiles; class colours and visible package outlines agree at contact-sheet resolution.",
+      "Viewed three single-product, mixed-product, boundary-target and negative augmentation rows; geometry follows the image.",
+      "Four boundary indicators occur across three images and are intentional visible portions; no automatic relabel or exclusion.",
+      "No required label repair identified at this inspection; small contour imperfections remain possible."
+    ],
+    "performed_by": "assistant visual inspection; original product classes and polygons were confirmed by the user"
+  },
+  "loader_contract_repeated_build_bytes_unchanged": true
+}

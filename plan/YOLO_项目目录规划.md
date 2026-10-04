@@ -4,7 +4,7 @@
 
 2026-10-03 用户正式采用三种固定包装商品方向，现已根据试标成本确认小数据首版：现有 20 张起步，轻量在线增强和预训练微调；按需要少量补拍，新增人工审核累计最多 30 张（含留出，真实总量最多 50 张），不再按 350 张收集。M2-01 已冻结 classes.json / products.json，M2-02 的 20 张已验收；见[当前操作路线](00_YOLO_分阶段推进与进度跟踪.md#small-data-route)和[标注安排](../docs/M2_商品数据与标注规范.md#small-data-plan)。沿用现有 data/desktop/ 与代码路径，后续按任务实现配置，不增加空脚本。
 
-2026-10-04 更新：新增 10 张已全部人工确认，M2-04 已冻结正式 20/5/5 源图用途；共 30 张真实图、44 实例，新增额度已用 10/30、剩余 20。正式质量与训练加载配置待 M2-05、06，当前无需继续拍照。证据见[最新数据结果](../docs/M2_商品数据与标注规范.md#m2-04-holdout)。
+2026-10-04 更新：M2 6/6 已完成，正式 20/5/5、30 张真实图 / 44 实例，质量、实际加载与 60 次训练增强验收通过，数据 YAML / 图片清单 / 加载契约已建立。新增额度仍为 10/30、剩余 20，当前无需继续拍照；下一步固定 E1 配置。证据见[最新数据验收](../docs/M2_商品数据与标注规范.md#m2-05-06)。
 
 本文件规划需要在你的 Windows 电脑中建立的目录与文件。2026-10-02 已完成 M0-02：必要一级目录、`configs/paths.yaml`、源码锁定清单、训练 requirements、路径解析与安装验收脚本已建立；后续数据、训练和部署脚本按任务逐步实现，表中其余文件仍是规划。实际进展见[进度跟踪](00_YOLO_分阶段推进与进度跟踪.md)。
 
@@ -68,7 +68,7 @@ Conda 环境不需要放在项目目录中。若后续使用 Git，重点版本�
 | 文件 | 内容 |
 | --- | --- |
 | `configs/paths.yaml` | 项目路径规则与必要的外部路径 |
-| `configs/products_base.yaml` | E1 首批审核商品数据配置，待实现 |
+| [configs/products_base.yaml](../configs/products_base.yaml) | 已实现、实际加载验收通过的正式 20/5/5 三商品数据配置，指向冻结图片清单 |
 | [configs/augment_products.yaml](../configs/augment_products.yaml) | 轻量在线增强参数，诊断预览与 M3-01 三轮实际训练已使用 |
 | [configs/products_debug.yaml](../configs/products_debug.yaml) | 14/6 关联拍摄组调试数据；省略 path，以 YAML 所在目录解析 train/val 相对路径，没有 test |
 | [configs/train_debug.yaml](../configs/train_debug.yaml) | 3 轮 GPU FP32 调试、权重哈希、batch / 优化器 / 增强策略引用；正式 E1 配置仍待建立 |
@@ -128,24 +128,25 @@ Conda 环境不需要放在项目目录中。若后续使用 Git，重点版本�
 
 | 文件 | 用途 |
 | --- | --- |
-| `splits/train_base.txt` | E1 首批审核商品训练图片清单 |
+| [splits/train_base.txt](../data/desktop/splits/train_base.txt) | 已建立：E1 原 20 张审核商品训练图片清单，复用已有副本 |
 | `splits/train_expanded.txt` | E2/E3 扩充商品训练清单，不引入验证 / 测试图片 |
-| `splits/val_all.txt` | 冻结的商品验证拍摄组清单，用于调参与选择权重 |
-| `splits/test_all.txt` | 冻结的独立测试拍摄组清单，仅用于最终评价 |
+| [splits/val_all.txt](../data/desktop/splits/val_all.txt) | 已建立：新验证组 5 张，用于调参与选择权重 |
+| [splits/test_all.txt](../data/desktop/splits/test_all.txt) | 已建立：新最终测试组 5 张，仅用于方案确定后的模型评价 |
 | `metadata/classes.json` | M2-01 已建立：三商品 ID / 英文名与实物引用，不沿用旧杯瓶手机映射 |
 | `metadata/manifest.csv` | 文件、来源、原图 ID、拍摄 group_id 与 split |
 | `metadata/selection.json` | 商品拍摄覆盖、抽帧 / 去重规则与划分种子 |
 | `metadata/conversion_summary.json` | 草稿使用、人工修正 / 重画 / 补标数量、审核与转换统计 |
 | `metadata/products.json` | M2-01 已建立：用户实物名称、已知容量 / 数量、冷杯与杯套，未知细节留空 |
 | [metadata/dataset_inventory.json](../data/desktop/metadata/dataset_inventory.json) | 保留 M2-03 原 20 张未分配用途的历史快照，供夜间调试复现 |
-| [metadata/dataset_inventory_products-v1.json](../data/desktop/metadata/dataset_inventory_products-v1.json)、[splits/products-v1.json](../data/desktop/splits/products-v1.json) | M2-04 已建立：正式 30 张来源 / 标签 / 哈希、四组角色与 20/5/5 源图用途；正式实际训练加载尚待验收 |
+| [metadata/dataset_inventory_products-v1.json](../data/desktop/metadata/dataset_inventory_products-v1.json)、[splits/products-v1.json](../data/desktop/splits/products-v1.json) | M2-04 源图快照：正式 30 张来源 / 标签 / 哈希、四组角色与 20/5/5 用途；最新加载状态见 M2-05、06 报告 |
+| [metadata/products-v1_loading.json](../data/desktop/metadata/products-v1_loading.json) | M2-06 冻结正式配置 / 清单 / 配对与增强策略哈希，20 组副本复用、10 组新副本；实际验收见 [报告](../reports/data/M2-05_06_products-v1.json) |
 | [metadata/holdout_capture_plan.json](../data/desktop/metadata/holdout_capture_plan.json) | 拍摄前声明两组 val/test 用途、用户新场景准备确认与审核记录；正式冻结依据为 products-v1.json |
 | [metadata/sampling_budget.json](../data/desktop/metadata/sampling_budget.json) | 基线 20 张、新增累计最多 30，已用 10、剩余 20；合并引用不重复计数，摄像头写入前拦截超额 |
 | [splits/debug-v1.json](../data/desktop/splits/debug-v1.json) | 已冻结调试原图 ID / 组 / 用途 / 哈希与配对路径；train=14、val=6，不包含独立 test |
 
-首批与扩充训练版本通过冻结清单选择图片，不为 E1/E2 各复制整套数据。当前原始 frames 与审核标签的位置不符合 YOLO 的 images/labels 配对规则，因此将现有 20 张原图及 20 份 TXT 各复制一次到 data/desktop/images/debug-v1 与 labels/debug-v1，哈希一致、原数据保留；不保存在线增强的额外图片。train/val 子目录隔离，清单不得引入跨集合图片。
+首批与扩充训练版本通过冻结清单选择图片，不为 E1/E2 各复制整套数据。原始 frames 与审核标签的位置不符合 YOLO 的 images/labels 配对规则；原 20 张已复制一次到 debug-v1 并复用，新 10 张各复制一次到 products-v1 的 val/test images/labels 配对位置，源数据保留、哈希一致。正式 train_base.txt 包含原 debug-v1/train 的 14 张及 debug-v1/val 的 6 张；正式 val/test 各为新组 5 张，用途由冻结清单决定，不由历史目录名判断。只保留 3 张紧凑原图 / 加载 / 增强总览，不保存几百张在线增强副本；实拍总览同数据一起被 Git 忽略。
 
-冻结清单建议保留项目根目录相对路径；使用前由数据脚本生成本机可读取的绝对路径清单。这样数据移动后能够重新生成，不必手工逐行修改。
+元数据保留项目根目录相对路径；当前训练 TXT 行首用 `./`，由锁定 get_img_files 相对清单所在目录解析，YAML 省略 path，按 YAML 所在目录定位三份清单。已在本机实际读取，不把本机绝对路径固化进配置。
 
 `data/fixed_checks/` 用于开发和检查部署，不作为新的独立泛化测试证据。最终测试集不因反复检查后处理而进入训练池。
 
@@ -164,9 +165,11 @@ Conda 环境不需要放在项目目录中。若后续使用 Git，重点版本�
 | [scripts/annotate_product_drafts.py](../scripts/annotate_product_drafts.py) | 手动按空格采集 / 导入、原 COCO 草稿、累计采集预算拦截与五张留出方案 | 四组共 30 张采集 / 草稿已执行；新组预声明 val/test，合并只引用图片且保留原组 |
 | `scripts/extract_frames.py` | 抽帧并记录拍摄组 | 数据阶段 |
 | `scripts/prepare_camera_labels.py` | 转换人工审核商品标注，类别 + 多边形，不写置信度 | 数据阶段，待实现 |
-| [scripts/build_splits.py](../scripts/build_splits.py) | 默认保留 debug-v1 配置 / 副本；--formal 冻结人工审核后的源图用途，不复制新原图、不训练 | 两入口已实现；正式 products-v1 的 20/5/5 已执行并核对重复运行字节不变，正式加载待 M2-06 |
+| [scripts/build_splits.py](../scripts/build_splits.py) | 默认调试；--formal 冻结源图用途；--formal-loading 建立正式 YAML / 图片清单并复用副本 | 三入口已实现；正式 20/5/5 源图与加载配置已验收，重复生成冻结字节不变 |
 | [scripts/check_dataset.py](../scripts/check_dataset.py) | 原图 / 审核 / TXT 追溯、数据清单、锁定增强预览和累计预算 | M2-03 已实现；20 张及 60 次检查通过 |
-| [scripts/check_training_data.py](../scripts/check_training_data.py) | 真实分割训练加载器读取全部 train/val 与全负样本批次；检查实例对应、掩膜 / 框几何并统计分布 | debug-v1 的 20 张 / 30 实例已通过，保存一张叠加总览 |
+| [scripts/check_training_data.py](../scripts/check_training_data.py) | 默认保留调试；--formal 检查正式 train/val/test 标签加载、训练同步增强、空标签与质量叠加，不训练模型 | 正式 30 张 / 44 实例、60 次增强及 12 次负样本检查通过；3 张紧凑总览和独立报告已保存 |
+| [scripts/check_live_preview.py](../scripts/check_live_preview.py) | E0 GPU 图片与模拟摄像头 / GUI 生命周期检查，不打开真实摄像头 | M2 收尾时由 tmp 归位，字节未变；旧实测报告保留 |
+| [scripts/cleanup_project.ps1](../scripts/cleanup_project.ps1) | 默认核对精确清单；本地 -Execute 才删除可再生成或已归档文件，并核对保留文件 | 本轮已由用户执行，161 文件 / 29 空目录清理完成并通过独立复核；再次运行提示已完成，见[清理状态](../reports/maintenance/20261002_文件整理与清理清单.md#m2-cleanup) |
 | `scripts/visualize_labels.py` | 绘制标签轮廓、检查标注 | 数据阶段 |
 | [scripts/train.py](../scripts/train.py) | 当前为真实三商品调试训练入口与 --check-saved 阈值复查，保留独立 run / 日志 / 报告 | M3-01 已执行 3 轮；正式 E1/E2/E3 支持与评价入口待实现 |
 | `scripts/evaluate.py` | 冻结商品验证 / 测试组、各类别与条件评价 | 训练阶段 |
@@ -205,7 +208,7 @@ Conda 环境不需要放在项目目录中。若后续使用 Git，重点版本�
 | [app/product_review.html](../app/product_review.html) | 多边形补画、拖点、改类、删非目标及逐图审核页面 | 已实现；新增验证 / 最终测试用途提示 |
 | [app/product_data.py](../app/product_data.py) | 类别读取、原图 I/O、多边形检查、标签导出和试标统计 | 已实现，12 项工程测试通过；包含闭合点与失败保存回归 |
 | [app/product_dataset.py](../app/product_dataset.py) | 数据来源核验、按拍摄组统计、预算去重及原 Ultralytics 增强预览 | M2-03 已实现；新增 8 项工程测试，现有 12 项回归通过 |
-| [app/product_training.py](../app/product_training.py) | 冻结调试分组 / 副本及正式源图用途，原图 / 标签 / 配置哈希防护 | 已实现；正式来源冻结可重复执行且保留原文件字节。新增 5 项采集 / 角色 / 人工审核防护测试，总计 30 项工程测试 |
+| [app/product_training.py](../app/product_training.py) | 冻结调试 / 正式源图与加载配置，副本复用、标签 / 配置 / 清单哈希防护 | 已实现；正式配置重复执行字节不变。新增 4 项正式加载契约回归，总计 34 项工程测试 |
 | `app/__init__.py` | Python 包入口 | 规划 |
 | `app/webcam.py` | 读取配置，串联采集、统一后端推理、绘制与退出 | 规划 |
 | `app/capture.py` | 摄像头与文件视频采集；必要时维护最新帧缓冲 | 规划 |
@@ -325,7 +328,7 @@ reports 是你归纳后的结论，logs 是程序直接记录的过程。训练�
 
 按实际任务填充：当前 20 张整理 → 轻量在线增强 / 临时按组调试划分 → 加载与短训练 → 按需补 6–10 张独立留出并冻结版本 → E1 微调与验证 → 新商品摄像头和最终 ONNX。新增采集及人工审核累计最多 30 张；E2 定向补样本选做，SE、完整独立 ONNX / TensorRT 与稳定性按依赖推进。在线增强不重复保存多套图，合成实验只保存必要预览与来源；不创建空脚本凑目录。
 
-当前已到“新增 10 张并冻结正式源图用途”：`scripts/annotate_product_drafts.py capture --plan holdout-five --intended-split val` 或 `test` 使用五张拍摄方案并检查累计预算；用户按空格采集、在本地页面确认标签。`python scripts/build_splits.py --formal` 只核验 / 冻结源图划分，已实际执行；不创建训练副本、不训练。原 14/6 debug-v1 保留，下一步建立正式加载配置并完成 M2-05、06。
+当前正式数据与实际加载已全部验收：`python scripts/build_splits.py --formal-loading` 复查 YAML / 清单 / 20 组复用与 10 组新副本；`python scripts/check_training_data.py --formal` 重新检查实际加载与增强、生成总览，不训练模型。原 14/6 debug-v1 和 `--formal` 源图冻结入口保留；下一步固定 E1 配置并接入正式训练。
 
 ## 十二、在 Windows 本地建立目录的命令
 
