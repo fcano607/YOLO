@@ -208,6 +208,11 @@ def save_review(raw, sample, draft, payload):
     return record
 
 
+def review_task(manifest):
+    roles = {sample.get("intended_split", "unassigned") for sample in manifest["samples"]}
+    return "M2-04" if manifest.get("task") == "M2-04" or roles & {"val", "test"} else "M2-02"
+
+
 def group_summary(raw, manifest):
     raw = Path(raw)
     records = []
@@ -232,7 +237,8 @@ def group_summary(raw, manifest):
     objects = sum(len(r["polygons"]) for r in accepted)
     manual = sum(r["stats"]["manual_polygons"] for r in accepted)
     return {
-        "schema_version": 1, "task": "M2-02", "group_id": manifest["group_id"],
+        "schema_version": 1, "task": review_task(manifest), "group_id": manifest["group_id"],
+        "declared_split_roles": sorted({s.get("intended_split", "unassigned") for s in manifest["samples"]}),
         "updated_at": now(), "mapping_version": "products-v1",
         "raw_images": len(manifest["samples"]),
         "draft_images": len(draft_details), "draft_per_image": draft_details,
@@ -250,5 +256,5 @@ def group_summary(raw, manifest):
                        "active_seconds": r["active_seconds"], **r["stats"]} for r in records],
         "limits": ["Manual polygons include both missed targets and replacement of unusable drafts.",
                    "Discarded COCO candidates are not automatically false positives of the new product model.",
-                   "Pilot data are not a formal test set or evidence of product model training."],
+                   "Human review and declared roles alone do not prove scene independence or complete a formal data split."],
     }

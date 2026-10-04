@@ -1,0 +1,600 @@
+{
+  "schema_version": 1,
+  "task": "M2-04",
+  "group_id": "holdout_review_20261004_095145",
+  "declared_split_roles": [
+    "test",
+    "val"
+  ],
+  "updated_at": "2026-10-04T10:07:27.960358+08:00",
+  "mapping_version": "products-v1",
+  "raw_images": 10,
+  "draft_images": 10,
+  "draft_per_image": [
+    {
+      "image_id": "holdout_val_20261004_095145_001",
+      "predict_conf": 0.1,
+      "candidates": [
+        {
+          "coco_name": "cup",
+          "score": 0.7868063449859619,
+          "vertices": 425
+        },
+        {
+          "coco_name": "mouse",
+          "score": 0.4795077443122864,
+          "vertices": 112
+        },
+        {
+          "coco_name": "book",
+          "score": 0.4143347442150116,
+          "vertices": 335
+        },
+        {
+          "coco_name": "book",
+          "score": 0.28874748945236206,
+          "vertices": 433
+        },
+        {
+          "coco_name": "book",
+          "score": 0.2798292636871338,
+          "vertices": 360
+        },
+        {
+          "coco_name": "dining table",
+          "score": 0.2582995891571045,
+          "vertices": 2180
+        },
+        {
+          "coco_name": "book",
+          "score": 0.21689310669898987,
+          "vertices": 355
+        },
+        {
+          "coco_name": "book",
+          "score": 0.11130812019109726,
+          "vertices": 438
+        },
+        {
+          "coco_name": "book",
+          "score": 0.10106158256530762,
+          "vertices": 745
+        }
+      ]
+    },
+    {
+      "image_id": "holdout_val_20261004_095145_002",
+      "predict_conf": 0.1,
+      "candidates": [
+        {
+          "coco_name": "keyboard",
+          "score": 0.587000846862793,
+          "vertices": 366
+        },
+        {
+          "coco_name": "book",
+          "score": 0.552057683467865,
+          "vertices": 116
+        },
+        {
+          "coco_name": "book",
+          "score": 0.5370058417320251,
+          "vertices": 380
+        },
+        {
+          "coco_name": "chair",
+          "score": 0.42693376541137695,
+          "vertices": 498
+        },
+        {
+          "coco_name": "tv",
+          "score": 0.22429926693439484,
+          "vertices": 114
+        },
+        {
+          "coco_name": "tv",
+          "score": 0.22284479439258575,
+          "vertices": 740
+        },
+        {
+          "coco_name": "knife",
+          "score": 0.16390900313854218,
+          "vertices": 165
+        },
+        {
+          "coco_name": "book",
+          "score": 0.10282735526561737,
+          "vertices": 298
+        }
+      ]
+    },
+    {
+      "image_id": "holdout_val_20261004_095145_003",
+      "predict_conf": 0.1,
+      "candidates": [
+        {
+          "coco_name": "cup",
+          "score": 0.9048459529876709,
+          "vertices": 486
+        },
+        {
+          "coco_name": "keyboard",
+          "score": 0.7883796095848083,
+          "vertices": 711
+        },
+        {
+          "coco_name": "mouse",
+          "score": 0.22841541469097137,
+          "vertices": 181
+        },
+        {
+          "coco_name": "dining table",
+          "score": 0.12464647740125656,
+          "vertices": 1647
+        },
+        {
+          "coco_name": "dining table",
+          "score": 0.10537584125995636,
+          "vertices": 2288
+        }
+      ]
+    },
+    {
+      "image_id": "holdout_val_20261004_095145_004",
+      "predict_conf": 0.1,
+      "candidates": [
+        {
+          "coco_name": "cup",
+          "score": 0.8018805384635925,
+          "vertices": 492
+        },
+        {
+          "coco_name": "backpack",
+          "score": 0.5716932415962219,
+          "vertices": 557
+        },
+        {
+          "coco_name": "dining table",
+          "score": 0.37781286239624023,
+          "vertices": 2170
+        },
+        {
+          "coco_name": "person",
+          "score": 0.2168365865945816,
+          "vertices": 222
+        },
+        {
+          "coco_name": "dining table",
+          "score": 0.12987592816352844,
+          "vertices": 1242
+        },
+        {
+          "coco_name": "person",
+          "score": 0.12635165452957153,
+          "vertices": 371
+        }
+      ]
+    },
+    {
+      "image_id": "holdout_val_20261004_095145_005",
+      "predict_conf": 0.1,
+      "candidates": [
+        {
+          "coco_name": "bottle",
+          "score": 0.7346011996269226,
+          "vertices": 177
+        },
+        {
+          "coco_name": "book",
+          "score": 0.18363156914710999,
+          "vertices": 562
+        },
+        {
+          "coco_name": "book",
+          "score": 0.12696176767349243,
+          "vertices": 679
+        },
+        {
+          "coco_name": "keyboard",
+          "score": 0.12146581709384918,
+          "vertices": 516
+        }
+      ]
+    },
+    {
+      "image_id": "holdout_test_20261004_095145_001",
+      "predict_conf": 0.1,
+      "candidates": [
+        {
+          "coco_name": "remote",
+          "score": 0.23266427218914032,
+          "vertices": 367
+        },
+        {
+          "coco_name": "banana",
+          "score": 0.19463826715946198,
+          "vertices": 172
+        },
+        {
+          "coco_name": "book",
+          "score": 0.18578052520751953,
+          "vertices": 244
+        },
+        {
+          "coco_name": "mouse",
+          "score": 0.13479726016521454,
+          "vertices": 174
+        },
+        {
+          "coco_name": "book",
+          "score": 0.11659505218267441,
+          "vertices": 253
+        },
+        {
+          "coco_name": "bed",
+          "score": 0.11176258325576782,
+          "vertices": 691
+        }
+      ]
+    },
+    {
+      "image_id": "holdout_test_20261004_095145_002",
+      "predict_conf": 0.1,
+      "candidates": [
+        {
+          "coco_name": "scissors",
+          "score": 0.13514399528503418,
+          "vertices": 427
+        },
+        {
+          "coco_name": "remote",
+          "score": 0.10703210532665253,
+          "vertices": 155
+        },
+        {
+          "coco_name": "bed",
+          "score": 0.10648630559444427,
+          "vertices": 2142
+        }
+      ]
+    },
+    {
+      "image_id": "holdout_test_20261004_095145_003",
+      "predict_conf": 0.1,
+      "candidates": [
+        {
+          "coco_name": "bottle",
+          "score": 0.2011016607284546,
+          "vertices": 108
+        },
+        {
+          "coco_name": "cup",
+          "score": 0.18894022703170776,
+          "vertices": 217
+        }
+      ]
+    },
+    {
+      "image_id": "holdout_test_20261004_095145_004",
+      "predict_conf": 0.1,
+      "candidates": [
+        {
+          "coco_name": "chair",
+          "score": 0.33636340498924255,
+          "vertices": 433
+        },
+        {
+          "coco_name": "cup",
+          "score": 0.24202539026737213,
+          "vertices": 238
+        },
+        {
+          "coco_name": "bottle",
+          "score": 0.15250539779663086,
+          "vertices": 250
+        },
+        {
+          "coco_name": "person",
+          "score": 0.14213500916957855,
+          "vertices": 626
+        },
+        {
+          "coco_name": "remote",
+          "score": 0.14039677381515503,
+          "vertices": 287
+        },
+        {
+          "coco_name": "handbag",
+          "score": 0.10976605117321014,
+          "vertices": 367
+        },
+        {
+          "coco_name": "book",
+          "score": 0.10728543996810913,
+          "vertices": 288
+        }
+      ]
+    },
+    {
+      "image_id": "holdout_test_20261004_095145_005",
+      "predict_conf": 0.1,
+      "candidates": [
+        {
+          "coco_name": "toilet",
+          "score": 0.32119399309158325,
+          "vertices": 204
+        }
+      ]
+    }
+  ],
+  "reviewed_target_images": 8,
+  "confirmed_negative_images": 2,
+  "excluded_images": 0,
+  "unreviewed_images": 0,
+  "instances": 14,
+  "retained_unchanged": 0,
+  "retained_boundary_edited": 6,
+  "manual_polygons": 8,
+  "manual_polygon_fraction": 0.5714285714285714,
+  "active_review_seconds": 487.338,
+  "per_image": [
+    {
+      "image_id": "holdout_val_20261004_095145_001",
+      "status": "reviewed",
+      "active_seconds": 153.495,
+      "draft_candidates": 9,
+      "retained_unchanged": 0,
+      "retained_boundary_edited": 0,
+      "manual_polygons": 3,
+      "discarded_candidates": 9
+    },
+    {
+      "image_id": "holdout_val_20261004_095145_002",
+      "status": "reviewed",
+      "active_seconds": 70.333,
+      "draft_candidates": 8,
+      "retained_unchanged": 0,
+      "retained_boundary_edited": 0,
+      "manual_polygons": 1,
+      "discarded_candidates": 8
+    },
+    {
+      "image_id": "holdout_val_20261004_095145_003",
+      "status": "reviewed",
+      "active_seconds": 87.318,
+      "draft_candidates": 5,
+      "retained_unchanged": 0,
+      "retained_boundary_edited": 0,
+      "manual_polygons": 1,
+      "discarded_candidates": 5
+    },
+    {
+      "image_id": "holdout_val_20261004_095145_004",
+      "status": "reviewed",
+      "active_seconds": 70.265,
+      "draft_candidates": 6,
+      "retained_unchanged": 0,
+      "retained_boundary_edited": 1,
+      "manual_polygons": 2,
+      "discarded_candidates": 5
+    },
+    {
+      "image_id": "holdout_val_20261004_095145_005",
+      "status": "negative",
+      "active_seconds": 8.611,
+      "draft_candidates": 4,
+      "retained_unchanged": 0,
+      "retained_boundary_edited": 0,
+      "manual_polygons": 0,
+      "discarded_candidates": 4
+    },
+    {
+      "image_id": "holdout_test_20261004_095145_001",
+      "status": "reviewed",
+      "active_seconds": 20.743,
+      "draft_candidates": 6,
+      "retained_unchanged": 0,
+      "retained_boundary_edited": 1,
+      "manual_polygons": 0,
+      "discarded_candidates": 5
+    },
+    {
+      "image_id": "holdout_test_20261004_095145_002",
+      "status": "reviewed",
+      "active_seconds": 16.065,
+      "draft_candidates": 3,
+      "retained_unchanged": 0,
+      "retained_boundary_edited": 1,
+      "manual_polygons": 0,
+      "discarded_candidates": 2
+    },
+    {
+      "image_id": "holdout_test_20261004_095145_003",
+      "status": "reviewed",
+      "active_seconds": 8.825,
+      "draft_candidates": 2,
+      "retained_unchanged": 0,
+      "retained_boundary_edited": 1,
+      "manual_polygons": 0,
+      "discarded_candidates": 1
+    },
+    {
+      "image_id": "holdout_test_20261004_095145_004",
+      "status": "reviewed",
+      "active_seconds": 42.862,
+      "draft_candidates": 7,
+      "retained_unchanged": 0,
+      "retained_boundary_edited": 2,
+      "manual_polygons": 1,
+      "discarded_candidates": 5
+    },
+    {
+      "image_id": "holdout_test_20261004_095145_005",
+      "status": "negative",
+      "active_seconds": 8.821,
+      "draft_candidates": 1,
+      "retained_unchanged": 0,
+      "retained_boundary_edited": 0,
+      "manual_polygons": 0,
+      "discarded_candidates": 1
+    }
+  ],
+  "limits": [
+    "Manual polygons include both missed targets and replacement of unusable drafts.",
+    "Discarded COCO candidates are not automatically false positives of the new product model.",
+    "Human review and declared roles alone do not prove scene independence or complete a formal data split."
+  ],
+  "label_load_checks": [
+    {
+      "image_id": "holdout_val_20261004_095145_001",
+      "status": "reviewed",
+      "instances": 3,
+      "mask_nonzero_pixels": [
+        2597,
+        3038,
+        4261
+      ],
+      "physical_ids": [
+        "sam_milk_001",
+        "yili_shuhua_001",
+        "luckin_cup_001"
+      ],
+      "image_sha256": "33d0708d6b3e76be465e637ead78ed3356ed0f95f94f609a8964d200d618363c",
+      "label_sha256": "dc41ff8e70488849871744560b855a455ff0846903c3910fe8b2b5d751e30a11",
+      "review_sha256": "7715fecbac6f89de6102b5457e1975d7270861d110b99c148ef83aecae1d3753"
+    },
+    {
+      "image_id": "holdout_val_20261004_095145_002",
+      "status": "reviewed",
+      "instances": 1,
+      "mask_nonzero_pixels": [
+        2673
+      ],
+      "physical_ids": [
+        "yili_shuhua_001"
+      ],
+      "image_sha256": "f06041c9e302b040b2fd76d44b6d0acc02261d7b032be805dab231d42f9e9cdf",
+      "label_sha256": "92b241fe34ec02dbc95bce70f8b111fff4622379ae281035dbb13ed36337e759",
+      "review_sha256": "73f87e4746814dcd0d59b1ebdf9e075b2cb45b8f743398a5d6061c9e5ed2a7fb"
+    },
+    {
+      "image_id": "holdout_val_20261004_095145_003",
+      "status": "reviewed",
+      "instances": 1,
+      "mask_nonzero_pixels": [
+        5180
+      ],
+      "physical_ids": [
+        "luckin_cup_001"
+      ],
+      "image_sha256": "2615de716a615e0803465e1ec2a4648ad1d27ecf26d06c597896115d5d6e471a",
+      "label_sha256": "cf9bf266c6183e959c23f26cc00ca94ddd66d26cfefa55e8525ce3f7956d6c11",
+      "review_sha256": "f84545a200747133c4682ea13c36dba603da8a347fec5c6f70f2693b44c1d14b"
+    },
+    {
+      "image_id": "holdout_val_20261004_095145_004",
+      "status": "reviewed",
+      "instances": 3,
+      "mask_nonzero_pixels": [
+        7718,
+        2847,
+        699
+      ],
+      "physical_ids": [
+        "sam_milk_001",
+        "yili_shuhua_001",
+        "luckin_cup_001"
+      ],
+      "image_sha256": "2835e2122db3029d97307356ad7e020467647a2d23e33fc281dbb15dae90801a",
+      "label_sha256": "cf5feee17bd1c98b8eee0bf7c7891cf6de600fe31c9326b1239c3b184312f390",
+      "review_sha256": "3ae1c236fdd6758cf94a97526f142ce4b09bcc27afbf12e35107cf440fb7cacf"
+    },
+    {
+      "image_id": "holdout_val_20261004_095145_005",
+      "status": "negative",
+      "instances": 0,
+      "mask_nonzero_pixels": [],
+      "physical_ids": [],
+      "image_sha256": "676d5401f5cf463637cc344ae56e0eaaed7f011edd4ee6fa9d72aa9a3b544d5c",
+      "label_sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855",
+      "review_sha256": "cfda79ca9ec266abee55474378d4651718f60460cbf2fed78da3df5330b5e83a"
+    },
+    {
+      "image_id": "holdout_test_20261004_095145_001",
+      "status": "reviewed",
+      "instances": 1,
+      "mask_nonzero_pixels": [
+        1368
+      ],
+      "physical_ids": [
+        "sam_milk_001"
+      ],
+      "image_sha256": "eb0357392f51c7b338f528dd76be49221050e639301eebaaa854ef4b8068863b",
+      "label_sha256": "256cec130643bebe21da4f11daed2fd17cdd83d411fb610b39902799f31a31a0",
+      "review_sha256": "64448d7887089da61784619145adb4e14a1d3f75003bb446666586c21163d72a"
+    },
+    {
+      "image_id": "holdout_test_20261004_095145_002",
+      "status": "reviewed",
+      "instances": 1,
+      "mask_nonzero_pixels": [
+        980
+      ],
+      "physical_ids": [
+        "yili_shuhua_001"
+      ],
+      "image_sha256": "67619dfe947b8b6c867a7a2753984fd2fde800b92a2636828aa4235c1a4f523c",
+      "label_sha256": "2b6c88c81e15e1026bf25c738b9101d6c9b40e8fed87ac748eed9683546ec893",
+      "review_sha256": "4602b10b01e9d25b6e7f46490550807cd1cb6b6eb8c1d511b3032381b02654f4"
+    },
+    {
+      "image_id": "holdout_test_20261004_095145_003",
+      "status": "reviewed",
+      "instances": 1,
+      "mask_nonzero_pixels": [
+        1552
+      ],
+      "physical_ids": [
+        "luckin_cup_001"
+      ],
+      "image_sha256": "b96afe6782628877aba86b4e5ef0a9422a6dfe33fd3f680ef7d9c22734f60590",
+      "label_sha256": "23943504c82c6f104493173292d3dc127f4f0e7d6f9db6a5d15037cd05b74c23",
+      "review_sha256": "b196b505db3fd7de2738d9030b19bd5c90768987bd102a6ac5a32d58d8f4113b"
+    },
+    {
+      "image_id": "holdout_test_20261004_095145_004",
+      "status": "reviewed",
+      "instances": 3,
+      "mask_nonzero_pixels": [
+        1903,
+        1248,
+        857
+      ],
+      "physical_ids": [
+        "sam_milk_001",
+        "yili_shuhua_001",
+        "luckin_cup_001"
+      ],
+      "image_sha256": "3e25966e5bba76bb05369cc4377395e776527b140e4a12352b5dbf949b7eaeee",
+      "label_sha256": "a6245ed8f1c31bbb7c232e519bffde601bfbbd6326296ef06115bf735be538f6",
+      "review_sha256": "bbf8211d8b814dc7ce148ba54adffb892e5982db287718bcb1e05ebfd6df7f36"
+    },
+    {
+      "image_id": "holdout_test_20261004_095145_005",
+      "status": "negative",
+      "instances": 0,
+      "mask_nonzero_pixels": [],
+      "physical_ids": [],
+      "image_sha256": "851b07c8f54cf6a2b32607bd2595181fda4ffd6b00c9f7d4eb458871ae4d52ee",
+      "label_sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855",
+      "review_sha256": "6ad64db7034d0fd39efcbd1e70f1085cca62ee7db4148c71fa06b2afade7337e"
+    }
+  ],
+  "class_instance_counts": [
+    4,
+    5,
+    5
+  ],
+  "loader_source_commit": "86f5c8c401a630da651d321e691ab0af540812cf",
+  "label_check_status": "all_images_reviewed_and_labels_passed"
+}

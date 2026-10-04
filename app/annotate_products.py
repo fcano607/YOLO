@@ -10,7 +10,7 @@ from urllib.parse import urlsplit
 
 ROOT = Path(__file__).resolve().parents[1]
 sys.path.insert(0, str(ROOT))
-from app.product_data import RAW, catalog, group_summary, identifier, read_json, save_review, write_json
+from app.product_data import RAW, catalog, group_summary, identifier, read_json, review_task, save_review, write_json
 
 
 def make_handler(raw, manifest, report_path):
@@ -114,7 +114,7 @@ def main():
         draft = RAW / "annotations/drafts" / (sample["image_id"] + ".json")
         if not draft.is_file():
             parser.error("Run annotate_product_drafts.py draft --group first")
-    report = ROOT / "reports/data" / ("M2-02_" + args.group + ".json")
+    report = ROOT / "reports/data" / (review_task(manifest) + "_" + args.group + ".json")
     write_json(report, group_summary(RAW, manifest))
     # On Windows address reuse can let a second app appear to bind an occupied port.
     class LocalServer(ThreadingHTTPServer):

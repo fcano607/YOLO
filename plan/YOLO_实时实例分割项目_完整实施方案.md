@@ -287,7 +287,9 @@ names:
 
 优先使用锁定源码现有的在线训练增强，原照片只需人工标注一次；颜色变换不改变标签，几何变换对图像及多边形同步计算。可核对 [v8_transforms / RandomPerspective](../third_party/ultralytics/ultralytics/data/augment.py) 和[官方增强说明](https://docs.ultralytics.com/guides/yolo-data-augmentation/)。
 
-M2-03 已将轻量策略保存为 [configs/augment_products.yaml](../configs/augment_products.yaml)，使用锁定 v8_transforms 对 20 张执行 60 次诊断，90 次实例均有有效掩膜、12 次负样本仍为空且同种子一致，见[实测记录](../reports/data/M2-03_dataset_check.json)。首轮关闭镜像和强色相，Mosaic / Copy-Paste / OpenCV 换背景仍选做。当前未实际加载训练数据或训练，独立留出尚待采集；此预览不属于商品效果评价。
+M2-03 已将轻量策略保存为 [configs/augment_products.yaml](../configs/augment_products.yaml)，完成 20 张 / 60 次锁定源码诊断，见[实测记录](../reports/data/M2-03_dataset_check.json)。2026-10-04 夜间已进一步建立 debug-v1 的 14/6 按组配置，全部实际训练加载与 3 轮 GPU 短训练通过；三商品头、12 次更新及 best/last 重载已有[证据](../reports/experiments/M3-01_products_debug_v1.json)。conf=0.25 下六张调试验证图均无检出，正式 E1 与独立留出仍待执行；预览和关联场景调试不属于正式商品效果评价。首轮关闭镜像和强色相，Mosaic / Copy-Paste / OpenCV 换背景仍选做，最新接续步骤见[夜间结果](../docs/M2_商品数据与标注规范.md#night-debug-results)。
+
+2026-10-04 白天接续：新增两场景共 10 张已全部人工确认，M2-04 正式 [products-v1.json](../data/desktop/splits/products-v1.json) 已冻结原 20 张训练 / 新 5 张验证 / 新 5 张最终测试，共 30 原图 / 44 实例；新增额度已用 10/30、剩余 20。下一步 M2-05 质量 / 增强和 M2-06 正式实际加载，目前无需继续拍照。正式 E1 与最终测试未执行，最终测试不用于调参、选权重或追加训练数据决策；每类仍同一个实物，只评价固定包装在少量新场景的表现。最新结果与接续以[正式划分记录](../docs/M2_商品数据与标注规范.md#m2-04-holdout)为准，上段保留夜间历史证据。
 
 不为凑数量落盘生成几百个文件。验证 / 测试仅做必要的尺寸与输入预处理，禁止混入训练原图的增强版本；最终测试在模型选择后再使用。用户新增人工预算累计最多 30 张，启用增强本身不要求重复手画。
 

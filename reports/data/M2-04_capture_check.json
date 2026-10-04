@@ -1,0 +1,233 @@
+{
+  "schema_version": 1,
+  "task": "M2-04",
+  "checked_at": "2026-10-04T10:12:38.038746+08:00",
+  "source": {
+    "version": "8.4.171",
+    "commit": "86f5c8c401a630da651d321e691ab0af540812cf",
+    "module": "E:\\秋招\\项目相关\\YOLO\\third_party\\ultralytics\\ultralytics\\__init__.py"
+  },
+  "capture_plan": "data/desktop/metadata/holdout_capture_plan.json",
+  "capture_plan_sha256": "0e154eccf7ebe858041c3b59f40790a5ad98e464bf2051b82131a37b8742fc69",
+  "new_real_images": 10,
+  "total_real_images": 30,
+  "declared_role_counts": {
+    "val": 5,
+    "test": 5
+  },
+  "formal_split_frozen": true,
+  "samples": [
+    {
+      "image_id": "holdout_val_20261004_095145_001",
+      "group_id": "holdout_val_20261004_095145",
+      "intended_split": "val",
+      "image_sha256": "33d0708d6b3e76be465e637ead78ed3356ed0f95f94f609a8964d200d618363c",
+      "image_path": "data/raw/camera/frames/holdout_val_20261004_095145/holdout_val_20261004_095145_001.png",
+      "shape_hw": [
+        720,
+        1280
+      ],
+      "perceptual_hash_63": "100000101111110101001100011000001110110011000100110111011001010",
+      "draft_sha256": "860961a72daae63328f9f28f8ec18b9949e42216f9f220a7d8c825008c8fc997",
+      "coco_candidates": 9
+    },
+    {
+      "image_id": "holdout_val_20261004_095145_002",
+      "group_id": "holdout_val_20261004_095145",
+      "intended_split": "val",
+      "image_sha256": "f06041c9e302b040b2fd76d44b6d0acc02261d7b032be805dab231d42f9e9cdf",
+      "image_path": "data/raw/camera/frames/holdout_val_20261004_095145/holdout_val_20261004_095145_002.png",
+      "shape_hw": [
+        720,
+        1280
+      ],
+      "perceptual_hash_63": "000111011001111100000111101000110010100100000011001110110110011",
+      "draft_sha256": "f4d7f99b7a1082b3f788af9da1abd2fc7a254576779b221f10b33f9f27c00599",
+      "coco_candidates": 8
+    },
+    {
+      "image_id": "holdout_val_20261004_095145_003",
+      "group_id": "holdout_val_20261004_095145",
+      "intended_split": "val",
+      "image_sha256": "2615de716a615e0803465e1ec2a4648ad1d27ecf26d06c597896115d5d6e471a",
+      "image_path": "data/raw/camera/frames/holdout_val_20261004_095145/holdout_val_20261004_095145_003.png",
+      "shape_hw": [
+        720,
+        1280
+      ],
+      "perceptual_hash_63": "111000101110001101000110001111000111110001101001100001111000010",
+      "draft_sha256": "a8b7c28046e1585cd10bcb65b3869c78d94ec632d97a81bf757cf1aceae9b00b",
+      "coco_candidates": 5
+    },
+    {
+      "image_id": "holdout_val_20261004_095145_004",
+      "group_id": "holdout_val_20261004_095145",
+      "intended_split": "val",
+      "image_sha256": "2835e2122db3029d97307356ad7e020467647a2d23e33fc281dbb15dae90801a",
+      "image_path": "data/raw/camera/frames/holdout_val_20261004_095145/holdout_val_20261004_095145_004.png",
+      "shape_hw": [
+        720,
+        1280
+      ],
+      "perceptual_hash_63": "001100101100011111101101000000100110101011111000000101001111001",
+      "draft_sha256": "ed4e6ae9e342dde4296639dd8a489fdc1149db419d7764392dc401d8643891e1",
+      "coco_candidates": 6
+    },
+    {
+      "image_id": "holdout_val_20261004_095145_005",
+      "group_id": "holdout_val_20261004_095145",
+      "intended_split": "val",
+      "image_sha256": "676d5401f5cf463637cc344ae56e0eaaed7f011edd4ee6fa9d72aa9a3b544d5c",
+      "image_path": "data/raw/camera/frames/holdout_val_20261004_095145/holdout_val_20261004_095145_005.png",
+      "shape_hw": [
+        720,
+        1280
+      ],
+      "perceptual_hash_63": "101110011001001100010011001111100000010011011111000000110110011",
+      "draft_sha256": "29e128065e2c99f6a2e65328dfb161eb04ed295d2b1ed4caea1ace77ede7bf3f",
+      "coco_candidates": 4
+    },
+    {
+      "image_id": "holdout_test_20261004_095145_001",
+      "group_id": "holdout_test_20261004_095145",
+      "intended_split": "test",
+      "image_sha256": "eb0357392f51c7b338f528dd76be49221050e639301eebaaa854ef4b8068863b",
+      "image_path": "data/raw/camera/frames/holdout_test_20261004_095145/holdout_test_20261004_095145_001.png",
+      "shape_hw": [
+        720,
+        1280
+      ],
+      "perceptual_hash_63": "100000101110001011100001111111111011111000000101000100011011000",
+      "draft_sha256": "9244276e23dbb3d605967a2d6ad1fe92124598078c8ff7b4fbcfb4b0367b2f3d",
+      "coco_candidates": 6
+    },
+    {
+      "image_id": "holdout_test_20261004_095145_002",
+      "group_id": "holdout_test_20261004_095145",
+      "intended_split": "test",
+      "image_sha256": "67619dfe947b8b6c867a7a2753984fd2fde800b92a2636828aa4235c1a4f523c",
+      "image_path": "data/raw/camera/frames/holdout_test_20261004_095145/holdout_test_20261004_095145_002.png",
+      "shape_hw": [
+        720,
+        1280
+      ],
+      "perceptual_hash_63": "100011101100111100000011011000011110000011111100010101101100001",
+      "draft_sha256": "5c91f143c30fe6b853af8d1854230d412ee1606b2537bc3e02477c4dd02dcdbd",
+      "coco_candidates": 3
+    },
+    {
+      "image_id": "holdout_test_20261004_095145_003",
+      "group_id": "holdout_test_20261004_095145",
+      "intended_split": "test",
+      "image_sha256": "b96afe6782628877aba86b4e5ef0a9422a6dfe33fd3f680ef7d9c22734f60590",
+      "image_path": "data/raw/camera/frames/holdout_test_20261004_095145/holdout_test_20261004_095145_003.png",
+      "shape_hw": [
+        720,
+        1280
+      ],
+      "perceptual_hash_63": "100100011101100100011001010011011100111000011110001111100010100",
+      "draft_sha256": "80c2e5de3fb58504b93ed43054197324c1c70d4f2813f59bb07e374e35e71d74",
+      "coco_candidates": 2
+    },
+    {
+      "image_id": "holdout_test_20261004_095145_004",
+      "group_id": "holdout_test_20261004_095145",
+      "intended_split": "test",
+      "image_sha256": "3e25966e5bba76bb05369cc4377395e776527b140e4a12352b5dbf949b7eaeee",
+      "image_path": "data/raw/camera/frames/holdout_test_20261004_095145/holdout_test_20261004_095145_004.png",
+      "shape_hw": [
+        720,
+        1280
+      ],
+      "perceptual_hash_63": "100001101100011101000001001100000111100011011011000111111011001",
+      "draft_sha256": "91a951095305555918bd6a25f263b0773afe32992154241acd115f4e8b2e964e",
+      "coco_candidates": 7
+    },
+    {
+      "image_id": "holdout_test_20261004_095145_005",
+      "group_id": "holdout_test_20261004_095145",
+      "intended_split": "test",
+      "image_sha256": "851b07c8f54cf6a2b32607bd2595181fda4ffd6b00c9f7d4eb458871ae4d52ee",
+      "image_path": "data/raw/camera/frames/holdout_test_20261004_095145/holdout_test_20261004_095145_005.png",
+      "shape_hw": [
+        720,
+        1280
+      ],
+      "perceptual_hash_63": "101001101110001100111000001111110000001010001001010011110001111",
+      "draft_sha256": "04cb440370729cca063b2a8a34f4fa1561f23097214d81bd1959a5aa94c62505",
+      "coco_candidates": 1
+    }
+  ],
+  "exact_duplicate_pairs_vs_prior_and_new": 0,
+  "similarity_threshold": 6,
+  "perceptual_hash_candidates": [],
+  "similarity_note": "Different new scenes were confirmed by the user before capture; no exact duplicates or detected cross-pool pHash candidates. Same one physical item per class; broad packaging/general scene independence is not established.",
+  "human_reviews_saved": 10,
+  "new_product_model_used_for_proposals": false,
+  "draft_model": "Unchanged COCO 80-class E0; unassigned proposals only, scores not labels.",
+  "new_real_capture_budget_used": 10,
+  "budget_remaining": 20,
+  "prior_training_guarded_inputs_unchanged": true,
+  "engineering_tests": {
+    "passed": 30,
+    "new_capture_and_formal_guard_tests": 5,
+    "camera_opened_by_tests": false
+  },
+  "review_url": "http://127.0.0.1:52959/",
+  "status": "accepted_source_split_frozen",
+  "source_split_manifest": "data/desktop/splits/products-v1.json",
+  "source_split_manifest_sha256": "a205b2e54b7c658ee6230d3b7c805be2b205a280110d6da454beee1274f283b5",
+  "formal_inventory": "data/desktop/metadata/dataset_inventory_products-v1.json",
+  "formal_inventory_sha256": "8b79c2b4d5d67b774b90523b250953f108f593d4df0ed8f1c0d227dcc70cf3db",
+  "human_review_report": "reports/data/M2-04_holdout_review_20261004_095145.json",
+  "human_review_report_sha256": "adc1883380a5b0cb3bb8f0e258a5b761100a9ff17caa9f780be5d4d043e4382b",
+  "new_reviewed_target_images": 8,
+  "new_negative_images": 2,
+  "new_instances": 14,
+  "new_class_instance_counts": [
+    4,
+    5,
+    5
+  ],
+  "formal_pool_summary": {
+    "train": {
+      "images": 20,
+      "class_instances": [
+        12,
+        10,
+        8
+      ],
+      "negative_images": 4,
+      "capture_groups": [
+        "pilot_20261003130657",
+        "pilot_20261003130657_more"
+      ]
+    },
+    "val": {
+      "images": 5,
+      "class_instances": [
+        2,
+        3,
+        3
+      ],
+      "negative_images": 1,
+      "capture_groups": [
+        "holdout_val_20261004_095145"
+      ]
+    },
+    "test": {
+      "images": 5,
+      "class_instances": [
+        2,
+        2,
+        2
+      ],
+      "negative_images": 1,
+      "capture_groups": [
+        "holdout_test_20261004_095145"
+      ]
+    }
+  },
+  "training_loader_verified_for_this_version": false,
+  "source_freeze_idempotence_passed": true
+}

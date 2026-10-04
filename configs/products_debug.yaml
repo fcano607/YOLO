@@ -1,0 +1,8 @@
+# Temporary, related capture groups: loader/training debugging only; no test split.
+# Omitting path makes Ultralytics resolve these paths against this YAML's directory.
+train: ../data/desktop/images/debug-v1/train
+val: ../data/desktop/images/debug-v1/val
+names:
+  0: sam_whole_milk
+  1: yili_shuhua
+  2: luckin_cup

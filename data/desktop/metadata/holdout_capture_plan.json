@@ -1,0 +1,55 @@
+{
+  "schema_version": 1,
+  "task": "M2-04",
+  "mapping_version": "products-v1",
+  "created_at": "2026-10-04T09:51:45.005634+08:00",
+  "status": "captured_and_human_review_accepted",
+  "planned_new_real_images": 10,
+  "training_proposal": "Keep the original 20 reviewed images for the formal training pool; freeze separately after held-out review.",
+  "classes_sha256": "7bcbc3829a4b84dcfe8b6cadaf3018716ef46579328851f26304c42bd093d2bb",
+  "groups": {
+    "val": {
+      "group_id": "holdout_val_20261004_095145",
+      "planned_images": 5,
+      "scene_preparation_user_confirmed": true,
+      "captured_images": 5,
+      "capture_status": "captured",
+      "source_manifest": "data/raw/camera/sessions/holdout_val_20261004_095145.json",
+      "source_manifest_sha256": "82b48e6eccb1c3eb0a0500e251a8d7f786344ad3e49ecc8ee29db1f3f18a8e4b"
+    },
+    "test": {
+      "group_id": "holdout_test_20261004_095145",
+      "planned_images": 5,
+      "scene_preparation_user_confirmed": true,
+      "captured_images": 5,
+      "capture_status": "captured",
+      "source_manifest": "data/raw/camera/sessions/holdout_test_20261004_095145.json",
+      "source_manifest_sha256": "ad028caabce064117e649ab8e90ade8fe3a46aa2a8f7cdbc6446f4b929903bcc"
+    }
+  },
+  "shot_order": [
+    [
+      0
+    ],
+    [
+      1
+    ],
+    [
+      2
+    ],
+    [
+      0,
+      1,
+      2
+    ],
+    []
+  ],
+  "note": "Declare roles before capture; final test is not used for tuning, model selection or added training decisions. Each group needs a different new scene, similarity/provenance check and human labels.",
+  "updated_at": "2026-10-04T10:10:55.689977+08:00",
+  "review_group": "holdout_review_20261004_095145",
+  "review_url": "http://127.0.0.1:52959/",
+  "new_real_images_captured": 10,
+  "purpose": "Predeclared capture roles and collection provenance; the formal assignment is data/desktop/splits/products-v1.json.",
+  "human_review_report": "reports/data/M2-04_holdout_review_20261004_095145.json",
+  "human_reviews_saved": 10
+}

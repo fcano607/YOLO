@@ -90,7 +90,8 @@ async function load(index){
  $("images").value=String(index);$("progress").textContent=(index+1)+" / "+state.samples.length;
  const hint=data.sample.capture_hint;const names=hint.expected_class_ids.map(id=>state.classes[id].display_name).join("、");
  const actual=data.sample.user_confirmed_class_ids;
- $("hint").textContent=(actual?"用户更正身份："+actual.map(id=>state.classes[id].display_name).join("、")+"；原提示：":"拍摄提示：")+(names||"无指定目标")+" / "+hint.pose+"（仍需核对全部实例与边界）";
+ const roleNote={val:"用途：验证组。 ",test:"用途：最终测试组，后续不用于调参或补训练图。 "}[data.sample.intended_split]||"";
+ $("hint").textContent=roleNote+(actual?"用户更正身份："+actual.map(id=>state.classes[id].display_name).join("、")+"；原提示：":"拍摄提示：")+(names||"无指定目标")+" / "+hint.pose+"（仍需核对全部实例与边界）";
  $("class").value=selected<0||polys[selected].class_id===null?"":String(polys[selected].class_id);
  $("zoom").value="1";list();scale();notice(resumed?"已恢复未通过保存的修改；请修正后重新确认。":(data.review?"已有审核记录；修改后请再次保存。":"选择可用草稿指定类别；删掉非目标，漏检可直接补画。"));
  }catch(e){notice(e.message,true);}finally{loading=false;}

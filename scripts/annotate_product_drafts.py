@@ -11,7 +11,7 @@ import time
 
 ROOT = Path(__file__).resolve().parents[1]
 sys.path.insert(0, str(ROOT))
-from app.product_data import RAW, catalog, digest, identifier, image_read, image_write, now, read_json, write_json
+from app.product_data import RAW, catalog, digest, identifier, image_read, image_write, now, read_json, review_task, write_json
 
 EVENT = "__CAPTURE_EVENT__="
 WINDOW = "Product capture | SPACE save | Q/Esc quit"
@@ -33,6 +33,27 @@ def plan(full=False):
     return shots
 
 
+def capture_plan(name):
+    if name == "holdout-five":
+        return [{"expected_class_ids": [cls], "pose": "front-or-slight-angle", "background": "new-scene"}
+                for cls in range(3)] + [
+                    {"expected_class_ids": [0, 1, 2], "pose": "mixed-visible", "background": "new-scene"},
+                    {"expected_class_ids": [], "pose": "empty-background", "background": "new-scene"}]
+    if name not in {"six", "remaining", "full"}:
+        raise ValueError("Unknown capture plan")
+    shots = plan(name in {"full", "remaining"})
+    return shots[6:] if name == "remaining" else shots
+
+
+def capture_budget():
+    path = ROOT / "data/desktop/metadata/sampling_budget.json"
+    if not path.exists():
+        return None  # Initial pilot collection precedes approval of a fixed baseline.
+    from app.product_dataset import sampling_budget
+    previous = read_json(path)
+    return sampling_budget(RAW, previous["baseline_image_ids"], previous)
+
+
 def new_manifest(group_id, mode):
     group_id = identifier(group_id)
     path = RAW / "sessions" / (group_id + ".json")
@@ -43,6 +64,9 @@ def new_manifest(group_id, mode):
 
 
 def add_sample(manifest, frame, hint, source=None):
+    budget = capture_budget()
+    if budget is not None and budget["remaining_additional_real_images"] == 0:
+        raise ValueError("Approved additional capture budget exhausted; no image saved")
     index = len(manifest["samples"]) + 1
     image_id = manifest["group_id"] + "_" + f"{index:03d}"
     path = RAW / "frames" / manifest["group_id"] / (image_id + ".png")
@@ -61,9 +85,14 @@ def add_sample(manifest, frame, hint, source=None):
               "hint_note": "Capture prompt is not a verified label; human review must check every instance.",
               "physical_ids": [entries[c]["physical_id"] for c in hint["expected_class_ids"]],
               "physical_ids_status": "capture_prompt_hint; actual visible instances must be reviewed",
+              "intended_split": manifest.get("intended_split", "unassigned"),
               "source_path": str(source) if source else None}
     manifest["samples"].append(sample)
     write_json(RAW / "sessions" / (manifest["group_id"] + ".json"), manifest)
+    if budget is not None:
+        updated = capture_budget()
+        updated["updated_at"] = now()
+        write_json(ROOT / "data/desktop/metadata/sampling_budget.json", updated)
     return sample
 
 
@@ -73,11 +102,19 @@ def capture_worker(args):
     config = yaml.safe_load((ROOT / "configs/e0.yaml").read_text("utf-8"))
     entries = catalog()["classes"]
     manifest = new_manifest(args.group, "camera_manual_snapshots")
-    shots = plan(args.plan in {"full", "remaining"})
-    if args.plan == "remaining":
-        shots = shots[6:]
+    shots = capture_plan(args.plan)
+    if args.plan == "holdout-five":
+        if args.intended_split not in {"val", "test"}:
+            raise ValueError("holdout-five requires a predeclared val or test role")
+        manifest["intended_split"] = args.intended_split
+        manifest["task"] = "M2-04"
+        manifest["capture_note"] = "User prepared a new scene; role declared before capture. Independence still requires review of group provenance and similarity."
+    budget = capture_budget()
+    if budget is not None and budget["remaining_additional_real_images"] < len(shots):
+        raise ValueError("Capture plan exceeds the remaining approved real-image budget")
     manifest["capture_plan"] = args.plan
     manifest["planned_images"] = len(shots)
+    write_json(RAW / "sessions" / (args.group + ".json"), manifest)
     capture = None
     created = False
     heartbeat = time.monotonic()
@@ -105,7 +142,7 @@ def capture_worker(args):
             header = np.zeros((100, preview.shape[1], 3), dtype=np.uint8)
             for row, text in enumerate([
                     f"{i + 1}/{len(shots)}: {names}",
-                    f"Pose: {shot['pose']} | Background {shot['background']} | Original {frame.shape[1]}x{frame.shape[0]}",
+                    f"Pose: {shot['pose']} | Role: {manifest.get('intended_split', 'unassigned')} | {frame.shape[1]}x{frame.shape[0]}",
                     "SPACE: save original + next | Q/Esc: quit (saved photos retained)"]):
                 cv2.putText(header, text, (12, 27 + row * 30), cv2.FONT_HERSHEY_SIMPLEX,
                             0.62, (255, 255, 255), 1, cv2.LINE_AA)
@@ -231,7 +268,7 @@ def bundle_groups(args):
     if not manifest["samples"]:
         raise ValueError("No photos to bundle")
     manifest["status"] = "review_list_ready"
-    manifest["group_note"] = "Review list only. Original per-image group_id is preserved. These related pilot sessions are not an independent train/val split."
+    manifest["group_note"] = "Review list only. Original per-image group_id and declared roles are preserved. A review bundle does not establish scene independence or a training split."
     write_json(RAW / "sessions" / (args.group + ".json"), manifest)
     print(f"Bundled {len(manifest['samples'])} image references; originals and labels not copied.")
 
@@ -347,7 +384,7 @@ def check_reviews(args):
     summary.update({"label_load_checks": checks, "class_instance_counts": class_counts,
                     "loader_source_commit": lock["commit"],
                     "label_check_status": "saved_labels_passed" if summary["unreviewed_images"] else "all_images_reviewed_and_labels_passed"})
-    output = ROOT / "reports/data" / ("M2-02_" + args.group + ".json")
+    output = ROOT / "reports/data" / (review_task(manifest) + "_" + args.group + ".json")
     write_json(output, summary)
     print(f"Checked {len(checks)} reviewed images. Pending: {summary['unreviewed_images']}. "
           f"Instances by product 0/1/2: {class_counts}. Report: {output}", flush=True)
@@ -357,8 +394,9 @@ def main():
     parser = argparse.ArgumentParser(description=__doc__)
     parser.add_argument("mode", choices=["capture", "import", "draft", "bundle", "check"])
     parser.add_argument("--group", default="pilot_" + datetime.now().strftime("%Y%m%d_%H%M%S"))
-    parser.add_argument("--plan", choices=["six", "remaining", "full"], default="six",
-                        help="six: 6 originals; remaining: another background/mixed/negative, 14 images; full: 20")
+    parser.add_argument("--plan", choices=["six", "remaining", "full", "holdout-five"], default="six",
+                        help="six: 6; remaining: 14; full: 20; holdout-five: 3 single products, 1 mixed, 1 empty")
+    parser.add_argument("--intended-split", choices=["unassigned", "val", "test"], default="unassigned")
     parser.add_argument("--camera-index", type=int, default=0)
     parser.add_argument("--input")
     parser.add_argument("--groups", nargs="+", help="Existing group IDs to combine into a review list")
@@ -371,6 +409,8 @@ def main():
         parser.error("Invalid threshold or camera index")
     if args.mode == "import" and not args.input:
         parser.error("--input is required for import")
+    if args.mode == "capture" and args.plan == "holdout-five" and args.intended_split == "unassigned":
+        parser.error("Declare --intended-split val or test before holdout capture")
     catalog()
     if args.mode == "capture":
         if args.worker:

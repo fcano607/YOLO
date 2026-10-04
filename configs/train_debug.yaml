@@ -1,0 +1,32 @@
+schema_version: 1
+purpose: pipeline_debug_only
+split_manifest: data/desktop/splits/debug-v1.json
+data: configs/products_debug.yaml
+weights: artifacts/pretrained/yolo11n-seg.pt
+weights_sha256: 55ed65c56c91713d23e8402371c6c49a6fd84f257f7dce452e8d70e41dcbe152
+augment_policy: configs/augment_products.yaml
+train_args:
+  epochs: 3
+  batch: 4
+  imgsz: 640
+  device: 0
+  workers: 0
+  amp: false
+  optimizer: AdamW
+  lr0: 0.001
+  weight_decay: 0.0005
+  nbs: 4
+  warmup_epochs: 0.0
+  patience: 0
+  seed: 42
+  deterministic: true
+  cache: false
+  close_mosaic: 0
+  mask_ratio: 4
+  overlap_mask: true
+  plots: false
+  save: true
+  val: true
+  project: runs/train
+  name: M3-01_products_debug_v1
+  exist_ok: false
