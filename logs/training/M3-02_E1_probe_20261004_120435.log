@@ -1,0 +1,50 @@
+Ultralytics 8.4.171 🚀 Python-3.9.23 torch-2.8.0+cu129 CUDA:0 (NVIDIA GeForce RTX 5060 Ti, 16311MiB)
+[34m[1mengine\trainer: [0magnostic_nms=False, amp=False, angle=1.0, augment=False, augmentations=[], auto_augment=randaugment, batch=8, bgr=0.0, box=7.5, cache=False, cfg=None, channels_last=False, classes=None, close_mosaic=0, cls=0.5, cls_pw=0.0, cls_remap=True, compile=False, conf=0.001, copy_paste=0.0, copy_paste_mode=flip, cos_lr=True, cutmix=0.0, data=E:\秋招\项目相关\YOLO\configs\products_base.yaml, degrees=5.0, deterministic=True, device=0, dfl=1.5, dgrad=0.5, dis=6.0, distill_model=None, dlam=1.0, dlog=1.0, dnn=False, dropout=0.0, dynamic=False, embed=None, epochs=50, erasing=0.4, exist_ok=False, fliplr=0.0, flipud=0.0, format=torchscript, fraction=1.0, freeze=None, hsv_h=0.0, hsv_s=0.2, hsv_v=0.2, imgsz=640, iou=0.7, kobj=1.0, line_width=None, lr0=0.001, lrf=0.01, mask_ratio=4, max_det=300, mixup=0.0, mode=train, model=E:\秋招\项目相关\YOLO\artifacts\pretrained\yolo11n-seg.pt, momentum=0.9, mosaic=0.0, multi_scale=0.0, name=M3-02_E1_probe_20261004_120435, nbs=8, nms=None, opset=None, optimize=False, optimizer=AdamW, overlap_mask=True, patience=0, perspective=0.0, plots=False, pose=12.0, pretrained=True, profile=False, project=E:\秋招\项目相关\YOLO\runs\precheck, quantize=None, rect=False, resume=False, retina_masks=False, rle=1.0, save=False, save_conf=False, save_crop=False, save_dir=E:\秋招\项目相关\YOLO\runs\precheck\M3-02_E1_probe_20261004_120435, save_frames=False, save_json=False, save_period=-1, save_txt=False, scale=0.2, seed=42, shear=0.0, show=False, show_boxes=True, show_conf=True, show_labels=True, simplify=True, single_cls=False, source=None, split=val, stream_buffer=False, task=segment, time=None, tracker=tracktrack.yaml, translate=0.1, val=True, verbose=True, vid_stride=1, visualize=False, warmup_bias_lr=0.0, warmup_epochs=3.0, warmup_momentum=0.8, weight_decay=0.0005, workers=0, workspace=None
+Overriding model.yaml nc=80 with nc=3
+
+                   from  n    params  module                                       arguments                     
+  0                  -1  1       464  ultralytics.nn.modules.conv.Conv             [3, 16, 3, 2]                 
+  1                  -1  1      4672  ultralytics.nn.modules.conv.Conv             [16, 32, 3, 2]                
+  2                  -1  1      6640  ultralytics.nn.modules.block.C3k2            [32, 64, 1, False, 0.25]      
+  3                  -1  1     36992  ultralytics.nn.modules.conv.Conv             [64, 64, 3, 2]                
+  4                  -1  1     26080  ultralytics.nn.modules.block.C3k2            [64, 128, 1, False, 0.25]     
+  5                  -1  1    147712  ultralytics.nn.modules.conv.Conv             [128, 128, 3, 2]              
+  6                  -1  1     87040  ultralytics.nn.modules.block.C3k2            [128, 128, 1, True]           
+  7                  -1  1    295424  ultralytics.nn.modules.conv.Conv             [128, 256, 3, 2]              
+  8                  -1  1    346112  ultralytics.nn.modules.block.C3k2            [256, 256, 1, True]           
+  9                  -1  1    164608  ultralytics.nn.modules.block.SPPF            [256, 256, 5]                 
+ 10                  -1  1    249728  ultralytics.nn.modules.block.C2PSA           [256, 256, 1]                 
+ 11                  -1  1         0  torch.nn.modules.upsampling.Upsample         [None, 2, 'nearest']          
+ 12             [-1, 6]  1         0  ultralytics.nn.modules.conv.Concat           [1]                           
+ 13                  -1  1    111296  ultralytics.nn.modules.block.C3k2            [384, 128, 1, False]          
+ 14                  -1  1         0  torch.nn.modules.upsampling.Upsample         [None, 2, 'nearest']          
+ 15             [-1, 4]  1         0  ultralytics.nn.modules.conv.Concat           [1]                           
+ 16                  -1  1     32096  ultralytics.nn.modules.block.C3k2            [256, 64, 1, False]           
+ 17                  -1  1     36992  ultralytics.nn.modules.conv.Conv             [64, 64, 3, 2]                
+ 18            [-1, 13]  1         0  ultralytics.nn.modules.conv.Concat           [1]                           
+ 19                  -1  1     86720  ultralytics.nn.modules.block.C3k2            [192, 128, 1, False]          
+ 20                  -1  1    147712  ultralytics.nn.modules.conv.Conv             [128, 128, 3, 2]              
+ 21            [-1, 10]  1         0  ultralytics.nn.modules.conv.Concat           [1]                           
+ 22                  -1  1    378880  ultralytics.nn.modules.block.C3k2            [384, 256, 1, True]           
+ 23        [16, 19, 22]  1    684025  ultralytics.nn.modules.head.Segment          [3, 32, 64, 16, None, [64, 128, 256]]
+YOLO11n-seg summary: 203 layers, 2,843,193 parameters, 2,843,177 gradients, 9.8 GFLOPs
+
+Transferred 510/561 items from pretrained weights
+Freezing layer 'model.23.dfl.conv.weight'
+[34m[1mtrain: [0mFast image access ✅ (ping: 0.1±0.0 ms, read: 2819.9±278.7 MB/s, size: 1166.5 KB)
+[K[34m[1mtrain: [0mScanning E:\秋招\项目相关\YOLO\data\desktop\splits\..\labels\debug-v1\train.cache... 20 images, 4 backgrounds, 0 corrupt: 100% ━━━━━━━━━━━━ 20/20  0.0s
+[34m[1mval: [0mFast image access ✅ (ping: 0.0±0.0 ms, read: 3019.2±461.3 MB/s, size: 1155.7 KB)
+[K[34m[1mval: [0mScanning E:\秋招\项目相关\YOLO\data\desktop\splits\..\labels\products-v1\val.cache... 5 images, 1 backgrounds, 0 corrupt: 100% ━━━━━━━━━━━━ 5/5  0.0s
+[34m[1moptimizer:[0m AdamW(lr=0.001, momentum=0.9) with parameter groups 90 weight(decay=0.0), 101 weight(decay=0.0005), 100 bias(decay=0.0)
+[K                 Class     Images  Instances      Box(P          R      mAP50  mAP50-95)     Mask(P          R      mAP50  mAP50-95): 100% ━━━━━━━━━━━━ 1/1 8.1it/s 0.1s
+                   all          5          8    0.00505      0.833      0.328      0.308    0.00505      0.833       0.33      0.292
+Ultralytics 8.4.171 🚀 Python-3.9.23 torch-2.8.0+cu129 CUDA:0 (NVIDIA GeForce RTX 5060 Ti, 16311MiB)
+YOLO11n-seg summary (fused): 113 layers, 2,835,153 parameters, 0 gradients, 9.6 GFLOPs
+[34m[1mval: [0mFast image access ✅ (ping: 0.0±0.0 ms, read: 2704.0±357.7 MB/s, size: 1155.7 KB)
+[K[34m[1mval: [0mScanning E:\秋招\项目相关\YOLO\data\desktop\splits\..\labels\products-v1\val.cache... 5 images, 1 backgrounds, 0 corrupt: 100% ━━━━━━━━━━━━ 5/5  0.0s
+[K                 Class     Images  Instances      Box(P          R      mAP50  mAP50-95)     Mask(P          R      mAP50  mAP50-95): 100% ━━━━━━━━━━━━ 1/1 11.7it/s 0.1s
+                   all          5          8    0.00505      0.833      0.328      0.289    0.00505      0.833       0.33      0.292
+        sam_whole_milk          2          2    0.00251        0.5     0.0707     0.0707    0.00251        0.5     0.0707     0.0707
+           yili_shuhua          3          3    0.00397          1       0.05     0.0474    0.00397          1     0.0575     0.0553
+            luckin_cup          3          3    0.00867          1      0.863       0.75    0.00867          1      0.863       0.75
+Speed: 0.2ms preprocess, 1.5ms inference, 0.0ms loss, 1.4ms postprocess per image

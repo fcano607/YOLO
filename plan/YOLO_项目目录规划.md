@@ -4,7 +4,7 @@
 
 2026-10-03 用户正式采用三种固定包装商品方向，现已根据试标成本确认小数据首版：现有 20 张起步，轻量在线增强和预训练微调；按需要少量补拍，新增人工审核累计最多 30 张（含留出，真实总量最多 50 张），不再按 350 张收集。M2-01 已冻结 classes.json / products.json，M2-02 的 20 张已验收；见[当前操作路线](00_YOLO_分阶段推进与进度跟踪.md#small-data-route)和[标注安排](../docs/M2_商品数据与标注规范.md#small-data-plan)。沿用现有 data/desktop/ 与代码路径，后续按任务实现配置，不增加空脚本。
 
-2026-10-04 更新：M2 6/6 已完成，正式 20/5/5、30 张真实图 / 44 实例，质量、实际加载与 60 次训练增强验收通过，数据 YAML / 图片清单 / 加载契约已建立。新增额度仍为 10/30、剩余 20，当前无需继续拍照；下一步固定 E1 配置。证据见[最新数据验收](../docs/M2_商品数据与标注规范.md#m2-05-06)。
+2026-10-04 更新：M2 6/6 已完成，正式 20/5/5、30 张真实图 / 44 实例及加载契约不变。M3-03 已完成 E1 50 轮 / 150 次更新、best/last 保存重载、曲线与 val 初步评价，M3 3/6、主线 21/54；奶盒展示仍有问题，下一步 M3-05 系统分析。新增额度仍为 10/30、剩余 20，当前无需继续拍照。见[数据验收](../docs/M2_商品数据与标注规范.md#m2-05-06)与[E1 实测](../docs/M3_训练与实验规范.md#m3-03-results)。
 
 本文件规划需要在你的 Windows 电脑中建立的目录与文件。2026-10-02 已完成 M0-02：必要一级目录、`configs/paths.yaml`、源码锁定清单、训练 requirements、路径解析与安装验收脚本已建立；后续数据、训练和部署脚本按任务逐步实现，表中其余文件仍是规划。实际进展见[进度跟踪](00_YOLO_分阶段推进与进度跟踪.md)。
 
@@ -71,9 +71,9 @@ Conda 环境不需要放在项目目录中。若后续使用 Git，重点版本�
 | [configs/products_base.yaml](../configs/products_base.yaml) | 已实现、实际加载验收通过的正式 20/5/5 三商品数据配置，指向冻结图片清单 |
 | [configs/augment_products.yaml](../configs/augment_products.yaml) | 轻量在线增强参数，诊断预览与 M3-01 三轮实际训练已使用 |
 | [configs/products_debug.yaml](../configs/products_debug.yaml) | 14/6 关联拍摄组调试数据；省略 path，以 YAML 所在目录解析 train/val 相对路径，没有 test |
-| [configs/train_debug.yaml](../configs/train_debug.yaml) | 3 轮 GPU FP32 调试、权重哈希、batch / 优化器 / 增强策略引用；正式 E1 配置仍待建立 |
+| [configs/train_debug.yaml](../configs/train_debug.yaml) | 历史 3 轮 GPU FP32 调试配置保留，训练入口默认仍使用此配置 |
 | `configs/products_expanded.yaml` | E2/E3 定向扩充训练池，共用冻结验证 / 测试清单，待实现 |
-| `configs/train_baseline.yaml` | 原模型训练超参数 |
+| [configs/train_baseline.yaml](../configs/train_baseline.yaml) | M3-02 已实现：E1 50 轮 / batch=8 / FP32 / AdamW、初始化、增强引用、val 阈值与 mask 选 best；实际预检查通过 |
 | `configs/train_se.yaml` | 修改模型的训练参数；与基线保持可比 |
 | `configs/yolo11n-seg-se.yaml` | 加入 P3-SE 的模型结构配置 |
 | `configs/runtime.yaml` | 后端、模型位置、输入尺寸、阈值、摄像头、显示设置 |
@@ -171,8 +171,11 @@ Conda 环境不需要放在项目目录中。若后续使用 Git，重点版本�
 | [scripts/check_live_preview.py](../scripts/check_live_preview.py) | E0 GPU 图片与模拟摄像头 / GUI 生命周期检查，不打开真实摄像头 | M2 收尾时由 tmp 归位，字节未变；旧实测报告保留 |
 | [scripts/cleanup_project.ps1](../scripts/cleanup_project.ps1) | 默认核对精确清单；本地 -Execute 才删除可再生成或已归档文件，并核对保留文件 | 本轮已由用户执行，161 文件 / 29 空目录清理完成并通过独立复核；再次运行提示已完成，见[清理状态](../reports/maintenance/20261002_文件整理与清理清单.md#m2-cleanup) |
 | `scripts/visualize_labels.py` | 绘制标签轮廓、检查标注 | 数据阶段 |
-| [scripts/train.py](../scripts/train.py) | 当前为真实三商品调试训练入口与 --check-saved 阈值复查，保留独立 run / 日志 / 报告 | M3-01 已执行 3 轮；正式 E1/E2/E3 支持与评价入口待实现 |
-| `scripts/evaluate.py` | 冻结商品验证 / 测试组、各类别与条件评价 | 训练阶段 |
+| [scripts/train.py](../scripts/train.py) | 按 --config 进入历史 debug 或正式 E1；--preflight 只做 GPU 前向 / 反向与验证，保存独立日志 / 报告 | M3-01～03 已验收，E1 50 轮已执行；E2/E3 支持待实现 |
+| [scripts/evaluate.py](../scripts/evaluate.py) | 完成 E1 后读取固定 val，保存每类明确区分的 box/mask AP 及 conf=0.25 预览；--check 只核对配置 | M3-03 已实际评价保存 E1，最终 test 不允许进入本入口 |
+| [app/product_experiment.py](../app/product_experiment.py)、[product_runner.py](../app/product_runner.py) | 冻结 E1 配置 / 预检查版本、数据用途和运行命名；执行 GPU 预检查及正式训练记录 | 正式 50 轮 / 150 次更新已实跑；重载模型对象判断已修复 |
+| [app/product_trainer.py](../app/product_trainer.py)、[product_evaluation.py](../app/product_evaluation.py) | 项目内 mask 选 best 与固定 val 评价；不修改第三方源码 | 实际评价与选择规则回归通过 |
+| [tests/test_product_experiment.py](../tests/test_product_experiment.py) | mask 选 best、并列 / 失效预检查 / test 隔离 / NumPy 统计与明确 box/mask AP、带 task 的重载网络检查 | 本文件 8 项、工程总计 42 项通过 |
 | `scripts/check_modified_model.py` | 检查结构、梯度、加载和导出 | 模型修改阶段 |
 | `scripts/export_onnx.py` | ONNX 导出与元数据记录 | 部署阶段 |
 | `scripts/build_engine.py` | 根据 TensorRT 版本构建 engine | 部署阶段 |
@@ -301,6 +304,7 @@ reports 是你归纳后的结论，logs 是程序直接记录的过程。训练�
 | `docs/环境安装记录.md` | 安装命令、解决过的问题 |
 | `docs/模型学习笔记.md` | 网络结构、输入输出、损失与掩膜机制 |
 | `docs/M2_商品数据与标注规范.md` | M2-01 已建立：类别、轮廓规则、人工分工与试拍清单 |
+| [docs/M3_训练与实验规范.md](../docs/M3_训练与实验规范.md) | M3-02 固定规则与历史预检查；M3-03 已训练权重、逐轮记录、val 指标 / 五图预览与下一步 |
 | `docs/部署学习笔记.md` | ONNX、TensorRT、预后处理与计时原理 |
 | `docs/面试讲解.md` | 项目口述、实测结果与常见追问 |
 | `docs/model_changes/` | 源码版本、修改说明、权重映射和 patch |
@@ -328,7 +332,7 @@ reports 是你归纳后的结论，logs 是程序直接记录的过程。训练�
 
 按实际任务填充：当前 20 张整理 → 轻量在线增强 / 临时按组调试划分 → 加载与短训练 → 按需补 6–10 张独立留出并冻结版本 → E1 微调与验证 → 新商品摄像头和最终 ONNX。新增采集及人工审核累计最多 30 张；E2 定向补样本选做，SE、完整独立 ONNX / TensorRT 与稳定性按依赖推进。在线增强不重复保存多套图，合成实验只保存必要预览与来源；不创建空脚本凑目录。
 
-当前正式数据与实际加载已全部验收：`python scripts/build_splits.py --formal-loading` 复查 YAML / 清单 / 20 组复用与 10 组新副本；`python scripts/check_training_data.py --formal` 重新检查实际加载与增强、生成总览，不训练模型。原 14/6 debug-v1 和 `--formal` 源图冻结入口保留；下一步固定 E1 配置并接入正式训练。
+当前正式数据与实际加载已全部验收：`python scripts/build_splits.py --formal-loading` 复查 YAML / 清单；`python scripts/check_training_data.py --formal` 重查加载与增强，不训练模型。E1 已由 `python scripts/train.py --config configs/train_baseline.yaml` 完成正式训练；权重、日志、曲线、训练前快照集中在 `runs/train/E1_products_v1_seed42` 与已有实验 JSON，val 图位于独立 `runs/eval/`。不为 E1 复制另一套训练数据或部署权重；下一步 M3-05 分析奶盒错误，见[实测与命令](../docs/M3_训练与实验规范.md#m3-03-results)。
 
 ## 十二、在 Windows 本地建立目录的命令
 

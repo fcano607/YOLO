@@ -1,0 +1,69 @@
+schema_version: 1
+purpose: formal_products_e1
+experiment: E1
+dataset_version: products-v1
+data: configs/products_base.yaml
+loading_contract: data/desktop/metadata/products-v1_loading.json
+data_acceptance: reports/data/M2-05_06_products-v1.json
+weights: artifacts/pretrained/yolo11n-seg.pt
+weights_sha256: 55ed65c56c91713d23e8402371c6c49a6fd84f257f7dce452e8d70e41dcbe152
+augment_policy: configs/augment_products.yaml
+preflight_report: reports/experiments/M3-02_E1_setup.json
+selection:
+  metric: metrics/mAP50-95(M)
+  direction: maximize
+  ties: latest_equal_epoch
+evaluation:
+  split: val
+  metric_conf: 0.001
+  nms_iou: 0.7
+  max_det: 300
+  display_conf: 0.25
+  augment: false
+train_args:
+  epochs: 50
+  batch: 8
+  imgsz: 640
+  device: 0
+  workers: 0
+  amp: false
+  optimizer: AdamW
+  lr0: 0.001
+  lrf: 0.01
+  cos_lr: true
+  momentum: 0.9
+  weight_decay: 0.0005
+  nbs: 8
+  warmup_epochs: 3.0
+  warmup_bias_lr: 0.0
+  warmup_momentum: 0.8
+  patience: 0
+  seed: 42
+  deterministic: true
+  cache: false
+  close_mosaic: 0
+  mask_ratio: 4
+  overlap_mask: true
+  multi_scale: 0.0
+  rect: false
+  freeze: null
+  compile: false
+  channels_last: false
+  quantize: null
+  single_cls: false
+  classes: null
+  fraction: 1.0
+  resume: false
+  pretrained: true
+  val: true
+  split: val
+  conf: 0.001
+  iou: 0.7
+  max_det: 300
+  augment: false
+  plots: true
+  save: true
+  save_period: -1
+  project: runs/train
+  name: E1_products_v1_seed42
+  exist_ok: false

@@ -1,0 +1,224 @@
+{
+  "schema_version": 1,
+  "status": "completed",
+  "checked_at": "2026-10-04T12:30:36.771796+08:00",
+  "source": {
+    "version": "8.4.171",
+    "commit": "86f5c8c401a630da651d321e691ab0af540812cf",
+    "module": "E:\\秋招\\项目相关\\YOLO\\third_party\\ultralytics\\ultralytics\\__init__.py"
+  },
+  "purpose": "formal_products_e1_validation",
+  "training_run": "E1_products_v1_seed42",
+  "checkpoint": {
+    "path": "runs/train/E1_products_v1_seed42/weights/best.pt",
+    "sha256": "df214883028fc4cb6d70e4f34176d1366d959a57f23d7d9587d564e7397e7cff"
+  },
+  "split": "val",
+  "test_evaluated": false,
+  "metric_evaluation": {
+    "split": "val",
+    "images": 5,
+    "image_ids": [
+      "holdout_val_20261004_095145_001",
+      "holdout_val_20261004_095145_002",
+      "holdout_val_20261004_095145_003",
+      "holdout_val_20261004_095145_004",
+      "holdout_val_20261004_095145_005"
+    ],
+    "metrics": {
+      "metrics/precision(B)": 0.46314972130982063,
+      "metrics/recall(B)": 0.611111111111111,
+      "metrics/mAP50(B)": 0.6194444444444445,
+      "metrics/mAP50-95(B)": 0.47349295954941106,
+      "metrics/precision(M)": 0.46314972130982063,
+      "metrics/recall(M)": 0.611111111111111,
+      "metrics/mAP50(M)": 0.611021505376344,
+      "metrics/mAP50-95(M)": 0.46578072196620574,
+      "fitness": 0.9392736815156169
+    },
+    "mask_fitness": 0.46578072196620574,
+    "per_class": [
+      {
+        "Class": "sam_whole_milk",
+        "Images": 2,
+        "Instances": 2,
+        "Box-P": 0.34956,
+        "Box-R": 0.5,
+        "Box-F1": 0.41146,
+        "mAP50": 0.52833,
+        "mAP75": 0.495,
+        "mAP50-95": 0.35559,
+        "Mask-P": 0.34956,
+        "Mask-R": 0.5,
+        "Mask-F1": 0.41146,
+        "Class-ID": 0,
+        "Box-mAP50": 0.5283333333333334,
+        "Box-mAP50-95": 0.3555860215053763,
+        "Mask-mAP50": 0.5030645161290321,
+        "Mask-mAP50-95": 0.4463064516129032
+      },
+      {
+        "Class": "yili_shuhua",
+        "Images": 3,
+        "Instances": 3,
+        "Box-P": 0.27351,
+        "Box-R": 0.33333,
+        "Box-F1": 0.30047,
+        "mAP50": 0.335,
+        "mAP75": 0.0,
+        "mAP50-95": 0.10289,
+        "Mask-P": 0.27351,
+        "Mask-R": 0.33333,
+        "Mask-F1": 0.30047,
+        "Class-ID": 1,
+        "Box-mAP50": 0.335,
+        "Box-mAP50-95": 0.10289285714285715,
+        "Mask-mAP50": 0.335,
+        "Mask-mAP50-95": 0.07178571428571429
+      },
+      {
+        "Class": "luckin_cup",
+        "Images": 3,
+        "Instances": 3,
+        "Box-P": 0.76638,
+        "Box-R": 1.0,
+        "Box-F1": 0.86774,
+        "mAP50": 0.995,
+        "mAP75": 0.995,
+        "mAP50-95": 0.962,
+        "Mask-P": 0.76638,
+        "Mask-R": 1.0,
+        "Mask-F1": 0.86774,
+        "Class-ID": 2,
+        "Box-mAP50": 0.995,
+        "Box-mAP50-95": 0.9620000000000001,
+        "Mask-mAP50": 0.995,
+        "Mask-mAP50-95": 0.8792500000000001
+      }
+    ],
+    "settings": {
+      "data": "E:\\秋招\\项目相关\\YOLO\\configs\\products_base.yaml",
+      "task": "segment",
+      "split": "val",
+      "imgsz": 640,
+      "batch": 16,
+      "device": 0,
+      "workers": 0,
+      "quantize": null,
+      "conf": 0.001,
+      "iou": 0.7,
+      "max_det": 300,
+      "augment": false,
+      "plots": true,
+      "save_json": false,
+      "overlap_mask": true,
+      "mask_ratio": 4,
+      "rect": true,
+      "fraction": 1.0
+    },
+    "test_images_evaluated": 0
+  },
+  "display_threshold": 0.25,
+  "predictions": [
+    {
+      "image_id": "holdout_val_20261004_095145_001",
+      "target_class_ids": [
+        1,
+        0,
+        2
+      ],
+      "class_ids": [
+        2
+      ],
+      "scores": [
+        0.8800814151763916
+      ],
+      "boxes_xyxy": [
+        [
+          802.0928955078125,
+          3.41009521484375,
+          1093.483154296875,
+          331.8204040527344
+        ]
+      ],
+      "prediction_count": 1,
+      "preview": "runs/eval/E1_products_v1_seed42_best_val_20261004_123032/holdout_val_20261004_095145_001.jpg"
+    },
+    {
+      "image_id": "holdout_val_20261004_095145_002",
+      "target_class_ids": [
+        1
+      ],
+      "class_ids": [],
+      "scores": [],
+      "boxes_xyxy": [],
+      "prediction_count": 0,
+      "preview": "runs/eval/E1_products_v1_seed42_best_val_20261004_123032/holdout_val_20261004_095145_002.jpg"
+    },
+    {
+      "image_id": "holdout_val_20261004_095145_003",
+      "target_class_ids": [
+        2
+      ],
+      "class_ids": [
+        2
+      ],
+      "scores": [
+        0.5854131579399109
+      ],
+      "boxes_xyxy": [
+        [
+          572.9942626953125,
+          60.49871826171875,
+          891.298583984375,
+          438.9962158203125
+        ]
+      ],
+      "prediction_count": 1,
+      "preview": "runs/eval/E1_products_v1_seed42_best_val_20261004_123032/holdout_val_20261004_095145_003.jpg"
+    },
+    {
+      "image_id": "holdout_val_20261004_095145_004",
+      "target_class_ids": [
+        2,
+        1,
+        0
+      ],
+      "class_ids": [
+        2,
+        1
+      ],
+      "scores": [
+        0.7993196845054626,
+        0.46412211656570435
+      ],
+      "boxes_xyxy": [
+        [
+          759.959228515625,
+          5.949615478515625,
+          1165.4869384765625,
+          424.13214111328125
+        ],
+        [
+          538.29833984375,
+          256.6715393066406,
+          719.920166015625,
+          719.8529052734375
+        ]
+      ],
+      "prediction_count": 2,
+      "preview": "runs/eval/E1_products_v1_seed42_best_val_20261004_123032/holdout_val_20261004_095145_004.jpg"
+    },
+    {
+      "image_id": "holdout_val_20261004_095145_005",
+      "target_class_ids": [],
+      "class_ids": [],
+      "scores": [],
+      "boxes_xyxy": [],
+      "prediction_count": 0,
+      "preview": "runs/eval/E1_products_v1_seed42_best_val_20261004_123032/holdout_val_20261004_095145_005.jpg"
+    }
+  ],
+  "save_directory": "runs/eval/E1_products_v1_seed42_best_val_20261004_123032",
+  "limitation": "Only five validation images of the same physical packages; metrics and previews do not establish broad generalization."
+}

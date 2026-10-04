@@ -1,0 +1,5 @@
+[K[34m[1mtrain: [0mScanning E:\秋招\项目相关\YOLO\data\desktop\splits\..\labels\debug-v1\train.cache... 20 images, 4 backgrounds, 0 corrupt: 100% ━━━━━━━━━━━━ 20/20  0.0s
+[K[34m[1mval: [0mScanning E:\秋招\项目相关\YOLO\data\desktop\splits\..\labels\products-v1\val.cache... 5 images, 1 backgrounds, 0 corrupt: 100% ━━━━━━━━━━━━ 5/5  0.0s
+[K                 Class     Images  Instances      Box(P          R      mAP50  mAP50-95)     Mask(P          R      mAP50  mAP50-95): 100% ━━━━━━━━━━━━ 1/1 8.1it/s 0.1s
+[K[34m[1mval: [0mScanning E:\秋招\项目相关\YOLO\data\desktop\splits\..\labels\products-v1\val.cache... 5 images, 1 backgrounds, 0 corrupt: 100% ━━━━━━━━━━━━ 5/5  0.0s
+[K                 Class     Images  Instances      Box(P          R      mAP50  mAP50-95)     Mask(P          R      mAP50  mAP50-95): 100% ━━━━━━━━━━━━ 1/1 11.7it/s 0.1s

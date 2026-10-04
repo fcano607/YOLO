@@ -1,4 +1,4 @@
-"""Run 1-3 real GPU epochs against the frozen products debug dataset; preserve the original E0."""
+"""Run the debug probe or the prechecked formal E1 configuration; preserve original E0 evidence."""
 
 import argparse
 import contextlib
@@ -89,10 +89,20 @@ def main():
     parser.add_argument("--config", default="configs/train_debug.yaml")
     parser.add_argument("--name", help="A fresh run name for an intentional rerun; never overwrite an earlier run")
     parser.add_argument("--check-saved", action="store_true", help="Only check an existing successful run at conf=0.25")
+    parser.add_argument("--preflight", action="store_true", help="Formal configuration/GPU checks only; no optimizer updates")
     args = parser.parse_args()
     source = locked_source()
-    manifest = verify_debug_split()
     config_path = ROOT / args.config
+    import yaml
+    if yaml.safe_load(config_path.read_text(encoding="utf-8"))["purpose"] == "formal_products_e1":
+        if args.check_saved:
+            raise ValueError("Use evaluate.py for completed formal E1 checkpoints")
+        from app.product_runner import run
+        run(config_path, source, args.preflight, args.name)
+        return
+    if args.preflight:
+        raise ValueError("--preflight requires configs/train_baseline.yaml")
+    manifest = verify_debug_split()
     config, overrides = debug_configuration(config_path)
     if args.name:
         overrides["name"] = identifier(args.name)

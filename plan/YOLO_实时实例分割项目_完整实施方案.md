@@ -302,53 +302,45 @@ M2-03 已将轻量策略保存为 [configs/augment_products.yaml](../configs/aug
 
 ### 6.2 正式实验设置
 
-首轮建议：
+2026-10-04 M3-02 固定首轮 [train_baseline.yaml](../configs/train_baseline.yaml)，接续 M3-03 已执行 50 轮 / 150 次更新，best/last 保存重载与固定 val 初步评价通过。当前参数如下；后续变更需记录新配置并重新预检查：
 
 | 参数 | 起始设置 | 调整原则 |
 | --- | --- | --- |
 | 初始化 | `yolo11n-seg.pt` | 使用预训练权重微调 |
 | 输入尺寸 | 640 | 正式实验先固定 |
-| epochs | 50 | 根据验证曲线和实际时间决定是否延长 |
-| batch | 先试 8 | 不足则减为 4 或 2；不要先改输入尺寸 |
+| epochs | 50 | M3-03 已实测完成，无早停 |
+| batch | 8 | GPU 实际三批 8/8/4 前向 / 反向通过 |
 | optimizer | AdamW | 明确指定，便于对照 |
 | lr0 | 0.001 | 微调起点；不盲目叠加多项调整 |
 | weight_decay | 0.0005 | 对照实验保持相同 |
-| patience | 15 | 记录早停时刻及实际训练 epoch |
+| patience | 0 | 关闭基于指标的早停，首轮完整 50 轮 |
 | seed | 42 | 固定划分与主实验种子 |
-| workers | Windows 先用 0 | 跑通后再根据加载瓶颈增加 |
-| AMP | 支持时开启 | 确认无数值异常 |
-| 增强 | 首轮轻量 HSV / 缩放 / 平移 / 小角度旋转，镜像与拼图关闭 | 示例参数待检查，不是已执行结果 |
-| close_mosaic | 10（首轮 mosaic=0 时不生效） | 后续启用拼图时单独记录策略 |
+| workers | 0 | Windows 首轮实际加载已通过 |
+| AMP | 关闭，FP32 | 与已验证调试路径一致，损失 / 梯度有限 |
+| nbs / warmup | 8 / 3 轮 | accumulate=1，warmup=9 次迭代，实际更新 150 次 |
+| 学习率调度 | cos_lr=true、lrf=0.01 | 明确保存调度与逐轮学习率 |
+| 增强 | 已验收轻量 HSV / 缩放 / 平移 / 小角度旋转，镜像与拼图关闭 | 沿用 augment_products.yaml，不改人工标签 |
+| close_mosaic | 0 | 首轮 mosaic=0 |
 
-以上是可执行的起点，不是最优参数。训练参数与返回指标参考官方训练和分割文档。[9][10]
+以上是首版执行配置，是否能展示需正式训练后验证。锁定源码默认分割 fitness 为 box 与 mask mAP50-95 之和；本项目用 [MaskFirstSegmentationTrainer](../app/product_trainer.py) 按 val 的 mask mAP50-95 选 best，并列取较晚一轮，第三方源码不变。评价 conf=0.001 / NMS IoU=0.7 / max_det=300，展示 conf=0.25；最终 test 不进入训练选权重或 M3 评价入口。
 
-将 `train.py` 写成带主入口的脚本，Windows 下尤其需要：
+已实现 Windows 主入口。以下预检查、正式训练与独立验证均已执行：
 
-```python
-from ultralytics import YOLO
-
-def main():
-    model = YOLO("artifacts/pretrained/yolo11n-seg.pt")
-    model.train(
-        data="configs/products_base.yaml",
-        imgsz=640, epochs=50, batch=8,
-        optimizer="AdamW", lr0=0.001, weight_decay=0.0005,
-        patience=15, seed=42, workers=0,
-        # Small-data starting settings; inspect transformed masks before training.
-        hsv_h=0.0, hsv_s=0.2, hsv_v=0.2,
-        degrees=5.0, translate=0.1, scale=0.2,
-        fliplr=0.0, flipud=0.0,
-        mosaic=0.0, copy_paste=0.0, mixup=0.0, cutmix=0.0,
-        shear=0.0, perspective=0.0, augmentations=[],
-        close_mosaic=10, device=0,
-        project="runs/train", name="E1_products_baseline"
-    )
-
-if __name__ == "__main__":
-    main()
+```powershell
+python scripts/train.py --config configs/train_baseline.yaml --preflight
+python scripts/evaluate.py --check
 ```
 
-本示例是直接训练入口；第十一节的统一命令接口需在实施中添加 argparse，不是现有已提供代码。
+```powershell
+# 本次正式训练已完成；重跑需另给新的 --name
+python scripts/train.py --config configs/train_baseline.yaml
+# 训练完成后检查固定验证池
+python scripts/evaluate.py --run E1_products_v1_seed42
+```
+
+GPU 预检查实际 20 张 / 3 批有限损失及反向梯度、val 5 张双入口执行通过；allocated 约 2.19 GiB、优化器更新 0 次、没有保存新权重。新增 7 项实验规则测试及原 34 项均通过，配置 / 数据 / 实现和环境核对齐备，见[M3 规范](../docs/M3_训练与实验规范.md)与[机器记录](../reports/experiments/M3-02_E1_setup.json)。默认 `scripts/train.py` 仍用历史 debug 配置；正式 E1 必须显式指定配置，E2/E3 的配置和入口适配仍待实现。
+
+接续 M3-03：训练调用 45.66 秒、allocated 约 2.39 GiB；第 50 轮选为 best，与 last 同哈希，两份重载通过。5 张 val 的 box / mask mAP50-95=0.4735 / 0.4658；conf=0.25 显示瑞幸 3、伊利 1、山姆 0，奶盒漏检与掩膜越界，三类完整展示需改善。当前 42 项工程测试通过，封存 test 未运行，先 M3-05 分析再决定训练调整或 E2，详见[E1 实测](../docs/M3_训练与实验规范.md#m3-03-results)。
 
 ### 6.3 必须记录什么
 
@@ -732,7 +724,7 @@ FPS 与延迟分别报告；摄像头 30 FPS 的上限可能掩盖模型加速�
 | `scripts/annotate_product_drafts.py` | 提议轮廓、保留来源和审核状态；不直接把草稿当真值（待实现） |
 | `scripts/extract_frames.py` | 视频抽帧与 group_id 记录 |
 | `scripts/check_dataset.py` / `visualize_labels.py` | 标签检查与可视化 |
-| `scripts/train.py` / `evaluate.py` | 基线、修改模型训练与评估 |
+| [scripts/train.py](../scripts/train.py) / [evaluate.py](../scripts/evaluate.py) | M3-03 已完成 E1 50 轮及保存权重的固定 val 评价；E2/E3 与最终 test 评价待后续 |
 | `scripts/export_onnx.py` / `build_engine.py` | 导出与构建 |
 | `scripts/compare_backends.py` / `benchmark.py` | 一致性与性能测试 |
 | `deploy/preprocess.py` / `postprocess.py` | 共享前后处理 |
@@ -743,13 +735,13 @@ FPS 与延迟分别报告；摄像头 30 FPS 的上限可能掩盖模型加速�
 | `reports/` | 环境、数据、实验、部署与稳定性报告 |
 | `demo/` | 截图、录像、展示材料 |
 
-目标命令接口示例：
+E1 当前可运行接口是第六节的 `--config` 路线；其余后续目标接口示例如下，其中 E2/E3 和部署脚本参数尚待实现：
 
 ```powershell
 python scripts/check_env.py
 python scripts/annotate_product_drafts.py --images data/raw/camera/frames --output data/raw/camera/annotations/drafts
 python scripts/check_dataset.py --data configs/products_expanded.yaml
-python scripts/train.py --data configs/products_base.yaml --model yolo11n-seg.pt --name E1
+python scripts/train.py --config configs/train_baseline.yaml
 python scripts/train.py --data configs/products_expanded.yaml --model yolo11n-seg.pt --name E2
 python scripts/train.py --data configs/products_expanded.yaml --model configs/yolo11n-seg-se.yaml --name E3
 python scripts/export_onnx.py --weights artifacts/best.pt --imgsz 640
