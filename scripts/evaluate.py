@@ -9,7 +9,7 @@ sys.path.insert(0, str(ROOT))
 
 from app.product_data import digest, identifier, image_write, now, read_json, write_json
 from app.product_dataset import locked_source
-from app.product_experiment import baseline_configuration, verify_product_model
+from app.product_experiment import experiment_configuration, verify_product_model
 from app.product_evaluation import evaluate_model
 from app.product_training import check_guards, relative, verify_formal_loading
 
@@ -24,14 +24,15 @@ def main():
     args = parser.parse_args()
     source = locked_source()
     config_path = ROOT / args.config
-    config, overrides, loading = baseline_configuration(config_path)
+    config, overrides, loading = experiment_configuration(config_path)
     if args.check:
         print("Evaluation route:", config["evaluation"], "; val images=", loading["summary"]["val"]["images"], "; test inference disabled")
         return
     run = identifier(args.run)
     training = read_json(ROOT / "reports/experiments" / (run + ".json"))
-    if training["status"] != "completed" or training["purpose"] != "formal_products_e1" or training["config_sha256"] != digest(config_path):
-        raise ValueError("Expected a completed formal E1 run under this exact configuration")
+    if (training["status"] != "completed" or training["purpose"] != config["purpose"] or
+            training["experiment"] != config["experiment"] or training["config_sha256"] != digest(config_path)):
+        raise ValueError("Expected a completed formal product run under this exact configuration")
     check_guards(training["guarded_inputs"])
     checkpoint = training["training"]["checkpoints"][args.checkpoint]
     weight = ROOT / checkpoint["path"]
@@ -65,7 +66,7 @@ def main():
     check_guards(training["guarded_inputs"])
     verify_formal_loading()
     report = {"schema_version": 1, "status": "completed", "checked_at": now(), "source": source,
-              "purpose": "formal_products_e1_validation", "training_run": run,
+              "purpose": "formal_products_validation", "experiment": config["experiment"], "training_run": run,
               "checkpoint": checkpoint, "split": "val", "test_evaluated": False,
               "metric_evaluation": result, "display_threshold": config["evaluation"]["display_conf"],
               "predictions": predictions, "save_directory": relative(save_dir),

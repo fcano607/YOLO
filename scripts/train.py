@@ -94,14 +94,15 @@ def main():
     source = locked_source()
     config_path = ROOT / args.config
     import yaml
-    if yaml.safe_load(config_path.read_text(encoding="utf-8"))["purpose"] == "formal_products_e1":
+    if yaml.safe_load(config_path.read_text(encoding="utf-8"))["purpose"] in {
+            "formal_products_e1", "formal_products_augmentation_control"}:
         if args.check_saved:
             raise ValueError("Use evaluate.py for completed formal E1 checkpoints")
         from app.product_runner import run
         run(config_path, source, args.preflight, args.name)
         return
     if args.preflight:
-        raise ValueError("--preflight requires configs/train_baseline.yaml")
+        raise ValueError("--preflight requires a formal E1 or augmentation-control configuration")
     manifest = verify_debug_split()
     config, overrides = debug_configuration(config_path)
     if args.name:

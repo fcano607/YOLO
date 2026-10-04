@@ -1,0 +1,24 @@
+# E1-A online augmentation control; only degrees and scale differ from E1.
+schema_version: 1
+mapping_version: products-v1
+imgsz: 640
+preview_seeds:
+- 42
+- 43
+- 44
+train_args:
+  hsv_h: 0.0
+  hsv_s: 0.2
+  hsv_v: 0.2
+  degrees: 45.0
+  translate: 0.1
+  scale: 0.4
+  shear: 0.0
+  perspective: 0.0
+  fliplr: 0.0
+  flipud: 0.0
+  mosaic: 0.0
+  mixup: 0.0
+  cutmix: 0.0
+  copy_paste: 0.0
+  augmentations: []

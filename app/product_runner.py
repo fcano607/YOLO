@@ -12,8 +12,8 @@ from unittest.mock import patch
 import torch
 
 from app.product_data import ROOT, digest, now, read_json, write_json
-from app.product_experiment import (MASK_METRIC, baseline_configuration, experiment_guards, fresh_run_paths,
-                                    verify_pool_files, verify_preflight, verify_product_model)
+from app.product_experiment import (MASK_METRIC, experiment_configuration, experiment_guards, fresh_run_paths,
+                                    verify_augmentation_acceptance, verify_pool_files, verify_preflight, verify_product_model)
 from app.product_training import check_guards, relative, verify_formal_loading
 from app.product_trainer import MaskFirstSegmentationTrainer
 from scripts.train import Tee, environment_fingerprint, output_shapes
@@ -61,7 +61,8 @@ def finite_losses(items):
 
 
 def run_preflight(config_path, source, name=None):
-    config, overrides, loading = baseline_configuration(config_path)
+    config, overrides, loading = experiment_configuration(config_path)
+    verify_augmentation_acceptance(config_path, config)
     if not torch.cuda.is_available():
         raise ValueError("E1 preflight requires the configured CUDA device")
     from ultralytics import YOLO
@@ -69,13 +70,13 @@ def run_preflight(config_path, source, name=None):
     from scripts.check_training_data import check_batch
     stamp = datetime.fromisoformat(now()).strftime("%Y%m%d_%H%M%S")
     probe_args = {**overrides, "project": str(ROOT / "runs/precheck"),
-                  "name": name or "M3-02_E1_probe_" + stamp, "plots": False, "save": False}
+                  "name": name or "probe_" + config["experiment"].replace("-", "") + "_" + stamp, "plots": False, "save": False}
     probe_name, run_path, unused_report, log_path = fresh_run_paths(probe_args)
     report_path = ROOT / config["preflight_report"]
     guards = experiment_guards(config_path, config, loading)
     environment = environment_fingerprint()
-    report = {"schema_version": 1, "task": "M3-02", "status": "running", "started_at": now(),
-              "purpose": "E1_configuration_and_gpu_preflight_only", "source": source,
+    report = {"schema_version": 1, "task": "M3-02" if config["experiment"] == "E1" else "M3_augmentation_control", "status": "running", "started_at": now(),
+              "purpose": "product_experiment_gpu_preflight_only", "experiment": config["experiment"], "source": source,
               "config_path": relative(config_path), "config_sha256": digest(config_path),
               "selection": config["selection"], "evaluation": config["evaluation"],
               "planned_configuration": overrides, "probe_overrides": {
@@ -174,7 +175,7 @@ def run_preflight(config_path, source, name=None):
         report.update(status="passed", completed_at=now(), guarded_inputs_unchanged=True,
                       environment_fingerprint_after=after, prior_90_guarded_inputs_unchanged=True)
         write_json(report_path, report)
-        print("M3-02 PASSED:", relative(report_path), "; optimizer updates=0; formal E1 not started")
+        print(config["experiment"], "preflight PASSED:", relative(report_path), "; optimizer updates=0; this probe did not train")
     except Exception as error:
         report.update(status="failed", completed_at=now(), error=repr(error))
         write_json(report_path, report)
@@ -182,7 +183,8 @@ def run_preflight(config_path, source, name=None):
 
 
 def run_formal_training(config_path, source, name=None):
-    config, overrides, loading = baseline_configuration(config_path)
+    config, overrides, loading = experiment_configuration(config_path)
+    verify_augmentation_acceptance(config_path, config)
     preflight = verify_preflight(config_path, config)
     if environment_fingerprint() != preflight["environment_fingerprint_after"]:
         raise ValueError("Runtime packages changed after E1 preflight")
@@ -192,7 +194,7 @@ def run_formal_training(config_path, source, name=None):
     overrides["name"] = chosen
     guards = experiment_guards(config_path, config, loading)
     environment = environment_fingerprint()
-    report = {"schema_version": 1, "experiment": "E1", "purpose": "formal_products_e1", "status": "running",
+    report = {"schema_version": 1, "experiment": config["experiment"], "purpose": config["purpose"], "status": "running",
               "started_at": now(), "source": source, "config_path": relative(config_path),
               "config_sha256": digest(config_path), "preflight_sha256": digest(ROOT / config["preflight_report"]),
               "configuration": overrides, "selection_rule": config["selection"], "dataset_summary": loading["summary"],
@@ -207,6 +209,11 @@ def run_formal_training(config_path, source, name=None):
             original = YOLO(str(ROOT / config["weights"]))
             pretrained = {k: v.detach().cpu().clone() for k, v in original.model.state_dict().items()}
             trainer = MaskFirstSegmentationTrainer(overrides=overrides)
+            snapshot = run_path / "preflight_used.json"
+            snapshot.write_bytes((ROOT / config["preflight_report"]).read_bytes())
+            if digest(snapshot) != report["preflight_sha256"]:
+                raise ValueError("Preflight changed between validation and training setup")
+            report["preflight_used_copy"] = {"path": relative(snapshot), "sha256": digest(snapshot)}
             evidence = {"epochs": [], "batches": [], "optimizer_steps": 0}
 
             def on_start(t):
@@ -279,7 +286,7 @@ def run_formal_training(config_path, source, name=None):
                       environment_fingerprint_after=after,
                       conclusion="Declared E1 budget and best/last reload passed; display readiness and error analysis require validation inspection.")
         write_json(report_path, report)
-        print("E1 completed:", relative(report_path))
+        print(config["experiment"], "completed:", relative(report_path))
     except Exception as error:
         report.update(status="failed", completed_at=now(), error=repr(error))
         write_json(report_path, report)

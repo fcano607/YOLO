@@ -1,0 +1,241 @@
+{
+  "schema_version": 1,
+  "status": "completed",
+  "checked_at": "2026-10-04T13:25:30.226958+08:00",
+  "source": {
+    "version": "8.4.171",
+    "commit": "86f5c8c401a630da651d321e691ab0af540812cf",
+    "module": "E:\\秋招\\项目相关\\YOLO\\third_party\\ultralytics\\ultralytics\\__init__.py"
+  },
+  "purpose": "formal_products_validation",
+  "experiment": "E1-A",
+  "training_run": "E1A_products_v1_seed42",
+  "checkpoint": {
+    "path": "runs/train/E1A_products_v1_seed42/weights/best.pt",
+    "sha256": "be673312bea16cf89d044e9107b33e180bf5317ed715452b5d81575b54ca9424"
+  },
+  "split": "val",
+  "test_evaluated": false,
+  "metric_evaluation": {
+    "split": "val",
+    "images": 5,
+    "image_ids": [
+      "holdout_val_20261004_095145_001",
+      "holdout_val_20261004_095145_002",
+      "holdout_val_20261004_095145_003",
+      "holdout_val_20261004_095145_004",
+      "holdout_val_20261004_095145_005"
+    ],
+    "metrics": {
+      "metrics/precision(B)": 0.9303347064165122,
+      "metrics/recall(B)": 0.963962711035574,
+      "metrics/mAP50(B)": 0.995,
+      "metrics/mAP50-95(B)": 0.8130000000000001,
+      "metrics/precision(M)": 0.9303347064165122,
+      "metrics/recall(M)": 0.963962711035574,
+      "metrics/mAP50(M)": 0.995,
+      "metrics/mAP50-95(M)": 0.7806586021505377,
+      "fitness": 1.593658602150538
+    },
+    "mask_fitness": 0.7806586021505377,
+    "per_class": [
+      {
+        "Class": "sam_whole_milk",
+        "Images": 2,
+        "Instances": 2,
+        "Box-P": 0.791,
+        "Box-R": 1.0,
+        "Box-F1": 0.88331,
+        "mAP50": 0.995,
+        "mAP75": 0.995,
+        "mAP50-95": 0.8455,
+        "Mask-P": 0.791,
+        "Mask-R": 1.0,
+        "Mask-F1": 0.88331,
+        "Class-ID": 0,
+        "Box-mAP50": 0.995,
+        "Box-mAP50-95": 0.8455,
+        "Mask-mAP50": 0.995,
+        "Mask-mAP50-95": 0.6992258064516129
+      },
+      {
+        "Class": "yili_shuhua",
+        "Images": 3,
+        "Instances": 3,
+        "Box-P": 1.0,
+        "Box-R": 0.91441,
+        "Box-F1": 0.95529,
+        "mAP50": 0.995,
+        "mAP75": 0.995,
+        "mAP50-95": 0.7305,
+        "Mask-P": 1.0,
+        "Mask-R": 0.91441,
+        "Mask-F1": 0.95529,
+        "Class-ID": 1,
+        "Box-mAP50": 0.995,
+        "Box-mAP50-95": 0.7305,
+        "Mask-mAP50": 0.995,
+        "Mask-mAP50-95": 0.7965000000000001
+      },
+      {
+        "Class": "luckin_cup",
+        "Images": 3,
+        "Instances": 3,
+        "Box-P": 1.0,
+        "Box-R": 0.97748,
+        "Box-F1": 0.98861,
+        "mAP50": 0.995,
+        "mAP75": 0.995,
+        "mAP50-95": 0.863,
+        "Mask-P": 1.0,
+        "Mask-R": 0.97748,
+        "Mask-F1": 0.98861,
+        "Class-ID": 2,
+        "Box-mAP50": 0.995,
+        "Box-mAP50-95": 0.8630000000000001,
+        "Mask-mAP50": 0.995,
+        "Mask-mAP50-95": 0.8462500000000002
+      }
+    ],
+    "settings": {
+      "data": "E:\\秋招\\项目相关\\YOLO\\configs\\products_base.yaml",
+      "task": "segment",
+      "split": "val",
+      "imgsz": 640,
+      "batch": 16,
+      "device": 0,
+      "workers": 0,
+      "quantize": null,
+      "conf": 0.001,
+      "iou": 0.7,
+      "max_det": 300,
+      "augment": false,
+      "plots": true,
+      "save_json": false,
+      "overlap_mask": true,
+      "mask_ratio": 4,
+      "rect": true,
+      "fraction": 1.0
+    },
+    "test_images_evaluated": 0
+  },
+  "display_threshold": 0.25,
+  "predictions": [
+    {
+      "image_id": "holdout_val_20261004_095145_001",
+      "target_class_ids": [
+        1,
+        0,
+        2
+      ],
+      "class_ids": [
+        2,
+        0
+      ],
+      "scores": [
+        0.9317163825035095,
+        0.7226322889328003
+      ],
+      "boxes_xyxy": [
+        [
+          805.546142578125,
+          1.900543212890625,
+          1097.13916015625,
+          332.81964111328125
+        ],
+        [
+          503.2342834472656,
+          278.4471435546875,
+          807.1143798828125,
+          565.2623901367188
+        ]
+      ],
+      "prediction_count": 2,
+      "preview": "runs/eval/E1A_products_v1_seed42_best_val_20261004_132526/holdout_val_20261004_095145_001.jpg"
+    },
+    {
+      "image_id": "holdout_val_20261004_095145_002",
+      "target_class_ids": [
+        1
+      ],
+      "class_ids": [
+        1
+      ],
+      "scores": [
+        0.6468837261199951
+      ],
+      "boxes_xyxy": [
+        [
+          813.463623046875,
+          280.31439208984375,
+          1052.447509765625,
+          571.1170654296875
+        ]
+      ],
+      "prediction_count": 1,
+      "preview": "runs/eval/E1A_products_v1_seed42_best_val_20261004_132526/holdout_val_20261004_095145_002.jpg"
+    },
+    {
+      "image_id": "holdout_val_20261004_095145_003",
+      "target_class_ids": [
+        2
+      ],
+      "class_ids": [],
+      "scores": [],
+      "boxes_xyxy": [],
+      "prediction_count": 0,
+      "preview": "runs/eval/E1A_products_v1_seed42_best_val_20261004_132526/holdout_val_20261004_095145_003.jpg"
+    },
+    {
+      "image_id": "holdout_val_20261004_095145_004",
+      "target_class_ids": [
+        2,
+        1,
+        0
+      ],
+      "class_ids": [
+        2,
+        0,
+        1
+      ],
+      "scores": [
+        0.7548316121101379,
+        0.70751953125,
+        0.6165106892585754
+      ],
+      "boxes_xyxy": [
+        [
+          754.9434814453125,
+          5.7401123046875,
+          1169.589111328125,
+          416.4462890625
+        ],
+        [
+          429.7403564453125,
+          424.95880126953125,
+          522.483642578125,
+          566.8048706054688
+        ],
+        [
+          557.1089477539062,
+          246.83428955078125,
+          723.4268188476562,
+          569.7894287109375
+        ]
+      ],
+      "prediction_count": 3,
+      "preview": "runs/eval/E1A_products_v1_seed42_best_val_20261004_132526/holdout_val_20261004_095145_004.jpg"
+    },
+    {
+      "image_id": "holdout_val_20261004_095145_005",
+      "target_class_ids": [],
+      "class_ids": [],
+      "scores": [],
+      "boxes_xyxy": [],
+      "prediction_count": 0,
+      "preview": "runs/eval/E1A_products_v1_seed42_best_val_20261004_132526/holdout_val_20261004_095145_005.jpg"
+    }
+  ],
+  "save_directory": "runs/eval/E1A_products_v1_seed42_best_val_20261004_132526",
+  "limitation": "Only five validation images of the same physical packages; metrics and previews do not establish broad generalization."
+}

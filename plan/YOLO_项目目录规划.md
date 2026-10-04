@@ -4,7 +4,7 @@
 
 2026-10-03 用户正式采用三种固定包装商品方向，现已根据试标成本确认小数据首版：现有 20 张起步，轻量在线增强和预训练微调；按需要少量补拍，新增人工审核累计最多 30 张（含留出，真实总量最多 50 张），不再按 350 张收集。M2-01 已冻结 classes.json / products.json，M2-02 的 20 张已验收；见[当前操作路线](00_YOLO_分阶段推进与进度跟踪.md#small-data-route)和[标注安排](../docs/M2_商品数据与标注规范.md#small-data-plan)。沿用现有 data/desktop/ 与代码路径，后续按任务实现配置，不增加空脚本。
 
-2026-10-04 更新：M2 6/6 已完成，正式 20/5/5、30 张真实图 / 44 实例及加载契约不变。M3-03 已完成 E1 50 轮 / 150 次更新、best/last 保存重载、曲线与 val 初步评价，M3 3/6、主线 21/54；奶盒展示仍有问题，下一步 M3-05 系统分析。新增额度仍为 10/30、剩余 20，当前无需继续拍照。见[数据验收](../docs/M2_商品数据与标注规范.md#m2-05-06)与[E1 实测](../docs/M3_训练与实验规范.md#m3-03-results)。
+2026-10-04 更新：M2 6/6 已完成，正式 20/5/5、30 张真实图 / 44 实例及加载契约不变。E1 / M3-05 及接续 E1-A 增强对照已完成，M3 仍 4/6、主线 22/54。E1-A 的 val mask mAP50-95=0.7807，0.25 匹配 6/8，候选 0.1 为 8/8 / 无额外误检；52 项工程测试通过。奶盒改善、杯子略退步，下一步新权重实时预览；新增额度仍为 10/30、剩余 20，当前无需拍照。见[数据验收](../docs/M2_商品数据与标注规范.md#m2-05-06)与[增强实测](../docs/M3_训练与实验规范.md#e1a-augmentation)。
 
 本文件规划需要在你的 Windows 电脑中建立的目录与文件。2026-10-02 已完成 M0-02：必要一级目录、`configs/paths.yaml`、源码锁定清单、训练 requirements、路径解析与安装验收脚本已建立；后续数据、训练和部署脚本按任务逐步实现，表中其余文件仍是规划。实际进展见[进度跟踪](00_YOLO_分阶段推进与进度跟踪.md)。
 
@@ -171,11 +171,13 @@ Conda 环境不需要放在项目目录中。若后续使用 Git，重点版本�
 | [scripts/check_live_preview.py](../scripts/check_live_preview.py) | E0 GPU 图片与模拟摄像头 / GUI 生命周期检查，不打开真实摄像头 | M2 收尾时由 tmp 归位，字节未变；旧实测报告保留 |
 | [scripts/cleanup_project.ps1](../scripts/cleanup_project.ps1) | 默认核对精确清单；本地 -Execute 才删除可再生成或已归档文件，并核对保留文件 | 本轮已由用户执行，161 文件 / 29 空目录清理完成并通过独立复核；再次运行提示已完成，见[清理状态](../reports/maintenance/20261002_文件整理与清理清单.md#m2-cleanup) |
 | `scripts/visualize_labels.py` | 绘制标签轮廓、检查标注 | 数据阶段 |
-| [scripts/train.py](../scripts/train.py) | 按 --config 进入历史 debug 或正式 E1；--preflight 只做 GPU 前向 / 反向与验证，保存独立日志 / 报告 | M3-01～03 已验收，E1 50 轮已执行；E2/E3 支持待实现 |
-| [scripts/evaluate.py](../scripts/evaluate.py) | 完成 E1 后读取固定 val，保存每类明确区分的 box/mask AP 及 conf=0.25 预览；--check 只核对配置 | M3-03 已实际评价保存 E1，最终 test 不允许进入本入口 |
-| [app/product_experiment.py](../app/product_experiment.py)、[product_runner.py](../app/product_runner.py) | 冻结 E1 配置 / 预检查版本、数据用途和运行命名；执行 GPU 预检查及正式训练记录 | 正式 50 轮 / 150 次更新已实跑；重载模型对象判断已修复 |
+| [scripts/train.py](../scripts/train.py) | 按 --config 进入历史 debug、正式 E1 或独立 E1-A；--preflight 只做 GPU 前向 / 反向与验证，保存独立日志 / 报告 | E1 / E1-A 各完成 50 轮 / 150 更新；E2/E3 支持待实现 |
+| [scripts/evaluate.py](../scripts/evaluate.py) | 完成 E1 / E1-A 后读取同一固定 val，保存每类 box/mask AP 及 conf=0.25 预览；--check 只核对配置 | 两份保存权重已实际评价，最终 test 不允许进入本入口 |
+| [scripts/analyze_product_errors.py](../scripts/analyze_product_errors.py)、[app/product_error_analysis.py](../app/product_error_analysis.py) | 按显式配置检查 train20 / val5、低分及原始候选、原图框 / 掩膜匹配；保存紧凑总览和独立 JSON | E1 / E1-A 已分析；无训练、改标、拍摄或 test 推理，结论汇总在原 M3 文档 |
+| [app/product_experiment.py](../app/product_experiment.py)、[product_runner.py](../app/product_runner.py) | 冻结配置 / 预检查版本、数据用途和运行命名；E1-A 只允许旋转 / 缩放策略变化，保护 E1 参考证据，自动保存当次预检查快照 | 两份正式训练已实跑，原 E1 配置 / 权重 / 报告不变 |
+| [scripts/check_augmentation_control.py](../scripts/check_augmentation_control.py)、[compare_augmentation_control.py](../scripts/compare_augmentation_control.py) | 实际训练加载器检查增强和负样本；固定 val 比较 E1 / E1-A，当前同一评价实现复现指标，保存一份对照 JSON 和紧凑预览 | 60 增强视图、90/90 次实例、12 次负输入检查及对照验收通过 |
 | [app/product_trainer.py](../app/product_trainer.py)、[product_evaluation.py](../app/product_evaluation.py) | 项目内 mask 选 best 与固定 val 评价；不修改第三方源码 | 实际评价与选择规则回归通过 |
-| [tests/test_product_experiment.py](../tests/test_product_experiment.py) | mask 选 best、并列 / 失效预检查 / test 隔离 / NumPy 统计与明确 box/mask AP、带 task 的重载网络检查 | 本文件 8 项、工程总计 42 项通过 |
+| [tests/test_product_experiment.py](../tests/test_product_experiment.py)、[test_product_error_analysis.py](../tests/test_product_error_analysis.py)、[test_augmentation_control.py](../tests/test_augmentation_control.py) | mask 选 best、失效预检查、test 隔离、重载与错误匹配；对照配置漂移拒绝、增强验收和独立像素 / 标签变换一致性 | 实验规则 8 项、分析 5 项、增强对照新增 5 项；工程总计 52 项通过 |
 | `scripts/check_modified_model.py` | 检查结构、梯度、加载和导出 | 模型修改阶段 |
 | `scripts/export_onnx.py` | ONNX 导出与元数据记录 | 部署阶段 |
 | `scripts/build_engine.py` | 根据 TensorRT 版本构建 engine | 部署阶段 |
@@ -304,7 +306,7 @@ reports 是你归纳后的结论，logs 是程序直接记录的过程。训练�
 | `docs/环境安装记录.md` | 安装命令、解决过的问题 |
 | `docs/模型学习笔记.md` | 网络结构、输入输出、损失与掩膜机制 |
 | `docs/M2_商品数据与标注规范.md` | M2-01 已建立：类别、轮廓规则、人工分工与试拍清单 |
-| [docs/M3_训练与实验规范.md](../docs/M3_训练与实验规范.md) | M3-02 固定规则与历史预检查；M3-03 已训练权重、逐轮记录、val 指标 / 五图预览与下一步 |
+| [docs/M3_训练与实验规范.md](../docs/M3_训练与实验规范.md) | M3-02 固定规则与历史预检查；M3-03 权重 / 指标；M3-05 错误证据；E1-A 增强实测、权重及实时预览接续 |
 | `docs/部署学习笔记.md` | ONNX、TensorRT、预后处理与计时原理 |
 | `docs/面试讲解.md` | 项目口述、实测结果与常见追问 |
 | `docs/model_changes/` | 源码版本、修改说明、权重映射和 patch |
@@ -332,7 +334,7 @@ reports 是你归纳后的结论，logs 是程序直接记录的过程。训练�
 
 按实际任务填充：当前 20 张整理 → 轻量在线增强 / 临时按组调试划分 → 加载与短训练 → 按需补 6–10 张独立留出并冻结版本 → E1 微调与验证 → 新商品摄像头和最终 ONNX。新增采集及人工审核累计最多 30 张；E2 定向补样本选做，SE、完整独立 ONNX / TensorRT 与稳定性按依赖推进。在线增强不重复保存多套图，合成实验只保存必要预览与来源；不创建空脚本凑目录。
 
-当前正式数据与实际加载已全部验收：`python scripts/build_splits.py --formal-loading` 复查 YAML / 清单；`python scripts/check_training_data.py --formal` 重查加载与增强，不训练模型。E1 已由 `python scripts/train.py --config configs/train_baseline.yaml` 完成正式训练；权重、日志、曲线、训练前快照集中在 `runs/train/E1_products_v1_seed42` 与已有实验 JSON，val 图位于独立 `runs/eval/`。不为 E1 复制另一套训练数据或部署权重；下一步 M3-05 分析奶盒错误，见[实测与命令](../docs/M3_训练与实验规范.md#m3-03-results)。
+当前正式数据与实际加载已全部验收：`python scripts/build_splits.py --formal-loading` 复查 YAML / 清单；`python scripts/check_training_data.py --formal` 重查加载与增强，不训练模型。E1 / E1-A 的权重、曲线和快照分别集中在 `runs/train/E1_products_v1_seed42` / `E1A_products_v1_seed42`，val 图在 `runs/eval/`。分析放在各自独立 `runs/analysis/`；增强检查仅保存 3 张总览，对照另存 0.25 / 0.1 两张紧凑图和合并 JSON，没有复制另一套源图。新策略 / 配置独立保存，原 E1 证据不变。下一步 E1-A 实时预览，见[实测与命令](../docs/M3_训练与实验规范.md#e1a-augmentation)。
 
 ## 十二、在 Windows 本地建立目录的命令
 

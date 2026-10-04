@@ -340,7 +340,7 @@ python scripts/evaluate.py --run E1_products_v1_seed42
 
 GPU 预检查实际 20 张 / 3 批有限损失及反向梯度、val 5 张双入口执行通过；allocated 约 2.19 GiB、优化器更新 0 次、没有保存新权重。新增 7 项实验规则测试及原 34 项均通过，配置 / 数据 / 实现和环境核对齐备，见[M3 规范](../docs/M3_训练与实验规范.md)与[机器记录](../reports/experiments/M3-02_E1_setup.json)。默认 `scripts/train.py` 仍用历史 debug 配置；正式 E1 必须显式指定配置，E2/E3 的配置和入口适配仍待实现。
 
-接续 M3-03：训练调用 45.66 秒、allocated 约 2.39 GiB；第 50 轮选为 best，与 last 同哈希，两份重载通过。5 张 val 的 box / mask mAP50-95=0.4735 / 0.4658；conf=0.25 显示瑞幸 3、伊利 1、山姆 0，奶盒漏检与掩膜越界，三类完整展示需改善。当前 42 项工程测试通过，封存 test 未运行，先 M3-05 分析再决定训练调整或 E2，详见[E1 实测](../docs/M3_训练与实验规范.md#m3-03-results)。
+接续 M3-03：E1 完成 50 轮 / 150 次更新，训练调用 45.66 秒、allocated 约 2.39 GiB；第 50 轮选为 best，与 last 同哈希，两份重载通过。val 的 box / mask mAP50-95=0.4735 / 0.4658。M3-05 发现 conf=0.25 下训练目标 30/30、验证 4/8 匹配，奶盒分数偏低及轮廓越界。随后 E1-A 在原数据与相同预算下只强化角度 / 缩放策略，已完成 50 轮 / 150 更新，调用 45.15 秒、allocated 约 2.40 GiB，best=50、重载通过。双模型用当前同一评价实现复现指标；val box / mask mAP50-95=0.8130 / 0.7807，0.25 匹配 6/8，候选 0.1 为 8/8 / 无额外误检。奶盒改善、杯子略退步，伊利越界案例 mask IoU=0.598→0.945。52 项测试通过，M3 仍 4/6、主线 22/54；无新照片、封存 test 未运行。下一步用现有实物做 E1-A 实时预览，再决定是否少量 E2 / 基线冻结。详见[增强实测与接续](../docs/M3_训练与实验规范.md#e1a-augmentation)。
 
 ### 6.3 必须记录什么
 
@@ -724,7 +724,9 @@ FPS 与延迟分别报告；摄像头 30 FPS 的上限可能掩盖模型加速�
 | `scripts/annotate_product_drafts.py` | 提议轮廓、保留来源和审核状态；不直接把草稿当真值（待实现） |
 | `scripts/extract_frames.py` | 视频抽帧与 group_id 记录 |
 | `scripts/check_dataset.py` / `visualize_labels.py` | 标签检查与可视化 |
-| [scripts/train.py](../scripts/train.py) / [evaluate.py](../scripts/evaluate.py) | M3-03 已完成 E1 50 轮及保存权重的固定 val 评价；E2/E3 与最终 test 评价待后续 |
+| [scripts/train.py](../scripts/train.py) / [evaluate.py](../scripts/evaluate.py) | 已支持显式 E1 / E1-A 配置，两份各完成 50 轮 / 150 更新及保存权重的固定 val 评价；E2/E3 与最终 test 评价待后续 |
+| [scripts/analyze_product_errors.py](../scripts/analyze_product_errors.py) | 已对 E1 / E1-A 分别做 train20 / val5、低分候选、框 / 掩膜 IoU 和紧凑预览分析；不训练或推理封存 test |
+| [scripts/check_augmentation_control.py](../scripts/check_augmentation_control.py) / [compare_augmentation_control.py](../scripts/compare_augmentation_control.py) | 实际加载器核对增强与标签同步；保持预算 / 数据 / 评价规则一致，对照 E1 / E1-A 并保存合并验收 |
 | `scripts/export_onnx.py` / `build_engine.py` | 导出与构建 |
 | `scripts/compare_backends.py` / `benchmark.py` | 一致性与性能测试 |
 | `deploy/preprocess.py` / `postprocess.py` | 共享前后处理 |
