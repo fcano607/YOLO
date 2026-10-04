@@ -1,0 +1,27 @@
+# M5-01: export frozen B1; raw outputs only, independent postprocessing follows later.
+schema_version: 1
+purpose: frozen_product_onnx_export
+baseline: configs/baseline_products_v1.json
+baseline_receipt: reports/experiments/M3-06_products_v1_baseline.json
+onnx: artifacts/B1/best_fp32.onnx
+metadata: artifacts/B1/best_fp32.metadata.json
+reference_arrays: artifacts/B1/export_reference.npz
+report: reports/deployment/M5-01_B1_onnx_export.json
+log: logs/deployment/M5-01_B1_onnx_export.log
+cuda_profile: artifacts/B1/ort_export_smoke_profile
+export:
+  imgsz: 640
+  batch: 1
+  dynamic: false
+  quantize: 32
+  opset: 17
+  simplify: false
+  nms: false
+  device: '0'
+smoke_image_ids:
+  - holdout_val_20261004_095145_001
+  - holdout_val_20261004_095145_004
+  - holdout_val_20261004_095145_005
+comparison:
+  atol: 0.001
+  rtol: 0.0001

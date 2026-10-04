@@ -4,7 +4,7 @@
 
 2026-10-03 用户正式采用三种固定包装商品方向，现已根据试标成本确认小数据首版：现有 20 张起步，轻量在线增强和预训练微调；按需要少量补拍，新增人工审核累计最多 30 张（含留出，真实总量最多 50 张），不再按 350 张收集。M2-01 已冻结 classes.json / products.json，M2-02 的 20 张已验收；见[当前操作路线](00_YOLO_分阶段推进与进度跟踪.md#small-data-route)和[标注安排](../docs/M2_商品数据与标注规范.md#small-data-plan)。沿用现有 data/desktop/ 与代码路径，后续按任务实现配置，不增加空脚本。
 
-2026-10-04 更新：M2 6/6 已完成，正式 20/5/5、30 张真实图 / 44 实例及加载契约不变。E1 / M3-05 / E1-A、M7-01 及 M3-06 B1 冻结已验收，M3 5/6、M7 1/6、主线 24/54，61 项测试通过。B1 采用 E1-A best，val mask mAP50-95=0.7807，实时默认 0.25；现场误检减少、三类基本能检出，剩余误检 / 瑞幸弱点保留。下一步商品 ONNX，暂不补拍 / E2；新增额度仍 10/30。见[B1 档案与复核入口](../docs/M3_训练与实验规范.md#m3-06-baseline)、[数据验收](../docs/M2_商品数据与标注规范.md#m2-05-06)与[摄像头实测](../docs/M0_环境与模型使用手册.md#live-products)。
+2026-10-04 更新：正式 20/5/5、30 张真实图 / 44 实例及加载契约不变。B1 冻结与 M5-01 商品 ONNX 导出 / 三图 CPU、CUDA raw 对照已验收，M2 6/6、M3 5/6、M5 1/6、M7 1/6、主线 25/54，65 项测试通过。模型 / 元数据 / 集中参考数组在 artifacts/B1，小型机器记录在 reports/deployment；原 B1 / 数据不变。下一步 M5-02 共享预处理，暂不补拍 / E2；新增额度仍 10/30。见[M5 文件与接口](../docs/M5_ONNX独立部署与接口说明.md)、[B1 档案](../docs/M3_训练与实验规范.md#m3-06-baseline)。
 
 本文件规划需要在你的 Windows 电脑中建立的目录与文件。2026-10-02 已完成 M0-02：必要一级目录、`configs/paths.yaml`、源码锁定清单、训练 requirements、路径解析与安装验收脚本已建立；后续数据、训练和部署脚本按任务逐步实现，表中其余文件仍是规划。实际进展见[进度跟踪](00_YOLO_分阶段推进与进度跟踪.md)。
 
@@ -181,7 +181,7 @@ Conda 环境不需要放在项目目录中。若后续使用 Git，重点版本�
 | [app/product_trainer.py](../app/product_trainer.py)、[product_evaluation.py](../app/product_evaluation.py) | 项目内 mask 选 best 与固定 val 评价；不修改第三方源码 | 实际评价与选择规则回归通过 |
 | [tests/test_product_experiment.py](../tests/test_product_experiment.py)、[test_product_error_analysis.py](../tests/test_product_error_analysis.py)、[test_augmentation_control.py](../tests/test_augmentation_control.py) | mask 选 best、失效预检查、test 隔离、重载与错误匹配；对照配置漂移拒绝、增强验收和独立像素 / 标签变换一致性 | 实验规则 8 项、分析 5 项、增强对照新增 5 项；工程总计 52 项通过 |
 | `scripts/check_modified_model.py` | 检查结构、梯度、加载和导出 | 模型修改阶段 |
-| `scripts/export_onnx.py` | ONNX 导出与元数据记录 | 部署阶段 |
+| [scripts/export_onnx.py](../scripts/export_onnx.py)、[tests/test_onnx_export.py](../tests/test_onnx_export.py) | 冻结 B1 导出、图接口、三图 raw 检查与元数据；--check 只读，拒绝覆盖 | M5-01 已验收，新增 4 项测试、全项目 65 项通过 |
 | `scripts/build_engine.py` | 根据 TensorRT 版本构建 engine | 部署阶段 |
 | `scripts/compare_backends.py` | 输入、raw 输出、框与掩膜一致性检查 | 部署阶段 |
 | `scripts/benchmark.py` | 固定输入的分段计时和结果导出 | 部署阶段 |
@@ -194,6 +194,7 @@ Conda 环境不需要放在项目目录中。若后续使用 Git，重点版本�
 | --- | --- |
 | `deploy/__init__.py` | 将目录作为 Python 包 |
 | `deploy/paths.py` | 根据项目根目录统一解析路径 |
+| [deploy/onnx_contract.py](../deploy/onnx_contract.py) | M5-01 已实现：静态 FP32 / 三类 / 无 NMS 的图接口检查、val-only 来源和 raw 数值比较 |
 | `deploy/preprocess.py` | RGB 转换、letterbox、归一化与张量布局 |
 | `deploy/postprocess.py` | 置信度筛选、NMS、框还原、掩膜还原 |
 | `deploy/results.py` | 统一结果对象：框、类别、分数、掩膜、耗时 |
@@ -338,7 +339,7 @@ reports 是你归纳后的结论，logs 是程序直接记录的过程。训练�
 
 按实际任务填充：当前 20 张整理 → 轻量在线增强 / 临时按组调试划分 → 加载与短训练 → 按需补 6–10 张独立留出并冻结版本 → E1 微调与验证 → 新商品摄像头和最终 ONNX。新增采集及人工审核累计最多 30 张；E2 定向补样本选做，SE、完整独立 ONNX / TensorRT 与稳定性按依赖推进。在线增强不重复保存多套图，合成实验只保存必要预览与来源；不创建空脚本凑目录。
 
-当前正式数据与实际加载已全部验收。E1 / E1-A 权重、曲线和快照保留各自 runs/train，val 图在 runs/eval，分析在独立 runs/analysis；没有复制另一套源图，原 E1 证据不变。M7-01 的配置在 configs/live_products.yaml，预检查 / 两轮会话汇总见 [M7-01_product_camera.json](../reports/application/M7-01_product_camera.json)，操作见[第 3.5 节](../docs/M0_环境与模型使用手册.md#live-products)。摄像头未保存照片 / 视频。B1 已冻结于 configs/baseline_products_v1.json，M3-06 验收和只读复核入口已建立；下一步商品 ONNX。
+当前正式数据与实际加载已全部验收。E1 / E1-A 权重、曲线和快照保留各自 runs/train，原图 / 标签 / B1 证据不变。M7-01 配置和现场记录保留原位置，摄像头仍用 PyTorch。M5-01 已由 configs/export_products.yaml 导出商品模型及元数据到 artifacts/B1；验收在 reports/deployment/M5-01_B1_onnx_export.json，接口见[M5 文档](../docs/M5_ONNX独立部署与接口说明.md)。只保留一份集中参考数组和一次 GPU profile，不复制源图或 PT 权重；下一步 M5-02。
 
 ## 十二、在 Windows 本地建立目录的命令
 
