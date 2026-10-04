@@ -1,0 +1,1052 @@
+{
+  "schema_version": 1,
+  "task": "M5-02",
+  "status": "completed",
+  "completed_at": "2026-10-04T17:10:39.912599+08:00",
+  "baseline_id": "products-v1_E1A_seed42_B1",
+  "export_receipt": {
+    "path": "reports/deployment/M5-01_B1_onnx_export.json",
+    "sha256": "6969a145424072172033ae610533bdef500e7a25f766ef6b5287f63ebdca1aaf"
+  },
+  "model_metadata": {
+    "path": "artifacts/B1/best_fp32.metadata.json",
+    "sha256": "d103afd394a4acc808a85f29601d4add8c01befbf452209f4877e78e21ffb2f8"
+  },
+  "reference": {
+    "source": {
+      "version": "8.4.171",
+      "commit": "86f5c8c401a630da651d321e691ab0af540812cf",
+      "module": "E:\\秋招\\项目相关\\YOLO\\third_party\\ultralytics\\ultralytics\\__init__.py"
+    },
+    "model_loaded": false,
+    "methods": [
+      "BasePredictor.preprocess: rect=False, fp16=False, CPU",
+      "LetterBox.get_params: static centered 640x640"
+    ],
+    "code": [
+      {
+        "path": "third_party/ultralytics/ultralytics/data/augment.py",
+        "sha256": "c8375d6607593bd23a2b7436bd07595e01bf284f0b70ecf8bb0f21ccbed7dce9"
+      },
+      {
+        "path": "third_party/ultralytics/ultralytics/engine/predictor.py",
+        "sha256": "d83f14bf1130c3434e1d3a8c677e404c782baa5c920963ad9ddb001f68c3bfa4"
+      }
+    ]
+  },
+  "implementation_sha256": {
+    "deploy/preprocess.py": "77f6d87717cfe8f8f11ab18bebc671557403463ed28b530be6e8d467c8dcefe2",
+    "scripts/check_preprocess.py": "350d36ac9824d97c563795773802aa1c70037e1d7cea119373fc665d66364d50",
+    "tests/test_preprocess.py": "7e93fe4ae28678f87d26108cb6ca6a78976e4d0b7f557097d4346bbb318b26d8"
+  },
+  "guarded_files": {
+    "data/raw/camera/frames/pilot_20261003130657/pilot_20261003130657_001.png": "df00cbe77da124a8aa8582744b9c6d02a04f1f7dd950cd404176ef425de7dfd2",
+    "data/raw/camera/annotations/reviewed/pilot_20261003130657_001.json": "5f5f3d5dc115bde0b48bf2e8198ce3163fb4e63ba2070993ad46448aab089e2a",
+    "data/raw/camera/annotations/reviewed/pilot_20261003130657_001.txt": "c42ee6ace67f20c6a55e06ec62a4e3a48fc9fbc3f0065546fa780e7ef8bb1926",
+    "data/raw/camera/annotations/drafts/pilot_20261003130657_001.json": "33ac45b3da4255ce11a0fe2fe082821a00fc69d95d3be0bb0749df6a5ca51b10",
+    "data/raw/camera/frames/pilot_20261003130657/pilot_20261003130657_002.png": "d556977fb908d79948cc851fa868e805b60a8734550bd6410fef06d6282bc25c",
+    "data/raw/camera/annotations/reviewed/pilot_20261003130657_002.json": "d63d9db6f1ebf9d6bafc9be28102e687e8717ad6a5ece7813a7aa15738380f0e",
+    "data/raw/camera/annotations/reviewed/pilot_20261003130657_002.txt": "ceb00ff7ceeeb10ec33a7661756ea4ad5459c9db8d539e5bf06fff4d01839342",
+    "data/raw/camera/annotations/drafts/pilot_20261003130657_002.json": "62aa8ac0c38d9fc56a19ef34bffeeeced02be0aa41b2dff9790888341b3dcb54",
+    "data/raw/camera/frames/pilot_20261003130657/pilot_20261003130657_003.png": "279bc363919a579ad3ecb65279f43fcb7ca8772fddc56b7a1cad23f421843f27",
+    "data/raw/camera/annotations/reviewed/pilot_20261003130657_003.json": "91da0c0880bf66b38050f0b927086ecf4a6af08d22e2033b495656bff43d3273",
+    "data/raw/camera/annotations/reviewed/pilot_20261003130657_003.txt": "70375fc19fe645018ea3a72acd0e6f801776750e23ceec5b464e18eda765d584",
+    "data/raw/camera/annotations/drafts/pilot_20261003130657_003.json": "f6482c74c82f744b56087a74588bf494ec0fb084b7953c82ac07d46906efca41",
+    "data/raw/camera/frames/pilot_20261003130657/pilot_20261003130657_004.png": "2107fafb6db60b75399f256767085ccc1a202d98dfec0979a995006191c258a2",
+    "data/raw/camera/annotations/reviewed/pilot_20261003130657_004.json": "cbd1a9f7e507a6c6583cf2e66622c65d6e568d46de561f7ec2723f8c2d46cac3",
+    "data/raw/camera/annotations/reviewed/pilot_20261003130657_004.txt": "5f17b98157ecbf406348207c62e6f982e9b8d365554ec5ac75bee57d2c1de62c",
+    "data/raw/camera/annotations/drafts/pilot_20261003130657_004.json": "9cdc2b0b28e078e547aa1ff0c57ef7dd291e0d2820bd7621f59c728ef1a48570",
+    "data/raw/camera/frames/pilot_20261003130657/pilot_20261003130657_005.png": "6b6cddf93a5faf49862020f1a00a34468fde5e7a94729af8c0e22304a9fd241c",
+    "data/raw/camera/annotations/reviewed/pilot_20261003130657_005.json": "86800444ca73d0c79bfd9055a38194c487f5e3d9b2d9d57acc56b4ea98a3391f",
+    "data/raw/camera/annotations/reviewed/pilot_20261003130657_005.txt": "f40b48d8564cb10e90a94d7e1bab0e92e25c78568096bf1ec08c2947e547bb56",
+    "data/raw/camera/annotations/drafts/pilot_20261003130657_005.json": "7bd8fbbbacfd28a76f0d8277c0eeebf26de1a6a684a68a6602c3d7aeff1c8631",
+    "data/raw/camera/frames/pilot_20261003130657/pilot_20261003130657_006.png": "ef87ee98df4d41b3429f761914a27dc40e4006d410e525fe5103a62c00cc40c1",
+    "data/raw/camera/annotations/reviewed/pilot_20261003130657_006.json": "f177ee55e67f5c794643bd92c98b747d125de74740a6ead23b1fdb96fba774ac",
+    "data/raw/camera/annotations/reviewed/pilot_20261003130657_006.txt": "a06d5a966ae7bc1be6f6b607467c1d7ff256b9818606f91f2564e281f0ea59fd",
+    "data/raw/camera/annotations/drafts/pilot_20261003130657_006.json": "19144ba678da9a5f4d074ca7823136754c4279659d1c48e31df18729612e8cee",
+    "data/raw/camera/frames/pilot_20261003130657_more/pilot_20261003130657_more_001.png": "78c03068d894a01e6623a9463e8297fef804e5738a8b41f8df04b70a6ed5fe53",
+    "data/raw/camera/annotations/reviewed/pilot_20261003130657_more_001.json": "7f3ee3b0bc370cb1bf0dbc2d8ee1a49f3cee6d589f2941b98d55b65965bcaab9",
+    "data/raw/camera/annotations/reviewed/pilot_20261003130657_more_001.txt": "f77307dec415e90800659ec0b0b0d9bcc544dca5591cb7d1c64669f9702b4efa",
+    "data/raw/camera/annotations/drafts/pilot_20261003130657_more_001.json": "ce46dfeecf17de59d1b4bca9911c185d481fdfad0598d2ff0af8b7f29e1e87fc",
+    "data/raw/camera/frames/pilot_20261003130657_more/pilot_20261003130657_more_002.png": "b5f0fd54ae58770aee7ca1a84271d39b705288ebbe42e5315f8deb0d2124e569",
+    "data/raw/camera/annotations/reviewed/pilot_20261003130657_more_002.json": "bedd2c1ca6e71d20508132e21fd77e9af05c993df847d65854062fd6f73ce32a",
+    "data/raw/camera/annotations/reviewed/pilot_20261003130657_more_002.txt": "7cd9be67563c2ef97a0c8eb08a76cd30f14aeb3e8c1a4b746e22c98ad0a83f2e",
+    "data/raw/camera/annotations/drafts/pilot_20261003130657_more_002.json": "12fd546794f5b98230879be180dcecc9ab498e4ee1cef2025fcb0cb88c38516e",
+    "data/raw/camera/frames/pilot_20261003130657_more/pilot_20261003130657_more_003.png": "3475390f4a7910637c1f5a530c0c08e0b3a5f3d78ab78c7e47533ab314ca8d7a",
+    "data/raw/camera/annotations/reviewed/pilot_20261003130657_more_003.json": "af9a930d2af4f906f0e5d9316aa143756e0673003d3f3e168fdd7def47650a0d",
+    "data/raw/camera/annotations/reviewed/pilot_20261003130657_more_003.txt": "d2df040c09d532c24657fac3cfaa999dc477bca5cf493bc5f5bb396e92594a9d",
+    "data/raw/camera/annotations/drafts/pilot_20261003130657_more_003.json": "00348dbed9a18d854ec47a77e2a7f610adfa83b37a4e2e629cfc13427ede700c",
+    "data/raw/camera/frames/pilot_20261003130657_more/pilot_20261003130657_more_004.png": "fcc60fde6f442be3544cf959514d8daffb978336fe4b4adf640f1e83fd1caba4",
+    "data/raw/camera/annotations/reviewed/pilot_20261003130657_more_004.json": "845870d92dac909d583edb1f3b5753e8eda70e9b6385c09289e6a0914ae4f003",
+    "data/raw/camera/annotations/reviewed/pilot_20261003130657_more_004.txt": "321791f00a7789ca17c731d3ecee3d0ece5005b6ada1bdb87cd098cb9742b3a8",
+    "data/raw/camera/annotations/drafts/pilot_20261003130657_more_004.json": "3041449858bd31aeb206f15c47ef21684a448a3f3b0a3fe6ec1974ceba98106a",
+    "data/raw/camera/frames/pilot_20261003130657_more/pilot_20261003130657_more_005.png": "8f3b76bda6518d99d2785b7fce3008fef0600709e01a38c9e8b43152d9b29a9d",
+    "data/raw/camera/annotations/reviewed/pilot_20261003130657_more_005.json": "227437b5ca79241d86160d97236c758fe6f451504f89eb078a4563e53c83c072",
+    "data/raw/camera/annotations/reviewed/pilot_20261003130657_more_005.txt": "e680b628d8fef8571982174b4511aa9be32ca9a0d2ead043358a45220b27e6f9",
+    "data/raw/camera/annotations/drafts/pilot_20261003130657_more_005.json": "0592ff6f0115434b8fcd8d1f67b741d7addbd559dabbec814df758cd1332878a",
+    "data/raw/camera/frames/pilot_20261003130657_more/pilot_20261003130657_more_006.png": "ea4adfaa1c3b1223209ebe7f7c1e3ae4e7973097c4712375113ee6e6abe57ddb",
+    "data/raw/camera/annotations/reviewed/pilot_20261003130657_more_006.json": "29ca67442fbe7cfe775b6e3027655ef325c67e17c6749e967a53a978dff82949",
+    "data/raw/camera/annotations/reviewed/pilot_20261003130657_more_006.txt": "24634019251c960499d118bc9790061bad5c15dc2eeeb4e6a3de708b63c029a7",
+    "data/raw/camera/annotations/drafts/pilot_20261003130657_more_006.json": "b6f3248b4231c9a3d5d285180719bafad240c4e14de661aed55527da1d12bd66",
+    "data/raw/camera/frames/pilot_20261003130657_more/pilot_20261003130657_more_007.png": "e3f0e6a4c1de3f54f23e9f4641b78e97d9ad763201c200a82b39672075d55492",
+    "data/raw/camera/annotations/reviewed/pilot_20261003130657_more_007.json": "a70fb025fcc1a90cabd6761118023aef6ece29f79604b351b044f0ed839fb591",
+    "data/raw/camera/annotations/reviewed/pilot_20261003130657_more_007.txt": "dc92d4ba6a9f2cba00e6d4bcb889d7d3dc53a6a740de177a6a076d45c11620f7",
+    "data/raw/camera/annotations/drafts/pilot_20261003130657_more_007.json": "c940179fc72b1ce489ef6cc23db07b496092a3d21a42ed2063785a3d5ec1494e",
+    "data/raw/camera/frames/pilot_20261003130657_more/pilot_20261003130657_more_008.png": "ea46bb856876541d6a7418d616ce73d15cf479d807c0f0613267497077446872",
+    "data/raw/camera/annotations/reviewed/pilot_20261003130657_more_008.json": "33a70d831e2cde870f7229faea8e3cdbf690a7ea0cedbc87e23c48ca9db0d328",
+    "data/raw/camera/annotations/reviewed/pilot_20261003130657_more_008.txt": "83bd2b17a6b0b39db3a7455c50caa6989937000d1344af72c8981d548eb3cd9a",
+    "data/raw/camera/annotations/drafts/pilot_20261003130657_more_008.json": "b5fa293861c268365a59f5850e584ea3c6adc331523026ead248f43ca8482ff1",
+    "data/raw/camera/frames/pilot_20261003130657_more/pilot_20261003130657_more_009.png": "006f95e140472fede9a1cd431b2ac64ebdfd6233ca2a2b5a970daf03a5279335",
+    "data/raw/camera/annotations/reviewed/pilot_20261003130657_more_009.json": "49aa166879ca732d42b3222002a51f3cdb85957b11685219a4534d43e8f168a2",
+    "data/raw/camera/annotations/reviewed/pilot_20261003130657_more_009.txt": "d40c1e2b25efe57f71af09850047ac163348a3857800c9f3b6e515c28a73c822",
+    "data/raw/camera/annotations/drafts/pilot_20261003130657_more_009.json": "a039e491b984f16d9c7c07916163e692f87d16203ed9a5e3be5c357fe4a7310b",
+    "data/raw/camera/frames/pilot_20261003130657_more/pilot_20261003130657_more_010.png": "b6680e60c93c9073bed437966c2775673c6edf0f0039e66c5e704a1af596e335",
+    "data/raw/camera/annotations/reviewed/pilot_20261003130657_more_010.json": "39df3b1cff8b56f2a0288d3133b6213b77a7880944d250b25cae278b2cc746ac",
+    "data/raw/camera/annotations/reviewed/pilot_20261003130657_more_010.txt": "1c0cd3292b303c9e5df2ae2df3d3e7b2f570f45359e48889c37bcfc48ab2718f",
+    "data/raw/camera/annotations/drafts/pilot_20261003130657_more_010.json": "8851dfde20e2215238f6a394c4e84809e9f8227fec2bc7a52b4115a7a1de4739",
+    "data/raw/camera/frames/pilot_20261003130657_more/pilot_20261003130657_more_011.png": "98472b6d8bb4081a2bbfc3a6b097fdcd7c0cd778a487c7bde74e98719b584d87",
+    "data/raw/camera/annotations/reviewed/pilot_20261003130657_more_011.json": "30df45c6676008e213c74c4c9b15a44ea0d6339edf29ad38c2a793ca39641a26",
+    "data/raw/camera/annotations/reviewed/pilot_20261003130657_more_011.txt": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855",
+    "data/raw/camera/annotations/drafts/pilot_20261003130657_more_011.json": "de74dcb978fd07f9d438387dc8efdf99adab641b608c41f2e7bf5a9a6d4bcd37",
+    "data/raw/camera/frames/pilot_20261003130657_more/pilot_20261003130657_more_012.png": "19bab5e34308797a5ef2b9e4835118a00adc3cc2448fa1b471ed99dd2287bc98",
+    "data/raw/camera/annotations/reviewed/pilot_20261003130657_more_012.json": "7929fe5be0a840052bd0add5bf38f4d28bd84c9133950a3f20beb415e852af4c",
+    "data/raw/camera/annotations/reviewed/pilot_20261003130657_more_012.txt": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855",
+    "data/raw/camera/annotations/drafts/pilot_20261003130657_more_012.json": "0c4a61f3ffa455a46270e7fedad8bbe78c76189ca3d8cfa5422fa0af8db1589a",
+    "data/raw/camera/frames/pilot_20261003130657_more/pilot_20261003130657_more_013.png": "f4406b9b6b1aeaed84e8ae44460b8b72aa57a8da830a6a228393b04b3a669f2c",
+    "data/raw/camera/annotations/reviewed/pilot_20261003130657_more_013.json": "db19abc04c183e4af648e225b0f7c1ce638a3f8f26696cdac9045a29fc4429d7",
+    "data/raw/camera/annotations/reviewed/pilot_20261003130657_more_013.txt": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855",
+    "data/raw/camera/annotations/drafts/pilot_20261003130657_more_013.json": "aa5059509b6ef675222b7306749025e904074a5b7b3dd10654dbe9ab87d45126",
+    "data/raw/camera/frames/pilot_20261003130657_more/pilot_20261003130657_more_014.png": "d90b01545a3f1c7ff094ad39425fce4f07b7a949d23c568aed1aa120b07569f7",
+    "data/raw/camera/annotations/reviewed/pilot_20261003130657_more_014.json": "604457d73a208692c7d491dff17a892e71298064304b32ea28a1eecb785a433b",
+    "data/raw/camera/annotations/reviewed/pilot_20261003130657_more_014.txt": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855",
+    "data/raw/camera/annotations/drafts/pilot_20261003130657_more_014.json": "a3897736836887c87cdc3598924c0a4c6e3c59939b3bc8a0c6e7f3fe86f5a1df",
+    "data/raw/camera/frames/holdout_val_20261004_095145/holdout_val_20261004_095145_001.png": "33d0708d6b3e76be465e637ead78ed3356ed0f95f94f609a8964d200d618363c",
+    "data/raw/camera/annotations/reviewed/holdout_val_20261004_095145_001.json": "7715fecbac6f89de6102b5457e1975d7270861d110b99c148ef83aecae1d3753",
+    "data/raw/camera/annotations/reviewed/holdout_val_20261004_095145_001.txt": "dc41ff8e70488849871744560b855a455ff0846903c3910fe8b2b5d751e30a11",
+    "data/raw/camera/annotations/drafts/holdout_val_20261004_095145_001.json": "860961a72daae63328f9f28f8ec18b9949e42216f9f220a7d8c825008c8fc997",
+    "data/raw/camera/frames/holdout_val_20261004_095145/holdout_val_20261004_095145_002.png": "f06041c9e302b040b2fd76d44b6d0acc02261d7b032be805dab231d42f9e9cdf",
+    "data/raw/camera/annotations/reviewed/holdout_val_20261004_095145_002.json": "73f87e4746814dcd0d59b1ebdf9e075b2cb45b8f743398a5d6061c9e5ed2a7fb",
+    "data/raw/camera/annotations/reviewed/holdout_val_20261004_095145_002.txt": "92b241fe34ec02dbc95bce70f8b111fff4622379ae281035dbb13ed36337e759",
+    "data/raw/camera/annotations/drafts/holdout_val_20261004_095145_002.json": "f4d7f99b7a1082b3f788af9da1abd2fc7a254576779b221f10b33f9f27c00599",
+    "data/raw/camera/frames/holdout_val_20261004_095145/holdout_val_20261004_095145_003.png": "2615de716a615e0803465e1ec2a4648ad1d27ecf26d06c597896115d5d6e471a",
+    "data/raw/camera/annotations/reviewed/holdout_val_20261004_095145_003.json": "f84545a200747133c4682ea13c36dba603da8a347fec5c6f70f2693b44c1d14b",
+    "data/raw/camera/annotations/reviewed/holdout_val_20261004_095145_003.txt": "cf9bf266c6183e959c23f26cc00ca94ddd66d26cfefa55e8525ce3f7956d6c11",
+    "data/raw/camera/annotations/drafts/holdout_val_20261004_095145_003.json": "a8b7c28046e1585cd10bcb65b3869c78d94ec632d97a81bf757cf1aceae9b00b",
+    "data/raw/camera/frames/holdout_val_20261004_095145/holdout_val_20261004_095145_004.png": "2835e2122db3029d97307356ad7e020467647a2d23e33fc281dbb15dae90801a",
+    "data/raw/camera/annotations/reviewed/holdout_val_20261004_095145_004.json": "3ae1c236fdd6758cf94a97526f142ce4b09bcc27afbf12e35107cf440fb7cacf",
+    "data/raw/camera/annotations/reviewed/holdout_val_20261004_095145_004.txt": "cf5feee17bd1c98b8eee0bf7c7891cf6de600fe31c9326b1239c3b184312f390",
+    "data/raw/camera/annotations/drafts/holdout_val_20261004_095145_004.json": "ed4e6ae9e342dde4296639dd8a489fdc1149db419d7764392dc401d8643891e1",
+    "data/raw/camera/frames/holdout_val_20261004_095145/holdout_val_20261004_095145_005.png": "676d5401f5cf463637cc344ae56e0eaaed7f011edd4ee6fa9d72aa9a3b544d5c",
+    "data/raw/camera/annotations/reviewed/holdout_val_20261004_095145_005.json": "cfda79ca9ec266abee55474378d4651718f60460cbf2fed78da3df5330b5e83a",
+    "data/raw/camera/annotations/reviewed/holdout_val_20261004_095145_005.txt": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855",
+    "data/raw/camera/annotations/drafts/holdout_val_20261004_095145_005.json": "29e128065e2c99f6a2e65328dfb161eb04ed295d2b1ed4caea1ace77ede7bf3f",
+    "data/raw/camera/frames/holdout_test_20261004_095145/holdout_test_20261004_095145_001.png": "eb0357392f51c7b338f528dd76be49221050e639301eebaaa854ef4b8068863b",
+    "data/raw/camera/annotations/reviewed/holdout_test_20261004_095145_001.json": "64448d7887089da61784619145adb4e14a1d3f75003bb446666586c21163d72a",
+    "data/raw/camera/annotations/reviewed/holdout_test_20261004_095145_001.txt": "256cec130643bebe21da4f11daed2fd17cdd83d411fb610b39902799f31a31a0",
+    "data/raw/camera/annotations/drafts/holdout_test_20261004_095145_001.json": "9244276e23dbb3d605967a2d6ad1fe92124598078c8ff7b4fbcfb4b0367b2f3d",
+    "data/raw/camera/frames/holdout_test_20261004_095145/holdout_test_20261004_095145_002.png": "67619dfe947b8b6c867a7a2753984fd2fde800b92a2636828aa4235c1a4f523c",
+    "data/raw/camera/annotations/reviewed/holdout_test_20261004_095145_002.json": "4602b10b01e9d25b6e7f46490550807cd1cb6b6eb8c1d511b3032381b02654f4",
+    "data/raw/camera/annotations/reviewed/holdout_test_20261004_095145_002.txt": "2b6c88c81e15e1026bf25c738b9101d6c9b40e8fed87ac748eed9683546ec893",
+    "data/raw/camera/annotations/drafts/holdout_test_20261004_095145_002.json": "5c91f143c30fe6b853af8d1854230d412ee1606b2537bc3e02477c4dd02dcdbd",
+    "data/raw/camera/frames/holdout_test_20261004_095145/holdout_test_20261004_095145_003.png": "b96afe6782628877aba86b4e5ef0a9422a6dfe33fd3f680ef7d9c22734f60590",
+    "data/raw/camera/annotations/reviewed/holdout_test_20261004_095145_003.json": "b196b505db3fd7de2738d9030b19bd5c90768987bd102a6ac5a32d58d8f4113b",
+    "data/raw/camera/annotations/reviewed/holdout_test_20261004_095145_003.txt": "23943504c82c6f104493173292d3dc127f4f0e7d6f9db6a5d15037cd05b74c23",
+    "data/raw/camera/annotations/drafts/holdout_test_20261004_095145_003.json": "80c2e5de3fb58504b93ed43054197324c1c70d4f2813f59bb07e374e35e71d74",
+    "data/raw/camera/frames/holdout_test_20261004_095145/holdout_test_20261004_095145_004.png": "3e25966e5bba76bb05369cc4377395e776527b140e4a12352b5dbf949b7eaeee",
+    "data/raw/camera/annotations/reviewed/holdout_test_20261004_095145_004.json": "bbf8211d8b814dc7ce148ba54adffb892e5982db287718bcb1e05ebfd6df7f36",
+    "data/raw/camera/annotations/reviewed/holdout_test_20261004_095145_004.txt": "a6245ed8f1c31bbb7c232e519bffde601bfbbd6326296ef06115bf735be538f6",
+    "data/raw/camera/annotations/drafts/holdout_test_20261004_095145_004.json": "91a951095305555918bd6a25f263b0773afe32992154241acd115f4e8b2e964e",
+    "data/raw/camera/frames/holdout_test_20261004_095145/holdout_test_20261004_095145_005.png": "851b07c8f54cf6a2b32607bd2595181fda4ffd6b00c9f7d4eb458871ae4d52ee",
+    "data/raw/camera/annotations/reviewed/holdout_test_20261004_095145_005.json": "6ad64db7034d0fd39efcbd1e70f1085cca62ee7db4148c71fa06b2afade7337e",
+    "data/raw/camera/annotations/reviewed/holdout_test_20261004_095145_005.txt": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855",
+    "data/raw/camera/annotations/drafts/holdout_test_20261004_095145_005.json": "04cb440370729cca063b2a8a34f4fa1561f23097214d81bd1959a5aa94c62505",
+    "configs/train_augment_control.yaml": "77b48d3cdf6949b7ebb17c20101e5690f6d148bb039a6b7a8c496e30bacf053a",
+    "configs/products_base.yaml": "10c150fb03f32af322ee617815ae286ff878db8efbd75257409d7180f15d6e88",
+    "data/desktop/metadata/products-v1_loading.json": "33beedbf508af00a51457b926064ad302d68a378220100ea4d7e2ad98b50ec10",
+    "reports/data/M2-05_06_products-v1.json": "a6c38dce7d599dfe3d9699d3b781ada6cfaa621017935fa0c901af778c41bbfc",
+    "configs/augment_products_e1a.yaml": "c677882308bd9f6704dc514a8788578b566a27cf16fba57d08057e64a99275d6",
+    "artifacts/pretrained/yolo11n-seg.pt": "55ed65c56c91713d23e8402371c6c49a6fd84f257f7dce452e8d70e41dcbe152",
+    "data/desktop/splits/products-v1.json": "a205b2e54b7c658ee6230d3b7c805be2b205a280110d6da454beee1274f283b5",
+    "configs/source-lock.json": "6cd235d218c22f784703cc92b0608c5ca6b68507454427c62ab655c4886e5323",
+    "configs/e0.yaml": "3cfaf7a89a6db4ee21c001bd0ecebbdc3e6f8e61e20e4173b29b618297bb7a8f",
+    "environment.yml": "689855ac842d1f539644a5d100b3134e1cd12c653e542602fc98caf1885a9b25",
+    "configs/constraints-runtime.txt": "6a75c47bd1264298fea2915b3d8bd053e37cc19eb9d96c3d601362c93f18986e",
+    "data/desktop/splits/train_base.txt": "278e0e4b6b64377b2d39153473dc3f8e7412546ce3d69ab24b3eb4ddc49cf05a",
+    "data/desktop/splits/val_all.txt": "8448d5aac35f6f0406296976ce7a9a58bc0117ba4260e8e564bd16527cbcbbc2",
+    "data/desktop/splits/test_all.txt": "6ec7f95136fff7b2cd7b72464f0204a7e22b3da8fac1624d05d387b6ea5df12f",
+    "configs/train_baseline.yaml": "9665da4550db49e70ae6fb510ef579abb24558e29df7bd53f53c8aaed119b622",
+    "reports/experiments/E1_products_v1_seed42.json": "20ef742ba99164a697b0c00a6358935190234b2268b75bfa6c5ba1cbf3f727b2",
+    "reports/experiments/E1_products_v1_seed42_best_val_20261004_123032.json": "6813483e15744cf461b43b8d5ac0a21d4a9c06ffaaf39f2547ad03a014755c66",
+    "reports/experiments/M3-05_E1_products_v1_seed42_20261004_125938.json": "a4aa7c233984876ef25031b13e7e271428e86f3bbc2af469ce5b0d4e0ed13d40",
+    "runs/train/E1_products_v1_seed42/weights/best.pt": "df214883028fc4cb6d70e4f34176d1366d959a57f23d7d9587d564e7397e7cff",
+    "runs/train/E1_products_v1_seed42/weights/last.pt": "df214883028fc4cb6d70e4f34176d1366d959a57f23d7d9587d564e7397e7cff",
+    "configs/augment_products.yaml": "0f6042fad1ae0d497097dd5b86fc2ece96106c794bbe954ecb24e5fa1d331c4d",
+    "reports/experiments/E1A_augmentation_precheck.json": "96b8c3167e9966ecc05e50ecb4c0cf784115ecbd2095566a578d699af2466970",
+    "data/desktop/images/debug-v1/val/pilot_20261003130657_001.png": "df00cbe77da124a8aa8582744b9c6d02a04f1f7dd950cd404176ef425de7dfd2",
+    "data/desktop/labels/debug-v1/val/pilot_20261003130657_001.txt": "c42ee6ace67f20c6a55e06ec62a4e3a48fc9fbc3f0065546fa780e7ef8bb1926",
+    "data/desktop/images/debug-v1/val/pilot_20261003130657_002.png": "d556977fb908d79948cc851fa868e805b60a8734550bd6410fef06d6282bc25c",
+    "data/desktop/labels/debug-v1/val/pilot_20261003130657_002.txt": "ceb00ff7ceeeb10ec33a7661756ea4ad5459c9db8d539e5bf06fff4d01839342",
+    "data/desktop/images/debug-v1/val/pilot_20261003130657_003.png": "279bc363919a579ad3ecb65279f43fcb7ca8772fddc56b7a1cad23f421843f27",
+    "data/desktop/labels/debug-v1/val/pilot_20261003130657_003.txt": "70375fc19fe645018ea3a72acd0e6f801776750e23ceec5b464e18eda765d584",
+    "data/desktop/images/debug-v1/val/pilot_20261003130657_004.png": "2107fafb6db60b75399f256767085ccc1a202d98dfec0979a995006191c258a2",
+    "data/desktop/labels/debug-v1/val/pilot_20261003130657_004.txt": "5f17b98157ecbf406348207c62e6f982e9b8d365554ec5ac75bee57d2c1de62c",
+    "data/desktop/images/debug-v1/val/pilot_20261003130657_005.png": "6b6cddf93a5faf49862020f1a00a34468fde5e7a94729af8c0e22304a9fd241c",
+    "data/desktop/labels/debug-v1/val/pilot_20261003130657_005.txt": "f40b48d8564cb10e90a94d7e1bab0e92e25c78568096bf1ec08c2947e547bb56",
+    "data/desktop/images/debug-v1/val/pilot_20261003130657_006.png": "ef87ee98df4d41b3429f761914a27dc40e4006d410e525fe5103a62c00cc40c1",
+    "data/desktop/labels/debug-v1/val/pilot_20261003130657_006.txt": "a06d5a966ae7bc1be6f6b607467c1d7ff256b9818606f91f2564e281f0ea59fd",
+    "data/desktop/images/debug-v1/train/pilot_20261003130657_more_001.png": "78c03068d894a01e6623a9463e8297fef804e5738a8b41f8df04b70a6ed5fe53",
+    "data/desktop/labels/debug-v1/train/pilot_20261003130657_more_001.txt": "f77307dec415e90800659ec0b0b0d9bcc544dca5591cb7d1c64669f9702b4efa",
+    "data/desktop/images/debug-v1/train/pilot_20261003130657_more_002.png": "b5f0fd54ae58770aee7ca1a84271d39b705288ebbe42e5315f8deb0d2124e569",
+    "data/desktop/labels/debug-v1/train/pilot_20261003130657_more_002.txt": "7cd9be67563c2ef97a0c8eb08a76cd30f14aeb3e8c1a4b746e22c98ad0a83f2e",
+    "data/desktop/images/debug-v1/train/pilot_20261003130657_more_003.png": "3475390f4a7910637c1f5a530c0c08e0b3a5f3d78ab78c7e47533ab314ca8d7a",
+    "data/desktop/labels/debug-v1/train/pilot_20261003130657_more_003.txt": "d2df040c09d532c24657fac3cfaa999dc477bca5cf493bc5f5bb396e92594a9d",
+    "data/desktop/images/debug-v1/train/pilot_20261003130657_more_004.png": "fcc60fde6f442be3544cf959514d8daffb978336fe4b4adf640f1e83fd1caba4",
+    "data/desktop/labels/debug-v1/train/pilot_20261003130657_more_004.txt": "321791f00a7789ca17c731d3ecee3d0ece5005b6ada1bdb87cd098cb9742b3a8",
+    "data/desktop/images/debug-v1/train/pilot_20261003130657_more_005.png": "8f3b76bda6518d99d2785b7fce3008fef0600709e01a38c9e8b43152d9b29a9d",
+    "data/desktop/labels/debug-v1/train/pilot_20261003130657_more_005.txt": "e680b628d8fef8571982174b4511aa9be32ca9a0d2ead043358a45220b27e6f9",
+    "data/desktop/images/debug-v1/train/pilot_20261003130657_more_006.png": "ea4adfaa1c3b1223209ebe7f7c1e3ae4e7973097c4712375113ee6e6abe57ddb",
+    "data/desktop/labels/debug-v1/train/pilot_20261003130657_more_006.txt": "24634019251c960499d118bc9790061bad5c15dc2eeeb4e6a3de708b63c029a7",
+    "data/desktop/images/debug-v1/train/pilot_20261003130657_more_007.png": "e3f0e6a4c1de3f54f23e9f4641b78e97d9ad763201c200a82b39672075d55492",
+    "data/desktop/labels/debug-v1/train/pilot_20261003130657_more_007.txt": "dc92d4ba6a9f2cba00e6d4bcb889d7d3dc53a6a740de177a6a076d45c11620f7",
+    "data/desktop/images/debug-v1/train/pilot_20261003130657_more_008.png": "ea46bb856876541d6a7418d616ce73d15cf479d807c0f0613267497077446872",
+    "data/desktop/labels/debug-v1/train/pilot_20261003130657_more_008.txt": "83bd2b17a6b0b39db3a7455c50caa6989937000d1344af72c8981d548eb3cd9a",
+    "data/desktop/images/debug-v1/train/pilot_20261003130657_more_009.png": "006f95e140472fede9a1cd431b2ac64ebdfd6233ca2a2b5a970daf03a5279335",
+    "data/desktop/labels/debug-v1/train/pilot_20261003130657_more_009.txt": "d40c1e2b25efe57f71af09850047ac163348a3857800c9f3b6e515c28a73c822",
+    "data/desktop/images/debug-v1/train/pilot_20261003130657_more_010.png": "b6680e60c93c9073bed437966c2775673c6edf0f0039e66c5e704a1af596e335",
+    "data/desktop/labels/debug-v1/train/pilot_20261003130657_more_010.txt": "1c0cd3292b303c9e5df2ae2df3d3e7b2f570f45359e48889c37bcfc48ab2718f",
+    "data/desktop/images/debug-v1/train/pilot_20261003130657_more_011.png": "98472b6d8bb4081a2bbfc3a6b097fdcd7c0cd778a487c7bde74e98719b584d87",
+    "data/desktop/labels/debug-v1/train/pilot_20261003130657_more_011.txt": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855",
+    "data/desktop/images/debug-v1/train/pilot_20261003130657_more_012.png": "19bab5e34308797a5ef2b9e4835118a00adc3cc2448fa1b471ed99dd2287bc98",
+    "data/desktop/labels/debug-v1/train/pilot_20261003130657_more_012.txt": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855",
+    "data/desktop/images/debug-v1/train/pilot_20261003130657_more_013.png": "f4406b9b6b1aeaed84e8ae44460b8b72aa57a8da830a6a228393b04b3a669f2c",
+    "data/desktop/labels/debug-v1/train/pilot_20261003130657_more_013.txt": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855",
+    "data/desktop/images/debug-v1/train/pilot_20261003130657_more_014.png": "d90b01545a3f1c7ff094ad39425fce4f07b7a949d23c568aed1aa120b07569f7",
+    "data/desktop/labels/debug-v1/train/pilot_20261003130657_more_014.txt": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855",
+    "data/desktop/images/products-v1/val/holdout_val_20261004_095145_001.png": "33d0708d6b3e76be465e637ead78ed3356ed0f95f94f609a8964d200d618363c",
+    "data/desktop/labels/products-v1/val/holdout_val_20261004_095145_001.txt": "dc41ff8e70488849871744560b855a455ff0846903c3910fe8b2b5d751e30a11",
+    "data/desktop/images/products-v1/val/holdout_val_20261004_095145_002.png": "f06041c9e302b040b2fd76d44b6d0acc02261d7b032be805dab231d42f9e9cdf",
+    "data/desktop/labels/products-v1/val/holdout_val_20261004_095145_002.txt": "92b241fe34ec02dbc95bce70f8b111fff4622379ae281035dbb13ed36337e759",
+    "data/desktop/images/products-v1/val/holdout_val_20261004_095145_003.png": "2615de716a615e0803465e1ec2a4648ad1d27ecf26d06c597896115d5d6e471a",
+    "data/desktop/labels/products-v1/val/holdout_val_20261004_095145_003.txt": "cf9bf266c6183e959c23f26cc00ca94ddd66d26cfefa55e8525ce3f7956d6c11",
+    "data/desktop/images/products-v1/val/holdout_val_20261004_095145_004.png": "2835e2122db3029d97307356ad7e020467647a2d23e33fc281dbb15dae90801a",
+    "data/desktop/labels/products-v1/val/holdout_val_20261004_095145_004.txt": "cf5feee17bd1c98b8eee0bf7c7891cf6de600fe31c9326b1239c3b184312f390",
+    "data/desktop/images/products-v1/val/holdout_val_20261004_095145_005.png": "676d5401f5cf463637cc344ae56e0eaaed7f011edd4ee6fa9d72aa9a3b544d5c",
+    "data/desktop/labels/products-v1/val/holdout_val_20261004_095145_005.txt": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855",
+    "data/desktop/images/products-v1/test/holdout_test_20261004_095145_001.png": "eb0357392f51c7b338f528dd76be49221050e639301eebaaa854ef4b8068863b",
+    "data/desktop/labels/products-v1/test/holdout_test_20261004_095145_001.txt": "256cec130643bebe21da4f11daed2fd17cdd83d411fb610b39902799f31a31a0",
+    "data/desktop/images/products-v1/test/holdout_test_20261004_095145_002.png": "67619dfe947b8b6c867a7a2753984fd2fde800b92a2636828aa4235c1a4f523c",
+    "data/desktop/labels/products-v1/test/holdout_test_20261004_095145_002.txt": "2b6c88c81e15e1026bf25c738b9101d6c9b40e8fed87ac748eed9683546ec893",
+    "data/desktop/images/products-v1/test/holdout_test_20261004_095145_003.png": "b96afe6782628877aba86b4e5ef0a9422a6dfe33fd3f680ef7d9c22734f60590",
+    "data/desktop/labels/products-v1/test/holdout_test_20261004_095145_003.txt": "23943504c82c6f104493173292d3dc127f4f0e7d6f9db6a5d15037cd05b74c23",
+    "data/desktop/images/products-v1/test/holdout_test_20261004_095145_004.png": "3e25966e5bba76bb05369cc4377395e776527b140e4a12352b5dbf949b7eaeee",
+    "data/desktop/labels/products-v1/test/holdout_test_20261004_095145_004.txt": "a6245ed8f1c31bbb7c232e519bffde601bfbbd6326296ef06115bf735be538f6",
+    "data/desktop/images/products-v1/test/holdout_test_20261004_095145_005.png": "851b07c8f54cf6a2b32607bd2595181fda4ffd6b00c9f7d4eb458871ae4d52ee",
+    "data/desktop/labels/products-v1/test/holdout_test_20261004_095145_005.txt": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855",
+    "reports/experiments/E1A_products_v1_seed42.json": "61375e4d4d9d8fece4e021128bd99f5232bea4f12894c989c2412dd88133713f",
+    "reports/experiments/E1A_products_v1_seed42_best_val_20261004_132526.json": "cbd5f233f80fd7b0b6d57e4f761352e5a6cb4884ab8cb0c8c1c5eafd744a5ac9",
+    "reports/experiments/E1A_vs_E1_products_v1.json": "fbfba04551160356ec5af9c535ae79b105ac3dc42dd54f37ed546955c7fc085c",
+    "reports/experiments/M3-05_E1A_products_v1_seed42_20261004_132532.json": "76074f90b2beaadfabea4226a2b8aadf2f421ffe1a789162bfcc60fd9662ac83",
+    "reports/application/M7-01_product_camera.json": "51cd4a1f66e3dc919c538dc603fb2aa296bf0fcf162e561766489ebb968d9040",
+    "configs/live_products.yaml": "4fad7986fb0ee0864a84cc496fa39caf5e81e8f756f8f0f85e16f0311cfc0169",
+    "data/desktop/metadata/classes.json": "7bcbc3829a4b84dcfe8b6cadaf3018716ef46579328851f26304c42bd093d2bb",
+    "runs/train/E1A_products_v1_seed42/weights/best.pt": "be673312bea16cf89d044e9107b33e180bf5317ed715452b5d81575b54ca9424",
+    "runs/train/E1A_products_v1_seed42/weights/last.pt": "be673312bea16cf89d044e9107b33e180bf5317ed715452b5d81575b54ca9424",
+    "runs/train/E1A_products_v1_seed42/results.csv": "a983eaba7f83b5e90083a1847896b20a62761966a26a2c105986431bb74ae9e4",
+    "reports/application/M7-01_live_E1A_20261004_140055_937.json": "96003854cff401cc7314fd82dd2aa494e18ad905a10ad506bc932e27b986d03d",
+    "reports/application/M7-01_live_E1A_conf025_20261004_140929_527.json": "984c4302466b5f4c28ed4c955b1b5c1ca0e8f50ff726a2e25699d5343c016b0f",
+    "runs/train/E1A_products_v1_seed42/args.yaml": "f3ecbf76ff6c81810c2da46ea163c6487a8d9bfde9f0fb196be18865c999b6ca",
+    "runs/train/E1A_products_v1_seed42/preflight_used.json": "aff5c29a5c990b05f458ba6f0a3b7d1f649783a286cb6c33f01edeba59adba4a",
+    "configs/baseline_products_v1.json": "2f918b136609fdec3306b6bd1a4519ecc93b76d7b2ba9371a9f34a9b9cbbef93",
+    "reports/experiments/M3-06_products_v1_baseline.json": "123e305915337b86520c43241b92feeee9f33b698585f8faeda4cad3a9eaefa7",
+    "configs/export_products.yaml": "8f2f7935a4105e9a995b67c9ef20e5295821d80fa346ced0f5ce779091dc24b6",
+    "scripts/export_onnx.py": "94bf410038ba8f618f02e1ce34499ed482c55399871f497a064ac6ebbd8b4a84",
+    "deploy/onnx_contract.py": "7a13151d380657c3a37810ff0c5558c506c75fa1939377c7a54841c32873f361",
+    "tests/test_onnx_export.py": "212ac17e452f58dd0832f23c0a2f4af1f92fec14c33f500052eca17162ac6234",
+    "artifacts/B1/best_fp32.onnx": "35bcd6f00c04299fd9846b746a1488fc48ea9e84877e4009434f31baef5e28d0",
+    "artifacts/B1/best_fp32.metadata.json": "d103afd394a4acc808a85f29601d4add8c01befbf452209f4877e78e21ffb2f8",
+    "artifacts/B1/export_reference.npz": "05f8a16e60af31edf4f49612786abfe494543752b252bd31cc649ee349a92071",
+    "artifacts/B1/ort_export_smoke_profile_2026-10-04_16-05-39.json": "ae0a6eec431c536967ed2a880f68e7ff87e813a4844c111de1ab4cf5471b5591",
+    "reports/deployment/M5-01_B1_onnx_export.json": "6969a145424072172033ae610533bdef500e7a25f766ef6b5287f63ebdca1aaf",
+    "logs/deployment/M5-01_B1_onnx_export.log": "dc90c3778fe79159a8a9834c6acd85091375156f84c2020157d8fb2b3ba31b6b"
+  },
+  "guarded_files_count": 228,
+  "historical_sha256_and_mtime_unchanged": true,
+  "checks": {
+    "official_comparisons": [
+      {
+        "case_id": "holdout_val_20261004_095145_001",
+        "geometry": {
+          "original_shape_hw": [
+            720,
+            1280
+          ],
+          "input_shape_hw": [
+            640,
+            640
+          ],
+          "resized_shape_hw": [
+            360,
+            640
+          ],
+          "ratio_xy": [
+            0.5,
+            0.5
+          ],
+          "padding_ltrb": [
+            0,
+            140,
+            0,
+            140
+          ]
+        },
+        "input_shape": [
+          1,
+          3,
+          640,
+          640
+        ],
+        "dtype": "float32",
+        "contiguous": true,
+        "pixel_equal": true,
+        "geometry_equal": true,
+        "max_abs": 0.0,
+        "input_sha256": "56cf69fad59a14f07dfc688f86fc2d162ee53f2b9dab1dd25c7f4e4c48893e99",
+        "source_unchanged": true,
+        "source": {
+          "path": "data/raw/camera/frames/holdout_val_20261004_095145/holdout_val_20261004_095145_001.png",
+          "sha256": "33d0708d6b3e76be465e637ead78ed3356ed0f95f94f609a8964d200d618363c"
+        },
+        "split": "val"
+      },
+      {
+        "case_id": "holdout_val_20261004_095145_002",
+        "geometry": {
+          "original_shape_hw": [
+            720,
+            1280
+          ],
+          "input_shape_hw": [
+            640,
+            640
+          ],
+          "resized_shape_hw": [
+            360,
+            640
+          ],
+          "ratio_xy": [
+            0.5,
+            0.5
+          ],
+          "padding_ltrb": [
+            0,
+            140,
+            0,
+            140
+          ]
+        },
+        "input_shape": [
+          1,
+          3,
+          640,
+          640
+        ],
+        "dtype": "float32",
+        "contiguous": true,
+        "pixel_equal": true,
+        "geometry_equal": true,
+        "max_abs": 0.0,
+        "input_sha256": "dc68415b5840cf44f0a2a3203ddb1cfbb55cc4bf63df22d91a9c902f95aca36a",
+        "source_unchanged": true,
+        "source": {
+          "path": "data/raw/camera/frames/holdout_val_20261004_095145/holdout_val_20261004_095145_002.png",
+          "sha256": "f06041c9e302b040b2fd76d44b6d0acc02261d7b032be805dab231d42f9e9cdf"
+        },
+        "split": "val"
+      },
+      {
+        "case_id": "holdout_val_20261004_095145_003",
+        "geometry": {
+          "original_shape_hw": [
+            720,
+            1280
+          ],
+          "input_shape_hw": [
+            640,
+            640
+          ],
+          "resized_shape_hw": [
+            360,
+            640
+          ],
+          "ratio_xy": [
+            0.5,
+            0.5
+          ],
+          "padding_ltrb": [
+            0,
+            140,
+            0,
+            140
+          ]
+        },
+        "input_shape": [
+          1,
+          3,
+          640,
+          640
+        ],
+        "dtype": "float32",
+        "contiguous": true,
+        "pixel_equal": true,
+        "geometry_equal": true,
+        "max_abs": 0.0,
+        "input_sha256": "06b78cf4ef996c61d2e2a264d09f30ab12b95b9e8aa376a4d55b1710547b0467",
+        "source_unchanged": true,
+        "source": {
+          "path": "data/raw/camera/frames/holdout_val_20261004_095145/holdout_val_20261004_095145_003.png",
+          "sha256": "2615de716a615e0803465e1ec2a4648ad1d27ecf26d06c597896115d5d6e471a"
+        },
+        "split": "val"
+      },
+      {
+        "case_id": "holdout_val_20261004_095145_004",
+        "geometry": {
+          "original_shape_hw": [
+            720,
+            1280
+          ],
+          "input_shape_hw": [
+            640,
+            640
+          ],
+          "resized_shape_hw": [
+            360,
+            640
+          ],
+          "ratio_xy": [
+            0.5,
+            0.5
+          ],
+          "padding_ltrb": [
+            0,
+            140,
+            0,
+            140
+          ]
+        },
+        "input_shape": [
+          1,
+          3,
+          640,
+          640
+        ],
+        "dtype": "float32",
+        "contiguous": true,
+        "pixel_equal": true,
+        "geometry_equal": true,
+        "max_abs": 0.0,
+        "input_sha256": "a5e4d5cc09ae4a625b7e3a92ec778ee210a445010a9628b3cad05f3af63ff2c7",
+        "source_unchanged": true,
+        "source": {
+          "path": "data/raw/camera/frames/holdout_val_20261004_095145/holdout_val_20261004_095145_004.png",
+          "sha256": "2835e2122db3029d97307356ad7e020467647a2d23e33fc281dbb15dae90801a"
+        },
+        "split": "val"
+      },
+      {
+        "case_id": "holdout_val_20261004_095145_005",
+        "geometry": {
+          "original_shape_hw": [
+            720,
+            1280
+          ],
+          "input_shape_hw": [
+            640,
+            640
+          ],
+          "resized_shape_hw": [
+            360,
+            640
+          ],
+          "ratio_xy": [
+            0.5,
+            0.5
+          ],
+          "padding_ltrb": [
+            0,
+            140,
+            0,
+            140
+          ]
+        },
+        "input_shape": [
+          1,
+          3,
+          640,
+          640
+        ],
+        "dtype": "float32",
+        "contiguous": true,
+        "pixel_equal": true,
+        "geometry_equal": true,
+        "max_abs": 0.0,
+        "input_sha256": "5aff7d6262c3846e2b5cee38cd9f75faa0f949ba5a9ee3e29ec0156485993b04",
+        "source_unchanged": true,
+        "source": {
+          "path": "data/raw/camera/frames/holdout_val_20261004_095145/holdout_val_20261004_095145_005.png",
+          "sha256": "676d5401f5cf463637cc344ae56e0eaaed7f011edd4ee6fa9d72aa9a3b544d5c"
+        },
+        "split": "val"
+      },
+      {
+        "case_id": "synthetic_00",
+        "geometry": {
+          "original_shape_hw": [
+            720,
+            1280
+          ],
+          "input_shape_hw": [
+            640,
+            640
+          ],
+          "resized_shape_hw": [
+            360,
+            640
+          ],
+          "ratio_xy": [
+            0.5,
+            0.5
+          ],
+          "padding_ltrb": [
+            0,
+            140,
+            0,
+            140
+          ]
+        },
+        "input_shape": [
+          1,
+          3,
+          640,
+          640
+        ],
+        "dtype": "float32",
+        "contiguous": true,
+        "pixel_equal": true,
+        "geometry_equal": true,
+        "max_abs": 0.0,
+        "input_sha256": "e2117c41f0d24b815cfeeb26c57cf93b6e8fe382703738740ab26c9c9bea9d61",
+        "source_unchanged": true,
+        "source": "deterministic in-memory BGR pattern; not training/evaluation data"
+      },
+      {
+        "case_id": "synthetic_01",
+        "geometry": {
+          "original_shape_hw": [
+            1280,
+            720
+          ],
+          "input_shape_hw": [
+            640,
+            640
+          ],
+          "resized_shape_hw": [
+            640,
+            360
+          ],
+          "ratio_xy": [
+            0.5,
+            0.5
+          ],
+          "padding_ltrb": [
+            140,
+            0,
+            140,
+            0
+          ]
+        },
+        "input_shape": [
+          1,
+          3,
+          640,
+          640
+        ],
+        "dtype": "float32",
+        "contiguous": true,
+        "pixel_equal": true,
+        "geometry_equal": true,
+        "max_abs": 0.0,
+        "input_sha256": "b2abe66df15ce8966d2bef9787b2163ab4d14e0abda793b366760cab38b8e358",
+        "source_unchanged": true,
+        "source": "deterministic in-memory BGR pattern; not training/evaluation data"
+      },
+      {
+        "case_id": "synthetic_02",
+        "geometry": {
+          "original_shape_hw": [
+            640,
+            640
+          ],
+          "input_shape_hw": [
+            640,
+            640
+          ],
+          "resized_shape_hw": [
+            640,
+            640
+          ],
+          "ratio_xy": [
+            1.0,
+            1.0
+          ],
+          "padding_ltrb": [
+            0,
+            0,
+            0,
+            0
+          ]
+        },
+        "input_shape": [
+          1,
+          3,
+          640,
+          640
+        ],
+        "dtype": "float32",
+        "contiguous": true,
+        "pixel_equal": true,
+        "geometry_equal": true,
+        "max_abs": 0.0,
+        "input_sha256": "11dfce747e11e58e9569098628a7afabac051f8046b4671695b96b1969b1da4a",
+        "source_unchanged": true,
+        "source": "deterministic in-memory BGR pattern; not training/evaluation data"
+      },
+      {
+        "case_id": "synthetic_03",
+        "geometry": {
+          "original_shape_hw": [
+            481,
+            640
+          ],
+          "input_shape_hw": [
+            640,
+            640
+          ],
+          "resized_shape_hw": [
+            481,
+            640
+          ],
+          "ratio_xy": [
+            1.0,
+            1.0
+          ],
+          "padding_ltrb": [
+            0,
+            79,
+            0,
+            80
+          ]
+        },
+        "input_shape": [
+          1,
+          3,
+          640,
+          640
+        ],
+        "dtype": "float32",
+        "contiguous": true,
+        "pixel_equal": true,
+        "geometry_equal": true,
+        "max_abs": 0.0,
+        "input_sha256": "84e2abd25dc53d4e484887d15da12bfe44b85c0feb752b637c50241b81b95d4e",
+        "source_unchanged": true,
+        "source": "deterministic in-memory BGR pattern; not training/evaluation data"
+      },
+      {
+        "case_id": "synthetic_04",
+        "geometry": {
+          "original_shape_hw": [
+            640,
+            481
+          ],
+          "input_shape_hw": [
+            640,
+            640
+          ],
+          "resized_shape_hw": [
+            640,
+            481
+          ],
+          "ratio_xy": [
+            1.0,
+            1.0
+          ],
+          "padding_ltrb": [
+            79,
+            0,
+            80,
+            0
+          ]
+        },
+        "input_shape": [
+          1,
+          3,
+          640,
+          640
+        ],
+        "dtype": "float32",
+        "contiguous": true,
+        "pixel_equal": true,
+        "geometry_equal": true,
+        "max_abs": 0.0,
+        "input_sha256": "97bb9eeb6858debb8850a7665dc53ddebd5be6f8dbfd82fcb896535fc840d174",
+        "source_unchanged": true,
+        "source": "deterministic in-memory BGR pattern; not training/evaluation data"
+      },
+      {
+        "case_id": "synthetic_05",
+        "geometry": {
+          "original_shape_hw": [
+            333,
+            1001
+          ],
+          "input_shape_hw": [
+            640,
+            640
+          ],
+          "resized_shape_hw": [
+            213,
+            640
+          ],
+          "ratio_xy": [
+            0.6393606393606394,
+            0.6393606393606394
+          ],
+          "padding_ltrb": [
+            0,
+            213,
+            0,
+            214
+          ]
+        },
+        "input_shape": [
+          1,
+          3,
+          640,
+          640
+        ],
+        "dtype": "float32",
+        "contiguous": true,
+        "pixel_equal": true,
+        "geometry_equal": true,
+        "max_abs": 0.0,
+        "input_sha256": "1a5116b2d18c48e6263d37723848eea245c0aef73e3e604d0435274ab3197151",
+        "source_unchanged": true,
+        "source": "deterministic in-memory BGR pattern; not training/evaluation data"
+      },
+      {
+        "case_id": "synthetic_06",
+        "geometry": {
+          "original_shape_hw": [
+            1001,
+            333
+          ],
+          "input_shape_hw": [
+            640,
+            640
+          ],
+          "resized_shape_hw": [
+            640,
+            213
+          ],
+          "ratio_xy": [
+            0.6393606393606394,
+            0.6393606393606394
+          ],
+          "padding_ltrb": [
+            213,
+            0,
+            214,
+            0
+          ]
+        },
+        "input_shape": [
+          1,
+          3,
+          640,
+          640
+        ],
+        "dtype": "float32",
+        "contiguous": true,
+        "pixel_equal": true,
+        "geometry_equal": true,
+        "max_abs": 0.0,
+        "input_sha256": "c53baea9c32354c960b2512c15c273dd3f7614c8736f4ff12e7e641c98c34417",
+        "source_unchanged": true,
+        "source": "deterministic in-memory BGR pattern; not training/evaluation data"
+      },
+      {
+        "case_id": "synthetic_07",
+        "geometry": {
+          "original_shape_hw": [
+            1,
+            1
+          ],
+          "input_shape_hw": [
+            640,
+            640
+          ],
+          "resized_shape_hw": [
+            640,
+            640
+          ],
+          "ratio_xy": [
+            640.0,
+            640.0
+          ],
+          "padding_ltrb": [
+            0,
+            0,
+            0,
+            0
+          ]
+        },
+        "input_shape": [
+          1,
+          3,
+          640,
+          640
+        ],
+        "dtype": "float32",
+        "contiguous": true,
+        "pixel_equal": true,
+        "geometry_equal": true,
+        "max_abs": 0.0,
+        "input_sha256": "ff6490edd02d7ca8e73e0b774be234182be9b5cea831a23740534622af4b3339",
+        "source_unchanged": true,
+        "source": "deterministic in-memory BGR pattern; not training/evaluation data"
+      },
+      {
+        "case_id": "synthetic_08",
+        "geometry": {
+          "original_shape_hw": [
+            17,
+            29
+          ],
+          "input_shape_hw": [
+            640,
+            640
+          ],
+          "resized_shape_hw": [
+            375,
+            640
+          ],
+          "ratio_xy": [
+            22.06896551724138,
+            22.06896551724138
+          ],
+          "padding_ltrb": [
+            0,
+            132,
+            0,
+            133
+          ]
+        },
+        "input_shape": [
+          1,
+          3,
+          640,
+          640
+        ],
+        "dtype": "float32",
+        "contiguous": true,
+        "pixel_equal": true,
+        "geometry_equal": true,
+        "max_abs": 0.0,
+        "input_sha256": "310c04c30ee33387688bb2eb6a6e68b3b7200e59141810929f2d68cc0f7ca7e1",
+        "source_unchanged": true,
+        "source": "deterministic in-memory BGR pattern; not training/evaluation data"
+      },
+      {
+        "case_id": "synthetic_09",
+        "geometry": {
+          "original_shape_hw": [
+            29,
+            17
+          ],
+          "input_shape_hw": [
+            640,
+            640
+          ],
+          "resized_shape_hw": [
+            640,
+            375
+          ],
+          "ratio_xy": [
+            22.06896551724138,
+            22.06896551724138
+          ],
+          "padding_ltrb": [
+            132,
+            0,
+            133,
+            0
+          ]
+        },
+        "input_shape": [
+          1,
+          3,
+          640,
+          640
+        ],
+        "dtype": "float32",
+        "contiguous": true,
+        "pixel_equal": true,
+        "geometry_equal": true,
+        "max_abs": 0.0,
+        "input_sha256": "bc3a4f795d13a3c746c42f462185aea9e0927275a89047180966b60010ae6a6f",
+        "source_unchanged": true,
+        "source": "deterministic in-memory BGR pattern; not training/evaluation data"
+      },
+      {
+        "case_id": "synthetic_10",
+        "geometry": {
+          "original_shape_hw": [
+            479,
+            641
+          ],
+          "input_shape_hw": [
+            640,
+            640
+          ],
+          "resized_shape_hw": [
+            478,
+            640
+          ],
+          "ratio_xy": [
+            0.9984399375975039,
+            0.9984399375975039
+          ],
+          "padding_ltrb": [
+            0,
+            81,
+            0,
+            81
+          ]
+        },
+        "input_shape": [
+          1,
+          3,
+          640,
+          640
+        ],
+        "dtype": "float32",
+        "contiguous": true,
+        "pixel_equal": true,
+        "geometry_equal": true,
+        "max_abs": 0.0,
+        "input_sha256": "2448a76b2f7be1b2dd528a0b5ff5c11b242a2a1b8c28eb913f4136b3ce60a2d5",
+        "source_unchanged": true,
+        "source": "deterministic in-memory BGR pattern; not training/evaluation data"
+      },
+      {
+        "case_id": "synthetic_11",
+        "geometry": {
+          "original_shape_hw": [
+            641,
+            479
+          ],
+          "input_shape_hw": [
+            640,
+            640
+          ],
+          "resized_shape_hw": [
+            640,
+            478
+          ],
+          "ratio_xy": [
+            0.9984399375975039,
+            0.9984399375975039
+          ],
+          "padding_ltrb": [
+            81,
+            0,
+            81,
+            0
+          ]
+        },
+        "input_shape": [
+          1,
+          3,
+          640,
+          640
+        ],
+        "dtype": "float32",
+        "contiguous": true,
+        "pixel_equal": true,
+        "geometry_equal": true,
+        "max_abs": 0.0,
+        "input_sha256": "f758bf21e2f80ff04d5c16477648f8aafb3b09c27b5a16c2485d89e2a5f99464",
+        "source_unchanged": true,
+        "source": "deterministic in-memory BGR pattern; not training/evaluation data"
+      }
+    ],
+    "saved_export_input_matches": [
+      {
+        "image_id": "holdout_val_20261004_095145_001",
+        "array_prefix": "case0",
+        "pixel_equal": true,
+        "input_sha256": "56cf69fad59a14f07dfc688f86fc2d162ee53f2b9dab1dd25c7f4e4c48893e99"
+      },
+      {
+        "image_id": "holdout_val_20261004_095145_004",
+        "array_prefix": "case1",
+        "pixel_equal": true,
+        "input_sha256": "a5e4d5cc09ae4a625b7e3a92ec778ee210a445010a9628b3cad05f3af63ff2c7"
+      },
+      {
+        "image_id": "holdout_val_20261004_095145_005",
+        "array_prefix": "case2",
+        "pixel_equal": true,
+        "input_sha256": "5aff7d6262c3846e2b5cee38cd9f75faa0f949ba5a9ee3e29ec0156485993b04"
+      }
+    ],
+    "independent_import": {
+      "torch_imported": false,
+      "ultralytics_imported": false,
+      "shape": [
+        1,
+        3,
+        640,
+        640
+      ],
+      "dtype": "float32",
+      "contiguous": true
+    },
+    "summary": {
+      "real_val_images": 5,
+      "synthetic_cases": 12,
+      "all_pixel_equal": true,
+      "all_geometry_equal": true,
+      "max_abs": 0.0,
+      "saved_export_inputs_equal": 3,
+      "model_inference": false
+    }
+  },
+  "scope": {
+    "new_photos": 0,
+    "label_changes": 0,
+    "training": 0,
+    "model_inference": 0,
+    "sealed_test_inference": 0,
+    "new_saved_arrays": 0,
+    "postprocessing_implemented": false,
+    "full_ort_runner_implemented": false
+  },
+  "progress": {
+    "M5": "2/6",
+    "main": "26/54",
+    "complete_modules": "3/9",
+    "next": "M5-03 independent boxes/NMS/masks"
+  }
+}

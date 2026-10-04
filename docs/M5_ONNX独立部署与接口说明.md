@@ -1,6 +1,6 @@
 # M5：商品 ONNX 独立部署与接口说明
 
-更新：2026-10-04。**M5-01 已完成，M5 1/6，主线 25/54，完整模块仍 3/9。** 已从冻结 B1 / E1-A best 导出商品 ONNX，检查图结构、类别与接口，并完成三张已有 val 图的 ORT CPU / CUDA 原始输出检查。共享预处理、独立 NMS / 掩膜还原、完整图片 / 视频程序、30 输入配对和部署质量评价仍待 M5-02～06，最终 test5 继续封存。
+更新：2026-10-04。**M5-01、02 已完成，M5 2/6，主线 26/54，完整模块仍 3/9。** 商品 ONNX 导出与三图 CPU / CUDA raw 检查已通过；共享 NumPy/OpenCV 预处理在 5 张已有 val 和 12 个尺寸测试输入上与官方完全一致，也与 M5-01 的 3 份保存输入一致。70 项工程测试通过。下一步 M5-03 独立 NMS / 掩膜还原，随后完整图片 / 视频程序、30 输入配对和部署质量评价；最终 test5 继续封存。见[本次实现与复核](#m5-02-preprocess)。
 
 <a id="m5-01-export"></a>
 
@@ -43,11 +43,11 @@
 
 原型也没有单独做 sigmoid。保留实例的 32 个系数与展平的 32×25600 原型矩阵相乘，得到 160×160 掩膜 logits。最终实例掩膜还需插值、去补边、框裁剪和二值化；这些操作不在本次 ONNX 图内。
 
-## 3. 前后处理接口约定（实现待后续任务）
+## 3. 前后处理接口约定（预处理已实现，后处理待 M5-03）
 
 **M5-02 预处理约定：**原图 BGR / uint8 / HWC → 保持比例缩放 → 居中填充到 640×640，填充值 114 → RGB → float32 / 255 → NCHW / 连续内存。首版 `auto=false`、`scale_fill=false`、`scaleup=true`，使用 OpenCV 双线性缩放。必须保留原图尺寸、缩放比例和上下左右整数补边，供框与 mask 还原。
 
-锁定 LetterBox 的比例为 `r=min(640/h,640/w)`，缩放宽高分别为 `round(w*r)`、`round(h*r)`；单边补量采用 `round(half_pad-0.1)` 与 `round(half_pad+0.1)`，处理奇数补边。M5-01 的参考数组采用官方 LetterBox 生成，只用于导出对照，不能当成已经完成了自写预处理。
+锁定 LetterBox 的比例为 `r=min(640/h,640/w)`，缩放宽高分别为 `round(w*r)`、`round(h*r)`；单边补量采用 `round(half_pad-0.1)` 与 `round(half_pad+0.1)`，处理奇数补边。M5-01 当时只用官方 LetterBox 生成参考；本次 M5-02 已完成独立实现并与参考逐像素核对，见[第 6 节](#m5-02-preprocess)。导出元数据中的 implementation pending 是 M5-01 的历史状态，保持原文件不变；当前实现状态由 M5-02 独立验收记录承接。
 
 **M5-03 后处理约定：**展示 conf=0.25、指标计算 conf=0.001、逐类别 NMS IoU=0.7、max_det=300、三类全部保留。普通展示每个候选取最高类别分数；评价器的 multi-label 设置需单独匹配参考规则。保留候选索引，让框和它的 32 个系数一起经历筛选 / NMS。
 
@@ -99,4 +99,64 @@ python scripts/freeze_product_baseline.py --check
 
 ONNX / 数组 / profile 保存在已有忽略规则下的 `artifacts/B1/`，配置、代码、接口说明与小型验收记录供 Git 展示。没有新增模型 PT 副本，也不保存大量图片预览。本次新照片、训练、优化器更新和最终测试推理均为 0；当前摄像头仍使用已验收的 PyTorch 入口。
 
-**下一步 M5-02：**实现共享 NumPy/OpenCV 预处理，在横图、竖图与奇数尺寸输入上核对颜色、像素值和补边，再将这一接口同时供 PyTorch 与 ORT 使用。完成后可确保两种后端接收完全相同的张量，随后开展 M5-03 的独立框 / 掩膜后处理。无需新增人工标注。
+共享预处理已接续完成，见下节；下一步是 M5-03 框与掩膜后处理。现有摄像头仍使用原 PyTorch 入口，统一后端和完整 ORT 程序留到 M5-04 接入。
+
+<a id="m5-02-preprocess"></a>
+
+## 6. M5-02：共享预处理实现与验收
+
+这一环节把摄像头或本地图片的原始像素转换为模型输入，同时记录画面缩放和补边，供后续恢复框、掩膜。不会改变权重或识别能力；本次不执行模型，不计算新的 mAP。
+
+```text
+BGR uint8 [H,W,3]
+→ 按比例缩放、居中补 114 到 640×640
+→ BGR 转 RGB、float32 / 255、NCHW 连续内存
+→ images [1,3,640,640] + LetterboxGeometry
+```
+
+| 产出 | 用途 |
+| --- | --- |
+| [deploy/preprocess.py](../deploy/preprocess.py) | `preprocess_bgr(image)` 返回张量与几何信息；只依赖 NumPy/OpenCV，拒绝错误图片格式；`validate_preprocessing_contract(metadata)` 核对 B1 静态输入约定 |
+| [scripts/check_preprocess.py](../scripts/check_preprocess.py) | 与锁定官方 `BasePredictor.preprocess` / `LetterBox.get_params` 对照；首次保存记录，已有记录拒绝覆盖，`--check` 只读复核 |
+| [tests/test_preprocess.py](../tests/test_preprocess.py) | 5 项新增测试：颜色 / 归一化、横竖 / 放大、奇数补边 / 比例、非连续只读输入、错误图片 / 不兼容接口 |
+| [M5-02_B1_preprocess.json](../reports/deployment/M5-02_B1_preprocess.json) | 每个输入的几何参数、逐像素一致性、保存输入 SHA、独立导入与 228 个历史文件保护 |
+
+本次 5 张 val 原图加 12 个内存生成的尺寸测试输入，输出像素和几何参数全部相同，最大绝对误差 **0**。尺寸测试覆盖横图、竖图、方图、奇数补边、放大、小尺寸及非连续只读数组；这些内存图案没有保存为数据集，也不构成新增独立评价。M5-01 三份保存输入逐像素和 SHA 均一致，无需重复模型推理。
+
+新进程仅导入本模块后，`torch` / `ultralytics` 均未导入。70 项全项目测试通过；228 个受保护历史文件的 SHA 和修改时间保持不变，B1 / M5-01 复核通过，锁定源码及环境无漂移。此次只新增三份代码和一份小型 JSON，更新既有文档；没有新增照片、标注、训练、权重、输入数组副本或最终 test 推理。
+
+### 几何信息怎样读
+
+所有 `shape_hw` 都是 **高、宽**；`ratio_xy` 是 **横、纵比例**；`padding_ltrb` 是 **左、上、右、下**。
+
+| 字段 | 原图高 720、宽 1280 的实际结果 |
+| --- | --- |
+| `original_shape_hw` | `[720,1280]` |
+| `input_shape_hw` | `[640,640]` |
+| `resized_shape_hw` | `[360,640]`，补边之前的实际尺寸 |
+| `ratio_xy` | `[0.5,0.5]`，官方采用的理想缩放比例 |
+| `padding_ltrb` | `[0,140,0,140]` |
+
+高 481、宽 640 的输入会补上 79 / 下 80；高 640、宽 481 会补左 79 / 右 80。保留整数补边可避免以后裁掉灰边时差一个像素。取整后的实际缩放尺寸也单独保存，不能用其宽高各自反算的比例替换官方 `r`。本环节只提供几何信息，框和掩膜的还原代码在 M5-03 实现并核对。
+
+### 使用与复核
+
+```python
+from deploy.preprocess import preprocess_bgr, validate_preprocessing_contract
+
+# metadata 是读取的 best_fp32.metadata.json，加载后端时核对一次。
+validate_preprocessing_contract(metadata)
+images, geometry = preprocess_bgr(frame_bgr)
+# images 已是 RGB、float32、/255、NCHW，不再重复转换或归一化。
+# 后续 ORT 接口：session.run(None, {"images": images})
+# 后续 PyTorch raw 接口：torch.from_numpy(images).to(device)
+```
+
+上面的后端调用是 M5-04 接入时的用法示例，当前尚未实现完整统一后端。可以直接运行本次只读验收：
+
+```powershell
+conda activate yolo
+python scripts/check_preprocess.py --check
+```
+
+**下一步 M5-03：**将 `[1,39,8400]` 候选通过分数筛选、逐类 NMS 留下实例，保持框与 32 个掩膜系数对应，再组合共享原型、还原原图掩膜。完成后可把 raw 数组解释成商品框、类别、分数和实例轮廓；随后 M5-04 接通独立 ORT 图片 / 视频程序。当前无需补拍或重新标注。
