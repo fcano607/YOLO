@@ -4,7 +4,7 @@
 
 2026-10-03 用户正式采用三种固定包装商品方向，现已根据试标成本确认小数据首版：现有 20 张起步，轻量在线增强和预训练微调；按需要少量补拍，新增人工审核累计最多 30 张（含留出，真实总量最多 50 张），不再按 350 张收集。M2-01 已冻结 classes.json / products.json，M2-02 的 20 张已验收；见[当前操作路线](00_YOLO_分阶段推进与进度跟踪.md#small-data-route)和[标注安排](../docs/M2_商品数据与标注规范.md#small-data-plan)。沿用现有 data/desktop/ 与代码路径，后续按任务实现配置，不增加空脚本。
 
-2026-10-04 更新：正式 20/5/5、30 张真实图 / 44 实例及加载契约不变。B1 冻结与 M5-01 商品 ONNX 导出 / 三图 CPU、CUDA raw 对照已验收，M2 6/6、M3 5/6、M5 2/6、M7 1/6、主线 26/54，共享预处理已与官方完全一致，70 项测试通过。模型 / 元数据 / 集中参考数组在 artifacts/B1，小型机器记录在 reports/deployment；原 B1 / 数据不变。下一步 M5-03 独立框 / 掩膜后处理，暂不补拍 / E2；新增额度仍 10/30。见[M5 文件与接口](../docs/M5_ONNX独立部署与接口说明.md)、[B1 档案](../docs/M3_训练与实验规范.md#m3-06-baseline)。
+2026-10-04 更新：正式 20/5/5、30 张真实图 / 44 实例及加载契约不变。B1 冻结与 M5-01 商品 ONNX 导出 / 三图 CPU、CUDA raw 对照已验收，M2 6/6、M3 5/6、M5 3/6、M7 1/6、主线 27/54，共享预处理及独立后处理已对齐官方，80 项测试通过。模型 / 元数据 / 集中参考数组在 artifacts/B1，小型机器记录在 reports/deployment；原 B1 / 数据不变。下一步 M5-04 完整 ORT / 参考后端与图片视频入口，暂不补拍 / E2；新增额度仍 10/30。见[M5 文件与接口](../docs/M5_ONNX独立部署与接口说明.md)、[B1 档案](../docs/M3_训练与实验规范.md#m3-06-baseline)。
 
 本文件规划需要在你的 Windows 电脑中建立的目录与文件。2026-10-02 已完成 M0-02：必要一级目录、`configs/paths.yaml`、源码锁定清单、训练 requirements、路径解析与安装验收脚本已建立；后续数据、训练和部署脚本按任务逐步实现，表中其余文件仍是规划。实际进展见[进度跟踪](00_YOLO_分阶段推进与进度跟踪.md)。
 
@@ -182,7 +182,8 @@ Conda 环境不需要放在项目目录中。若后续使用 Git，重点版本�
 | [tests/test_product_experiment.py](../tests/test_product_experiment.py)、[test_product_error_analysis.py](../tests/test_product_error_analysis.py)、[test_augmentation_control.py](../tests/test_augmentation_control.py) | mask 选 best、失效预检查、test 隔离、重载与错误匹配；对照配置漂移拒绝、增强验收和独立像素 / 标签变换一致性 | 实验规则 8 项、分析 5 项、增强对照新增 5 项；工程总计 52 项通过 |
 | `scripts/check_modified_model.py` | 检查结构、梯度、加载和导出 | 模型修改阶段 |
 | [scripts/export_onnx.py](../scripts/export_onnx.py)、[tests/test_onnx_export.py](../tests/test_onnx_export.py) | 冻结 B1 导出、图接口、三图 raw 检查与元数据；--check 只读，拒绝覆盖 | M5-01 已验收，新增 4 项测试、当时全项目 65 项通过 |
-| [scripts/check_preprocess.py](../scripts/check_preprocess.py)、[tests/test_preprocess.py](../tests/test_preprocess.py) | 官方逐像素 / 几何对照、3 份保存输入复核、历史输入保护与只读验收 | M5-02 已验收，新增 5 项测试、当前全项目 70 项通过 |
+| [scripts/check_preprocess.py](../scripts/check_preprocess.py)、[tests/test_preprocess.py](../tests/test_preprocess.py) | 官方逐像素 / 几何对照、3 份保存输入复核、历史输入保护与只读验收 | M5-02 已验收，新增 5 项测试、当时全项目 70 项通过 |
+| [scripts/check_postprocess.py](../scripts/check_postprocess.py)、[tests/test_postprocess.py](../tests/test_postprocess.py) | 保存 raw 输出 / 内存边界输入的 NMS、框与掩膜对照，已有验收只读核对 | M5-03 已验收，新增 10 项测试、当前全项目 80 项通过 |
 | `scripts/build_engine.py` | 根据 TensorRT 版本构建 engine | 部署阶段 |
 | `scripts/compare_backends.py` | 输入、raw 输出、框与掩膜一致性检查 | 部署阶段 |
 | `scripts/benchmark.py` | 固定输入的分段计时和结果导出 | 部署阶段 |
@@ -197,7 +198,7 @@ Conda 环境不需要放在项目目录中。若后续使用 Git，重点版本�
 | `deploy/paths.py` | 根据项目根目录统一解析路径 |
 | [deploy/onnx_contract.py](../deploy/onnx_contract.py) | M5-01 已实现：静态 FP32 / 三类 / 无 NMS 的图接口检查、val-only 来源和 raw 数值比较 |
 | [deploy/preprocess.py](../deploy/preprocess.py) | M5-02 已实现：NumPy/OpenCV 方形 LetterBox、RGB / FP32 / NCHW，保存原图 / 理想比例 / 实际缩放 / 整数补边；供后端共用 |
-| `deploy/postprocess.py` | 置信度筛选、NMS、框还原、掩膜还原 |
+| [deploy/postprocess.py](../deploy/postprocess.py) | M5-03 已实现：分数筛选、逐类 NMS、索引 / 系数绑定、原图框与 uint8 掩膜还原及空结果；只依赖 NumPy/OpenCV |
 | `deploy/results.py` | 统一结果对象：框、类别、分数、掩膜、耗时 |
 | `deploy/base_backend.py` | 定义各后端共有的加载与推理接口 |
 | `deploy/torch_backend.py` | PyTorch raw 推理；作为性能与输出参考 |
@@ -340,7 +341,7 @@ reports 是你归纳后的结论，logs 是程序直接记录的过程。训练�
 
 按实际任务填充：当前 20 张整理 → 轻量在线增强 / 临时按组调试划分 → 加载与短训练 → 按需补 6–10 张独立留出并冻结版本 → E1 微调与验证 → 新商品摄像头和最终 ONNX。新增采集及人工审核累计最多 30 张；E2 定向补样本选做，SE、完整独立 ONNX / TensorRT 与稳定性按依赖推进。在线增强不重复保存多套图，合成实验只保存必要预览与来源；不创建空脚本凑目录。
 
-当前正式数据与实际加载已全部验收。E1 / E1-A 权重、曲线和快照保留各自 runs/train，原图 / 标签 / B1 证据不变。M7-01 配置和现场记录保留原位置，摄像头仍用 PyTorch。M5-01 已由 configs/export_products.yaml 导出商品模型及元数据到 artifacts/B1；验收在 reports/deployment/M5-01_B1_onnx_export.json，接口见[M5 文档](../docs/M5_ONNX独立部署与接口说明.md)。只保留一份集中参考数组和一次 GPU profile，不复制源图或 PT 权重；M5-02 已新增共享预处理模块 / 检查入口 / 测试与一份 JSON 验收，无新图片或数组副本；下一步 M5-03。
+当前正式数据与实际加载已全部验收。E1 / E1-A 权重、曲线和快照保留各自 runs/train，原图 / 标签 / B1 证据不变。M7-01 配置和现场记录保留原位置，摄像头仍用 PyTorch。M5-01 已由 configs/export_products.yaml 导出商品模型及元数据到 artifacts/B1；验收在 reports/deployment/M5-01_B1_onnx_export.json，接口见[M5 文档](../docs/M5_ONNX独立部署与接口说明.md)。只保留一份集中参考数组和一次 GPU profile，不复制源图或 PT 权重；M5-02 已新增共享预处理模块 / 检查入口 / 测试与一份 JSON 验收，无新图片或数组副本；M5-03 已新增独立后处理 / 检查入口 / 测试及一份集中 JSON，同样无新图片或数组；下一步 M5-04。
 
 ## 十二、在 Windows 本地建立目录的命令
 
