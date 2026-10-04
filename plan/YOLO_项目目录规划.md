@@ -4,7 +4,7 @@
 
 2026-10-03 用户正式采用三种固定包装商品方向，现已根据试标成本确认小数据首版：现有 20 张起步，轻量在线增强和预训练微调；按需要少量补拍，新增人工审核累计最多 30 张（含留出，真实总量最多 50 张），不再按 350 张收集。M2-01 已冻结 classes.json / products.json，M2-02 的 20 张已验收；见[当前操作路线](00_YOLO_分阶段推进与进度跟踪.md#small-data-route)和[标注安排](../docs/M2_商品数据与标注规范.md#small-data-plan)。沿用现有 data/desktop/ 与代码路径，后续按任务实现配置，不增加空脚本。
 
-2026-10-04 更新：正式 20/5/5、30 张真实图 / 44 实例及加载契约不变。B1 冻结与 M5-01 商品 ONNX 导出 / 三图 CPU、CUDA raw 对照已验收，M2 6/6、M3 5/6、M5 4/6、M7 1/6、主线 28/54，完整 ORT / 参考后端和文件入口已验收，88 项测试通过。模型 / 元数据 / 集中参考数组在 artifacts/B1，小型机器记录在 reports/deployment；原 B1 / 数据不变。下一步 M5-05 固定开发输入配对，暂不补拍 / E2；新增额度仍 10/30。见[M5 文件与接口](../docs/M5_ONNX独立部署与接口说明.md)、[B1 档案](../docs/M3_训练与实验规范.md#m3-06-baseline)。
+2026-10-04 更新：正式 20/5/5、30 张真实图 / 44 实例及加载契约不变。B1 冻结与 M5-01 商品 ONNX 导出 / 三图 CPU、CUDA raw 对照已验收，M2 6/6、M3 5/6、M5 6/6、M7 1/6、主线 30/54，完整 ORT / 参考后端和文件入口已验收，104 项测试通过。模型 / 元数据 / 集中参考数组在 artifacts/B1，小型机器记录在 reports/deployment；原 B1 / 数据不变。30 个固定开发输入配对已通过，val5 同条件部署质量也已验收，框 / 掩膜 mAP50-95=0.8205 / 0.7434、降幅 0，低分 CPU 边界残差已记录；5 张可视化及指标图已生成，下一步 M6-01 构建条件，暂不补拍 / E2；新增额度仍 10/30。见[M5 文件与接口](../docs/M5_ONNX独立部署与接口说明.md)、[B1 档案](../docs/M3_训练与实验规范.md#m3-06-baseline)。
 
 本文件规划需要在你的 Windows 电脑中建立的目录与文件。2026-10-02 已完成 M0-02：必要一级目录、`configs/paths.yaml`、源码锁定清单、训练 requirements、路径解析与安装验收脚本已建立；后续数据、训练和部署脚本按任务逐步实现，表中其余文件仍是规划。实际进展见[进度跟踪](00_YOLO_分阶段推进与进度跟踪.md)。
 
@@ -72,6 +72,8 @@ Conda 环境不需要放在项目目录中。若后续使用 Git，重点版本�
 | [configs/augment_products.yaml](../configs/augment_products.yaml) | 轻量在线增强参数，诊断预览与 M3-01 三轮实际训练已使用 |
 | [configs/products_debug.yaml](../configs/products_debug.yaml) | 14/6 关联拍摄组调试数据；省略 path，以 YAML 所在目录解析 train/val 相对路径，没有 test |
 | [configs/baseline_products_v1.json](../configs/baseline_products_v1.json) | M3-06 已冻结的 B1：E1-A best / 20/5/5 / 训练与评价规则 / 实时 0.25，216 个文件哈希；不复制权重 |
+| [configs/parity_products_B1.json](../configs/parity_products_B1.json) | M5-05 固定 30 个 train / val 原图及内存变体输入；来源 / tensor SHA 与容差，不新增训练数据 |
+| [configs/evaluate_deployment_B1.yaml](../configs/evaluate_deployment_B1.yaml) | M5-06 固定 val5、方形 FP32、原图 GT / native 掩膜、两套门槛和质量降幅限值 |
 | [scripts/freeze_product_baseline.py](../scripts/freeze_product_baseline.py)、[tests/test_product_baseline.py](../tests/test_product_baseline.py) | B1 首次冻结和只读 --check；4 项新增防错测试，工程总计 61 项，验收见 [M3-06](../reports/experiments/M3-06_products_v1_baseline.json) |
 | [configs/train_debug.yaml](../configs/train_debug.yaml) | 历史 3 轮 GPU FP32 调试配置保留，训练入口默认仍使用此配置 |
 | `configs/products_expanded.yaml` | E2 定向扩充训练池，共用冻结验证 / 测试清单，选做待实现；当前 E3 对照使用 B1 原 train20 |
@@ -171,7 +173,7 @@ Conda 环境不需要放在项目目录中。若后续使用 Git，重点版本�
 | [scripts/check_dataset.py](../scripts/check_dataset.py) | 原图 / 审核 / TXT 追溯、数据清单、锁定增强预览和累计预算 | M2-03 已实现；20 张及 60 次检查通过 |
 | [scripts/check_training_data.py](../scripts/check_training_data.py) | 默认保留调试；--formal 检查正式 train/val/test 标签加载、训练同步增强、空标签与质量叠加，不训练模型 | 正式 30 张 / 44 实例、60 次增强及 12 次负样本检查通过；3 张紧凑总览和独立报告已保存 |
 | [scripts/check_live_preview.py](../scripts/check_live_preview.py) | E0 GPU 图片与模拟摄像头 / GUI 生命周期检查，不打开真实摄像头 | M2 收尾时由 tmp 归位，字节未变；旧实测报告保留 |
-| [scripts/cleanup_project.ps1](../scripts/cleanup_project.ps1) | 默认只读核对精确阶段清单，显式 -Manifest / -Execute 后逐文件清理；先核对 ZIP 实际内容和保留文件，拒绝路径跳转 | M2 历史清理保留；M3 已移除 199 文件 / 31 空目录，9 原文件归档，B1 / 数据复核通过；一处旧空目录树保留，见[最新记录](../reports/maintenance/20261002_文件整理与清理清单.md#m3-cleanup) |
+| [scripts/cleanup_project.ps1](../scripts/cleanup_project.ps1) | 默认只读核对精确阶段清单，显式 -Manifest / -Execute 后逐文件清理；有历史归档时核对 ZIP 内容与保留哈希，拒绝路径跳转 | M2 / M3 历史清理保留；M5 已删除 171 缓存文件 / 29 空目录，无新 ZIP，1,754 个保留文件 SHA / 修改时间及部署复核通过，见[最新记录](../reports/maintenance/20261002_文件整理与清理清单.md#m5-cleanup) |
 | `scripts/visualize_labels.py` | 绘制标签轮廓、检查标注 | 数据阶段 |
 | [scripts/train.py](../scripts/train.py) | 按 --config 进入历史 debug、正式 E1 或独立 E1-A；--preflight 只做 GPU 前向 / 反向与验证，保存独立日志 / 报告 | E1 / E1-A 各完成 50 轮 / 150 更新；E2/E3 支持待实现 |
 | [scripts/evaluate.py](../scripts/evaluate.py) | 完成 E1 / E1-A 后读取同一固定 val，保存每类 box/mask AP 及 conf=0.25 预览；--check 只核对配置 | 两份保存权重已实际评价，最终 test 不允许进入本入口 |
@@ -184,7 +186,9 @@ Conda 环境不需要放在项目目录中。若后续使用 Git，重点版本�
 | [scripts/export_onnx.py](../scripts/export_onnx.py)、[tests/test_onnx_export.py](../tests/test_onnx_export.py) | 冻结 B1 导出、图接口、三图 raw 检查与元数据；--check 只读，拒绝覆盖 | M5-01 已验收，新增 4 项测试、当时全项目 65 项通过 |
 | [scripts/check_preprocess.py](../scripts/check_preprocess.py)、[tests/test_preprocess.py](../tests/test_preprocess.py) | 官方逐像素 / 几何对照、3 份保存输入复核、历史输入保护与只读验收 | M5-02 已验收，新增 5 项测试、当时全项目 70 项通过 |
 | [scripts/check_postprocess.py](../scripts/check_postprocess.py)、[tests/test_postprocess.py](../tests/test_postprocess.py) | 保存 raw 输出 / 内存边界输入的 NMS、框与掩膜对照，已有验收只读核对 | M5-03 已验收，新增 10 项测试、当时全项目 80 项通过 |
-| [scripts/check_product_deployment.py](../scripts/check_product_deployment.py)、[tests/test_product_deployment.py](../tests/test_product_deployment.py) | 新进程真实后端 / CLI、raw 与实例对齐、GPU profile、视频解码及释放 | M5-04 已验收，新增 8 项测试、当前全项目 88 项通过 |
+| [scripts/check_product_deployment.py](../scripts/check_product_deployment.py)、[tests/test_product_deployment.py](../tests/test_product_deployment.py) | 新进程真实后端 / CLI、raw 与实例对齐、GPU profile、视频解码及释放 | M5-04 已验收，新增 8 项测试、验收当时全项目 88 项通过 |
+| [scripts/check_backend_parity.py](../scripts/check_backend_parity.py)、[tests/test_backend_parity.py](../tests/test_backend_parity.py) | 30 输入 raw / 实例与官方后处理配对、封存防护、GPU profile 和只读复核 | M5-05 已验收，新增 8 项测试、验收当时全项目 96 项通过 |
+| [scripts/evaluate_deployment.py](../scripts/evaluate_deployment.py)、[tests/test_deployment_evaluation.py](../tests/test_deployment_evaluation.py) | val5 三独立推理 / 同一评价核心、官方 GT / 负样本 / 降幅防护、可视化及只读复核 | M5-06 已验收，新增 8 项测试、当前全项目 104 项通过 |
 | `scripts/build_engine.py` | 根据 TensorRT 版本构建 engine | 部署阶段 |
 | `scripts/compare_backends.py` | 输入、raw 输出、框与掩膜一致性检查 | 部署阶段 |
 | `scripts/benchmark.py` | 固定输入的分段计时和结果导出 | 部署阶段 |
@@ -204,6 +208,7 @@ Conda 环境不需要放在项目目录中。若后续使用 Git，重点版本�
 | [deploy/base_backend.py](../deploy/base_backend.py) | M5-04 已实现：B1 资产 SHA / 接口核对、共享 pre/raw/post、后端按需加载与关闭 |
 | [deploy/torch_backend.py](../deploy/torch_backend.py) | M5-04 已实现：B1 同融合 / 导出头的 FP32 raw 参考，原权重不改 |
 | [deploy/onnx_backend.py](../deploy/onnx_backend.py) | M5-04 已实现：ORT CPU / CUDA、静态接口、独立 DLL 加载、拒绝 CPU 回退与可选 profile |
+| [deploy/parity.py](../deploy/parity.py) | M5-05 已实现：同类实例匹配、框 / 分数 / mask 偏差、空结果、未匹配、候选系数绑定及同分记录 |
 | `deploy/trt_backend.py` | TensorRT engine 独立推理与内存管理 |
 
 三个后端输出统一格式的原始候选和原型掩膜，使用共享前后处理。这样后端切换只改变模型执行部分，便于公平比较。
@@ -215,6 +220,7 @@ Conda 环境不需要放在项目目录中。若后续使用 Git，重点版本�
 | 文件 | 职责 | 当前状态 |
 | --- | --- | --- |
 | [app/infer_products.py](../app/infer_products.py) | 图片 / 文件视频推理、框与掩膜绘制、结果保存及资源释放 | M5-04 已验收：ORT CPU / CUDA 与 PyTorch 参考后端，共用前后处理 |
+| [app/deployment_evaluation.py](../app/deployment_evaluation.py) | val5 防护、原图 GT、多边形栅格化、掩膜打包、官方指标核心适配与质量降幅比较 | M5-06 已验收，不修改原训练评价器 |
 | [configs/infer_products.yaml](../configs/infer_products.yaml) | B1 文件推理资产、后端、设备与固定后处理参数 | M5-04 已实现；默认 ORT CUDA、conf=0.25 |
 | [app/live_camera.py](../app/live_camera.py) | 默认保留 E0；显式 live_products.yaml 加载 E1-A 真三类头，图片 / 视频 / 摄像头统一预测和同帧双画面；--conf 临时调整，不录制 | M7-01 已验收，两轮窗口退出 / 释放与反馈通过；多后端 / 录像 / 稳定性未验收 |
 | [configs/live_products.yaml](../configs/live_products.yaml) | E1-A best / 类别 / 训练报告哈希，PyTorch FP32、实时 conf=0.25、相机源 | 独立于冻结训练 / 正式评价配置 |
@@ -344,7 +350,9 @@ reports 是你归纳后的结论，logs 是程序直接记录的过程。训练�
 
 按实际任务填充：当前 20 张整理 → 轻量在线增强 / 临时按组调试划分 → 加载与短训练 → 按需补 6–10 张独立留出并冻结版本 → E1 微调与验证 → 新商品摄像头和最终 ONNX。新增采集及人工审核累计最多 30 张；E2 定向补样本选做，SE、完整独立 ONNX / TensorRT 与稳定性按依赖推进。在线增强不重复保存多套图，合成实验只保存必要预览与来源；不创建空脚本凑目录。
 
-当前正式数据与实际加载已全部验收。E1 / E1-A 权重、曲线和快照保留各自 runs/train，原图 / 标签 / B1 证据不变。M7-01 配置和现场记录保留原位置，摄像头仍用 PyTorch。M5-01 已由 configs/export_products.yaml 导出商品模型及元数据到 artifacts/B1；验收在 reports/deployment/M5-01_B1_onnx_export.json，接口见[M5 文档](../docs/M5_ONNX独立部署与接口说明.md)。M5-01 保留一份集中参考数组及当次 GPU profile，不复制源图或 PT 权重；M5-02 已新增共享预处理模块 / 检查入口 / 测试与一份 JSON 验收，无新图片或数组副本；M5-03 已新增独立后处理 / 检查入口 / 测试及一份集中 JSON，同样无新图片或数组；M5-04 已实现 configs/infer_products.yaml、app/infer_products.py 与完整后端，另存一次实际后端执行 profile；结果 / profile 在 demo/deployment/B1 和 artifacts/B1，集中验收在 reports/deployment。没有模型再导出或拍摄，下一步 M5-05。
+当前正式数据与实际加载已全部验收。E1 / E1-A 权重、曲线和快照保留各自 runs/train，原图 / 标签 / B1 证据不变。M7-01 配置和现场记录保留原位置，摄像头仍用 PyTorch。M5-01 已由 configs/export_products.yaml 导出商品模型及元数据到 artifacts/B1；验收在 reports/deployment/M5-01_B1_onnx_export.json，接口见[M5 文档](../docs/M5_ONNX独立部署与接口说明.md)。M5-01 保留一份集中参考数组及当次 GPU profile，不复制源图或 PT 权重；M5-02 已新增共享预处理模块 / 检查入口 / 测试与一份 JSON 验收，无新图片或数组副本；M5-03 已新增独立后处理 / 检查入口 / 测试及一份集中 JSON，同样无新图片或数组；M5-04 已实现 configs/infer_products.yaml、app/infer_products.py 与完整后端，另存一次实际后端执行 profile；结果 / profile 在 demo/deployment/B1 和 artifacts/B1，集中验收在 reports/deployment。M5-05 另增 30 输入清单、配对模块 / 入口 / 测试、一份集中 JSON 及实际 CUDA profile；90 份临时 raw 已清除，没有源图副本。M5-06 另增固定评价配置、评价适配器 / 入口 / 测试与一份集中 JSON；5 张四画面、指标图 / CSV / HTML 在 demo/deployment/B1/M5-06，当次 profile 在 artifacts/B1，临时数组已清除。没有模型再导出或拍摄，商品 M5 全模块已验收，下一步 M6-01。
+
+M5 收尾清理仅移除可重建字节码缓存及其空目录，部署资产和应用代码保留原位置。机器清单见[20261004_M5_cleanup_manifest.json](../reports/maintenance/20261004_M5_cleanup_manifest.json)，同一份[文件整理记录](../reports/maintenance/20261002_文件整理与清理清单.md#m5-cleanup)继续维护；主线 30/54 不变。
 
 ## 十二、在 Windows 本地建立目录的命令
 

@@ -1,6 +1,6 @@
 # M5：商品 ONNX 独立部署与接口说明
 
-更新：2026-10-04。**M5-01～04 已完成，M5 4/6，主线 28/54，完整模块仍 3/9。** 已形成商品图片 / 视频的完整独立推理程序，ORT CPU / CUDA 和 PyTorch raw 参考后端共用前后处理。三组原图输出与保存参考对齐，实际 CUDA 节点执行及图片 / 视频读写释放通过，88 项工程测试通过。视频压缩使一帧伊利分数降到 0.25 以下，已记录；当前没有新训练、部署 mAP 或正式 FPS 结论。下一步 M5-05 固定开发输入配对，再做 M5-06 部署质量评价；最终 test5 继续封存。见[本次程序、结果与命令](#m5-04-file-inference)。
+更新：2026-10-04。**M5-01～06 全部完成，M5 6/6，主线 30/54，完整模块 4/9。** B1 已完成 ONNX 导出、共享前后处理、ORT CPU / CUDA 图片视频程序、30 固定输入配对及 val5 同条件部署质量评价。三个后端的框 / 掩膜 mAP50-95 均为 0.8205 / 0.7434，未测到部署降幅；104 项工程测试、261 个历史文件保护通过。0.25 展示门槛检出 7/8、瑞幸杯漏检保留；0.001 评价门槛下 CPU 有一组低分候选的裁剪边界差异，已诊断，不宣称所有低分掩膜完全一致。摄像头仍用 PyTorch、test5 封存，无新训练或正式 FPS。正式后续为 M6-01 TensorRT 构建条件；也可按展示需求先接摄像头 ORT。见[文件命令](#m5-04-file-inference)、[固定输入配对](#m5-05-backend-parity)及[本次质量与可视化](#m5-06-validation-quality)。
 
 <a id="m5-01-export"></a>
 
@@ -152,14 +152,14 @@ images, geometry = preprocess_bgr(frame_bgr)
 # 后续 PyTorch raw 接口：torch.from_numpy(images).to(device)
 ```
 
-上面的后端调用是 M5-04 接入时的用法示例，当前尚未实现完整统一后端。可以直接运行本次只读验收：
+上面的后端调用保留 M5-02 当时的用法示例；接续完整统一后端已在第 8 节实现。可以直接运行本阶段只读验收：
 
 ```powershell
 conda activate yolo
 python scripts/check_preprocess.py --check
 ```
 
-接续 M5-03、04 已完成，详见第 7、8 节；当前下一步 M5-05 固定开发输入配对，无需补拍或重新标注。
+接续 M5-03～06 已完成，详见第 7～10 节；商品 ONNX 模块已收尾，当前无需补拍或重新标注。
 
 <a id="m5-03-postprocess"></a>
 
@@ -311,4 +311,138 @@ python scripts/check_product_deployment.py --check
 
 Windows 的 ORT1.19.2 会通过进程内 PATH 和 DLL 搜索目录找到现有 CUDA12 / cuDNN9。当前优先使用 yolo 环境 `torch/lib` 中已有 DLL，不导入 torch Python 包；没有修改系统 PATH、安装新包或下载新模型。本次在现有本机环境验收，独立发行包 / 干净移机尚未验证。固定清单与来源文件仍供入口核对。
 
-本次新增 8 份代码 / 配置、一份集中 JSON，示例图片 / 视频 / profile 在已有忽略目录中；没有新照片、标注、训练、权重副本、ONNX 再导出或最终 test 推理。**下一步 M5-05：**用现有非测试素材和尺寸变体组成至少 30 个固定开发输入，扩大 raw / 框 / 掩膜配对检查；随后 M5-06 在固定 val5 对接质量评价。无需用户补拍或重画。
+M5-04 新增 8 份代码 / 配置、一份集中 JSON，示例图片 / 视频 / profile 在已有忽略目录中；没有新照片、标注、训练、权重副本、ONNX 再导出或最终 test 推理。当时下一步为 M5-05，接续固定输入配对已完成，见下节。
+
+<a id="m5-05-backend-parity"></a>
+
+## 9. M5-05：30 个固定开发输入的后端一致性检查
+
+本环节验证同一模型从 PyTorch 换到 ONNX 后，原始输出和最终框 / 掩膜是否保持一致。输入清单、变换、源图 SHA、实际归一化 tensor SHA 和容差均在推理前固定，没有根据检查结果放宽阈值。
+
+### 输入与新增文件
+
+| 文件 | 职责 |
+| --- | --- |
+| [parity_products_B1.json](../configs/parity_products_B1.json) | 固定 30 个输入的来源、用途、内存变换、原图 / tensor SHA 和比较规则 |
+| [parity.py](../deploy/parity.py) | 同类别框 IoU 匹配、框 / 分数 / mask 差异、未匹配实例、候选与系数绑定及同分记录 |
+| [check_backend_parity.py](../scripts/check_backend_parity.py) | 隔离进程实际推理、同 raw 官方后处理、GPU profile、临时数组清理和只读复核 |
+| [test_backend_parity.py](../tests/test_backend_parity.py) | 8 项防错测试：输出换序、缺失 / 错类、框 / 分数 / 掩膜容差、空结果、绑定、封存数据与输入漂移 |
+| [M5-05_B1_backend_parity.json](../reports/deployment/M5-05_B1_backend_parity.json) | 逐输入、逐后端和汇总验收；没有额外逐图记录目录 |
+
+输入由原 train20 / val5 共 **25 张真实原图**与 **5 个工程变体**组成：361×641 奇数横图、顺时针旋转 90° 的竖图、321×321 方图、1001×333 竖向拉伸图、17×29 小尺寸负样本。尺寸按 H×W 记录。所有变体只在内存生成，不新增照片、标注或训练数据；拉伸是检查几何处理的输入，不代表真实独立场景。共覆盖 5 张原始无目标图及其 1 个小尺寸变体，最终 test5 没有参与推理。
+
+### 实际比较与结果
+
+三个独立运行进程分别执行 PyTorch CUDA、ORT CPU、ORT CUDA，各 30 次前向。先以完全相同的 RGB / FP32 / NCHW tensor 比较两个 raw 输出，再让两个后端共用独立后处理，最后对所有 90 份 raw 分别核对锁定官方 NMS、native 掩膜和最终结果构造。
+
+实例按同类别、原图框 IoU≥0.9 做一对一匹配，再要求所有实例匹配、框最大偏差≤0.01 像素、分数偏差≤1e-4、mask IoU≥0.999；没有实例的双空结果记为空对照，mask IoU 留空，不伪造测量值。候选 / 32 个系数的绑定另行核对。
+
+| 比较 | 组数 | 匹配实例数 | 双空组数 | 框最大偏差（像素） | 最低对应 mask IoU | 未匹配实例 |
+| --- | --- | --- | --- | --- | --- | --- |
+| ORT CPU / CUDA 分别对 PyTorch，共享后处理 | 60 | 88 | 16 | 0.0001220703 | 1.0 | 0 |
+| 三后端 raw 的独立后处理对官方后处理 | 90 | 132 | 24 | 0 | 1.0 | 0 |
+
+两项比较的二值掩膜差异像素均为 0，候选绑定差异均为 0。后端分数最大偏差为 5.3644e-7。两个 raw 输出共 120 项比较，全部满足 `abs(actual-reference) ≤ 0.001 + 0.0001 × abs(reference)`；候选输出最大绝对误差为 0.00120544，原型为 2.4796e-5。这里使用绝对和相对容差之和，不能把单独的 0.001 当成所有数值的绝对上限。
+
+ORT CPU / CUDA 进程均未导入 torch / ultralytics，CUDA profile 确认 **7950 次 GPU 节点执行事件、0 次 CPU 节点执行事件**。每条路线有 8 个空输出输入；其中 c23 是有目标的验证原图，c29 是有目标原图的竖向拉伸变体，三个后端共同输出为空。这些模型弱点保留，部署一致不能证明识别正确或提高了准确率。本批真实推理没有发现超过 0.25 门槛的精确同分候选；同分排序仍受官方后端实现影响，工程测试保留同分与绑定检查。
+
+### 复核、范围与下一步
+
+```powershell
+Set-Location 'E:\秋招\项目相关\YOLO'
+conda activate yolo
+python -B -X utf8 scripts/check_backend_parity.py --check
+```
+
+该命令只读核对保存验收、固定输入、历史文件及代码 SHA，不重复执行模型、写文件或覆盖结果。首轮验收入口 `python -B -X utf8 scripts/check_backend_parity.py` 在报告已存在时拒绝覆盖。人工不需要再拍摄或审核。
+
+**96 项工程测试通过；250 个历史文件 SHA / 修改时间保持一致。** 运行间交换的 90 份 raw 数组只放在本项目临时目录，任务结束后已清除；没有保留源图 / 标签副本。永久新增 4 份清单 / 代码 / 测试、一份集中 JSON 和一次 CUDA profile。摄像头仍使用 PyTorch；没有新训练、权重修改、ONNX 再导出、最终测试推理、质量 mAP 或正式 FPS。
+
+M5-05 完成当时 **M5 5/6、主线 29/54，完整模块 3/9**。接续 M5-06 已完成固定 val5 的同条件部署质量对照，见下节。历史矩形输入下的 0.7807 不能直接当作部署降幅参照。
+
+<a id="m5-06-validation-quality"></a>
+
+## 10. M5-06：固定 val5 部署质量与可视化对照
+
+### 先看结果
+
+| 产物 | 内容 |
+| --- | --- |
+| [完整可视化页面](../demo/deployment/B1/M5-06/index.html) | 汇总指标图与 5 张四画面对照，离线打开即可 |
+| [指标比较图](../demo/deployment/B1/M5-06/metrics_comparison.png) | PyTorch CUDA / ORT CPU / ORT CUDA 的总体、各类框和掩膜 mAP |
+| [val01 三商品](../demo/deployment/B1/M5-06/val01_comparison.png) | 原图、人工标签、PyTorch、ONNX CUDA；三类同框，展示 3/3 |
+| [val02 伊利](../demo/deployment/B1/M5-06/val02_comparison.png) | 单独伊利舒化，展示 1/1 |
+| [val03 瑞幸漏检](../demo/deployment/B1/M5-06/val03_comparison.png) | 有 1 个标注杯，两个后端均未达到 0.25 门槛，展示 0/1 |
+| [val04 三商品](../demo/deployment/B1/M5-06/val04_comparison.png) | 三类同框，展示 3/3 |
+| [val05 无目标](../demo/deployment/B1/M5-06/val05_comparison.png) | 空背景 / 非目标物，0.25 门槛下无输出 |
+| [各类指标 CSV](../demo/deployment/B1/M5-06/metrics_comparison.csv) | 三后端的各类 P / R、框与掩膜 AP，可用 Excel 打开 |
+| [集中验收与诊断](../reports/deployment/M5-06_B1_validation_quality.json) | 实际推理、评价、逐图 / 逐实例配对、GPU / SHA 证据及低分边界问题 |
+
+四画面上方是原图 / GT，下方是 PyTorch CUDA / ONNX CUDA；框与掩膜属于当前图。展示使用 conf=0.25、单标签规则，AP 使用 conf=0.001、多标签规则，没有将 200 多个低分评价候选全部画出来。
+
+### 评价条件与实现
+
+| 文件 | 职责 |
+| --- | --- |
+| [evaluate_deployment_B1.yaml](../configs/evaluate_deployment_B1.yaml) | 推理前冻结 val、640 方形 / FP32、两套门槛、GT 栅格化与 0.005 降幅上限 |
+| [deployment_evaluation.py](../app/deployment_evaluation.py) | val5 防护、原始 YOLO 多边形读取、完整尺寸 GT、掩膜无损打包、官方指标核心适配与固定门槛统计 |
+| [evaluate_deployment.py](../scripts/evaluate_deployment.py) | 三隔离推理进程、共同评价进程、可视化 / CSV、历史保护与只读复核 |
+| [test_deployment_evaluation.py](../tests/test_deployment_evaluation.py) | 8 项工程测试：官方 GT 栅格化对照、非法标签、封存 / 配置防护、框成功掩膜失败、负样本误检、掩膜无损与降幅限值 |
+
+仅使用冻结 val001～005，共 5 张 / 8 实例（山姆 2、伊利 3、瑞幸 3，含 1 张无目标图）。三个独立推理进程各执行 5 次 FP32 前向，同一共享 LetterBox 产生 batch1 / 640×640 / RGB tensor；评价候选为 conf=0.001、multi_label=True、class-aware NMS IoU=0.7、max_det=300，展示配置仍为 0.25 / 单标签。所有原始输出对照在既定容差内。
+
+GT 来自冻结原 YOLO 多边形文本，乘原图尺寸后按锁定官方 `polygon2mask` 的 int32 截断 / fillPoly 方式生成每实例独立二值掩膜，downsample=1；框为多边形的浮点最小 / 最大坐标。预测框和 native 掩膜同样处于原图坐标。共同评价适配器实际调用锁定 `SegmentationValidator._process_batch`、官方 IoU 0.50～0.95 一对一匹配和 `SegmentMetrics` / `ap_per_class`。未调用官方整套训练验证加载器；这是有记录的原图掩膜评价条件。
+
+历史训练评价使用 rect=True、降采样 / 重叠 GT 与默认验证掩膜路径。本次 0.7434 与历史 0.7807 的输入、GT / 掩膜处理条件不同，**不能把两数之差当作 ONNX 损失**。有效部署参照是本次同条件 PyTorch 的 0.7434。
+
+### 同条件指标
+
+| 后端 | 框 P / R | 框 mAP50 | 框 mAP50-95 | 掩膜 P / R | 掩膜 mAP50 | 掩膜 mAP50-95 | 掩膜部署降幅 |
+| --- | --- | --- | --- | --- | --- | --- | --- |
+| PyTorch CUDA | 0.9217 / 0.9746 | 0.9950 | 0.8205 | 0.9217 / 0.9746 | 0.9950 | 0.7434 | 参照 |
+| ORT CPU | 0.9217 / 0.9746 | 0.9950 | 0.8205 | 0.9217 / 0.9746 | 0.9950 | 0.7434 | 0 |
+| ORT CUDA | 0.9217 / 0.9746 | 0.9950 | 0.8205 | 0.9217 / 0.9746 | 0.9950 | 0.7434 | 0 |
+
+两项 mAP50-95 均未测到降幅，通过预先固定的 0.005（0.5 个百分点）门槛。P / R 有约 1e-8 的插值数值差异；表中 P / R 是官方平滑平均 F1 最优操作点的均值，不是 conf=0.25 下的计数值，也不是“准确率”。
+
+| 类别 | GT 实例 | 框 mAP50-95 | 掩膜 mAP50-95 | 0.25 下检出 / GT |
+| --- | --- | --- | --- | --- |
+| sam_whole_milk | 2 | 0.8950 | 0.5884 | 2/2 |
+| yili_shuhua | 3 | 0.6970 | 0.7823 | 3/3 |
+| luckin_cup | 3 | 0.8696 | 0.8595 | 2/3 |
+
+三个后端的各类 AP 一致。固定 conf=0.25、IoU=0.5 时，框 / 掩膜均为 **TP=7、FP=0、FN=1，Precision=1.0、Recall=0.875**；val003 的瑞幸漏检明确保留。仅这 5 张验证图未出现误检，不能据此推断现场所有非目标都不会误检。
+
+### 完整对齐与低分裁剪边界
+
+展示门槛下的 10 组后端实例对照通过；0.001 门槛下，三个后端的独立后处理对官方同 raw 路径共 15 组比较均通过（对应 mask IoU 最低约 0.999947）。该低分路径存在少量差异像素，不能描述为逐像素全部相同。
+
+低门槛跨后端有 **1/10 组未达到逐实例 mask IoU≥0.999**：ORT CPU 的 val001 候选 8324 在多标签规则下留下山姆 / 瑞幸两个分数约 0.00304 / 0.00244 的背景预测。PyTorch 的框 y1=686.0，CPU 为 686.0001221；按既有浮点框裁剪，CPU 删去 y=686 这一行的 417 个前景像素，因此两个相同候选掩膜的 IoU 为 0.96493。追加 2 次只读前向确认了坐标、差异行、面积及同类 GT mask IoU=0。
+
+这两个预测没有进入 0.25 展示，对本批真实目标的 TP / AP 没有影响，最终两后端 mAP 一致。本次**按预设质量降幅门槛验收通过，同时保留低分实例对齐未通过记录**；没有通过改变裁剪、阈值或容差隐藏边界。B1 后处理仍保留原浮点几何规则。
+
+ORT CPU / CUDA 推理进程均未导入 torch / ultralytics；实际 CUDA profile 记录 1325 次 GPU 节点事件、0 次 CPU 节点事件，来自正式 5 次 ORT CUDA 前向。原始数组与打包掩膜仅在临时目录交换，已全部清除；保存的是 5 张对照图、1 张指标图、CSV、HTML、1 份集中 JSON 和当次 profile。
+
+### 复核与范围
+
+```powershell
+Set-Location 'E:\秋招\项目相关\YOLO'
+conda activate yolo
+python -B -X utf8 scripts/evaluate_deployment.py --check
+```
+
+只读核对已存配置 / 代码 / 资产 / 逐图用途及指标差异，不重复推理、写文件或覆盖可视化。首次评价入口为 `python -B -X utf8 scripts/evaluate_deployment.py`，已有输出拒绝覆盖。
+
+**104 项工程测试通过；261 个历史文件 SHA / 修改时间不变。** 没有新照片、标签修改、训练、模型再导出、最终测试推理、摄像头切换或正式 FPS 结论。本批仍是同一实物包装、少量场景的验证，最终测试继续封存。
+
+**M5 已完成 6/6，主线 30/54，完整模块 4/9。** 按完整路线下一项是 M6-01：核对商品 TensorRT 构建条件；若优先现场展示，也可先推进 M7-02 的 PyTorch / ONNX 摄像头后端选择，TensorRT 接入与 M7 完整验收仍依赖 M6。
+
+## 11. M5 收尾文件清理
+
+2026-10-04 按用户要求执行本阶段清理：**171 个可重建 Python 字节码文件、29 个缓存空目录已删除，原文件合计 2,298,510 字节（约 2.19 MiB）。** 对应 `.py` 源码全部保留，后续导入可重新生成缓存。
+
+清理前后 1,754 个保留文件的 SHA256 / 修改时间一致，280 个部署相关文件哈希一致；`scripts/evaluate_deployment.py --check` 再次通过，连同 B1、M5-01～05 的保存证据一起核对。此次仅复核记录，不执行模型或重写验收结果。
+
+ONNX / 元数据、集中参考数组、六份验收、四次 CUDA profile、M5-04 图片 / 视频、M5-06 五张对照与指标图 / CSV / HTML 均保留。CPU / CUDA 两张相同 PNG 是 M5-04 已登记的独立后端输出，仍被验收哈希引用；不能直接删除。M5 临时 raw / 打包掩膜原本已自动清除，本次没有新建空 ZIP，也没有处理此前留下的旧空目录树。
+
+逐文件路径、缓存恢复来源和保留快照见[M5 清理清单](../reports/maintenance/20261004_M5_cleanup_manifest.json)，统一说明见[清理记录](../reports/maintenance/20261002_文件整理与清理清单.md#m5-cleanup)。工程状态仍为 M5 6/6、主线 30/54、完整模块 4/9。

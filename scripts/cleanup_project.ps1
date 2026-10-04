@@ -85,7 +85,7 @@ function File-Sha([string]$path) {
 
 $manifestPath = Workspace-Path $Manifest
 $plan = Get-Content -LiteralPath $manifestPath -Raw -Encoding UTF8 | ConvertFrom-Json
-if ($plan.root -ne $taskRoot -or $plan.task -notin @('M2_post_acceptance_cleanup', 'M3_post_baseline_cleanup')) {
+if ($plan.root -ne $taskRoot -or $plan.task -notin @('M2_post_acceptance_cleanup', 'M3_post_baseline_cleanup', 'M5_post_deployment_cleanup')) {
     throw 'Manifest belongs to another project or task'
 }
 if ($plan.status -notin @('archive_and_organization_done_deletion_blocked', 'prepared_cleanup', 'manual_cleanup_verified', 'cleanup_verified')) {
@@ -95,23 +95,29 @@ if ($plan.status -in @('manual_cleanup_verified', 'cleanup_verified')) {
     Write-Output 'The reviewed cleanup has already completed.'
     return
 }
-$archivePath = Workspace-Path $plan.archive.path
-if ((File-Sha $archivePath) -ne $plan.archive.sha256) { throw 'Verified archive changed' }
-Add-Type -AssemblyName System.IO.Compression.FileSystem
-$archive = [System.IO.Compression.ZipFile]::OpenRead($archivePath)
-try {
-    if ($archive.Entries.Count -ne $plan.archive.original_files.Count + 1) { throw 'Archive entry count changed' }
-    foreach ($original in $plan.archive.original_files) {
-        $entry = $archive.GetEntry($original.path)
-        if ($null -eq $entry -or $entry.Length -ne $original.bytes) { throw 'Archive original missing or resized' }
-        $stream = $entry.Open()
-        $algorithm = [System.Security.Cryptography.SHA256]::Create()
-        try {
-            $entrySha = [BitConverter]::ToString($algorithm.ComputeHash($stream)).Replace('-', '').ToLowerInvariant()
-            if ($entrySha -ne $original.sha256) { throw ('Archived bytes changed: ' + $original.path) }
-        } finally { $stream.Dispose(); $algorithm.Dispose() }
-    }
-} finally { $archive.Dispose() }
+$archiveOriginalCount = 0
+if ($null -ne $plan.archive) {
+    $archivePath = Workspace-Path $plan.archive.path
+    if ((File-Sha $archivePath) -ne $plan.archive.sha256) { throw 'Verified archive changed' }
+    Add-Type -AssemblyName System.IO.Compression.FileSystem
+    $archive = [System.IO.Compression.ZipFile]::OpenRead($archivePath)
+    try {
+        if ($archive.Entries.Count -ne $plan.archive.original_files.Count + 1) { throw 'Archive entry count changed' }
+        foreach ($original in $plan.archive.original_files) {
+            $entry = $archive.GetEntry($original.path)
+            if ($null -eq $entry -or $entry.Length -ne $original.bytes) { throw 'Archive original missing or resized' }
+            $stream = $entry.Open()
+            $algorithm = [System.Security.Cryptography.SHA256]::Create()
+            try {
+                $entrySha = [BitConverter]::ToString($algorithm.ComputeHash($stream)).Replace('-', '').ToLowerInvariant()
+                if ($entrySha -ne $original.sha256) { throw ('Archived bytes changed: ' + $original.path) }
+            } finally { $stream.Dispose(); $algorithm.Dispose() }
+        }
+        $archiveOriginalCount = $plan.archive.original_files.Count
+    } finally { $archive.Dispose() }
+} elseif ($plan.task -ne 'M5_post_deployment_cleanup') {
+    throw 'This stage requires its verified history archive'
+}
 $preservedNames = @($plan._preserved_sha256.PSObject.Properties.Name)
 $protectedNames = @($plan.protected_inputs.PSObject.Properties.Name)
 $seenPaths = @{}
@@ -143,6 +149,7 @@ foreach ($candidate in $plan.candidates) {
             }
         }
         'archived_unique_history' {
+            if ($null -eq $plan.archive) { throw 'History requires a verified archive' }
             $entry = @($plan.archive.original_files | Where-Object { $_.path -eq $candidate.path })
             if ($entry.Count -ne 1 -or $entry[0].sha256 -ne $candidate.sha256 -or -not $plan.archive.sha256_verified) {
                 throw 'History is not in the verified archive index'
@@ -162,7 +169,7 @@ foreach ($move in $plan.moves) {
 }
 foreach ($directory in $plan.empty_directory_candidates) { $null = Workspace-Path $directory }
 
-Write-Output ('Verified candidates: ' + $plan.candidates.Count + '; archive originals: ' + $plan.archive.original_files.Count)
+Write-Output ('Verified candidates: ' + $plan.candidates.Count + '; archive originals: ' + $archiveOriginalCount)
 if (-not $Execute) {
     Write-Output 'Review only: nothing deleted. Use -Execute locally after reviewing the manifest.'
     return
@@ -185,7 +192,7 @@ foreach ($directory in $plan.empty_directory_candidates) {
 foreach ($entry in $plan._preserved_sha256.PSObject.Properties) {
     if ((File-Sha (Workspace-Path $entry.Name)) -ne $entry.Value) { throw 'A retained file changed after cleanup' }
 }
-$plan.status = if ($plan.task -eq 'M3_post_baseline_cleanup') { 'cleanup_verified' } else { 'manual_cleanup_verified' }
+$plan.status = if ($plan.task -eq 'M2_post_acceptance_cleanup') { 'manual_cleanup_verified' } else { 'cleanup_verified' }
 $plan | Add-Member -NotePropertyName deleted_files -NotePropertyValue $deletedFiles -Force
 $plan | Add-Member -NotePropertyName deleted_directories -NotePropertyValue $deletedDirectories -Force
 if ($plan.task -eq 'M2_post_acceptance_cleanup') {
