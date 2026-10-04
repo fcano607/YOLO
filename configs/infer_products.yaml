@@ -1,0 +1,20 @@
+# M5-04 B1 independent file inference; historical training/camera configs are unchanged.
+schema_version: 1
+purpose: independent_b1_product_inference
+baseline: configs/baseline_products_v1.json
+export_receipt: reports/deployment/M5-01_B1_onnx_export.json
+metadata: artifacts/B1/best_fp32.metadata.json
+onnx: artifacts/B1/best_fp32.onnx
+weights: runs/train/E1A_products_v1_seed42/weights/best.pt
+defaults:
+  backend: onnx
+  device: cuda:0
+postprocess:
+  conf: 0.25
+  iou: 0.7
+  max_det: 300
+  multi_label: false
+runtime:
+  cpu_threads: 4
+  cuda_device: 0
+  tf32: false

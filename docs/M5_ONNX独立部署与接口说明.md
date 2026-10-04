@@ -1,6 +1,6 @@
 # M5：商品 ONNX 独立部署与接口说明
 
-更新：2026-10-04。**M5-01～03 已完成，M5 3/6，主线 27/54，完整模块仍 3/9。** 商品 ONNX 导出、共享预处理和独立框 / 掩膜后处理已验收。M5-03 在 18 组同 raw 对照中候选绑定及框坐标一致，二值掩膜全部一致；80 项工程测试通过。下一步 M5-04 接通 ORT / PyTorch raw 参考后端和图片 / 视频程序，再做 30 输入配对及部署质量评价；最终 test5 继续封存。见[本次实现与复核](#m5-03-postprocess)。
+更新：2026-10-04。**M5-01～04 已完成，M5 4/6，主线 28/54，完整模块仍 3/9。** 已形成商品图片 / 视频的完整独立推理程序，ORT CPU / CUDA 和 PyTorch raw 参考后端共用前后处理。三组原图输出与保存参考对齐，实际 CUDA 节点执行及图片 / 视频读写释放通过，88 项工程测试通过。视频压缩使一帧伊利分数降到 0.25 以下，已记录；当前没有新训练、部署 mAP 或正式 FPS 结论。下一步 M5-05 固定开发输入配对，再做 M5-06 部署质量评价；最终 test5 继续封存。见[本次程序、结果与命令](#m5-04-file-inference)。
 
 <a id="m5-01-export"></a>
 
@@ -99,7 +99,7 @@ python scripts/freeze_product_baseline.py --check
 
 ONNX / 数组 / profile 保存在已有忽略规则下的 `artifacts/B1/`，配置、代码、接口说明与小型验收记录供 Git 展示。没有新增模型 PT 副本，也不保存大量图片预览。本次新照片、训练、优化器更新和最终测试推理均为 0；当前摄像头仍使用已验收的 PyTorch 入口。
 
-共享预处理与独立框 / 掩膜后处理已接续完成，见第 6、7 节。现有摄像头仍使用原 PyTorch 入口，统一后端和完整 ORT 程序留到 M5-04 接入。
+共享前后处理、统一后端及完整 ORT 文件推理程序已接续完成，见第 6～8 节。现有摄像头仍使用原 PyTorch 入口，摄像头多后端接入按 M7 后续任务开展。
 
 <a id="m5-02-preprocess"></a>
 
@@ -159,7 +159,7 @@ conda activate yolo
 python scripts/check_preprocess.py --check
 ```
 
-接续 M5-03 已完成，详见下节。下一步 M5-04 接通独立 ORT 图片 / 视频程序；当前无需补拍或重新标注。
+接续 M5-03、04 已完成，详见第 7、8 节；当前下一步 M5-05 固定开发输入配对，无需补拍或重新标注。
 
 <a id="m5-03-postprocess"></a>
 
@@ -237,4 +237,78 @@ python scripts/check_postprocess.py --check
 
 本次新增三份代码和一份集中 JSON，更新原文档；新照片、标注修改、训练、模型推理、最终 test 推理和保存数组副本均为 0。摄像头仍使用原 PyTorch 入口，本次没有建立完整 ORT 图片 / 视频应用或评价新 mAP。
 
-**下一步 M5-04：**接通“图片 / 视频 → 共享预处理 → ORT 或 PyTorch raw 执行 → 共享后处理 → 显示 / 保存结果”，建立统一结果接口并确认实际执行 provider。完成后可以直接使用商品 ONNX 跑完整实例分割，无需调用 Ultralytics 的预测接口。
+接续 M5-04 已完成完整文件推理和参考后端，见下节。
+
+<a id="m5-04-file-inference"></a>
+
+## 8. M5-04：完整独立图片 / 视频程序
+
+现在可以直接从本地文件得到三种商品的类别、分数、原图框和掩膜：
+
+```text
+图片 / 视频帧 → 同一份 preprocess_bgr → ORT CPU / ORT CUDA / PyTorch raw
+            → 同一份 postprocess_b1 → InferenceResult → 标注图片 / 视频
+```
+
+### 已实现的文件
+
+| 文件 | 职责 |
+| --- | --- |
+| [infer_products.yaml](../configs/infer_products.yaml) | 固定 B1 模型来源、metadata、默认 ORT / CUDA0、FP32、conf=0.25 和 NMS 参数 |
+| [base_backend.py](../deploy/base_backend.py) | 核对 B1 / 导出来源与资产 SHA，统一预处理 → raw 执行 → 后处理；按需加载具体后端 |
+| [results.py](../deploy/results.py) | 两类后端共用 `InferenceResult`，含实例、原图几何、类别映射、后端信息和分段调用耗时 |
+| [onnx_backend.py](../deploy/onnx_backend.py) | ORT 静态接口、CPU / CUDA provider、Windows DLL 搜索和可选 profile；不导入 torch / ultralytics |
+| [torch_backend.py](../deploy/torch_backend.py) | 加载 B1 原权重，采用与导出一致的融合 / export-head FP32 路径；直接网络前向，不调用 `YOLO.predict` |
+| [infer_products.py](../app/infer_products.py) | 图片 / 文件视频入口、框和掩膜绘制、结果保存、可选显示、Q/Esc 退出和资源释放 |
+| [check_product_deployment.py](../scripts/check_product_deployment.py) | 新进程实际后端 / CLI 验收、同保存输入 raw 与完整结果对照、CUDA profile 及输出解码；已有验收只读复核 |
+| [test_product_deployment.py](../tests/test_product_deployment.py) | 8 项新增工程测试：统一接口、错接口、模型 / TF32 配置漂移、封存图片、拒绝覆盖、逐帧处理 / 异常释放、CPU 回退拦截 |
+
+每帧只执行一次 `backend.predict`，框、类别、掩膜都属于当前帧，保存与显示复用同一张标注画面。`InferenceResult.instances` 沿用 M5-03 的实例结构，`timings_ms` 记录预处理、raw 执行（含传输完成）、后处理和核心总耗时；不包含解码、绘图、写文件或模型初始化，不作为正式 FPS。CLI 的总耗时另包含模型启动与文件处理。
+
+### 本次实际验证
+
+三个独立子进程各使用原 val001 / 004 / 005，检查同保存输入 raw 输出，再用真实原图执行完整共享流程。raw 容差仍为 atol=0.001 / rtol=0.0001；完整实例要求候选 / 类别一致、原图框误差≤0.01 像素、分数误差≤1e-4、对应 mask IoU≥0.999。
+
+| 后端 | 三图实例数 | 原图框最大误差，像素 | 对应 mask IoU 最低 | 导入 torch / ultralytics |
+| --- | --- | --- | --- | --- |
+| ORT CPU | 3 / 3 / 0 | 0.00006104 | 1.0 | 均否 |
+| ORT CUDA | 3 / 3 / 0 | 0.00012207 | 1.0 | 均否 |
+| PyTorch CUDA raw 参考 | 3 / 3 / 0 | 0 | 1.0 | 均是，作为参考后端 |
+
+ORT CUDA profile 记录 **1590 次 CUDA 节点执行事件、0 次 CPU 节点执行事件**，来自三张输入各一次 raw 对照和一次完整推理。provider 列表本身不作为 GPU 执行证据；当前入口请求 CUDA 而会话实际回退为 CPU 时直接报错。事件次数不是模型节点数或 FPS。
+
+实际 CLI 在新进程运行了 CPU 图片、CUDA 图片、CPU 文件视频，均不导入训练框架。两份 PNG 标注图逐字节相同，尺寸 1280×720；三帧输入 / 输出视频均可重新解码成三帧同尺寸画面，正常到文件末尾退出，捕获器 / 写入器 / 后端释放通过。**88 项全项目测试通过；236 个历史文件 SHA / 修改时间一致**，原图、人工标签、训练权重、既有前后处理、M5-01～03 和源码 / 环境保持不变。
+
+| 可直接查看的结果 | 内容 |
+| --- | --- |
+| [ORT CPU 图片](../demo/deployment/B1/M5-04_onnx_cpu.png) | 三商品框、类别、分数与原图掩膜 |
+| [ORT CUDA 图片](../demo/deployment/B1/M5-04_onnx_cuda.png) | GPU 实际完整推理，与 CPU 标注图相同 |
+| [输入视频片段](../demo/deployment/B1/M5-04_input_fixture.avi) | 三张已存在 val 图按 5 FPS 编码成短文件，仅验证视频处理，不是新拍摄或新的独立数据 |
+| [分割结果视频](../demo/deployment/B1/M5-04_onnx_cpu.avi) | 三帧 ORT CPU 逐帧结果，实例数 2 / 3 / 0 |
+| [M5-04_B1_file_inference.json](../reports/deployment/M5-04_B1_file_inference.json) | 来源、raw / 实例比较、真实 CLI 输出、provider 事件、解码 / 释放、SHA 与任务进度 |
+
+视频第一帧少检伊利：原 PNG 的该类最高分约 **0.250130**，MJPG 编码再解码后约 **0.232576**，低于相同 0.25 门槛。原图和压缩视频像素不同，不能要求两者预测数相同；本次记录这一模型临界分数 / 输入压缩问题，不调低门槛或覆盖 B1。仅凭这组读写检查不能判断真实视频准确率、长期稳定性或新场景泛化。这里的 mask IoU 仍是与保存参考比较，不是与人工真值比较。
+
+### 如何使用
+
+从项目根目录运行；`--output` 需要新路径，已有文件会被拒绝覆盖。默认 `onnx / cuda:0`，也可显式使用 CPU 或参考后端。
+
+```powershell
+conda activate yolo
+# 默认 ORT CUDA：换成你自己的图片路径也可以。
+python app/infer_products.py --source data/raw/camera/frames/holdout_val_20261004_095145/holdout_val_20261004_095145_001.png --output demo/deployment/B1/my_image_cuda.png
+# ORT CPU，整个进程不导入训练框架。
+python app/infer_products.py --backend onnx --device cpu --source data/raw/camera/frames/holdout_val_20261004_095145/holdout_val_20261004_095145_001.png --output demo/deployment/B1/my_image_cpu.png
+# 同前后处理的 PyTorch raw 参考路径。
+python app/infer_products.py --backend torch --device cuda:0 --source data/raw/camera/frames/holdout_val_20261004_095145/holdout_val_20261004_095145_001.png --output demo/deployment/B1/my_image_torch.png
+# 文件视频，AVI / MP4 输出均有入口；本次实测输出为 AVI。
+python app/infer_products.py --backend onnx --device cpu --source demo/deployment/B1/M5-04_input_fixture.avi --output demo/deployment/B1/my_video.avi
+# 只读核对当前验收，不重新执行模型或增加产物。
+python scripts/check_product_deployment.py --check
+```
+
+添加 `--show` 可显示结果；图片按任意键关闭，视频按 Q / Esc 退出；`--max-frames 100` 可限制文件视频帧数。当前验收自动保存文件，没有实际打开新窗口；真实摄像头仍使用 `app/live_camera.py --config configs/live_products.yaml`，未切换到 ORT。正式封存 test 原图、配对图片及字节相同副本由文件入口拦截，开发输入使用 train / val 或自行提供的非测试素材。
+
+Windows 的 ORT1.19.2 会通过进程内 PATH 和 DLL 搜索目录找到现有 CUDA12 / cuDNN9。当前优先使用 yolo 环境 `torch/lib` 中已有 DLL，不导入 torch Python 包；没有修改系统 PATH、安装新包或下载新模型。本次在现有本机环境验收，独立发行包 / 干净移机尚未验证。固定清单与来源文件仍供入口核对。
+
+本次新增 8 份代码 / 配置、一份集中 JSON，示例图片 / 视频 / profile 在已有忽略目录中；没有新照片、标注、训练、权重副本、ONNX 再导出或最终 test 推理。**下一步 M5-05：**用现有非测试素材和尺寸变体组成至少 30 个固定开发输入，扩大 raw / 框 / 掩膜配对检查；随后 M5-06 在固定 val5 对接质量评价。无需用户补拍或重画。
