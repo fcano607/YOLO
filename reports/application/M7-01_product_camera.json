@@ -1,0 +1,171 @@
+{
+  "status": "completed",
+  "task": "M7-01",
+  "checked_at": "2026-10-04T14:13:15.099896+08:00",
+  "configuration": "configs/live_products.yaml",
+  "configuration_sha256": "4fad7986fb0ee0864a84cc496fa39caf5e81e8f756f8f0f85e16f0311cfc0169",
+  "implementation_sha256": {
+    "app/live_camera.py": "5fd28445bfc139769b654d7251597f9bfe8bd64d196e4efd4cb074940c1da59d",
+    "scripts/check_product_preview.py": "02c55acfa9217f51d0578dd0c0bbea400914c0e0d76beaa056d09e314d3de428",
+    "tests/test_product_preview.py": "88194c42dad696cfa82232b78adbbff096c01ee4799d81c2b6a4276ed912decd"
+  },
+  "weights": {
+    "path": "runs/train/E1A_products_v1_seed42/weights/best.pt",
+    "sha256": "be673312bea16cf89d044e9107b33e180bf5317ed715452b5d81575b54ca9424"
+  },
+  "class_names": {
+    "0": "sam_whole_milk",
+    "1": "yili_shuhua",
+    "2": "luckin_cup"
+  },
+  "engineering_tests": 57,
+  "GPU_precheck": "reports/application/M7-01_product_preview_precheck_current.json",
+  "GPU_precheck_sha256": "b59ef6baa427d88f17b55283580e177169a4b76a7a9b435db02c7f4b5c73b859",
+  "camera_sessions": [
+    {
+      "path": "reports/application/M7-01_live_E1A_20261004_140055_937.json",
+      "sha256": "96003854cff401cc7314fd82dd2aa494e18ad905a10ad506bc932e27b986d03d",
+      "conf": 0.1,
+      "frames": 7489,
+      "seconds": 250.187,
+      "capture_released": true,
+      "window_destroyed": true,
+      "exit_reason": "key_exit",
+      "initial_precision_parameter": "half:false (FP32); now expressed as quantize:32"
+    },
+    {
+      "path": "reports/application/M7-01_live_E1A_conf025_20261004_140929_527.json",
+      "sha256": "984c4302466b5f4c28ed4c955b1b5c1ca0e8f50ff726a2e25699d5343c016b0f",
+      "conf": 0.25,
+      "frames": 2698,
+      "seconds": 90.297,
+      "capture_released": true,
+      "window_destroyed": true,
+      "exit_reason": "duration_limit"
+    }
+  ],
+  "camera_confirmed_by_user": true,
+  "same_frame_rendering_checked": true,
+  "manual_feedback": [
+    {
+      "conf": 0.1,
+      "user_text": "能看到窗口，但有漏检或误检"
+    },
+    {
+      "conf": 0.1,
+      "user_text": "瑞幸杯可能效果差一下，误检的情况还是比较多，很多非三种产品都被误检出来了"
+    },
+    {
+      "conf": 0.25,
+      "user_text": "误检减少，三类基本能检出"
+    }
+  ],
+  "interpretation": "Camera/image/video single loop and same-frame rendering work. User reports many non-target false positives at .1 and improvement with three classes mostly detected at .25; cup weaknesses remain. This is qualitative preview, not formal accuracy or long-term stability.",
+  "guarded_inputs_checked": 142,
+  "training_data_and_weights_unchanged": true,
+  "new_photos": 0,
+  "test_images_inferred": 0,
+  "screenshots_or_videos_saved": false,
+  "followup": {
+    "confidence": 0.25,
+    "status": "completed_with_user_feedback",
+    "default_changed_to": 0.25,
+    "note": "User-reported improvement on live scene; no labeled camera metric and no guarantee of eliminating false positives."
+  },
+  "progress": {
+    "main_tasks_completed": 23,
+    "main_tasks_total": 54,
+    "M3_completed": 4,
+    "M3_total": 6,
+    "M7_completed": 1,
+    "M7_total": 6
+  },
+  "not_completed": [
+    "M7-02 multiple backends",
+    "M7-03 screenshots/recording/timing HUD",
+    "M7-04 frame age/backlog study",
+    "M7-05 20-30 minute stability",
+    "M7-06 three-backend demo",
+    "M3-04 E2",
+    "M3-06 frozen final baseline"
+  ],
+  "schema_version": 1,
+  "acceptance": "single_loop_integration_accepted",
+  "GPU_precheck_role": "Historical conf=0.1 GPU/source integration check; final conf=0.25 rechecked below.",
+  "final_runtime_configuration_check": {
+    "passed": true,
+    "predict": {
+      "device": "0",
+      "imgsz": 640,
+      "rect": true,
+      "quantize": 32,
+      "conf": 0.25,
+      "iou": 0.7,
+      "max_det": 300,
+      "retina_masks": true,
+      "save": false,
+      "save_txt": false,
+      "show": false,
+      "verbose": false,
+      "classes": null
+    },
+    "device": "cuda:0",
+    "fp16": false,
+    "fixed_val_records": [
+      {
+        "image_id": "holdout_val_20261004_095145_001",
+        "source_sha256": "33d0708d6b3e76be465e637ead78ed3356ed0f95f94f609a8964d200d618363c",
+        "class_counts": {
+          "luckin_cup": 1,
+          "sam_whole_milk": 1
+        },
+        "scores": [
+          0.9317163825035095,
+          0.7226322889328003
+        ]
+      },
+      {
+        "image_id": "holdout_val_20261004_095145_002",
+        "source_sha256": "f06041c9e302b040b2fd76d44b6d0acc02261d7b032be805dab231d42f9e9cdf",
+        "class_counts": {
+          "yili_shuhua": 1
+        },
+        "scores": [
+          0.6468837261199951
+        ]
+      },
+      {
+        "image_id": "holdout_val_20261004_095145_003",
+        "source_sha256": "2615de716a615e0803465e1ec2a4648ad1d27ecf26d06c597896115d5d6e471a",
+        "class_counts": {},
+        "scores": []
+      },
+      {
+        "image_id": "holdout_val_20261004_095145_004",
+        "source_sha256": "2835e2122db3029d97307356ad7e020467647a2d23e33fc281dbb15dae90801a",
+        "class_counts": {
+          "luckin_cup": 1,
+          "sam_whole_milk": 1,
+          "yili_shuhua": 1
+        },
+        "scores": [
+          0.7548316121101379,
+          0.70751953125,
+          0.6165106892585754
+        ]
+      },
+      {
+        "image_id": "holdout_val_20261004_095145_005",
+        "source_sha256": "676d5401f5cf463637cc344ae56e0eaaed7f011edd4ee6fa9d72aa9a3b544d5c",
+        "class_counts": {},
+        "scores": []
+      }
+    ],
+    "instances_shown": 6,
+    "source_role": "Only the fixed val pool; no final test loading or inference."
+  },
+  "recommendation": {
+    "next_task": "M3-06",
+    "action": "Choose and freeze the first-version E1-A baseline and runtime conf=0.25; then proceed to product ONNX. Optional E2 remains deferred until a concrete unmet need."
+  }
+}

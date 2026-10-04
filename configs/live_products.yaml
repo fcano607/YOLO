@@ -1,0 +1,26 @@
+# M7-01 E1-A preview. Live comparison favored conf=0.25; frozen experiments are unchanged.
+schema_version: 1
+model_kind: products
+experiment: E1-A
+weights:
+  path: runs/train/E1A_products_v1_seed42/weights/best.pt
+  sha256: be673312bea16cf89d044e9107b33e180bf5317ed715452b5d81575b54ca9424
+class_metadata:
+  path: data/desktop/metadata/classes.json
+  sha256: 7bcbc3829a4b84dcfe8b6cadaf3018716ef46579328851f26304c42bd093d2bb
+training_report:
+  path: reports/experiments/E1A_products_v1_seed42.json
+  sha256: 61375e4d4d9d8fece4e021128bd99f5232bea4f12894c989c2412dd88133713f
+predict:
+  device: '0'
+  imgsz: 640
+  rect: true
+  quantize: 32
+  conf: 0.25
+  iou: 0.7
+  max_det: 300
+  retina_masks: true
+camera:
+  index: 0
+  backend: DSHOW
+  timeout: 60

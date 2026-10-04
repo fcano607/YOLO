@@ -1,0 +1,158 @@
+{
+  "status": "passed",
+  "task": "M7-01",
+  "checked_at": "2026-10-04T14:09:28.800011+08:00",
+  "configuration": "configs/live_products.yaml",
+  "configuration_sha256": "73ec62f77b32eff60d513dc822b166c06630beafbbed5cec3f347182007253d9",
+  "implementation_sha256": {
+    "app/live_camera.py": "5fd28445bfc139769b654d7251597f9bfe8bd64d196e4efd4cb074940c1da59d",
+    "scripts/check_product_preview.py": "d1b2ab8aba60319047099a6ad78429f0e9d5e29ae22c7fcbbfebcede6a528a31"
+  },
+  "weights": {
+    "path": "runs/train/E1A_products_v1_seed42/weights/best.pt",
+    "sha256": "be673312bea16cf89d044e9107b33e180bf5317ed715452b5d81575b54ca9424"
+  },
+  "class_names": {
+    "0": "sam_whole_milk",
+    "1": "yili_shuhua",
+    "2": "luckin_cup"
+  },
+  "predict": {
+    "device": "0",
+    "imgsz": 640,
+    "rect": true,
+    "quantize": 32,
+    "conf": 0.1,
+    "iou": 0.7,
+    "max_det": 300,
+    "retina_masks": true,
+    "save": false,
+    "save_txt": false,
+    "show": false,
+    "verbose": false,
+    "classes": null
+  },
+  "fixed_val_results": [
+    {
+      "image_id": "holdout_val_20261004_095145_001",
+      "source": "data/desktop/images/products-v1/val/holdout_val_20261004_095145_001.png",
+      "source_sha256": "33d0708d6b3e76be465e637ead78ed3356ed0f95f94f609a8964d200d618363c",
+      "class_counts": {
+        "luckin_cup": 1,
+        "sam_whole_milk": 1,
+        "yili_shuhua": 1
+      },
+      "scores": [
+        0.9317163825035095,
+        0.7226322889328003,
+        0.20587801933288574
+      ],
+      "mask_shape": [
+        3,
+        720,
+        1280
+      ]
+    },
+    {
+      "image_id": "holdout_val_20261004_095145_002",
+      "source": "data/desktop/images/products-v1/val/holdout_val_20261004_095145_002.png",
+      "source_sha256": "f06041c9e302b040b2fd76d44b6d0acc02261d7b032be805dab231d42f9e9cdf",
+      "class_counts": {
+        "yili_shuhua": 1
+      },
+      "scores": [
+        0.6468837261199951
+      ],
+      "mask_shape": [
+        1,
+        720,
+        1280
+      ]
+    },
+    {
+      "image_id": "holdout_val_20261004_095145_003",
+      "source": "data/desktop/images/products-v1/val/holdout_val_20261004_095145_003.png",
+      "source_sha256": "2615de716a615e0803465e1ec2a4648ad1d27ecf26d06c597896115d5d6e471a",
+      "class_counts": {
+        "luckin_cup": 1
+      },
+      "scores": [
+        0.20663635432720184
+      ],
+      "mask_shape": [
+        1,
+        720,
+        1280
+      ]
+    },
+    {
+      "image_id": "holdout_val_20261004_095145_004",
+      "source": "data/desktop/images/products-v1/val/holdout_val_20261004_095145_004.png",
+      "source_sha256": "2835e2122db3029d97307356ad7e020467647a2d23e33fc281dbb15dae90801a",
+      "class_counts": {
+        "luckin_cup": 1,
+        "sam_whole_milk": 1,
+        "yili_shuhua": 1
+      },
+      "scores": [
+        0.7548316121101379,
+        0.70751953125,
+        0.6165106892585754
+      ],
+      "mask_shape": [
+        3,
+        720,
+        1280
+      ]
+    },
+    {
+      "image_id": "holdout_val_20261004_095145_005",
+      "source": "data/desktop/images/products-v1/val/holdout_val_20261004_095145_005.png",
+      "source_sha256": "676d5401f5cf463637cc344ae56e0eaaed7f011edd4ee6fa9d72aa9a3b544d5c",
+      "class_counts": {},
+      "scores": [],
+      "mask_shape": null
+    }
+  ],
+  "same_frame_panes_verified": true,
+  "original_sources_unchanged": true,
+  "E0_compatibility": {
+    "class_filter": [
+      41,
+      39,
+      67
+    ],
+    "bus_instances": 5
+  },
+  "preview": "runs/precheck/M7-01_product_preview/val004_both.jpg",
+  "guarded_inputs_checked": 142,
+  "test_images_inferred": 0,
+  "real_camera_tested": false,
+  "note": "GPU fixed-image integration check only; live/manual confirmation pending.",
+  "file_entry_lifecycle_checks": [
+    {
+      "source": "data/desktop/images/products-v1/val/holdout_val_20261004_095145_004.png",
+      "source_sha256": "2835e2122db3029d97307356ad7e020467647a2d23e33fc281dbb15dae90801a",
+      "visible_window": false,
+      "real_file_decode": true,
+      "GPU_inference": true,
+      "same_frame_panes": true,
+      "displayed_frames": 4,
+      "video_released": false,
+      "mode_switch_checked": true
+    },
+    {
+      "source": "runs/E0/M0-04_20261002_camera_targets/input.mp4",
+      "source_sha256": "9c1da7390431fc8894154cdcf3e244ac6043201eaba73909b0405a0052ec2adb",
+      "visible_window": false,
+      "real_file_decode": true,
+      "GPU_inference": true,
+      "same_frame_panes": true,
+      "displayed_frames": 1,
+      "video_released": true,
+      "mode_switch_checked": false
+    }
+  ],
+  "engineering_tests": 57,
+  "file_entry_check_note": "Real file decode/GPU/same-frame checks preceded the additive --conf override; core frame loop unchanged. Actual override is separately checked in live session 2."
+}

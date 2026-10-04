@@ -4,7 +4,7 @@
 
 2026-10-03 用户正式采用三种固定包装商品方向，现已根据试标成本确认小数据首版：现有 20 张起步，轻量在线增强和预训练微调；按需要少量补拍，新增人工审核累计最多 30 张（含留出，真实总量最多 50 张），不再按 350 张收集。M2-01 已冻结 classes.json / products.json，M2-02 的 20 张已验收；见[当前操作路线](00_YOLO_分阶段推进与进度跟踪.md#small-data-route)和[标注安排](../docs/M2_商品数据与标注规范.md#small-data-plan)。沿用现有 data/desktop/ 与代码路径，后续按任务实现配置，不增加空脚本。
 
-2026-10-04 更新：M2 6/6 已完成，正式 20/5/5、30 张真实图 / 44 实例及加载契约不变。E1 / M3-05 及接续 E1-A 增强对照已完成，M3 仍 4/6、主线 22/54。E1-A 的 val mask mAP50-95=0.7807，0.25 匹配 6/8，候选 0.1 为 8/8 / 无额外误检；52 项工程测试通过。奶盒改善、杯子略退步，下一步新权重实时预览；新增额度仍为 10/30、剩余 20，当前无需拍照。见[数据验收](../docs/M2_商品数据与标注规范.md#m2-05-06)与[增强实测](../docs/M3_训练与实验规范.md#e1a-augmentation)。
+2026-10-04 更新：M2 6/6 已完成，正式 20/5/5、30 张真实图 / 44 实例及加载契约不变。E1 / M3-05 / E1-A 及 M7-01 接入已验收，M3 4/6、M7 1/6、主线 23/54，57 项测试通过。E1-A val mask mAP50-95=0.7807；摄像头 0.1 非目标误检较多，0.25 的人工反馈为误检减少、三类基本能检出，实时默认 0.25。下一步建议固定首版基线 / 商品 ONNX，暂不补拍 / E2；新增额度仍 10/30。见[数据验收](../docs/M2_商品数据与标注规范.md#m2-05-06)与[摄像头实测](../docs/M0_环境与模型使用手册.md#live-products)。
 
 本文件规划需要在你的 Windows 电脑中建立的目录与文件。2026-10-02 已完成 M0-02：必要一级目录、`configs/paths.yaml`、源码锁定清单、训练 requirements、路径解析与安装验收脚本已建立；后续数据、训练和部署脚本按任务逐步实现，表中其余文件仍是规划。实际进展见[进度跟踪](00_YOLO_分阶段推进与进度跟踪.md)。
 
@@ -208,7 +208,9 @@ Conda 环境不需要放在项目目录中。若后续使用 Git，重点版本�
 
 | 文件 | 职责 | 当前状态 |
 | --- | --- | --- |
-| [app/live_camera.py](../app/live_camera.py) | 使用 E0 预训练模型进行实时原图 / 分割结果预览，支持视图切换和三类 / 全类别选择，默认不录制 | 原型已实现；真实摄像头窗口待验证 |
+| [app/live_camera.py](../app/live_camera.py) | 默认保留 E0；显式 live_products.yaml 加载 E1-A 真三类头，图片 / 视频 / 摄像头统一预测和同帧双画面；--conf 临时调整，不录制 | M7-01 已验收，两轮窗口退出 / 释放与反馈通过；多后端 / 录像 / 稳定性未验收 |
+| [configs/live_products.yaml](../configs/live_products.yaml) | E1-A best / 类别 / 训练报告哈希，PyTorch FP32、实时 conf=0.25、相机源 | 独立于冻结训练 / 正式评价配置 |
+| [scripts/check_product_preview.py](../scripts/check_product_preview.py)、[tests/test_product_preview.py](../tests/test_product_preview.py) | GPU val5 / E0 回归、同帧原图与掩膜；类别 / 权重引用拒绝、模拟退出与异常释放 | 新增 5 项测试，工程总计 57 项；机器 / 人工记录合并见 M7-01 验收 |
 | [app/annotate_products.py](../app/annotate_products.py) | 本地浏览器审核入口，明确确认后保存商品多边形标签与耗时统计 | 30 张已人工确认；新增组报告归属 M2-04 |
 | [app/product_review.html](../app/product_review.html) | 多边形补画、拖点、改类、删非目标及逐图审核页面 | 已实现；新增验证 / 最终测试用途提示 |
 | [app/product_data.py](../app/product_data.py) | 类别读取、原图 I/O、多边形检查、标签导出和试标统计 | 已实现，12 项工程测试通过；包含闭合点与失败保存回归 |
@@ -220,7 +222,7 @@ Conda 环境不需要放在项目目录中。若后续使用 Git，重点版本�
 | `app/render.py` | 绘制框、掩膜、类别、实例数、FPS 和耗时 | 规划 |
 | `app/recorder.py` | 截图、录像与输出日志管理 | 规划 |
 
-当前可运行入口是 `python app/live_camera.py`，从项目根目录运行；按键、参数与退出方式集中在[使用手册](../docs/M0_环境与模型使用手册.md#live-camera)。该入口目前使用 PyTorch / Ultralytics，尚未统一 ONNX Runtime / TensorRT 后端。后续按 M7 任务整理摄像头、文件视频、后端切换、截图与录制；`python -m app.webcam` 是后续规划入口，当前尚不可用。
+当前商品入口是 `python app/live_camera.py --config configs/live_products.yaml`；省略配置保留 E0，--source 可用图片 / 文件视频，--conf 临时调整。操作集中在[商品使用说明](../docs/M0_环境与模型使用手册.md#live-products)。目前使用 PyTorch / Ultralytics，ONNX Runtime / TensorRT 统一后端、截图 / 录制与长期稳定性未完成；`python -m app.webcam` 仍是规划入口，当前不可用。
 
 ## 八、third_party：模型源码与结构修改
 
@@ -334,7 +336,7 @@ reports 是你归纳后的结论，logs 是程序直接记录的过程。训练�
 
 按实际任务填充：当前 20 张整理 → 轻量在线增强 / 临时按组调试划分 → 加载与短训练 → 按需补 6–10 张独立留出并冻结版本 → E1 微调与验证 → 新商品摄像头和最终 ONNX。新增采集及人工审核累计最多 30 张；E2 定向补样本选做，SE、完整独立 ONNX / TensorRT 与稳定性按依赖推进。在线增强不重复保存多套图，合成实验只保存必要预览与来源；不创建空脚本凑目录。
 
-当前正式数据与实际加载已全部验收：`python scripts/build_splits.py --formal-loading` 复查 YAML / 清单；`python scripts/check_training_data.py --formal` 重查加载与增强，不训练模型。E1 / E1-A 的权重、曲线和快照分别集中在 `runs/train/E1_products_v1_seed42` / `E1A_products_v1_seed42`，val 图在 `runs/eval/`。分析放在各自独立 `runs/analysis/`；增强检查仅保存 3 张总览，对照另存 0.25 / 0.1 两张紧凑图和合并 JSON，没有复制另一套源图。新策略 / 配置独立保存，原 E1 证据不变。下一步 E1-A 实时预览，见[实测与命令](../docs/M3_训练与实验规范.md#e1a-augmentation)。
+当前正式数据与实际加载已全部验收。E1 / E1-A 权重、曲线和快照保留各自 runs/train，val 图在 runs/eval，分析在独立 runs/analysis；没有复制另一套源图，原 E1 证据不变。M7-01 的配置在 configs/live_products.yaml，预检查 / 两轮会话汇总见 [M7-01_product_camera.json](../reports/application/M7-01_product_camera.json)，操作见[第 3.5 节](../docs/M0_环境与模型使用手册.md#live-products)。摄像头未保存照片 / 视频，只保留统计和人工反馈；下一步建议固定首版 E1-A，再商品 ONNX。
 
 ## 十二、在 Windows 本地建立目录的命令
 

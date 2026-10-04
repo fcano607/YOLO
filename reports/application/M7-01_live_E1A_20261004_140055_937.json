@@ -1,0 +1,61 @@
+{
+  "status": "completed",
+  "task": "M7-01",
+  "started_at": "2026-10-04T14:00:57.252380+08:00",
+  "experiment": "E1-A",
+  "weights": {
+    "path": "runs/train/E1A_products_v1_seed42/weights/best.pt",
+    "sha256": "be673312bea16cf89d044e9107b33e180bf5317ed715452b5d81575b54ca9424"
+  },
+  "source_kind": "camera",
+  "source": 0,
+  "camera_images_or_videos_saved": false,
+  "final_test_inferred": false,
+  "evaluation_note": "Unlabeled live preview; class counts are predictions, not accuracy or recall.",
+  "manual_window_confirmation": "pending",
+  "predict": {
+    "device": "0",
+    "imgsz": 640,
+    "rect": true,
+    "half": false,
+    "conf": 0.1,
+    "iou": 0.7,
+    "max_det": 300,
+    "retina_masks": true,
+    "save": false,
+    "save_txt": false,
+    "show": false,
+    "verbose": false,
+    "classes": null
+  },
+  "class_names": {
+    "0": "sam_whole_milk",
+    "1": "yili_shuhua",
+    "2": "luckin_cup"
+  },
+  "capture_backend": "DSHOW",
+  "frame_shape": [
+    480,
+    640,
+    3
+  ],
+  "window_destroyed": true,
+  "finished_at": "2026-10-04T14:05:09.269632+08:00",
+  "exit_reason": "key_exit",
+  "frames_displayed": 7489,
+  "frames_inferred": 7489,
+  "class_instance_predictions": {
+    "sam_whole_milk": 1569,
+    "yili_shuhua": 1991,
+    "luckin_cup": 640
+  },
+  "frames_with_class": {
+    "sam_whole_milk": 1434,
+    "yili_shuhua": 1645,
+    "luckin_cup": 629
+  },
+  "capture_released": true,
+  "preview_seconds": 250.187,
+  "predict_ms_mean": 8.678044037922348,
+  "timing_note": "Preview includes capture/display; predict timing includes output checks. No controlled benchmark."
+}
