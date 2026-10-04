@@ -1,7 +1,6 @@
 <#
-Review the prepared cleanup by default. -Execute performs the user-run cleanup.
-The agent's deletion request was blocked. Default invocation is read-only.
-Only the reviewed manifest is accepted; raw truth, models, source and Git history are protected.
+Review the prepared cleanup by default. -Execute performs the explicitly requested cleanup.
+Only a prepared stage manifest is accepted; raw truth, models, source and Git history are protected.
 #>
 [CmdletBinding()]
 param(
@@ -86,18 +85,33 @@ function File-Sha([string]$path) {
 
 $manifestPath = Workspace-Path $Manifest
 $plan = Get-Content -LiteralPath $manifestPath -Raw -Encoding UTF8 | ConvertFrom-Json
-if ($plan.root -ne $taskRoot -or $plan.task -ne 'M2_post_acceptance_cleanup') {
+if ($plan.root -ne $taskRoot -or $plan.task -notin @('M2_post_acceptance_cleanup', 'M3_post_baseline_cleanup')) {
     throw 'Manifest belongs to another project or task'
 }
-if ($plan.status -notin @('archive_and_organization_done_deletion_blocked', 'manual_cleanup_verified')) {
+if ($plan.status -notin @('archive_and_organization_done_deletion_blocked', 'prepared_cleanup', 'manual_cleanup_verified', 'cleanup_verified')) {
     throw 'Unexpected cleanup state'
 }
-if ($plan.status -eq 'manual_cleanup_verified') {
+if ($plan.status -in @('manual_cleanup_verified', 'cleanup_verified')) {
     Write-Output 'The reviewed cleanup has already completed.'
     return
 }
 $archivePath = Workspace-Path $plan.archive.path
 if ((File-Sha $archivePath) -ne $plan.archive.sha256) { throw 'Verified archive changed' }
+Add-Type -AssemblyName System.IO.Compression.FileSystem
+$archive = [System.IO.Compression.ZipFile]::OpenRead($archivePath)
+try {
+    if ($archive.Entries.Count -ne $plan.archive.original_files.Count + 1) { throw 'Archive entry count changed' }
+    foreach ($original in $plan.archive.original_files) {
+        $entry = $archive.GetEntry($original.path)
+        if ($null -eq $entry -or $entry.Length -ne $original.bytes) { throw 'Archive original missing or resized' }
+        $stream = $entry.Open()
+        $algorithm = [System.Security.Cryptography.SHA256]::Create()
+        try {
+            $entrySha = [BitConverter]::ToString($algorithm.ComputeHash($stream)).Replace('-', '').ToLowerInvariant()
+            if ($entrySha -ne $original.sha256) { throw ('Archived bytes changed: ' + $original.path) }
+        } finally { $stream.Dispose(); $algorithm.Dispose() }
+    }
+} finally { $archive.Dispose() }
 $preservedNames = @($plan._preserved_sha256.PSObject.Properties.Name)
 $protectedNames = @($plan.protected_inputs.PSObject.Properties.Name)
 $seenPaths = @{}
@@ -171,10 +185,13 @@ foreach ($directory in $plan.empty_directory_candidates) {
 foreach ($entry in $plan._preserved_sha256.PSObject.Properties) {
     if ((File-Sha (Workspace-Path $entry.Name)) -ne $entry.Value) { throw 'A retained file changed after cleanup' }
 }
-$plan.status = 'manual_cleanup_verified'
-$plan.deleted_files = $deletedFiles
-$plan.deleted_directories = $deletedDirectories
-$plan | Add-Member -NotePropertyName manual_executed_at_utc -NotePropertyValue ([DateTimeOffset]::UtcNow.ToString('o')) -Force
+$plan.status = if ($plan.task -eq 'M3_post_baseline_cleanup') { 'cleanup_verified' } else { 'manual_cleanup_verified' }
+$plan | Add-Member -NotePropertyName deleted_files -NotePropertyValue $deletedFiles -Force
+$plan | Add-Member -NotePropertyName deleted_directories -NotePropertyValue $deletedDirectories -Force
+if ($plan.task -eq 'M2_post_acceptance_cleanup') {
+    $plan | Add-Member -NotePropertyName manual_executed_at_utc -NotePropertyValue ([DateTimeOffset]::UtcNow.ToString('o')) -Force
+}
+$plan | Add-Member -NotePropertyName executed_at -NotePropertyValue ([DateTimeOffset]::UtcNow.ToOffset([TimeSpan]::FromHours(8)).ToString('o')) -Force
 $plan | ConvertTo-Json -Depth 20 | Set-Content -LiteralPath $manifestPath -Encoding UTF8
 Write-Output ('Deleted files: ' + $deletedFiles.Count + '; empty directories: ' + $deletedDirectories.Count)
-Write-Output 'All retained files match their snapshot. Recheck formal paths with Python before E1 training.'
+Write-Output 'All retained files match their snapshot. Recheck frozen data and baseline with Python.'

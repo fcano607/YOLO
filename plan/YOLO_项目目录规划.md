@@ -4,7 +4,7 @@
 
 2026-10-03 用户正式采用三种固定包装商品方向，现已根据试标成本确认小数据首版：现有 20 张起步，轻量在线增强和预训练微调；按需要少量补拍，新增人工审核累计最多 30 张（含留出，真实总量最多 50 张），不再按 350 张收集。M2-01 已冻结 classes.json / products.json，M2-02 的 20 张已验收；见[当前操作路线](00_YOLO_分阶段推进与进度跟踪.md#small-data-route)和[标注安排](../docs/M2_商品数据与标注规范.md#small-data-plan)。沿用现有 data/desktop/ 与代码路径，后续按任务实现配置，不增加空脚本。
 
-2026-10-04 更新：M2 6/6 已完成，正式 20/5/5、30 张真实图 / 44 实例及加载契约不变。E1 / M3-05 / E1-A 及 M7-01 接入已验收，M3 4/6、M7 1/6、主线 23/54，57 项测试通过。E1-A val mask mAP50-95=0.7807；摄像头 0.1 非目标误检较多，0.25 的人工反馈为误检减少、三类基本能检出，实时默认 0.25。下一步建议固定首版基线 / 商品 ONNX，暂不补拍 / E2；新增额度仍 10/30。见[数据验收](../docs/M2_商品数据与标注规范.md#m2-05-06)与[摄像头实测](../docs/M0_环境与模型使用手册.md#live-products)。
+2026-10-04 更新：M2 6/6 已完成，正式 20/5/5、30 张真实图 / 44 实例及加载契约不变。E1 / M3-05 / E1-A、M7-01 及 M3-06 B1 冻结已验收，M3 5/6、M7 1/6、主线 24/54，61 项测试通过。B1 采用 E1-A best，val mask mAP50-95=0.7807，实时默认 0.25；现场误检减少、三类基本能检出，剩余误检 / 瑞幸弱点保留。下一步商品 ONNX，暂不补拍 / E2；新增额度仍 10/30。见[B1 档案与复核入口](../docs/M3_训练与实验规范.md#m3-06-baseline)、[数据验收](../docs/M2_商品数据与标注规范.md#m2-05-06)与[摄像头实测](../docs/M0_环境与模型使用手册.md#live-products)。
 
 本文件规划需要在你的 Windows 电脑中建立的目录与文件。2026-10-02 已完成 M0-02：必要一级目录、`configs/paths.yaml`、源码锁定清单、训练 requirements、路径解析与安装验收脚本已建立；后续数据、训练和部署脚本按任务逐步实现，表中其余文件仍是规划。实际进展见[进度跟踪](00_YOLO_分阶段推进与进度跟踪.md)。
 
@@ -71,8 +71,10 @@ Conda 环境不需要放在项目目录中。若后续使用 Git，重点版本�
 | [configs/products_base.yaml](../configs/products_base.yaml) | 已实现、实际加载验收通过的正式 20/5/5 三商品数据配置，指向冻结图片清单 |
 | [configs/augment_products.yaml](../configs/augment_products.yaml) | 轻量在线增强参数，诊断预览与 M3-01 三轮实际训练已使用 |
 | [configs/products_debug.yaml](../configs/products_debug.yaml) | 14/6 关联拍摄组调试数据；省略 path，以 YAML 所在目录解析 train/val 相对路径，没有 test |
+| [configs/baseline_products_v1.json](../configs/baseline_products_v1.json) | M3-06 已冻结的 B1：E1-A best / 20/5/5 / 训练与评价规则 / 实时 0.25，216 个文件哈希；不复制权重 |
+| [scripts/freeze_product_baseline.py](../scripts/freeze_product_baseline.py)、[tests/test_product_baseline.py](../tests/test_product_baseline.py) | B1 首次冻结和只读 --check；4 项新增防错测试，工程总计 61 项，验收见 [M3-06](../reports/experiments/M3-06_products_v1_baseline.json) |
 | [configs/train_debug.yaml](../configs/train_debug.yaml) | 历史 3 轮 GPU FP32 调试配置保留，训练入口默认仍使用此配置 |
-| `configs/products_expanded.yaml` | E2/E3 定向扩充训练池，共用冻结验证 / 测试清单，待实现 |
+| `configs/products_expanded.yaml` | E2 定向扩充训练池，共用冻结验证 / 测试清单，选做待实现；当前 E3 对照使用 B1 原 train20 |
 | [configs/train_baseline.yaml](../configs/train_baseline.yaml) | M3-02 已实现：E1 50 轮 / batch=8 / FP32 / AdamW、初始化、增强引用、val 阈值与 mask 选 best；实际预检查通过 |
 | `configs/train_se.yaml` | 修改模型的训练参数；与基线保持可比 |
 | `configs/yolo11n-seg-se.yaml` | 加入 P3-SE 的模型结构配置 |
@@ -129,7 +131,7 @@ Conda 环境不需要放在项目目录中。若后续使用 Git，重点版本�
 | 文件 | 用途 |
 | --- | --- |
 | [splits/train_base.txt](../data/desktop/splits/train_base.txt) | 已建立：E1 原 20 张审核商品训练图片清单，复用已有副本 |
-| `splits/train_expanded.txt` | E2/E3 扩充商品训练清单，不引入验证 / 测试图片 |
+| `splits/train_expanded.txt` | E2 选做扩充训练清单，不引入验证 / 测试图片；当前 E3 不以扩充为前置条件 |
 | [splits/val_all.txt](../data/desktop/splits/val_all.txt) | 已建立：新验证组 5 张，用于调参与选择权重 |
 | [splits/test_all.txt](../data/desktop/splits/test_all.txt) | 已建立：新最终测试组 5 张，仅用于方案确定后的模型评价 |
 | `metadata/classes.json` | M2-01 已建立：三商品 ID / 英文名与实物引用，不沿用旧杯瓶手机映射 |
@@ -169,7 +171,7 @@ Conda 环境不需要放在项目目录中。若后续使用 Git，重点版本�
 | [scripts/check_dataset.py](../scripts/check_dataset.py) | 原图 / 审核 / TXT 追溯、数据清单、锁定增强预览和累计预算 | M2-03 已实现；20 张及 60 次检查通过 |
 | [scripts/check_training_data.py](../scripts/check_training_data.py) | 默认保留调试；--formal 检查正式 train/val/test 标签加载、训练同步增强、空标签与质量叠加，不训练模型 | 正式 30 张 / 44 实例、60 次增强及 12 次负样本检查通过；3 张紧凑总览和独立报告已保存 |
 | [scripts/check_live_preview.py](../scripts/check_live_preview.py) | E0 GPU 图片与模拟摄像头 / GUI 生命周期检查，不打开真实摄像头 | M2 收尾时由 tmp 归位，字节未变；旧实测报告保留 |
-| [scripts/cleanup_project.ps1](../scripts/cleanup_project.ps1) | 默认核对精确清单；本地 -Execute 才删除可再生成或已归档文件，并核对保留文件 | 本轮已由用户执行，161 文件 / 29 空目录清理完成并通过独立复核；再次运行提示已完成，见[清理状态](../reports/maintenance/20261002_文件整理与清理清单.md#m2-cleanup) |
+| [scripts/cleanup_project.ps1](../scripts/cleanup_project.ps1) | 默认只读核对精确阶段清单，显式 -Manifest / -Execute 后逐文件清理；先核对 ZIP 实际内容和保留文件，拒绝路径跳转 | M2 历史清理保留；M3 已移除 199 文件 / 31 空目录，9 原文件归档，B1 / 数据复核通过；一处旧空目录树保留，见[最新记录](../reports/maintenance/20261002_文件整理与清理清单.md#m3-cleanup) |
 | `scripts/visualize_labels.py` | 绘制标签轮廓、检查标注 | 数据阶段 |
 | [scripts/train.py](../scripts/train.py) | 按 --config 进入历史 debug、正式 E1 或独立 E1-A；--preflight 只做 GPU 前向 / 反向与验证，保存独立日志 / 报告 | E1 / E1-A 各完成 50 轮 / 150 更新；E2/E3 支持待实现 |
 | [scripts/evaluate.py](../scripts/evaluate.py) | 完成 E1 / E1-A 后读取同一固定 val，保存每类 box/mask AP 及 conf=0.25 预览；--check 只核对配置 | 两份保存权重已实际评价，最终 test 不允许进入本入口 |
@@ -336,7 +338,7 @@ reports 是你归纳后的结论，logs 是程序直接记录的过程。训练�
 
 按实际任务填充：当前 20 张整理 → 轻量在线增强 / 临时按组调试划分 → 加载与短训练 → 按需补 6–10 张独立留出并冻结版本 → E1 微调与验证 → 新商品摄像头和最终 ONNX。新增采集及人工审核累计最多 30 张；E2 定向补样本选做，SE、完整独立 ONNX / TensorRT 与稳定性按依赖推进。在线增强不重复保存多套图，合成实验只保存必要预览与来源；不创建空脚本凑目录。
 
-当前正式数据与实际加载已全部验收。E1 / E1-A 权重、曲线和快照保留各自 runs/train，val 图在 runs/eval，分析在独立 runs/analysis；没有复制另一套源图，原 E1 证据不变。M7-01 的配置在 configs/live_products.yaml，预检查 / 两轮会话汇总见 [M7-01_product_camera.json](../reports/application/M7-01_product_camera.json)，操作见[第 3.5 节](../docs/M0_环境与模型使用手册.md#live-products)。摄像头未保存照片 / 视频，只保留统计和人工反馈；下一步建议固定首版 E1-A，再商品 ONNX。
+当前正式数据与实际加载已全部验收。E1 / E1-A 权重、曲线和快照保留各自 runs/train，val 图在 runs/eval，分析在独立 runs/analysis；没有复制另一套源图，原 E1 证据不变。M7-01 的配置在 configs/live_products.yaml，预检查 / 两轮会话汇总见 [M7-01_product_camera.json](../reports/application/M7-01_product_camera.json)，操作见[第 3.5 节](../docs/M0_环境与模型使用手册.md#live-products)。摄像头未保存照片 / 视频。B1 已冻结于 configs/baseline_products_v1.json，M3-06 验收和只读复核入口已建立；下一步商品 ONNX。
 
 ## 十二、在 Windows 本地建立目录的命令
 
@@ -393,4 +395,4 @@ python -m app.webcam --backend onnx --model artifacts/E2/best_fp32.onnx --source
 python -m app.webcam --backend trt --model artifacts/E2/best_fp16.engine --source 0
 ```
 
-后续正式实现均以本目录规划为路径依据。最终模型如果选择 E1 或 E3，则对应修改 runtime 配置和启动参数。
+后续正式实现均以本目录规划为路径依据。当前首版 B1 已选定 E1-A；上面的 E2 路径只是待实现接口示例，不是已生成的商品模型。部署使用 B1 权重来源，后续若更换模型则另记版本，并对应修改 runtime 配置和启动参数。

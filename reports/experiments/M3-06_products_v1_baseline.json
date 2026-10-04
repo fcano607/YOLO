@@ -1,0 +1,99 @@
+{
+  "schema_version": 1,
+  "task": "M3-06",
+  "status": "completed",
+  "completed_at": "2026-10-04T14:41:25.345733+08:00",
+  "baseline_id": "products-v1_E1A_seed42_B1",
+  "manifest": {
+    "path": "configs/baseline_products_v1.json",
+    "sha256": "2f918b136609fdec3306b6bd1a4519ecc93b76d7b2ba9371a9f34a9b9cbbef93"
+  },
+  "guarded_files_checked": 216,
+  "guarded_files_unchanged": true,
+  "engineering_tests": {
+    "passed": 61,
+    "failures": 0,
+    "errors": 0
+  },
+  "gpu_reload": {
+    "passed": true,
+    "input_shape": [
+      1,
+      3,
+      640,
+      640
+    ],
+    "raw_output_shapes": [
+      [
+        1,
+        39,
+        8400
+      ],
+      [
+        1,
+        32,
+        160,
+        160
+      ],
+      [
+        1,
+        64,
+        8400
+      ],
+      [
+        1,
+        3,
+        8400
+      ],
+      [
+        1,
+        64,
+        80,
+        80
+      ],
+      [
+        1,
+        128,
+        40,
+        40
+      ],
+      [
+        1,
+        256,
+        20,
+        20
+      ],
+      [
+        1,
+        32,
+        8400
+      ],
+      [
+        1,
+        32,
+        160,
+        160
+      ]
+    ],
+    "device": "cuda:0",
+    "dtype": "torch.float32",
+    "gpu": "NVIDIA GeForce RTX 5060 Ti",
+    "input_role": "Synthetic zeros; not a quality evaluation."
+  },
+  "new_photos": 0,
+  "new_training_runs": 0,
+  "optimizer_updates": 0,
+  "final_test_images_inferred": 0,
+  "new_model_copies": 0,
+  "progress": {
+    "M3": "5/6",
+    "M7": "1/6",
+    "main": "24/54",
+    "complete_modules": "3/9"
+  },
+  "deferred": [
+    "M3-04 optional E2",
+    "product ONNX deployment",
+    "M8 final test"
+  ]
+}
